@@ -35,26 +35,10 @@ jobs:
           echo -e "# Generated on $(date)\n" > Ruleset/category-porn.list
           echo -e "# Generated from https://github.com/v2fly/domain-list-community/tree/master/data/category-porn\n" >> Ruleset/category-porn.list
           echo -e "# Generated from https://rules.kr328.app/category-porn.yaml\n" >> Ruleset/category-porn.list
-          # Use Python to process the rules
-          python3 -c "
-import requests
-import re
-
-category_porn_url = '${category_porn}'
-
-response = requests.get(category_porn_url)
-lines = response.text.split('\n')
-
-with open('Ruleset/category-porn.list', 'a') as f:
-    for line in lines:
-        if line.startswith('- \"+.'):
-            domain = line.replace('- \"+.', '').replace('\"', '').strip()
-            f.write('DOMAIN-SUFFIX,{}\n'.format(domain))
-        elif line.startswith('- \"'):
-            domain = line.replace('- \"', '').replace('\"', '').strip()
-            f.write('DOMAIN,{}\n'.format(domain))
-          "
-        shell: bash
+          # 处理 +. 规则
+          curl -sSL ${category_porn} | perl -ne 'print if s/^\s*-\s"\+\.(.*)"/DOMAIN-SUFFIX,$1/g' >> Ruleset/category-porn.list
+          # 处理域名规则
+          curl -sSL ${category_porn} | perl -ne 'print if s/^\s*-\s"([^+].*)"/DOMAIN,$1/g' >> Ruleset/category-porn.list
         
       - name: Move files to publish directory
         run: |
