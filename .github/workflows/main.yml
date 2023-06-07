@@ -17,9 +17,7 @@ jobs:
         run: |
           echo "RELEASE_NAME=Released on $(date +%Y%m%d%H%M)" >> $GITHUB_ENV
           echo "TAG_NAME=$(date +%Y%m%d%H%M)" >> $GITHUB_ENV
-          # echo "telegram_cidr= https://raw.githubusercontent.com/Loyalsoldier/geoip/release/text/telegram.txt" >> $GITHUB_ENV
-          echo "category_porn=https://raw.githubusercontent.com/v2fly/domain-list-community/master/data/category-porn" >> $GITHUB_ENV
-
+          echo "category_porn=https://rules.kr328.app/category-porn.yaml" >> $GITHUB_ENV
         shell: bash
         
       - name: Checkout the default branch
@@ -33,13 +31,14 @@ jobs:
 
       - name: Generate category-porn.txt file
         run: |
-          curl -sSL ${category_porn} | awk -F ':' '/^full:/ {printf "%s\n", $2}' > Domainset/category-porn.txt
-          curl -sSL ${category_porn} | awk -F ':' '/^xn--/ {printf "%s\n", $1}' >> Domainset/category-porn.txt
-          curl -sSL ${category_porn} | awk -F ':' '/^regexp:/ {printf "%s\n", $2}' >> Domainset/category-porn.txt
-          curl -sSL ${category_porn} | awk -F ':' '/^full:/ {printf "DOMAIN,%s\n", $2}' > Ruleset/category-porn.list
-          curl -sSL ${category_porn} | awk -F ':' '/^xn--/ {printf "DOMAIN-SUFFIX,%s\n", $1}' >> Ruleset/category-porn.list
-          curl -sSL ${category_porn} | awk -F ':' '/^regexp:/ {printf "REGEX,%s\n", $2}' >> Ruleset/category-porn.list
-
+          # Write header information
+          echo "# Generated on $(date)" > Ruleset/category-porn.list
+          echo "# Generated from https://github.com/v2fly/domain-list-community/tree/master/data/category-porn" >> Ruleset/category-porn.list
+          echo "# Generated from https://rules.kr328.app/category-porn.yaml" >> Ruleset/category-porn.list
+          # 处理 +. 规则
+          curl -sSL ${category_porn} | perl -ne 'print if s/^\s*"- \+\./DOMAIN-SUFFIX,/g' >> Ruleset/category-porn.list
+          # 处理域名规则
+          curl -sSL ${category_porn} | perl -ne 'print if s/^\s*"- ([^.]*\.[^.]*)"/DOMAIN,$1/g' >> Ruleset/category-porn.list
 
       - name: Move files to publish directory
         run: |
@@ -78,5 +77,5 @@ jobs:
             curl -i "https://purge.jsdelivr.net/gh/${{ github.repository }}@release/Domainset/${file}"
           done
           for file in $(ls Ruleset); do
-            curl -i "https://purge.jsdelivr.net/gh/${{ github.repository }}@release/Ruleset/${file}"
-          done
+            curl -i "https://purge.jsdelivr.net/gh/${{ github.repository }}@release@release/Ruleset/${file}"
+            done
