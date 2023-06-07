@@ -57,7 +57,7 @@ jobs:
           files: |
             ./publish/*
         env:
-          GITHUB_TOKEN: ${{ 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 }}
+          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
 
       - name: Git push assets to "release" branch
         run: |
