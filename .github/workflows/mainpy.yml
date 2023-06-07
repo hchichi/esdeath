@@ -37,8 +37,9 @@ jobs:
           echo -e "# Generated from https://rules.kr328.app/category-porn.yaml\n" >> Ruleset/category-porn.list
           # Use Python to process the rules
           python3 -c "
-import requests
-import re
+run: >
+  python3 -c "import requests; category_porn_url = '${category_porn}'; response = requests.get(category_porn_url); lines = response.text.split('\n'); with open('Ruleset/category-porn.list', 'a') as f: for line in lines: if line.startswith('- \"+.'): domain = line.replace('- \"+.', '').replace('\"', '').strip(); f.write('DOMAIN-SUFFIX,{}\n'.format(domain)); elif line.startswith('- \"'): domain = line.replace('- \"', '').replace('\"', '').strip(); f.write('DOMAIN,{}\n'.format(domain))"
+
 
 category_porn_url = '${category_porn}'
 
