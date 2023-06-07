@@ -36,7 +36,7 @@ jobs:
           echo -e "# Generated from https://github.com/v2fly/domain-list-community/tree/master/data/category-porn\n" >> Ruleset/category-porn.list
           echo -e "# Generated from https://rules.kr328.app/category-porn.yaml\n" >> Ruleset/category-porn.list
           # Use Python to process the rules
-          python3 -c "
+
 - name: Generate category-porn.txt file
   run: |
     echo -e "# Generated on $(date)\n" > Ruleset/category-porn.list
