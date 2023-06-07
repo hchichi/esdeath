@@ -36,9 +36,9 @@ jobs:
           echo "# Generated from https://github.com/v2fly/domain-list-community/tree/master/data/category-porn" >> Ruleset/category-porn.list
           echo "# Generated from https://rules.kr328.app/category-porn.yaml" >> Ruleset/category-porn.list
           # 处理 +. 规则
-          curl -sSL ${category_porn} | perl -ne 'print if s/^\s*"\+\.(.*)"/DOMAIN-SUFFIX,$1/g' >> Ruleset/category-porn.list
+          curl -sSL ${category_porn} | perl -ne 'print if s/^\s*-\s"\+\.(.*)"/DOMAIN-SUFFIX,$1/g' >> Ruleset/category-porn.list
           # 处理域名规则
-          curl -sSL ${category_porn} | perl -ne 'print if s/^\s*"([^+].*)"/DOMAIN,$1/g' >> Ruleset/category-porn.list
+          curl -sSL ${category_porn} | perl -ne 'print if s/^\s*-\s"([^+].*)"/DOMAIN,$1/g' >> Ruleset/category-porn.list
 
 
       - name: Move files to publish directory
