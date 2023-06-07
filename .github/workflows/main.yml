@@ -1,0 +1,82 @@
+name: Generate routing rules for Surge
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 23 * * *'
+  push:
+    branches:
+      - master
+    paths-ignore:
+      - "**/README.md"
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set variables
+        run: |
+          echo "RELEASE_NAME=Released on $(date +%Y%m%d%H%M)" >> $GITHUB_ENV
+          echo "TAG_NAME=$(date +%Y%m%d%H%M)" >> $GITHUB_ENV
+          # echo "telegram_cidr= https://raw.githubusercontent.com/Loyalsoldier/geoip/release/text/telegram.txt" >> $GITHUB_ENV
+          echo "category_porn=https://raw.githubusercontent.com/v2fly/domain-list-community/master/data/category-porn" >> $GITHUB_ENV
+
+        shell: bash
+        
+      - name: Checkout the default branch
+        uses: actions/checkout@v3
+
+      - name: Make directory
+        run: |
+          mkdir -p Domainset
+          mkdir -p Ruleset
+          mkdir -p dist
+
+      - name: Generate category-porn.txt file
+        run: |
+          curl -sSL ${category_porn} | awk -F ':' '/^full:/ {printf "%s\n", $2}' > Domainset/category-porn.txt
+          curl -sSL ${category_porn} | awk -F ':' '/^xn--/ {printf "%s\n", $1}' >> Domainset/category-porn.txt
+          curl -sSL ${category_porn} | awk -F ':' '/^regexp:/ {printf "%s\n", $2}' >> Domainset/category-porn.txt
+          curl -sSL ${category_porn} | awk -F ':' '/^full:/ {printf "DOMAIN,%s\n", $2}' > Ruleset/category-porn.list
+          curl -sSL ${category_porn} | awk -F ':' '/^xn--/ {printf "DOMAIN-SUFFIX,%s\n", $1}' >> Ruleset/category-porn.list
+          curl -sSL ${category_porn} | awk -F ':' '/^regexp:/ {printf "REGEX,%s\n", $2}' >> Ruleset/category-porn.list
+
+
+      - name: Move files to publish directory
+        run: |
+          mkdir -p publish
+          mv Ruleset ./publish/
+          mv Domainset ./publish/
+          
+      - name: Release and upload assets
+        uses: softprops/action-gh-release@v1
+        with:
+          name: ${{ env.RELEASE_NAME }}
+          tag_name: ${{ env.TAG_NAME }}
+          draft: false
+          prerelease: false
+          files: |
+            ./publish/*
+        env:
+          GITHUB_TOKEN: ${{ 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 }}
+
+      - name: Git push assets to "release" branch
+        run: |
+          cd publish || exit 1
+          git init
+          git config --local user.name "github-action[bot]"
+          git config --local user.email "126152485+anyawa@users.noreply.github.com"
+          git checkout -b release
+          git add .
+          git commit -m "${{ env.RELEASE_NAME }}"
+          git remote add origin "https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}"
+          git push -f -u origin release
+
+      - name: Purge jsdelivr CDN
+        run: |
+          cd publish || exit 1
+          for file in $(ls Domainset); do
+            curl -i "https://purge.jsdelivr.net/gh/${{ github.repository }}@release/Domainset/${file}"
+          done
+          for file in $(ls Ruleset); do
+            curl -i "https://purge.jsdelivr.net/gh/${{ github.repository }}@release/Ruleset/${file}"
+          done
