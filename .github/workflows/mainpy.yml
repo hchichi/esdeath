@@ -47,9 +47,8 @@ jobs:
                   elif line.startswith("- \""):
                       domain = line.replace("- \"", "").replace("\"", "").strip()
                       f.write("DOMAIN,{}\n".format(domain))
-'shell: bash
+                      'shell: bash
 
-        
       - name: Move files to publish directory
         run: |
           mkdir -p publish
