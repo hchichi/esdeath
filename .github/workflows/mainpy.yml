@@ -48,8 +48,6 @@ jobs:
                       domain = line.replace("- \"", "").replace("\"", "").strip()
                       f.write("DOMAIN,{}\n".format(domain))
           '
-          shell: bash
-
 
 
       - name: Move files to publish directory
