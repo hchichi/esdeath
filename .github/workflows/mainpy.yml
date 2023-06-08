@@ -28,26 +28,26 @@ jobs:
           mkdir -p Domainset
           mkdir -p Ruleset
           mkdir -p dist
-- name: Generate category-porn.txt file
-  run: |
-    echo -e "# Generated on $(date)\n" > Ruleset/category-porn.list
-    echo -e "# Generated from https://github.com/v2fly/domain-list-community/tree/master/data/category-porn\n" >> Ruleset/category-porn.list
-    echo -e "# Generated from https://rules.kr328.app/category-porn.yaml\n" >> Ruleset/category-porn.list
-    python3 -c '
-import requests
-category_porn_url = "${{ env.category_porn }}"
-response = requests.get(category_porn_url)
-lines = response.text.split("\n")
-with open("Ruleset/category-porn.list", "a") as f:
-    for line in lines:
-        if line.startswith("- \"+."):
-            domain = line.replace("- \"+.", "").replace("\"", "").strip()
-            f.write("DOMAIN-SUFFIX,{}\n".format(domain))
-        elif line.startswith("- \""):
-            domain = line.replace("- \"", "").replace("\"", "").strip()
-            f.write("DOMAIN,{}\n".format(domain))
-'
-  shell: bash
+          
+      - name: Generate category-porn.txt file
+        run: |
+          echo -e "# Generated on $(date)\n" > Ruleset/category-porn.list
+          echo -e "# Generated from https://github.com/v2fly/domain-list-community/tree/master/data/category-porn\n" >> Ruleset/category-porn.list
+          echo -e "# Generated from https://rules.kr328.app/category-porn.yaml\n" >> Ruleset/category-porn.list
+          python3 -c '
+          import requests
+          category_porn_url = "${{ env.category_porn }}"
+          response = requests.get(category_porn_url)
+          lines = response.text.split("\n")
+          with open("Ruleset/category-porn.list", "a") as f:
+              for line in lines:
+                  if line.startswith("- \"+."):
+                      domain = line.replace("- \"+.", "").replace("\"", "").strip()
+                      f.write("DOMAIN-SUFFIX,{}\n".format(domain))
+                  elif line.startswith("- \""):
+                      domain = line.replace("- \"", "").replace("\"", "").strip()
+                      f.write("DOMAIN,{}\n".format(domain))
+'shell: bash
 
         
       - name: Move files to publish directory
