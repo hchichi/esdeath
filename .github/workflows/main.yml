@@ -18,6 +18,7 @@ jobs:
           echo "RELEASE_NAME=Released on $(date +%Y%m%d%H%M)" >> $GITHUB_ENV
           echo "TAG_NAME=$(date +%Y%m%d%H%M)" >> $GITHUB_ENV
           echo "category_porn=https://rules.kr328.app/category-porn.yaml" >> $GITHUB_ENV
+          echo "emby_plus=https://raw.githubusercontent.com/ddgksf2013/Filter/master/Emby.list" >> $GITHUB_ENV
         shell: bash
         
       - name: Checkout the default branch
@@ -40,6 +41,17 @@ jobs:
           # 处理域名规则
           curl -sSL ${category_porn} | perl -ne 'print if s/^\s*-\s"([^+].*)"/DOMAIN,$1/g' >> Ruleset/category-porn.list
         
+      - name: Generate emby.list file
+        run: |
+          rules_count=$(grep -cE "^(DOMAIN-SUFFIX|DOMAIN)," "$emby_plus")
+
+          echo "# Generated on $current_date" > "Ruleset/emby.list"
+          echo "# Generated from https://raw.githubusercontent.com/ddgksf2013/Filter/master/Emby.list" >> "Ruleset/emby.list"
+          echo "# No. of rules: $rules_count" >> "Ruleset/emby.list"
+          echo "" >> "Ruleset/emby.list"
+          
+          tail -n +5 "$emby_plus" | sed 's/^# > /# /' >> "Ruleset/emby.list"
+
       - name: Move files to publish directory
         run: |
           mkdir -p publish
