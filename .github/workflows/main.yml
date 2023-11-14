@@ -43,14 +43,26 @@ jobs:
         
       - name: Generate emby.list file
         run: |
+
+          # 下载文件
+          curl -sSL "${emby_plus}" -o emby_plus_file.tmp
+
+          # 计算规则总数
           rules_count=$(grep -cE "^(DOMAIN-SUFFIX|DOMAIN)," "$emby_plus")
 
+          echo -e "# Generated on $(date)\n" > Ruleset/category-porn.list
+
+          # Header Info
           echo "# Generated on $current_date" > "Ruleset/emby.list"
           echo "# Generated from https://raw.githubusercontent.com/ddgksf2013/Filter/master/Emby.list" >> "Ruleset/emby.list"
           echo "# No. of rules: $rules_count" >> "Ruleset/emby.list"
           echo "" >> "Ruleset/emby.list"
-          
+
+          # 删除注释和本地规则
           tail -n +5 "$emby_plus" | sed 's/^# > /# /' >> "Ruleset/emby.list"
+
+          # 清理临时文件
+          rm emby_plus_file.tmp
 
       - name: Move files to publish directory
         run: |
