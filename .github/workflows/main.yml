@@ -50,9 +50,8 @@ jobs:
           echo -e "# Generated on $(date)\n" > Ruleset/emby.list
 
           # Header Info
-          echo "# Generated from https://raw.githubusercontent.com/ddgksf2013/Filter/master/Emby.list" >> "Ruleset/emby.list"
-          echo "# No. of rules: $rules_count" >> "Ruleset/emby.list"
-          echo "" >> "Ruleset/emby.list"
+          echo "# Generated from https://raw.githubusercontent.com/ddgksf2013/Filter/master/Emby.list\n"" >> "Ruleset/emby.list"
+          echo "# No. of rules: $rules_count\n"" >> "Ruleset/emby.list"
 
           # 删除注释和本地规则
           tail -n +5 "$emby_plus" | sed 's/^# > /# /' >> "Ruleset/emby.list"
