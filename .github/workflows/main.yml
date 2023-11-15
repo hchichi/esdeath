@@ -39,14 +39,14 @@ jobs:
           # echo -e "# Generated from https://rules.kr328.app/category-porn.yaml\n" >> Ruleset/category-porn.list
 
           # Adjusted Step 1: Process lines starting with 'include:'
-          curl -sSL ${category_porn} | perl -ne 'print "DOMAIN-KEYWORD,$1\n" if /"include:(.*)"/' >> Ruleset/category-porn.list
+          curl -sSL ${category_porn} | perl -ne 'print "DOMAIN-KEYWORD,$1\n" if /^include:(.*)/' >> Ruleset/category-porn.list
 
           # Adjusted Step 2: Process domain names without 'regexp:', 'include:', 'full:', not starting with '#', and containing a dot.
           curl -sSL ${category_porn} | perl -ne 'print "DOMAIN-SUFFIX,$1\n" if !/regexp:/ && !/include:/ && !/full:/ && !/^#/ && /\./ && /(\S+)/' >> Ruleset/category-porn.list
 
           # Step 3: Process lines starting with 'full:'
           # (No changes here, as it's not applicable based on your provided content)
-          curl -sSL ${category_porn} | perl -ne 'print "DOMAIN,$1\n" if /"full:(.*)"/' >> Ruleset/category-porn.list
+          curl -sSL ${category_porn} | perl -ne 'print "DOMAIN,$1\n" if /^full:(.*)/' >> Ruleset/category-porn.list
 
 
       - name: Generate emby.list file
