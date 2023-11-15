@@ -34,7 +34,7 @@ jobs:
         run: |
           # Write header information
           echo -e "# Generated on $(date)\n" > Ruleset/category-porn.list
-          echo -e "# Generated from https://github.com/v2fly/domain-list-community/tree/master/data/category-porn\n" >> Ruleset/category-porn.list
+          echo -e "# Generated from https://github.com/v2fly/domain-list-community/tree/master/data/category-porn" >> Ruleset/category-porn.list
           
           # echo -e "# Generated from https://rules.kr328.app/category-porn.yaml\n" >> Ruleset/category-porn.list
 
@@ -62,7 +62,7 @@ jobs:
           echo "# Total: $rules_count" >> "Ruleset/emby.list"
 
           # 删除注释和本地规则
-          curl -sSL "${emby_plus}" | perl -ne 'print unless /#更新时间|#=+|https:\/\/t.me\/ddgksf2021/' | perl -pe 's/^# > /# /' >> "Ruleset/emby.list"
+          curl -sSL "${emby_plus}" | perl -ne 'print unless /#更新时间|#=+|https:\/\/t.me\/ddgksf2021/' | perl -pe 's/^#\s?>/#/' >> "Ruleset/emby.list"
 
       - name: Move files to publish directory
         run: |
