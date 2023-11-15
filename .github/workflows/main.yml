@@ -38,6 +38,8 @@ jobs:
           
           # echo -e "# Generated from https://rules.kr328.app/category-porn.yaml\n" >> Ruleset/category-porn.list
 
+          echo "" >> "Ruleset/emby.list"
+
           # Adjusted Step 1: Process lines starting with 'include:'
           curl -sSL ${category_porn} | perl -ne 'print "DOMAIN-KEYWORD,$1\n" if /^include:(.*)/' >> Ruleset/category-porn.list
 
@@ -52,18 +54,20 @@ jobs:
       - name: Generate emby.list file
         run: |
 
-          # 计算规则总数
+          # Generate emby.list file
+          # Calculate rules count
           rules_count=$(curl -sSL "${emby_plus}" | grep -cE "^(DOMAIN-SUFFIX|DOMAIN),")
           
+          # Write header information
           echo -e "# Generated on $(date)\n" > Ruleset/emby.list
 
           # Header Info
           echo "# Generated from https://raw.githubusercontent.com/ddgksf2013/Filter/master/Emby.list" >> "Ruleset/emby.list"
-          echo "" >> "Ruleset/emby.list"
-          echo "# Total: $rules_count" >> "Ruleset/emby.list"
+          echo -e "# Total: $rules_count\n" >> "Ruleset/emby.list"
 
-          # 删除注释和本地规则
+          # Remove comments and local rules
           curl -sSL "${emby_plus}" | perl -ne 'print unless /#更新时间|#=+|https:\/\/t.me\/ddgksf2021/' | perl -pe 's/^#\s?>/#/' >> "Ruleset/emby.list"
+
 
       - name: Move files to publish directory
         run: |
