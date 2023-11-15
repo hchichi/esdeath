@@ -38,16 +38,15 @@ jobs:
           
           # echo -e "# Generated from https://rules.kr328.app/category-porn.yaml\n" >> Ruleset/category-porn.list
 
-          # Step 1: Process include: lines
-          curl -sSL ${category_porn} | perl -ne 'print "DOMAIN-KEYWORD,$1\n" if /^\s*-\s"include:(.*)"/' >> Ruleset/category-porn.list
+          # 第一步: 处理 include: 行
+          curl -sSL ${category_porn} | perl -ne 'print "DOMAIN-KEYWORD,$1\n" if /^\s*-\s"include:(.*)          "/' >> Ruleset/category-porn.list
+          
+          # 第二步: 处理不含 regexp:, include:, full: 的行，不是注释的行，含有点的行
+          curl -sSL ${category_porn} | perl -ne 'print "DOMAIN-SUFFIX,$1\n" if !/regexp:/ && !/          include:/ && !/full:/ && !/^#/ && /\./ && /^\s*-\s"(.*)"/' >> Ruleset/category-porn.list
+          
+          # 第三步: 处理 full: 行
+          curl -sSL ${category_porn} | perl -ne 'print "DOMAIN,$1\n" if /^\s*-\s"full:(.*)"/' >>           Ruleset/category-porn.list
 
-          # Step 2: Process lines without regexp:, include:, full:, not starting with #, and containing a dot
-          curl -sSL ${category_porn} | perl -ne 'print "DOMAIN-SUFFIX,$1\n" if !/regexp:/ && !/include:/ && !/full:/ && !/^#/ && /\./ && /^\s*-\s"(.*)"/' >> Ruleset/category-porn.list
-
-          # Step 3: Process full: lines
-          curl -sSL ${category_porn} | perl -ne 'print "DOMAIN,$1\n" if /^\s*-\s"full:(.*)"/' >> Ruleset/category-porn.list
-
-        
       - name: Generate emby.list file
         run: |
 
@@ -58,7 +57,7 @@ jobs:
 
           # Header Info
           echo "# Generated from https://raw.githubusercontent.com/ddgksf2013/Filter/master/Emby.list" >> "Ruleset/emby.list"
-          echo "" >> "Ruleset/emby.list"
+          # echo "" >> "Ruleset/emby.list"
           echo "# Total: $rules_count" >> "Ruleset/emby.list"
 
           # 删除注释和本地规则
