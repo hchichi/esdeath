@@ -8,73 +8,48 @@ on:
       - master
     paths-ignore:
       - "**/README.md"
+
 jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout the default branch
+        uses: actions/checkout@v4
+
       - name: Set variables
         run: |
           echo "RELEASE_NAME=Released on $(date +%Y%m%d%H%M)" >> $GITHUB_ENV
           echo "TAG_NAME=$(date +%Y%m%d%H%M)" >> $GITHUB_ENV
           echo "category_porn=https://raw.githubusercontent.com/v2fly/domain-list-community/master/data/category-porn" >> $GITHUB_ENV
           echo "emby_plus=https://raw.githubusercontent.com/ddgksf2013/Filter/master/Emby.list" >> $GITHUB_ENV
-        shell: bash
-        
-      - name: Checkout the default branch
-        uses: actions/checkout@v4
 
-      - name: Make directory
-        run: |
-          mkdir -p Domainset
-          mkdir -p Ruleset
-          mkdir -p dist
+      - name: Create directories
+        run: mkdir -p Domainset Ruleset dist
 
       - name: Generate category-porn.txt file
         run: |
-          # Write header information
-          echo -e "# Generated on $(date)\n" > Ruleset/category-porn.list
-          echo -e "# Generated from https://github.com/v2fly/domain-list-community/tree/master/data/category-porn" >> Ruleset/category-porn.list
-          
-          # echo -e "# Generated from https://rules.kr328.app/category-porn.yaml\n" >> Ruleset/category-porn.list
-
-          echo "" >> "Ruleset/category-porn.list"
-
-          # Adjusted Step 1: Process lines starting with 'include:'
+          echo -e "# Generated on $(date)\n# Generated from https://github.com/v2fly/domain-list-community/tree/master/data/category-porn\n" > Ruleset/category-porn.list
           curl -sSL ${category_porn} | perl -ne 'print "DOMAIN-KEYWORD,$1\n" if /^include:(.*)/' >> Ruleset/category-porn.list
-
-          # Adjusted Step 2: Process domain names without 'regexp:', 'include:', 'full:', not starting with '#', and containing a dot.
           curl -sSL ${category_porn} | perl -ne 'print "DOMAIN-SUFFIX,$1\n" if !/regexp:/ && !/include:/ && !/full:/ && !/^#/ && /\./ && /(\S+)/' >> Ruleset/category-porn.list
-
-          # Step 3: Process lines starting with 'full:'
-          # (No changes here, as it's not applicable based on your provided content)
           curl -sSL ${category_porn} | perl -ne 'print "DOMAIN,$1\n" if /^full:(.*)/' >> Ruleset/category-porn.list
-
 
       - name: Generate emby.list file
         run: |
-
-          # Generate emby.list file
           # Calculate rules count
           rules_count=$(curl -sSL "${emby_plus}" | grep -cE "^(DOMAIN-SUFFIX|DOMAIN),")
-          
+
           # Write header information
           echo -e "# Generated on $(date)\n" > Ruleset/emby.list
 
           # Header Info
           echo "# Generated from https://raw.githubusercontent.com/ddgksf2013/Filter/master/Emby.list" >> "Ruleset/emby.list"
-          echo -e "# Total: $rules_count\n" >> "Ruleset/emby.list"
+          echo -e "\n# Total: $rules_count\n" >> "Ruleset/emby.list"
 
           # Remove comments and local rules
           curl -sSL "${emby_plus}" | perl -ne 'print unless /#更新时间|#=+|https:\/\/t.me\/ddgksf2021/' | perl -pe 's/^#\s?>/#/' >> "Ruleset/emby.list"
 
 
-      - name: Move files to publish directory
-        run: |
-          mkdir -p publish
-          mv Ruleset ./publish/
-          mv Domainset ./publish/
-          
       - name: Release and upload assets
         uses: softprops/action-gh-release@v1
         with:
@@ -82,14 +57,13 @@ jobs:
           tag_name: ${{ env.TAG_NAME }}
           draft: false
           prerelease: false
-          files: |
-            ./publish/*
+          files: ./publish/*
         env:
           GITHUB_TOKEN: ${{ secrets.FORACT }}
 
       - name: Git push assets to "release" branch
         run: |
-          cd publish || exit 1
+          cd publish
           git init
           git config --local user.name "github-action[bot]"
           git config --local user.email "126152485+anyawa@users.noreply.github.com"
@@ -101,10 +75,7 @@ jobs:
 
       - name: Purge jsdelivr CDN
         run: |
-          cd publish || exit 1
-          for file in $(ls Domainset); do
-            curl -i "https://purge.jsdelivr.net/gh/${{ github.repository }}@release/Domainset/${file}"
+          cd publish
+          for file in $(ls Domainset Ruleset); do
+            curl -i "https://purge.jsdelivr.net/gh/${{ github.repository }}@release/${file}"
           done
-          for file in $(ls Ruleset); do
-            curl -i "https://purge.jsdelivr.net/gh/${{ github.repository }}@release@release/Ruleset/${file}"
-            done
