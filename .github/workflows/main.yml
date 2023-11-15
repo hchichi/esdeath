@@ -17,7 +17,7 @@ jobs:
         run: |
           echo "RELEASE_NAME=Released on $(date +%Y%m%d%H%M)" >> $GITHUB_ENV
           echo "TAG_NAME=$(date +%Y%m%d%H%M)" >> $GITHUB_ENV
-          echo "category_porn=https://rules.kr328.app/category-porn.yaml" >> $GITHUB_ENV
+          echo "category_porn=https://raw.githubusercontent.com/v2fly/domain-list-community/master/data/category-porn" >> $GITHUB_ENV
           echo "emby_plus=https://raw.githubusercontent.com/ddgksf2013/Filter/master/Emby.list" >> $GITHUB_ENV
         shell: bash
         
