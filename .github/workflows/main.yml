@@ -52,11 +52,10 @@ jobs:
 
           # Header Info
           echo "# Generated from https://raw.githubusercontent.com/ddgksf2013/Filter/master/Emby.list" >> "Ruleset/emby.list"
-          echo "# No. of rules: $rules_count" >> "Ruleset/emby.list"
-          echo "" >> "Ruleset/emby.list"
+          echo "# Total: $rules_count" >> "Ruleset/emby.list"
 
           # 删除注释和本地规则
-          curl -sSL "${emby_plus}" | perl -pe 's/^# > /# /' >> "Ruleset/emby.list"
+          curl -sSL "${emby_plus}" | perl -ne 'print unless /^# > / or /^#======================================#/ or /^#更新时间2023-06-23/ or /^#https:\/\/t.me\/ddgksf2021/' | perl -pe 's/^# > /# /' >> "Ruleset/emby.list"
 
       - name: Move files to publish directory
         run: |
