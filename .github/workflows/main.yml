@@ -73,7 +73,7 @@ jobs:
           files: |
             ./publish/*
         env:
-          GITHUB_TOKEN: ${{ secrets.FOR_ACT }}
+          GITHUB_TOKEN: ${{ secrets.FORACT }}
 
       - name: Git push assets to "release" branch
         run: |
@@ -84,7 +84,7 @@ jobs:
           git checkout -b release
           git add .
           git commit -m "${{ env.RELEASE_NAME }}"
-          git remote add origin "https://${{ github.actor }}:${{ secrets.FOR_ACT }}@github.com/${{ github.repository }}"
+          git remote add origin "https://${{ github.actor }}:${{ secrets.FORACT }}@github.com/${{ github.repository }}"
           git push -f -u origin release
 
       - name: Purge jsdelivr CDN
