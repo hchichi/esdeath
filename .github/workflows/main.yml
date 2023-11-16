@@ -67,8 +67,7 @@ jobs:
           echo -e "\n# Total: $rules_count\n" >> "Ruleset/emby.list"
 
           # Remove comments and local rules
-          curl -sSL "${emby_plus}" | perl -ne 'print unless /#更新时间|#=+|https:\/\/t.me\/ddgksf2021/' | perl -pe 's/^#\s?>/#/' >> "Ruleset/emby.list"
-
+          curl -sSL "${emby_plus}" | perl -ne 'next if /#更新时间|#=+|https:\/\/t.me\/ddgksf2021/; print' | perl -pe 's/^#\s?>/#/' >> "Ruleset/emby.list"
 
       - name: Move files to publish directory
         run: |
