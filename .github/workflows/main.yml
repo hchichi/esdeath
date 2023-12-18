@@ -51,21 +51,39 @@ jobs:
           curl -sSL ${category_porn} | perl -ne 'print "DOMAIN,$1\n" if /^full:(.*)/' >> Ruleset/category-porn.list
 
 
+      #- name: Generate emby.list file
+      #  run: |
+#
+      #    # Generate emby.list file
+#
+      #    # Calculate rules count
+      #    rules_count=$(curl -sSL "${emby_plus}" | grep -cE "^(DOMAIN-SUFFIX|DOMAIN),")
+#
+      #    # Write header information
+      #    echo -e "# Generated on $(date)\n" > Ruleset/emby.list
+#
+      #    # Header Info
+      #    echo "# Generated from https://raw.githubusercontent.com/ddgksf2013/Filter/master/Emby.list" >> "Ruleset/emby.list"
+      #    echo -e "\n# Total: $rules_count\n" >> "Ruleset/emby.list"
+#
+      #    # Remove comments and local rules
+      #    curl -sSL "${emby_plus}" | perl -ne 'next if /#更新时间|#=+|https:\/\/t.me\/ddgksf2021/; print' | perl -pe 's/^#\s?>/#/' >> "Ruleset/emby.list"
+
       - name: Generate emby.list file
         run: |
-
+      
           # Generate emby.list file
-
+      
           # Calculate rules count
           rules_count=$(curl -sSL "${emby_plus}" | grep -cE "^(DOMAIN-SUFFIX|DOMAIN),")
-
+      
           # Write header information
-          echo -e "# Generated on $(date)\n" > Ruleset/emby.list
-
+          echo -e "# Generated on $(date)" > Ruleset/emby.list
+      
           # Header Info
           echo "# Generated from https://raw.githubusercontent.com/ddgksf2013/Filter/master/Emby.list" >> "Ruleset/emby.list"
-          echo -e "\n# Total: $rules_count\n" >> "Ruleset/emby.list"
-
+          echo -e "# Total: $rules_count\n" >> "Ruleset/emby.list"
+      
           # Remove comments and local rules
           curl -sSL "${emby_plus}" | perl -ne 'next if /#更新时间|#=+|https:\/\/t.me\/ddgksf2021/; print' | perl -pe 's/^#\s?>/#/' >> "Ruleset/emby.list"
 
