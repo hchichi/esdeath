@@ -65,11 +65,8 @@ jobs:
           echo "# Generated from https://raw.githubusercontent.com/ddgksf2013/Filter/master/Emby.list" >> "Ruleset/emby.list"
           echo -e "# Total: $rules_count\n" >> "Ruleset/emby.list"
       
-          # Remove specific lines and replace certain patterns
-          curl -sSL "${emby_plus}" | 
-          perl -ne 'next if /^#={10,}#$/; next if /^$/ && $. == 1; print' |
-          perl -pe 's/^# > /# Emby Streaming Service\n\n# > /mg' >> "Ruleset/emby.list"
-
+          # Remove comments, local rules, and extra newlines
+          curl -sSL "${emby_plus}" | perl -ne 'next if /#更新时间|#=+|https:\/\/t.me\/ddgksf2021/; print' | perl -pe 's/^#\s?>/#/; s/\n{2,}/\n/' >> "Ruleset/emby.list"
 
 
       - name: Move files to publish directory
