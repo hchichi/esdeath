@@ -49,24 +49,22 @@ jobs:
           # Step 3: Process lines starting with 'full:'
           # (No changes here, as it's not applicable based on your provided content)
           curl -sSL ${category_porn} | perl -ne 'print "DOMAIN,$1\n" if /^full:(.*)/' >> Ruleset/category-porn.list
-
-
+      
       - name: Generate emby.list file
         run: |
-          # Generate emby.list file
-      
-          # Calculate rules count
-          rules_count=$(curl -sSL "${emby_plus}" | grep -cE "^(DOMAIN-SUFFIX|DOMAIN),")
-      
-          # Write header information
+          # 下载原始规则数据
+          curl -sSL "${emby_plus}" -o original_rules.list
+        
+          # 计算规则数量
+          rules_count=$(grep -cE "^(DOMAIN-SUFFIX|DOMAIN|IP-CIDR)," original_rules.list)
+        
+          # 写入文件头
           echo -e "# Generated on $(date)" > Ruleset/emby.list
-      
-          # Header Info
-          echo "# Generated from https://raw.githubusercontent.com/ddgksf2013/Filter/master/Emby.list" >> "Ruleset/emby.list"
-          echo -e "# Total: $rules_count\n" >> "Ruleset/emby.list"
-      
-          # Remove comments, local rules, and extra newlines
-          curl -sSL "${emby_plus}" | perl -ne 'next if /#更新时间|#=+|https:\/\/t.me\/ddgksf2021/; print' | perl -pe 's/^#\s?>/#/; s/\n{2,}/\n/' >> "Ruleset/emby.list"
+          echo "# Generated from ${emby_plus}" >> Ruleset/emby.list
+          echo -e "# Total Rules: $rules_count\n" >> Ruleset/emby.list
+        
+          # 将处理后的数据写入 emby.list
+          grep -E "^(DOMAIN-SUFFIX|DOMAIN|IP-CIDR)," original_rules.list >> Ruleset/emby.list
 
 
       - name: Move files to publish directory
