@@ -17,7 +17,7 @@ jobs:
         run: |
           echo "RELEASE_NAME=Released on $(date +%Y%m%d%H%M)" >> $GITHUB_ENV
           echo "TAG_NAME=$(date +%Y%m%d%H%M)" >> $GITHUB_ENV
-          echo "category_porn=https://rules.kr328.app/category-porn.yaml" >> $GITHUB_ENV
+          echo "category_porn=https://raw.githubusercontent.com/v2fly/domain-list-community/master/data/category-porn" >> $GITHUB_ENV
           echo "emby_plus=https://raw.githubusercontent.com/ddgksf2013/Filter/master/Emby.list" >> $GITHUB_ENV
         shell: bash
         
@@ -34,28 +34,38 @@ jobs:
         run: |
           # Write header information
           echo -e "# Generated on $(date)\n" > Ruleset/category-porn.list
-          echo -e "# Generated from https://github.com/v2fly/domain-list-community/tree/master/data/category-porn\n" >> Ruleset/category-porn.list
-          echo -e "# Generated from https://rules.kr328.app/category-porn.yaml\n" >> Ruleset/category-porn.list
-          # 处理 +. 规则
-          curl -sSL ${category_porn} | perl -ne 'print if s/^\s*-\s"\+\.(.*)"/DOMAIN-SUFFIX,$1/g' >> Ruleset/category-porn.list
-          # 处理域名规则
-          curl -sSL ${category_porn} | perl -ne 'print if s/^\s*-\s"([^+].*)"/DOMAIN,$1/g' >> Ruleset/category-porn.list
-        
+          echo -e "# Generated from https://github.com/v2fly/domain-list-community/tree/master/data/category-porn" >> Ruleset/category-porn.list
+          
+          # echo -e "# Generated from https://rules.kr328.app/category-porn.yaml\n" >> Ruleset/category-porn.list
+
+          echo "" >> "Ruleset/category-porn.list"
+
+          # Adjusted Step 1: Process lines starting with 'include:'
+          curl -sSL ${category_porn} | perl -ne 'print "DOMAIN-KEYWORD,$1\n" if /^include:(.*)/' >> Ruleset/category-porn.list
+
+          # Adjusted Step 2: Process domain names without 'regexp:', 'include:', 'full:', not starting with '#', and containing a dot.
+          curl -sSL ${category_porn} | perl -ne 'print "DOMAIN-SUFFIX,$1\n" if !/regexp:/ && !/include:/ && !/full:/ && !/^#/ && /\./ && /(\S+)/' >> Ruleset/category-porn.list
+
+          # Step 3: Process lines starting with 'full:'
+          # (No changes here, as it's not applicable based on your provided content)
+          curl -sSL ${category_porn} | perl -ne 'print "DOMAIN,$1\n" if /^full:(.*)/' >> Ruleset/category-porn.list
+      
       - name: Generate emby.list file
         run: |
+          # 下载原始规则数据
+          curl -sSL "${emby_plus}" -o original_rules.list
+        
+          # 计算规则数量
+          rules_count=$(grep -cE "^(DOMAIN-SUFFIX|DOMAIN|IP-CIDR)," original_rules.list)
+        
+          # 写入文件头
+          echo -e "# Generated on $(date)" > Ruleset/emby.list
+          echo "# Generated from ${emby_plus}" >> Ruleset/emby.list
+          echo -e "# Total Rules: $rules_count\n" >> Ruleset/emby.list
+        
+          # 将处理后的数据写入 emby.list
+          grep -E "^(DOMAIN-SUFFIX|DOMAIN|IP-CIDR)," original_rules.list >> Ruleset/emby.list
 
-          # 计算规则总数
-          rules_count=$(curl -sSL "${emby_plus}" | grep -cE "^(DOMAIN-SUFFIX|DOMAIN),")
-          
-          echo -e "# Generated on $(date)\n" > Ruleset/emby.list
-
-          # Header Info
-          echo "# Generated from https://raw.githubusercontent.com/ddgksf2013/Filter/master/Emby.list" >> "Ruleset/emby.list"
-          echo "# No. of rules: $rules_count" >> "Ruleset/emby.list"
-          echo "" >> "Ruleset/emby.list"
-
-          # 删除注释和本地规则
-          tail -n +5 "$emby_plus" | sed 's/^# > /# /' >> "Ruleset/emby.list"
 
       - name: Move files to publish directory
         run: |
@@ -73,7 +83,7 @@ jobs:
           files: |
             ./publish/*
         env:
-          GITHUB_TOKEN: ${{ secrets.FOR_ACT }}
+          GITHUB_TOKEN: ${{ secrets.FORACT }}
 
       - name: Git push assets to "release" branch
         run: |
@@ -84,7 +94,7 @@ jobs:
           git checkout -b release
           git add .
           git commit -m "${{ env.RELEASE_NAME }}"
-          git remote add origin "https://${{ github.actor }}:${{ secrets.FOR_ACT }}@github.com/${{ github.repository }}"
+          git remote add origin "https://${{ github.actor }}:${{ secrets.FORACT }}@github.com/${{ github.repository }}"
           git push -f -u origin release
 
       - name: Purge jsdelivr CDN
