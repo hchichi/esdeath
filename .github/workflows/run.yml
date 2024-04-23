@@ -1,4 +1,4 @@
-name: Generate routing rules for Surge
+name: Generate CHN IP rules
 on:
   workflow_dispatch:
   schedule:
@@ -17,8 +17,8 @@ jobs:
         run: |
           echo "RELEASE_NAME=Released on $(date +%Y%m%d%H%M)" >> $GITHUB_ENV
           echo "TAG_NAME=$(date +%Y%m%d%H%M)" >> $GITHUB_ENV
-          echo "category_porn=https://raw.githubusercontent.com/v2fly/domain-list-community/master/data/category-porn" >> $GITHUB_ENV
-          echo "emby_plus=https://raw.githubusercontent.com/ddgksf2013/Filter/master/Emby.list" >> $GITHUB_ENV
+          echo "ipv4_china=https://raw.githubusercontent.com/missuo/ASN-China/main/IP.China.list" >> $GITHUB_ENV
+          echo "ipv6_china=https://raw.githubusercontent.com/missuo/ASN-China/main/IPv6.China.list" >> $GITHUB_ENV
         shell: bash
         
       - name: Checkout the default branch
@@ -26,52 +26,73 @@ jobs:
 
       - name: Make directory
         run: |
-          mkdir -p Domainset
           mkdir -p Ruleset
           mkdir -p dist
 
-      - name: Generate category-porn.txt file
-        run: |
-          # Write header information
-          echo -e "# Generated on $(date)\n" > Ruleset/category-porn.list
-          echo -e "# Generated from https://github.com/v2fly/domain-list-community/tree/master/data/category-porn" >> Ruleset/category-porn.list
-          
-          # echo -e "# Generated from https://rules.kr328.app/category-porn.yaml\n" >> Ruleset/category-porn.list
-
-          echo "" >> "Ruleset/category-porn.list"
-
-          # Adjusted Step 1: Process lines starting with 'include:'
-          curl -sSL ${category_porn} | perl -ne 'print "DOMAIN-KEYWORD,$1\n" if /^include:(.*)/' >> Ruleset/category-porn.list
-
-          # Adjusted Step 2: Process domain names without 'regexp:', 'include:', 'full:', not starting with '#', and containing a dot.
-          curl -sSL ${category_porn} | perl -ne 'print "DOMAIN-SUFFIX,$1\n" if !/regexp:/ && !/include:/ && !/full:/ && !/^#/ && /\./ && /(\S+)/' >> Ruleset/category-porn.list
-
-          # Step 3: Process lines starting with 'full:'
-          # (No changes here, as it's not applicable based on your provided content)
-          curl -sSL ${category_porn} | perl -ne 'print "DOMAIN,$1\n" if /^full:(.*)/' >> Ruleset/category-porn.list
-      
-      - name: Generate emby.list file
+      - name: Generate IPv4.China.list file
         run: |
           # 下载原始规则数据
-          curl -sSL "${emby_plus}" -o original_rules.list
+          curl -sSL "${ipv4_china}" -o original_rules_ipv4.list
         
           # 计算规则数量
-          rules_count=$(grep -cE "^(DOMAIN-SUFFIX|DOMAIN|IP-CIDR)," original_rules.list)
+          rules_count_ipv4=$(wc -l < original_rules_ipv4.list)
+        
+          # 获取当前时间戳
+          current_time=$(date -u +"%Y-%m-%dT%H:%M:%S.000Z")
         
           # 写入文件头
-          echo -e "# Generated on $(date)" > Ruleset/emby.list
-          echo "# Generated from ${emby_plus}" >> Ruleset/emby.list
-          echo -e "# Total Rules: $rules_count\n" >> Ruleset/emby.list
+          cat > Ruleset/IPv4.China.list <<EOF
+          ################################################
+          # China IPv4 List for Surge
+          # 
+          # Last Updated: $current_time
+          # Size: $rules_count_ipv4
+          #
+          # 本文件包含中国大陆的 IPv4 地址范围，用于 Surge 规则。
+          #
+          # Data from:
+          #  - ${ipv4_china}
+          ################################################
+          
+          EOF
         
-          # 将处理后的数据写入 emby.list
-          grep -E "^(DOMAIN-SUFFIX|DOMAIN|IP-CIDR)," original_rules.list >> Ruleset/emby.list
+          # 将处理后的数据写入 IPv4.China.list
+          sed 's/^/IP-CIDR,/;s/$/,DIRECT/' original_rules_ipv4.list >> Ruleset/IPv4.China.list
 
+      - name: Generate IPv6.China.list file
+        run: |
+          # 下载原始规则数据
+          curl -sSL "${ipv6_china}" -o original_rules_ipv6.list
+        
+          # 计算规则数量
+          rules_count_ipv6=$(wc -l < original_rules_ipv6.list)
+        
+          # 获取当前时间戳
+          current_time=$(date -u +"%Y-%m-%dT%H:%M:%S.000Z")
+        
+          # 写入文件头
+          cat > Ruleset/IPv6.China.list <<EOF
+          ################################################
+          # China IPv6 List for Surge
+          #
+          # Last Updated: $current_time
+          # Size: $rules_count_ipv6
+          #
+          # 本文件包含中国大陆的 IPv6 地址范围，用于 Surge 规则。
+          #
+          # Data from:
+          #  - ${ipv6_china}
+          ################################################
+          
+          EOF
+        
+          # 将处理后的数据写入 IPv6.China.list
+          sed 's/^/IP-CIDR6,/;s/$/,DIRECT/' original_rules_ipv6.list >> Ruleset/IPv6.China.list
 
       - name: Move files to publish directory
         run: |
           mkdir -p publish
           mv Ruleset ./publish/
-          mv Domainset ./publish/
           
       - name: Release and upload assets
         uses: softprops/action-gh-release@v1
@@ -100,9 +121,6 @@ jobs:
       - name: Purge jsdelivr CDN
         run: |
           cd publish || exit 1
-          for file in $(ls Domainset); do
-            curl -i "https://purge.jsdelivr.net/gh/${{ github.repository }}@release/Domainset/${file}"
-          done
           for file in $(ls Ruleset); do
-            curl -i "https://purge.jsdelivr.net/gh/${{ github.repository }}@release@release/Ruleset/${file}"
-            done
+            curl -i "https://purge.jsdelivr.net/gh/${{ github.repository }}@release/Ruleset/${file}"
+          done
