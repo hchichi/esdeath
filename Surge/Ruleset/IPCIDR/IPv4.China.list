@@ -1,7 +1,7 @@
 ################################################
 # China IPv4 List for Surge
 # 
-# Last Updated: 2024-04-24T10:37:10.000Z
+# Last Updated: 2024-04-24T23:05:18.000Z
 # Size: 11643
 #
 # 本文件包含中国大陆的 IPv4 地址范围,用于 Surge 规则。
@@ -868,7 +868,6 @@ IP-CIDR,43.255.208.0/21,no-resolve
 IP-CIDR,43.255.224.0/21,no-resolve
 IP-CIDR,43.255.232.0/22,no-resolve
 IP-CIDR,43.255.244.0/22,no-resolve
-IP-CIDR,45.3.60.0/22,no-resolve
 IP-CIDR,45.40.224.0/19,no-resolve
 IP-CIDR,45.57.138.144/28,no-resolve
 IP-CIDR,45.65.16.0/20,no-resolve
@@ -2582,7 +2581,6 @@ IP-CIDR,103.106.160.0/22,no-resolve
 IP-CIDR,103.106.196.0/22,no-resolve
 IP-CIDR,103.106.202.0/23,no-resolve
 IP-CIDR,103.106.212.0/22,no-resolve
-IP-CIDR,103.106.244.0/22,no-resolve
 IP-CIDR,103.106.252.0/22,no-resolve
 IP-CIDR,103.107.0.0/22,no-resolve
 IP-CIDR,103.107.28.0/22,no-resolve
@@ -5003,7 +5001,8 @@ IP-CIDR,124.160.0.0/13,no-resolve
 IP-CIDR,124.172.0.0/15,no-resolve
 IP-CIDR,124.174.0.0/16,no-resolve
 IP-CIDR,124.175.0.0/17,no-resolve
-IP-CIDR,124.175.128.0/18,no-resolve
+IP-CIDR,124.175.144.0/20,no-resolve
+IP-CIDR,124.175.160.0/19,no-resolve
 IP-CIDR,124.192.0.0/15,no-resolve
 IP-CIDR,124.196.0.0/16,no-resolve
 IP-CIDR,124.200.0.0/13,no-resolve
@@ -5067,9 +5066,6 @@ IP-CIDR,131.253.12.0/29,no-resolve
 IP-CIDR,131.253.12.80/28,no-resolve
 IP-CIDR,131.253.12.240/29,no-resolve
 IP-CIDR,132.232.0.0/16,no-resolve
-IP-CIDR,134.73.227.0/24,no-resolve
-IP-CIDR,134.73.228.0/22,no-resolve
-IP-CIDR,134.73.232.0/21,no-resolve
 IP-CIDR,134.73.240.0/20,no-resolve
 IP-CIDR,134.175.0.0/16,no-resolve
 IP-CIDR,136.175.177.145/32,no-resolve
@@ -5481,7 +5477,7 @@ IP-CIDR,167.139.0.0/16,no-resolve
 IP-CIDR,167.167.208.0/22,no-resolve
 IP-CIDR,167.167.212.0/23,no-resolve
 IP-CIDR,167.189.0.0/16,no-resolve
-IP-CIDR,167.220.244.0/22,no-resolve
+IP-CIDR,167.220.247.0/27,no-resolve
 IP-CIDR,168.159.144.0/24,no-resolve
 IP-CIDR,168.160.0.0/16,no-resolve
 IP-CIDR,170.10.209.0/24,no-resolve
@@ -6240,6 +6236,7 @@ IP-CIDR,202.163.1.192/28,no-resolve
 IP-CIDR,202.163.7.144/28,no-resolve
 IP-CIDR,202.163.8.0/28,no-resolve
 IP-CIDR,202.163.8.56/30,no-resolve
+IP-CIDR,202.163.8.80/30,no-resolve
 IP-CIDR,202.164.0.0/20,no-resolve
 IP-CIDR,202.164.96.0/19,no-resolve
 IP-CIDR,202.165.176.0/20,no-resolve
@@ -7835,7 +7832,6 @@ IP-CIDR,2001:df4:a980::/48,no-resolve
 IP-CIDR,2001:df4:c180::/48,no-resolve
 IP-CIDR,2001:df4:c580::/48,no-resolve
 IP-CIDR,2001:df4:c780::/48,no-resolve
-IP-CIDR,2001:df4:cf00::/48,no-resolve
 IP-CIDR,2001:df4:de80::/48,no-resolve
 IP-CIDR,2001:df5:5f80::/48,no-resolve
 IP-CIDR,2001:df5:7800::/48,no-resolve
@@ -8241,7 +8237,7 @@ IP-CIDR,2401:3380::/32,no-resolve
 IP-CIDR,2401:33c0::/32,no-resolve
 IP-CIDR,2401:3440::/32,no-resolve
 IP-CIDR,2401:3480::/32,no-resolve
-IP-CIDR,2401:34a0::/31,no-resolve
+IP-CIDR,2401:34a0::/30,no-resolve
 IP-CIDR,2401:34c0::/32,no-resolve
 IP-CIDR,2401:3640::/32,no-resolve
 IP-CIDR,2401:3780::/32,no-resolve
@@ -8327,6 +8323,7 @@ IP-CIDR,2401:9260::/32,no-resolve
 IP-CIDR,2401:92a0::/32,no-resolve
 IP-CIDR,2401:92e0::/32,no-resolve
 IP-CIDR,2401:9340::/32,no-resolve
+IP-CIDR,2401:95e0::/32,no-resolve
 IP-CIDR,2401:9600::/32,no-resolve
 IP-CIDR,2401:96c0::/32,no-resolve
 IP-CIDR,2401:9740::/32,no-resolve
@@ -10313,6 +10310,8 @@ IP-CIDR,2606:54c0:2600::/41,no-resolve
 IP-CIDR,2606:54c0:d440::/45,no-resolve
 IP-CIDR,2607:740:18::/48,no-resolve
 IP-CIDR,2607:6b80:69::/48,no-resolve
+IP-CIDR,2610:a1:3074::/46,no-resolve
+IP-CIDR,2610:a1:3078::/46,no-resolve
 IP-CIDR,2620:171:32::/48,no-resolve
 IP-CIDR,2620:171:5a:f0::/64,no-resolve
 IP-CIDR,2620:171:fb::/48,no-resolve
@@ -11642,6 +11641,7 @@ IP-CIDR,2a13:a5c3:f000::/40,no-resolve
 IP-CIDR,2a13:a5c6:9100::/40,no-resolve
 IP-CIDR,2a13:aac4:f00c::/48,no-resolve
 IP-CIDR,2a13:b487:1b86::/47,no-resolve
+IP-CIDR,2a13:b487:1b88::/47,no-resolve
 IP-CIDR,2a13:b487:1bbe::/47,no-resolve
 IP-CIDR,2a13:b487:42d0::/44,no-resolve
 IP-CIDR,2a13:df80:3809:ff42::/64,no-resolve
