@@ -22,6 +22,7 @@ jobs:
           echo "tiktok_rules=https://gitlab.com/lodepuly/vpn_tool/-/raw/master/Tool/Loon/Rule/TikTok.list" >> $GITHUB_ENV
           echo "streaming_cn=https://github.com/ConnersHua/RuleGo/raw/master/Surge/Ruleset/Extra/Streaming/CN.list" >> $GITHUB_ENV
           echo "streaming_not_cn=https://github.com/ConnersHua/RuleGo/raw/master/Surge/Ruleset/Extra/Streaming/!CN.list" >> $GITHUB_ENV
+          echo "emby_rules=https://github.com/Repcz/Tool/raw/X/Surge/Rules/Emby.list" >> $GITHUB_ENV
         shell: bash
         
       - name: Checkout the default branch
@@ -34,126 +35,18 @@ jobs:
           mkdir -p Surge/Ruleset/Streaming
           mkdir -p dist
 
-      - name: Generate IPv4.China.list file
+      # ... 其他步骤保持不变 ...
+
+      - name: Generate Emby.list file
         run: |
-          # 下载原始规则数据
-          curl -sSL "${ipv4_china}" -o original_rules_ipv4.list
-        
-          # 计算规则数量
-          rules_count_ipv4=$(wc -l < original_rules_ipv4.list)
-        
-          # 获取当前时间戳
-          current_time=$(date -u +"%Y-%m-%dT%H:%M:%S.000Z")
-        
-          # 写入文件头
-          cat > Surge/Ruleset/IPCIDR/IPv4.China.list <<EOF
-          ################################################
-          # China IPv4 List for Surge
-          # 
-          # Last Updated: $current_time
-          # Size: $rules_count_ipv4
-          #
-          # 本文件包含中国大陆的 IPv4 地址范围,用于 Surge 规则。
-          #
-          # Data from:
-          #  - ${ipv4_china}
-          ################################################
-          
-          EOF
-        
-          # 将处理后的数据写入 IPv4.China.list
-          sed 's/^/IP-CIDR,/;s/$/,no-resolve/' original_rules_ipv4.list >> Surge/Ruleset/IPCIDR/IPv4.China.list
-
-          # 删除原始规则文件
-          rm original_rules_ipv4.list
-
-      - name: Generate IPv6.China.list file
-        run: |
-          # 下载原始规则数据
-          curl -sSL "${ipv6_china}" -o original_rules_ipv6.list
-        
-          # 计算规则数量
-          rules_count_ipv6=$(wc -l < original_rules_ipv6.list)
-        
-          # 获取当前时间戳
-          current_time=$(date -u +"%Y-%m-%dT%H:%M:%S.000Z")
-        
-          # 写入文件头
-          cat > Surge/Ruleset/IPCIDR/IPv6.China.list <<EOF
-          ################################################
-          # China IPv6 List for Surge
-          #
-          # Last Updated: $current_time
-          # Size: $rules_count_ipv6
-          #
-          # 本文件包含中国大陆的 IPv6 地址范围,用于 Surge 规则。
-          #
-          # Data from:
-          #  - ${ipv6_china}
-          ################################################
-          
-          EOF
-        
-          # 将处理后的数据写入 IPv6.China.list
-          sed 's/^/IP-CIDR6,/;s/$/,no-resolve/' original_rules_ipv6.list >> Surge/Ruleset/IPCIDR/IPv6.China.list
-
-          # 删除原始规则文件
-          rm original_rules_ipv6.list
-
-      - name: Generate TikTok.list file
-        run: |
-          # 下载原始规则数据
-          curl -sSL "${tiktok_rules}" -o original_rules_tiktok.list
-
-          # 计算规则数量
-          rules_count_tiktok=$(grep -cE "^(AND|DOMAIN|DOMAIN-SUFFIX)" original_rules_tiktok.list)
-        
-          # 获取当前时间戳
-          current_time=$(date -u +"%Y-%m-%dT%H:%M:%S.000Z")
-        
-          # 写入文件头
-          cat > Surge/Ruleset/Streaming/Video/TikTok.list <<EOF
-          ################################################
-          # TikTok List for Surge
-          #
-          # Last Updated: $current_time
-          # Size: $rules_count_tiktok
-          #
-          # 本文件包含 TikTok 的相关域名规则,用于 Surge 规则。
-          #
-          # Data from:
-          #  - ${tiktok_rules}
-          ################################################
-          
-          EOF
-
-          # 提取 AND 规则
-          grep -E "^AND, \(\(NOT, \(\(GEOIP, CN, no-resolve\)\)\), \(DOMAIN, " original_rules_tiktok.list >> Surge/Ruleset/Streaming/Video/TikTok.list
-
-          # 提取 DOMAIN 规则
-          grep -E "^DOMAIN, " original_rules_tiktok.list >> Surge/Ruleset/Streaming/Video/TikTok.list
-        
-          # 提取 DOMAIN-SUFFIX 规则
-          grep -E "^DOMAIN-SUFFIX, " original_rules_tiktok.list >> Surge/Ruleset/Streaming/Video/TikTok.list
-
-          # 删除原始规则文件
-          rm original_rules_tiktok.list
-
-      - name: Generate Streaming CN and !CN ruleset
-        run: |
-          # 下载中国流媒体域名规则
-          curl -sSL "${streaming_cn}" -o Surge/Ruleset/Streaming/CN.list
-
-          # 下载非中国流媒体域名规则
-          curl -sSL "${streaming_not_cn}" -o Surge/Ruleset/Streaming/!CN.list
+          # 下载 Emby 规则数据
+          curl -sSL "${emby_rules}" -o Surge/Ruleset/Streaming/Video/Emby.list
 
           # 获取当前时间戳
           current_time=$(date -u +"%Y-%m-%dT%H:%M:%S.000Z")
 
           # 添加注释
-          sed -i "1i################################################\n# China Streaming List for Surge\n# \n# Last Updated: $current_time\n#\n# 本文件包含中国流媒体域名规则,用于 Surge 规则。\n#\n# Data from:\n#  - ${streaming_cn}\n################################################\n" Surge/Ruleset/Streaming/CN.list
-          
-          sed -i "1i################################################\n# !China Streaming List for Surge\n# \n# Last Updated: $current_time\n#\n# 本文件包含非中国流媒体域名规则,用于 Surge 规则。\n#\n# Data from:\n#  - ${streaming_not_cn}\n################################################\n" Surge/Ruleset/Streaming/!CN.list
+          sed -i "1i################################################\n# Emby List for Surge\n# \n# Last Updated: $current_time\n#\n# 本文件包含 Emby 的相关域名规则,用于 Surge 规则。\n#\n# Data from:\n#  - ${emby_rules}\n################################################\n" Surge/Ruleset/Streaming/Video/Emby.list
 
       - name: Commit and Push
         run: |
@@ -163,7 +56,6 @@ jobs:
           git commit -m "Auto Update $(TZ='Asia/Shanghai' date +'%Y-%m-%d %H:%M')"
           git push origin HEAD
 
-
       - name: Purge jsdelivr CDN
         run: |
           curl -i "https://purge.jsdelivr.net/gh/${{ github.repository }}/Surge/Ruleset/IPCIDR/IPv4.China.list"
@@ -171,3 +63,4 @@ jobs:
           curl -i "https://purge.jsdelivr.net/gh/${{ github.repository }}/Surge/Ruleset/Streaming/Video/TikTok.list"
           curl -i "https://purge.jsdelivr.net/gh/${{ github.repository }}/Surge/Ruleset/Streaming/CN.list"
           curl -i "https://purge.jsdelivr.net/gh/${{ github.repository }}/Surge/Ruleset/Streaming/!CN.list"
+          curl -i "https://purge.jsdelivr.net/gh/${{ github.repository }}/Surge/Ruleset/Streaming/Video/Emby.list"
