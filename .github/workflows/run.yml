@@ -19,6 +19,7 @@ jobs:
           echo "TAG_NAME=$(date +%Y%m%d%H%M)" >> $GITHUB_ENV
           echo "ipv4_china=https://raw.githubusercontent.com/missuo/ASN-China/main/IP.China.list" >> $GITHUB_ENV
           echo "ipv6_china=https://raw.githubusercontent.com/missuo/ASN-China/main/IPv6.China.list" >> $GITHUB_ENV
+          echo "tiktok_rules=https://gitlab.com/lodepuly/vpn_tool/-/raw/master/Tool/Loon/Rule/TikTok.list" >> $GITHUB_ENV
         shell: bash
         
       - name: Checkout the default branch
@@ -48,7 +49,7 @@ jobs:
           # Last Updated: $current_time
           # Size: $rules_count_ipv4
           #
-          # 本文件包含中国大陆的 IPv4 地址范围，用于 Surge 规则。
+          # 本文件包含中国大陆的 IPv4 地址范围,用于 Surge 规则。
           #
           # Data from:
           #  - ${ipv4_china}
@@ -78,7 +79,7 @@ jobs:
           # Last Updated: $current_time
           # Size: $rules_count_ipv6
           #
-          # 本文件包含中国大陆的 IPv6 地址范围，用于 Surge 规则。
+          # 本文件包含中国大陆的 IPv6 地址范围,用于 Surge 规则。
           #
           # Data from:
           #  - ${ipv6_china}
@@ -89,42 +90,62 @@ jobs:
           # 将处理后的数据写入 IPv6.China.list
           sed 's/^/IP-CIDR6,/;s/$/,DIRECT,no-resolve/' original_rules_ipv6.list >> Ruleset/IPv6.China.list
 
-      - name: Move files to publish directory
+      - name: Generate TikTok.list file
         run: |
-          mkdir -p publish
-          mv Ruleset ./publish/
-          
-      - name: Check publish directory
-        run: |
-          ls -al ./publish
-          
-      - name: Release and upload assets
-        uses: softprops/action-gh-release@v1
-        with:
-          name: ${{ env.RELEASE_NAME }}
-          tag_name: ${{ env.TAG_NAME }}
-          draft: false
-          prerelease: false
-          files: |
-            ./publish/*
-        env:
-          GITHUB_TOKEN: ${{ secrets.FORACT }}
+          # 下载原始规则数据  
+          curl -sSL "${tiktok_rules}" -o original_rules_tiktok.list
 
-      - name: Git push assets to "release" branch
+          # 计算规则数量
+          rules_count_tiktok=$(grep -cE "^(DOMAIN|DOMAIN-SUFFIX|AND)" original_rules_tiktok.list)
+        
+          # 获取当前时间戳
+          current_time=$(date -u +"%Y-%m-%dT%H:%M:%S.000Z")
+        
+          # 写入文件头  
+          cat > Ruleset/TikTok.list <<EOF
+          ################################################
+          # TikTok List for Surge
+          #
+          # Last Updated: $current_time
+          # Size: $rules_count_tiktok
+          #
+          # 本文件包含 TikTok 的相关域名规则,用于 Surge 规则。
+          #
+          # Data from:
+          #  - ${tiktok_rules} 
+          ################################################
+          
+          EOF
+
+          # 处理第一类规则(AND 规则)
+          grep "^AND" original_rules_tiktok.list | while read -r line; do
+            echo "$line" | sed -E 's/AND, \(\(NOT, \(\(GEOIP, CN, no-resolve\)\)\), \((DOMAIN(-SUFFIX)?, .*)\)\)/\2/g' >> Ruleset/TikTok.list
+          done
+
+          # 处理第二类规则(普通 DOMAIN 规则)
+          grep -E "^DOMAIN," original_rules_tiktok.list | sed 's/^/DOMAIN,/g' >> Ruleset/TikTok.list
+        
+          # 处理第三类规则(DOMAIN-SUFFIX 规则)  
+          grep -E "^DOMAIN-SUFFIX," original_rules_tiktok.list | sed 's/^/DOMAIN-SUFFIX,/g' >> Ruleset/TikTok.list
+
+      - name: Move files to Ruleset directory
         run: |
-          cd publish || exit 1
-          git init
-          git config --local user.name "github-action[bot]"
-          git config --local user.email "126152485+anyawa@users.noreply.github.com"
-          git checkout -b release
+          mv Ruleset/* ./
+          
+      - name: Check Ruleset directory
+        run: |
+          ls -al
+          
+      - name: Commit and Push
+        run: |
+          git config --global user.name "github-action[bot]"
+          git config --global user.email "126152485+anyawa@users.noreply.github.com"
           git add .
-          git commit -m "${{ env.RELEASE_NAME }}"
-          git remote add origin "https://${{ github.actor }}:${{ secrets.FORACT }}@github.com/${{ github.repository }}"
-          git push -f -u origin release
+          git commit -m "Auto Update $(TZ='Asia/Shanghai' date +'%Y-%m-%d %H:%M')"
+          git push origin HEAD
 
       - name: Purge jsdelivr CDN
         run: |
-          cd publish || exit 1
           for file in $(ls Ruleset); do
-            curl -i "https://purge.jsdelivr.net/gh/${{ github.repository }}@release/Ruleset/${file}"
+            curl -i "https://purge.jsdelivr.net/gh/${{ github.repository }}/Ruleset/${file}"
           done
