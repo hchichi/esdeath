@@ -20,6 +20,8 @@ jobs:
           echo "ipv4_china=https://raw.githubusercontent.com/missuo/ASN-China/main/IP.China.list" >> $GITHUB_ENV
           echo "ipv6_china=https://raw.githubusercontent.com/missuo/ASN-China/main/IPv6.China.list" >> $GITHUB_ENV
           echo "tiktok_rules=https://gitlab.com/lodepuly/vpn_tool/-/raw/master/Tool/Loon/Rule/TikTok.list" >> $GITHUB_ENV
+          echo "streaming_cn=https://github.com/ConnersHua/RuleGo/raw/master/Surge/Ruleset/Extra/Streaming/CN.list" >> $GITHUB_ENV
+          echo "streaming_not_cn=https://github.com/ConnersHua/RuleGo/raw/master/Surge/Ruleset/Extra/Streaming/!CN.list" >> $GITHUB_ENV
         shell: bash
         
       - name: Checkout the default branch
@@ -29,6 +31,7 @@ jobs:
         run: |
           mkdir -p Surge/Ruleset/IPCIDR
           mkdir -p Surge/Ruleset/Streaming/Video
+          mkdir -p Surge/Ruleset/Streaming
           mkdir -p dist
 
       - name: Generate IPv4.China.list file
@@ -136,22 +139,35 @@ jobs:
           # 删除原始规则文件
           rm original_rules_tiktok.list
 
+      - name: Generate Streaming CN and !CN ruleset
+        run: |
+          # 下载中国流媒体域名规则
+          curl -sSL "${streaming_cn}" -o Surge/Ruleset/Streaming/CN.list
+
+          # 下载非中国流媒体域名规则
+          curl -sSL "${streaming_not_cn}" -o Surge/Ruleset/Streaming/!CN.list
+
+          # 获取当前时间戳
+          current_time=$(date -u +"%Y-%m-%dT%H:%M:%S.000Z")
+
+          # 添加注释
+          sed -i "1i################################################\n# China Streaming List for Surge\n# \n# Last Updated: $current_time\n#\n# 本文件包含中国流媒体域名规则,用于 Surge 规则。\n#\n# Data from:\n#  - ${streaming_cn}\n################################################\n" Surge/Ruleset/Streaming/CN.list
+          
+          sed -i "1i################################################\n# !China Streaming List for Surge\n# \n# Last Updated: $current_time\n#\n# 本文件包含非中国流媒体域名规则,用于 Surge 规则。\n#\n# Data from:\n#  - ${streaming_not_cn}\n################################################\n" Surge/Ruleset/Streaming/!CN.list
+
       - name: Commit and Push
         run: |
-          git config --global user.name "the Magical Cat"
-          git config --global user.email "theMagicalCat@users.noreply.github.com"
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add .
           git commit -m "Auto Update $(TZ='Asia/Shanghai' date +'%Y-%m-%d %H:%M')"
-          git push origin HEAD
-
- #- name: Purge jsdelivr CDN
-        #run: |
-          #for file in $(ls Ruleset); do
-            #curl -i "https://purge.jsdelivr.net/gh/${{ github.repository }}/Ruleset/${file}"
+          git remote add origin "https://${{ github.actor }}:${{ secrets.FORACT }}@github.com/${{ github.repository }}"
+          git push -u origin HEAD
 
       - name: Purge jsdelivr CDN
         run: |
           curl -i "https://purge.jsdelivr.net/gh/${{ github.repository }}/Surge/Ruleset/IPCIDR/IPv4.China.list"
           curl -i "https://purge.jsdelivr.net/gh/${{ github.repository }}/Surge/Ruleset/IPCIDR/IPv6.China.list"
           curl -i "https://purge.jsdelivr.net/gh/${{ github.repository }}/Surge/Ruleset/Streaming/Video/TikTok.list"
-     
+          curl -i "https://purge.jsdelivr.net/gh/${{ github.repository }}/Surge/Ruleset/Streaming/CN.list"
+          curl -i "https://purge.jsdelivr.net/gh/${{ github.repository }}/Surge/Ruleset/Streaming/!CN.list"
