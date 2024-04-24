@@ -27,7 +27,8 @@ jobs:
 
       - name: Make directory
         run: |
-          mkdir -p Ruleset
+          mkdir -p Surge/Ruleset/IPCIDR
+          mkdir -p Surge/Ruleset/Streaming/Video
           mkdir -p dist
 
       - name: Generate IPv4.China.list file
@@ -42,7 +43,7 @@ jobs:
           current_time=$(date -u +"%Y-%m-%dT%H:%M:%S.000Z")
         
           # 写入文件头
-          cat > Ruleset/IPv4.China.list <<EOF
+          cat > Surge/Ruleset/IPCIDR/IPv4.China.list <<EOF
           ################################################
           # China IPv4 List for Surge
           # 
@@ -58,7 +59,10 @@ jobs:
           EOF
         
           # 将处理后的数据写入 IPv4.China.list
-          sed 's/^/IP-CIDR,/;s/$/,DIRECT,no-resolve/' original_rules_ipv4.list >> Ruleset/IPv4.China.list
+          sed 's/^/IP-CIDR,/;s/$/,no-resolve/' original_rules_ipv4.list >> Surge/Ruleset/IPCIDR/IPv4.China.list
+
+          # 删除原始规则文件
+          rm original_rules_ipv4.list
 
       - name: Generate IPv6.China.list file
         run: |
@@ -72,7 +76,7 @@ jobs:
           current_time=$(date -u +"%Y-%m-%dT%H:%M:%S.000Z")
         
           # 写入文件头
-          cat > Ruleset/IPv6.China.list <<EOF
+          cat > Surge/Ruleset/IPCIDR/IPv6.China.list <<EOF
           ################################################
           # China IPv6 List for Surge
           #
@@ -88,21 +92,24 @@ jobs:
           EOF
         
           # 将处理后的数据写入 IPv6.China.list
-          sed 's/^/IP-CIDR6,/;s/$/,DIRECT,no-resolve/' original_rules_ipv6.list >> Ruleset/IPv6.China.list
+          sed 's/^/IP-CIDR6,/;s/$/,no-resolve/' original_rules_ipv6.list >> Surge/Ruleset/IPCIDR/IPv6.China.list
+
+          # 删除原始规则文件
+          rm original_rules_ipv6.list
 
       - name: Generate TikTok.list file
         run: |
-          # 下载原始规则数据  
+          # 下载原始规则数据
           curl -sSL "${tiktok_rules}" -o original_rules_tiktok.list
 
           # 计算规则数量
-          rules_count_tiktok=$(grep -cE "^(DOMAIN|DOMAIN-SUFFIX|AND)" original_rules_tiktok.list)
+          rules_count_tiktok=$(grep -cE "^(AND|DOMAIN|DOMAIN-SUFFIX)" original_rules_tiktok.list)
         
           # 获取当前时间戳
           current_time=$(date -u +"%Y-%m-%dT%H:%M:%S.000Z")
         
-          # 写入文件头  
-          cat > Ruleset/TikTok.list <<EOF
+          # 写入文件头
+          cat > Surge/Ruleset/Streaming/Video/TikTok.list <<EOF
           ################################################
           # TikTok List for Surge
           #
@@ -112,40 +119,40 @@ jobs:
           # 本文件包含 TikTok 的相关域名规则,用于 Surge 规则。
           #
           # Data from:
-          #  - ${tiktok_rules} 
+          #  - ${tiktok_rules}
           ################################################
           
           EOF
 
-          # 处理第一类规则(AND 规则)
-          grep "^AND" original_rules_tiktok.list | while read -r line; do
-            echo "$line" | sed -E 's/AND, \(\(NOT, \(\(GEOIP, CN, no-resolve\)\)\), \((DOMAIN(-SUFFIX)?, .*)\)\)/\2/g' >> Ruleset/TikTok.list
-          done
+          # 提取 AND 规则
+          grep -E "^AND, \(\(NOT, \(\(GEOIP, CN, no-resolve\)\)\), \(DOMAIN, " original_rules_tiktok.list >> Surge/Ruleset/Streaming/Video/TikTok.list
 
-          # 处理第二类规则(普通 DOMAIN 规则)
-          grep -E "^DOMAIN," original_rules_tiktok.list | sed 's/^/DOMAIN,/g' >> Ruleset/TikTok.list
+          # 提取 DOMAIN 规则
+          grep -E "^DOMAIN, " original_rules_tiktok.list >> Surge/Ruleset/Streaming/Video/TikTok.list
         
-          # 处理第三类规则(DOMAIN-SUFFIX 规则)  
-          grep -E "^DOMAIN-SUFFIX," original_rules_tiktok.list | sed 's/^/DOMAIN-SUFFIX,/g' >> Ruleset/TikTok.list
+          # 提取 DOMAIN-SUFFIX 规则
+          grep -E "^DOMAIN-SUFFIX, " original_rules_tiktok.list >> Surge/Ruleset/Streaming/Video/TikTok.list
 
-      - name: Move files to Ruleset directory
-        run: |
-          mv Ruleset/* ./
-          
-      - name: Check Ruleset directory
-        run: |
-          ls -al
-          
+          # 删除原始规则文件
+          rm original_rules_tiktok.list
+
       - name: Commit and Push
         run: |
-          git config --global user.name "github-action[bot]"
-          git config --global user.email "126152485+anyawa@users.noreply.github.com"
+          git config --global user.name "the Magical Cat"
+          git config --global user.email "theMagicalCat@users.noreply.github.com"
           git add .
           git commit -m "Auto Update $(TZ='Asia/Shanghai' date +'%Y-%m-%d %H:%M')"
           git push origin HEAD
 
+ #- name: Purge jsdelivr CDN
+        #run: |
+          #for file in $(ls Ruleset); do
+            #curl -i "https://purge.jsdelivr.net/gh/${{ github.repository }}/Ruleset/${file}"
+
       - name: Purge jsdelivr CDN
         run: |
-          for file in $(ls Ruleset); do
-            curl -i "https://purge.jsdelivr.net/gh/${{ github.repository }}/Ruleset/${file}"
+          curl -i "https://purge.jsdelivr.net/gh/${{ github.repository }}/Surge/Ruleset/IPCIDR/IPv4.China.list"
+          curl -i "https://purge.jsdelivr.net/gh/${{ github.repository }}/Surge/Ruleset/IPCIDR/IPv6.China.list"
+          curl -i "https://purge.jsdelivr.net/gh/${{ github.repository }}/Surge/Ruleset/Streaming/Video/TikTok.list"
           done
+     
