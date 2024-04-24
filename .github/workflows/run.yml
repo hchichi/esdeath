@@ -154,5 +154,4 @@ jobs:
           curl -i "https://purge.jsdelivr.net/gh/${{ github.repository }}/Surge/Ruleset/IPCIDR/IPv4.China.list"
           curl -i "https://purge.jsdelivr.net/gh/${{ github.repository }}/Surge/Ruleset/IPCIDR/IPv6.China.list"
           curl -i "https://purge.jsdelivr.net/gh/${{ github.repository }}/Surge/Ruleset/Streaming/Video/TikTok.list"
-          done
      
