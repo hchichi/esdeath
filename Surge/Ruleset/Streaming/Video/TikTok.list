@@ -1,5 +1,15 @@
-# TikTok by 可莉
-# 2024-04-21 21:49:56
+################################################
+# TikTok List for Surge
+#
+# Last Updated: 2024-04-24T04:29:11.000Z
+# Size: 112
+#
+# 本文件包含 TikTok 的相关域名规则,用于 Surge 规则。
+#
+# Data from:
+#  - https://gitlab.com/lodepuly/vpn_tool/-/raw/master/Tool/Loon/Rule/TikTok.list
+################################################
+
 AND, ((NOT, ((GEOIP, CN, no-resolve))), (DOMAIN, libra-sg.tiktokv.com)) // 此为抖音和TikTok共用域名，仅国外解析结果走代理
 AND, ((NOT, ((GEOIP, CN, no-resolve))), (DOMAIN, pitaya.bytedance.com)) // 此为抖音和TikTok共用域名，仅国外解析结果走代理
 DOMAIN, api.snapkit.com
