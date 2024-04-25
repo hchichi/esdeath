@@ -23,6 +23,7 @@ jobs:
           echo "streaming_cn=https://github.com/ConnersHua/RuleGo/raw/master/Surge/Ruleset/Extra/Streaming/CN.list" >> $GITHUB_ENV
           echo "streaming_not_cn=https://github.com/ConnersHua/RuleGo/raw/master/Surge/Ruleset/Extra/Streaming/!CN.list" >> $GITHUB_ENV
           echo "emby_rules=https://github.com/Repcz/Tool/raw/X/Surge/Rules/Emby.list" >> $GITHUB_ENV
+          echo "wechat_rules=https://raw.githubusercontent.com/NobyDa/Script/master/Surge/WeChat.list" >> $GITHUB_ENV
         shell: bash
         
       - name: Checkout the default branch
@@ -167,6 +168,40 @@ jobs:
           # 添加注释
           sed -i "1i################################################\n# Emby List for Surge\n# \n# Last Updated: $current_time\n#\n# 本文件包含 Emby 的相关域名规则,用于 Surge 规则。\n#\n# Data from:\n#  - ${emby_rules}\n################################################\n" Surge/Ruleset/Streaming/Video/Emby.list
 
+
+      - name: Generate WeChat.list file
+        run: |
+          # 下载 WeChat 规则数据
+          curl -sSL "${wechat_rules}" -o original_wechat_rules.list
+        
+          # 删除指定的两行注释
+          sed -i '/# 该规则集包含绝大部分微信\/WeChat网络请求 (IPv4\/IPv6)/d' original_wechat_rules.list
+          sed -i '/# 请注意,该规则集除 Surge 之外不应该使用 (由于双栈问题且考虑到规则数量,部分子规则写法仅与Surge兼容)/d' original_wechat_rules.list
+        
+          # 获取当前时间戳
+          current_time=$(date -u +"%Y-%m-%dT%H:%M:%S.000Z")
+        
+          # 添加注释头
+          cat > Surge/Ruleset/WeChat.list <<EOF
+          ################################################
+          # WeChat List for Surge
+          # 
+          # Last Updated: $current_time
+          #
+          # 本文件包含 WeChat 的相关域名规则,用于 Surge 规则。
+          #
+          # Data from:
+          #  - ${wechat_rules}
+          ################################################
+        
+          EOF
+        
+          # 将处理后的规则追加到文件中
+          cat original_wechat_rules.list >> Surge/Ruleset/WeChat.list
+        
+          # 删除原始规则文件
+          rm original_wechat_rules.list
+    
       - name: Commit and Push
         run: |
           git config --global user.name "the Magical Cat"
