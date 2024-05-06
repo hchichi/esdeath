@@ -1,8 +1,8 @@
 ################################################
 # TikTok List for Surge
 #
-# Last Updated: 2024-04-28T23:05:10.000Z
-# Size: 99
+# Last Updated: 2024-05-06T05:13:48.000Z
+# Size: 97
 #
 # 本文件包含 TikTok 的相关域名规则,用于 Surge 规则。
 #
@@ -10,8 +10,6 @@
 #  - https://gitlab.com/lodepuly/vpn_tool/-/raw/master/Tool/Loon/Rule/TikTok.list
 ################################################
 
-AND, ((NOT, ((GEOIP, CN, no-resolve))), (DOMAIN, libra-sg.tiktokv.com)) // 此为抖音和TikTok共用域名，仅国外解析结果走代理
-AND, ((NOT, ((GEOIP, CN, no-resolve))), (DOMAIN, pitaya.bytedance.com)) // 此为抖音和TikTok共用域名，仅国外解析结果走代理
 DOMAIN, api.snapkit.com
 DOMAIN, cocacola.co.jp
 DOMAIN, courses.snapsolve.com
@@ -102,3 +100,10 @@ DOMAIN-SUFFIX, ttoversea.net
 DOMAIN-SUFFIX, ttoverseaus.net
 DOMAIN-SUFFIX, ttwstatic.com
 DOMAIN-SUFFIX, tzvbfs.com
+DOMAIN-KEYWORD, bytedance.map.
+DOMAIN-KEYWORD, musical.ly.
+DOMAIN-KEYWORD, tiktokcdn-
+DOMAIN-KEYWORD, tiktokcdn.com.
+DOMAIN-KEYWORD, tiktokv.com.
+DOMAIN-KEYWORD, ttcdn-tos.
+DOMAIN-KEYWORD, ttlivecdn.com.
