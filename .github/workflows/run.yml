@@ -105,13 +105,13 @@ jobs:
         run: |
           # 下载原始规则数据
           curl -sSL "${tiktok_rules}" -o original_rules_tiktok.list
-
+          
           # 计算规则数量
-          rules_count_tiktok=$(grep -cE "^(AND|DOMAIN|DOMAIN-SUFFIX)" original_rules_tiktok.list)
-        
+          rules_count_tiktok=$(grep -cE "^(AND|DOMAIN|DOMAIN-SUFFIX|DOMAIN-KEYWORD)" original_rules_tiktok.list)
+          
           # 获取当前时间戳
           current_time=$(date -u +"%Y-%m-%dT%H:%M:%S.000Z")
-        
+          
           # 写入文件头
           cat > Surge/Ruleset/Streaming/Video/TikTok.list <<EOF
           ################################################
@@ -127,19 +127,30 @@ jobs:
           ################################################
           
           EOF
-
-          # 提取 AND 规则
-          grep -E "^AND, \(\(NOT, \(\(GEOIP, CN, no-resolve\)\)\), \(DOMAIN, " original_rules_tiktok.list >> Surge/Ruleset/Streaming/Video/TikTok.list
-
-          # 提取 DOMAIN 规则
-          grep -E "^DOMAIN, " original_rules_tiktok.list >> Surge/Ruleset/Streaming/Video/TikTok.list
-        
-          # 提取 DOMAIN-SUFFIX 规则
-          grep -E "^DOMAIN-SUFFIX, " original_rules_tiktok.list >> Surge/Ruleset/Streaming/Video/TikTok.list
-
+          
+          # 提取 AND 规则(如果存在)
+          if grep -qE "^AND, " original_rules_tiktok.list; then
+            grep -E "^AND, \(\(NOT, \(\(GEOIP, CN, no-resolve\)\)\), \(DOMAIN, " original_rules_tiktok.list >> Surge/Ruleset/Streaming/Video/TikTok.list
+          fi
+          
+          # 提取 DOMAIN 规则(如果存在)
+          if grep -qE "^DOMAIN, " original_rules_tiktok.list; then
+            grep -E "^DOMAIN, " original_rules_tiktok.list >> Surge/Ruleset/Streaming/Video/TikTok.list
+          fi
+          
+          # 提取 DOMAIN-SUFFIX 规则(如果存在)
+          if grep -qE "^DOMAIN-SUFFIX, " original_rules_tiktok.list; then
+            grep -E "^DOMAIN-SUFFIX, " original_rules_tiktok.list >> Surge/Ruleset/Streaming/Video/TikTok.list
+          fi
+          
+          # 提取 DOMAIN-KEYWORD 规则(如果存在)
+          if grep -qE "^DOMAIN-KEYWORD, " original_rules_tiktok.list; then
+            grep -E "^DOMAIN-KEYWORD, " original_rules_tiktok.list >> Surge/Ruleset/Streaming/Video/TikTok.list
+          fi
+          
           # 删除原始规则文件
           rm original_rules_tiktok.list
-
+          
       - name: Generate Streaming CN and !CN ruleset
         run: |
           # 下载中国流媒体域名规则
