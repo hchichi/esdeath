@@ -36,7 +36,7 @@ jobs:
           mkdir -p dist
 
       - name: Generate IPv4.China.list file
-          run: |
+        run: |
             # 下载原始规则数据
             curl -sSL "${ipv4_china}" -o original_rules_ipv4.list
           
