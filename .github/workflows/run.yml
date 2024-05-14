@@ -35,38 +35,43 @@ jobs:
           mkdir -p Surge/Ruleset/Streaming
           mkdir -p dist
 
-      - name: Generate IPv4.China.list file
-        run: |
-          # 下载原始规则数据
-          curl -sSL "${ipv4_china}" -o original_rules_ipv4.list
-        
-          # 计算规则数量
-          rules_count_ipv4=$(wc -l < original_rules_ipv4.list)
-        
-          # 获取当前时间戳
-          current_time=$(date -u +"%Y-%m-%dT%H:%M:%S.000Z")
-        
-          # 写入文件头
-          cat > Surge/Ruleset/IPCIDR/IPv4.China.list <<EOF
-          ################################################
-          # China IPv4 List for Surge
-          # 
-          # Last Updated: $current_time
-          # Size: $rules_count_ipv4
-          #
-          # 本文件包含中国大陆的 IPv4 地址范围,用于 Surge 规则。
-          #
-          # Data from:
-          #  - ${ipv4_china}
-          ################################################
-          
-          EOF
-        
-          # 将处理后的数据写入 IPv4.China.list
-          sed 's/^/IP-CIDR,/;s/$/,no-resolve/' original_rules_ipv4.list >> Surge/Ruleset/IPCIDR/IPv4.China.list
+- name: Generate IPv4.China.list file
+  run: |
+    # 下载原始规则数据
+    curl -sSL "${ipv4_china}" -o original_rules_ipv4.list
 
-          # 删除原始规则文件
-          rm original_rules_ipv4.list
+    # 提取 IPv4 规则
+    grep -E '^([0-9]{1,3}\.){3}[0-9]{1,3}/' original_rules_ipv4.list > ipv4_rules.list
+
+    # 计算规则数量
+    rules_count_ipv4=$(wc -l < ipv4_rules.list)
+
+    # 获取当前时间戳
+    current_time=$(date -u +"%Y-%m-%dT%H:%M:%S.000Z")
+
+    # 写入文件头
+    cat > Surge/Ruleset/IPCIDR/IPv4.China.list <<EOF
+    ################################################
+    # China IPv4 List for Surge
+    #
+    # Last Updated: $current_time
+    # Size: $rules_count_ipv4
+    #
+    # 本文件只包含中国大陆的 IPv4 地址范围,用于 Surge 规则。
+    #
+    # Data from:
+    #  - ${ipv4_china}
+    ################################################
+
+    EOF
+
+    # 将处理后的数据写入 IPv4.China.list
+    sed 's/^/IP-CIDR,/;s/$/,no-resolve/' ipv4_rules.list >> Surge/Ruleset/IPCIDR/IPv4.China.list
+
+    # 删除原始规则文件和临时文件
+    rm original_rules_ipv4.list
+    rm ipv4_rules.list
+
 
       - name: Generate IPv6.China.list file
         run: |
