@@ -88,7 +88,7 @@ IP-CIDR,203.205.220.62/32,no-resolve
 # IP-CIDR,59.111.239.61/32,no-resolve,REJECT
 # IP-CIDR,59.111.239.62/32,no-resolve,REJECT
 # issue#21#issuecomment-1214307572
-DOMAIN--SUFFIX,music.163.com
+DOMAIN-SUFFIX,music.163.com
 DOMAIN,nstool.netease.com
 DOMAIN,wanproxy.127.net
 DOMAIN,mam.netease.com
