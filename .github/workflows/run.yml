@@ -23,6 +23,7 @@ jobs:
           echo "streaming_cn=https://github.com/ConnersHua/RuleGo/raw/master/Surge/Ruleset/Extra/Streaming/CN.list" >> $GITHUB_ENV
           echo "streaming_not_cn=https://github.com/ConnersHua/RuleGo/raw/master/Surge/Ruleset/Extra/Streaming/!CN.list" >> $GITHUB_ENV
           echo "emby_rules=https://github.com/Repcz/Tool/raw/X/Surge/Rules/Emby.list" >> $GITHUB_ENV
+          echo "ai_rules=https://github.com/Coldvvater/Mononoke/raw/master/Surge/Rules/AI.list" >> $GITHUB_ENV
         shell: bash
         
       - name: Checkout the default branch
@@ -183,6 +184,39 @@ jobs:
           # 添加注释
           sed -i "1i################################################\n# Emby List for Surge\n# \n# Last Updated: $current_time\n#\n# 本文件包含 Emby 的相关域名规则,用于 Surge 规则。\n#\n# Data from:\n#  - ${emby_rules}\n################################################\n" Surge/Ruleset/Streaming/Video/Emby.list
     
+      - name: Generate AI.list file
+        run: |
+          # 下载原始规则数据
+          curl -sSL "ai_rules" -o original_rules_ai.list
+        
+          # 获取当前时间戳
+          current_time=$(date -u +"%Y-%m-%dT%H:%M:%S.000Z")
+        
+          # 写入文件头
+          cat > Surge/Ruleset/AI.list <<EOF
+          ################################################
+          # AI List for Surge
+          #
+          # Last Updated: $current_time
+          #
+          # 本文件包含 AI 相关的域名规则,用于 Surge 规则。
+          #
+          # Data from:
+          #  - https://github.com/Coldvvater/Mononoke/raw/master/Surge/Rules/AI.list
+          ################################################
+        
+          EOF
+        
+          # 将原始规则写入文件
+          cat original_rules_ai.list >> Surge/Ruleset/AI.list
+        
+          # 在文件末尾添加 OpenRouter 规则
+          echo "# > OpenRouter" >> Surge/Ruleset/AI.list
+          echo "DOMAIN-SUFFIX,openrouter.ai" >> Surge/Ruleset/AI.list
+        
+          # 删除原始规则文件
+          rm original_rules_ai.list
+
       - name: Commit and Push
         run: |
           git config --global user.name "the Magical Cat"
@@ -200,3 +234,4 @@ jobs:
           curl -i "https://purge.jsdelivr.net/gh/${{ github.repository }}/Surge/Ruleset/Streaming/CN.list"
           curl -i "https://purge.jsdelivr.net/gh/${{ github.repository }}/Surge/Ruleset/Streaming/!CN.list"
           curl -i "https://purge.jsdelivr.net/gh/${{ github.repository }}/Surge/Ruleset/Streaming/Video/Emby.list"
+          curl -i "https://purge.jsdelivr.net/gh/${{ github.repository }}/Surge/Ruleset/AI.list"
