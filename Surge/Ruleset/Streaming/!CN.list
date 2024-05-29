@@ -1,7 +1,7 @@
 ################################################
 # !China Streaming List for Surge
 # 
-# Last Updated: 2024-05-15T23:00:37.000Z
+# Last Updated: 2024-05-28T23:00:42.000Z
 #
 # 本文件包含非中国流媒体域名规则,用于 Surge 规则。
 #
@@ -281,6 +281,7 @@ DOMAIN-SUFFIX,tiktok.com
 DOMAIN-SUFFIX,tik-tokapi.com
 DOMAIN-SUFFIX,tiktokcdn.com
 DOMAIN-SUFFIX,tiktokv.com
+DOMAIN-SUFFIX,ttwstatic.com
 DOMAIN-KEYWORD,tiktokcdn-
 # > TVer
 DOMAIN-SUFFIX,tver.jp

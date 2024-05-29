@@ -1,7 +1,7 @@
 ################################################
 # Emby List for Surge
 # 
-# Last Updated: 2024-05-15T23:00:38.000Z
+# Last Updated: 2024-05-28T23:00:43.000Z
 #
 # 本文件包含 Emby 的相关域名规则,用于 Surge 规则。
 #
@@ -11,7 +11,7 @@
 
 
 # 来源： https://github.com/MisakaFxxk/MisakaF_Subconverter/blob/main/Sub/Emby.list
-# 最后更新时间： 2024-04-29 11:47
+# 最后更新时间： 2024-05-22 21:46
 
 
 ##### A #####
@@ -46,6 +46,10 @@ DOMAIN-SUFFIX,mius.uk
 
 # Facmata
 DOMAIN-SUFFIX,cinema.facmata.net
+
+# 飞跃彩虹
+DOMAIN-SUFFIX,7777777.buzz
+DOMAIN-SUFFIX,581658.best
 
 ##### G #####
 
