@@ -1,7 +1,7 @@
 ################################################
 # AI List for Surge
 #
-# Last Updated: 2024-05-29T07:39:53.000Z
+# Last Updated: 2024-05-29T23:00:31.000Z
 #
 # 本文件包含 AI 相关的域名规则,用于 Surge 规则。
 #
@@ -79,5 +79,5 @@ DOMAIN-SUFFIX,meta.ai
 
 # > Groq
 DOMAIN-SUFFIX,groq.com
-# > OpenRouter
+\n# > OpenRouter
 DOMAIN-SUFFIX,openrouter.ai
