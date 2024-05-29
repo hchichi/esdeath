@@ -187,7 +187,7 @@ jobs:
       - name: Generate AI.list file
         run: |
           # 下载原始规则数据
-          curl -sSL "ai_rules" -o original_rules_ai.list
+          curl -sSL "${ai_rules}" -o original_rules_ai.list
         
           # 获取当前时间戳
           current_time=$(date -u +"%Y-%m-%dT%H:%M:%S.000Z")
