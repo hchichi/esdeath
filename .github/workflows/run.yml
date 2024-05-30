@@ -209,9 +209,9 @@ jobs:
         
           # 将原始规则写入文件
           cat original_rules_ai.list >> Surge/Ruleset/AI.list
-        
+
           # 在文件末尾添加 OpenRouter 规则
-          sed -i '$a\\\n# > OpenRouter\nDOMAIN-SUFFIX,openrouter.ai' Surge/Ruleset/AI.list
+          echo -e "\n# > OpenRouter\nDOMAIN-SUFFIX,openrouter.ai" >> Surge/Ruleset/AI.list
         
           # 删除原始规则文件
           rm original_rules_ai.list
