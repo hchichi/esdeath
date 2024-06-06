@@ -105,14 +105,14 @@ IP-CIDR,43.132.83.9/32,no-resolve
 IP-CIDR,43.132.91.37/32,no-resolve
 IP-CIDR,43.132.91.110/32,no-resolve
 IP-CIDR,43.132.91.45/32,no-resolve
-IP-CIDR,150.109.222.109/,no-resolve
-IP-CIDR,150.109.222.102/,no-resolve
-IP-CIDR,150.109.222.97/3,no-resolve
-IP-CIDR,150.109.223.49/3,no-resolve
-IP-CIDR,150.109.222.103/,no-resolve
-IP-CIDR,150.109.222.99/3,no-resolve
-IP-CIDR,150.109.222.110/,no-resolve
-IP-CIDR,203.205.220.62/3,no-resolve
+IP-CIDR,150.109.222.109/32,no-resolve
+IP-CIDR,150.109.222.102/32,no-resolve
+IP-CIDR,150.109.222.97/32,no-resolve
+IP-CIDR,150.109.223.49/32,no-resolve
+IP-CIDR,150.109.222.103/32,no-resolve
+IP-CIDR,150.109.222.99/32,no-resolve
+IP-CIDR,150.109.222.110/32,no-resolve
+IP-CIDR,203.205.220.62/32,no-resolve
 # ---(NetEaseCloudMusic)---
 # issue#21#issuecomment-1213136722
 # DOMAIN,music.163.com
