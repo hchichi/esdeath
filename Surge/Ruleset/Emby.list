@@ -50,9 +50,6 @@ DOMAIN-SUFFIX,emby.ssltd.xyz
 
 # —————————— H ——————————
 
-# 花云
-DOMAIN-SUFFIX,emby.flowercloud
-
 # 黑猫影视EMBY
 DOMAIN-SUFFIX,uuuoo.cc
 DOMAIN-SUFFIX,emby.bid
@@ -61,9 +58,6 @@ DOMAIN-SUFFIX,emby.loan
 DOMAIN-SUFFIX,emby.trade
 
 # —————————— I ——————————
-
-# Immtel
-DOMAIN-SUFFIX,emby.immtel.com
 
 # —————————— J ——————————
 
@@ -117,9 +111,6 @@ DOMAIN-SUFFIX,emby.maying.club
 # ntRRR
 DOMAIN-SUFFIX,ntrrr.am.sb
 
-# nexitally
-DOMAIN-SUFFIX,emby.nexitally.com
-
 # Nebula
 DOMAIN-SUFFIX,nebula-emby.com
 
@@ -149,9 +140,6 @@ DOMAIN-SUFFIX,ii00.cc
 # polo
 DOMAIN-SUFFIX,poloemby.xyz
 DOMAIN-SUFFIX,pololine.ml
-
-# 品云
-DOMAIN-SUFFIX,embyplus.club
 
 # paoche
 DOMAIN-SUFFIX,emby.cjpc.cc
@@ -187,9 +175,6 @@ DOMAIN-SUFFIX,xmsl.org
 # TreeDiagram
 DOMAIN-SUFFIX,123456.al
 
-# 太空人
-DOMAIN-SUFFIX,tkremby.xyz
-
 # >>>>>>>>>>>>>>> X - 0-9 <<<<<<<<<<<<<<<<
 
 # —————————— X ——————————
@@ -199,16 +184,7 @@ DOMAIN-SUFFIX,embyclub.com
 DOMAIN-SUFFIX,az-hk.embyclub.com
 DOMAIN-SUFFIX,azsgp.embyclub.com
 
-# xeton
-DOMAIN-SUFFIX,emby.xeton.dev
-DOMAIN-SUFFIX,jellyfin.xeton.dev
-DOMAIN-SUFFIX,movie.xeton.dev
-DOMAIN-SUFFIX,servers.xeton.dev
-
 # —————————— Y ——————————
-
-# ytoo
-DOMAIN-SUFFIX,emby.ytoo.li
 
 # >>>>>>>>>>>>>>> 未分类 <<<<<<<<<<<<<<<<
 DOMAIN-SUFFIX,emby.mdss.cloud
