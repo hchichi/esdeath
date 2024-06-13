@@ -1,8 +1,5 @@
-#########################################
-# SURGE - Emby
-#
+# >> 小倩 - Emby
 # This file contains domains of Emby servers.
-#########################################
 
 # > 1111
 DOMAIN-SUFFIX,cfde.xmsl.org
