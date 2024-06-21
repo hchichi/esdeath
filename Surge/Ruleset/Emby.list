@@ -2,11 +2,14 @@
 # This file contains domains of Emby servers.
 
 # > 1111
+DOMAIN,free.xmsl.org
+DOMAIN,ushd.xmsl.org
 DOMAIN-SUFFIX,cfde.xmsl.org
 DOMAIN-SUFFIX,line.emby.moe
 DOMAIN-SUFFIX,line.xmsl.org
 DOMAIN-SUFFIX,pm.xmsl.org
 DOMAIN-SUFFIX,xmsl.org
+DOMAIN-SUFFIX,loseremby.org
 
 # > ACA & MisakaF
 DOMAIN-SUFFIX,emby.aca.best
@@ -14,6 +17,9 @@ DOMAIN-SUFFIX,porn.aca.best
 
 # > Apop
 DOMAIN-SUFFIX,apopcloud.com
+
+# > Baisi
+DOMAIN-SUFFIX,baisi.pro
 
 # > BlackCat
 DOMAIN-SUFFIX,emby.bid
