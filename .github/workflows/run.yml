@@ -189,6 +189,7 @@ jobs:
     
       - name: Generate EmbyBravo.list file
         run: |
+          set -x  # 启用调试模式
           # 下载第一份文件
           curl -sSL "${{ env.emby_one }}" -o list1.raw
 
@@ -233,6 +234,7 @@ jobs:
           ip_cidr_count=$(grep -c '^IP-CIDR' Surge/Ruleset/Streaming/Video/EmbyBravo.list)
           ip_cidr6_count=$(grep -c '^IP-CIDR6' Surge/Ruleset/Streaming/Video/EmbyBravo.list)
           user_agent_count=$(grep -c '^USER-AGENT' Surge/Ruleset/Streaming/Video/EmbyBravo.list)
+          url_regex_count=$(grep -c '^URL-REGEX' Surge/Ruleset/Streaming/Video/EmbyBravo.list)
           total_count=$(wc -l < Surge/Ruleset/Streaming/Video/EmbyBravo.list)
 
           # 构建文件头注释
@@ -242,6 +244,7 @@ jobs:
           [ "$ip_cidr_count" -ne 0 ] && header+="# IP-CIDR: $ip_cidr_count\n"
           [ "$ip_cidr6_count" -ne 0 ] && header+="# IP-CIDR6: $ip_cidr6_count\n"
           [ "$user_agent_count" -ne 0 ] && header+="# USER-AGENT: $user_agent_count\n"
+          [ "$url_regex_count" -ne 0 ] && header+="# URL-REGEX: $url_regex_count\n"
           header+="# TOTAL: $total_count\n"
           header+="#\n# This file contains domain and IP rules from multiple sources, used for Surge rules.\n################################################\n"
 
@@ -290,7 +293,7 @@ jobs:
           git add .
           git commit -m "Auto Update $(TZ='Asia/Shanghai' date +'%Y-%m-%d %H:%M')"
           git push origin HEAD
-
+          
       - name: Purge jsdelivr CDN
         run: |
           cdn_files=(
