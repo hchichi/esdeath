@@ -189,14 +189,18 @@ jobs:
     
       - name: Generate EmbyBravo.list file
         run: |
+          set -e  # 启用错误处理模式
           set -x  # 启用调试模式
           # 下载第一份文件
+          echo "Downloading first file"
           curl -sSL "${{ env.emby_one }}" -o list1.raw
 
           # 下载第二份文件
+          echo "Downloading second file"
           curl -sSL "${{ env.emby_two }}" -o list2.raw
 
           # 处理第一份文件
+          echo "Processing first file"
           awk '{
             if ($0 ~ /^#/) {
               sub(/^#/, "# >")
@@ -211,6 +215,7 @@ jobs:
           }' list1.raw > list1.processed
 
           # 处理第二份文件并添加分割线
+          echo "Processing second file and adding separator"
           echo -e "\n# --- --- ---(2nd) --- --- --- \n" > list2.processed
           awk '{
             if ($0 ~ /^#/) {
@@ -226,9 +231,11 @@ jobs:
           }' list2.raw >> list2.processed
 
           # 合并两个文件
+          echo "Merging files"
           cat list1.processed list2.processed > Surge/Ruleset/Streaming/Video/EmbyBravo.list
 
           # 统计每种规则的数量
+          echo "Counting rules"
           domain_keyword_count=$(grep -c '^DOMAIN-KEYWORD' Surge/Ruleset/Streaming/Video/EmbyBravo.list)
           domain_suffix_count=$(grep -c '^DOMAIN-SUFFIX' Surge/Ruleset/Streaming/Video/EmbyBravo.list)
           ip_cidr_count=$(grep -c '^IP-CIDR' Surge/Ruleset/Streaming/Video/EmbyBravo.list)
@@ -238,6 +245,7 @@ jobs:
           total_count=$(wc -l < Surge/Ruleset/Streaming/Video/EmbyBravo.list)
 
           # 构建文件头注释
+          echo "Building header"
           header="################################################\n# Emby Server Rules for Surge\n# \n# Last Updated: $(date -u +"%Y-%m-%dT%H:%M:%S.000Z")\n#\n"
           [ "$domain_keyword_count" -ne 0 ] && header+="# DOMAIN-KEYWORD: $domain_keyword_count\n"
           [ "$domain_suffix_count" -ne 0 ] && header+="# DOMAIN-SUFFIX: $domain_suffix_count\n"
@@ -249,9 +257,11 @@ jobs:
           header+="#\n# This file contains domain and IP rules from multiple sources, used for Surge rules.\n################################################\n"
 
           # 添加文件头注释
+          echo "Adding header"
           echo -e "$header" | cat - Surge/Ruleset/Streaming/Video/EmbyBravo.list > temp && mv temp Surge/Ruleset/Streaming/Video/EmbyBravo.list
 
           # 删除临时文件
+          echo "Cleaning up"
           rm list1.raw list2.raw list1.processed list2.processed
 
       - name: Generate AI.list file
