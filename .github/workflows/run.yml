@@ -187,8 +187,8 @@ jobs:
           # 添加注释
           sed -i "1i################################################\n# Emby List for Surge\n# \n# Last Updated: $current_time\n#\n# 本文件包含 Emby 的相关域名规则,用于 Surge 规则。\n#\n# Data from:\n#  - ${{ env.emby_rules }}\n################################################\n" Surge/Ruleset/Streaming/Video/Emby.list
     
-          - name: Generate EmbyBravo.list file
-          run: |
+      - name: Generate EmbyBravo.list file
+        run: |
             set -e  # 启用错误处理模式
   
             # 下载第一份文件
