@@ -1,121 +1,180 @@
 ################################################
 # Emby Server Rules for Surge
 # 
-# Last Updated: 2024-06-21T08:37:29.000Z
+# Last Updated: 2024-06-21T10:05:16.000Z
 #
 # DOMAIN-SUFFIX: 59
 # IP-CIDR: 2
 # IP-CIDR6: 2
-# TOTAL: 108
+# TOTAL: 
 #
 # This file contains domain and IP rules from multiple sources, used for Surge rules.
 ################################################
 
-# >GUGU
+
+# > GUGU
 DOMAIN-SUFFIX,gugu.media
-# >BYG
+
+# > BYG
 DOMAIN-SUFFIX,955557.xyz
-# >PEACH
+
+# > PEACH
 DOMAIN-SUFFIX,embymv.top
-# >MAGPIE
+
+# > MAGPIE
 DOMAIN-SUFFIX,magpie.cyou
+
 DOMAIN-SUFFIX,magpie.bond
-# >SYN
+
+# > SYN
 DOMAIN-SUFFIX,stream.ntrrr.top
-# >BGK
+
+# > BGK
 DOMAIN-SUFFIX,c.emby.pro
+
 DOMAIN-SUFFIX,bgka.me
-# >CC
+
+# > CC
 DOMAIN-SUFFIX,cc.coemn.com
-# >HXD
+
+# > HXD
 DOMAIN-SUFFIX,bili.bili.rip
+
 DOMAIN-SUFFIX,cf.bili.rip
-# >POLO
+
+# > POLO
 DOMAIN-SUFFIX,poloemby.xyz
-# >1111
+
+# > 1111
 DOMAIN-SUFFIX,line.xmsl.org
+
 DOMAIN-SUFFIX,cfde.xmsl.org
+
 DOMAIN-SUFFIX,line.emby.moe
-# >AC
+
+# > AC
 DOMAIN-SUFFIX,zox.show
+
 DOMAIN-SUFFIX,entry.zox.show
-# >SPORT
+
+# > SPORT
 DOMAIN-SUFFIX,sportemby.com
-# >LYREBIRD
+
+# > LYREBIRD
 DOMAIN-SUFFIX,cdn.lyrebirdemby.com
-# >TECAR
+
+# > TECAR
 DOMAIN-SUFFIX,carlos.trade
-# >PILIPILI
+
+# > PILIPILI
 DOMAIN-SUFFIX,emby.pilipiliultra.top
+
 DOMAIN-SUFFIX,emby.pilipiliultra.com
+
 DOMAIN-SUFFIX,stream_pilipili.misakaf.org
+
 IP-CIDR6,2602:294:0:D4F::999/128,no-resolve
-# >纸片人
+
+# > 纸片人
 DOMAIN-SUFFIX,embyplus.org
+
 DOMAIN-SUFFIX,gd.9521732.xyz
+
 IP-CIDR6,2A0A:4CC0:1:11C2:145B:39FF:FE00:BAAC/128,no-resolve
-# >MF
+
+# > MF
 DOMAIN-SUFFIX,emby.misakaf.org
-# >DOLPHIN
+
+# > DOLPHIN
 DOMAIN-SUFFIX,emby.ws
-# >MORMOT
+
+# > MORMOT
 DOMAIN-SUFFIX,v.20120714.xyz
-# >NME
+
+# > NME
 DOMAIN-SUFFIX,film.hovervan.org
-# >TEMBY
+
+# > TEMBY
 DOMAIN-SUFFIX,temby.285286.xyz
-# >MJJ
+
+# > MJJ
 DOMAIN-SUFFIX,mjjemby.org
-# >APOP
+
+# > APOP
 DOMAIN-SUFFIX,apopcloud.com
-# >STARCAT
+
+# > STARCAT
 DOMAIN-SUFFIX,flare.catlinks.co.uk
+
 DOMAIN-SUFFIX,cdsalw2lw.catlinks.co.uk
-# >餐厅
+
+# > 餐厅
 DOMAIN-SUFFIX,emby-us-v4.mius.uk
-# >舒服
+
+# > 舒服
 DOMAIN-SUFFIX,emby3.mcjoker.xyz
-# >SPORT PRON
+
+# > SPORT PRON
 DOMAIN-SUFFIX,teachers.sportemby.com
-# >CBCB
+
+# > CBCB
 DOMAIN-SUFFIX,emby.cbcb.lol
-# >江湖
+
+# > 江湖
 DOMAIN-SUFFIX,film.reddust.link
-# >水母
+
+# > 水母
 DOMAIN-SUFFIX,jellyfin.asia
-# >港澳台直播
+
+# > 港澳台直播
 DOMAIN-SUFFIX,stream-link.online
+
 DOMAIN-SUFFIX,stream-link.org
-# >HEISI
+
+# > HEISI
 DOMAIN-SUFFIX,heisi.nekobox.best
-# >大V
+
+# > 大V
 DOMAIN-SUFFIX,su.viclub.top
-# >守候
+
+# > 守候
 DOMAIN-SUFFIX,preus.cn2gias.uk
-# >NAFLIX
+
+# > NAFLIX
 DOMAIN-SUFFIX,emby.tnx.one
 
-# --- --- ---(2nd)--- --- --- 
-
-# >PANDATV
+# > PANDATV
 DOMAIN-SUFFIX,emby.at
+
 DOMAIN-SUFFIX,pdatv.cc
-# >MICU
+
+# > MICU
 DOMAIN-SUFFIX,tv.micu.hk
+
 DOMAIN-SUFFIX,v0.micu.hk
-# >AKUAI
+
+# > AKUAI
 DOMAIN-SUFFIX,akuai.9012345.xyz
-# >1111
+
+# > 1111
 DOMAIN-SUFFIX,pm.xmsl.org
+
 DOMAIN-SUFFIX,hd.xmsl.org
-# >舒服
+
+# > 舒服
 DOMAIN-SUFFIX,jz.mcjoker.xyz
-# >小筑
+
+# > 小筑
 DOMAIN-SUFFIX,emby.uhhdc.com
-# >HEISI
+
+# > HEISI
 DOMAIN-SUFFIX,i109.com
+
 DOMAIN-SUFFIX,h1.i109.com
-# >开心
+
+# > 开心
 DOMAIN-SUFFIX,emby.127255.best
-# >好鸭
+
+# > 好鸭
 DOMAIN-SUFFIX,niceduck.lol
+
