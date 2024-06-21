@@ -13,191 +13,86 @@ jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
-    steps:
-      - name: Set variables
-        run: |
-          echo "RELEASE_NAME=Released on $(date +%Y%m%d%H%M)" >> $GITHUB_ENV
-          echo "TAG_NAME=$(date +%Y%m%d%H%M)" >> $GITHUB_ENV
-          echo "ipv4_china=https://raw.githubusercontent.com/missuo/ASN-China/main/IP.China.list" >> $GITHUB_ENV
-          echo "ipv6_china=https://raw.githubusercontent.com/missuo/ASN-China/main/IPv6.China.list" >> $GITHUB_ENV
-          echo "tiktok_rules=https://gitlab.com/lodepuly/vpn_tool/-/raw/master/Tool/Loon/Rule/TikTok.list" >> $GITHUB_ENV
-          echo "streaming_cn=https://github.com/ConnersHua/RuleGo/raw/master/Surge/Ruleset/Extra/Streaming/CN.list" >> $GITHUB_ENV
-          echo "streaming_not_cn=https://github.com/ConnersHua/RuleGo/raw/master/Surge/Ruleset/Extra/Streaming/!CN.list" >> $GITHUB_ENV
-          echo "emby_rules=https://github.com/Repcz/Tool/raw/X/Surge/Rules/Emby.list" >> $GITHUB_ENV
-          echo "ai_rules=https://github.com/Coldvvater/Mononoke/raw/master/Surge/Rules/AI.list" >> $GITHUB_ENV
-          echo "emby_one=https://github.com/1120109856/lynn/raw/main/fxw" >> $GITHUB_ENV
-          echo "emby_two=https://github.com/1120109856/lynn/raw/main/zl" >> $GITHUB_ENV
-        shell: bash
+    env:
+      RELEASE_NAME: Released on ${{ github.run_number }}
+      TAG_NAME: ${{ github.run_number }}
+      ipv4_china: https://raw.githubusercontent.com/missuo/ASN-China/main/IP.China.list
+      ipv6_china: https://raw.githubusercontent.com/missuo/ASN-China/main/IPv6.China.list
+      tiktok_rules: https://gitlab.com/lodepuly/vpn_tool/-/raw/master/Tool/Loon/Rule/TikTok.list
+      streaming_cn: https://github.com/ConnersHua/RuleGo/raw/master/Surge/Ruleset/Extra/Streaming/CN.list
+      streaming_not_cn: https://github.com/ConnersHua/RuleGo/raw/master/Surge/Ruleset/Extra/Streaming/!CN.list
+      emby_rules: https://github.com/Repcz/Tool/raw/X/Surge/Rules/Emby.list
+      ai_rules: https://github.com/Coldvvater/Mononoke/raw/master/Surge/Rules/AI.list
+      emby_one: https://github.com/1120109856/lynn/raw/main/fxw
+      emby_two: https://github.com/1120109856/lynn/raw/main/zl
 
+    steps:
       - name: Checkout the default branch
         uses: actions/checkout@v4
 
       - name: Make directory
         run: |
-          mkdir -p Surge/Ruleset/IPCIDR
-          mkdir -p Surge/Ruleset/Streaming/Video
-          mkdir -p Surge/Ruleset/Streaming
-          mkdir -p Surge/Ruleset/Custom
-          mkdir -p dist
+          mkdir -p Surge/Ruleset/{IPCIDR,Streaming/Video,Streaming,Custom} dist
 
-      - name: Generate IPv4.China.list file
+      - name: Generate rule files
         run: |
-            # 下载原始规则数据
-            curl -sSL "${{ env.ipv4_china }}" -o original_rules_ipv4.list
-          
-            # 提取 IPv4 规则
-            grep -E '^([0-9]{1,3}\.){3}[0-9]{1,3}/' original_rules_ipv4.list > ipv4_rules.list
-          
-            # 计算规则数量
-            rules_count_ipv4=$(wc -l < ipv4_rules.list)
-          
-            # 获取当前时间戳
+          generate_rule_file() {
+            local url=$1
+            local output=$2
+            local title=$3
+            local description=$4
+            local extra_processing=$5
+
+            curl -sSL "$url" -o original_rules.list
+            rules_count=$(grep -cE "^([0-9a-zA-Z]|#)" original_rules.list)
             current_time=$(date -u +"%Y-%m-%dT%H:%M:%S.000Z")
-          
-            # 写入文件头
-            cat > Surge/Ruleset/IPCIDR/IPv4.China.list <<EOF
-            ################################################
-            # China IPv4 List for Surge
-            #
-            # Last Updated: $current_time
-            # Size: $rules_count_ipv4
-            #
-            # 本文件只包含中国大陆的 IPv4 地址范围,用于 Surge 规则。
-            #
-            # Data from:
-            #  - ${{ env.ipv4_china }}
-            ################################################
-          
-            EOF
-          
-            # 将处理后的数据写入 IPv4.China.list
-            sed 's/^/IP-CIDR,/;s/$/,no-resolve/' ipv4_rules.list >> Surge/Ruleset/IPCIDR/IPv4.China.list
-          
-            # 删除原始规则文件和临时文件
-            rm original_rules_ipv4.list
-            rm ipv4_rules.list
 
-      - name: Generate IPv6.China.list file
-        run: |
-          # 下载原始规则数据
-          curl -sSL "${{ env.ipv6_china }}" -o original_rules_ipv6.list
-        
-          # 计算规则数量
-          rules_count_ipv6=$(wc -l < original_rules_ipv6.list)
-        
-          # 获取当前时间戳
-          current_time=$(date -u +"%Y-%m-%dT%H:%M:%S.000Z")
-        
-          # 写入文件头
-          cat > Surge/Ruleset/IPCIDR/IPv6.China.list <<EOF
+            cat > "$output" <<EOF
           ################################################
-          # China IPv6 List for Surge
+          # $title for Surge
           #
           # Last Updated: $current_time
-          # Size: $rules_count_ipv6
+          # Size: $rules_count
           #
-          # 本文件包含中国大陆的 IPv6 地址范围,用于 Surge 规则。
-          #
-          # Data from:
-          #  - ${{ env.ipv6_china }}
-          ################################################
-          
-          EOF
-        
-          # 将处理后的数据写入 IPv6.China.list
-          sed 's/^/IP-CIDR6,/;s/$/,no-resolve/' original_rules_ipv6.list >> Surge/Ruleset/IPCIDR/IPv6.China.list
-
-          # 删除原始规则文件
-          rm original_rules_ipv6.list
-
-      - name: Generate TikTok.list file
-        run: |
-          # 下载原始规则数据
-          curl -sSL "${{ env.tiktok_rules }}" -o original_rules_tiktok.list
-          
-          # 计算规则数量
-          rules_count_tiktok=$(grep -cE "^(AND|DOMAIN|DOMAIN-SUFFIX|DOMAIN-KEYWORD)" original_rules_tiktok.list)
-          
-          # 获取当前时间戳
-          current_time=$(date -u +"%Y-%m-%dT%H:%M:%S.000Z")
-          
-          # 写入文件头
-          cat > Surge/Ruleset/Streaming/Video/TikTok.list <<EOF
-          ################################################
-          # TikTok List for Surge
-          #
-          # Last Updated: $current_time
-          # Size: $rules_count_tiktok
-          #
-          # 本文件包含 TikTok 的相关域名规则,用于 Surge 规则。
+          # $description
           #
           # Data from:
-          #  - ${{ env.tiktok_rules }}
+          #  - $url
           ################################################
-          
+
           EOF
-          
-          # 提取 AND 规则(如果存在)
-          if grep -qE "^AND, " original_rules_tiktok.list; then
-            grep -E "^AND, \(\(NOT, \(\(GEOIP, CN, no-resolve\)\)\), \(DOMAIN, " original_rules_tiktok.list >> Surge/Ruleset/Streaming/Video/TikTok.list
-          fi
-          
-          # 提取 DOMAIN 规则(如果存在)
-          if grep -qE "^DOMAIN, " original_rules_tiktok.list; then
-            grep -E "^DOMAIN, " original_rules_tiktok.list >> Surge/Ruleset/Streaming/Video/TikTok.list
-          fi
-          
-          # 提取 DOMAIN-SUFFIX 规则(如果存在)
-          if grep -qE "^DOMAIN-SUFFIX, " original_rules_tiktok.list; then
-            grep -E "^DOMAIN-SUFFIX, " original_rules_tiktok.list >> Surge/Ruleset/Streaming/Video/TikTok.list
-          fi
-          
-          # 提取 DOMAIN-KEYWORD 规则(如果存在)
-          if grep -qE "^DOMAIN-KEYWORD, " original_rules_tiktok.list; then
-            grep -E "^DOMAIN-KEYWORD, " original_rules_tiktok.list >> Surge/Ruleset/Streaming/Video/TikTok.list
-          fi
-          
-          # 删除原始规则文件
-          rm original_rules_tiktok.list
-          
-      - name: Generate Streaming CN and !CN ruleset
-        run: |
-          # 下载中国流媒体域名规则
-          curl -sSL "${{ env.streaming_cn }}" -o Surge/Ruleset/Streaming/CN.list
 
-          # 下载非中国流媒体域名规则
-          curl -sSL "${{ env.streaming_not_cn }}" -o Surge/Ruleset/Streaming/!CN.list
+            if [ -n "$extra_processing" ]; then
+              eval "$extra_processing"
+            else
+              cat original_rules.list >> "$output"
+            fi
 
-          # 获取当前时间戳
-          current_time=$(date -u +"%Y-%m-%dT%H:%M:%S.000Z")
+            rm original_rules.list
+          }
 
-          # 添加注释
-          sed -i "1i################################################\n# China Streaming List for Surge\n# \n# Last Updated: $current_time\n#\n# 本文件包含中国流媒体域名规则,用于 Surge 规则。\n#\n# Data from:\n#  - ${{ env.streaming_cn }}\n################################################\n" Surge/Ruleset/Streaming/CN.list
-          
-          sed -i "1i################################################\n# !China Streaming List for Surge\n# \n# Last Updated: $current_time\n#\n# 本文件包含非中国流媒体域名规则,用于 Surge 规则。\n#\n# Data from:\n#  - ${{ env.streaming_not_cn }}\n################################################\n" Surge/Ruleset/Streaming/!CN.list
+          # Generate IPv4.China.list
+          generate_rule_file "$ipv4_china" "Surge/Ruleset/IPCIDR/IPv4.China.list" "China IPv4 List" "本文件只包含中国大陆的 IPv4 地址范围,用于 Surge 规则。" 'grep -E "^([0-9]{1,3}\.){3}[0-9]{1,3}/" original_rules.list | sed "s/^/IP-CIDR,/;s/$/,no-resolve/" >> "$output"'
 
-      - name: Generate Emby.list file
-        run: |
-          # 下载 Emby 规则数据
-          curl -sSL "${{ env.emby_rules }}" -o Surge/Ruleset/Streaming/Video/Emby.list
+          # Generate IPv6.China.list
+          generate_rule_file "$ipv6_china" "Surge/Ruleset/IPCIDR/IPv6.China.list" "China IPv6 List" "本文件包含中国大陆的 IPv6 地址范围,用于 Surge 规则。" 'sed "s/^/IP-CIDR6,/;s/$/,no-resolve/" original_rules.list >> "$output"'
 
-          # 获取当前时间戳
-          current_time=$(date -u +"%Y-%m-%dT%H:%M:%S.000Z")
+          # Generate TikTok.list
+          generate_rule_file "$tiktok_rules" "Surge/Ruleset/Streaming/Video/TikTok.list" "TikTok List" "本文件包含 TikTok 的相关域名规则,用于 Surge 规则。" 'grep -E "^(AND|DOMAIN|DOMAIN-SUFFIX|DOMAIN-KEYWORD)" original_rules.list >> "$output"'
 
-          # 添加注释
-          sed -i "1i################################################\n# Emby List for Surge\n# \n# Last Updated: $current_time\n#\n# 本文件包含 Emby 的相关域名规则,用于 Surge 规则。\n#\n# Data from:\n#  - ${{ env.emby_rules }}\n################################################\n" Surge/Ruleset/Streaming/Video/Emby.list
-    
+          # Generate Streaming CN and !CN ruleset
+          generate_rule_file "$streaming_cn" "Surge/Ruleset/Streaming/CN.list" "China Streaming List" "本文件包含中国流媒体域名规则,用于 Surge 规则。"
+          generate_rule_file "$streaming_not_cn" "Surge/Ruleset/Streaming/!CN.list" "!China Streaming List" "本文件包含非中国流媒体域名规则,用于 Surge 规则。"
+
+          # Generate Emby.list
+          generate_rule_file "$emby_rules" "Surge/Ruleset/Streaming/Video/Emby.list" "Emby List" "本文件包含 Emby 的相关域名规则,用于 Surge 规则。"
+
+          # Generate AI.list
+          generate_rule_file "$ai_rules" "Surge/Ruleset/AI.list" "AI List" "本文件包含 AI 相关的域名规则,用于 Surge 规则。" 'cat original_rules.list >> "$output" && echo -e "\n# > OpenRouter\nDOMAIN-SUFFIX,openrouter.ai" >> "$output"'
+
       - name: Generate EmbyBravo.list file
         run: |
-            set -e  # 启用错误处理模式
-  
-            # 下载第一份文件
-            curl -sSL "https://github.com/1120109856/lynn/raw/main/fxw" -o list1.raw
-  
-            # 下载第二份文件
-            curl -sSL "https://github.com/1120109856/lynn/raw/main/zl" -o list2.raw
-  
-            # 处理第一份文件
+          process_file() {
             awk '{
               if ($0 ~ /^#/) {
                 sub(/^#/, "# > ")
@@ -210,85 +105,46 @@ jobs:
                 }
                 print ""
               }
-            }' list1.raw > list1.processed
-  
-            # 处理第二份文件并添加分割线
-            echo -e "\n# --- --- ---(2nd)--- --- --- \n" > list2.processed
-            awk '{
-              if ($0 ~ /^#/) {
-                sub(/^#/, "# >")
-                print toupper($0)
-              } else if ($0 ~ /^(DOMAIN|DOMAIN-SUFFIX|DOMAIN-KEYWORD|IP-CIDR|IP-CIDR6|USER-AGENT|URL-REGEX)/) {
-                if ($0 ~ /^(IP-CIDR|IP-CIDR6)/ && !/no-resolve$/) {
-                  print $0 ",no-resolve"
-                } else {
-                  print
-                }
-                print ""
-              }
-            }' list2.raw >> list2.processed
-  
-            # 合并两个文件
-            cat list1.processed list2.processed > Surge/Ruleset/Streaming/Video/EmbyBravo.list
-  
-            # 统计每种规则的数量(排除注释行和空行)
-            domain_keyword_count=$(grep -cE '^DOMAIN-KEYWORD' Surge/Ruleset/Streaming/Video/EmbyBravo.list || true)
-            domain_suffix_count=$(grep -cE '^DOMAIN-SUFFIX' Surge/Ruleset/Streaming/Video/EmbyBravo.list || true)
-            ip_cidr_count=$(grep -cE '^IP-CIDR' Surge/Ruleset/Streaming/Video/EmbyBravo.list || true)
-            ip_cidr6_count=$(grep -cE '^IP-CIDR6' Surge/Ruleset/Streaming/Video/EmbyBravo.list || true)
-            user_agent_count=$(grep -cE '^USER-AGENT' Surge/Ruleset/Streaming/Video/EmbyBravo.list || true)
-            url_regex_count=$(grep -cE '^URL-REGEX' Surge/Ruleset/Streaming/Video/EmbyBravo.list || true)
-            total_count=$((domain_keyword_count + domain_suffix_count + ip_cidr_count + ip_cidr6_count + user_agent_count + url_regex_count))
-  
-            # 构建文件头注释
-            header="################################################\n# Emby Server Rules for Surge\n# \n# Last Updated: $(date -u +"%Y-%m-%dT%H:%M:%S.000Z")\n#\n"
-            [ "$domain_keyword_count" -ne 0 ] && header+="# DOMAIN-KEYWORD: $domain_keyword_count\n"
-            [ "$domain_suffix_count" -ne 0 ] && header+="# DOMAIN-SUFFIX: $domain_suffix_count\n"
-            [ "$ip_cidr_count" -ne 0 ] && header+="# IP-CIDR: $ip_cidr_count\n"
-            [ "$ip_cidr6_count" -ne 0 ] && header+="# IP-CIDR6: $ip_cidr6_count\n"
-            [ "$user_agent_count" -ne 0 ] && header+="# USER-AGENT: $user_agent_count\n"
-            [ "$url_regex_count" -ne 0 ] && header+="# URL-REGEX: $url_regex_count\n"
-            header+="# TOTAL: $total_count\n"
-            header+="#\n# This file contains domain and IP rules from multiple sources, used for Surge rules.\n################################################\n\n"
-  
-            # 添加文件头注释
-            echo -e "$header" | cat - Surge/Ruleset/Streaming/Video/EmbyBravo.list > temp && mv temp Surge/Ruleset/Streaming/Video/EmbyBravo.list
-  
-            # 删除临时文件
-            rm list1.raw list2.raw list1.processed list2.processed
-  
+            }' "$1" > "$2"
+          }
 
-      - name: Generate AI.list file
-        run: |
-          # 下载原始规则数据
-          curl -sSL "${{ env.ai_rules }}" -o original_rules_ai.list
-        
-          # 获取当前时间戳
-          current_time=$(date -u +"%Y-%m-%dT%H:%M:%S.000Z")
-        
-          # 写入文件头
-          cat > Surge/Ruleset/AI.list <<EOF
-          ################################################
-          # AI List for Surge
-          #
-          # Last Updated: $current_time
-          #
-          # 本文件包含 AI 相关的域名规则,用于 Surge 规则。
-          #
-          # Data from:
-          #  - ${{ env.ai_rules }}
-          ################################################
-        
-          EOF
-        
-          # 将原始规则写入文件
-          cat original_rules_ai.list >> Surge/Ruleset/AI.list
+          curl -sSL "$emby_one" -o list1.raw
+          curl -sSL "$emby_two" -o list2.raw
 
-          # 在文件末尾添加 OpenRouter 规则
-          echo -e "\n# > OpenRouter\nDOMAIN-SUFFIX,openrouter.ai" >> Surge/Ruleset/AI.list
-        
-          # 删除原始规则文件
-          rm original_rules_ai.list
+          process_file list1.raw list1.processed
+          echo -e "\n# --- --- ---(2nd)--- --- --- \n" > list2.processed
+          process_file list2.raw list2.processed
+
+          cat list1.processed list2.processed > Surge/Ruleset/Streaming/Video/EmbyBravo.list
+
+          count_rules() {
+            grep -cE "^$1" Surge/Ruleset/Streaming/Video/EmbyBravo.list || echo 0
+          }
+
+          domain_keyword_count=$(count_rules "DOMAIN-KEYWORD")
+          domain_suffix_count=$(count_rules "DOMAIN-SUFFIX")
+          ip_cidr_count=$(count_rules "IP-CIDR")
+          ip_cidr6_count=$(count_rules "IP-CIDR6")
+          user_agent_count=$(count_rules "USER-AGENT")
+          url_regex_count=$(count_rules "URL-REGEX")
+          total_count=$((domain_keyword_count + domain_suffix_count + ip_cidr_count + ip_cidr6_count + user_agent_count + url_regex_count))
+
+          header="################################################\n"
+          header+="# Emby Server Rules for Surge\n# \n"
+          header+="# Last Updated: $(date -u +"%Y-%m-%dT%H:%M:%S.000Z")\n#\n"
+          [ "$domain_keyword_count" -ne 0 ] && header+="# DOMAIN-KEYWORD: $domain_keyword_count\n"
+          [ "$domain_suffix_count" -ne 0 ] && header+="# DOMAIN-SUFFIX: $domain_suffix_count\n"
+          [ "$ip_cidr_count" -ne 0 ] && header+="# IP-CIDR: $ip_cidr_count\n"
+          [ "$ip_cidr6_count" -ne 0 ] && header+="# IP-CIDR6: $ip_cidr6_count\n"
+          [ "$user_agent_count" -ne 0 ] && header+="# USER-AGENT: $user_agent_count\n"
+          [ "$url_regex_count" -ne 0 ] && header+="# URL-REGEX: $url_regex_count\n"
+          header+="# TOTAL: $total_count\n#\n"
+          header+="# This file contains domain and IP rules from multiple sources, used for Surge rules.\n"
+          header+="################################################\n\n"
+
+          echo -e "$header" | cat - Surge/Ruleset/Streaming/Video/EmbyBravo.list > temp && mv temp Surge/Ruleset/Streaming/Video/EmbyBravo.list
+
+          rm list1.raw list2.raw list1.processed list2.processed
 
       - name: Commit and Push
         run: |
