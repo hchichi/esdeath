@@ -1,9 +1,9 @@
 ################################################
 # Emby Server Rules for Surge
 # 
-# Last Updated: 2024-06-21T23:00:51.000Z
+# Last Updated: 2024-06-22T23:00:42.000Z
 #
-# DOMAIN-SUFFIX: 59
+# DOMAIN-SUFFIX: 61
 # IP-CIDR: 2
 # IP-CIDR6: 2
 # TOTAL: 
@@ -14,6 +14,8 @@
 
 # > GUGU
 DOMAIN-SUFFIX,gugu.media
+
+DOMAIN-SUFFIX,main.gugumedia.site
 
 # > BYG
 DOMAIN-SUFFIX,955557.xyz
@@ -174,6 +176,8 @@ DOMAIN-SUFFIX,h1.i109.com
 
 # > 开心
 DOMAIN-SUFFIX,emby.127255.best
+
+DOMAIN-SUFFIX,pemby.127255.best
 
 # > 好鸭
 DOMAIN-SUFFIX,niceduck.lol
