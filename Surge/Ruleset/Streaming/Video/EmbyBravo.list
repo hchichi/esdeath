@@ -1,9 +1,9 @@
 ################################################
 # Emby Server Rules for Surge
 # 
-# Last Updated: 2024-06-29T23:00:34.000Z
+# Last Updated: 2024-06-30T23:00:44.000Z
 #
-# DOMAIN-SUFFIX: 61
+# DOMAIN-SUFFIX: 60
 # IP-CIDR: 2
 # IP-CIDR6: 2
 # TOTAL: 
@@ -140,8 +140,6 @@ DOMAIN-SUFFIX,heisi.nekobox.best
 DOMAIN-SUFFIX,su.viclub.top
 
 # > 守候
-DOMAIN-SUFFIX,preus.cn2gias.uk
-
 # > NAFLIX
 DOMAIN-SUFFIX,emby.tnx.one
 
