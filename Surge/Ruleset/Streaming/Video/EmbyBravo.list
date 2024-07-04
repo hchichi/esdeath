@@ -1,9 +1,9 @@
 ################################################
 # Emby Server Rules for Surge
 # 
-# Last Updated: 2024-07-03T23:00:45.000Z
+# Last Updated: 2024-07-04T23:00:52.000Z
 #
-# DOMAIN-SUFFIX: 60
+# DOMAIN-SUFFIX: 62
 # IP-CIDR: 2
 # IP-CIDR6: 2
 # TOTAL: 
@@ -38,6 +38,8 @@ DOMAIN-SUFFIX,bgka.me
 
 # > CC
 DOMAIN-SUFFIX,cc.coemn.com
+
+DOMAIN-SUFFIX,dl.carryz.net
 
 # > HXD
 DOMAIN-SUFFIX,bili.bili.rip
@@ -121,6 +123,8 @@ DOMAIN-SUFFIX,teachers.sportemby.com
 
 # > CBCB
 DOMAIN-SUFFIX,emby.cbcb.lol
+
+DOMAIN-SUFFIX,xgwc6.sharepoint.com
 
 # > 江湖
 DOMAIN-SUFFIX,film.reddust.link
