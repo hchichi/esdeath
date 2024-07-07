@@ -1,8 +1,8 @@
 ################################################
 # AntiIP Direct List for Surge
 #
-# Last Updated: 2024-07-07T17:08:40.000Z
-# Size: 27
+# Last Updated: 2024-07-07T17:14:50.000Z
+# Size: 23
 #
 # 本文件包含反 IP 归属地检测的直连规则,用于 Surge 规则。
 #
@@ -10,10 +10,6 @@
 #  - https://github.com/SunsetMkt/anti-ip-attribution/raw/main/generated/rule-set-direct.list
 ################################################
 
-# 针对部分网站显示IP归属地的分流规则
-# anti-ip-attribution rule-set-direct.list v0.3.1 0bde691ae1d3f0aade1bf91b395fab909c863fce
-# https://github.com/lwd-temp/anti-ip-attribution
-# 适用于Clash RULE-SET
 DOMAIN-SUFFIX,bilivideo.com
 DOMAIN-SUFFIX,akamaized.net
 DOMAIN-SUFFIX,hdslb.com
