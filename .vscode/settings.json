@@ -1,5 +1,7 @@
 {
     "yaml.schemas": {
-        "https://json.schemastore.org/github-workflow.json": "file:///Users/jasperl./Documents/GitHub/esdeath/.github/workflows/main.yml"
+        "file:///Users/jasperl./.vscode/extensions/docsmsft.docs-yaml-1.0.4/dist/toc.schema.json": "/toc\\.yml/i",
+        "https://json.schemastore.org/github-workflow.json": "file:///Users/jasperl./Documents/GitHub/esdeath/.github/workflows/main.yml",
+        "https://json.schemastore.org/github-action.json": "file:///Users/jasperl./Documents/GitHub/esdeath/.github/workflows/run.yml"
     }
 }

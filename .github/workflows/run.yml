@@ -25,15 +25,18 @@ jobs:
       ai_rules: https://github.com/Coldvvater/Mononoke/raw/master/Surge/Rules/AI.list
       emby_one: https://github.com/1120109856/lynn/raw/main/fxw
       emby_two: https://github.com/1120109856/lynn/raw/main/zl
+      antiip_direct: https://github.com/SunsetMkt/anti-ip-attribution/raw/main/generated/rule-set-direct.list
+      antiip_proxy: https://github.com/SunsetMkt/anti-ip-attribution/raw/main/generated/rule-set-proxy.list
+      antiip_reject: https://github.com/SunsetMkt/anti-ip-attribution/raw/main/generated/rule-set-reject.list
 
     steps:
       - name: Checkout the default branch
         uses: actions/checkout@v4
-
+    
       - name: Make directory
         run: |
-          mkdir -p Surge/Ruleset/{IPCIDR,Streaming/Video,Streaming,Custom} dist
-
+          mkdir -p Surge/Ruleset/{IPCIDR,Streaming/Video,Streaming,Custom,AntiIP} dist
+        
       - name: Generate rule files
         run: |
           generate_rule_file() {
@@ -146,6 +149,41 @@ jobs:
 
           rm list1.raw list2.raw list1.processed list2.processed
 
+      - name: Generate AntiIP rule files
+        run: |
+          generate_antiip_file() {
+            local url=$1
+            local output=$2
+            local title=$3
+            local description=$4
+        
+            curl -sSL "$url" -o original_rules.list
+            rules_count=$(grep -cE "^([0-9a-zA-Z]|#)" original_rules.list)
+            current_time=$(date -u +"%Y-%m-%dT%H:%M:%S.000Z")
+        
+            cat > "$output" <<EOF
+          ################################################
+          # $title for Surge
+          #
+          # Last Updated: $current_time
+          # Size: $rules_count
+          #
+          # $description
+          #
+          # Data from:
+          #  - $url
+          ################################################
+        
+          EOF
+        
+            cat original_rules.list >> "$output"
+            rm original_rules.list
+          }
+        
+          generate_antiip_file "$antiip_direct" "Surge/Ruleset/AntiIP/Direct.list" "AntiIP Direct List" "本文件包含反 IP 归属地检测的直连规则,用于 Surge 规则。"
+          generate_antiip_file "$antiip_proxy" "Surge/Ruleset/AntiIP/Proxy.list" "AntiIP Proxy List" "本文件包含反 IP 归属地检测的代理规则,用于 Surge 规则。"
+          generate_antiip_file "$antiip_reject" "Surge/Ruleset/AntiIP/Reject.list" "AntiIP Reject List" "本文件包含反 IP 归属地检测的拒绝规则,用于 Surge 规则。"
+  
       - name: Commit and Push
         run: |
           git config --global user.name "the Magical Cat"
@@ -165,7 +203,19 @@ jobs:
             "Surge/Ruleset/Streaming/Video/Emby.list"
             "Surge/Ruleset/Streaming/Video/EmbyBravo.list"
             "Surge/Ruleset/AI.list"
+            "Surge/Ruleset/AntiIP/Direct.list"
+            "Surge/Ruleset/AntiIP/Proxy.list"
+            "Surge/Ruleset/AntiIP/Reject.list"
           )
           for file in "${cdn_files[@]}"; do
             curl -i "https://purge.jsdelivr.net/gh/${{ github.repository }}/$file"
           done
+
+      - name: Commit and Push
+        run: |
+          git config --global user.name "the Magical Cat"
+          git config --global user.email "theMagicalCat@users.noreply.github.com"
+          git add .
+          git commit -m "Auto Update $(TZ='Asia/Shanghai' date +'%Y-%m-%d %H:%M')"
+          git push origin HEAD
+            
