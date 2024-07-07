@@ -156,11 +156,12 @@ jobs:
             local output=$2
             local title=$3
             local description=$4
-        
+
             curl -sSL "$url" -o original_rules.list
-            rules_count=$(grep -cE "^([0-9a-zA-Z]|#)" original_rules.list)
+            grep -E "^(DOMAIN-SUFFIX|DOMAIN|IP-CIDR|DOMAIN-KEYWORD|IP-CIDR6)," original_rules.list > filtered_rules.list
+            rules_count=$(wc -l < filtered_rules.list)
             current_time=$(date -u +"%Y-%m-%dT%H:%M:%S.000Z")
-        
+
             cat > "$output" <<EOF
           ################################################
           # $title for Surge
@@ -173,17 +174,17 @@ jobs:
           # Data from:
           #  - $url
           ################################################
-        
+
           EOF
-        
-            cat original_rules.list >> "$output"
-            rm original_rules.list
+
+            cat filtered_rules.list >> "$output"
+            rm original_rules.list filtered_rules.list
           }
-        
+
           generate_antiip_file "$antiip_direct" "Surge/Ruleset/AntiIP/Direct.list" "AntiIP Direct List" "本文件包含反 IP 归属地检测的直连规则,用于 Surge 规则。"
           generate_antiip_file "$antiip_proxy" "Surge/Ruleset/AntiIP/Proxy.list" "AntiIP Proxy List" "本文件包含反 IP 归属地检测的代理规则,用于 Surge 规则。"
           generate_antiip_file "$antiip_reject" "Surge/Ruleset/AntiIP/Reject.list" "AntiIP Reject List" "本文件包含反 IP 归属地检测的拒绝规则,用于 Surge 规则。"
-  
+
       - name: Commit and Push
         run: |
           git config --global user.name "the Magical Cat"
