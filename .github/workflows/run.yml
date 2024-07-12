@@ -185,6 +185,66 @@ jobs:
           generate_antiip_file "$antiip_proxy" "Surge/Ruleset/AntiIP/Proxy.list" "AntiIP Proxy List" "本文件包含反 IP 归属地检测的代理规则,用于 Surge 规则。"
           generate_antiip_file "$antiip_reject" "Surge/Ruleset/AntiIP/Reject.list" "AntiIP Reject List" "本文件包含反 IP 归属地检测的拒绝规则,用于 Surge 规则。"
 
+      - name: Generate AdblockByfmz200.list
+        run: |
+          # 下载文件
+          curl -sSL "https://github.com/fmz200/wool_scripts/raw/main/QuantumultX/filter/fenliu.list" -o fenliu.list
+
+          # 获取当前时间戳
+          current_time=$(date -u +"%Y-%m-%dT%H:%M:%S.000Z")
+
+          # 创建新的头部信息
+          cat > header.txt <<EOF
+          ################################################
+          # Advertising Block List for Surge
+          #
+          # Last Updated: $current_time
+          #
+          # 本文件包含广告拦截规则,用于 Surge 规则。
+          #
+          # Data from:
+          #  - https://github.com/fmz200/wool_scripts/raw/main/QuantumultX/filter/fenliu.list
+          ################################################
+
+          EOF
+
+          # 处理文件
+          sed -e '1,/^#############################################$/d' fenliu.list | \
+          awk '{
+            if ($0 ~ /^# >/) {
+              print $0
+            } else if ($0 ~ /^host/) {
+              gsub(/host,/, "DOMAIN,")
+              gsub(/host-/, "DOMAIN-")
+              gsub(/-suffix/, "-SUFFIX")
+              gsub(/-keyword/, "-KEYWORD")
+              gsub(/,REJECT$/, "")
+              gsub(/,DIRECT$/, "")
+              gsub(/,reject$/, "")
+              gsub(/,direct$/, "")
+              print toupper($0)
+            } else if ($0 ~ /^ip/) {
+              gsub(/ip-cidr/, "IP-CIDR")
+              gsub(/ip6-cidr/, "IP-CIDR6")
+              if (!/,no-resolve/) {
+                $0 = $0 ",no-resolve"
+              }
+              print toupper($0)
+            }
+          }' > temp.list
+
+          # 合并头部信息和处理后的文件
+          cat header.txt temp.list > Surge/Ruleset/Custom/AdblockByfmz200.list
+
+          # 清理临时文件
+          rm fenliu.list temp.list header.txt
+
+          # 统计规则数量（不包括注释行）
+          rules_count=$(grep -cE '^(DOMAIN|IP-CIDR|IP-CIDR6)' Surge/Ruleset/Custom/AdblockByfmz200.list)
+
+          # 更新头部信息中的规则数量
+          sed -i "s/Last Updated:.*/Last Updated: $current_time\n# Size: $rules_count/" Surge/Ruleset/Custom/AdblockByfmz200.list
+
       - name: Commit and Push
         run: |
           git config --global user.name "the Magical Cat"
@@ -207,6 +267,7 @@ jobs:
             "Surge/Ruleset/AntiIP/Direct.list"
             "Surge/Ruleset/AntiIP/Proxy.list"
             "Surge/Ruleset/AntiIP/Reject.list"
+            "Surge/Ruleset/Custom/AdblockByfmz200.list
           )
           for file in "${cdn_files[@]}"; do
             curl -i "https://purge.jsdelivr.net/gh/${{ github.repository }}/$file"
