@@ -37,13 +37,13 @@ DOMAIN-KEYWORD,volc
 
 
 #
-# --- (# >>>>>>>>>>>>>>> ✅ 0 ✅ <<<<<<<<<<<<<<) ---
+# --- ( 0 ) ---
 #
 
 
 
 #
-# --- (# >>>>>>>>>>>>>>> ✅ 1 ✅ <<<<<<<<<<<<<<) ---
+# --- ( 1 ) ---
 #
 # > 交管12123
 DOMAIN-SUFFIX,v3.fstats.xyz
@@ -55,25 +55,25 @@ DOMAIN-KEYWORD,in-page-push
 
 
 #
-# --- (# >>>>>>>>>>>>>>> ✅ 2 ✅ <<<<<<<<<<<<<<) ---
+# --- ( 2 ) ---
 #
 
 
 
 #
-# --- (# >>>>>>>>>>>>>>> ✅ 3 ✅ <<<<<<<<<<<<<<) ---
+# --- ( 3 ) ---
 #
 
 
 
 #
-# --- (# >>>>>>>>>>>>>>> ✅ 4 ✅ <<<<<<<<<<<<<<) ---
+# --- ( 4 ) ---
 #
 
 
 
 #
-# --- (# >>>>>>>>>>>>>>> ✅ 5 ✅ <<<<<<<<<<<<<<) ---
+# --- ( 5 ) ---
 #
 # > 51wnl
 DOMAIN,ad.51wnl-cq.com
@@ -94,31 +94,31 @@ DOMAIN,tracklog.58.com
 
 
 #
-# --- (# >>>>>>>>>>>>>>> ✅ 6 ✅ <<<<<<<<<<<<<<) ---
+# --- ( 6 ) ---
 #
 
 
 
 #
-# --- (# >>>>>>>>>>>>>>> ✅ 7 ✅ <<<<<<<<<<<<<<) ---
+# --- ( 7 ) ---
 #
 
 
 
 #
-# --- (# >>>>>>>>>>>>>>> ✅ 8 ✅ <<<<<<<<<<<<<<) ---
+# --- ( 8 ) ---
 #
 
 
 
 #
-# --- (# >>>>>>>>>>>>>>> ✅ 9 ✅ <<<<<<<<<<<<<<) ---
+# --- ( 9 ) ---
 #
 
 
 
 #
-# --- (# >>>>>>>>>>>>>>> ✅ A ✅ <<<<<<<<<<<<<<) ---
+# --- ( A ) ---
 #
 # > Adobe Flash China Special Edition
 DOMAIN,geo2.adobe.com
@@ -205,7 +205,7 @@ IP-CIDR,124.192.153.42/32
 
 
 #
-# --- (# >>>>>>>>>>>>>>> ✅ B ✅ <<<<<<<<<<<<<<) ---
+# --- ( B ) ---
 #
 # > 百度
 DOMAIN-SUFFIX,duapps.com
@@ -392,7 +392,7 @@ DOMAIN-SUFFIX,iad-08.braze.com
 
 
 #
-# --- (# >>>>>>>>>>>>>>> ✅ C ✅ <<<<<<<<<<<<<<) ---
+# --- ( C ) ---
 #
 # > C&J Marketing
 # https://www.zhihu.com/question/46746200
@@ -433,7 +433,7 @@ DOMAIN,ad.chelaile.net.cn
 
 
 #
-# --- (# >>>>>>>>>>>>>>> ✅ D ✅ <<<<<<<<<<<<<<) ---
+# --- ( D ) ---
 #
 # > Dr.Peng
 # IP-CIDR,10.72.25.0/24
@@ -472,13 +472,13 @@ DOMAIN-SUFFIX,ad.duoduo.link
 
 
 #
-# --- (# >>>>>>>>>>>>>>> ✅ E ✅ <<<<<<<<<<<<<<) ---
+# --- ( E ) ---
 #
 
 
 
 #
-# --- (# >>>>>>>>>>>>>>> ✅ F ✅ <<<<<<<<<<<<<<) ---
+# --- ( F ) ---
 #
 # > 番茄小说
 DOMAIN-SUFFIX,byteimg.com
@@ -516,7 +516,7 @@ DOMAIN,ifengad.3g.ifeng.com
 
 
 #
-# --- (# >>>>>>>>>>>>>>> ✅ G ✅ <<<<<<<<<<<<<<) ---
+# --- ( G ) ---
 #
 # > GozenData
 # https://www.v2ex.com/t/772523
@@ -579,7 +579,7 @@ DOMAIN,apis.alenable.com
 
 
 #
-# --- (# >>>>>>>>>>>>>>> ✅ H ✅ <<<<<<<<<<<<<<) ---
+# --- ( H ) ---
 #
 # > HDO
 # DOMAIN-SUFFIX,applovin.com
@@ -625,7 +625,7 @@ DOMAIN-SUFFIX,mob.com
 
 
 #
-# --- (# >>>>>>>>>>>>>>> ✅ J ✅ <<<<<<<<<<<<<<) ---
+# --- ( J ) ---
 #
 # > jxedt
 DOMAIN,richmanapi.jxedt.com
@@ -685,7 +685,7 @@ DOMAIN,o2o-ad-log-gateway.alibaba.com
 
 
 #
-# --- (# >>>>>>>>>>>>>>> ✅ K ✅ <<<<<<<<<<<<<<) ---
+# --- ( K ) ---
 #
 # > keep
 DOMAIN,apm.gotokeep.com
@@ -791,7 +791,7 @@ DOMAIN-SUFFIX,rich.kuwo.cn
 
 
 #
-# --- (# >>>>>>>>>>>>>>> ✅ L ✅ <<<<<<<<<<<<<<) ---
+# --- ( L ) ---
 #
 # > LinkWiFi
 DOMAIN,a.wkanx.com
@@ -814,7 +814,7 @@ DOMAIN,n.mark.letv.com
 
 
 #
-# --- (# >>>>>>>>>>>>>>> ✅ M ✅ <<<<<<<<<<<<<<) ---
+# --- ( M ) ---
 #
 # > MacKeeper
 DOMAIN-SUFFIX,zryydi.com
@@ -906,7 +906,7 @@ DOMAIN-SUFFIX,da.mgtv.com
 
 
 #
-# --- (# >>>>>>>>>>>>>>> ✅ N ✅ <<<<<<<<<<<<<<) ---
+# --- ( N ) ---
 #
 # > NicoNico
 DOMAIN,ads.nicovideo.jp
@@ -914,7 +914,7 @@ DOMAIN,ads.nicovideo.jp
 
 
 #
-# --- (# >>>>>>>>>>>>>>> ✅ O ✅ <<<<<<<<<<<<<<) ---
+# --- ( O ) ---
 #
 # > OPPO
 DOMAIN,adsfs.oppomobile.com
@@ -929,7 +929,7 @@ DOMAIN,sin3-ib.adnxs.com
 
 
 #
-# --- (# >>>>>>>>>>>>>>> ✅ P ✅ <<<<<<<<<<<<<<) ---
+# --- ( P ) ---
 #
 # > PPTV
 DOMAIN,ads.aplus.pptv.com
@@ -976,7 +976,7 @@ DOMAIN-KEYWORD,api-access.pangolin-sdk-toutiao.com
 
 
 #
-# --- (# >>>>>>>>>>>>>>> ✅ Q ✅ <<<<<<<<<<<<<<) ---
+# --- ( Q ) ---
 #
 # > QQ音乐
 DOMAIN,adstats.tencentmusic.com
@@ -1044,13 +1044,13 @@ DOMAIN-SUFFIX,v.gdt.qq.com
 
 
 #
-# --- (# >>>>>>>>>>>>>>> ✅ R ✅ <<<<<<<<<<<<<<) ---
+# --- ( R ) ---
 #
 
 
 
 #
-# --- (# >>>>>>>>>>>>>>> ✅ S ✅ <<<<<<<<<<<<<<) ---
+# --- ( S ) ---
 #
 # > soul
 DOMAIN,soul-ad.soulapp.cn
@@ -1121,7 +1121,7 @@ DOMAIN,ynuf.aliapp.org
 
 
 #
-# --- (# >>>>>>>>>>>>>>> ✅ T ✅ <<<<<<<<<<<<<<) ---
+# --- ( T ) ---
 #
 # > TubeMax  感谢@可莉分享
 DOMAIN-SUFFIX,adjust.com
@@ -1321,7 +1321,7 @@ DOMAIN-KEYWORD,img1.czb365.com
 
 
 #
-# --- (# >>>>>>>>>>>>>>> ✅ U ✅ <<<<<<<<<<<<<<) ---
+# --- ( U ) ---
 #
 # > UC浏览器
 DOMAIN-KEYWORD,m.atm.youku.com
@@ -1440,7 +1440,7 @@ DOMAIN,tnc3-aliec2.snssdk.com
 
 
 #
-# --- (# >>>>>>>>>>>>>>> ✅ V ✅ <<<<<<<<<<<<<<) ---
+# --- ( V ) ---
 #
 # > VariFlight
 DOMAIN,adv-adlog.variflight.com
@@ -1464,7 +1464,7 @@ DOMAIN-KEYWORD,paradisestatic.vivo.com.cn
 
 
 #
-# --- (# >>>>>>>>>>>>>>> ✅ W ✅ <<<<<<<<<<<<<<) ---
+# --- ( W ) ---
 #
 # > 万能钥匙专业版 感谢#All in 梭哈分享
 DOMAIN-SUFFIX,mi.gdt.qq.com
@@ -1556,7 +1556,7 @@ DOMAIN-KEYWORD,config.y5en.com
 
 
 #
-# --- (# >>>>>>>>>>>>>>> ✅ X ✅ <<<<<<<<<<<<<<) ---
+# --- ( X ) ---
 #
 # > 讯飞输入法
 DOMAIN-KEYWORD,ossp.voicecloud.cn
@@ -1615,7 +1615,7 @@ DOMAIN,saxn.sina.com.cn
 
 
 #
-# --- (# >>>>>>>>>>>>>>> ✅ Y ✅ <<<<<<<<<<<<<<) ---
+# --- ( Y ) ---
 #
 # > 云闪付
 DOMAIN,ads.95516.com
@@ -1725,7 +1725,7 @@ DOMAIN-SUFFIX,vdapprecv.app.cntvwb.cn
 
 
 #
-# --- (# >>>>>>>>>>>>>>> ✅ Z ✅ <<<<<<<<<<<<<<) ---
+# --- ( Z ) ---
 #
 # > 知乎
 USER-AGENT,AVOS*
