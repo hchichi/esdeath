@@ -185,7 +185,7 @@ jobs:
           generate_antiip_file "$antiip_proxy" "Surge/Ruleset/AntiIP/Proxy.list" "AntiIP Proxy List" "本文件包含反 IP 归属地检测的代理规则,用于 Surge 规则。"
           generate_antiip_file "$antiip_reject" "Surge/Ruleset/AntiIP/Reject.list" "AntiIP Reject List" "本文件包含反 IP 归属地检测的拒绝规则,用于 Surge 规则。"
 
-      - name: Generate AdblockByfmz200.list
+      - name: Download and process NoAdfmz200.list
         run: |
           # 下载文件
           curl -sSL "https://github.com/fmz200/wool_scripts/raw/main/QuantumultX/filter/fenliu.list" -o fenliu.list
@@ -209,41 +209,61 @@ jobs:
           EOF
 
           # 处理文件
-          sed -e '1,/^#############################################$/d' fenliu.list | \
-          awk '{
+          awk '
+          BEGIN { prev_line_empty = 0 }
+          {
+            # 删除 ">>>>>>>>>>>>>>> ✅ X ✅ <<<<<<<<<<<<<<"" 类型的行
+            if ($0 ~ /^# >+.*✅.*<+$/) next
+
+            # 处理 "# >" 开头的注释行
             if ($0 ~ /^# >/) {
+              if (!prev_line_empty) print ""  # 如果前一行不是空行，则添加一个空行
               print $0
-            } else if ($0 ~ /^host/) {
-              gsub(/host,/, "DOMAIN,")
-              gsub(/host-/, "DOMAIN-")
-              gsub(/-suffix/, "-SUFFIX")
-              gsub(/-keyword/, "-KEYWORD")
-              gsub(/,REJECT$/, "")
-              gsub(/,DIRECT$/, "")
-              gsub(/,reject$/, "")
-              gsub(/,direct$/, "")
-              print toupper($0)
-            } else if ($0 ~ /^ip/) {
-              gsub(/ip-cidr/, "IP-CIDR")
-              gsub(/ip6-cidr/, "IP-CIDR6")
-              if (!/,no-resolve/) {
+              prev_line_empty = 0
+              next
+            }
+
+            # 处理规则行
+            if ($0 ~ /^(HOST|DOMAIN|IP|IP-CIDR|IP6-CIDR)/) {
+              gsub(/HOST,/, "DOMAIN,")
+              gsub(/HOST-/, "DOMAIN-")
+              gsub(/IP6-CIDR,/, "IP-CIDR6,")
+              gsub(/-SUFFIX/, "-SUFFIX")
+              gsub(/-KEYWORD/, "-KEYWORD")
+              gsub(/, /, ",")  # 删除逗号后的空格
+              gsub(/,(REJECT|DIRECT)$/, "")  # 删除末尾的 ,REJECT 或 ,DIRECT
+              gsub(/,(reject|direct)$/, "")  # 删除末尾的 ,reject 或 ,direct（小写版本）
+              if ($0 ~ /^IP-CIDR/ && !/,no-resolve/) {
                 $0 = $0 ",no-resolve"
               }
               print toupper($0)
+              prev_line_empty = 0
+              next
             }
-          }' > temp.list
+
+            # 跳过空行
+            if (NF == 0) {
+              prev_line_empty = 1
+              next
+            }
+
+            # 其他行保持不变
+            print $0
+            prev_line_empty = 0
+          }
+          ' fenliu.list > temp.list
 
           # 合并头部信息和处理后的文件
-          cat header.txt temp.list > Surge/Ruleset/Custom/AdblockByfmz200.list
+          cat header.txt temp.list > Surge/Ruleset/NoAD/NoAdfmz200.list
 
           # 清理临时文件
           rm fenliu.list temp.list header.txt
 
           # 统计规则数量（不包括注释行）
-          rules_count=$(grep -cE '^(DOMAIN|IP-CIDR|IP-CIDR6)' Surge/Ruleset/Custom/AdblockByfmz200.list)
+          rules_count=$(grep -cE '^(DOMAIN|IP-CIDR|IP-CIDR6)' Surge/Ruleset/NoAD/NoAdfmz200.list)
 
           # 更新头部信息中的规则数量
-          sed -i "s/Last Updated:.*/Last Updated: $current_time\n# Size: $rules_count/" Surge/Ruleset/Custom/AdblockByfmz200.list
+          sed -i "s/Last Updated:.*/Last Updated: $current_time\n# Size: $rules_count/" Surge/Ruleset/NoAD/NoAdfmz200.list
 
       - name: Commit and Push
         run: |
@@ -267,7 +287,7 @@ jobs:
             "Surge/Ruleset/AntiIP/Direct.list"
             "Surge/Ruleset/AntiIP/Proxy.list"
             "Surge/Ruleset/AntiIP/Reject.list"
-            "Surge/Ruleset/Custom/AdblockByfmz200.list
+            "Surge/Ruleset/Custom/NoAdfmz200.list
           )
           for file in "${cdn_files[@]}"; do
             curl -i "https://purge.jsdelivr.net/gh/${{ github.repository }}/$file"
