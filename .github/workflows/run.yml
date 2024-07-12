@@ -287,8 +287,12 @@ jobs:
             "Surge/Ruleset/AntiIP/Direct.list"
             "Surge/Ruleset/AntiIP/Proxy.list"
             "Surge/Ruleset/AntiIP/Reject.list"
-            "Surge/Ruleset/Custom/NoAdfmz200.list
+            "Surge/Ruleset/Custom/AdblockByfmz200.list"
           )
+          #for file in "${cdn_files[@]}"; do
+          #  curl -i "https://purge.jsdelivr.net/gh/HauruJ/esdeath/$file"
+          #done
+
           for file in "${cdn_files[@]}"; do
             curl -i "https://purge.jsdelivr.net/gh/${{ github.repository }}/$file"
           done
