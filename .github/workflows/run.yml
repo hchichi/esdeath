@@ -192,6 +192,9 @@ jobs:
 
           # 获取当前时间戳
           current_time=$(date -u +"%Y-%m-%dT%H:%M:%S.000Z")
+          
+          # 创建必要的目录
+          mkdir -p Surge/Ruleset/NoAD
 
           # 创建新的头部信息
           cat > header.txt <<EOF
