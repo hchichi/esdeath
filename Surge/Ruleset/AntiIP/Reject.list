@@ -1,7 +1,7 @@
 ################################################
 # AntiIP Reject List for Surge
 #
-# Last Updated: 2024-07-12T07:46:57.000Z
+# Last Updated: 2024-07-12T07:53:51.000Z
 # Size: 20
 #
 # 本文件包含反 IP 归属地检测的拒绝规则,用于 Surge 规则。
