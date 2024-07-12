@@ -96,7 +96,12 @@ jobs:
           generate_rule_file "$ai_rules" "Surge/Ruleset/AI.list" "AI List" "本文件包含 AI 相关的域名规则,用于 Surge 规则。" 'cat original_rules.list >> "$output" && echo -e "\n# > OpenRouter\nDOMAIN-SUFFIX,openrouter.ai" >> "$output"'
 
           # Generate NoAds_fmz200.list
-          generate_rule_file "$fmz200_rules" "Surge/Ruleset/NoAds/NoAds_fmz200.list" "Advertising Block List" "This file contains rules for blocking various advertisements." '
+          generate_rule_file "$fmz200_rules" "Surge/Ruleset/NoAds/NoAds_fmz200.list" "Advertising Block List from fmz200" "This file contains rules for blocking various advertisements." '
+            rules_count=$(grep -cE "^([0-9a-zA-Z]|#)" original_rules.list)
+            current_time=$(date -u +"%Y-%m-%dT%H:%M:%S.000Z")
+            
+            echo "################################################\n# Advertising Block List from fmz200 for Surge\n#\n# Last Updated: $current_time\n# Size: $rules_count\n#\n# This file contains rules for blocking various advertisements.\n#\n# Data from:\n#  - $fmz200_rules\n################################################\n" > "$output"
+            
             sed -e "s/, /,/g" \
                 -e "s/;/# /g" \
                 -e "s/host,/HOST,/g" \
@@ -113,16 +118,12 @@ jobs:
                 -e "s/,DIRECT$//g" \
                 -e "s/,reject$//g" \
                 -e "s/,direct$//g" \
-                -e "/# 更新：/d" \
-                -e "/# AUTHOR:/d" \
-                -e "/# REPO:/d" \
-                -e "/# UPDATED:/d" \
-                -e "/# 数目: /d" \
-                -e "/# 规则: /d" \
-                -e "/404: Not Found/d" \
-                -e "s/# >>>>>>>>>>>>>>> ✅ \([0-9A-Z]\) ✅ <<<<<<<<<<<<<</#\\n# --- ( \1 ) ---\\n#/" \
-                original_rules.list > "$output"
+                -e "/^#!.*$/d" \
+                -e "/^#############################################$/d" \
+                -e "s/# >>>>>>>>>>>>>>> ✅ \(.*\) ✅ <<<<<<<<<<<<<</#\\n# --- ( \1 ) ---\\n#/" \
+                original_rules.list >> "$output"
           '
+
 
       - name: Generate EmbyBravo.list file
         run: |
