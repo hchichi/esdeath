@@ -1,14 +1,4 @@
-#!name=广告拦截合集-分流
-#!desc=(F)针对部分APP和小程序广告进行拦截，某些APP要清除缓存或者重新安装APP，拦截广告才会生效！
-#!author=fmz200
-#!homepage=https://github.com/fmz200/wool_scripts
-#!icon=https://raw.githubusercontent.com/fmz200/wool_scripts/main/icons/gif/naisi-01.gif
-#!raw-url=https://github.com/fmz200/wool_scripts/raw/main/QuantumultX/filter/fenliu.list
-#!tg-group=https://t.me/lanjieguanggao
-#!date=2024-06-26 17:10:00
-#!support=约9392行
-#!proxy-select=reject
-#############################################
+################################################\n# Advertising Block List from fmz200 for Surge\n#\n# Last Updated: 2024-07-12T23:00:37.000Z\n# Size: 9823\n#\n# This file contains rules for blocking various advertisements.\n#\n# Data from:\n#  - https://github.com/fmz200/wool_scripts/raw/main/QuantumultX/filter/fenliu.list\n################################################\n
 # "reject"        策略返回 HTTP 状态码 404,不附带任何额外内容
 # "reject-200"    策略返回 HTTP 状态码 200,不附带任何额外内容
 # "reject-img"    策略返回 HTTP 状态码 200,同时附带 1px gif
@@ -16,10 +6,11 @@
 # "reject-array"  策略返回 HTTP 状态码 200,同时附带一个空的 JSON 数组
 # 1.2.3.4/24      /24表示网络的子网掩码长度，即前24位是网络部分，后8位是主机部分。这种表示法常用于描述特定范围内的IP地址
 # 6.7.8.9/32      /32表示整个32位的IP地址都用于表示这一个地址，即单独的一个IP地址
-#############################################
 
 
-# >>>>>>>>>>>>>>> ✅ # ✅ <<<<<<<<<<<<<<
+#
+# --- ( # ) ---
+#
 # > 广告联盟
 DOMAIN-SUFFIX,miaozhen.com
 DOMAIN-SUFFIX,ad-sign.byteimg.com
@@ -1785,7 +1776,9 @@ DOMAIN-KEYWORD,ad-sign.byteimg.com
 
 
 
-# >>>>>>>>>>>>>>> ✅ 其他广告 ✅ <<<<<<<<<<<<<<
+#
+# --- ( 其他广告 ) ---
+#
 DOMAIN-KEYWORD,112wan
 DOMAIN-KEYWORD,789htbet
 DOMAIN-SUFFIX,XiaoQiang
