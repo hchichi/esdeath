@@ -192,7 +192,7 @@ jobs:
 
           # 获取当前时间戳
           current_time=$(date -u +"%Y-%m-%dT%H:%M:%S.000Z")
-          
+
           # 创建必要的目录
           mkdir -p Surge/Ruleset/NoAD
 
@@ -231,15 +231,13 @@ jobs:
               gsub(/HOST,/, "DOMAIN,")
               gsub(/HOST-/, "DOMAIN-")
               gsub(/IP6-CIDR,/, "IP-CIDR6,")
-              gsub(/-SUFFIX/, "-SUFFIX")
-              gsub(/-KEYWORD/, "-KEYWORD")
               gsub(/, /, ",")  # 删除逗号后的空格
               gsub(/,(REJECT|DIRECT)$/, "")  # 删除末尾的 ,REJECT 或 ,DIRECT
               gsub(/,(reject|direct)$/, "")  # 删除末尾的 ,reject 或 ,direct（小写版本）
               if ($0 ~ /^IP-CIDR/ && !/,no-resolve/) {
                 $0 = $0 ",no-resolve"
               }
-              print toupper($0)
+              print $0
               prev_line_empty = 0
               next
             }
