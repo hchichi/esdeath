@@ -21,24 +21,33 @@ var flags = new Map([[ "AC" , "🇦🇨" ] ,["AE","🇦🇪"], [ "AF" , "🇦�
 var body = $response.body;
 var obj = JSON.parse(body);
 
-// Title: 国旗符号 | 城市, 州
+// Title: Flag | City, State
 var title = flags.get(obj.location.country_code) + ' | ' + obj.location.city + ', ' + obj.location.state;
 
-// Subtitle: ASN编号 · ASN组织名称
+// Subtitle: ASN Number · ASN Organization
 var subtitle = 'AS' + obj.asn.asn + ' · ' + obj.asn.org;
 
 var ip = obj.ip;
 
 // Description
-var description = '位置: ' + obj.location.country + ' - ' + obj.location.city + ', ' + obj.location.state + '\n' +
-                  'IP: ' + obj.ip + '\n' +
-                  'RIR: ' + obj.rir + '\n' +
-                  '数据中心: ' + (obj.is_datacenter ? '是' : '否') + '\n' +
-                  '移动网络: ' + (obj.is_mobile ? '是' : '否') + '\n' +
-                  '爬虫: ' + (obj.is_crawler ? '是' : '否') + '\n' +
-                  'TOR: ' + (obj.is_tor ? '是' : '否') + '\n' +
-                  '代理: ' + (obj.is_proxy ? '是' : '否') + '\n' +
-                  'VPN: ' + (obj.is_vpn ? '是' : '否') + '\n' +
-                  '滥用: ' + (obj.is_abuser ? '是' : '否');
+var description = 'IP: ' + obj.ip + ' (' + obj.rir + ')\n';
+
+// Location
+description += 'Location: ' + obj.location.city + ', ' + obj.location.state + ', ' + obj.location.country + '\n';
+
+// Network
+description += 'Network: ' + obj.company.name;
+
+// Risk factors
+var riskFactors = [];
+if (obj.is_datacenter) riskFactors.push('Datacenter');
+if (obj.is_tor) riskFactors.push('TOR');
+if (obj.is_proxy) riskFactors.push('Proxy');
+if (obj.is_vpn) riskFactors.push('VPN');
+if (obj.is_abuser) riskFactors.push('Abuser');
+
+if (riskFactors.length > 0) {
+    description += '\nRisk: ' + riskFactors.join(', ');
+}
 
 $done({title, subtitle, ip, description});
