@@ -2,7 +2,7 @@ if ($response.statusCode !== 200) {
   $done(null);
 }
 
-let defalutCity = "定不负相思";
+let defalutCity = "🩵";
 let ispISP = "CARBON.";
 
 function City_ValidCheck(para) {
@@ -22,22 +22,21 @@ let obj = JSON.parse(body);
 let weatherEmojis = ['☀️', '⛅️', '☁️', '🌧️', '⛈️', '❄️', '🌫️'];
 let randomWeatherEmoji = weatherEmojis[Math.floor(Math.random() * weatherEmojis.length)];
 
-let title = `${flags.get(obj.countryCode)} | ${City_ValidCheck(obj.city)}, ${obj.regionName}`;
+let title = `${flags.get(obj.location.country_code)} | ${City_ValidCheck(obj.location.city)}, ${obj.location.state}`;
 
-let subtitle = `${randomWeatherEmoji} | ${ISP_ValidCheck(obj.isp)}`;
+let subtitle = `${randomWeatherEmoji} | ASN ${obj.asn.asn} · ${ISP_ValidCheck(obj.asn.org)}`;
 
 let risks = [];
-if (obj.mobile) risks.push("MOBILE");
-if (obj.proxy) risks.push("PROXY");
-if (obj.hosting) risks.push("HOSTING");
+if (obj.is_datacenter) risks.push("DC");
+if (obj.is_tor) risks.push("TOR");
+if (obj.is_proxy) risks.push("PROXY");
+if (obj.is_vpn) risks.push("VPN");
+if (obj.is_abuser) risks.push("ABUSER");
 
-let description = `IP: ${obj.query}
-ISP: ${obj.isp}
-ORG: ${obj.org}
-AS: ${obj.as}
-ASName: ${obj.asname}
-${risks.length > 0 ? 'RISK: ' + risks.join(' | ') : ''}`;
+let description = `IP: ${obj.ip}
+ASN: ASN${obj.asn.asn} · ${obj.asn.org}
+RISK: ${obj.company.abuser_score.split(' ')[1]} | ${obj.asn.rir} ${risks.length > 0 ? '| ' + risks.join(' | ') : ''}`;
 
-let ip = obj.query;
+let ip = obj.ip;
 
 $done({title, subtitle, ip, description});
