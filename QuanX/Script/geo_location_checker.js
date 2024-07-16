@@ -19,12 +19,21 @@ const flags = new Map([
 var body = $response.body;
 var obj = JSON.parse(body);
 var countryFlag = flags.get(obj['countryCode']) || '';
-var region = obj['region'] ? `, ${obj['region']}` : '';
-var title = `${countryFlag} | ${ValidCheck(obj['city'])}${region}`;
-if (!obj['city']) {
-  title = `${countryFlag} ${obj['countryCode']}`;
+
+// 修改title的逻辑
+var title;
+if (!obj['city'] || obj['city'] === obj['country']) {
+  title = `${countryFlag} ${obj['country']}`;
+} else {
+  var region = obj['region'] ? `, ${obj['region']}` : '';
+  title = `${countryFlag} ${ValidCheck(obj['city'])}${region}`;
 }
-var subtitle = `${emojis[getRandomInt(emojis.length)]} ${obj['as']} · ${obj['org']}`;
+
+// 修改subtitle的逻辑
+var asNumber = obj['as'].split(' ')[0]; // 提取AS号码
+var asInfo = obj['as'].split(' ').slice(1).join(' '); // 提取AS后面的文字信息
+var subtitle = `${emojis[getRandomInt(emojis.length)]} ${asNumber} · ${asInfo}`;
+
 var description = `${obj['country']} ${ValidCheck(obj['city'])} ${ValidCheck(obj['region'])}\n${obj['query']}\n${obj['org']}\n${obj['as']}`;
 
 $done({ title, subtitle, ip: obj['query'], description });
