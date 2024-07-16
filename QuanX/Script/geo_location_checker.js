@@ -30,10 +30,14 @@ if (!obj['city'] || obj['city'] === obj['country']) {
 }
 
 // 修改subtitle的逻辑
-var asNumber = obj['as'].split(' ')[0]; // 提取AS号码
-var asInfo = obj['as'].split(' ').slice(1).join(' '); // 提取AS后面的文字信息
-var subtitle = `${emojis[getRandomInt(emojis.length)]} ${asNumber} · ${asInfo}`;
+var asNumber = obj['as'].split(' ')[0].slice(2); // 提取AS号码，去掉"AS"前缀
+var asName = obj['asname']; // 使用asname字段
+var subtitle = `${emojis[getRandomInt(emojis.length)]} AS${asNumber} · ${asName}`;
 
-var description = `${obj['country']} ${ValidCheck(obj['city'])} ${ValidCheck(obj['region'])}\n${obj['query']}\n${obj['org']}\n${obj['as']}`;
+// 修改description的逻辑
+var description = `IP: ${obj['query']}
+GEO: ${ValidCheck(obj['city'])}, ${ValidCheck(obj['regionName'])}, ${obj['country']}
+ASN: ${obj['as']}
+ORG: ${obj['org']}`;
 
 $done({ title, subtitle, ip: obj['query'], description });
