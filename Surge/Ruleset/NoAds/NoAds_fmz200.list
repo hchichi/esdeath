@@ -1,4 +1,4 @@
-################################################\n# Advertising Block List from fmz200 for Surge\n#\n# Last Updated: 2024-07-21T23:00:32.000Z\n# Size: 9823\n#\n# This file contains rules for blocking various advertisements.\n#\n# Data from:\n#  - https://github.com/fmz200/wool_scripts/raw/main/QuantumultX/filter/fenliu.list\n################################################\n
+################################################\n# Advertising Block List from fmz200 for Surge\n#\n# Last Updated: 2024-07-22T23:00:40.000Z\n# Size: 9824\n#\n# This file contains rules for blocking various advertisements.\n#\n# Data from:\n#  - https://github.com/fmz200/wool_scripts/raw/main/QuantumultX/filter/fenliu.list\n################################################\n
 # "reject"        策略返回 HTTP 状态码 404,不附带任何额外内容
 # "reject-200"    策略返回 HTTP 状态码 200,不附带任何额外内容
 # "reject-img"    策略返回 HTTP 状态码 200,同时附带 1px gif
@@ -21,6 +21,7 @@ DOMAIN-KEYWORD,pglstatp-toutiao
 DOMAIN-SUFFIX,pangolin.snssdk.com
 DOMAIN-SUFFIX,video-cn.snssdk.com
 DOMAIN-SUFFIX,getui.com
+DOMAIN-SUFFIX,gepush.com
 DOMAIN-SUFFIX,igexin.com
 # > 收集用户隐私联盟，若有问题自行设置白名单
 DOMAIN-KEYWORD,volc
