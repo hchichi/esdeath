@@ -1,8 +1,8 @@
 ################################################
 # AI List for Surge
 #
-# Last Updated: 2024-07-27T23:00:45.000Z
-# Size: 67
+# Last Updated: 2024-07-28T23:00:41.000Z
+# Size: 69
 #
 # 本文件包含 AI 相关的域名规则,用于 Surge 规则。
 #
@@ -12,6 +12,7 @@
 
 # > OpenAI ChatGPT
 AND,((DOMAIN-KEYWORD,chatgpt-async-webps-prod-eastus-),(DOMAIN-SUFFIX,webpubsub.azure.com))
+AND, ((DOMAIN-KEYWORD, openaicom-api-), (DOMAIN-SUFFIX, azurefd.net))
 DOMAIN,api.statsig.com
 DOMAIN,browser-intake-datadoghq.com
 DOMAIN,cdn.openai.com
@@ -20,7 +21,6 @@ DOMAIN,chat.openai.com.cdn.cloudflare.net
 DOMAIN,ios.chat.openai.com
 DOMAIN,o33249.ingest.sentry.io
 DOMAIN,openai-api.arkoselabs.com
-DOMAIN,openaicom-api-bdcpf8c6d2e9atf6.z01.azurefd.net
 DOMAIN,openaicomproductionae4b.blob.core.windows.net
 DOMAIN,production-openaicom-storage.azureedge.net
 DOMAIN,static.cloudflareinsights.com
@@ -75,15 +75,17 @@ IP-CIDR6,2607:6bc0::/48,no-resolve
 DOMAIN-SUFFIX,grazie.ai
 DOMAIN-SUFFIX,grazie.aws.intellij.net
 
-# > Meta
+# > Meta AI
 DOMAIN,imagine.meta.com
 DOMAIN-SUFFIX,meta.ai
 
 # > Perplexity
 DOMAIN-SUFFIX,perplexity.ai
 
-# > Groq
-DOMAIN-SUFFIX,groq.com
+# > Mistral AI
+DOMAIN,chat.mistral.ai
+DOMAIN,console.mistral.ai
+DOMAIN-SUFFIX,mistral.ai
 
 # > OpenRouter
 DOMAIN-SUFFIX,openrouter.ai
