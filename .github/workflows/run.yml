@@ -234,7 +234,7 @@ jobs:
 
             curl -sSL "$url" -o original_rules.yaml
             yq e '.rules [] | select(. != null) | select( startswith(.," ") | not ) | select( startswith(.," - ") | not ) | select( endswith(.,",DIRECT") | not) ' original_rules.yaml  | sed 's/^- //' | sed 's/,$//g' > filtered_rules.list
-
+            
             rules_count=$(wc -l < filtered_rules.list)
             current_time=$(date -u +"%Y-%m-%dT%H:%M:%S.000Z")
 
@@ -252,7 +252,7 @@ jobs:
           ################################################
 
           EOF
-            
+
             while IFS= read -r line; do
               if [[ $line =~ ^IP-CIDR, ]]; then
                 echo "$line,no-resolve" >> "$output"
@@ -263,7 +263,7 @@ jobs:
 
             rm original_rules.yaml filtered_rules.list
           }
-          
+
           generate_antiip_byapps_file "$qqmusic_antiip" "Surge/Ruleset/AntiIP/ByApps/QQMusic.list" "AntiIP QQ Music List" "本文件包含反 QQ 音乐 IP 归属地检测的代理规则,用于 Surge 规则。"
           generate_antiip_byapps_file "$bilibili_antiip" "Surge/Ruleset/AntiIP/ByApps/Bilibili.list" "AntiIP Bilibili List" "本文件包含反哔哩哔哩 IP 归属地检测的代理规则,用于 Surge 规则。"
           generate_antiip_byapps_file "$xiaohongshu_antiip" "Surge/Ruleset/AntiIP/ByApps/Xiaohongshu.list" "AntiIP Xiaohongshu List" "本文件包含反小红书 IP 归属地检测的代理规则,用于 Surge 规则。"
@@ -314,4 +314,3 @@ jobs:
           git config --global user.email "theMagicalCat@users.noreply.github.com"
           git add .
           git diff --quiet && git diff --staged --quiet || (git commit -m "Auto Update $(TZ='Asia/Shanghai' date +'%Y-%m-%d %H:%M')" && git push origin HEAD)
-
