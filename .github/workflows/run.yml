@@ -31,7 +31,7 @@ jobs:
       antiip_reject: https://github.com/SunsetMkt/anti-ip-attribution/raw/main/generated/rule-set-reject.list
       fmz200_rules: https://github.com/fmz200/wool_scripts/raw/main/QuantumultX/filter/fenliu.list
       qqmusic_antiip: https://github.com/SunsetMkt/anti-ip-attribution/raw/main/rules/QQ%E9%9F%B3%E4%B9%90.yaml
-      bilibili_antiip: https://github.com/SunsetMkt/anti-ip-attribution/raw/main/rules/%E5%93%94%E5%93%A9%E5%93%A9.yaml
+      bilibili_antiip: https://github.com/SunsetMkt/anti-ip-attribution/raw/main/rules/%E5%93%94%E5%93%A9%E5%93%94%E5%93%A9.yaml
       xiaohongshu_antiip: https://github.com/SunsetMkt/anti-ip-attribution/raw/main/rules/%E5%B0%8F%E7%BA%A2%E4%B9%A6.yaml
       douban_antiip: https://github.com/SunsetMkt/anti-ip-attribution/raw/main/rules/%E8%B1%86%E7%93%A3.yaml
       neteasemusic_antiip: https://github.com/SunsetMkt/anti-ip-attribution/raw/main/rules/%E7%BD%91%E6%98%93%E4%BA%91%E9%9F%B3%E4%B9%90.yaml
