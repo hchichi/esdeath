@@ -225,70 +225,71 @@ jobs:
 
       - name: Generate AntiIP Apps rule files
         run: |
-            generate_antiip_byapps_file() {
-            local url=$1
-            local output=$2
-            local title=$3
-            local description=$4
-            
-            curl -sSL "$url" -o original_rules.yaml || { echo "Failed to download $url"; exit 1; }
-            
-            # 直接处理原始文件，提取规则
-            sed -n '/^    - /p' original_rules.yaml | \
-              sed 's/^    - //' | \
-              grep -E '^(DOMAIN|DOMAIN-SUFFIX|IP-CIDR|DOMAIN-KEYWORD|IP-CIDR6),' | \
-              awk '{
-              if ($0 ~ /,(REJECT|DIRECT)$/) {
-                if ($0 ~ /^#/) {
-                print $0
-                } else {
-                print "# " $0
-                }
+generate_antiip_byapps_file() {
+  local url=$1
+  local output=$2
+  local title=$3
+  local description=$4
+
+  echo "Downloading rules from $url..."
+  curl -sSL "$url" -o original_rules.yaml || { echo "Failed to download $url"; exit 1; }
+
+  echo "Downloaded rules:"
+  cat original_rules.yaml
+  
+  # 直接处理原始文件，提取规则
+  sed -n '/^    - /p' original_rules.yaml | \
+    sed 's/^    - //' | \
+    grep -E '^(DOMAIN|DOMAIN-SUFFIX|IP-CIDR|DOMAIN-KEYWORD|IP-CIDR6),' | \
+    awk '{
+      if ($0 ~ /,(REJECT|DIRECT)/) {
+        if ($0 !~ /^#/) {
+          print "# " $0
+        } else {
+          print $0
+        }
       } else if ($0 ~ /^(IP-CIDR|IP-CIDR6),/) {
         if ($0 ~ /#/) {
           sub(/#/, ",no-resolve #")
           print $0
         } else if (!/,no-resolve$/) {
-                print $0 ",no-resolve"
-              } else {
-                print $0
-              }
+          print $0 ",no-resolve"
+        } else {
+          print $0
+        }
       } else {
         print $0
       }
-              }' > filtered_rules.list
-            
-            echo "Downloaded rules:"
-            cat original_rules.yaml
+    }' > filtered_rules.list
 
-            echo "Filtered rules:"
-            cat filtered_rules.list
-            
-            rules_count=$(grep -v '^#' filtered_rules.list | wc -l)
-            current_time=$(date -u +"%Y-%m-%dT%H:%M:%S.000Z")
-            
-            cat > "$output" <<EOF
-            ################################################
-            # $title for Surge
-            #
-            # Last Updated: $current_time
-            # Size: $rules_count
-            #
-            # $description
-            #
-            # Data from:
-            #  - $url
-            ################################################
-            
-            EOF
-            
-            cat filtered_rules.list >> "$output"
-            
-            echo "Generated rules file:"
-            cat "$output"
+  echo "Filtered rules:"
+  cat filtered_rules.list
 
-            rm original_rules.yaml filtered_rules.list
-            }
+  rules_count=$(grep -v '^#' filtered_rules.list | wc -l)
+  current_time=$(date -u +"%Y-%m-%dT%H:%M:%S.000Z")
+
+  cat > "$output" <<EOF
+################################################
+# $title for Surge
+#
+# Last Updated: $current_time
+# Size: $rules_count
+#
+# $description
+#
+# Data from:
+#  - $url
+################################################
+
+EOF
+
+  cat filtered_rules.list >> "$output"
+
+  echo "Generated rules file:"
+  cat "$output"
+
+  rm original_rules.yaml filtered_rules.list
+}
             generate_antiip_byapps_file "$qqmusic_antiip" "Surge/Ruleset/AntiIP/Apps/QQMusic.list" "AntiIP QQ Music List" "本文件包含反 QQ 音乐 IP 归属地检测的代理规则,用于 Surge 规则。"
             generate_antiip_byapps_file "$bilibili_antiip" "Surge/Ruleset/AntiIP/Apps/Bilibili.list" "AntiIP Bilibili List" "本文件包含反哔哩哔哩 IP 归属地检测的代理规则,用于 Surge 规则。"
             generate_antiip_byapps_file "$xiaohongshu_antiip" "Surge/Ruleset/AntiIP/Apps/Xiaohongshu.list" "AntiIP Xiaohongshu List" "本文件包含反小红书 IP 归属地检测的代理规则,用于 Surge 规则。"
