@@ -239,9 +239,20 @@ jobs:
             curl -sSL "$url" -o original_rules.yaml
             
             # 使用 yq 来提取和过滤规则
-            yq e '.rules[]' original_rules.yaml | 
-              grep -E '^(DOMAIN|DOMAIN-SUFFIX|IP-CIDR|DOMAIN-KEYWORD|IP-CIDR6),' | 
-              grep -v -E '(,REJECT$|,DIRECT$)' > filtered_rules.list
+            yq eval '.rules[]' original_rules.yaml | while read -r line; do
+              if [[ $line == \-* ]]; then
+                rule=$(echo "$line" | sed 's/^- //')
+                if [[ $rule =~ ^(DOMAIN|DOMAIN-SUFFIX|IP-CIDR|DOMAIN-KEYWORD|IP-CIDR6), ]] && ! [[ $rule =~ ,(REJECT|DIRECT)$ ]]; then
+                  if [[ $rule =~ ^IP-CIDR, ]] && ! [[ $rule =~ ,no-resolve$ ]]; then
+                    echo "$rule,no-resolve"
+                  elif [[ $rule =~ ^IP-CIDR6, ]] && ! [[ $rule =~ ,no-resolve$ ]]; then
+                    echo "$rule,no-resolve"
+                  else
+                    echo "$rule"
+                  fi
+                fi
+              fi
+            done > filtered_rules.list
 
             rules_count=$(wc -l < filtered_rules.list)
             current_time=$(date -u +"%Y-%m-%dT%H:%M:%S.000Z")
@@ -261,15 +272,7 @@ jobs:
 
           EOF
             
-            while IFS= read -r line; do
-              if [[ $line =~ ^IP-CIDR, ]] && [[ ! $line =~ ,no-resolve$ ]]; then
-                echo "$line,no-resolve" >> "$output"
-              elif [[ $line =~ ^IP-CIDR6, ]] && [[ ! $line =~ ,no-resolve$ ]]; then
-                echo "$line,no-resolve" >> "$output"
-              else
-                echo "$line" >> "$output"
-              fi
-            done < filtered_rules.list
+            cat filtered_rules.list >> "$output"
 
             rm original_rules.yaml filtered_rules.list
           }
