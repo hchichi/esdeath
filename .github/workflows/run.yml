@@ -45,12 +45,7 @@ jobs:
       - name: Make directory
         run: |
           mkdir -p Surge/Ruleset/{IPCIDR,Streaming/Video,Streaming,Custom,AntiIP,NoAds,AntiIP/Apps} dist
-        
-      - name: Install yq
-        run: |
-          sudo wget -O /usr/local/bin/yq https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64
-          sudo chmod +x /usr/local/bin/yq
-
+      
       - name: Generate rule files
         run: |
           generate_rule_file() {
@@ -238,20 +233,12 @@ jobs:
             
             curl -sSL "$url" -o original_rules.yaml
             
-            # 使用 yq 来提取规则
-            yq eval '.rules[]' original_rules.yaml | while read -r line; do
-              if [[ $line == \-* ]]; then
-                rule=$(echo "$line" | sed 's/^- //')
-                if [[ $rule =~ ^(DOMAIN|DOMAIN-SUFFIX|IP-CIDR|DOMAIN-KEYWORD|IP-CIDR6), ]]; then
-                  # 为IP-CIDR规则添加",no-resolve"
-                  if [[ $rule =~ ^(IP-CIDR|IP-CIDR6), ]] && ! [[ $rule =~ ,no-resolve$ ]]; then
-                    echo "$rule,no-resolve"
-                  else
-                    echo "$rule"
-                  fi
-                fi
-              fi
-            done > filtered_rules.list
+            # 直接处理原始文件，提取规则
+            sed -n '/^    - /p' original_rules.yaml | \
+              sed 's/^    - //' | \
+              grep -E '^(DOMAIN|DOMAIN-SUFFIX|IP-CIDR|DOMAIN-KEYWORD|IP-CIDR6),' | \
+              grep -v ',\(DIRECT\|REJECT\)$' | \
+              sed 's/\(IP-CIDR,\|IP-CIDR6,\)\(.*\)/\1\2,no-resolve/' > filtered_rules.list
             
             rules_count=$(wc -l < filtered_rules.list)
             current_time=$(date -u +"%Y-%m-%dT%H:%M:%S.000Z")
@@ -268,14 +255,14 @@ jobs:
           # Data from:
           #  - $url
           ################################################
-
+          
           EOF
-
+          
             cat filtered_rules.list >> "$output"
-
+          
             rm original_rules.yaml filtered_rules.list
           }
-            
+                 
           generate_antiip_byapps_file "$qqmusic_antiip" "Surge/Ruleset/AntiIP/Apps/QQMusic.list" "AntiIP QQ Music List" "本文件包含反 QQ 音乐 IP 归属地检测的代理规则,用于 Surge 规则。"
           generate_antiip_byapps_file "$bilibili_antiip" "Surge/Ruleset/AntiIP/Apps/Bilibili.list" "AntiIP Bilibili List" "本文件包含反哔哩哔哩 IP 归属地检测的代理规则,用于 Surge 规则。"
           generate_antiip_byapps_file "$xiaohongshu_antiip" "Surge/Ruleset/AntiIP/Apps/Xiaohongshu.list" "AntiIP Xiaohongshu List" "本文件包含反小红书 IP 归属地检测的代理规则,用于 Surge 规则。"
