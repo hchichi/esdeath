@@ -224,7 +224,7 @@ jobs:
           generate_antiip_file "$antiip_reject" "Surge/Ruleset/AntiIP/Reject.list" "AntiIP Reject List" "本文件包含反 IP 归属地检测的拒绝规则,用于 Surge 规则。"
           
           - name: Generate AntiIP Apps rule files
-          run: |
+          run: | 
             generate_antiip_byapps_file() {
               local url=$1
               local output=$2
