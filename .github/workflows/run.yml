@@ -223,6 +223,11 @@ jobs:
           generate_antiip_file "$antiip_proxy" "Surge/Ruleset/AntiIP/Proxy.list" "AntiIP Proxy List" "本文件包含反 IP 归属地检测的代理规则,用于 Surge 规则。"
           generate_antiip_file "$antiip_reject" "Surge/Ruleset/AntiIP/Reject.list" "AntiIP Reject List" "本文件包含反 IP 归属地检测的拒绝规则,用于 Surge 规则。"
           
+      - name: Install yq
+        run: |
+          sudo wget https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -O /usr/bin/yq
+          sudo chmod +x /usr/bin/yq
+
       - name: Generate AntiIP ByApps rule files
         run: |
           generate_antiip_byapps_file() {
@@ -233,9 +238,9 @@ jobs:
 
             curl -sSL "$url" -o original_rules.yaml
             
-            # 使用 grep 来提取和过滤规则
-            grep -E '^  - (DOMAIN|DOMAIN-SUFFIX|IP-CIDR|DOMAIN-KEYWORD|IP-CIDR6),' original_rules.yaml | 
-              sed 's/^  - //' | 
+            # 使用 yq 来提取和过滤规则
+            yq e '.rules[]' original_rules.yaml | 
+              grep -E '^(DOMAIN|DOMAIN-SUFFIX|IP-CIDR|DOMAIN-KEYWORD|IP-CIDR6),' | 
               grep -v -E '(,REJECT$|,DIRECT$)' > filtered_rules.list
 
             rules_count=$(wc -l < filtered_rules.list)
