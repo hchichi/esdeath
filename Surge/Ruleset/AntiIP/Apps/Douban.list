@@ -1,12 +1,17 @@
 ################################################
 # AntiIP Douban List for Surge
 #
-# Last Updated: 2024-08-01T05:10:40.000Z
-# Size: 0
+# Last Updated: 2024-08-01T05:17:57.000Z
+# Size: 5
 #
 # 本文件包含反豆瓣 IP 归属地检测的代理规则,用于 Surge 规则。
 #
 # Data from:
-#  - https://github.com/SunsetMkt/anti-ip-attribution/raw/main/rules/豆瓣.yaml
+#  - https://github.com/SunsetMkt/anti-ip-attribution/raw/main/rules/%E8%B1%86%E7%93%A3.yaml
 ################################################
 
+DOMAIN-SUFFIX,douban.com
+IP-CIDR,49.233.242.15/32,no-resolve
+IP-CIDR,81.70.124.99/32,no-resolve
+IP-CIDR,81.70.125.19/32,no-resolve
+IP-CIDR,140.143.177.206/32,no-resolve

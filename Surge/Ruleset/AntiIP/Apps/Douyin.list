@@ -1,12 +1,29 @@
 ################################################
 # AntiIP Douyin List for Surge
 #
-# Last Updated: 2024-08-01T05:10:40.000Z
-# Size: 0
+# Last Updated: 2024-08-01T05:17:58.000Z
+# Size: 15
 #
 # 本文件包含反抖音 IP 归属地检测的代理规则,用于 Surge 规则。
 #
 # Data from:
-#  - https://github.com/SunsetMkt/anti-ip-attribution/raw/main/rules/抖音.yaml
+#  - https://github.com/SunsetMkt/anti-ip-attribution/raw/main/rules/%E6%8A%96%E9%9F%B3.yaml
 ################################################
 
+DOMAIN-KEYWORD,core-c-lq
+DOMAIN-KEYWORD,core-lq
+DOMAIN-KEYWORD,normal-c-lq
+DOMAIN-KEYWORD,normal-lq
+DOMAIN-KEYWORD,search-quic-lq
+DOMAIN-KEYWORD,search-lq
+# DOMAIN-SUFFIX,zijieapi.com,DIRECT
+# DOMAIN-SUFFIX,ecombdapi.com,DIRECT
+DOMAIN-KEYWORD,-normal-hl
+DOMAIN-KEYWORD,-normal-c-hl
+DOMAIN-KEYWORD,-core-c-hl
+DOMAIN-KEYWORD,-normal-lf
+DOMAIN-KEYWORD,-normal-c-lf
+DOMAIN-KEYWORD,-core-c-lf
+DOMAIN,sso.douyin.com # 登录
+DOMAIN,www.douyin.com # Web版PC端
+DOMAIN-SUFFIX,snssdk.com # API域名
