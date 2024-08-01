@@ -244,11 +244,18 @@ jobs:
                 } else {
                 print "# " $0
                 }
-              } else if ($0 ~ /^(IP-CIDR|IP-CIDR6),/ && !/,no-resolve$/) {
+      } else if ($0 ~ /^(IP-CIDR|IP-CIDR6),/) {
+        if ($0 ~ /#/) {
+          sub(/#/, ",no-resolve #")
+          print $0
+        } else if (!/,no-resolve$/) {
                 print $0 ",no-resolve"
               } else {
                 print $0
               }
+      } else {
+        print $0
+      }
               }' > filtered_rules.list
             
             echo "Downloaded rules:"
