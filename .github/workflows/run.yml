@@ -233,9 +233,9 @@ jobs:
 
             curl -sSL "$url" -o original_rules.yaml
             
-            # 使用 awk 和 grep 来提取和过滤规则
-            awk '/^[^#]/ {if ($1 == "-") print $2}' original_rules.yaml | 
-              grep -E '^(DOMAIN|DOMAIN-SUFFIX|IP-CIDR|DOMAIN-KEYWORD|IP-CIDR6),' | 
+            # 使用 grep 来提取和过滤规则
+            grep -E '^  - (DOMAIN|DOMAIN-SUFFIX|IP-CIDR|DOMAIN-KEYWORD|IP-CIDR6),' original_rules.yaml | 
+              sed 's/^  - //' | 
               grep -v -E '(,REJECT$|,DIRECT$)' > filtered_rules.list
 
             rules_count=$(wc -l < filtered_rules.list)
