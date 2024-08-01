@@ -39,11 +39,6 @@ jobs:
       douyin_antiip: https://github.com/SunsetMkt/anti-ip-attribution/raw/main/rules/抖音.yaml
 
     steps:
-      - name: Install yq
-        run: |
-          sudo wget https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -O /usr/bin/yq
-          sudo chmod +x /usr/bin/yq
-
       - name: Checkout the default branch
         uses: actions/checkout@v4
     
@@ -230,52 +225,53 @@ jobs:
           
       - name: Generate AntiIP ByApps rule files
         run: |
-          generate_antiip_byapps_file() {
-            local url=$1
-            local output=$2
-            local title=$3
-            local description=$4
-
-            curl -sSL "$url" -o original_rules.yaml
-            
-            # 使用 yq 来提取和过滤规则
-            yq eval '.rules[]' original_rules.yaml | while read -r line; do
-              if [[ $line == \-* ]]; then
-                rule=$(echo "$line" | sed 's/^- //')
-                if [[ $rule =~ ^(DOMAIN|DOMAIN-SUFFIX|IP-CIDR|DOMAIN-KEYWORD|IP-CIDR6), ]] && ! [[ $rule =~ ,(REJECT|DIRECT)$ ]]; then
-                  if [[ $rule =~ ^IP-CIDR, ]] && ! [[ $rule =~ ,no-resolve$ ]]; then
-                    echo "$rule,no-resolve"
-                  elif [[ $rule =~ ^IP-CIDR6, ]] && ! [[ $rule =~ ,no-resolve$ ]]; then
-                    echo "$rule,no-resolve"
-                  else
-                    echo "$rule"
-                  fi
+        generate_antiip_byapps_file() {
+          local url=$1
+          local output=$2
+          local title=$3
+          local description=$4
+        
+          curl -sSL "$url" -o original_rules.yaml
+        
+          # 使用 yq 来提取和过滤规则
+          yq eval '.rules[]' original_rules.yaml | while read -r line; do
+            if [[ $line == \-* ]]; then
+              rule=$(echo "$line" | sed 's/^- //')
+              # 只保留不包含',REJECT' 和 ',DIRECT' 的规则
+              if [[ $rule =~ ^(DOMAIN|DOMAIN-SUFFIX|IP-CIDR|DOMAIN-KEYWORD|IP-CIDR6), ]] && ! [[ $rule =~ ,(REJECT|DIRECT) ]]; then
+                # 为IP-CIDR规则添加",no-resolve"
+                if [[ $rule =~ ^(IP-CIDR|IP-CIDR6), ]] && ! [[ $rule =~ ,no-resolve$ ]]; then
+                  echo "$rule,no-resolve"
+                else
+                  echo "$rule"
                 fi
               fi
-            done > filtered_rules.list
+            fi
+          done > filtered_rules.list
+        
+          rules_count=$(wc -l < filtered_rules.list)
+          current_time=$(date -u +"%Y-%m-%dT%H:%M:%S.000Z")
+        
+          cat > "$output" <<EOF
+        ################################################
+        # $title for Surge
+        #
+        # Last Updated: $current_time
+        # Size: $rules_count
+        #
+        # $description
+        #
+        # Data from:
+        #  - $url
+        ################################################
+        
+        EOF
+        
+          cat filtered_rules.list >> "$output"
+        
+          rm original_rules.yaml filtered_rules.list
+        }
 
-            rules_count=$(wc -l < filtered_rules.list)
-            current_time=$(date -u +"%Y-%m-%dT%H:%M:%S.000Z")
-
-            cat > "$output" <<EOF
-          ################################################
-          # $title for Surge
-          #
-          # Last Updated: $current_time
-          # Size: $rules_count
-          #
-          # $description
-          #
-          # Data from:
-          #  - $url
-          ################################################
-
-          EOF
-            
-            cat filtered_rules.list >> "$output"
-
-            rm original_rules.yaml filtered_rules.list
-          }
           
           generate_antiip_byapps_file "$qqmusic_antiip" "Surge/Ruleset/AntiIP/ByApps/QQMusic.list" "AntiIP QQ Music List" "本文件包含反 QQ 音乐 IP 归属地检测的代理规则,用于 Surge 规则。"
           generate_antiip_byapps_file "$bilibili_antiip" "Surge/Ruleset/AntiIP/ByApps/Bilibili.list" "AntiIP Bilibili List" "本文件包含反哔哩哔哩 IP 归属地检测的代理规则,用于 Surge 规则。"
@@ -290,7 +286,8 @@ jobs:
           git config --global user.name "the Magical Cat"
           git config --global user.email "theMagicalCat@users.noreply.github.com"
           git add .
-          git diff --quiet && git diff --staged --quiet || (git commit -m "Auto Update $(TZ='Asia/Shanghai' date +'%Y-%m-%d %H:%M')" && git push origin HEAD)
+          git commit -m "Auto Update $(TZ='Asia/Shanghai' date +'%Y-%m-%d %H:%M')"
+          git push origin HEAD
           
       - name: Purge jsdelivr CDN
         run: |
@@ -319,3 +316,10 @@ jobs:
           for file in "${cdn_files[@]}"; do
             curl -i "https://purge.jsdelivr.net/gh/${{ github.repository }}/$file"
           done
+
+      - name: Commit and Push
+        run: |
+          git config --global user.name "the Magical Cat"
+          git config --global user.email "theMagicalCat@users.noreply.github.com"
+          git add .
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Auto Update $(TZ='Asia/Shanghai' date +'%Y-%m-%d %H:%M')" && git push origin HEAD)
