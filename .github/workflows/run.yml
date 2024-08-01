@@ -196,7 +196,7 @@ jobs:
             local description=$4
 
             curl -sSL "$url" -o original_rules.yaml
-            yq e -o=json '.rules' original_rules.yaml | jq -r '.[] | select(. != null)' | grep -E '^(DOMAIN-SUFFIX|DOMAIN|IP-CIDR|DOMAIN-KEYWORD|IP-CIDR6),' | grep -v -E '(^#|,DIRECT$)' | sed 's/^ - //' > filtered_rules.list
+            yq e -o=json '.rules' original_rules.yaml | jq -r '.[] | select(. != null)' | grep -E '^( *- *(DOMAIN-SUFFIX|DOMAIN|IP-CIDR|DOMAIN-KEYWORD|IP-CIDR6),)' | grep -v -E '(^#|- *,)' | sed -E 's/^ *- *//' | sed 's/,REJECT$//g' | sed 's/,DIRECT$//g' > filtered_rules.list
 
             rules_count=$(wc -l < filtered_rules.list)
             current_time=$(date -u +"%Y-%m-%dT%H:%M:%S.000Z")
