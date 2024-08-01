@@ -44,7 +44,7 @@ jobs:
     
       - name: Make directory
         run: |
-          mkdir -p Surge/Ruleset/{IPCIDR,Streaming/Video,Streaming,Custom,AntiIP,NoAds,AntiIP/ByApps} dist
+          mkdir -p Surge/Ruleset/{IPCIDR,Streaming/Video,Streaming,Custom,AntiIP,NoAds,AntiIP/Apps} dist
         
       - name: Generate rule files
         run: |
@@ -130,7 +130,6 @@ jobs:
                 -e "s/# >>>>>>>>>>>>>>> ✅ \(.*\) ✅ <<<<<<<<<<<<<</#\\n# --- ( \1 ) ---\\n#/" \
                 original_rules.list >> "$output"
           '
-
 
       - name: Generate EmbyBravo.list file
         run: |
@@ -224,54 +223,56 @@ jobs:
           generate_antiip_file "$antiip_proxy" "Surge/Ruleset/AntiIP/Proxy.list" "AntiIP Proxy List" "本文件包含反 IP 归属地检测的代理规则,用于 Surge 规则。"
           generate_antiip_file "$antiip_reject" "Surge/Ruleset/AntiIP/Reject.list" "AntiIP Reject List" "本文件包含反 IP 归属地检测的拒绝规则,用于 Surge 规则。"
           
-      - name: Generate AntiIP ByApps rule files
-        run: |
-          generate_antiip_byapps_file() {
-            local url=$1
-            local output=$2
-            local title=$3
-            local description=$4
-
-            curl -sSL "$url" -o original_rules.yaml
-            yq e '.rules [] | select(. != null) | select( startswith(.," ") | not ) | select( startswith(.," - ") | not ) | select( endswith(.,",DIRECT") | not) ' original_rules.yaml  | sed 's/^- //' | sed 's/,$//g' > filtered_rules.list
-
-            rules_count=$(wc -l < filtered_rules.list)
-            current_time=$(date -u +"%Y-%m-%dT%H:%M:%S.000Z")
-
-            cat > "$output" <<EOF
-          ################################################
-          # $title for Surge
-          #
-          # Last Updated: $current_time
-          # Size: $rules_count
-          #
-          # $description
-          #
-          # Data from:
-          #  - $url
-          ################################################
-
-          EOF
+          - name: Generate AntiIP Apps rule files
+          run: |
+            generate_antiip_byapps_file() {
+              local url=$1
+              local output=$2
+              local title=$3
+              local description=$4
+  
+              curl -sSL "$url" -o original_rules.yaml
+              yq e -o=json '.rules' original_rules.yaml | jq -r '.[]' | grep -E '^(DOMAIN-SUFFIX|DOMAIN|IP-CIDR|DOMAIN-KEYWORD|IP-CIDR6),' | grep -v -E '(^#|,DIRECT$)' | sed 's/^-\s*//' > filtered_rules.list
+  
+              rules_count=$(wc -l < filtered_rules.list)
+              current_time=$(date -u +"%Y-%m-%dT%H:%M:%S.000Z")
+  
+              cat > "$output" <<EOF
+            ################################################
+            # $title for Surge
+            #
+            # Last Updated: $current_time
+            # Size: $rules_count
+            #
+            # $description
+            #
+            # Data from:
+            #  - $url
+            ################################################
+  
+            EOF
+              
+              while IFS= read -r line; do
+                if [[ $line =~ ^IP-CIDR, ]] && [[ ! $line =~ ,no-resolve$ ]]; then
+                  echo "$line,no-resolve" >> "$output"
+                elif [[ $line =~ ^IP-CIDR6, ]] && [[ ! $line =~ ,no-resolve$ ]]; then
+                  echo "$line,no-resolve" >> "$output"
+                else
+                  echo "$line" >> "$output"
+                fi
+              done < filtered_rules.list
+  
+              rm original_rules.yaml filtered_rules.list
+            }
             
-            while IFS= read -r line; do
-              if [[ $line =~ ^IP-CIDR, ]]; then
-                echo "$line,no-resolve" >> "$output"
-              else
-                echo "$line" >> "$output"
-              fi
-            done < filtered_rules.list
-
-            rm original_rules.yaml filtered_rules.list
-          }
-          
-          generate_antiip_byapps_file "$qqmusic_antiip" "Surge/Ruleset/AntiIP/ByApps/QQMusic.list" "AntiIP QQ Music List" "本文件包含反 QQ 音乐 IP 归属地检测的代理规则,用于 Surge 规则。"
-          generate_antiip_byapps_file "$bilibili_antiip" "Surge/Ruleset/AntiIP/ByApps/Bilibili.list" "AntiIP Bilibili List" "本文件包含反哔哩哔哩 IP 归属地检测的代理规则,用于 Surge 规则。"
-          generate_antiip_byapps_file "$xiaohongshu_antiip" "Surge/Ruleset/AntiIP/ByApps/Xiaohongshu.list" "AntiIP Xiaohongshu List" "本文件包含反小红书 IP 归属地检测的代理规则,用于 Surge 规则。"
-          generate_antiip_byapps_file "$douban_antiip" "Surge/Ruleset/AntiIP/ByApps/Douban.list" "AntiIP Douban List" "本文件包含反豆瓣 IP 归属地检测的代理规则,用于 Surge 规则。"
-          generate_antiip_byapps_file "$neteasemusic_antiip" "Surge/Ruleset/AntiIP/ByApps/NeteaseMusic.list" "AntiIP Netease Music List" "本文件包含反网易云音乐 IP 归属地检测的代理规则,用于 Surge 规则。"
-          generate_antiip_byapps_file "$wechat_antiip" "Surge/Ruleset/AntiIP/ByApps/WeChat.list" "AntiIP WeChat List" "本文件包含反微信 IP 归属地检测的代理规则,用于 Surge 规则。"
-          generate_antiip_byapps_file "$douyin_antiip" "Surge/Ruleset/AntiIP/ByApps/Douyin.list" "AntiIP Douyin List" "本文件包含反抖音 IP 归属地检测的代理规则,用于 Surge 规则。"
-
+            generate_antiip_byapps_file "$qqmusic_antiip" "Surge/Ruleset/AntiIP/Apps/QQMusic.list" "AntiIP QQ Music List" "本文件包含反 QQ 音乐 IP 归属地检测的代理规则,用于 Surge 规则。"
+            generate_antiip_byapps_file "$bilibili_antiip" "Surge/Ruleset/AntiIP/Apps/Bilibili.list" "AntiIP Bilibili List" "本文件包含反哔哩哔哩 IP 归属地检测的代理规则,用于 Surge 规则。"
+            generate_antiip_byapps_file "$xiaohongshu_antiip" "Surge/Ruleset/AntiIP/Apps/Xiaohongshu.list" "AntiIP Xiaohongshu List" "本文件包含反小红书 IP 归属地检测的代理规则,用于 Surge 规则。"
+            generate_antiip_byapps_file "$douban_antiip" "Surge/Ruleset/AntiIP/Apps/Douban.list" "AntiIP Douban List" "本文件包含反豆瓣 IP 归属地检测的代理规则,用于 Surge 规则。"
+            generate_antiip_byapps_file "$neteasemusic_antiip" "Surge/Ruleset/AntiIP/Apps/NeteaseMusic.list" "AntiIP Netease Music List" "本文件包含反网易云音乐 IP 归属地检测的代理规则,用于 Surge 规则。"
+            generate_antiip_byapps_file "$wechat_antiip" "Surge/Ruleset/AntiIP/Apps/WeChat.list" "AntiIP WeChat List" "本文件包含反微信 IP 归属地检测的代理规则,用于 Surge 规则。"
+            generate_antiip_byapps_file "$douyin_antiip" "Surge/Ruleset/AntiIP/Apps/Douyin.list" "AntiIP Douyin List" "本文件包含反抖音 IP 归属地检测的代理规则,用于 Surge 规则。"
+  
       - name: Commit and Push
         run: |
           git config --global user.name "the Magical Cat"
@@ -295,13 +296,13 @@ jobs:
             "Surge/Ruleset/AntiIP/Proxy.list"
             "Surge/Ruleset/AntiIP/Reject.list"
             "Surge/Ruleset/NoAds/NoAds_fmz200.list"
-            "Surge/Ruleset/AntiIP/ByApps/QQMusic.list"
-            "Surge/Ruleset/AntiIP/ByApps/Bilibili.list"
-            "Surge/Ruleset/AntiIP/ByApps/Xiaohongshu.list"
-            "Surge/Ruleset/AntiIP/ByApps/Douban.list"
-            "Surge/Ruleset/AntiIP/ByApps/NeteaseMusic.list"
-            "Surge/Ruleset/AntiIP/ByApps/WeChat.list"
-            "Surge/Ruleset/AntiIP/ByApps/Douyin.list"
+            "Surge/Ruleset/AntiIP/Apps/QQMusic.list"
+            "Surge/Ruleset/AntiIP/Apps/Bilibili.list"
+            "Surge/Ruleset/AntiIP/Apps/Xiaohongshu.list"
+            "Surge/Ruleset/AntiIP/Apps/Douban.list"
+            "Surge/Ruleset/AntiIP/Apps/NeteaseMusic.list"
+            "Surge/Ruleset/AntiIP/Apps/WeChat.list"
+            "Surge/Ruleset/AntiIP/Apps/Douyin.list"
           )
 
           for file in "${cdn_files[@]}"; do
@@ -314,4 +315,3 @@ jobs:
           git config --global user.email "theMagicalCat@users.noreply.github.com"
           git add .
           git diff --quiet && git diff --staged --quiet || (git commit -m "Auto Update $(TZ='Asia/Shanghai' date +'%Y-%m-%d %H:%M')" && git push origin HEAD)
-
