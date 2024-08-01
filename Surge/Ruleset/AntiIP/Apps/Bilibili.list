@@ -1,0 +1,12 @@
+################################################
+# AntiIP Bilibili List for Surge
+#
+# Last Updated: 2024-08-01T02:37:38.000Z
+# Size: 0
+#
+# 本文件包含反哔哩哔哩 IP 归属地检测的代理规则,用于 Surge 规则。
+#
+# Data from:
+#  - https://github.com/SunsetMkt/anti-ip-attribution/raw/main/rules/哔哩哔哩.yaml
+################################################
+
