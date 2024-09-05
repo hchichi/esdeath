@@ -20,6 +20,7 @@ var body = $response.body;
 var obj = JSON.parse(body);
 var countryFlag = flags.get(obj['countryCode']) || '';
 
+/** 
 // 修改title的逻辑
 var title;
 if (!obj['city'] || obj['city'] === obj['country']) {
@@ -27,6 +28,22 @@ if (!obj['city'] || obj['city'] === obj['country']) {
 } else {
   var region = obj['region'] ? `, ${obj['region']}` : '';
   title = `${countryFlag} ${ValidCheck(obj['city'])}${region}`;
+}
+*/
+
+function removeCity(name) {
+    return name.replace(/\s*city\s*/i, '').trim();
+}
+
+var title;
+var countryFlag = flags.get(obj['countryCode']) || '';
+var cityName = obj['city'] ? removeCity(obj['city']) : '';
+
+if (obj['countryCode'] === 'US') {
+    var region = obj['region'] ? obj['region'] : '';
+    title = `${countryFlag} | ${cityName}, ${region}, ${obj['countryCode']}`;
+} else {
+    title = `${countryFlag} | ${cityName}, ${obj['countryCode']}`;
 }
 
 // 修改subtitle的逻辑
