@@ -51,17 +51,17 @@ if (obj['countryCode'] === 'US') {
     if (obj['region'] && obj['regionName']) {
         // 随机选择格式
         if (Math.random() < 0.5) {
-            title = `${countryFlag} | ${cityName}, ${obj['regionName']}, ${obj['countryCode']}`;
+            title = `${countryFlag} ${cityName}, ${obj['region']}, ${obj['countryCode']}`;
         } else {
-            title = `${countryFlag} | ${cityName}-${obj['region']}, ${obj['countryCode']}`;
+            title = `${countryFlag} ${cityName}-(${obj['region']}), ${obj['countryCode']}`;
         }
     } else {
         // 如果没有 region 或 regionName，仅使用 cityName 和 countryCode
-        title = `${countryFlag} | ${cityName}, ${obj['countryCode']}`;
+        title = `${countryFlag} ${cityName}, ${obj['countryCode']}`;
     }
 } else {
     // 对于其他国家，使用固定格式
-    title = `${countryFlag} | ${cityName}, ${obj['countryCode']}`;
+    title = `${countryFlag} ${cityName}, ${obj['countryCode']}`;
 }
 
 /**
