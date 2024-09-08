@@ -95,14 +95,13 @@ function getRandomEmoji() {
 // 生成 subtitle 的逻辑
 var asNumber = obj['as'].split(' ')[0].slice(2); // 提取AS号码，去掉"AS"前缀
 var asName = obj['asname']; // 使用asname字段
-var randomFixedSymbol1 = getRandomFixedSymbol();
-var randomFixedSymbol2 = getRandomFixedSymbol();
+var randomFixedSymbol = getRandomFixedSymbol();
 
 // 随机选择生成 subtitle 的方式
 if (Math.random() < 0.5) {
   var subtitle = `${getRandomEmoji()} AS${asNumber} · ${asName}`;
 } else {
-  var subtitle = `${randomFixedSymbol1}AS${asNumber}-(${asName})${randomFixedSymbol2}`;
+  var subtitle = `${randomFixedSymbol}AS${asNumber}-(${asName})${randomFixedSymbol}`;
 }
 // 修改description的逻辑
 var description = `IP: ${obj['query']}
