@@ -27,19 +27,26 @@ function removeCity(name) {
 }
 
 function processASInfo(as, asname) {
-    const asMatch = as.match(/AS(\d+)/);
-    if (!asMatch) return { asNumber: '', asName: asname };
+    const asMatch = as.match(/AS(\d+)\s*(.*)/);
+    if (!asMatch) return { asNumber: '', asName: asname || '' };
 
     const asNumber = asMatch[1];
-    let processedAsName = asname
+    let processedAsName = asMatch[2] || asname || '';
+
+    processedAsName = processedAsName
         .replace(new RegExp(`-?AS?${asNumber}$`), '')
         .replace(new RegExp(`^AS${asNumber}\\s*-?\\s*`), '')
         .replace(new RegExp(`^${asNumber}\\s*-?\\s*`), '')
         .trim();
 
     // Handle special cases
-    if (processedAsName.toUpperCase() === asname.toUpperCase()) {
+    if (processedAsName.toUpperCase() === (asname || '').toUpperCase()) {
         processedAsName = processedAsName.split('-')[0].trim();
+    }
+
+    // If processedAsName is empty, use the original asname
+    if (!processedAsName && asname) {
+        processedAsName = asname.replace(/^AS-/, '');
     }
 
     return { asNumber, asName: processedAsName };
