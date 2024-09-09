@@ -29,19 +29,21 @@ jobs:
       antiip_direct: https://github.com/SunsetMkt/anti-ip-attribution/raw/main/generated/rule-set-direct.list
       antiip_proxy: https://github.com/SunsetMkt/anti-ip-attribution/raw/main/generated/rule-set-proxy.list
       antiip_reject: https://github.com/SunsetMkt/anti-ip-attribution/raw/main/generated/rule-set-reject.list
-      fmz200_rules: https://github.com/fmz200/wool_scripts/raw/main/QuantumultX/filter/fenliu.list
       qqmusic_antiip: https://github.com/SunsetMkt/anti-ip-attribution/raw/main/rules/QQ%E9%9F%B3%E4%B9%90.yaml
-      bilibili_antiip: https://github.com/SunsetMkt/anti-ip-attribution/raw/main/rules/%E5%93%94%E5%93%A9%E5%93%94%E5%93%A9.yaml
+      bilibili_antiip: https://github.com/SunsetMkt/anti-ip-attribution/raw/main/rules/%E5%93%94%E5%93%A9%E5%93%A9.yaml
       xiaohongshu_antiip: https://github.com/SunsetMkt/anti-ip-attribution/raw/main/rules/%E5%B0%8F%E7%BA%A2%E4%B9%A6.yaml
       douban_antiip: https://github.com/SunsetMkt/anti-ip-attribution/raw/main/rules/%E8%B1%86%E7%93%A3.yaml
       neteasemusic_antiip: https://github.com/SunsetMkt/anti-ip-attribution/raw/main/rules/%E7%BD%91%E6%98%93%E4%BA%91%E9%9F%B3%E4%B9%90.yaml
       wechat_antiip: https://github.com/SunsetMkt/anti-ip-attribution/raw/main/rules/%E5%BE%AE%E4%BF%A1.yaml
       douyin_antiip: https://github.com/SunsetMkt/anti-ip-attribution/raw/main/rules/%E6%8A%96%E9%9F%B3.yaml
-      
+      fenliuxiuzheng_rules: https://github.com/fmz200/wool_scripts/raw/main/QuantumultX/filter/fenliuxiuzheng.list
+      ads_fmz200: https://github.com/fmz200/wool_scripts/raw/main/QuantumultX/filter/fenliu.list
+      direct_fmz200: https://github.com/fmz200/wool_scripts/raw/main/QuantumultX/filter/fenliuxiuzheng.list
+
     steps:
       - name: Checkout the default branch
         uses: actions/checkout@v4
-    
+
       - name: Make directory
         run: |
           mkdir -p Surge/Ruleset/{IPCIDR,Streaming/Video,Streaming,Custom,AntiIP,NoAds,AntiIP/Apps} dist
@@ -83,31 +85,23 @@ jobs:
             rm original_rules.list
           }
 
-          # Generate IPv4.China.list
-          generate_rule_file "$ipv4_china" "Surge/Ruleset/IPCIDR/IPv4.China.list" "China IPv4 List" "本文件只包含中国大陆的 IPv4 地址范围,用于 Surge 规则。" 'grep -E "^([0-9]{1,3}\.){3}[0-9]{1,3}/" original_rules.list | sed "s/^/IP-CIDR,/;s/$/,no-resolve/" >> "$output"'
-
-          # Generate IPv6.China.list
-          generate_rule_file "$ipv6_china" "Surge/Ruleset/IPCIDR/IPv6.China.list" "China IPv6 List" "本文件包含中国大陆的 IPv6 地址范围,用于 Surge 规则。" 'sed "s/^/IP-CIDR6,/;s/$/,no-resolve/" original_rules.list >> "$output"'
-
-          # Generate TikTok.list
-          generate_rule_file "$tiktok_rules" "Surge/Ruleset/Streaming/Video/TikTok.list" "TikTok List" "本文件包含 TikTok 的相关域名规则,用于 Surge 规则。" 'grep -E "^(AND|DOMAIN|DOMAIN-SUFFIX|DOMAIN-KEYWORD)" original_rules.list >> "$output"'
-
-          # Generate Streaming CN and !CN ruleset
-          generate_rule_file "$streaming_cn" "Surge/Ruleset/Streaming/CN.list" "China Streaming List" "本文件包含中国流媒体域名规则,用于 Surge 规则。"
-          generate_rule_file "$streaming_not_cn" "Surge/Ruleset/Streaming/!CN.list" "!China Streaming List" "本文件包含非中国流媒体域名规则,用于 Surge 规则。"
-
-          # Generate Emby.list
-          generate_rule_file "$emby_rules" "Surge/Ruleset/Streaming/Video/Emby.list" "Emby List" "本文件包含 Emby 的相关域名规则,用于 Surge 规则。"
-
-          # Generate AI.list
-          generate_rule_file "$ai_rules" "Surge/Ruleset/AI.list" "AI List" "本文件包含 AI 相关的域名规则,用于 Surge 规则。" 'cat original_rules.list >> "$output" && echo -e "\n# > OpenRouter\nDOMAIN-SUFFIX,openrouter.ai" >> "$output"'
-
-          # Generate NoAds_fmz200.list
-          generate_rule_file "$fmz200_rules" "Surge/Ruleset/NoAds/NoAds_fmz200.list" "Advertising Block List from fmz200" "This file contains rules for blocking various advertisements." '
+          # New rule generation for Ads_fmz200.list
+          generate_rule_file "$ads_fmz200" "Surge/Ruleset/Ads_fmz200.list" "Ads fmz200 List" "This file contains advertisement-related rules from fmz200, used for Surge rules." '
             rules_count=$(grep -cE "^([0-9a-zA-Z]|#)" original_rules.list)
             current_time=$(date -u +"%Y-%m-%dT%H:%M:%S.000Z")
             
-            echo "################################################\n# Advertising Block List from fmz200 for Surge\n#\n# Last Updated: $current_time\n# Size: $rules_count\n#\n# This file contains rules for blocking various advertisements.\n#\n# Data from:\n#  - $fmz200_rules\n################################################\n" > "$output"
+            echo "################################################
+          # Ads fmz200 List for Surge
+          #
+          # Last Updated: $current_time
+          # Size: $rules_count
+          #
+          # This file contains advertisement-related rules from fmz200.
+          #
+          # Data from:
+          #  - $ads_fmz200
+          ################################################
+          " > "$output"
             
             sed -e "s/, /,/g" \
                 -e "s/;/# /g" \
@@ -127,7 +121,47 @@ jobs:
                 -e "s/,direct$//g" \
                 -e "/^#!.*$/d" \
                 -e "/^#############################################$/d" \
-                -e "s/# >>>>>>>>>>>>>>> ✅ \(.*\) ✅ <<<<<<<<<<<<<</#\n# --- ( \1 ) ---\n#/" \
+                -e "s/# >>>>>>>>>>>>>>> ✅ \(.*\) ✅ <<<<<<<<<<<<<<</#\n# --- ( \1 ) ---\n#/" \
+                original_rules.list >> "$output"
+          '
+
+          # New rule generation for Direct_fmz200.list
+          generate_rule_file "$direct_fmz200" "Surge/Ruleset/Direct_fmz200.list" "Direct fmz200 List" "This file contains direct connection rules from fmz200, used for Surge rules." '
+            rules_count=$(grep -cE "^([0-9a-zA-Z]|#)" original_rules.list)
+            current_time=$(date -u +"%Y-%m-%dT%H:%M:%S.000Z")
+            
+            echo "################################################
+          # Direct fmz200 List for Surge
+          #
+          # Last Updated: $current_time
+          # Size: $rules_count
+          #
+          # This file contains direct connection rules from fmz200.
+          #
+          # Data from:
+          #  - $direct_fmz200
+          ################################################
+          " > "$output"
+            
+            sed -e "s/, /,/g" \
+                -e "s/;/# /g" \
+                -e "s/host,/HOST,/g" \
+                -e "s/host-/HOST-/g" \
+                -e "s/-suffix/-SUFFIX/g" \
+                -e "s/-keyword/-KEYWORD/g" \
+                -e "s/ip-cidr/IP-CIDR/g" \
+                -e "s/-wildcard/-WILDCARD/g" \
+                -e "s/geoip/GEOIP/g" \
+                -e "s/HOST,/DOMAIN,/g" \
+                -e "s/HOST-/DOMAIN-/g" \
+                -e "s/IP6-CIDR,/IP-CIDR6,/g" \
+                -e "s/,REJECT$//g" \
+                -e "s/,DIRECT$//g" \
+                -e "s/,reject$//g" \
+                -e "s/,direct$//g" \
+                -e "/^#!.*$/d" \
+                -e "/^#############################################$/d" \
+                -e "s/# >>>>>>>>>>>>>>> ✅ \(.*\) ✅ <<<<<<<<<<<<<<</#\n# --- ( \1 ) ---\n#/" \
                 original_rules.list >> "$output"
           '
 
@@ -138,7 +172,7 @@ jobs:
               if ($0 ~ /^#/) {
                 sub(/^#/, "# > ")
                 print toupper($0)
-              } else if ($0 ~ /^(DOMAIN|DOMAIN-SUFFIX|DOMAIN-KEYWORD|IP-CIDR|IP-CIDR6|USER-AGENT|URL-REGEX)/) {
+              } else if ($0 ~ /^(DOMAIN|DOMAIN-SUFFIX|DOMAIN-KEYWORD|IP-CIDR|IP-CIDRUSER-AGENT|URL-REGEX)/) {
                 if ($0 ~ /^(IP-CIDR|IP-CIDR6)/ && !/no-resolve$/) {
                   print $0 ",no-resolve"
                 } else {
@@ -225,78 +259,78 @@ jobs:
 
       - name: Generate AntiIP Apps rule files
         run: |
-generate_antiip_byapps_file() {
-  local url=$1
-  local output=$2
-  local title=$3
-  local description=$4
-
-  echo "Downloading rules from $url..."
-  curl -sSL "$url" -o original_rules.yaml || { echo "Failed to download $url"; exit 1; }
-
-  echo "Downloaded rules:"
-  cat original_rules.yaml
-  
-  # 直接处理原始文件，提取规则
-  sed -n '/^    - /p' original_rules.yaml | \
-    sed 's/^    - //' | \
-    grep -E '^(DOMAIN|DOMAIN-SUFFIX|IP-CIDR|DOMAIN-KEYWORD|IP-CIDR6),' | \
-    awk '{
-      if ($0 ~ /,(REJECT|DIRECT)/) {
-        if ($0 !~ /^#/) {
-          print "# " $0
-        } else {
-          print $0
-        }
-      } else if ($0 ~ /^(IP-CIDR|IP-CIDR6),/) {
-        if ($0 ~ /#/) {
-          sub(/#/, ",no-resolve #")
-          print $0
-        } else if (!/,no-resolve$/) {
-          print $0 ",no-resolve"
-        } else {
-          print $0
-        }
-      } else {
-        print $0
-      }
-    }' > filtered_rules.list
-
-  echo "Filtered rules:"
-  cat filtered_rules.list
-
-  rules_count=$(grep -v '^#' filtered_rules.list | wc -l)
-  current_time=$(date -u +"%Y-%m-%dT%H:%M:%S.000Z")
-
-  cat > "$output" <<EOF
-################################################
-# $title for Surge
-#
-# Last Updated: $current_time
-# Size: $rules_count
-#
-# $description
-#
-# Data from:
-#  - $url
-################################################
-
-EOF
-
-  cat filtered_rules.list >> "$output"
-
-  echo "Generated rules file:"
-  cat "$output"
-
-  rm original_rules.yaml filtered_rules.list
-}
-            generate_antiip_byapps_file "$qqmusic_antiip" "Surge/Ruleset/AntiIP/Apps/QQMusic.list" "AntiIP QQ Music List" "本文件包含反 QQ 音乐 IP 归属地检测的代理规则,用于 Surge 规则。"
-            generate_antiip_byapps_file "$bilibili_antiip" "Surge/Ruleset/AntiIP/Apps/Bilibili.list" "AntiIP Bilibili List" "本文件包含反哔哩哔哩 IP 归属地检测的代理规则,用于 Surge 规则。"
-            generate_antiip_byapps_file "$xiaohongshu_antiip" "Surge/Ruleset/AntiIP/Apps/Xiaohongshu.list" "AntiIP Xiaohongshu List" "本文件包含反小红书 IP 归属地检测的代理规则,用于 Surge 规则。"
-            generate_antiip_byapps_file "$douban_antiip" "Surge/Ruleset/AntiIP/Apps/Douban.list" "AntiIP Douban List" "本文件包含反豆瓣 IP 归属地检测的代理规则,用于 Surge 规则。"
-            generate_antiip_byapps_file "$neteasemusic_antiip" "Surge/Ruleset/AntiIP/Apps/NeteaseMusic.list" "AntiIP Netease Music List" "本文件包含反网易云音乐 IP 归属地检测的代理规则,用于 Surge 规则。"
-            generate_antiip_byapps_file "$wechat_antiip" "Surge/Ruleset/AntiIP/Apps/WeChat.list" "AntiIP WeChat List" "本文件包含反微信 IP 归属地检测的代理规则,用于 Surge 规则。"
-            generate_antiip_byapps_file "$douyin_antiip" "Surge/Ruleset/AntiIP/Apps/Douyin.list" "AntiIP Douyin List" "本文件包含反抖音 IP 归属地检测的代理规则,用于 Surge 规则。"
+          generate_antiip_byapps_file() {
+            local url=$1
+            local output=$2
+            local title=$3
+            local description=$4
+          
+            echo "Downloading rules from $url..."
+            curl -sSL "$url" -o original_rules.yaml || { echo "Failed to download $url"; exit 1; }
+          
+            echo "Downloaded rules:"
+            cat original_rules.yaml
+            
+            # 直接处理原始文件，提取规则
+            sed -n '/^    - /p' original_rules.yaml | \
+              sed 's/^    - //' | \
+              grep -E '^(DOMAIN|DOMAIN-SUFFIX|IP-CIDR|DOMAIN-KEYWORD|IP-CIDR6),' | \
+              awk '{
+                if ($0 ~ /,(REJECT|DIRECT)/) {
+                  if ($0 !~ /^#/) {
+                    print "# " $0
+                  } else {
+                    print $0
+                  }
+                } else if ($0 ~ /^(IP-CIDR|IP-CIDR6),/) {
+                  if ($0 ~ /#/) {
+                    sub(/#/, ",no-resolve #")
+                    print $0
+                  } else if (!/,no-resolve$/) {
+                    print $0 ",no-resolve"
+                  } else {
+                    print $0
+                  }
+                } else {
+                  print $0
+                }
+              }' > filtered_rules.list
+            
+            echo "Filtered rules:"
+            cat filtered_rules.list
+            
+            rules_count=$(grep -v '^#' filtered_rules.list | wc -l)
+            current_time=$(date -u +"%Y-%m-%dT%H:%M:%S.000Z")
+          
+            cat > "$output" <<EOF
+          ################################################
+          # $title for Surge
+          #
+          # Last Updated: $current_time
+          # Size: $rules_count
+          #
+          # $description
+          #
+          # Data from:
+          #  - $url
+          ################################################
+          
+          EOF
+          
+            cat filtered_rules.list >> "$output"
+          
+            echo "Generated rules file:"
+            cat "$output"
+          
+            rm original_rules.yaml filtered_rules.list
+          }
+                      generate_antiip_byapps_file "$qqmusic_antiip" "Surge/Ruleset/AntiIP/Apps/QQMusic.list" "AntiIP QQ Music List" "本文件包含反 QQ 音乐 IP 归属地检测的代理规则,用于 Surge 规则。"
+                      generate_antiip_byapps_file "$bilibili_antiip" "Surge/Ruleset/AntiIP/Apps/Bilibili.list" "AntiIP Bilibili List" "本文件包含反哔哩哔哩 IP 归属地检测的代理规则,用于 Surge 规则。"
+                      generate_antiip_byapps_file "$xiaohongshu_antiip" "Surge/Ruleset/AntiIP/Apps/Xiaohongshu.list" "AntiIP Xiaohongshu List" "本文件包含反小红书 IP 归属地检测的代理规则,用于 Surge 规则。"
+                      generate_antiip_byapps_file "$douban_antiip" "Surge/Ruleset/AntiIP/Apps/Douban.list" "AntiIP Douban List" "本文件包含反豆瓣 IP 归属地检测的代理规则,用于 Surge 规则。"
+                      generate_antiip_byapps_file "$neteasemusic_antiip" "Surge/Ruleset/AntiIP/Apps/NeteaseMusic.list" "AntiIP Netease Music List" "本文件包含反网易云音乐 IP 归属地检测的代理规则,用于 Surge 规则。"
+                      generate_antiip_byapps_file "$wechat_antiip" "Surge/Ruleset/AntiIP/Apps/WeChat.list" "AntiIP WeChat List" "本文件包含反微信 IP 归属地检测的代理规则,用于 Surge 规则。"
+                      generate_antiip_byapps_file "$douyin_antiip" "Surge/Ruleset/AntiIP/Apps/Douyin.list" "AntiIP Douyin List" "本文件包含反抖音 IP 归属地检测的代理规则,用于 Surge 规则。"
 
       - name: Commit and Push
         run: |
@@ -319,7 +353,6 @@ EOF
             "Surge/Ruleset/AntiIP/Direct.list"
             "Surge/Ruleset/AntiIP/Proxy.list"
             "Surge/Ruleset/AntiIP/Reject.list"
-            "Surge/Ruleset/NoAds/NoAds_fmz200.list"
             "Surge/Ruleset/AntiIP/Apps/QQMusic.list"
             "Surge/Ruleset/AntiIP/Apps/Bilibili.list"
             "Surge/Ruleset/AntiIP/Apps/Xiaohongshu.list"
@@ -327,6 +360,8 @@ EOF
             "Surge/Ruleset/AntiIP/Apps/NeteaseMusic.list"
             "Surge/Ruleset/AntiIP/Apps/WeChat.list"
             "Surge/Ruleset/AntiIP/Apps/Douyin.list"
+            "Surge/Ruleset/Ads_fmz200.list"
+            "Surge/Ruleset/Direct_fmz200.list"
           )
 
           for file in "${cdn_files[@]}"; do
