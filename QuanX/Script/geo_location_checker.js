@@ -73,6 +73,18 @@ if (obj['countryCode'] === 'US') {
     title = `${countryFlag} ${cityName}, ${obj['countryCode']}`;
 }
 
+function processASInfo(as, asname) {
+    const asMatch = as.match(/AS(\d+)/);
+    if (!asMatch) return { asNumber: '', asName: asname };
+
+    const asNumber = asMatch[1];
+    const processedAsName = asname
+        .replace(new RegExp(`-AS?${asNumber}$`), '')
+        .replace(new RegExp(`^AS${asNumber}\\s*`), '');
+
+    return { asNumber, asName: processedAsName };
+}
+
 /**
 // 修改subtitle的逻辑
 var asNumber = obj['as'].split(' ')[0].slice(2); // 提取AS号码，去掉"AS"前缀
@@ -92,17 +104,19 @@ function getRandomEmoji() {
   return emojis[getRandomInt(emojis.length)];
 }
 
-// 生成 subtitle 的逻辑
-var asNumber = obj['as'].split(' ')[0].slice(2); // 提取AS号码，去掉"AS"前缀
-var asName = obj['asname']; // 使用asname字段
-var randomFixedSymbol = getRandomFixedSymbol();
+function generateOutput(obj) {
+    // 处理AS信息
+    const { asNumber, asName } = processASInfo(obj['as'], obj['asname']);
+    
+    // 生成 subtitle
+    var randomFixedSymbol = getRandomFixedSymbol();
+    var subtitle;
+    if (Math.random() < 0.5) {
+        subtitle = `${getRandomEmoji()} AS${asNumber} · ${asName}`;
+    } else {
+        subtitle = `${randomFixedSymbol}AS${asNumber}-(${asName})${randomFixedSymbol}`;
+    }
 
-// 随机选择生成 subtitle 的方式
-if (Math.random() < 0.5) {
-  var subtitle = `${getRandomEmoji()} AS${asNumber} · ${asName}`;
-} else {
-  var subtitle = `${randomFixedSymbol}AS${asNumber}-(${asName})${randomFixedSymbol}`;
-}
 // 修改description的逻辑
 var description = `IP: ${obj['query']}
 GEO: ${ValidCheck(obj['city'])}, ${ValidCheck(obj['regionName'])}, ${obj['country']}
