@@ -87,9 +87,9 @@ var subtitle = Math.random() < 0.5
     : `${getRandomFixedSymbol()}AS${asNumber}-(${asName})${getRandomFixedSymbol()}`;
 
 // Generate description
-var description = `IP: ${obj.query}
-GEO: ${ValidCheck(obj.city)}, ${ValidCheck(obj.regionName)}, ${obj.country}
-ASN: ${obj.as}
-ORG: ${obj.org}`;
+var description = `🌐 ${obj.query}
+📍 ${ValidCheck(obj.city)}, ${ValidCheck(obj.regionName)}, ${obj.country}
+🔢 ${obj.as}
+🏢 ${obj.org}`;
 
 $done({ title, subtitle, ip: obj.query, description });
