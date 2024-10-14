@@ -6,5 +6,18 @@ updates:
       interval: "daily"
       timezone: "Asia/Shanghai"
       time: "07:00"
+    labels:
+      - "dependencies"
+      - "github-actions"
+    commit-message:
+      prefix: "⬆️ "
+      include: "scope"
     pull-request-branch-name:
       separator: "-"
+    assignees:
+      - "hchichi"
+    reviewers:
+      - "hchichi"
+    open-pull-requests-limit: 10
+    target-branch: "main"
+    versioning-strategy: "auto"
