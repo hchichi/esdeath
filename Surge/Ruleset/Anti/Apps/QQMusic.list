@@ -1,0 +1,15 @@
+################################################
+# Anti QQ Music List for Surge
+#
+# Last Updated: 2024-10-14T13:06:48.000Z
+# Size: 2
+#
+# 本文件包含反 QQ 音乐 IP 归属地检测的代理规则,用于 Surge 规则。
+#
+# Data from:
+#  - https://github.com/SunsetMkt/anti-ip-attribution/raw/main/rules/QQ%E9%9F%B3%E4%B9%90.yaml
+################################################
+
+# DOMAIN,y.qq.com,DIRECT # 图片资源，直连
+DOMAIN-SUFFIX,y.qq.com # u*.y.qq.com
+DOMAIN,zonai.skland.com
