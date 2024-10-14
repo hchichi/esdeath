@@ -1,8 +1,8 @@
 ################################################
 # AntiIP Proxy List for Surge
 #
-# Last Updated: 2024-08-01T05:29:11.000Z
-# Size: 181
+# Last Updated: 2024-10-14T10:12:23.000Z
+# Size: 182
 #
 # 本文件包含反 IP 归属地检测的代理规则,用于 Surge 规则。
 #
@@ -191,3 +191,4 @@ DOMAIN,zonai.skland.com
 DOMAIN-SUFFIX,soulapp.cn
 DOMAIN,druidv6.if.qidian.com
 DOMAIN,ptlogin6.qidian.com
+DOMAIN,api.wmpvp.com
