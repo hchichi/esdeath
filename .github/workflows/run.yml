@@ -86,7 +86,7 @@ jobs:
           }
 
           # New rule generation for Ads_fmz200.list
-          generate_rule_file "$ads_fmz200" "Surge/Ruleset/Ads_fmz200.list" "Ads fmz200 List" "This file contains advertisement-related rules from fmz200, used for Surge rules." '
+          generate_rule_file "$ads_fmz200" "Surge/Ruleset/Reject/Reject_fmz200.list" "Ads fmz200 List" "This file contains advertisement-related rules from fmz200, used for Surge rules." '
             rules_count=$(grep -cE "^([0-9a-zA-Z]|#)" original_rules.list)
             current_time=$(date -u +"%Y-%m-%dT%H:%M:%S.000Z")
             
@@ -126,7 +126,7 @@ jobs:
           '
 
           # New rule generation for Direct_fmz200.list
-          generate_rule_file "$direct_fmz200" "Surge/Ruleset/Direct_fmz200.list" "Direct fmz200 List" "This file contains direct connection rules from fmz200, used for Surge rules." '
+          generate_rule_file "$direct_fmz200" "Surge/Ruleset/Direct/Direct_fmz200.list" "Direct fmz200 List" "This file contains direct connection rules from fmz200, used for Surge rules." '
             rules_count=$(grep -cE "^([0-9a-zA-Z]|#)" original_rules.list)
             current_time=$(date -u +"%Y-%m-%dT%H:%M:%S.000Z")
             
@@ -360,8 +360,8 @@ jobs:
             "Surge/Ruleset/AntiIP/Apps/NeteaseMusic.list"
             "Surge/Ruleset/AntiIP/Apps/WeChat.list"
             "Surge/Ruleset/AntiIP/Apps/Douyin.list"
-            "Surge/Ruleset/Ads_fmz200.list"
-            "Surge/Ruleset/Direct_fmz200.list"
+            "Surge/Ruleset/Reject/Reject_fmz200.list"
+            "Surge/Ruleset/Direct/Direct_fmz200.list"
           )
 
           for file in "${cdn_files[@]}"; do
