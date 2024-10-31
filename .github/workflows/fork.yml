@@ -83,7 +83,7 @@ jobs:
         # Streaming Rules
         curl -L -o "$REPO_PATH/Surge/Ruleset/Streaming/CN.list" "https://github.com/ConnersHua/RuleGo/raw/master/Surge/Rules/Extra/Streaming/CN.list"
         curl -L -o "$REPO_PATH/Surge/Ruleset/Streaming/!CN.list" "https://github.com/ConnersHua/RuleGo/raw/master/Surge/Rules/Extra/Streaming/!CN.list"
-        curl -L -o "$REPO_PATH/Surge/Ruleset/Streaming/Domestic/BiliBiliIntl.list" "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/BiliBiliIntl/BiliBiliIntl.list"
+        curl -L -o "$REPO_PATH/Surge/Ruleset/Streaming/Video/BiliBiliIntl.list" "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/BiliBiliIntl/BiliBiliIntl.list"
         curl -L -o "$REPO_PATH/Surge/Ruleset/Streaming/Music/NetEaseMusic.list" "https://raw.githubusercontent.com/LM-Firefly/Rules/master/Domestic-Services/NeteaseMusic.list"
         curl -L -o "$REPO_PATH/Surge/Ruleset/Streaming/Video/Bilibili.list" "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Rules/Bilibili.list"
         curl -L -o "$REPO_PATH/Surge/Ruleset/Streaming/Video/TikTok.list" "https://proxyresource.pages.dev/Tool/Loon/Rule/TikTok.list"
