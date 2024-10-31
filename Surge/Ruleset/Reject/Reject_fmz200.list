@@ -1,8 +1,8 @@
 ################################################
 # Ads fmz200 List for Surge
 #
-# Last Updated: 2024-10-14T13:06:46.000Z
-# Size: 9837
+# Last Updated: 2024-10-30T23:05:33.000Z
+# Size: 9839
 #
 # This file contains advertisement-related rules from fmz200.
 #
@@ -476,7 +476,8 @@ DOMAIN,msync-im1-vip6-std.easemob.com
 DOMAIN,apd-pcdnwxlogin.teg.tencent-cloud.net
 DOMAIN,api.iegadp.qq.com
 DOMAIN-SUFFIX,byteorge.com
-DOMAIN-SUFFIX,bytegoofy.com
+# 下面两条误杀严重导致懂车帝无法正常使用
+#DOMAIN-SUFFIX,bytegoofy.com
 #DOMAIN-SUFFIX,bytedance.com
 IP-CIDR,49.71.37.101/32
 IP-CIDR,117.71.105.23/32
@@ -639,6 +640,7 @@ DOMAIN-SUFFIX,img-x.jd.com
 DOMAIN-SUFFIX,du.jd.com
 DOMAIN-SUFFIX,c-nfa.jd.com
 DOMAIN-SUFFIX,cm.jd.com
+DOMAIN-SUFFIX,jddebug.com
 DOMAIN-KEYWORD,policy.jd.com
 DOMAIN-KEYWORD,kepler.jd.com
 DOMAIN-KEYWORD,bdsp.x.jd.com

@@ -1,8 +1,8 @@
 ################################################
 # Anti Netease Music List for Surge
 #
-# Last Updated: 2024-10-14T13:06:49.000Z
-# Size: 24
+# Last Updated: 2024-10-30T23:05:36.000Z
+# Size: 29
 #
 # 本文件包含反网易云音乐 IP 归属地检测的代理规则,用于 Surge 规则。
 #
@@ -34,3 +34,8 @@ IP-CIDR,45.254.48.1/32,no-resolve
 IP-CIDR,59.111.160.195/32,no-resolve
 IP-CIDR,59.111.19.33/32,no-resolve
 IP-CIDR,59.111.19.53/32,no-resolve
+DOMAIN-SUFFIX,music.163.com.163jiasu.com
+IP-CIDR,119.36.90.80/32,no-resolve
+IP-CIDR,111.48.137.146/32,no-resolve
+IP-CIDR,1.95.21.35/32,no-resolve
+IP-CIDR,47.100.127.239/32,no-resolve
