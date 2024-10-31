@@ -46,7 +46,10 @@ jobs:
         curl -L -o "$REPO_PATH/Surge/Ruleset/CCC-Global/VerizonMediaPlatform.list" "https://raw.githubusercontent.com/LM-Firefly/Rules/master/CCC-Global/VerizonMediaPlatform.list"
         curl -L -o "$REPO_PATH/Surge/Ruleset/CCC-Global.list" "https://raw.githubusercontent.com/LM-Firefly/Rules/master/CCC-Global.list"
         curl -L -o "$REPO_PATH/Surge/Ruleset/CCC-CN.list" "https://raw.githubusercontent.com/LM-Firefly/Rules/master/CCC-CN.list"
-
+        
+        # SpeedTest Rules
+        curl -L -o "$REPO_PATH/Surge/Ruleset/SpeedTest.list" "https://raw.githubusercontent.com/LM-Firefly/Rules/master/SpeedTest.list"
+        
         # Apple Rules
         curl -L -o "$REPO_PATH/Surge/Ruleset/Apple/APNs.list" "https://proxyresource.pages.dev/Tool/Loon/Rule/ApplePushNotificationService.list"
         curl -L -o "$REPO_PATH/Surge/Ruleset/Apple/Apple.list" "https://raw.githubusercontent.com/NobyDa/Script/master/Surge/Apple.list"
@@ -77,6 +80,10 @@ jobs:
         curl -L -o "$REPO_PATH/Surge/Ruleset/Microsoft/OneDrive.list" "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Rules/OneDrive.list"
         curl -L -o "$REPO_PATH/Surge/Ruleset/Microsoft/Microsoft.list" "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Rules/Microsoft.list"
 
+        # Development Rules
+        #curl -L -o "$REPO_PATH/Surge/Ruleset/PROXY/Github.list" "https://raw.githubusercontent.com/LM-Firefly/Rules/master/PROXY/Github.list"
+        curl -L -o "$REPO_PATH/Surge/Ruleset/PROXY/Gitlab.list" "https://raw.githubusercontent.com/LM-Firefly/Rules/master/PROXY/Gitlab.list"
+
         # Oracle Rules
         curl -L -o "$REPO_PATH/Surge/Ruleset/Oracle/Oracle.list" "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/Oracle/Oracle.list"
 
@@ -96,7 +103,8 @@ jobs:
         curl -L -o "$REPO_PATH/Surge/Ruleset/Streaming/Video/Bahamut.list" "https://github.com/ACL4SSR/ACL4SSR/raw/master/Clash/Ruleset/Bahamut.list"
         curl -L -o "$REPO_PATH/Surge/Ruleset/Streaming/ProxyMedia.list" "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/ProxyMedia.list"
         curl -L -o "$REPO_PATH/Surge/Ruleset/Streaming/Video/YouTube.list" "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Rules/YouTube.list"
-
+        curl -L -o "$REPO_PATH/Surge/Ruleset/GlobalMedia.list" "https://raw.githubusercontent.com/LM-Firefly/Rules/master/GlobalMedia.list"
+        
         # Custom Emby Rules
         curl -L -o "$REPO_PATH/Surge/Ruleset/Streaming/Video/EmbyTemp1.list" "https://github.com/1120109856/lynn/raw/main/fxw"
         curl -L -o "$REPO_PATH/Surge/Ruleset/Streaming/Video/EmbyTemp2.list" "https://github.com/1120109856/lynn/raw/main/zl"
@@ -152,7 +160,7 @@ jobs:
 
     - name: Edit Rules
       run: |
-        cd $REPO_PATH/Surge/Rules
+        cd $REPO_PATH/Surge/Ruleset
         for file in *.list; do
           if [ -f "$file" ] && [ "$file" != "Lan.list" ]; then
             sed -i -e 's/, /,/g' \
@@ -200,7 +208,7 @@ jobs:
       # 追加规则
     - name: Copy custom rules
       run: |
-        cd $REPO_PATH/Surge/Rules
+        cd $REPO_PATH/Surge/Ruleset
         
         # Create empty files if they don't exist
         touch Reject/Reject.list
@@ -229,7 +237,7 @@ jobs:
       # 去重排序
     - name: Remove duplicates and lines 
       run: |
-        cd $REPO_PATH/Surge/Rules
+        cd $REPO_PATH/Surge/Ruleset
         shopt -s nullglob
         for file in Reject/Reject.list CDN/CDN.list; do
           if [ -f "$file" ]; then
@@ -242,7 +250,7 @@ jobs:
 
     - name: Merge Rules
       run: |
-        cd $REPO_PATH/Surge/Rules
+        cd $REPO_PATH/Surge/Ruleset
         
         # Ensure target files exist
         touch Reject/Reject.list
@@ -262,7 +270,7 @@ jobs:
 
     - name: Clean and Sort Rules
       run: |
-        cd $REPO_PATH/Surge/Rules
+        cd $REPO_PATH/Surge/Ruleset
         for file in **/*.list; do
           if [ -f "$file" ]; then
             grep -v '^\s*#' "$file" | grep -v '^\s*$' | sort -u > "${file}.tmp"
