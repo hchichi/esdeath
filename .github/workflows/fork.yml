@@ -32,11 +32,7 @@ jobs:
     - name: Copy Surge Rules
       run: |
         # Create all required directories first
-        mkdir -p $REPO_PATH/Surge/Ruleset/{Apple,AI,Social,Google,Microsoft,Oracle,Streaming/{Video,Music},Reject,Direct,IPCIDR,Anti/{Apps,Direct,Proxy,Reject},Domestic,CCC-Global,SpeedTest,GlobalMedia,Developer}
-
-        # IPCIDR Rules
-        curl -L -o "$REPO_PATH/Surge/Ruleset/IPCIDR/IPv4.China.list" "https://raw.githubusercontent.com/missuo/ASN-China/main/IP.China.list"
-        curl -L -o "$REPO_PATH/Surge/Ruleset/IPCIDR/IPv6.China.list" "https://raw.githubusercontent.com/missuo/ASN-China/main/IPv6.China.list"
+        mkdir -p $REPO_PATH/Surge/Ruleset/{Apple,AI,Social,Google,Microsoft,Oracle,Streaming/{Video,Music},Reject,Direct,Anti/{Apps,Direct,Proxy,Reject},Domestic,CCC-Global,SpeedTest,GlobalMedia,Developer}
 
         # CCC Rules
         curl -L -o "$REPO_PATH/Surge/Ruleset/CCC-Global/Akamai.list" "https://raw.githubusercontent.com/LM-Firefly/Rules/master/CCC-Global/Akamai.list"
@@ -107,6 +103,7 @@ jobs:
         curl -L -o "$REPO_PATH/Surge/Ruleset/GlobalMedia.list" "https://raw.githubusercontent.com/LM-Firefly/Rules/master/GlobalMedia.list"
         curl -L -o "$REPO_PATH/Surge/Ruleset/Streaming/Music/NeteaseMusic.list" "https://ruleset.skk.moe/List/non_ip/neteasemusic.conf"
         curl -L -o "$REPO_PATH/Surge/Ruleset/Streaming/Music/NeteaseMusic_NoIP.list" "https://ruleset.skk.moe/List/ip/neteasemusic.conf"
+        curl -L -o "$REPO_PATH/Surge/Ruleset/Streaming/Video/Emby.list" "https://raw.githubusercontent.com/Repcz/Tool/X/Surge/Rules/Emby.list"
 
         # Custom Emby Rules
         curl -L -o "$REPO_PATH/Surge/Ruleset/Streaming/Video/EmbyTemp1.list" "https://github.com/1120109856/lynn/raw/main/fxw"
@@ -130,6 +127,9 @@ jobs:
         curl -L -o "$REPO_PATH/Surge/Ruleset/ChinaMax.list" "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/ChinaMax/ChinaMax.list"
         curl -L -o "$REPO_PATH/Surge/Ruleset/cn.list" "https://raw.githubusercontent.com/Blankwonder/surge-list/master/cn.list"
         curl -L -o "$REPO_PATH/Surge/Ruleset/Domestic.list" "https://raw.githubusercontent.com/LM-Firefly/Rules/master/Domestic.list"
+        # IPCIDR Rules
+        curl -L -o "$REPO_PATH/Surge/Ruleset/ChinaIP.list" "https://raw.githubusercontent.com/missuo/ASN-China/main/IP.China.list"
+        curl -L -o "$REPO_PATH/Surge/Ruleset/ChinaIPv6.list" "https://raw.githubusercontent.com/missuo/ASN-China/main/IPv6.China.list"
 
         # Reject Rules
         curl -L -o "$REPO_PATH/Surge/Ruleset/Reject/Advertising.list" "https://raw.githubusercontent.com/ConnersHua/RuleGo/master/Surge/Rules/Extra/Reject/Advertising.list"
@@ -143,6 +143,12 @@ jobs:
         curl -L -o "$REPO_PATH/Surge/Ruleset/Reject/Ads_fmz200.list" "https://raw.githubusercontent.com/fmz200/wool_scripts/main/QuantumultX/filter/fenliu.list"
         curl -L -o "$REPO_PATH/Surge/Ruleset/Reject/Ads_SukkaW.list" "https://ruleset.skk.moe/List/domainset/reject.conf"
         curl -L -o "$REPO_PATH/Surge/Ruleset/Reject/Ads_SukkaW_NoIP.list" "https://ruleset.skk.moe/List/non_ip/reject.conf"
+
+        # Download and merge fmz200's Direct rules
+        curl -L -o "$REPO_PATH/Surge/Ruleset/Direct/Direct_fmz200.list" "https://github.com/fmz200/wool_scripts/raw/main/QuantumultX/filter/fenliuxiuzheng.list"
+        # Download and merge SukkaW's Direct rules
+        curl -L -o "$REPO_PATH/Surge/Ruleset/Direct/Direct_Sukkaw.list" "https://ruleset.skk.moe/List/non_ip/direct.conf"
+        curl -L -o "$REPO_PATH/Surge/Ruleset/Direct/MyDirect_Sukkaw.list" "https://ruleset.skk.moe/List/non_ip/my_direct.conf"
 
         # Anti-IP Attribution Rules
         curl -L -o "$REPO_PATH/Surge/Ruleset/Anti/Direct/Direct.list" "https://github.com/SunsetMkt/anti-ip-attribution/raw/main/generated/rule-set-direct.list"
@@ -229,6 +235,10 @@ jobs:
           cat Reject/Ads_SukkaW_NoIP.list >> Reject/Ads_SukkaW.list
           rm -f Reject/Ads_SukkaW_NoIP.list
         fi
+        if [ -f "Direct/Direct_Sukkaw.list" ] && [ -f "Direct/MyDirect_Sukkaw.list" ]; then
+          cat Direct/MyDirect_Sukkaw.list >> Direct/Direct_Sukkaw.list
+          rm -f Direct/MyDirect_Sukkaw.list
+        fi
 
         # Merge CDN rules
         if [ -f "CDN.list" ] && [ -f "CDN_NoIP.list" ]; then
@@ -247,8 +257,8 @@ jobs:
       run: |
         cd $REPO_PATH/Surge/Ruleset
         
-        # 处理所有规则文件
-        find . -type f -name "*.list" | while read file; do
+        # 只处理特定的合并文件
+        for file in CDN.list Streaming/Music/NeteaseMusic.list Reject/Reject.list Direct/Direct_Sukkaw.list; do
           if [ -f "$file" ]; then
             # 创建临时文件在同一目录下
             temp_file="${file}.tmp"
