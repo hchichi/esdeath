@@ -60,21 +60,21 @@ jobs:
 
         # AI Rules
         curl -L -o "$REPO_PATH/Surge/Ruleset/AI/OpenAI.list" "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/refs/heads/master/Clash/Rules/OpenAi.list"
-        curl -L -o "$REPO_PATH/Surge/Ruleset/AI/Claude.list" "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Rules/Claude.list"
+        curl -L -o "$REPO_PATH/Surge/Ruleset/AI/Claude.list" "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Claude.list"
         curl -L -o "$REPO_PATH/Surge/Ruleset/AI/AI.list" "https://ruleset.skk.moe/List/non_ip/ai.conf"
 
         # Social Media Rules
-        curl -L -o "$REPO_PATH/Surge/Ruleset/Social/Twitter.list" "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Rules/Twitter.list"
-        curl -L -o "$REPO_PATH/Surge/Ruleset/Social/Instagram.list" "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Rules/Instagram.list"
-        curl -L -o "$REPO_PATH/Surge/Ruleset/Social/Facebook.list" "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Rules/Facebook.list"
+        curl -L -o "$REPO_PATH/Surge/Ruleset/Social/Twitter.list" "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Twitter.list"
+        curl -L -o "$REPO_PATH/Surge/Ruleset/Social/Instagram.list" "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Instagram.list"
+        curl -L -o "$REPO_PATH/Surge/Ruleset/Social/Facebook.list" "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Facebook.list"
 
         # Google Rules
-        curl -L -o "$REPO_PATH/Surge/Ruleset/Google/Google.list" "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Rules/Google.list"
+        curl -L -o "$REPO_PATH/Surge/Ruleset/Google/Google.list" "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Google.list"
 
         # Microsoft Rules
-        curl -L -o "$REPO_PATH/Surge/Ruleset/Microsoft/Github.list" "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Rules/Github.list"
-        curl -L -o "$REPO_PATH/Surge/Ruleset/Microsoft/OneDrive.list" "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Rules/OneDrive.list"
-        curl -L -o "$REPO_PATH/Surge/Ruleset/Microsoft/Microsoft.list" "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Rules/Microsoft.list"
+        curl -L -o "$REPO_PATH/Surge/Ruleset/Microsoft/Github.list" "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Github.list"
+        curl -L -o "$REPO_PATH/Surge/Ruleset/Microsoft/OneDrive.list" "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/OneDrive.list"
+        curl -L -o "$REPO_PATH/Surge/Ruleset/Microsoft/Microsoft.list" "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Microsoft.list"
 
         # Development Rules
         #curl -L -o "$REPO_PATH/Surge/Ruleset/PROXY/Github.list" "https://raw.githubusercontent.com/LM-Firefly/Rules/master/PROXY/Github.list"
@@ -85,11 +85,11 @@ jobs:
         curl -L -o "$REPO_PATH/Surge/Ruleset/Oracle/Oracle.list" "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/Oracle/Oracle.list"
 
         # Streaming Rules
-        curl -L -o "$REPO_PATH/Surge/Ruleset/Streaming/CN.list" "https://github.com/ConnersHua/RuleGo/raw/master/Surge/Rules/Extra/Streaming/CN.list"
-        curl -L -o "$REPO_PATH/Surge/Ruleset/Streaming/!CN.list" "https://github.com/ConnersHua/RuleGo/raw/master/Surge/Rules/Extra/Streaming/!CN.list"
+        curl -L -o "$REPO_PATH/Surge/Ruleset/Streaming/CN.list" "https://github.com/ConnersHua/RuleGo/raw/master/Surge/Ruleset/Extra/Streaming/CN.list"
+        curl -L -o "$REPO_PATH/Surge/Ruleset/Streaming/!CN.list" "https://github.com/ConnersHua/RuleGo/raw/master/Surge/Ruleset/Extra/Streaming/!CN.list"
         curl -L -o "$REPO_PATH/Surge/Ruleset/Streaming/Video/BiliBiliIntl.list" "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/BiliBiliIntl/BiliBiliIntl.list"
         #curl -L -o "$REPO_PATH/Surge/Ruleset/Streaming/Music/NetEaseMusic.list" "https://raw.githubusercontent.com/LM-Firefly/Rules/master/Domestic-Services/NeteaseMusic.list"
-        curl -L -o "$REPO_PATH/Surge/Ruleset/Streaming/Video/Bilibili.list" "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Rules/Bilibili.list"
+        curl -L -o "$REPO_PATH/Surge/Ruleset/Streaming/Video/Bilibili.list" "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Bilibili.list"
         curl -L -o "$REPO_PATH/Surge/Ruleset/Streaming/Video/TikTok.list" "https://proxyresource.pages.dev/Tool/Loon/Rule/TikTok.list"
         curl -L -o "$REPO_PATH/Surge/Ruleset/Streaming/Video/Netflix.list" "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Netflix.list"
         curl -L -o "$REPO_PATH/Surge/Ruleset/Streaming/Video/HBO.list" "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/HBO/HBO.list"
@@ -99,7 +99,7 @@ jobs:
         curl -L -o "$REPO_PATH/Surge/Ruleset/Streaming/Video/AppleMedia.list" "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/AppleMedia/AppleMedia.list"
         curl -L -o "$REPO_PATH/Surge/Ruleset/Streaming/Video/Bahamut.list" "https://github.com/ACL4SSR/ACL4SSR/raw/master/Clash/Ruleset/Bahamut.list"
         curl -L -o "$REPO_PATH/Surge/Ruleset/ProxyMedia.list" "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/ProxyMedia.list"
-        curl -L -o "$REPO_PATH/Surge/Ruleset/Streaming/Video/YouTube.list" "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Rules/YouTube.list"
+        curl -L -o "$REPO_PATH/Surge/Ruleset/Streaming/Video/YouTube.list" "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/YouTube.list"
         curl -L -o "$REPO_PATH/Surge/Ruleset/GlobalMedia.list" "https://raw.githubusercontent.com/LM-Firefly/Rules/master/GlobalMedia.list"
         curl -L -o "$REPO_PATH/Surge/Ruleset/Streaming/Music/NeteaseMusic.list" "https://ruleset.skk.moe/List/non_ip/neteasemusic.conf"
         curl -L -o "$REPO_PATH/Surge/Ruleset/Streaming/Music/NeteaseMusic_NoIP.list" "https://ruleset.skk.moe/List/ip/neteasemusic.conf"
