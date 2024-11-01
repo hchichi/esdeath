@@ -294,9 +294,9 @@ jobs:
             echo "# $description"
             echo "#"
             echo "# Data from:"
-            echo -e "$sources"  # 使用 echo -e 来处理转义字符
-          } > "$temp_file"
-          
+            # 修改这里，为每个源链接添加 # 前缀
+            echo "$sources" | sed 's/^ - /# - /g'} > "$temp_file"
+
           # Append original content
           cat "$file" >> "$temp_file"
           mv "$temp_file" "$file"
