@@ -294,7 +294,7 @@ jobs:
             echo "# $description"
             echo "#"
             echo "# Data from:"
-            echo -e "$sources"  # 使用 echo -e 来处理转义字符
+            echo -e "# $sources" | sed 's/ - /# - /g'  # 添加 # 前缀并确保每行都有注释符号
           } > "$temp_file"
           
           # Append original content
