@@ -1,13 +1,14 @@
 # Advertising Reject Rules
 #
-# Last Updated: 2024-11-01 17:25
+# Last Updated: 2024-11-01 18:37
 # Size: 1145
 #
 # Combined advertising/hijacking/tracking blocking rules
 #
 # Data from:
-#  - https://raw.githubusercontent.com/ConnersHua/RuleGo/master/Surge/Ruleset/Extra/Reject/Advertising.list\n# - https://raw.githubusercontent.com/ConnersHua/RuleGo/master/Surge/Ruleset/Extra/Reject/Malicious.list\n# - https://raw.githubusercontent.com/ConnersHua/RuleGo/master/Surge/Ruleset/Extra/Reject/Tracking.list
-#
+ - https://raw.githubusercontent.com/ConnersHua/RuleGo/master/Surge/Ruleset/Extra/Reject/Advertising.list
+ - https://raw.githubusercontent.com/ConnersHua/RuleGo/master/Surge/Ruleset/Extra/Reject/Malicious.list
+ - https://raw.githubusercontent.com/ConnersHua/RuleGo/master/Surge/Ruleset/Extra/Reject/Tracking.list
 DOMAIN,118.89.204.198
 DOMAIN,a.wkanx.com
 DOMAIN,a0.app.xiaomi.com
