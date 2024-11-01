@@ -1,12 +1,12 @@
 # China IPv6 Rules
 #
-# Last Updated: 2024-11-01 18:37
+# Last Updated: 2024-11-02 02:48
 # Size: 3960
 #
 # China IPv6 CIDR rules
 #
 # Data from:
- - https://raw.githubusercontent.com/missuo/ASN-China/main/IPv6.China.list
+# # - https://raw.githubusercontent.com/missuo/ASN-China/main/IPv6.China.list
 IP-CIDR6,2001:250::/30,no-resolve
 IP-CIDR6,2001:254::/31,no-resolve
 IP-CIDR6,2001:256::/32,no-resolve

@@ -1,13 +1,13 @@
 # Emby Rules
 #
-# Last Updated: 2024-11-01 18:37
+# Last Updated: 2024-11-02 02:48
 # Size: 80
 #
 # Combined Emby rules
 #
 # Data from:
- - https://github.com/1120109856/lynn/raw/main/fxw
- - https://github.com/1120109856/lynn/raw/main/zl
+# # - https://github.com/1120109856/lynn/raw/main/fxw
+# - https://github.com/1120109856/lynn/raw/main/zl
 #gugu
 DOMAIN-SUFFIX,smartcdn.gugumedia.site
 DOMAIN-SUFFIX,main.gugumedia.site

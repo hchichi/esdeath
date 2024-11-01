@@ -1,12 +1,12 @@
 # China IPv4 Rules
 #
-# Last Updated: 2024-11-01 18:37
+# Last Updated: 2024-11-02 02:48
 # Size: 11667
 #
 # China IPv4 CIDR rules
 #
 # Data from:
- - https://raw.githubusercontent.com/missuo/ASN-China/main/IP.China.list
+# # - https://raw.githubusercontent.com/missuo/ASN-China/main/IP.China.list
 IP-CIDR,1.0.1.0/24,no-resolve
 IP-CIDR,1.0.2.0/23,no-resolve
 IP-CIDR,1.0.8.0/21,no-resolve

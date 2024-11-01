@@ -1,13 +1,13 @@
 # SukkaW CDN Rules
 #
-# Last Updated: 2024-11-01 18:37
+# Last Updated: 2024-11-02 02:48
 # Size: 2596
 #
 # Combined SukkaW CDN rules
 #
 # Data from:
- - https://ruleset.skk.moe/List/domainset/cdn.conf
- - https://ruleset.skk.moe/List/non_ip/cdn.conf
+# # - https://ruleset.skk.moe/List/domainset/cdn.conf
+# - https://ruleset.skk.moe/List/non_ip/cdn.conf
 DOMAIN,0x0.st
 DOMAIN,2mdn.net
 DOMAIN,4gtvimg2.4gtv.tv
