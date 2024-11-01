@@ -85,8 +85,8 @@ jobs:
         curl -L -o "$REPO_PATH/Surge/Ruleset/Oracle/Oracle.list" "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/Oracle/Oracle.list"
 
         # Streaming Rules
-        curl -L -o "$REPO_PATH/Surge/Ruleset/Streaming/CN.list" "https://github.com/ConnersHua/RuleGo/raw/master/Surge/Ruleset/Extra/Streaming/CN.list"
-        curl -L -o "$REPO_PATH/Surge/Ruleset/Streaming/!CN.list" "https://github.com/ConnersHua/RuleGo/raw/master/Surge/Ruleset/Extra/Streaming/!CN.list"
+        curl -L -o "$REPO_PATH/Surge/Ruleset/Streaming/CN.list" "https://raw.githubusercontent.com/ConnersHua/RuleGo/master/Surge/Ruleset/Extra/Streaming/CN.list"
+        curl -L -o "$REPO_PATH/Surge/Ruleset/Streaming/!CN.list" "https://raw.githubusercontent.com/ConnersHua/RuleGo/master/Surge/Ruleset/Extra/Streaming/!CN.list"
         curl -L -o "$REPO_PATH/Surge/Ruleset/Streaming/Video/BiliBiliIntl.list" "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/BiliBiliIntl/BiliBiliIntl.list"
         #curl -L -o "$REPO_PATH/Surge/Ruleset/Streaming/Music/NetEaseMusic.list" "https://raw.githubusercontent.com/LM-Firefly/Rules/master/Domestic-Services/NeteaseMusic.list"
         curl -L -o "$REPO_PATH/Surge/Ruleset/Streaming/Video/Bilibili.list" "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Bilibili.list"
@@ -132,9 +132,9 @@ jobs:
         curl -L -o "$REPO_PATH/Surge/Ruleset/ChinaIPv6.list" "https://raw.githubusercontent.com/missuo/ASN-China/main/IPv6.China.list"
 
         # Reject Rules
-        curl -L -o "$REPO_PATH/Surge/Ruleset/Reject/Advertising.list" "https://raw.githubusercontent.com/ConnersHua/RuleGo/master/Surge/Rules/Extra/Reject/Advertising.list"
-        curl -L -o "$REPO_PATH/Surge/Ruleset/Reject/Hijacking.list" "https://raw.githubusercontent.com/ConnersHua/RuleGo/master/Surge/Rules/Extra/Reject/Hijacking.list"
-        curl -L -o "$REPO_PATH/Surge/Ruleset/Reject/Tracking.list" "https://raw.githubusercontent.com/ConnersHua/RuleGo/master/Surge/Rules/Extra/Reject/Tracking.list"
+        curl -L -o "$REPO_PATH/Surge/Ruleset/Reject/Advertising.list" "https://raw.githubusercontent.com/ConnersHua/RuleGo/master/Surge/Ruleset/Extra/Reject/Advertising.list"
+        curl -L -o "$REPO_PATH/Surge/Ruleset/Reject/Hijacking.list" "https://raw.githubusercontent.com/ConnersHua/RuleGo/master/Surge/Ruleset/Extra/Reject/Hijacking.list"
+        curl -L -o "$REPO_PATH/Surge/Ruleset/Reject/Tracking.list" "https://raw.githubusercontent.com/ConnersHua/RuleGo/master/Surge/Ruleset/Extra/Reject/Tracking.list"
         curl -L -o "$REPO_PATH/Surge/Ruleset/Reject/Ads_EasyListChina.list" "https://raw.githubusercontent.com/limbopro/Adblock4limbo/main/rule/Surge/easylistchina_surge.list"
         curl -L -o "$REPO_PATH/Surge/Ruleset/Reject/Ads_EasyListPrivacy.list" "https://raw.githubusercontent.com/limbopro/Adblock4limbo/main/rule/Surge/easyprivacy_surge.list"
         curl -L -o "$REPO_PATH/Surge/Ruleset/Reject/Ads_Dlerio.list" "https://raw.githubusercontent.com/dler-io/Rules/main/Surge/Surge%203/Provider/Reject.list"
@@ -258,13 +258,23 @@ jobs:
           rm -f Streaming/Video/EmbyTest2.list
         fi
 
+        # Process IP rules
+        if [ -f "ChinaIP.list" ]; then
+          # Add IP-CIDR prefix and no-resolve suffix to IPv4 rules
+          sed -i 's/^/IP-CIDR,/; s/$/,no-resolve/' "ChinaIP.list"
+        fi
+        if [ -f "ChinaIPv6.list" ]; then
+          # Add IP-CIDR6 prefix and no-resolve suffix to IPv6 rules
+          sed -i 's/^/IP-CIDR6,/; s/$/,no-resolve/' "ChinaIPv6.list"
+        fi
+
       # 去重排序
     - name: Clean and Sort Rules
       run: |
         cd $REPO_PATH/Surge/Ruleset
         
         # 只处理特定的合并文件
-        for file in CDN.list Streaming/Music/NeteaseMusic.list Reject/Reject.list Direct/Direct_Sukkaw.list; do
+        for file in CDN.list Streaming/Music/NeteaseMusic.list Reject/Reject.list Reject/Ads_SukkaW.list Direct/Direct_Sukkaw.list; do
           if [ -f "$file" ]; then
             # 创建临时文件在同一目录下
             temp_file="${file}.tmp"
