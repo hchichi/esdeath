@@ -9,17 +9,17 @@ jobs:
     steps:
       - uses: actions/checkout@v4.1.0
         with:
-          ref: X
+          ref: main
       - name: Configure Git
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git checkout --orphan clearhistory
-          git branch -D X
-          git checkout --orphan X
+          git branch -D main
+          git checkout --orphan Master
           git add .
           git commit -m "ㅤ"
-          git push -f -u origin X
+          git push -f -u origin main
       - name: Cleanup Workflow
         uses: Mattraks/delete-workflow-runs@main
         with:
