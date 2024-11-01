@@ -1,188 +1,85 @@
-# >> 小倩 - Emby
-# This file contains domains of Emby servers.
-
-# > 1111
 DOMAIN,free.xmsl.org
 DOMAIN,ushd.xmsl.org
-DOMAIN-SUFFIX,cfde.xmsl.org
-DOMAIN-SUFFIX,line.emby.moe
-DOMAIN-SUFFIX,line.xmsl.org
-DOMAIN-SUFFIX,pm.xmsl.org
-DOMAIN-SUFFIX,xmsl.org
-DOMAIN-SUFFIX,loseremby.org
-
-# > ACA & MisakaF
-DOMAIN-SUFFIX,emby.aca.best
-DOMAIN-SUFFIX,porn.aca.best
-
-# > Apop
-DOMAIN-SUFFIX,apopcloud.com
-
-# > Baisi
-DOMAIN-SUFFIX,baisi.pro
-
-# > BlackCat
-DOMAIN-SUFFIX,emby.bid
-DOMAIN-SUFFIX,emby.date
-DOMAIN-SUFFIX,emby.loan
-DOMAIN-SUFFIX,emby.trade
-DOMAIN-SUFFIX,uuuoo.cc
-
-# > BYG
-DOMAIN-SUFFIX,955557.xyz
-
-# > CBCB
-DOMAIN-SUFFIX,emby.cbcb.lol
-
-# > CC公益
-DOMAIN-SUFFIX,cc.coemn.com
-
-# > Charon
-DOMAIN-SUFFIX,charontv.com
-
-# > CherryEmby
-DOMAIN-SUFFIX,cherrytv.one
-
-# > Dolphin
-DOMAIN-SUFFIX,emby.ws
-
-# > EmbyPlus (纸片人)
-DOMAIN-SUFFIX,embyplus.org
-DOMAIN-SUFFIX,gd.9521732.xyz
-IP-CIDR6,2A0A:4CC0:1:11C2:145B:39FF:FE00:BAAC/128
-
-# > Facmata
-DOMAIN-SUFFIX,cinema.facmata.net
-
-# > 飞跃彩虹
+DOMAIN-SUFFIX,1086.top
 DOMAIN-SUFFIX,581658.best
 DOMAIN-SUFFIX,7777777.buzz
-
-# > GuGU
-DOMAIN-SUFFIX,gugu.media
-
-# > 港澳台直播
-DOMAIN-SUFFIX,stream-link.online
-DOMAIN-SUFFIX,stream-link.org
-
-# > Heisi
-DOMAIN-SUFFIX,heisi.nekobox.best
-DOMAIN-SUFFIX,i109.com
-
-# > Hxd
-DOMAIN-SUFFIX,bili.bili.rip
-DOMAIN-SUFFIX,cf.bili.rip
-
-# > Jellyfin (水母)
-DOMAIN-SUFFIX,jellyfin.asia
-
-# > 江湖
-DOMAIN-SUFFIX,film.reddust.link
-
-# > Lyrebird
-DOMAIN-SUFFIX,cdn.lyrebirdemby.com
-
-# > Magpie
-DOMAIN-SUFFIX,magpie.bond
-DOMAIN-SUFFIX,magpie.cyou
-
-# > Mf (MisakaF)
-DOMAIN-SUFFIX,cdn.misakaf.org
-DOMAIN-SUFFIX,cloudfront.net
-DOMAIN-SUFFIX,emby.misakaf.org
-DOMAIN-SUFFIX,misakaf.org
-
-# > Mjj
-DOMAIN-SUFFIX,mjjemby.org
-
-# > Mormot
-DOMAIN-SUFFIX,v.20120714.xyz
-
-# > Naflix
-DOMAIN-SUFFIX,emby.tnx.one
-
-# > 二次元
-DOMAIN-SUFFIX,nijigem.by
-
-# > NME (NMEmby)
-DOMAIN-SUFFIX,film.hovervan.org
-DOMAIN-SUFFIX,hovervan.org
-DOMAIN-SUFFIX,ohhhh.org
-
-# > Nyamedia
+DOMAIN-SUFFIX,789.123456.al
+DOMAIN-SUFFIX,955557.xyz
+DOMAIN-SUFFIX,apopcloud.com
+DOMAIN-SUFFIX,auto.polodns.xyz
+DOMAIN-SUFFIX,bagpipe.moe
+DOMAIN-SUFFIX,baisi.pro
 DOMAIN-SUFFIX,bangumi.ca
-
-# > Paul
-DOMAIN-SUFFIX,imetyou.top
-
-# > Peach 🍑
-DOMAIN-SUFFIX,embymv.top
-
-# > Pilipili
+DOMAIN-SUFFIX,bili.bili.rip
+DOMAIN-SUFFIX,carlos.trade
+DOMAIN-SUFFIX,cc.coemn.com
+DOMAIN-SUFFIX,cdn.lyrebirdemby.com
+DOMAIN-SUFFIX,cdn.misakaf.org
+DOMAIN-SUFFIX,cdsalw2lw.catlinks.co.uk
+DOMAIN-SUFFIX,cf.bili.rip
+DOMAIN-SUFFIX,cfde.xmsl.org
+DOMAIN-SUFFIX,charontv.com
+DOMAIN-SUFFIX,cherrytv.one
+DOMAIN-SUFFIX,cinema.facmata.net
+DOMAIN-SUFFIX,cloudfront.net
+DOMAIN-SUFFIX,emby-us-v4.mius.uk
+DOMAIN-SUFFIX,emby.aca.best
+DOMAIN-SUFFIX,emby.bid
+DOMAIN-SUFFIX,emby.cbcb.lol
+DOMAIN-SUFFIX,emby.date
+DOMAIN-SUFFIX,emby.eu.org
+DOMAIN-SUFFIX,emby.loan
+DOMAIN-SUFFIX,emby.misakaf.org
 DOMAIN-SUFFIX,emby.pilipiliultra.com
 DOMAIN-SUFFIX,emby.pilipiliultra.top
-DOMAIN-SUFFIX,stream_pilipili.misakaf.org
-IP-CIDR6,2602:294:0:D4F::999/128
-
-# > Polo
-DOMAIN-SUFFIX,auto.polodns.xyz
+DOMAIN-SUFFIX,emby.tnx.one
+DOMAIN-SUFFIX,emby.trade
+DOMAIN-SUFFIX,emby.ws
+DOMAIN-SUFFIX,emby3.mcjoker.xyz
+DOMAIN-SUFFIX,embymv.top
+DOMAIN-SUFFIX,embyplus.org
+DOMAIN-SUFFIX,entry.zox.show
+DOMAIN-SUFFIX,film.hovervan.org
+DOMAIN-SUFFIX,film.reddust.link
+DOMAIN-SUFFIX,flare.catlinks.co.uk
+DOMAIN-SUFFIX,gd.9521732.xyz
+DOMAIN-SUFFIX,gugu.media
+DOMAIN-SUFFIX,heisi.nekobox.best
+DOMAIN-SUFFIX,hovervan.org
+DOMAIN-SUFFIX,i109.com
+DOMAIN-SUFFIX,ii00.cc
+DOMAIN-SUFFIX,imetyou.top
+DOMAIN-SUFFIX,jellyfin.asia
 DOMAIN-SUFFIX,kr.poloemby.xyz
+DOMAIN-SUFFIX,line.emby.moe
+DOMAIN-SUFFIX,line.xmsl.org
+DOMAIN-SUFFIX,loseremby.org
+DOMAIN-SUFFIX,magpie.bond
+DOMAIN-SUFFIX,magpie.cyou
+DOMAIN-SUFFIX,misakaf.org
+DOMAIN-SUFFIX,mjjemby.org
+DOMAIN-SUFFIX,nijigem.by
+DOMAIN-SUFFIX,ohhhh.org
+DOMAIN-SUFFIX,pm.xmsl.org
 DOMAIN-SUFFIX,poloemby.xyz
+DOMAIN-SUFFIX,porn.aca.best
+DOMAIN-SUFFIX,pornemby.club
+DOMAIN-SUFFIX,preus.cn2gias.uk
 DOMAIN-SUFFIX,scf.poloemby.xyz
 DOMAIN-SUFFIX,sf.poloemby.xyz
-
-# > pornemby
-DOMAIN-SUFFIX,ii00.cc
-DOMAIN-SUFFIX,pornemby.club
-
-# > Reddust (江湖)
-DOMAIN-SUFFIX,film.reddust.link
-
-# > 守候
-DOMAIN-SUFFIX,preus.cn2gias.uk
-
-# > Singularity
-DOMAIN-SUFFIX,bagpipe.moe
-
-# > Sport
 DOMAIN-SUFFIX,sportemby.com
-
-# > Sport pron
-DOMAIN-SUFFIX,teachers.sportemby.com
-
-# > StarCat
-DOMAIN-SUFFIX,cdsalw2lw.catlinks.co.uk
-DOMAIN-SUFFIX,flare.catlinks.co.uk
-
-# > SYN Streaming
+DOMAIN-SUFFIX,stream-link.online
+DOMAIN-SUFFIX,stream-link.org
 DOMAIN-SUFFIX,stream.ntrrr.top
 DOMAIN-SUFFIX,stream.synn.cc
-
-# > 叔服 (舒服)
-DOMAIN-SUFFIX,emby3.mcjoker.xyz
-
-# > Tank
-DOMAIN-SUFFIX,1086.top
-DOMAIN-SUFFIX,tiangou.xyz
-
-# > TeCar
-DOMAIN-SUFFIX,carlos.trade
-
-# > Temby
-DOMAIN-SUFFIX,temby.285286.xyz
-
-# > TreeDiagram
-DOMAIN-SUFFIX,789.123456.al
-
-# > 大v
+DOMAIN-SUFFIX,stream_pilipili.misakaf.org
 DOMAIN-SUFFIX,su.viclub.top
-
-# > 尘烬
-DOMAIN-SUFFIX,emby.eu.org
-
-# > 餐厅
-DOMAIN-SUFFIX,emby-us-v4.mius.uk
-
-# > AC
-DOMAIN-SUFFIX,entry.zox.show
+DOMAIN-SUFFIX,teachers.sportemby.com
+DOMAIN-SUFFIX,temby.285286.xyz
+DOMAIN-SUFFIX,tiangou.xyz
+DOMAIN-SUFFIX,uuuoo.cc
+DOMAIN-SUFFIX,v.20120714.xyz
+DOMAIN-SUFFIX,xmsl.org
 DOMAIN-SUFFIX,zox.show
+IP-CIDR6,2602:294:0:D4F::999/128,no-resolve
+IP-CIDR6,2A0A:4CC0:1:11C2:145B:39FF:FE00:BAAC/128,no-resolve

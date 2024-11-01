@@ -1,15 +1,3 @@
-################################################
-# TikTok List for Surge
-#
-# Last Updated: 2024-08-01T05:29:06.000Z
-# Size: 98
-#
-# 本文件包含 TikTok 的相关域名规则,用于 Surge 规则。
-#
-# Data from:
-#  - https://gitlab.com/lodepuly/vpn_tool/-/raw/master/Tool/Loon/Rule/TikTok.list
-################################################
-
 DOMAIN, api.snapkit.com
 DOMAIN, cocacola.co.jp
 DOMAIN, courses.snapsolve.com
@@ -45,6 +33,13 @@ DOMAIN, pull-rtmp-l1-hs.pstatp.com
 DOMAIN, pull-rtmp-l1-mus.pstatp.com
 DOMAIN, pull-rtmp-l6-hs.pstatp.com
 DOMAIN, roovza-launches.appsflyersdk.com
+DOMAIN-KEYWORD, bytedance.map.
+DOMAIN-KEYWORD, musical.ly.
+DOMAIN-KEYWORD, tiktokcdn-
+DOMAIN-KEYWORD, tiktokcdn.com.
+DOMAIN-KEYWORD, tiktokv.com.
+DOMAIN-KEYWORD, ttcdn-tos.
+DOMAIN-KEYWORD, ttlivecdn.com.
 DOMAIN-SUFFIX, bytedance.com
 DOMAIN-SUFFIX, bytedance.net
 DOMAIN-SUFFIX, bytedapm.com
@@ -99,10 +94,3 @@ DOMAIN-SUFFIX, ttoversea.net
 DOMAIN-SUFFIX, ttoverseaus.net
 DOMAIN-SUFFIX, ttwstatic.com
 DOMAIN-SUFFIX, tzvbfs.com
-DOMAIN-KEYWORD, bytedance.map.
-DOMAIN-KEYWORD, musical.ly.
-DOMAIN-KEYWORD, tiktokcdn-
-DOMAIN-KEYWORD, tiktokcdn.com.
-DOMAIN-KEYWORD, tiktokv.com.
-DOMAIN-KEYWORD, ttcdn-tos.
-DOMAIN-KEYWORD, ttlivecdn.com.
