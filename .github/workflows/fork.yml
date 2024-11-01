@@ -31,14 +31,9 @@ jobs:
 
     - name: Copy Surge Rules
       run: |
-        # Create all required directories
-        mkdir -p $REPO_PATH/Surge/Ruleset/{Apple,AI,Social,Google,Microsoft,Oracle,Streaming/{Video,Music},Reject,Direct,IPCIDR,Anti/{Apps,Direct,Proxy,Reject},GFW,Domestic,CCC-Global,CDN,PROXY,SpeedTest,GlobalMedia}
-
-        # Ensure parent directories exist before downloading files
-        for dir in $(dirname "$REPO_PATH/Surge/Ruleset/**/*.list"); do
-          mkdir -p "$dir"
-        done
-
+        # Create directory structure including CDN
+        mkdir -p $REPO_PATH/Surge/Ruleset/{Apple,AI,Social,Google,Microsoft,Oracle,Streaming/{Video,Music},Reject,Direct,IPCIDR,Anti/{Apps,Direct,Proxy,Reject},GFW,Domestic,CCC-Global,DEV}
+        
         # IPCIDR Rules
         curl -L -o "$REPO_PATH/Surge/Ruleset/IPCIDR/IPv4.China.list" "https://raw.githubusercontent.com/missuo/ASN-China/main/IP.China.list"
         curl -L -o "$REPO_PATH/Surge/Ruleset/IPCIDR/IPv6.China.list" "https://raw.githubusercontent.com/missuo/ASN-China/main/IPv6.China.list"
@@ -87,7 +82,7 @@ jobs:
 
         # Development Rules
         #curl -L -o "$REPO_PATH/Surge/Ruleset/PROXY/Github.list" "https://raw.githubusercontent.com/LM-Firefly/Rules/master/PROXY/Github.list"
-        curl -L -o "$REPO_PATH/Surge/Ruleset/PROXY/Gitlab.list" "https://raw.githubusercontent.com/LM-Firefly/Rules/master/PROXY/Gitlab.list"
+        curl -L -o "$REPO_PATH/Surge/Ruleset/DEV/Gitlab.list" "https://raw.githubusercontent.com/LM-Firefly/Rules/master/PROXY/Gitlab.list"
 
         # Oracle Rules
         curl -L -o "$REPO_PATH/Surge/Ruleset/Oracle/Oracle.list" "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/Oracle/Oracle.list"
@@ -106,7 +101,7 @@ jobs:
         curl -L -o "$REPO_PATH/Surge/Ruleset/Streaming/Video/PrimeVideo.list" "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/PrimeVideo/PrimeVideo.list"
         curl -L -o "$REPO_PATH/Surge/Ruleset/Streaming/Video/AppleMedia.list" "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/AppleMedia/AppleMedia.list"
         curl -L -o "$REPO_PATH/Surge/Ruleset/Streaming/Video/Bahamut.list" "https://github.com/ACL4SSR/ACL4SSR/raw/master/Clash/Ruleset/Bahamut.list"
-        curl -L -o "$REPO_PATH/Surge/Ruleset/Streaming/ProxyMedia.list" "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/ProxyMedia.list"
+        curl -L -o "$REPO_PATH/Surge/Ruleset/ProxyMedia.list" "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/ProxyMedia.list"
         curl -L -o "$REPO_PATH/Surge/Ruleset/Streaming/Video/YouTube.list" "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Rules/YouTube.list"
         curl -L -o "$REPO_PATH/Surge/Ruleset/GlobalMedia.list" "https://raw.githubusercontent.com/LM-Firefly/Rules/master/GlobalMedia.list"
         
@@ -217,7 +212,7 @@ jobs:
         
         # Create empty files if they don't exist
         touch Reject/Reject.list
-        touch CDN/CDN.list
+        touch CDN.list
         touch Reject/Ads_SukkaW.list
 
         # Merge Reject rules
@@ -234,9 +229,9 @@ jobs:
         fi
 
         # Merge CDN rules
-        if [ -f "CDN/CDN.list" ] && [ -f "CDN/CDN_NoIP.list" ]; then
-          cat CDN/CDN_NoIP.list >> CDN/CDN.list
-          rm -f CDN/CDN_NoIP.list
+        if [ -f "CDN.list" ] && [ -f "CDN_NoIP.list" ]; then
+          cat CDN_NoIP.list >> CDN.list
+          rm -f CDN_NoIP.list
         fi
 
       # 去重排序
@@ -244,7 +239,7 @@ jobs:
       run: |
         cd $REPO_PATH/Surge/Ruleset
         shopt -s nullglob
-        for file in Reject/Reject.list CDN/CDN.list; do
+        for file in Reject/Reject.list CDN.list; do
           if [ -f "$file" ]; then
             sorted_file="sorted_${file}"
             grep -v '^\s*#' "$file" | grep -v '^\s*$' | sort -u > "$sorted_file"
@@ -259,7 +254,7 @@ jobs:
         
         # Ensure target files exist
         touch Reject/Reject.list
-        touch CDN/CDN.list
+        touch CDN.list
         
         # Merge reject rules
         if [ -f "Reject/Reject.list" ]; then
@@ -268,9 +263,9 @@ jobs:
         fi
 
         # Merge CDN rules
-        if [ -f "CDN/CDN.list" ]; then
+        if [ -f "CDN.list" ]; then
           cat CDN/*.list > CDN/merged_cdn.list
-          mv CDN/merged_cdn.list CDN/CDN.list
+          mv CDN/merged_cdn.list CDN.list
         fi
 
     - name: Clean and Sort Rules
