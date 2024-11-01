@@ -62,6 +62,13 @@ jobs:
         curl -L -o "$REPO_PATH/Surge/Ruleset/AI/OpenAI.list" "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/refs/heads/master/Clash/Rules/OpenAi.list"
         curl -L -o "$REPO_PATH/Surge/Ruleset/AI/Claude.list" "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Claude.list"
         curl -L -o "$REPO_PATH/Surge/Ruleset/AI/AI.list" "https://ruleset.skk.moe/List/non_ip/ai.conf"
+        curl -L -o "$REPO_PATH/Surge/Ruleset/AI/AI_KELI.list" "https://proxyresource.pages.dev/Tool/Loon/Rule/AI.list"
+
+        # Extra Rules
+        curl -L -o "$REPO_PATH/Surge/Ruleset/Extra/Direct.list" "https://raw.githubusercontent.com/Repcz/Tool/X/Surge/Rules/Direct.list"
+        curl -L -o "$REPO_PATH/Surge/Ruleset/Extra/Reject.list" "https://raw.githubusercontent.com/Repcz/Tool/X/Surge/Rules/Reject.list"
+        curl -L -o "$REPO_PATH/Surge/Ruleset/Extra/Proxy.list" "https://raw.githubusercontent.com/Repcz/Tool/X/Surge/Rules/Proxy.list"
+        curl -L -o "$REPO_PATH/Surge/Ruleset/Extra/Prevent_DNS_Leaks.list" "https://raw.githubusercontent.com/Repcz/Tool/X/Surge/Rules/Prevent_DNS_Leaks.list"
 
         # Social Media Rules
         curl -L -o "$REPO_PATH/Surge/Ruleset/Social/Twitter.list" "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Twitter.list"
@@ -113,7 +120,7 @@ jobs:
         curl -L -o "$REPO_PATH/Surge/Ruleset/ProxyGFW.list" "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/ProxyGFWlist.list"
         curl -L -o "$REPO_PATH/Surge/Ruleset/Foreign.list" "https://raw.githubusercontent.com/LM-Firefly/Rules/master/PROXY.list"
         curl -L -o "$REPO_PATH/Surge/Ruleset/Proxy.list" "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/Proxy/Proxy.list"
-        curl -L -o "$REPO_PATH/Surge/Ruleset/Global.list" "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/Global/Global.list"
+        curl -L -o "$REPO_PATH/Surge/Ruleset/Global.list" "https://github.com/Tartarus2014/For-own-use/raw/master/Ruleset/Proxy.list"
 
         # Domestic Rules
         curl -L -o "$REPO_PATH/Surge/Ruleset/Domestic/WeChat.list" "https://raw.githubusercontent.com/NobyDa/Script/master/Surge/WeChat.list"
@@ -131,7 +138,8 @@ jobs:
         # IPCIDR Rules
         curl -L -o "$REPO_PATH/Surge/Ruleset/ChinaIP.list" "https://raw.githubusercontent.com/missuo/ASN-China/main/IP.China.list"
         curl -L -o "$REPO_PATH/Surge/Ruleset/ChinaIPv6.list" "https://raw.githubusercontent.com/missuo/ASN-China/main/IPv6.China.list"
-
+        curl -L -o "$REPO_PATH/Surge/Ruleset/ChinaASN.DH.list" "https://raw.githubusercontent.com/DH-Teams/DH-Geo_AS_IP_CN/main/Geo_AS_IP_CN_All_Surge.list"
+        curl -L -o "$REPO_PATH/Surge/Ruleset/ChinaASN.missuo.list" "https://raw.githubusercontent.com/missuo/ASN-China/main/ASN.China.list"
         # Reject Rules
         curl -L -o "$REPO_PATH/Surge/Ruleset/Reject/Advertising.list" "https://raw.githubusercontent.com/ConnersHua/RuleGo/master/Surge/Ruleset/Extra/Reject/Advertising.list"
         curl -L -o "$REPO_PATH/Surge/Ruleset/Reject/Malicious.list" "https://raw.githubusercontent.com/ConnersHua/RuleGo/master/Surge/Ruleset/Extra/Reject/Malicious.list"
@@ -144,7 +152,8 @@ jobs:
         curl -L -o "$REPO_PATH/Surge/Ruleset/Reject/Ads_fmz200.list" "https://raw.githubusercontent.com/fmz200/wool_scripts/main/QuantumultX/filter/fenliu.list"
         curl -L -o "$REPO_PATH/Surge/Ruleset/Reject/Ads_SukkaW.list" "https://ruleset.skk.moe/List/domainset/reject.conf"
         curl -L -o "$REPO_PATH/Surge/Ruleset/Reject/Ads_SukkaW_NoIP.list" "https://ruleset.skk.moe/List/non_ip/reject.conf"
-
+        curl -L -o "$REPO_PATH/Surge/Ruleset/Advertising/Ads_limbopro.list" "https://raw.githubusercontent.com/limbopro/Adblock4limbo/main/Adblock4limbo_surge.list"
+        
         # Download and merge fmz200's Direct rules
         curl -L -o "$REPO_PATH/Surge/Ruleset/Direct/Direct_fmz200.list" "https://github.com/fmz200/wool_scripts/raw/main/QuantumultX/filter/fenliuxiuzheng.list"
         # Download and merge SukkaW's Direct rules
@@ -294,7 +303,8 @@ jobs:
             echo "# $description"
             echo "#"
             echo "# Data from:"
-            echo -e "# $sources" | sed 's/ - /# - /g'  # 添加 # 前缀并确保每行都有注释符号
+            echo "$sources" | sed 's/^/# /'
+            echo ""
           } > "$temp_file"
           
           # Append original content
