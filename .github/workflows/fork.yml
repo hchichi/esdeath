@@ -285,17 +285,17 @@ jobs:
           # Count rules
           local rules_count=$(grep -cE "^(DOMAIN|DOMAIN-SUFFIX|DOMAIN-KEYWORD|IP-CIDR|IP-CIDR6|USER-AGENT|URL-REGEX|GEOIP|IP-ASN|PROCESS-NAME)" "$file")
           
-          # Create header
-          echo "# $title" > "$temp_file"
-          echo "#" >> "$temp_file"
-          echo "# Last Updated: $(TZ='Asia/Shanghai' date +'%Y-%m-%d %H:%M')" >> "$temp_file"
-          echo "# Size: $rules_count" >> "$temp_file"
-          echo "#" >> "$temp_file"
-          echo "# $description" >> "$temp_file"
-          echo "#" >> "$temp_file"
-          echo "# Data from:" >> "$temp_file"
-          echo "# $sources" >> "$temp_file"
-          echo "#" >> "$temp_file"
+          {
+            echo "# $title"
+            echo "#"
+            echo "# Last Updated: $(TZ='Asia/Shanghai' date +'%Y-%m-%d %H:%M')"
+            echo "# Size: $rules_count"
+            echo "#"
+            echo "# $description"
+            echo "#"
+            echo "# Data from:"
+            echo -e "$sources"  # 使用 echo -e 来处理转义字符
+          } > "$temp_file"
           
           # Append original content
           cat "$file" >> "$temp_file"
@@ -317,42 +317,42 @@ jobs:
           add_header "Reject/Reject.list" \
                     "Advertising Reject Rules" \
                     "Combined advertising/hijacking/tracking blocking rules" \
-                    " - https://raw.githubusercontent.com/ConnersHua/RuleGo/master/Surge/Ruleset/Extra/Reject/Advertising.list\n# - https://raw.githubusercontent.com/ConnersHua/RuleGo/master/Surge/Ruleset/Extra/Reject/Malicious.list\n# - https://raw.githubusercontent.com/ConnersHua/RuleGo/master/Surge/Ruleset/Extra/Reject/Tracking.list"
+                    " - https://raw.githubusercontent.com/ConnersHua/RuleGo/master/Surge/Ruleset/Extra/Reject/Advertising.list\n - https://raw.githubusercontent.com/ConnersHua/RuleGo/master/Surge/Ruleset/Extra/Reject/Malicious.list\n - https://raw.githubusercontent.com/ConnersHua/RuleGo/master/Surge/Ruleset/Extra/Reject/Tracking.list"
         fi
 
         if [ -f "Reject/Ads_SukkaW.list" ]; then
           add_header "Reject/Ads_SukkaW.list" \
                     "SukkaW Reject Rules" \
                     "Combined SukkaW advertising rules" \
-                    " - https://ruleset.skk.moe/List/domainset/reject.conf\n# - https://ruleset.skk.moe/List/non_ip/reject.conf"
+                    " - https://ruleset.skk.moe/List/domainset/reject.conf\n - https://ruleset.skk.moe/List/non_ip/reject.conf"
         fi
 
         if [ -f "Direct/Direct_Sukkaw.list" ]; then
           add_header "Direct/Direct_Sukkaw.list" \
                     "SukkaW Direct Rules" \
                     "Combined SukkaW direct rules" \
-                    " - https://ruleset.skk.moe/List/domainset/direct.conf\n# - https://ruleset.skk.moe/List/non_ip/direct.conf"
+                    " - https://ruleset.skk.moe/List/domainset/direct.conf\n - https://ruleset.skk.moe/List/non_ip/direct.conf"
         fi
 
         if [ -f "CDN.list" ]; then
           add_header "CDN.list" \
                     "SukkaW CDN Rules" \
                     "Combined SukkaW CDN rules" \
-                    " - https://ruleset.skk.moe/List/domainset/cdn.conf\n# - https://ruleset.skk.moe/List/non_ip/cdn.conf"
+                    " - https://ruleset.skk.moe/List/domainset/cdn.conf\n - https://ruleset.skk.moe/List/non_ip/cdn.conf"
         fi
 
         if [ -f "Streaming/Music/NeteaseMusic.list" ]; then
           add_header "Streaming/Music/NeteaseMusic.list" \
                     "SukkaW NetEaseMusic Rules" \
                     "Combined SukkaW neteasemusic rules" \
-                    " - https://ruleset.skk.moe/List/non_ip/neteasemusic.conf\n# - https://ruleset.skk.moe/List/ip/neteasemusic.conf"
+                    " - https://ruleset.skk.moe/List/non_ip/neteasemusic.conf\n - https://ruleset.skk.moe/List/ip/neteasemusic.conf"
         fi
 
         if [ -f "Streaming/Video/EmbyTest.list" ]; then
           add_header "Streaming/Video/EmbyTest.list" \
                     "Emby Rules" \
                     "Combined Emby rules" \
-                    " - https://github.com/1120109856/lynn/raw/main/fxw\n# - https://github.com/1120109856/lynn/raw/main/zl"
+                    " - https://github.com/1120109856/lynn/raw/main/fxw\n - https://github.com/1120109856/lynn/raw/main/zl"
         fi
 
         if [ -f "ChinaIP.list" ]; then
