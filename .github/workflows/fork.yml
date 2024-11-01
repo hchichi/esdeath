@@ -199,7 +199,7 @@ jobs:
         # 转换 domain-set 为 rule-set
         for file in Reject/AdGuardChinese.list Reject/Ads_AWAvenue.list Reject/Ads_SukkaW.list CDN.list; do
           if [ -f "$file" ]; then
-            # 将���.开头的行的第一个.替换为 DOMAIN-SUFFIX,
+            # 将.开头的行的第一个.替换为 DOMAIN-SUFFIX,
             sed -i '/^\./s/^\./DOMAIN-SUFFIX,/' "$file"
             # 将除了以#开头、空行和以DOMAIN-SUFFIX开头之外的行，在行首添加 DOMAIN,
             sed -i '/^\s*$/b; /^\s*#/b; /^DOMAIN-SUFFIX,/b; s/^\([^#]\)/DOMAIN,\1/' "$file"
@@ -246,36 +246,16 @@ jobs:
     - name: Clean and Sort Rules
       run: |
         cd $REPO_PATH/Surge/Ruleset
-        shopt -s nullglob
         
-        # 首先处理需要特殊合并的文件
-        for file in Reject/Reject.list CDN.list; do
+        # 处理所有规则文件
+        find . -type f -name "*.list" | while read file; do
           if [ -f "$file" ]; then
-            sorted_file="sorted_${file}"
-            grep -v '^\s*#' "$file" | grep -v '^\s*$' | sort -u > "$sorted_file"
-            mv "$sorted_file" "$file"
+            # 创建临时文件在同一目录下
+            temp_file="${file}.tmp"
+            grep -v '^\s*#' "$file" | grep -v '^\s*$' | sort -u > "$temp_file"
+            mv "$temp_file" "$file"
           fi
         done
-        
-        # 然后处理所有其他规则文件
-        for file in **/*.list; do
-          # 跳过已处理的特殊文件
-          if [[ "$file" != "Reject/Reject.list" ]] && [[ "$file" != "CDN.list" ]]; then
-            # 排除临时文件
-            if [[ ! "$file" =~ .*Temp[0-9]\.list$ ]] && \
-               [[ ! "$file" =~ .*\.tmp$ ]] && \
-               [[ ! "$file" =~ ^sorted_ ]]; then
-              grep -v '^\s*#' "$file" | grep -v '^\s*$' | sort -u > "${file}.tmp"
-              mv "${file}.tmp" "$file"
-            fi
-          fi
-        done
-        
-        # 清理可能残留的临时文件
-        find . -name "*.tmp" -type f -delete
-        find . -name "sorted_*" -type f -delete
-        find . -name "*Temp[0-9].list" -type f -delete
-      shell: bash
 
     - name: Commit Changes
       run: |
