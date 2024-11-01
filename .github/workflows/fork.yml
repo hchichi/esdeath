@@ -31,9 +31,9 @@ jobs:
 
     - name: Copy Surge Rules
       run: |
-        # Create all required directories first
-        mkdir -p $REPO_PATH/Surge/Ruleset/{Apple,AI,Social,Google,Microsoft,Oracle,Streaming/{Video,Music},Reject,Direct,IPCIDR,Anti/{Apps,Direct,Proxy,Reject},Domestic,CCC-Global,SpeedTest,GlobalMedia,Developer}
-
+        # Create directory structure including CDN
+        mkdir -p $REPO_PATH/Surge/Ruleset/{Apple,AI,Social,Google,Microsoft,Oracle,Streaming/{Video,Music},Reject,Direct,IPCIDR,Anti/{Apps,Direct,Proxy,Reject},GFW,Domestic,CCC-Global,DEV}
+        
         # IPCIDR Rules
         curl -L -o "$REPO_PATH/Surge/Ruleset/IPCIDR/IPv4.China.list" "https://raw.githubusercontent.com/missuo/ASN-China/main/IP.China.list"
         curl -L -o "$REPO_PATH/Surge/Ruleset/IPCIDR/IPv6.China.list" "https://raw.githubusercontent.com/missuo/ASN-China/main/IPv6.China.list"
@@ -82,8 +82,7 @@ jobs:
 
         # Development Rules
         #curl -L -o "$REPO_PATH/Surge/Ruleset/PROXY/Github.list" "https://raw.githubusercontent.com/LM-Firefly/Rules/master/PROXY/Github.list"
-        curl -L -o "$REPO_PATH/Surge/Ruleset/Developer/Gitlab.list" "https://raw.githubusercontent.com/LM-Firefly/Rules/master/PROXY/Gitlab.list"
-        curl -L -o "$REPO_PATH/Surge/Ruleset/Developer/App-Activation.list" "https://raw.githubusercontent.com/LM-Firefly/Rules/master/Special/App-Activation.list"
+        curl -L -o "$REPO_PATH/Surge/Ruleset/DEV/Gitlab.list" "https://raw.githubusercontent.com/LM-Firefly/Rules/master/PROXY/Gitlab.list"
 
         # Oracle Rules
         curl -L -o "$REPO_PATH/Surge/Ruleset/Oracle/Oracle.list" "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/Oracle/Oracle.list"
@@ -92,7 +91,7 @@ jobs:
         curl -L -o "$REPO_PATH/Surge/Ruleset/Streaming/CN.list" "https://github.com/ConnersHua/RuleGo/raw/master/Surge/Rules/Extra/Streaming/CN.list"
         curl -L -o "$REPO_PATH/Surge/Ruleset/Streaming/!CN.list" "https://github.com/ConnersHua/RuleGo/raw/master/Surge/Rules/Extra/Streaming/!CN.list"
         curl -L -o "$REPO_PATH/Surge/Ruleset/Streaming/Video/BiliBiliIntl.list" "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/BiliBiliIntl/BiliBiliIntl.list"
-        #curl -L -o "$REPO_PATH/Surge/Ruleset/Streaming/Music/NetEaseMusic.list" "https://raw.githubusercontent.com/LM-Firefly/Rules/master/Domestic-Services/NeteaseMusic.list"
+        curl -L -o "$REPO_PATH/Surge/Ruleset/Streaming/Music/NetEaseMusic.list" "https://raw.githubusercontent.com/LM-Firefly/Rules/master/Domestic-Services/NeteaseMusic.list"
         curl -L -o "$REPO_PATH/Surge/Ruleset/Streaming/Video/Bilibili.list" "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Rules/Bilibili.list"
         curl -L -o "$REPO_PATH/Surge/Ruleset/Streaming/Video/TikTok.list" "https://proxyresource.pages.dev/Tool/Loon/Rule/TikTok.list"
         curl -L -o "$REPO_PATH/Surge/Ruleset/Streaming/Video/Netflix.list" "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Netflix.list"
@@ -105,9 +104,7 @@ jobs:
         curl -L -o "$REPO_PATH/Surge/Ruleset/ProxyMedia.list" "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/ProxyMedia.list"
         curl -L -o "$REPO_PATH/Surge/Ruleset/Streaming/Video/YouTube.list" "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Rules/YouTube.list"
         curl -L -o "$REPO_PATH/Surge/Ruleset/GlobalMedia.list" "https://raw.githubusercontent.com/LM-Firefly/Rules/master/GlobalMedia.list"
-        curl -L -o "$REPO_PATH/Surge/Ruleset/Streaming/Music/NeteaseMusic.list" "https://ruleset.skk.moe/List/non_ip/neteasemusic.conf"
-        curl -L -o "$REPO_PATH/Surge/Ruleset/Streaming/Music/NeteaseMusic_NoIP.list" "https://ruleset.skk.moe/List/ip/neteasemusic.conf"
-
+        
         # Custom Emby Rules
         curl -L -o "$REPO_PATH/Surge/Ruleset/Streaming/Video/EmbyTemp1.list" "https://github.com/1120109856/lynn/raw/main/fxw"
         curl -L -o "$REPO_PATH/Surge/Ruleset/Streaming/Video/EmbyTemp2.list" "https://github.com/1120109856/lynn/raw/main/zl"
@@ -124,12 +121,12 @@ jobs:
 
         # Domestic Rules
         curl -L -o "$REPO_PATH/Surge/Ruleset/Domestic/WeChat.list" "https://raw.githubusercontent.com/NobyDa/Script/master/Surge/WeChat.list"
-        curl -L -o "$REPO_PATH/Surge/Ruleset/ChinaASN.list" "https://raw.githubusercontent.com/VirgilClyne/GetSomeFries/main/Rules/ASN.China.list"
-        curl -L -o "$REPO_PATH/Surge/Ruleset/ChinaDomain.list" "https://ruleset.skk.moe/List/non_ip/domestic.conf"
-        curl -L -o "$REPO_PATH/Surge/Ruleset/China.list" "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/China/China.list"
-        curl -L -o "$REPO_PATH/Surge/Ruleset/ChinaMax.list" "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/ChinaMax/ChinaMax.list"
-        curl -L -o "$REPO_PATH/Surge/Ruleset/cn.list" "https://raw.githubusercontent.com/Blankwonder/surge-list/master/cn.list"
-        curl -L -o "$REPO_PATH/Surge/Ruleset/Domestic.list" "https://raw.githubusercontent.com/LM-Firefly/Rules/master/Domestic.list"
+        curl -L -o "$REPO_PATH/Surge/Ruleset/Domestic/ChinaASN.list" "https://raw.githubusercontent.com/VirgilClyne/GetSomeFries/main/Rules/ASN.China.list"
+        curl -L -o "$REPO_PATH/Surge/Ruleset/Domestic/ChinaDomain.list" "https://ruleset.skk.moe/List/non_ip/domestic.conf"
+        curl -L -o "$REPO_PATH/Surge/Ruleset/Domestic/China.list" "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/China/China.list"
+        curl -L -o "$REPO_PATH/Surge/Ruleset/Domestic/ChinaMax.list" "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/ChinaMax/ChinaMax.list"
+        curl -L -o "$REPO_PATH/Surge/Ruleset/Domestic/cn.list" "https://raw.githubusercontent.com/Blankwonder/surge-list/master/cn.list"
+        curl -L -o "$REPO_PATH/Surge/Ruleset/Domestic/Domestic.list" "https://raw.githubusercontent.com/LM-Firefly/Rules/master/Domestic.list"
 
         # Reject Rules
         curl -L -o "$REPO_PATH/Surge/Ruleset/Reject/Advertising.list" "https://raw.githubusercontent.com/ConnersHua/RuleGo/master/Surge/Rules/Extra/Reject/Advertising.list"
@@ -159,7 +156,7 @@ jobs:
         curl -L -o "$REPO_PATH/Surge/Ruleset/Anti/Apps/Douyin.list" "https://github.com/SunsetMkt/anti-ip-attribution/raw/main/rules/%E6%8A%96%E9%9F%B3.yaml"
 
         # Lan Rules
-        curl -L -o "$REPO_PATH/Surge/Ruleset/Lan.list" "https://raw.githubusercontent.com/LM-Firefly/Rules/master/Special/Local-LAN.list"
+        curl -L -o "$REPO_PATH/Surge/Ruleset/Lan.list" "https://raw.githubusercontent.com/Repcz/Tool/X/Surge/Rules/Lan.list"
 
     - name: Edit Rules
       run: |
@@ -197,12 +194,14 @@ jobs:
         done
 
         # 转换 domain-set 为 rule-set
-        for file in Reject/AdGuardChinese.list Reject/Ads_AWAvenue.list Reject/Ads_SukkaW.list CDN.list; do
+        for file in AdGuardChinese.list Ads_AWAvenue.list Ads_SukkaW.list CDN.list; do
           if [ -f "$file" ]; then
-            # 将���.开头的行的第一个.替换为 DOMAIN-SUFFIX,
+            # 将以.开头的行的第一个.替换为 DOMAIN-SUFFIX,
             sed -i '/^\./s/^\./DOMAIN-SUFFIX,/' "$file"
             # 将除了以#开头、空行和以DOMAIN-SUFFIX开头之外的行，在行首添加 DOMAIN,
             sed -i '/^\s*$/b; /^\s*#/b; /^DOMAIN-SUFFIX,/b; s/^\([^#]\)/DOMAIN,\1/' "$file"
+          else
+            echo "$file not found."
           fi
         done
 
@@ -215,7 +214,6 @@ jobs:
         touch Reject/Reject.list
         touch CDN.list
         touch Reject/Ads_SukkaW.list
-        touch Streaming/Music/NeteaseMusic.list
 
         # Merge Reject rules
         if [ -f "Reject/Reject.list" ]; then
@@ -236,19 +234,11 @@ jobs:
           rm -f CDN_NoIP.list
         fi
 
-        # Merge NetEase Music rules
-        if [ -f "Streaming/Music/NeteaseMusic.list" ] && [ -f "Streaming/Music/NeteaseMusic_NoIP.list" ]; then
-          cat Streaming/Music/NeteaseMusic_NoIP.list >> Streaming/Music/NeteaseMusic.list
-          rm -f Streaming/Music/NeteaseMusic_NoIP.list
-        fi
-
       # 去重排序
-    - name: Clean and Sort Rules
+    - name: Remove duplicates and lines 
       run: |
         cd $REPO_PATH/Surge/Ruleset
         shopt -s nullglob
-        
-        # 首先处理需要特殊合并的文件
         for file in Reject/Reject.list CDN.list; do
           if [ -f "$file" ]; then
             sorted_file="sorted_${file}"
@@ -256,26 +246,37 @@ jobs:
             mv "$sorted_file" "$file"
           fi
         done
+      shell: bash
+
+    - name: Merge Rules
+      run: |
+        cd $REPO_PATH/Surge/Ruleset
         
-        # 然后处理所有其他规则文件
+        # Ensure target files exist
+        touch Reject/Reject.list
+        touch CDN.list
+        
+        # Merge reject rules
+        if [ -f "Reject/Reject.list" ]; then
+          cat Reject/*.list > Reject/merged_reject.list
+          mv Reject/merged_reject.list Reject/Reject.list
+        fi
+
+        # Merge CDN rules
+        if [ -f "CDN.list" ]; then
+          cat CDN/*.list > CDN/merged_cdn.list
+          mv CDN/merged_cdn.list CDN.list
+        fi
+
+    - name: Clean and Sort Rules
+      run: |
+        cd $REPO_PATH/Surge/Ruleset
         for file in **/*.list; do
-          # 跳过已处理的特殊文件
-          if [[ "$file" != "Reject/Reject.list" ]] && [[ "$file" != "CDN.list" ]]; then
-            # 排除临时文件
-            if [[ ! "$file" =~ .*Temp[0-9]\.list$ ]] && \
-               [[ ! "$file" =~ .*\.tmp$ ]] && \
-               [[ ! "$file" =~ ^sorted_ ]]; then
-              grep -v '^\s*#' "$file" | grep -v '^\s*$' | sort -u > "${file}.tmp"
-              mv "${file}.tmp" "$file"
-            fi
+          if [ -f "$file" ]; then
+            grep -v '^\s*#' "$file" | grep -v '^\s*$' | sort -u > "${file}.tmp"
+            mv "${file}.tmp" "$file"
           fi
         done
-        
-        # 清理可能残留的临时文件
-        find . -name "*.tmp" -type f -delete
-        find . -name "sorted_*" -type f -delete
-        find . -name "*Temp[0-9].list" -type f -delete
-      shell: bash
 
     - name: Commit Changes
       run: |
