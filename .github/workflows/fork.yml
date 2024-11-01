@@ -32,7 +32,7 @@ jobs:
     - name: Copy Surge Rules
       run: |
         # Create all required directories first
-        mkdir -p $REPO_PATH/Surge/Ruleset/{Apple,AI,Social,Google,Microsoft,Oracle,Streaming/{Video,Music},Reject,Direct,Anti/{Apps,Direct,Proxy,Reject},Domestic,CCC-Global,SpeedTest,GlobalMedia,Developer}
+        mkdir -p $REPO_PATH/Surge/Ruleset/{Apple,AI,Social,Google,Microsoft,Oracle,Streaming/{Video,Music},Reject,Direct,Anti/{App},Domestic,CCC-Global,SpeedTest,GlobalMedia,Developer}
 
         # CCC Rules
         curl -L -o "$REPO_PATH/Surge/Ruleset/CCC-Global/Akamai.list" "https://raw.githubusercontent.com/LM-Firefly/Rules/master/CCC-Global/Akamai.list"
@@ -98,26 +98,21 @@ jobs:
         curl -L -o "$REPO_PATH/Surge/Ruleset/Streaming/Video/PrimeVideo.list" "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/PrimeVideo/PrimeVideo.list"
         curl -L -o "$REPO_PATH/Surge/Ruleset/Streaming/Video/AppleMedia.list" "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/AppleMedia/AppleMedia.list"
         curl -L -o "$REPO_PATH/Surge/Ruleset/Streaming/Video/Bahamut.list" "https://github.com/ACL4SSR/ACL4SSR/raw/master/Clash/Ruleset/Bahamut.list"
-        curl -L -o "$REPO_PATH/Surge/Ruleset/ProxyMedia.list" "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/ProxyMedia.list"
+        curl -L -o "$REPO_PATH/Surge/Ruleset/Streaming/ProxyMedia.list" "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/ProxyMedia.list"
         curl -L -o "$REPO_PATH/Surge/Ruleset/Streaming/Video/YouTube.list" "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/YouTube.list"
-        curl -L -o "$REPO_PATH/Surge/Ruleset/GlobalMedia.list" "https://raw.githubusercontent.com/LM-Firefly/Rules/master/GlobalMedia.list"
+        curl -L -o "$REPO_PATH/Surge/Ruleset/Streaming/GlobalMedia.list" "https://raw.githubusercontent.com/LM-Firefly/Rules/master/GlobalMedia.list"
         curl -L -o "$REPO_PATH/Surge/Ruleset/Streaming/Music/NeteaseMusic.list" "https://ruleset.skk.moe/List/non_ip/neteasemusic.conf"
         curl -L -o "$REPO_PATH/Surge/Ruleset/Streaming/Music/NeteaseMusic_NoIP.list" "https://ruleset.skk.moe/List/ip/neteasemusic.conf"
         curl -L -o "$REPO_PATH/Surge/Ruleset/Streaming/Video/Emby.list" "https://raw.githubusercontent.com/Repcz/Tool/X/Surge/Rules/Emby.list"
 
         # Custom Emby Rules
-        curl -L -o "$REPO_PATH/Surge/Ruleset/Streaming/Video/EmbyTemp1.list" "https://github.com/1120109856/lynn/raw/main/fxw"
-        curl -L -o "$REPO_PATH/Surge/Ruleset/Streaming/Video/EmbyTemp2.list" "https://github.com/1120109856/lynn/raw/main/zl"
-        cat "$REPO_PATH/Surge/Ruleset/Streaming/Video/EmbyTemp1.list" "$REPO_PATH/Surge/Ruleset/Streaming/Video/EmbyTemp2.list" | sort -u > "$REPO_PATH/Surge/Ruleset/Streaming/Video/EmbyTest.list"
-        rm "$REPO_PATH/Surge/Ruleset/Streaming/Video/EmbyTemp1.list" "$REPO_PATH/Surge/Ruleset/Streaming/Video/EmbyTemp2.list"
-
+        curl -L -o "$REPO_PATH/Surge/Ruleset/Streaming/Video/EmbyTest.list" "https://github.com/1120109856/lynn/raw/main/fxw"
+        curl -L -o "$REPO_PATH/Surge/Ruleset/Streaming/Video/EmbyTest2.list" "https://github.com/1120109856/lynn/raw/main/zl"
         # GFW Rules
         curl -L -o "$REPO_PATH/Surge/Ruleset/ProxyGFW.list" "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/ProxyGFWlist.list"
         curl -L -o "$REPO_PATH/Surge/Ruleset/Foreign.list" "https://raw.githubusercontent.com/LM-Firefly/Rules/master/PROXY.list"
         curl -L -o "$REPO_PATH/Surge/Ruleset/Proxy.list" "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/Proxy/Proxy.list"
         curl -L -o "$REPO_PATH/Surge/Ruleset/Global.list" "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/Global/Global.list"
-        curl -L -o "$REPO_PATH/Surge/Ruleset/CDN.list" "https://ruleset.skk.moe/List/domainset/cdn.conf"
-        curl -L -o "$REPO_PATH/Surge/Ruleset/CDN_NoIP.list" "https://ruleset.skk.moe/List/non_ip/cdn.conf"
 
         # Domestic Rules
         curl -L -o "$REPO_PATH/Surge/Ruleset/Domestic/WeChat.list" "https://raw.githubusercontent.com/NobyDa/Script/master/Surge/WeChat.list"
@@ -127,6 +122,11 @@ jobs:
         curl -L -o "$REPO_PATH/Surge/Ruleset/ChinaMax.list" "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/ChinaMax/ChinaMax.list"
         curl -L -o "$REPO_PATH/Surge/Ruleset/cn.list" "https://raw.githubusercontent.com/Blankwonder/surge-list/master/cn.list"
         curl -L -o "$REPO_PATH/Surge/Ruleset/Domestic.list" "https://raw.githubusercontent.com/LM-Firefly/Rules/master/Domestic.list"
+        curl -L -o "$REPO_PATH/Surge/Ruleset/CDN.list" "https://ruleset.skk.moe/List/domainset/cdn.conf"
+        curl -L -o "$REPO_PATH/Surge/Ruleset/CDN_NoIP.list" "https://ruleset.skk.moe/List/non_ip/cdn.conf"
+        curl -L -o "$REPO_PATH/Surge/Ruleset/DownloadCDN_Global.list" "https://proxyresource.pages.dev/Tool/Loon/Rule/InternationalDownloadCDN.list"
+        curl -L -o "$REPO_PATH/Surge/Ruleset/DownloadCDN_CN.list" "https://proxyresource.pages.dev/Tool/Loon/Rule/ChinaDownloadCDN.list"
+        
         # IPCIDR Rules
         curl -L -o "$REPO_PATH/Surge/Ruleset/ChinaIP.list" "https://raw.githubusercontent.com/missuo/ASN-China/main/IP.China.list"
         curl -L -o "$REPO_PATH/Surge/Ruleset/ChinaIPv6.list" "https://raw.githubusercontent.com/missuo/ASN-China/main/IPv6.China.list"
@@ -151,18 +151,18 @@ jobs:
         curl -L -o "$REPO_PATH/Surge/Ruleset/Direct/MyDirect_Sukkaw.list" "https://ruleset.skk.moe/List/non_ip/my_direct.conf"
 
         # Anti-IP Attribution Rules
-        curl -L -o "$REPO_PATH/Surge/Ruleset/Anti/Direct/Direct.list" "https://github.com/SunsetMkt/anti-ip-attribution/raw/main/generated/rule-set-direct.list"
-        curl -L -o "$REPO_PATH/Surge/Ruleset/Anti/Proxy/Proxy.list" "https://github.com/SunsetMkt/anti-ip-attribution/raw/main/generated/rule-set-proxy.list"
-        curl -L -o "$REPO_PATH/Surge/Ruleset/Anti/Reject/Reject.list" "https://github.com/SunsetMkt/anti-ip-attribution/raw/main/generated/rule-set-reject.list"
+        curl -L -o "$REPO_PATH/Surge/Ruleset/Anti/Direct.list" "https://github.com/SunsetMkt/anti-ip-attribution/raw/main/generated/rule-set-direct.list"
+        curl -L -o "$REPO_PATH/Surge/Ruleset/Anti/Proxy.list" "https://github.com/SunsetMkt/anti-ip-attribution/raw/main/generated/rule-set-proxy.list"
+        curl -L -o "$REPO_PATH/Surge/Ruleset/Anti/Reject.list" "https://github.com/SunsetMkt/anti-ip-attribution/raw/main/generated/rule-set-reject.list"
 
         # Anti-IP Attribution App Rules
-        curl -L -o "$REPO_PATH/Surge/Ruleset/Anti/Apps/QQMusic.list" "https://github.com/SunsetMkt/anti-ip-attribution/raw/main/rules/QQ%E9%9F%B3%E4%B9%90.yaml"
-        curl -L -o "$REPO_PATH/Surge/Ruleset/Anti/Apps/Bilibili.list" "https://github.com/SunsetMkt/anti-ip-attribution/raw/main/rules/%E5%93%94%E5%93%A9%E5%93%A9.yaml"
-        curl -L -o "$REPO_PATH/Surge/Ruleset/Anti/Apps/Xiaohongshu.list" "https://github.com/SunsetMkt/anti-ip-attribution/raw/main/rules/%E5%B0%8F%E7%BA%A2%E4%B9%A6.yaml"
-        curl -L -o "$REPO_PATH/Surge/Ruleset/Anti/Apps/Douban.list" "https://github.com/SunsetMkt/anti-ip-attribution/raw/main/rules/%E8%B1%86%E7%93%A3.yaml"
-        curl -L -o "$REPO_PATH/Surge/Ruleset/Anti/Apps/NeteaseMusic.list" "https://github.com/SunsetMkt/anti-ip-attribution/raw/main/rules/%E7%BD%91%E6%98%93%E4%BA%91%E9%9F%B3%E4%B9%90.yaml"
-        curl -L -o "$REPO_PATH/Surge/Ruleset/Anti/Apps/WeChat.list" "https://github.com/SunsetMkt/anti-ip-attribution/raw/main/rules/%E5%BE%AE%E4%BF%A1.yaml"
-        curl -L -o "$REPO_PATH/Surge/Ruleset/Anti/Apps/Douyin.list" "https://github.com/SunsetMkt/anti-ip-attribution/raw/main/rules/%E6%8A%96%E9%9F%B3.yaml"
+        curl -L -o "$REPO_PATH/Surge/Ruleset/Anti/App/QQMusic.list" "https://github.com/SunsetMkt/anti-ip-attribution/raw/main/rules/QQ%E9%9F%B3%E4%B9%90.yaml"
+        curl -L -o "$REPO_PATH/Surge/Ruleset/Anti/App/Bilibili.list" "https://github.com/SunsetMkt/anti-ip-attribution/raw/main/rules/%E5%93%94%E5%93%A9%E5%93%A9.yaml"
+        curl -L -o "$REPO_PATH/Surge/Ruleset/Anti/App/Xiaohongshu.list" "https://github.com/SunsetMkt/anti-ip-attribution/raw/main/rules/%E5%B0%8F%E7%BA%A2%E4%B9%A6.yaml"
+        curl -L -o "$REPO_PATH/Surge/Ruleset/Anti/App/Douban.list" "https://github.com/SunsetMkt/anti-ip-attribution/raw/main/rules/%E8%B1%86%E7%93%A3.yaml"
+        curl -L -o "$REPO_PATH/Surge/Ruleset/Anti/App/NeteaseMusic.list" "https://github.com/SunsetMkt/anti-ip-attribution/raw/main/rules/%E7%BD%91%E6%98%93%E4%BA%91%E9%9F%B3%E4%B9%90.yaml"
+        curl -L -o "$REPO_PATH/Surge/Ruleset/Anti/App/WeChat.list" "https://github.com/SunsetMkt/anti-ip-attribution/raw/main/rules/%E5%BE%AE%E4%BF%A1.yaml"
+        curl -L -o "$REPO_PATH/Surge/Ruleset/Anti/App/Douyin.list" "https://github.com/SunsetMkt/anti-ip-attribution/raw/main/rules/%E6%8A%96%E9%9F%B3.yaml"
 
         # Lan Rules
         curl -L -o "$REPO_PATH/Surge/Ruleset/Lan.list" "https://raw.githubusercontent.com/LM-Firefly/Rules/master/Special/Local-LAN.list"
@@ -250,6 +250,12 @@ jobs:
         if [ -f "Streaming/Music/NeteaseMusic.list" ] && [ -f "Streaming/Music/NeteaseMusic_NoIP.list" ]; then
           cat Streaming/Music/NeteaseMusic_NoIP.list >> Streaming/Music/NeteaseMusic.list
           rm -f Streaming/Music/NeteaseMusic_NoIP.list
+        fi
+
+        # Merge Emby rules
+        if [ -f "Streaming/Video/EmbyTest.list" ] && [ -f "Streaming/Video/EmbyTest2.list" ]; then
+          cat Streaming/Video/EmbyTest2.list >> Streaming/Video/EmbyTest.list
+          rm -f Streaming/Video/EmbyTest2.list
         fi
 
       # 去重排序
