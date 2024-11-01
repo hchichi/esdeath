@@ -31,9 +31,14 @@ jobs:
 
     - name: Copy Surge Rules
       run: |
-        # Create directory structure including CDN
-        mkdir -p $REPO_PATH/Surge/Ruleset/{Apple,AI,Social,Google,Microsoft,Oracle,Streaming/{Video,Music},Reject,Direct,IPCIDR,Anti/{Apps,Direct,Proxy,Reject},GFW,Domestic,CCC-Global,CDN}
-        
+        # Create all required directories
+        mkdir -p $REPO_PATH/Surge/Ruleset/{Apple,AI,Social,Google,Microsoft,Oracle,Streaming/{Video,Music},Reject,Direct,IPCIDR,Anti/{Apps,Direct,Proxy,Reject},GFW,Domestic,CCC-Global,CDN,PROXY,SpeedTest,GlobalMedia}
+
+        # Ensure parent directories exist before downloading files
+        for dir in $(dirname "$REPO_PATH/Surge/Ruleset/**/*.list"); do
+          mkdir -p "$dir"
+        done
+
         # IPCIDR Rules
         curl -L -o "$REPO_PATH/Surge/Ruleset/IPCIDR/IPv4.China.list" "https://raw.githubusercontent.com/missuo/ASN-China/main/IP.China.list"
         curl -L -o "$REPO_PATH/Surge/Ruleset/IPCIDR/IPv6.China.list" "https://raw.githubusercontent.com/missuo/ASN-China/main/IPv6.China.list"
