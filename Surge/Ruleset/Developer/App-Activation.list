@@ -1,8 +1,5 @@
-DOMAIN,docs.autodesk.com
-DOMAIN,genuine-software2.autodesk.com
-DOMAIN,help.autodesk.com
-DOMAIN,ipm-aem.autodesk.com
-DOMAIN,update.delivery.autodesk.com
+## > App Activation
+# >> Adobe online activation domains
 DOMAIN-SUFFIX,3dns-1.adobe.com
 DOMAIN-SUFFIX,3dns-2.adobe.com
 DOMAIN-SUFFIX,3dns-3.adobe.com
@@ -12,7 +9,6 @@ DOMAIN-SUFFIX,3dns.adobe.com
 DOMAIN-SUFFIX,activate-sea.adobe.com
 DOMAIN-SUFFIX,activate-sjc0.adobe.com
 DOMAIN-SUFFIX,activate.adobe.com
-DOMAIN-SUFFIX,activate.connectify.me
 DOMAIN-SUFFIX,activate.wip1.adobe.com
 DOMAIN-SUFFIX,activate.wip2.adobe.com
 DOMAIN-SUFFIX,activate.wip3.adobe.com
@@ -25,9 +21,6 @@ DOMAIN-SUFFIX,adobe-dns.adobe.com
 DOMAIN-SUFFIX,adobe.io
 DOMAIN-SUFFIX,adobeereg.com
 DOMAIN-SUFFIX,crl.versign.net
-DOMAIN-SUFFIX,d1.connectify.me
-DOMAIN-SUFFIX,d2.connectify.me
-DOMAIN-SUFFIX,d3.connectify.me
 DOMAIN-SUFFIX,ereg.adobe.com
 DOMAIN-SUFFIX,ereg.wip.adobe.com
 DOMAIN-SUFFIX,ereg.wip1.adobe.com
@@ -45,7 +38,6 @@ DOMAIN-SUFFIX,practivate.adobe.com
 DOMAIN-SUFFIX,practivate.adobe.ipp
 DOMAIN-SUFFIX,practivate.adobe.newoa
 DOMAIN-SUFFIX,practivate.adobe.ntp
-DOMAIN-SUFFIX,updates.connectify.me
 DOMAIN-SUFFIX,wip.adobe.com
 DOMAIN-SUFFIX,wip1.adobe.com
 DOMAIN-SUFFIX,wip2.adobe.com
@@ -147,3 +139,15 @@ DOMAIN-SUFFIX,wwis-dubc1-vip96.adobe.com
 DOMAIN-SUFFIX,wwis-dubc1-vip97.adobe.com
 DOMAIN-SUFFIX,wwis-dubc1-vip98.adobe.com
 DOMAIN-SUFFIX,wwis-dubc1-vip99.adobe.com
+# >> Autodesk
+DOMAIN,docs.autodesk.com
+DOMAIN,genuine-software2.autodesk.com
+DOMAIN,help.autodesk.com
+DOMAIN,ipm-aem.autodesk.com
+DOMAIN,update.delivery.autodesk.com
+# >> Connectify
+DOMAIN-SUFFIX,updates.connectify.me
+DOMAIN-SUFFIX,activate.connectify.me
+DOMAIN-SUFFIX,d1.connectify.me
+DOMAIN-SUFFIX,d2.connectify.me
+DOMAIN-SUFFIX,d3.connectify.me

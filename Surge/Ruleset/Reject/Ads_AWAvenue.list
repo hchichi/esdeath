@@ -1,3 +1,12 @@
+#Title: AWAvenue Ads Rule
+#--------------------------------------
+#Total lines: 673
+#Version: 1.5.3-release
+
+#Homepage: https://github.com/TG-Twilight/AWAvenue-Ads-Rule
+#License: https://github.com/TG-Twilight/AWAvenue-Ads-Rule/blob/main/LICENSE
+
+
 DOMAIN-SUFFIX,1010pic.com
 DOMAIN-SUFFIX,16dd-advertise-1252317822.file.myqcloud.com
 DOMAIN-SUFFIX,16dd-advertise-1252317822.image.myqcloud.com

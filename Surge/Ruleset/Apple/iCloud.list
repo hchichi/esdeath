@@ -1,4 +1,10 @@
-DOMAIN-KEYWORD,icloud.com.akadns.net
+# NAME: iCloud
+# AUTHOR: blackmatrix7
+# REPO: https://github.com/blackmatrix7/ios_rule_script
+# UPDATED: 2024-07-03 16:14:52
+# DOMAIN-KEYWORD: 1
+# DOMAIN-SUFFIX: 57
+# TOTAL: 58
 DOMAIN-SUFFIX,apple-cloudkit.com
 DOMAIN-SUFFIX,apple-icloud.cn
 DOMAIN-SUFFIX,apple-livephotoskit.com
@@ -56,3 +62,4 @@ DOMAIN-SUFFIX,myicloud.net
 DOMAIN-SUFFIX,mylcloud.net
 DOMAIN-SUFFIX,www-cdn.icloud.com.akadns.net
 DOMAIN-SUFFIX,wwwicloud.com
+DOMAIN-KEYWORD,icloud.com.akadns.net

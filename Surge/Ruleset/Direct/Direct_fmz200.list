@@ -1,62 +1,140 @@
-DOMAIN,ad.12306.cn
-DOMAIN,ain.bgm.tv
-DOMAIN,analytics.strava.com
-DOMAIN,cdn.jsdelivr.net
-DOMAIN,deo.shopeemobile.com
-DOMAIN,fairplay.l.qq.com
-DOMAIN,image.maimn.com
-DOMAIN,img.bfzypic.com
-DOMAIN,img.ffzypic.com
-DOMAIN,img.kuaikanzy.net
-DOMAIN,img.liangzipic.com
-DOMAIN,init.ess.apple.com
-DOMAIN,itunes.apple.com
-DOMAIN,lain.bgm.tv
-DOMAIN,livew.l.qq.com
-DOMAIN,log.mmstat.com
-DOMAIN,m3u8.255tv.tk
-DOMAIN,m3u8.mstopq.com
-DOMAIN,msg.umeng.com
-DOMAIN,msg.umengcloud.com
-DOMAIN,ok.zuidapic.com
-DOMAIN,sdk.alibaba.com.ailbaba.me
-DOMAIN,smp-device-content.apple.com
-DOMAIN,static.jssp.tv
-DOMAIN,sycm.mmstat.com
-DOMAIN,tiao.cjkypo.com
-DOMAIN,time.apple.com
-DOMAIN,ts.thefilehosting.com
-DOMAIN,vd.l.qq.com
-DOMAIN,vi.l.qq.com
-DOMAIN,vip.ffzyread.com
-DOMAIN,vip.imgffzy.com
-DOMAIN-KEYWORD,anti-ad.net
-DOMAIN-KEYWORD,api-adservices.apple.com
-DOMAIN-KEYWORD,api.smoot.apple.cn
-DOMAIN-KEYWORD,api.smoot.apple.com
-DOMAIN-KEYWORD,aw-s.tripcdn.com
-DOMAIN-KEYWORD,ax1x.com
-DOMAIN-KEYWORD,bfzycdn.com
-DOMAIN-KEYWORD,buy.itunes.apple.com
-DOMAIN-KEYWORD,ctc.qzs.qzone.qq.com
-DOMAIN-KEYWORD,ess.apple.com
-DOMAIN-KEYWORD,gsa.apple.com
-DOMAIN-KEYWORD,humb.apple.com
-DOMAIN-KEYWORD,icloud.com
-DOMAIN-KEYWORD,ls.apple.com
-DOMAIN-KEYWORD,o.lencr.org
-DOMAIN-KEYWORD,push.apple.com
-DOMAIN-KEYWORD,ssl.apple.com
-DOMAIN-KEYWORD,trip.com
-DOMAIN-KEYWORD,ttcdn-tos.kkimg.cc
-DOMAIN-KEYWORD,vip.ffzy-online
-DOMAIN-KEYWORD,vip.ffzy-play
-DOMAIN-KEYWORD,vip.kuaikan-cdn
-DOMAIN-KEYWORD,vip.lz-cdn
-DOMAIN-KEYWORD,weather-adge.apple.com
-DOMAIN-KEYWORD,weather-edge.apple.com
-DOMAIN-SUFFIX,weather-analytics-events.apple.com
-DOMAIN-SUFFIX,weather-data.apple.com
-DOMAIN-SUFFIX,weather-map.apple.com
-IP-CIDR,192.168.0.1/24
-IP-CIDR,192.168.1.1/24
+#!name=分流修正
+#!desc=修正某些被分流到外区的国内网站
+#!author=奶思
+#!homepage=https://github.com/fmz200/wool_scripts
+#!icon=https://raw.githubusercontent.com/fmz200/wool_scripts/main/icons/author/NaiSi_01.png
+#!raw-url=https://github.com/fmz200/wool_scripts/raw/main/QuantumultX/filter/fenliuxiuzheng.list
+#!tg-group=https://t.me/lanjieguanggao
+#!date=2023-11-06 21:30:00
+#!proxy-select=direct
+#############################################
+# > "reject"        策略返回 HTTP 状态码 404,不附带任何额外内容
+# > "reject-200"    策略返回 HTTP 状态码 200,不附带任何额外内容
+# > "reject-img"    策略返回 HTTP 状态码 200,同时附带 1px gif
+# > "reject-dict"   策略返回 HTTP 状态码 200,同时附带一个空的 JSON 对象
+# > "reject-array"  策略返回 HTTP 状态码 200,同时附带一个空的 JSON 数组
+#############################################
+
+
+
+# >>>>>>>>>>>>>>> ✅ 1 ✅ <<<<<<<<<<<<<<
+host, ad.12306.cn, direct
+
+
+
+
+# >>>>>>>>>>>>>>> ✅ A ✅ <<<<<<<<<<<<<<
+# > anti-ad
+host-keyword, anti-ad.net, direct
+
+# > Alibaba
+host,log.mmstat.com, direct
+host,sycm.mmstat.com, direct
+
+# > 爱影视
+host,static.jssp.tv, direct
+host,lain.bgm.tv, direct
+host,tiao.cjkypo.com, direct
+host,ok.zuidapic.com, direct
+host,ts.thefilehosting.com, direct
+host,deo.shopeemobile.com, direct
+host,m3u8.255tv.tk, direct
+host,m3u8.mstopq.com, direct
+host,ain.bgm.tv, direct
+host-keyword,vip.lz-cdn, direct
+host-keyword,ax1x.com, direct
+host-keyword,o.lencr.org, direct
+host-keyword,ttcdn-tos.kkimg.cc, direct
+
+
+
+# >>>>>>>>>>>>>>> ✅ D ✅ <<<<<<<<<<<<<<
+# > 大师兄影视
+host,sdk.alibaba.com.ailbaba.me, direct
+host,img.ffzypic.com, direct
+host,img.liangzipic.com, direct
+host,img.bfzypic.com, direct
+host,img.kuaikanzy.net, direct
+host,vip.imgffzy.com, direct
+host,vip.ffzyread.com, direct
+host,cdn.jsdelivr.net, direct
+host,image.maimn.com, direct
+host-keyword,bfzycdn.com, direct
+host-keyword,vip.kuaikan-cdn, direct
+host-keyword,vip.ffzy-play, direct
+host-keyword,vip.ffzy-online, direct
+
+
+
+# >>>>>>>>>>>>>>> ✅ P ✅ <<<<<<<<<<<<<<
+# > 苹果推送服务
+host-keyword, push.apple.com, direct
+# > 苹果时间同步
+host, time.apple.com, direct
+# > 苹果天气服务
+host-keyword, weather-edge.apple.com, direct
+host-keyword, weather-adge.apple.com, direct
+host-suffix, weather-data.apple.com, direct
+host-suffix, weather-map.apple.com, direct
+host-suffix, weather-analytics-events.apple.com, direct
+# > 苹果内购服务
+host-keyword, buy.itunes.apple.com, direct
+# > 苹果icloud
+host-keyword, icloud.com, direct
+# > 苹果输入法相关服务
+host-keyword, api.smoot.apple.com, direct
+host-keyword, api.smoot.apple.cn, direct
+# > 苹果iMessage服务
+host, init.ess.apple.com, direct
+# > 苹果其他服务
+host-keyword, ssl.apple.com, direct
+host-keyword, humb.apple.com, direct
+host, smp-device-content.apple.com, direct
+host-keyword, api-adservices.apple.com, direct
+host-keyword, ls.apple.com, direct
+host-keyword, gsa.apple.com, direct
+host-keyword, ess.apple.com, direct
+# > 苹果app store
+host, itunes.apple.com, direct
+
+
+
+# >>>>>>>>>>>>>>> ✅ Q ✅ <<<<<<<<<<<<<<
+# > QQ空间
+host-keyword, ctc.qzs.qzone.qq.com, direct
+
+
+# >>>>>>>>>>>>>>> ✅ S ✅ <<<<<<<<<<<<<<
+# > Strava
+host,analytics.strava.com, direct
+
+
+
+# >>>>>>>>>>>>>>> ✅ T ✅ <<<<<<<<<<<<<<
+# > Tencent
+host,fairplay.l.qq.com, direct
+host,livew.l.qq.com, direct
+host,vd.l.qq.com, direct
+host,vi.l.qq.com, direct
+
+
+
+# >>>>>>>>>>>>>>> ✅ U ✅ <<<<<<<<<<<<<<
+# > Umeng
+host,msg.umeng.com, direct
+host,msg.umengcloud.com, direct
+
+
+
+# >>>>>>>>>>>>>>> ✅ X ✅ <<<<<<<<<<<<<<
+# > 携程
+host-keyword, aw-s.tripcdn.com, direct
+host-keyword, trip.com, direct
+
+
+
+# > 其他分流修正
+# > 路由器后台
+ip-cidr, 192.168.0.1/24, direct
+# > 天翼网关
+ip-cidr, 192.168.1.1/24, direct

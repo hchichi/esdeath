@@ -1,3 +1,11 @@
+## > Speedtest by Ookla
+PROCESS-NAME,org.zwanoo.android.speedtest
+PROCESS-NAME,Speedtest.exe
+USER-AGENT,SpeedTest*
+DOMAIN-KEYWORD,ookla
+DOMAIN-KEYWORD,speedtest
+DOMAIN-SUFFIX,lg-hkg.fdcservers.net
+DOMAIN-SUFFIX,ooklaserver.net
 DOMAIN,07internet.ro
 DOMAIN,1-akt-st.2day.kz
 DOMAIN,1-ast-st.2day.kz
@@ -4960,7 +4968,6 @@ DOMAIN,test-blr-bj.canalbox.net
 DOMAIN,test-lacza.pl
 DOMAIN,test-mi.netoip.com
 DOMAIN,test.4d-tl.com
-DOMAIN,test.DOMAIN-engine.com
 DOMAIN,test.ads.net.id
 DOMAIN,test.advantun.com
 DOMAIN,test.afinet.com.br
@@ -4977,8 +4984,8 @@ DOMAIN,test.byaltelecom.com.br
 DOMAIN,test.byfly.by
 DOMAIN,test.cablenet.bg
 DOMAIN,test.campus-rv.net
-DOMAIN,test.chi.DOMAIN-engine.com
 DOMAIN,test.chi.gaminghost.co
+DOMAIN,test.chi.DOMAIN-engine.com
 DOMAIN,test.cixve.net
 DOMAIN,test.ckpartnet.pl
 DOMAIN,test.comax.net.pl
@@ -5009,6 +5016,7 @@ DOMAIN,test.gtrklnr.su
 DOMAIN,test.hardonline.com.br
 DOMAIN,test.harpa.net.br
 DOMAIN,test.horyzont.net
+DOMAIN,test.DOMAIN-engine.com
 DOMAIN,test.huta.gctelecom.net.br
 DOMAIN,test.infobyte.com.ua
 DOMAIN,test.intb.pl
@@ -6071,10 +6079,3 @@ DOMAIN,zion.m3x.org
 DOMAIN,zol.net.br
 DOMAIN,zonnetprovedor.ddns.ms
 DOMAIN,zoom1.netone.net.in
-DOMAIN-KEYWORD,ookla
-DOMAIN-KEYWORD,speedtest
-DOMAIN-SUFFIX,lg-hkg.fdcservers.net
-DOMAIN-SUFFIX,ooklaserver.net
-PROCESS-NAME,Speedtest.exe
-PROCESS-NAME,org.zwanoo.android.speedtest
-USER-AGENT,SpeedTest*
