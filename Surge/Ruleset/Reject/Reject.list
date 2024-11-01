@@ -1,12 +1,12 @@
 # Advertising Reject Rules
 #
-# Last Updated: 2024-11-01 17:14
+# Last Updated: 2024-11-01 17:17
 # Size: 1146
 #
 # Combined advertising/hijacking/tracking blocking rules
 #
 # Data from:
-#  - https://raw.githubusercontent.com/ConnersHua/RuleGo/master/Surge/Ruleset/Extra/Reject/Advertising.list\n# - https://raw.githubusercontent.com/ConnersHua/RuleGo/master/Surge/Ruleset/Extra/Reject/Hijacking.list\n# - https://raw.githubusercontent.com/ConnersHua/RuleGo/master/Surge/Ruleset/Extra/Reject/Tracking.list
+#  - https://raw.githubusercontent.com/ConnersHua/RuleGo/master/Surge/Ruleset/Extra/Reject/Advertising.list\n# - https://raw.githubusercontent.com/ConnersHua/RuleGo/master/Surge/Ruleset/Extra/Reject/Malicious.list\n# - https://raw.githubusercontent.com/ConnersHua/RuleGo/master/Surge/Ruleset/Extra/Reject/Tracking.list
 #
 404: Not Found404: Not Found404: Not Found
 DOMAIN,118.89.204.198
