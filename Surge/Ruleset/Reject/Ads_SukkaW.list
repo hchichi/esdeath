@@ -1,7 +1,7 @@
 # SukkaW Reject Rules
 #
-# Last Updated: 2024-11-03 02:37
-# Size: 109752
+# Last Updated: 2024-11-03 03:33
+# Size: 109758
 #
 # Combined SukkaW advertising rules
 #
@@ -7654,6 +7654,7 @@ DOMAIN-SUFFIX,ads-cdn.fptplay.net
 DOMAIN-SUFFIX,ads-chunks.prod.ihrhls.com
 DOMAIN-SUFFIX,ads-cloud.rovio.com
 DOMAIN-SUFFIX,ads-collector.luizalabs.com
+DOMAIN-SUFFIX,ads-config-engine-noneu.truecaller.com
 DOMAIN-SUFFIX,ads-connect.com
 DOMAIN-SUFFIX,ads-d.viber.com
 DOMAIN-SUFFIX,ads-delivery.b-cdn.net
@@ -8649,7 +8650,6 @@ DOMAIN-SUFFIX,adx.io
 DOMAIN-SUFFIX,adx.kul.vn
 DOMAIN-SUFFIX,adx.mala.cn
 DOMAIN-SUFFIX,adx.mocoplex.com
-DOMAIN-SUFFIX,adx.mossru.com
 DOMAIN-SUFFIX,adx.opera.com
 DOMAIN-SUFFIX,adx.phunuadong.vn
 DOMAIN-SUFFIX,adx.promo
@@ -35351,6 +35351,7 @@ DOMAIN-SUFFIX,event-action.popinfo.jp
 DOMAIN-SUFFIX,event-api.reverb.com
 DOMAIN-SUFFIX,event-collector.moviesanywhere.com
 DOMAIN-SUFFIX,event-collector.prd.data.s.joyn.de
+DOMAIN-SUFFIX,event-dot-learning-piano.appspot.com
 DOMAIN-SUFFIX,event-listener.air.tv
 DOMAIN-SUFFIX,event-logger.tagboard.com
 DOMAIN-SUFFIX,event-reporting-dot-webylytics.appspot.com
@@ -47683,6 +47684,7 @@ DOMAIN-SUFFIX,insightera.com
 DOMAIN-SUFFIX,insightexpress.com
 DOMAIN-SUFFIX,insightexpressai.com
 DOMAIN-SUFFIX,insightgrit.com
+DOMAIN-SUFFIX,insights-categorizer-noneu.truecaller.com
 DOMAIN-SUFFIX,insights-mxp-cdn.coursecareers.com
 DOMAIN-SUFFIX,insights-mxp.coursecareers.com
 DOMAIN-SUFFIX,insights.53.com
@@ -61880,6 +61882,7 @@ DOMAIN-SUFFIX,mosquitosubjectsimportantly.com
 DOMAIN-SUFFIX,mosrtaek.net
 DOMAIN-SUFFIX,mossgaietyhumiliation.com
 DOMAIN-SUFFIX,mosspf.com
+DOMAIN-SUFFIX,mossru.com
 DOMAIN-SUFFIX,mossyiapyges.com
 DOMAIN-SUFFIX,mostauthor.com
 DOMAIN-SUFFIX,moster.granny-xxx-video.com
@@ -73053,6 +73056,7 @@ DOMAIN-SUFFIX,qorbnalwihvhbp.com
 DOMAIN-SUFFIX,qoredi.com
 DOMAIN-SUFFIX,qorlxle.com
 DOMAIN-SUFFIX,qortex.ai
+DOMAIN-SUFFIX,qoubliy.top
 DOMAIN-SUFFIX,qouvxliy.top
 DOMAIN-SUFFIX,qouxkn.natuurhuisje.nl
 DOMAIN-SUFFIX,qovua60gue.tubewolf.com
@@ -90486,6 +90490,7 @@ DOMAIN-SUFFIX,sync.shinobi.jp
 DOMAIN-SUFFIX,sync.tv
 DOMAIN-SUFFIX,synchrobit.io
 DOMAIN-SUFFIX,synchronizerobot.com
+DOMAIN-SUFFIX,synchroparomologyauditable.monster
 DOMAIN-SUFFIX,synconnector.com
 DOMAIN-SUFFIX,syncwowsails.com
 DOMAIN-SUFFIX,syndicate.payloadz.com
@@ -104256,6 +104261,7 @@ DOMAIN-SUFFIX,webest.info
 DOMAIN-SUFFIX,webfanclub.com
 DOMAIN-SUFFIX,webflowmetrics.com
 DOMAIN-SUFFIX,webforensics.co.uk
+DOMAIN-SUFFIX,webfreesave.monster
 DOMAIN-SUFFIX,webgains.com
 DOMAIN-SUFFIX,webglstats.com
 DOMAIN-SUFFIX,webgringo.ru

@@ -1,7 +1,7 @@
 # SukkaW CDN Rules
 #
-# Last Updated: 2024-11-03 02:37
-# Size: 2668
+# Last Updated: 2024-11-03 03:33
+# Size: 2669
 #
 # Combined SukkaW CDN rules
 #
@@ -936,6 +936,7 @@ DOMAIN,img-prod-cms-rt-microsoft-com.akamaized.net
 DOMAIN,img-s-msn-com.akamaized.net
 DOMAIN,img.agrd.eu
 DOMAIN,img.announcekit.app
+DOMAIN,img.api.video
 DOMAIN,img.applealmond.com
 DOMAIN,img.apponic.com
 DOMAIN,img.atwiki.jp
