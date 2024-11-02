@@ -152,7 +152,7 @@ jobs:
         curl -L -o "$REPO_PATH/Surge/Ruleset/Reject/Ads_fmz200.list" "https://raw.githubusercontent.com/fmz200/wool_scripts/main/QuantumultX/filter/fenliu.list"
         curl -L -o "$REPO_PATH/Surge/Ruleset/Reject/Ads_SukkaW.list" "https://ruleset.skk.moe/List/domainset/reject.conf"
         curl -L -o "$REPO_PATH/Surge/Ruleset/Reject/Ads_SukkaW_NoIP.list" "https://ruleset.skk.moe/List/non_ip/reject.conf"
-        curl -L -o "$REPO_PATH/Surge/Ruleset/Advertising/Ads_limbopro.list" "https://raw.githubusercontent.com/limbopro/Adblock4limbo/main/Adblock4limbo_surge.list"
+        curl -L -o "$REPO_PATH/Surge/Ruleset/Reject/Ads_limbopro.list" "https://raw.githubusercontent.com/limbopro/Adblock4limbo/main/Adblock4limbo_surge.list"
         
         # Download and merge fmz200's Direct rules
         curl -L -o "$REPO_PATH/Surge/Ruleset/Direct/Direct_fmz200.list" "https://github.com/fmz200/wool_scripts/raw/main/QuantumultX/filter/fenliuxiuzheng.list"
