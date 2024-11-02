@@ -32,7 +32,7 @@ jobs:
     - name: Copy Surge Rules
       run: |
         # Create all required directories first
-        mkdir -p $REPO_PATH/Surge/Ruleset/{Apple,AI,Social,Google,Microsoft,Oracle,Streaming/{Video,Music},Reject,Direct,Anti/App,Domestic,CCC-Global,SpeedTest,GlobalMedia,Developer}
+        mkdir -p $REPO_PATH/Surge/Ruleset/{Apple,AI,Social,Google,Microsoft,Oracle,Streaming/{Video,Music},Extra,Reject,Direct,Anti/App,Domestic,CCC-Global,SpeedTest,GlobalMedia,Developer}
 
         # CCC Rules
         curl -L -o "$REPO_PATH/Surge/Ruleset/CCC-Global/Akamai.list" "https://raw.githubusercontent.com/LM-Firefly/Rules/master/CCC-Global/Akamai.list"
