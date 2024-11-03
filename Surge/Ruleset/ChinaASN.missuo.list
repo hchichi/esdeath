@@ -1,5 +1,5 @@
 // ASN Information in China. (https://github.com/missuo/ASN-China) 
-// Last Updated: UTC 2024-11-02 16:04:46
+// Last Updated: UTC 2024-11-03 16:05:26
 // Made by Vincent,All rights reserved. 
 
 IP-ASN,140731 // TOHU Public Internet,no-resolve
@@ -28,8 +28,8 @@ IP-ASN,24400 // China Mobile,no-resolve
 IP-ASN,146762 // NATIONAL(SHANGHAI) NEW-TYPE INTERNET EXCHANGE POINT,no-resolve
 IP-ASN,142111 // Zhejiang Aiyun Network Technology Co Ltd,no-resolve
 IP-ASN,139799 // Beijing Dajia Internet Information Technology Co.,Ltd.,no-resolve
-IP-ASN,7497 // CNIC-CAS,no-resolve
 IP-ASN,146834 // SiChuan XunYou Network Technologe Limit,co,no-resolve
+IP-ASN,7497 // CNIC-CAS,no-resolve
 IP-ASN,134578 // UNION FU WAH DIGITAL TECHNOLOGY LIMITED,no-resolve
 IP-ASN,56040 // China Mobile Communications Corporation,no-resolve
 IP-ASN,9929 // CHINA UNICOM Industrial Internet Backbone,no-resolve
@@ -217,6 +217,7 @@ IP-ASN,23852 // 17/FL,International Bank Center,,no-resolve
 IP-ASN,209306 // Jin Shaohai,no-resolve
 IP-ASN,209294 // Fan Zhang,no-resolve
 IP-ASN,205651 // Hao Qiao,no-resolve
+IP-ASN,199310 // XIN BING XIAN,no-resolve
 IP-ASN,18239 // NO.11 Xi San Huan Zhong Road,Beijing,no-resolve
 IP-ASN,18118 // CITIC Networks Management Co.,Ltd.,no-resolve
 IP-ASN,17969 // ChongQing Broadcast & TV Transfer Network Co. Ltd,no-resolve
@@ -322,12 +323,10 @@ IP-ASN,212371 // Huizhou HuiGu CloudTech Co.,Ltd.,no-resolve
 IP-ASN,210041 // Licheng MAO,no-resolve
 IP-ASN,209218 // Yang Qi,no-resolve
 IP-ASN,199436 // BangLong Yang,no-resolve
-IP-ASN,199310 // XIN BING XIAN,no-resolve
 IP-ASN,18245 // CNNIC,no-resolve
 IP-ASN,17897 // CHINATELECOM HLJ AP,no-resolve
 IP-ASN,17776 // China Enterprise ICT Solutions Limited,no-resolve
 IP-ASN,17633 // CHINATELECOM SD AP,no-resolve
-IP-ASN,152911 // SY ICT,no-resolve
 IP-ASN,152186 // Mintel Holding Limited,no-resolve
 IP-ASN,152120 // China Unicom,no-resolve
 IP-ASN,152092 // Henan Angran Cloud Computing Technology Co. Ltd,no-resolve
@@ -703,6 +702,7 @@ IP-ASN,214660 // junlin chen,no-resolve
 IP-ASN,214613 // YANG MAN,no-resolve
 IP-ASN,214610 // YangXu Liao,no-resolve
 IP-ASN,214575 // Curious Universe (Chongqing) Technology Co.,Ltd,no-resolve
+IP-ASN,214439 // Zhuhai Xiyun Cloud Technology Co.,Ltd.,no-resolve
 IP-ASN,214203 // Nanning Huifa Technology Co.,Ltd.,no-resolve
 IP-ASN,214053 // Xiamen Huikuai Network Technology Co.,Ltd.,no-resolve
 IP-ASN,214040 // RUNNAN WEN,no-resolve
@@ -795,6 +795,7 @@ IP-ASN,153034 // Wang Lin,no-resolve
 IP-ASN,153033 // Shang Xu,no-resolve
 IP-ASN,152930 // Lin Xiangliang,no-resolve
 IP-ASN,152922 // Zhang Fuyu,no-resolve
+IP-ASN,152911 // SY ICT,no-resolve
 IP-ASN,152697 // Nanning Huifa Technology Co Ltd,no-resolve
 IP-ASN,152631 // Xyhelper Inc,no-resolve
 IP-ASN,152598 // Beijing Gong Gong Fa Technology Co Ltd,no-resolve
