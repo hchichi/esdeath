@@ -1,7 +1,7 @@
 # SukkaW CDN Rules
 #
-# Last Updated: 2024-11-04 10:03
-# Size: 2670
+# Last Updated: 2024-11-04 10:49
+# Size: 2671
 #
 # Combined SukkaW CDN rules
 #
@@ -1986,6 +1986,7 @@ DOMAIN-SUFFIX,chasecdn.com
 DOMAIN-SUFFIX,chcdn.xyz
 DOMAIN-SUFFIX,chesscomfiles.com
 DOMAIN-SUFFIX,clientmetrics-pa.googleapis.com
+DOMAIN-SUFFIX,cloud-object-storage.appdomain.cloud
 DOMAIN-SUFFIX,cloud.influxdata.com
 DOMAIN-SUFFIX,cloud1.influxdata.com
 DOMAIN-SUFFIX,cloud2.influxdata.com

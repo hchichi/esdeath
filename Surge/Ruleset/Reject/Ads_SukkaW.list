@@ -1,7 +1,7 @@
 # SukkaW Reject Rules
 #
-# Last Updated: 2024-11-04 10:03
-# Size: 109825
+# Last Updated: 2024-11-04 10:49
+# Size: 109826
 #
 # Combined SukkaW advertising rules
 #
@@ -48335,6 +48335,7 @@ DOMAIN-SUFFIX,ippleshiswashis.info
 DOMAIN-SUFFIX,ippscriptbear.com
 DOMAIN-SUFFIX,ippstuet.com
 DOMAIN-SUFFIX,ippunet.site
+DOMAIN-SUFFIX,ipqajyy.icu
 DOMAIN-SUFFIX,ipqnteseqrf.xyz
 DOMAIN-SUFFIX,ipqolj.com
 DOMAIN-SUFFIX,ipredictive.com
