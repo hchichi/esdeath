@@ -1,7 +1,7 @@
 # SukkaW CDN Rules
 #
-# Last Updated: 2024-11-04 08:49
-# Size: 2669
+# Last Updated: 2024-11-04 10:03
+# Size: 2670
 #
 # Combined SukkaW CDN rules
 #
@@ -1115,6 +1115,7 @@ DOMAIN,media.pullopen.xyz
 DOMAIN,media.ra.kroll.com
 DOMAIN,media.shopimind.com
 DOMAIN,media.smooch.io
+DOMAIN,media.steampowered.com
 DOMAIN,media.tenor.com
 DOMAIN,media.themoviedb.org
 DOMAIN,media.theporndude.com

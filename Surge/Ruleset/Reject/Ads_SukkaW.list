@@ -1,7 +1,7 @@
 # SukkaW Reject Rules
 #
-# Last Updated: 2024-11-04 08:49
-# Size: 109817
+# Last Updated: 2024-11-04 10:03
+# Size: 109825
 #
 # Combined SukkaW advertising rules
 #
@@ -2877,6 +2877,7 @@ DOMAIN-SUFFIX,7e60f1f9.xyz
 DOMAIN-SUFFIX,7e809ed7-e553-4e29-acb1-4e3c0e986562.site
 DOMAIN-SUFFIX,7e839b3296.98f68cf54e.com
 DOMAIN-SUFFIX,7ee4c0f141.com
+DOMAIN-SUFFIX,7f7rt.icu
 DOMAIN-SUFFIX,7fc0966988.com
 DOMAIN-SUFFIX,7fc8.site
 DOMAIN-SUFFIX,7fcb44bf36.cc176a49cd.com
@@ -7660,6 +7661,7 @@ DOMAIN-SUFFIX,ads-connect.com
 DOMAIN-SUFFIX,ads-d.viber.com
 DOMAIN-SUFFIX,ads-delivery.b-cdn.net
 DOMAIN-SUFFIX,ads-delivery.gameforge.com
+DOMAIN-SUFFIX,ads-delivery.gunosy.com
 DOMAIN-SUFFIX,ads-delivery.milenarmedia.pt
 DOMAIN-SUFFIX,ads-dot-fbc-web-2018.uc.r.appspot.com
 DOMAIN-SUFFIX,ads-game-configuration-master.ads.prd.ie.internal.unity3d.com
@@ -10747,6 +10749,7 @@ DOMAIN-SUFFIX,analytics.adultswim.co.uk
 DOMAIN-SUFFIX,analytics.afirstsoft.cn
 DOMAIN-SUFFIX,analytics.agenedia.com
 DOMAIN-SUFFIX,analytics.agoda.com
+DOMAIN-SUFFIX,analytics.ahrefs.dev
 DOMAIN-SUFFIX,analytics.aimtell.com
 DOMAIN-SUFFIX,analytics.airindia.com
 DOMAIN-SUFFIX,analytics.airtron.com
@@ -36096,6 +36099,7 @@ DOMAIN-SUFFIX,eznoz.xyz
 DOMAIN-SUFFIX,eznwukoceebp.com
 DOMAIN-SUFFIX,ezobam.jdsports.nl
 DOMAIN-SUFFIX,ezofferz.com
+DOMAIN-SUFFIX,ezrcowa.icu
 DOMAIN-SUFFIX,ezsbhlpchu.com
 DOMAIN-SUFFIX,ezstat.ru
 DOMAIN-SUFFIX,ezuhbd.industrialdiscount.it
@@ -51172,6 +51176,7 @@ DOMAIN-SUFFIX,kqwerp.top
 DOMAIN-SUFFIX,kqzbph.zerohedge.com
 DOMAIN-SUFFIX,kr-go.experian.com
 DOMAIN-SUFFIX,kr.cafenehkikki.com
+DOMAIN-SUFFIX,kra18.com
 DOMAIN-SUFFIX,kraken.rambler.ru
 DOMAIN-SUFFIX,krankenwagenmotor.com
 DOMAIN-SUFFIX,kraoqsvumatd.com
@@ -100546,6 +100551,7 @@ DOMAIN-SUFFIX,uorwogwlbwtk.xyz
 DOMAIN-SUFFIX,uosxdmk.cn
 DOMAIN-SUFFIX,uosyhthogsaavr.com
 DOMAIN-SUFFIX,uosyiozyu.com
+DOMAIN-SUFFIX,uoublit.top
 DOMAIN-SUFFIX,uoutube.com
 DOMAIN-SUFFIX,uouvxlit.top
 DOMAIN-SUFFIX,up-hl.3g.qq.com
@@ -101077,6 +101083,7 @@ DOMAIN-SUFFIX,uwmlmhcjmjvuqy.xyz
 DOMAIN-SUFFIX,uwnqbekejrtibi.com
 DOMAIN-SUFFIX,uwoaptee.com
 DOMAIN-SUFFIX,uwougheels.net
+DOMAIN-SUFFIX,uwsaqoi.icu
 DOMAIN-SUFFIX,uwumr.cn
 DOMAIN-SUFFIX,uwursert.top
 DOMAIN-SUFFIX,uwuxgb.carcraft.co.uk
@@ -103290,6 +103297,7 @@ DOMAIN-SUFFIX,vsgyfixkbow.com
 DOMAIN-SUFFIX,vshzouj.com
 DOMAIN-SUFFIX,vsjrnh.xyz
 DOMAIN-SUFFIX,vsmokhklbw.com
+DOMAIN-SUFFIX,vsojfsoj.com
 DOMAIN-SUFFIX,vsqovxf.icu
 DOMAIN-SUFFIX,vsqyaz.sweetwater.com
 DOMAIN-SUFFIX,vssid.cc
