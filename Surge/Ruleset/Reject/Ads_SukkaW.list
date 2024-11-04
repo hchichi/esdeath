@@ -1,7 +1,7 @@
 # SukkaW Reject Rules
 #
-# Last Updated: 2024-11-04 10:49
-# Size: 109826
+# Last Updated: 2024-11-04 11:39
+# Size: 109827
 #
 # Combined SukkaW advertising rules
 #
@@ -1912,6 +1912,7 @@ DOMAIN-SUFFIX,2rmifan7n.de
 DOMAIN-SUFFIX,2s02keqc1.com
 DOMAIN-SUFFIX,2s2enegt0.de
 DOMAIN-SUFFIX,2s8s.com
+DOMAIN-SUFFIX,2sfpy.icu
 DOMAIN-SUFFIX,2sfygwfxvsxv.info
 DOMAIN-SUFFIX,2smarttracker.com
 DOMAIN-SUFFIX,2smt6mfgo.de
