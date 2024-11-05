@@ -258,8 +258,6 @@ jobs:
         fi
 
         # Process IP rules
-        // ... existing code ...
-        # Process IP rules
         if [ -f "ChinaIP.list" ]; then
           # Create temporary file
           temp_file="ChinaIP.list.tmp"
