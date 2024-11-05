@@ -1,7 +1,7 @@
 # Advertising Reject Rules
 #
-# Last Updated: 2024-11-06 00:38
-# Size: 1144
+# Last Updated: 2024-11-06 01:37
+# Size: 1146
 #
 # Combined advertising/hijacking/tracking blocking rules
 #
@@ -246,6 +246,7 @@ DOMAIN,pgdt.gtimg.com
 DOMAIN,pgdt.ugdtimg.com
 DOMAIN,pin.hpplay.cn
 DOMAIN,pl.cp31.ott.cibntv.net
+DOMAIN,pvnapp.zol.com.cn
 DOMAIN,pvnapp.zol.com.cn# > ZiTian
 DOMAIN,r.51wnl-cq.com
 DOMAIN,rd.autohome.com.cn
@@ -1136,6 +1137,7 @@ DOMAIN-SUFFIX,zeustechnology.com
 DOMAIN-SUFFIX,zhaozecheng.cn
 DOMAIN-SUFFIX,zhenxinet.com
 DOMAIN-SUFFIX,zhiziyun.com
+DOMAIN-SUFFIX,zhzzx.com
 DOMAIN-SUFFIX,zhzzx.com# Privacy
 DOMAIN-SUFFIX,zlne800.com
 DOMAIN-SUFFIX,zmlled.cn

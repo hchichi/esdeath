@@ -6,8 +6,8 @@
 # 由于技术限制，只能实现精确到域名的分流规则，无法精确到路径。
 # 配置规范举例：
 # DOMAIN,example.com
-# DOMAIN-SUFFIX,example.com,REJECT
-# 注意"DOMAIN"大写，不用"HOST"，除"REJECT"外不要添加规则。
+# DOMAIN-SUFFIX,example.com
+# 注意"DOMAIN"大写，不用"DOMAIN"，除"REJECT"外不要添加规则。
 config:
   name: "anti-ip-attribution" # 项目名
   version: "v0.3.1" # 版本号
@@ -30,8 +30,8 @@ config:
     # Append
     # issue#33#issuecomment-1421094069
     # - DOMAIN-KEYWORD,-normal-
-    - DOMAIN-SUFFIX,zijieapi.com,DIRECT
-    - DOMAIN-SUFFIX,ecombdapi.com,DIRECT
+    - DOMAIN-SUFFIX,zijieapi.com
+    - DOMAIN-SUFFIX,ecombdapi.com
     - DOMAIN-KEYWORD,-normal-hl
     - DOMAIN-KEYWORD,-normal-c-hl
     - DOMAIN-KEYWORD,-core-c-hl

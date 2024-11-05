@@ -1,6 +1,6 @@
 # Emby Rules
 #
-# Last Updated: 2024-11-06 00:38
+# Last Updated: 2024-11-06 01:37
 # Size: 80
 #
 # Combined Emby rules
@@ -52,11 +52,11 @@ DOMAIN-SUFFIX,carlos.trade
 DOMAIN-SUFFIX,emby.pilipiliultra.top
 DOMAIN-SUFFIX,emby.pilipiliultra.com
 DOMAIN-SUFFIX,pilipili.club
-IP-CIDR6,2602:294:0:D4F::999/128
+IP-CIDR6,2602:294:0:D4F::999/128,no-resolve
 #纸片人
 DOMAIN-SUFFIX,embyplus.org
 DOMAIN-SUFFIX,gd.9521732.xyz
-IP-CIDR6,2A0A:4CC0:1:11C2:145B:39FF:FE00:BAAC/128
+IP-CIDR6,2A0A:4CC0:1:11C2:145B:39FF:FE00:BAAC/128,no-resolve
 #Mf
 DOMAIN-SUFFIX,emby.misakaf.org
 #pornemby
