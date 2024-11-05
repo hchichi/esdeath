@@ -1,7 +1,7 @@
 # SukkaW CDN Rules
 #
-# Last Updated: 2024-11-05 23:35
-# Size: 2678
+# Last Updated: 2024-11-06 00:38
+# Size: 2677
 #
 # Combined SukkaW CDN rules
 #
@@ -1815,6 +1815,7 @@ DOMAIN,web-assets.waze.com
 DOMAIN,web-assets.zendesk.co.jp
 DOMAIN,web-assets.zendesk.com
 DOMAIN,web-cdn.bitrise.io
+DOMAIN,web-static.archive.org
 DOMAIN,web-static.pages.iheart.com
 DOMAIN,web-toolbar.playstation.com
 DOMAIN,web.onekey-asset.com
@@ -1896,7 +1897,6 @@ DOMAIN-SUFFIX,app.render.com
 DOMAIN-SUFFIX,applicationinsights.azure.cn
 DOMAIN-SUFFIX,applicationinsights.azure.com
 DOMAIN-SUFFIX,appmifile.com
-DOMAIN-SUFFIX,archive.org
 DOMAIN-SUFFIX,aspnetcdn.com
 DOMAIN-SUFFIX,assets-servd.host
 DOMAIN-SUFFIX,assets-yammer.com
@@ -2402,7 +2402,6 @@ DOMAIN-SUFFIX,porn5.asia
 DOMAIN-SUFFIX,porndudecdn.com
 DOMAIN-SUFFIX,pornimg.xyz
 DOMAIN-SUFFIX,postimg.cc
-DOMAIN-SUFFIX,postimg.org
 DOMAIN-SUFFIX,pplusstatic.com
 DOMAIN-SUFFIX,pravatar.cc
 DOMAIN-SUFFIX,prcdn.co
