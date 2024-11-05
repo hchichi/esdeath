@@ -124,7 +124,8 @@ jobs:
 
         # Domestic Rules
         curl -L -o "$REPO_PATH/Surge/Ruleset/Domestic/WeChat.list" "https://raw.githubusercontent.com/NobyDa/Script/master/Surge/WeChat.list"
-        curl -L -o "$REPO_PATH/Surge/Ruleset/ChinaASN.list" "https://raw.githubusercontent.com/VirgilClyne/GetSomeFries/main/Rules/ASN.China.list"
+        curl -L -o "$REPO_PATH/Surge/Ruleset/ChinaASN.list" "https://raw.githubusercontent.com/VirgilClyne/GetSomeFries/main/ruleset/ASN.China.list"
+        curl -L -o "$REPO_PATH/Surge/Ruleset/ChinaASN.missuo.list" "https://raw.githubusercontent.com/missuo/ASN-China/main/ASN.China.list"
         curl -L -o "$REPO_PATH/Surge/Ruleset/ChinaDomain.list" "https://ruleset.skk.moe/List/non_ip/domestic.conf"
         curl -L -o "$REPO_PATH/Surge/Ruleset/China.list" "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/China/China.list"
         curl -L -o "$REPO_PATH/Surge/Ruleset/ChinaMax.list" "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/ChinaMax/ChinaMax.list"
@@ -137,9 +138,9 @@ jobs:
         
         # IPCIDR Rules
         curl -L -o "$REPO_PATH/Surge/Ruleset/ChinaIP.list" "https://raw.githubusercontent.com/missuo/ASN-China/main/IP.China.list"
+        curl -L -o "$REPO_PATH/Surge/Ruleset/ChinaIPv4.list" "https://raw.githubusercontent.com/missuo/ASN-China/main/IPv4.China.list"
         curl -L -o "$REPO_PATH/Surge/Ruleset/ChinaIPv6.list" "https://raw.githubusercontent.com/missuo/ASN-China/main/IPv6.China.list"
         curl -L -o "$REPO_PATH/Surge/Ruleset/ChinaASN.DH.list" "https://raw.githubusercontent.com/DH-Teams/DH-Geo_AS_IP_CN/main/Geo_AS_IP_CN_All_Surge.list"
-        curl -L -o "$REPO_PATH/Surge/Ruleset/ChinaASN.missuo.list" "https://raw.githubusercontent.com/missuo/ASN-China/main/ASN.China.list"
         # Reject Rules
         curl -L -o "$REPO_PATH/Surge/Ruleset/Reject/Advertising.list" "https://raw.githubusercontent.com/ConnersHua/RuleGo/master/Surge/Ruleset/Extra/Reject/Advertising.list"
         curl -L -o "$REPO_PATH/Surge/Ruleset/Reject/Malicious.list" "https://raw.githubusercontent.com/ConnersHua/RuleGo/master/Surge/Ruleset/Extra/Reject/Malicious.list"
@@ -180,45 +181,33 @@ jobs:
     - name: Edit Rules
       run: |
         cd $REPO_PATH/Surge/Ruleset
-        for file in *.list; do
-          if [ -f "$file" ] && [ "$file" != "Lan.list" ]; then
-            sed -i -e 's/, /,/g' \
-                   -e 's/;/# /g' \
-                   -e 's/host,/HOST,/g' \
-                   -e 's/host-/HOST-/g' \
-                   -e 's/-suffix/-SUFFIX/g' \
-                   -e 's/-keyword/-KEYWORD/g' \
-                   -e 's/ip-cidr/IP-CIDR/g' \
-                   -e 's/-wildcard/-WILDCARD/g' \
-                   -e 's/geoip/GEOIP/g' \
-                   -e 's/HOST,/DOMAIN,/g' \
-                   -e 's/HOST-/DOMAIN-/g' \
-                   -e 's/IP6-CIDR,/IP-CIDR6,/g' \
-                   -e 's/,REJECT$//g' \
-                   -e 's/,DIRECT$//g' \
-                   -e 's/,reject$//g' \
-                   -e 's/,direct$//g' \
-                   -e '/# 更新：/d' \
-                   -e '/# AUTHOR:/d' \
-                   -e '/# REPO:/d' \
-                   -e '/# UPDATED:/d' \
-                   -e '/# 数目: /d' \
-                   -e '/# 规则: /d' \
-                   -e '/404: Not Found/d' \
-                   "$file"
-            # 如果为IP规则且不包含no-resolve 则添加no-resolve
-            awk '/^IP-/ && !/,no-resolve/ {print $0",no-resolve"; next} {print}' "$file" > tmpfile
-            mv tmpfile "$file"
-          fi
-        done
+        
+        # Common replacements for all rule files except Lan.list
+        find . -type f -name "*.list" ! -name "Lan.list" -exec sed -i \
+          -e 's/, /,/g' \
+          -e 's/;/# /g' \
+          -e 's/\b\(host\|HOST\)\b/DOMAIN/g' \
+          -e 's/\b\(host\|HOST\)-\(suffix\|keyword\|wildcard\)\b/DOMAIN-\U\2/g' \
+          -e 's/\bip-cidr\b/IP-CIDR/g' \
+          -e 's/\bgeoip\b/GEOIP/g' \
+          -e 's/\bIP6-CIDR\b/IP-CIDR6/g' \
+          -e 's/,\(REJECT\|DIRECT\|reject\|direct\)$//g' \
+          -e '/# \(更新：\|AUTHOR:\|REPO:\|UPDATED:\|数目: \|规则: \)/d' \
+          -e '/404: Not Found/d' \
+          {} \;
 
-        # 转换 domain-set 为 rule-set
+        # Add no-resolve to IP rules if missing
+        find . -type f -name "*.list" -exec sh -c '
+          for file do
+            awk "/^IP-/ && !/,no-resolve/ {print \$0\",no-resolve\"; next} {print}" "$file" > "$file.tmp" && mv "$file.tmp" "$file"
+          done
+        ' sh {} +
+
+        # Convert domain-set to rule-set for specific files
         for file in Reject/AdGuardChinese.list Reject/Ads_AWAvenue.list Reject/Ads_SukkaW.list CDN.list; do
           if [ -f "$file" ]; then
-            # 将.开头的行的第一个.替换为 DOMAIN-SUFFIX,
-            sed -i '/^\./s/^\./DOMAIN-SUFFIX,/' "$file"
-            # 将除了以#开头、空行和以DOMAIN-SUFFIX开头之外的行，在行首添加 DOMAIN,
-            sed -i '/^\s*$/b; /^\s*#/b; /^DOMAIN-SUFFIX,/b; s/^\([^#]\)/DOMAIN,\1/' "$file"
+            sed -i -e '/^\./s/^\./DOMAIN-SUFFIX,/' \
+                   -e '/^\s*$/b; /^\s*#/b; /^DOMAIN-SUFFIX,/b; s/^\([^#]\)/DOMAIN,\1/' "$file"
           fi
         done
 
@@ -269,7 +258,19 @@ jobs:
         fi
 
         # Process IP rules
+        // ... existing code ...
+        # Process IP rules
         if [ -f "ChinaIP.list" ]; then
+          # Create temporary file
+          temp_file="ChinaIP.list.tmp"
+          # Process IPv4 addresses (matches standard IPv4 format)
+          grep -E '^([0-9]{1,3}\.){3}[0-9]{1,3}/[0-9]{1,2}$' "ChinaIP.list" | sed 's/^/IP-CIDR,/; s/$/,no-resolve/' > "$temp_file"
+          # Process IPv6 addresses (matches anything with colons)
+          grep ':' "ChinaIP.list" | sed 's/^/IP-CIDR6,/; s/$/,no-resolve/' >> "$temp_file"
+          # Replace original file
+          mv "$temp_file" "ChinaIP.list"
+        fi
+        if [ -f "ChinaIPv4.list" ]; then
           # Add IP-CIDR prefix and no-resolve suffix to IPv4 rules
           sed -i 's/^/IP-CIDR,/; s/$/,no-resolve/' "ChinaIP.list"
         fi
