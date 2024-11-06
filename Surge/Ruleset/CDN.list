@@ -1,7 +1,7 @@
 # SukkaW CDN Rules
 #
-# Last Updated: 2024-11-06 15:34
-# Size: 2649
+# Last Updated: 2024-11-06 16:37
+# Size: 2654
 #
 # Combined SukkaW CDN rules
 #
@@ -413,6 +413,7 @@ DOMAIN,cdn.kobo.com
 DOMAIN,cdn.langshop.app
 DOMAIN,cdn.libravatar.org
 DOMAIN,cdn.linearicons.com
+DOMAIN,cdn.linkmink.com
 DOMAIN,cdn.livechatinc.com
 DOMAIN,cdn.loom.com
 DOMAIN,cdn.manageengine.com
@@ -428,6 +429,7 @@ DOMAIN,cdn.minecraft-server-list.com
 DOMAIN,cdn.miohentai.com
 DOMAIN,cdn.missav.com
 DOMAIN,cdn.modrinth.com
+DOMAIN,cdn.music.com
 DOMAIN,cdn.myfonts.net
 DOMAIN,cdn.myportfolio.com
 DOMAIN,cdn.ndtv.com
@@ -513,6 +515,7 @@ DOMAIN,cdn.trustpilot.net
 DOMAIN,cdn.ttgtmedia.com
 DOMAIN,cdn.ttloli.com
 DOMAIN,cdn.tuk.dev
+DOMAIN,cdn.unrealengine.com
 DOMAIN,cdn.unwire.hk
 DOMAIN,cdn.up-timely.com
 DOMAIN,cdn.usd.fan
@@ -1002,6 +1005,7 @@ DOMAIN,info.cloudflare.com
 DOMAIN,info.knak.com
 DOMAIN,int.mwbbiz.com
 DOMAIN,int.qiniuyun15.xyz
+DOMAIN,integrations.gitbook.com
 DOMAIN,interactive-examples.mdn.mozilla.net
 DOMAIN,interactive.guim.co.uk
 DOMAIN,ip-ranges.amazonaws.com
@@ -1174,6 +1178,7 @@ DOMAIN,opensignal.cdnbye.com
 DOMAIN,opt.moovweb.net
 DOMAIN,optimizationguide-pa.googleapis.com
 DOMAIN,optimizely.com
+DOMAIN,optimizely.wsj.net
 DOMAIN,organizer.bizzabo.com
 DOMAIN,osint.digitalside.it
 DOMAIN,oss-binaries.phusionpassenger.com
@@ -1207,7 +1212,6 @@ DOMAIN,photos5.appleinsider.com
 DOMAIN,pic-bstarstatic.akamaized.net
 DOMAIN,pic.7mmtv.me
 DOMAIN,pic.cangku.moe
-DOMAIN,pic.cdnclouder.com
 DOMAIN,pic.imge.cc
 DOMAIN,pic.libilibi.top
 DOMAIN,pic.macked.app
@@ -1565,6 +1569,7 @@ DOMAIN,static.mocortech.com
 DOMAIN,static.moegoat.com
 DOMAIN,static.monei.net
 DOMAIN,static.moonpay.com
+DOMAIN,static.music.com
 DOMAIN,static.mysph.sph.com.sg
 DOMAIN,static.mytonwallet.io
 DOMAIN,static.na1.visioncritical.com
@@ -1642,7 +1647,6 @@ DOMAIN,static7.lottiefiles.com
 DOMAIN,static8.lottiefiles.com
 DOMAIN,static9.lottiefiles.com
 DOMAIN,staticctf.ubisoft.com
-DOMAIN,staticmap.openstreetmap.de
 DOMAIN,statics-marketingsites-eas-ms-com.akamaized.net
 DOMAIN,statics.goorm.io
 DOMAIN,staticw2.yotpo.com
@@ -1705,7 +1709,6 @@ DOMAIN,tiles.stadiamaps.com
 DOMAIN,tiles.windy.com
 DOMAIN,time.cloudflare.com
 DOMAIN,tn.vjav.com
-DOMAIN,ton.local.twitter.com
 DOMAIN,topbar-static.piano.io
 DOMAIN,torrindex.net
 DOMAIN,tracker.cdnbye.com
@@ -1714,6 +1717,7 @@ DOMAIN,tuf-repo-cdn.sigstore.dev
 DOMAIN,tuf-repo.github.com
 DOMAIN,turbo.build
 DOMAIN,tvdownloaddw-a.akamaihd.net
+DOMAIN,twemoji.maxcdn.com
 DOMAIN,typeface.nyt.com
 DOMAIN,typescript-eslint.io
 DOMAIN,typescript.azureedge.net
@@ -1947,6 +1951,7 @@ DOMAIN-SUFFIX,cdn1122.com
 DOMAIN-SUFFIX,cdn2.hubspot.net
 DOMAIN-SUFFIX,cdn2020.com
 DOMAIN-SUFFIX,cdnbf.net
+DOMAIN-SUFFIX,cdnclouder.com
 DOMAIN-SUFFIX,cdninstagram.com
 DOMAIN-SUFFIX,cdnjhd.com
 DOMAIN-SUFFIX,cdnjs.network
