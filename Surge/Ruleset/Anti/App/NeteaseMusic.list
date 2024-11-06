@@ -6,8 +6,8 @@
 # 由于技术限制，只能实现精确到域名的分流规则，无法精确到路径。
 # 配置规范举例：
 # DOMAIN,example.com
-# DOMAIN-SUFFIX,example.com,REJECT
-# 注意"DOMAIN"大写，不用"HOST"，除"REJECT"外不要添加规则。
+# DOMAIN-SUFFIX,example.com
+# 注意"DOMAIN"大写，不用"DOMAIN"，除"REJECT"外不要添加规则。
 config:
   name: "anti-ip-attribution" # 项目名
   version: "v0.3.1" # 版本号
@@ -20,9 +20,9 @@ config:
     # issue#21#issuecomment-1213136722
     # - DOMAIN,music.163.com
     # https://lbs.netease.im/lbs/conf.jsp # httpdns
-    # - DOMAIN,httpdns.n.netease.com,REJECT
-    # - IP-CIDR,59.111.239.61/32,REJECT
-    # - IP-CIDR,59.111.239.62/32,REJECT
+    # - DOMAIN,httpdns.n.netease.com
+    # - IP-CIDR,59.111.239.61/32
+    # - IP-CIDR,59.111.239.62/32
     # issue#21#issuecomment-1214307572
     - DOMAIN-SUFFIX,music.163.com
     - DOMAIN,nstool.netease.com

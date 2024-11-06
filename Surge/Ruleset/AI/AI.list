@@ -6,7 +6,7 @@
 # Homepage: https://ruleset.skk.moe
 # GitHub: https://github.com/SukkaW/Surge
 #
-# This file contains domains of OpenAI, Claude.
+# This file contains domains of OpenAI,Claude.
 #########################################
 DOMAIN,this_ruleset_is_made_by_sukkaw.ruleset.skk.moe
 DOMAIN-SUFFIX,x.ai
