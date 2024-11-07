@@ -1,7 +1,7 @@
 # SukkaW Direct Rules
 #
-# Last Updated: 2024-11-07 23:34
-# Size: 222
+# Last Updated: 2024-11-07 23:40
+# Size: 216
 #
 # Combined SukkaW direct rules
 #
@@ -29,7 +29,6 @@ DOMAIN-KEYWORD,cnki.net
 DOMAIN-KEYWORD,deepdyve
 DOMAIN-KEYWORD,els-cdn
 DOMAIN-KEYWORD,elsevier
-DOMAIN-KEYWORD,mac-torrent-download
 DOMAIN-KEYWORD,pkulaw
 DOMAIN-KEYWORD,readcube
 DOMAIN-KEYWORD,sciencedirect
@@ -91,11 +90,9 @@ DOMAIN-SUFFIX,concertos.live
 DOMAIN-SUFFIX,dicmusic.club
 DOMAIN-SUFFIX,discfan.net
 DOMAIN-SUFFIX,doi.org
-DOMAIN-SUFFIX,download.555mac.com
 DOMAIN-SUFFIX,dxdhd.com
 DOMAIN-SUFFIX,eastgame.org
 DOMAIN-SUFFIX,empornium.me
-DOMAIN-SUFFIX,engage.cloudflareclient.com
 DOMAIN-SUFFIX,et8.org
 DOMAIN-SUFFIX,exoticaz.to
 DOMAIN-SUFFIX,filelist.io
@@ -179,7 +176,6 @@ DOMAIN-SUFFIX,springer.com
 DOMAIN-SUFFIX,springernature.com
 DOMAIN-SUFFIX,springsunday.net
 DOMAIN-SUFFIX,tjupt.org
-DOMAIN-SUFFIX,torrentmac.net
 DOMAIN-SUFFIX,totheglory.im
 DOMAIN-SUFFIX,tplinkap.net
 DOMAIN-SUFFIX,tplinkmodem.net
@@ -193,7 +189,6 @@ DOMAIN-SUFFIX,uhdbits.org
 DOMAIN-SUFFIX,ui.direct
 DOMAIN-SUFFIX,wiley.com
 DOMAIN-SUFFIX,xunlei.com
-PROCESS-NAME,AdGuardHome
 PROCESS-NAME,BaiduNetdisk_mac
 PROCESS-NAME,BitComet
 PROCESS-NAME,ClashX
@@ -216,7 +211,6 @@ PROCESS-NAME,aria2c
 PROCESS-NAME,clash
 PROCESS-NAME,cloudflared
 PROCESS-NAME,fdm
-PROCESS-NAME,nmap
 PROCESS-NAME,parsecd
 PROCESS-NAME,privoxy
 PROCESS-NAME,qBittorrent
