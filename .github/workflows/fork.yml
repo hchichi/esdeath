@@ -270,7 +270,7 @@ jobs:
         if [ -f "ChinaIP.list" ]; then
           # Create temporary files
           temp_file="ChinaIP.list.tmp"
-          temp_file_no_resolve="ChinaIP_NoResolve.list"
+          temp_file_no_resolve="ChinaIP_No_Resolve.list"
           
           # Process each line
           while IFS= read -r line; do
@@ -295,13 +295,13 @@ jobs:
 
         if [ -f "ChinaIPv4.list" ]; then
           # Process IPv4 rules without duplicating prefix
-          sed -i '/^IP-CIDR,/!s/^/IP-CIDR,/' "ChinaIPv4.list" > "ChinaIPv4_NoResolve.list"
+          sed -i '/^IP-CIDR,/!s/^/IP-CIDR,/' "ChinaIPv4.list" > "ChinaIPv4_No_Resolve.list"
           sed -i '/^IP-CIDR,/!s/^/IP-CIDR,/; /,no-resolve$/!s/$/,no-resolve/' "ChinaIPv4.list"
         fi
 
         if [ -f "ChinaIPv6.list" ]; then
           # Process IPv6 rules without duplicating prefix
-          sed -i '/^IP-CIDR6,/!s/^/IP-CIDR6,/' "ChinaIPv6.list" > "ChinaIPv6_NoResolve.list"
+          sed -i '/^IP-CIDR6,/!s/^/IP-CIDR6,/' "ChinaIPv6.list" > "ChinaIPv6_No_Resolve.list"
           sed -i '/^IP-CIDR6,/!s/^/IP-CIDR6,/; /,no-resolve$/!s/$/,no-resolve/' "ChinaIPv6.list"
         fi
 
@@ -351,7 +351,7 @@ jobs:
         }
         
         # Only process specific merged files
-        for file in CDN.list Streaming/Music/NeteaseMusic.list Reject/Reject.list Reject/Ads_SukkaW.list Direct/Direct_Sukkaw.list; do
+        for file in CDN.list Streaming/Music/NeteaseMusic.list Reject/Reject.list Reject/Ads_SukkaW.list AI/AI.list Direct/Direct_Sukkaw.list; do
           if [ -f "$file" ]; then
             # Create temporary file in the same directory
             temp_file="${file}.tmp"
@@ -359,6 +359,13 @@ jobs:
             mv "$temp_file" "$file"
           fi
         done
+
+        if [ -f "AI/AI.list" ]; then
+          add_header "AI/AI.list" \
+                    "AI Rules" \
+                    "Combined AI rules" \
+                    "https://ruleset.skk.moe/List/non_ip/ai.conf\nhttps://raw.githubusercontent.com/hiven425/hiven/master/config/AI.list\nhttps://proxyresource.pages.dev/Tool/Loon/Rule/AI.list\nhttps://github.com/ConnersHua/RuleGo/raw/master/Surge/Ruleset/Extra/AI.list"
+        fi
 
         # Add headers after cleaning and sorting
         if [ -f "Reject/Reject.list" ]; then

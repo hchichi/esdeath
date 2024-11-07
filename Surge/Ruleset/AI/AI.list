@@ -1,44 +1,103 @@
-#########################################
-# Sukka's Ruleset - AIGC Domains
-# Last Updated: 2024-11-07T11:56:47.136Z
-# Size: 33
-# License: AGPL 3.0
-# Homepage: https://ruleset.skk.moe
-# GitHub: https://github.com/SukkaW/Surge
-#
-# This file contains domains of OpenAI,Claude.
-#########################################
-DOMAIN,this_ruleset_is_made_by_sukkaw.ruleset.skk.moe
-DOMAIN-SUFFIX,x.ai
-DOMAIN-SUFFIX,dify.ai
-DOMAIN-SUFFIX,meta.ai
-DOMAIN-SUFFIX,claude.ai
-DOMAIN-SUFFIX,jasper.ai
-DOMAIN-SUFFIX,openart.ai
-DOMAIN-SUFFIX,perplexity.ai
-DOMAIN-SUFFIX,clipdrop.co
+
+# 2024-10-25 16:28:21
+# > AI Studio
+# > ChatGPT
+# > Claude
+# > Copilot
+# > Gemini
+# Anthropic
+# Apple Intelligence
+# ChatGPT
+# Claude
+# Copilot
+# Gemini
+# Google
+# JetBrains AI
+# Meta
+# Meta AI
+# Microsoft
+# Mistral AI
+# OpenAI
+# Perplexity
+# 内容：OpenAi Bard anthropic
+# 域名关键字匹配
+# 域名后缀匹配
+#DOMAIN
+AND,((DOMAIN-KEYWORD,chatgpt-async-webps-prod-eastus-),(DOMAIN-SUFFIX,webpubsub.azure.com))
+AND,((DOMAIN-KEYWORD,openaicom-api-),(DOMAIN-SUFFIX,azurefd.net))
+DOMAIN,ai.google.dev
+DOMAIN,aida.googleapis.com
+DOMAIN,aistudio.google.com
+DOMAIN,alkalimakersuite-pa.clients6.google.com
+DOMAIN,api-iam.intercom.io
+DOMAIN,api.githubcopilot.com
+DOMAIN,api.statsig.com
+DOMAIN,apple-relay.apple.com
+DOMAIN,apple-relay.cloudflare.com
+DOMAIN,apple-relay.fastly-edge.com
+DOMAIN,bard.google.com
+DOMAIN,cdn.usefathom.com
+DOMAIN,chat.mistral.ai
+DOMAIN,chatgpt.livekit.cloud
+DOMAIN,console.mistral.ai
+DOMAIN,copilot-proxy.githubusercontent.com
+DOMAIN,copilot.microsoft.com
+DOMAIN,cp4.cloudflare.com
+DOMAIN,gemini.google.com
+DOMAIN,generativelanguage.googleapis.com
+DOMAIN,guzzoni.apple.com
+DOMAIN,imagine.meta.com
+DOMAIN,makersuite.google.com
+DOMAIN,o33249.ingest.sentry.io
+DOMAIN,openaiapi-site.azureedge.net
+DOMAIN,openaicom.imgix.net
+DOMAIN,openaicomproductionae4b.blob.core.windows.net
+DOMAIN,production-openaicom-storage.azureedge.net
+DOMAIN,sfo3.turn.livekit.cloud
+DOMAIN,sydney.bing.com
+DOMAIN,www.bing.com
+DOMAIN-KEYWORD,Claude
+DOMAIN-KEYWORD,anthropic
+DOMAIN-KEYWORD,openai
+DOMAIN-KEYWORD,openaicom
 DOMAIN-SUFFIX,ai.com
-DOMAIN-SUFFIX,poe.com
-DOMAIN-SUFFIX,chat.com
-DOMAIN-SUFFIX,chatgpt.com
-DOMAIN-SUFFIX,deepmind.com
 DOMAIN-SUFFIX,anthropic.com
+DOMAIN-SUFFIX,auth0.com
+DOMAIN-SUFFIX,bard.google.com
+DOMAIN-SUFFIX,challenges.cloudflare.com
+DOMAIN-SUFFIX,chatgpt.com
+DOMAIN-SUFFIX,claude.ai
+DOMAIN-SUFFIX,claude.ai.com
+DOMAIN-SUFFIX,client-api.arkoselabs.com
+DOMAIN-SUFFIX,cursor.com
+DOMAIN-SUFFIX,cursor.sh
+DOMAIN-SUFFIX,cursor.so
+DOMAIN-SUFFIX,deepmind.com
+DOMAIN-SUFFIX,deepmind.google
+DOMAIN-SUFFIX,events.statsigapi.net
+DOMAIN-SUFFIX,featuregates.org
+DOMAIN-SUFFIX,gemini.google.com
+DOMAIN-SUFFIX,generativeai.google
+DOMAIN-SUFFIX,grazie.ai
+DOMAIN-SUFFIX,grazie.aws.intellij.net
+DOMAIN-SUFFIX,identrust.com
+DOMAIN-SUFFIX,intercom.io
+DOMAIN-SUFFIX,intercomcdn.com
+DOMAIN-SUFFIX,makersuite.google.com
+DOMAIN-SUFFIX,meta.ai
+DOMAIN-SUFFIX,mistral.ai
 DOMAIN-SUFFIX,oaistatic.com
 DOMAIN-SUFFIX,oaiusercontent.com
-DOMAIN-SUFFIX,deepmind.google
-DOMAIN-SUFFIX,notebooklm.google
-DOMAIN-SUFFIX,generativeai.google
-DOMAIN-SUFFIX,bard.google.com
-DOMAIN-SUFFIX,gemini.google.com
-DOMAIN-SUFFIX,aistudio.google.com
-DOMAIN-SUFFIX,makersuite.google.com
-DOMAIN-SUFFIX,notebooklm.google.com
-DOMAIN-SUFFIX,geller-pa.googleapis.com
-DOMAIN-SUFFIX,generativelanguage.googleapis.com
+DOMAIN-SUFFIX,openai.com
+DOMAIN-SUFFIX,openai.com.cdn.cloudflare.net
+DOMAIN-SUFFIX,openaiapi-site.azureedge.net
+DOMAIN-SUFFIX,perplexity.ai
+DOMAIN-SUFFIX,perplexity.com
+DOMAIN-SUFFIX,pplx.ai
 DOMAIN-SUFFIX,proactivebackend-pa.googleapis.com
-DOMAIN,ai.google.dev
-DOMAIN,alkalicore-pa.clients6.google.com
-DOMAIN,alkalimakersuite-pa.clients6.google.com
-DOMAIN,gateway.ai.cloudflare.com
-DOMAIN-KEYWORD,openai
-################## EOF ##################
+DOMAIN-SUFFIX,sentry.io
+DOMAIN-SUFFIX,smoot.apple.com
+DOMAIN-SUFFIX,stripe.com
+IP-CIDR,160.79.104.0/23,no-resolve
+IP-CIDR6,2607:6bc0::/48,no-resolve
+DOMAIN-SUFFIX,openrouter.ai
