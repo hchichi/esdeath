@@ -1,7 +1,7 @@
 # SukkaW Reject Rules
 #
-# Last Updated: 2024-11-07 19:34
-# Size: 107731
+# Last Updated: 2024-11-07 20:45
+# Size: 107732
 #
 # Combined SukkaW advertising rules
 #
@@ -6396,6 +6396,7 @@ DOMAIN-SUFFIX,ad.weixin.qq.com
 DOMAIN-SUFFIX,ad.weplayer.cc
 DOMAIN-SUFFIX,ad.winrar.com.cn
 DOMAIN-SUFFIX,ad.woman.mynavi.jp
+DOMAIN-SUFFIX,ad.wrtn.ai
 DOMAIN-SUFFIX,ad.wsod.com
 DOMAIN-SUFFIX,ad.wurangxian.top
 DOMAIN-SUFFIX,ad.wx.com
@@ -32435,7 +32436,6 @@ DOMAIN-SUFFIX,earphonespulse.com
 DOMAIN-SUFFIX,earplugmolka.com
 DOMAIN-SUFFIX,earringsatisfiedsplice.com
 DOMAIN-SUFFIX,earshambitty.com
-DOMAIN-SUFFIX,earth.cointelegraph.com
 DOMAIN-SUFFIX,earthquakehomesinsulation.com
 DOMAIN-SUFFIX,earthquakescarf.com
 DOMAIN-SUFFIX,earthworm.creatifmediagroup.com
@@ -43764,7 +43764,6 @@ DOMAIN-SUFFIX,huaxinapp3.com
 DOMAIN-SUFFIX,huaxinapp4.com
 DOMAIN-SUFFIX,huaxinapp5.com
 DOMAIN-SUFFIX,hub.com.pl
-DOMAIN-SUFFIX,hub.fghtem.com
 DOMAIN-SUFFIX,hub.firestonecompleteautocare.com
 DOMAIN-SUFFIX,hub.hubfinancial.com
 DOMAIN-SUFFIX,hub.hubinternational.com
@@ -62342,6 +62341,7 @@ DOMAIN-SUFFIX,nearestaxe.com
 DOMAIN-SUFFIX,nearestmicrowavespends.com
 DOMAIN-SUFFIX,nearestsweaty.com
 DOMAIN-SUFFIX,nearvictorydame.com
+DOMAIN-SUFFIX,neat-period.com
 DOMAIN-SUFFIX,neateclipsevehemence.com
 DOMAIN-SUFFIX,neatshade.com
 DOMAIN-SUFFIX,neatstats.com
@@ -76838,6 +76838,7 @@ DOMAIN-SUFFIX,scnd.landsend.de
 DOMAIN-SUFFIX,scnt.rambler.ru
 DOMAIN-SUFFIX,scode.randomhouse.com
 DOMAIN-SUFFIX,scoev.cn
+DOMAIN-SUFFIX,scoldak.com
 DOMAIN-SUFFIX,sconnectstats.mckesson.com
 DOMAIN-SUFFIX,scontent.services.tvn.pl
 DOMAIN-SUFFIX,sconvtrk.com

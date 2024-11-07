@@ -1,7 +1,7 @@
 # SukkaW CDN Rules
 #
-# Last Updated: 2024-11-07 19:34
-# Size: 2657
+# Last Updated: 2024-11-07 20:45
+# Size: 2658
 #
 # Combined SukkaW CDN rules
 #
@@ -10,6 +10,7 @@
 #  - https://ruleset.skk.moe/List/non_ip/cdn.conf
 
 DOMAIN,0x0.st
+DOMAIN,3dna.nationbuilder.com
 DOMAIN,4gtvimg2.4gtv.tv
 DOMAIN,GEOIP-js.com
 DOMAIN,a.deviantart.net
