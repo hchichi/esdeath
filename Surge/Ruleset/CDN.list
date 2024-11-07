@@ -1,7 +1,7 @@
 # SukkaW CDN Rules
 #
-# Last Updated: 2024-11-08 00:13
-# Size: 2656
+# Last Updated: 2024-11-08 00:38
+# Size: 2655
 #
 # Combined SukkaW CDN rules
 #
@@ -1218,7 +1218,6 @@ DOMAIN,pic.libilibi.top
 DOMAIN,pic.macked.app
 DOMAIN,pic.onlinewebfonts.com
 DOMAIN,pic.skk.moe
-DOMAIN,pic.ziyuan.wang
 DOMAIN,piccdn.7mmtv.sx
 DOMAIN,pics.dmm.co.jp
 DOMAIN,pics.hentai.name

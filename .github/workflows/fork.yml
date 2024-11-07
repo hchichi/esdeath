@@ -213,7 +213,7 @@ jobs:
         ' sh {} +
 
         # Convert domain-set to rule-set for specific files
-        for file in Reject/AdGuardChinese.list Reject/Ads_AWAvenue.list Reject/Ads_SukkaW.list CDN.list; do
+        for file in Reject/AdGuardChinese.list Reject/Ads_AWAvenue.list Reject/Ads_SukkaW.list Ads_SukkaW_Extra.list CDN.list; do
           if [ -f "$file" ]; then
             sed -i -e '/^\./s/^\./DOMAIN-SUFFIX,/' \
                    -e '/^\s*$/b; /^\s*#/b; /^DOMAIN-SUFFIX,/b; s/^\([^#]\)/DOMAIN,\1/' "$file"
@@ -379,7 +379,7 @@ jobs:
           add_header "Reject/Ads_SukkaW.list" \
                     "SukkaW Reject Rules" \
                     "Combined SukkaW advertising rules" \
-                    "https://ruleset.skk.moe/List/domainset/reject.conf\nhttps://ruleset.skk.moe/List/non_ip/reject.conf"
+                    "https://ruleset.skk.moe/List/domainset/reject.conf\nhttps://ruleset.skk.moe/List/non_ip/reject.conf\nhttps://ruleset.skk.moe/List/domainset/reject_extra.conf\nhttps://ruleset.skk.moe/List/ip/reject.conf"
         fi
 
         if [ -f "Direct/Direct_Sukkaw.list" ]; then
@@ -428,6 +428,27 @@ jobs:
           add_header "ChinaIPv6.list" \
                     "China CIDR Rules" \
                     "China CIDR rules (IPv6)" \
+                    "https://raw.githubusercontent.com/missuo/ASN-China/main/IPv6.China.list"
+        fi
+
+        if [ -f "ChinaIP_No_Resolve.list" ]; then
+          add_header "ChinaIP_No_Resolve.list" \
+                    "China CIDR Rules (No Resolve)" \
+                    "China CIDR rules without no-resolve option" \
+                    "https://raw.githubusercontent.com/missuo/ASN-China/main/IP.China.list"
+        fi
+
+        if [ -f "ChinaIPv4_No_Resolve.list" ]; then
+          add_header "ChinaIPv4_No_Resolve.list" \
+                    "China CIDR Rules (IPv4, No Resolve)" \
+                    "China CIDR rules (IPv4) without no-resolve option" \
+                    "https://raw.githubusercontent.com/missuo/ASN-China/main/IPv4.China.list"
+        fi
+
+        if [ -f "ChinaIPv6_No_Resolve.list" ]; then
+          add_header "ChinaIPv6_No_Resolve.list" \
+                    "China CIDR Rules (IPv6, No Resolve)" \
+                    "China CIDR rules (IPv6) without no-resolve option" \
                     "https://raw.githubusercontent.com/missuo/ASN-China/main/IPv6.China.list"
         fi
 
