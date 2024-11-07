@@ -1,0 +1,10 @@
+# China CIDR Rules (IPv6, No Resolve)
+#
+# Last Updated: 2024-11-08 01:34
+# Size: 0
+#
+# China CIDR rules (IPv6) without no-resolve option
+#
+# Data from:
+#  - https://raw.githubusercontent.com/missuo/ASN-China/main/IPv6.China.list
+
