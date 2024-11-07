@@ -1,28 +1,16 @@
+# AI Rules
+#
+# Last Updated: 2024-11-08 00:13
+# Size: 76
+#
+# Combined AI rules
+#
+# Data from:
+#  - https://ruleset.skk.moe/List/non_ip/ai.conf
+#  - https://raw.githubusercontent.com/hiven425/hiven/master/config/AI.list
+#  - https://proxyresource.pages.dev/Tool/Loon/Rule/AI.list
+#  - https://github.com/ConnersHua/RuleGo/raw/master/Surge/Ruleset/Extra/AI.list
 
-# 2024-10-25 16:28:21
-# > AI Studio
-# > ChatGPT
-# > Claude
-# > Copilot
-# > Gemini
-# Anthropic
-# Apple Intelligence
-# ChatGPT
-# Claude
-# Copilot
-# Gemini
-# Google
-# JetBrains AI
-# Meta
-# Meta AI
-# Microsoft
-# Mistral AI
-# OpenAI
-# Perplexity
-# 内容：OpenAi Bard anthropic
-# 域名关键字匹配
-# 域名后缀匹配
-#DOMAIN
 AND,((DOMAIN-KEYWORD,chatgpt-async-webps-prod-eastus-),(DOMAIN-SUFFIX,webpubsub.azure.com))
 AND,((DOMAIN-KEYWORD,openaicom-api-),(DOMAIN-SUFFIX,azurefd.net))
 DOMAIN,ai.google.dev
@@ -91,6 +79,7 @@ DOMAIN-SUFFIX,oaiusercontent.com
 DOMAIN-SUFFIX,openai.com
 DOMAIN-SUFFIX,openai.com.cdn.cloudflare.net
 DOMAIN-SUFFIX,openaiapi-site.azureedge.net
+DOMAIN-SUFFIX,openrouter.ai
 DOMAIN-SUFFIX,perplexity.ai
 DOMAIN-SUFFIX,perplexity.com
 DOMAIN-SUFFIX,pplx.ai
@@ -100,4 +89,3 @@ DOMAIN-SUFFIX,smoot.apple.com
 DOMAIN-SUFFIX,stripe.com
 IP-CIDR,160.79.104.0/23,no-resolve
 IP-CIDR6,2607:6bc0::/48,no-resolve
-DOMAIN-SUFFIX,openrouter.ai

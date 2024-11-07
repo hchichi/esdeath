@@ -1,7 +1,7 @@
 # SukkaW CDN Rules
 #
-# Last Updated: 2024-11-07 23:40
-# Size: 2658
+# Last Updated: 2024-11-08 00:13
+# Size: 2656
 #
 # Combined SukkaW CDN rules
 #
@@ -302,7 +302,6 @@ DOMAIN,cdn-share-sprites.flaticon.com
 DOMAIN,cdn-static-1.medium.com
 DOMAIN,cdn-static.talent.com
 DOMAIN,cdn-thumbs.porntube.com
-DOMAIN,cdn-txweb.transifex.com
 DOMAIN,cdn-uicons.flaticon.com
 DOMAIN,cdn-www.bluestacks.com
 DOMAIN,cdn-yotpo-images-production.yotpo.com
@@ -724,6 +723,7 @@ DOMAIN,eslint.style
 DOMAIN,eu-images.contentstack.com
 DOMAIN,eu.hamreus.com
 DOMAIN,euc-widget.freshworks.com
+DOMAIN,event.ithome.com.tw
 DOMAIN,events-delivery.apple.com
 DOMAIN,events-live.apple.com
 DOMAIN,events.split.io
@@ -961,7 +961,6 @@ DOMAIN,img.kemono.su
 DOMAIN,img.ltyears.com
 DOMAIN,img.lvv2.com
 DOMAIN,img.m.mw
-DOMAIN,img.merch.cameo.com
 DOMAIN,img.moedog.org
 DOMAIN,img.moegirl.tw
 DOMAIN,img.mresou.com
@@ -1181,7 +1180,6 @@ DOMAIN,opensignal.cdnbye.com
 DOMAIN,opt.moovweb.net
 DOMAIN,optimizationguide-pa.googleapis.com
 DOMAIN,optimizely.com
-DOMAIN,optimizely.wsj.net
 DOMAIN,organizer.bizzabo.com
 DOMAIN,osint.digitalside.it
 DOMAIN,oss-binaries.phusionpassenger.com
