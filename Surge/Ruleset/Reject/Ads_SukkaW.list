@@ -1,7 +1,7 @@
 # SukkaW Reject Rules
 #
-# Last Updated: 2024-11-07 21:35
-# Size: 107732
+# Last Updated: 2024-11-07 22:34
+# Size: 107733
 #
 # Combined SukkaW advertising rules
 #
@@ -11959,6 +11959,7 @@ DOMAIN-SUFFIX,api.ads.newsdigest.jp
 DOMAIN-SUFFIX,api.ads.watchabc.go.com
 DOMAIN-SUFFIX,api.all-internet.jp
 DOMAIN-SUFFIX,api.ampiri.com
+DOMAIN-SUFFIX,api.amplitudeexperiment.com
 DOMAIN-SUFFIX,api.analytics.omgpop.com
 DOMAIN-SUFFIX,api.animeshqip.icu
 DOMAIN-SUFFIX,api.antibanads.com
