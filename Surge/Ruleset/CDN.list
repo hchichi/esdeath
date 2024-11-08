@@ -1,13 +1,13 @@
 # SukkaW CDN Rules
 #
-# Last Updated: 2024-11-09 02:37
+# Last Updated: 2024-11-09 03:33
 #
 # Rule Statistics:
 # DOMAIN: 1822
-# DOMAIN-SUFFIX: 799
+# DOMAIN-SUFFIX: 798
 # DOMAIN-KEYWORD: 5
 # URL-REGEX: 2
-# TOTAL: 2628
+# TOTAL: 2627
 #
 # Combined SukkaW CDN rules
 #
@@ -2189,7 +2189,6 @@ DOMAIN-SUFFIX,ipfs.anonymize.com
 DOMAIN-SUFFIX,ipfs.arching-kaos.com
 DOMAIN-SUFFIX,ipfs.best-practice.se
 DOMAIN-SUFFIX,ipfs.busy.org
-DOMAIN-SUFFIX,ipfs.chisdealhd.co.uk
 DOMAIN-SUFFIX,ipfs.decoo.io
 DOMAIN-SUFFIX,ipfs.denarius.io
 DOMAIN-SUFFIX,ipfs.drink.cafe
