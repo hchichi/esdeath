@@ -1,6 +1,6 @@
 # SukkaW CDN Rules
 #
-# Last Updated: 2024-11-08 23:34
+# Last Updated: 2024-11-09 00:38
 #
 # Rule Statistics:
 # DOMAIN: 1821
@@ -1572,7 +1572,6 @@ DOMAIN,static.maxmind.com
 DOMAIN,static.mediafire.com
 DOMAIN,static.meiguo.com
 DOMAIN,static.mendeley.com
-DOMAIN,static.mikuclub.fun
 DOMAIN,static.missav.com
 DOMAIN,static.mocortech.com
 DOMAIN,static.moegoat.com
@@ -1803,6 +1802,7 @@ DOMAIN,web-static.archive.org
 DOMAIN,web-static.pages.iheart.com
 DOMAIN,web-toolbar.playstation.com
 DOMAIN,web.onekey-asset.com
+DOMAIN,webassets.linear.app
 DOMAIN,webfonts.zoho.com
 DOMAIN,website-cdn.ipinfo.io
 DOMAIN,widget.freshworks.com
