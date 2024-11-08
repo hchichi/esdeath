@@ -1,9 +1,13 @@
 # China CIDR Rules
 #
-# Last Updated: 2024-11-08 10:47
-# Size: 11667
+# Last Updated: 2024-11-08 11:36
 #
-# China CIDR rules
+# Rule Statistics:
+# IP-CIDR: 7707
+# IP-CIDR6: 3960
+# TOTAL: 11667
+#
+# China CIDR rules with no-resolve option
 #
 # Data from:
 #  - https://raw.githubusercontent.com/missuo/ASN-China/main/IP.China.list
