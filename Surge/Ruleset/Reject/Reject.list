@@ -1,7 +1,15 @@
 # Advertising Reject Rules
 #
-# Last Updated: 2024-11-08 10:47
-# Size: 1146
+# Last Updated: 2024-11-08 11:36
+#
+# Rule Statistics:
+# DOMAIN: 293
+# DOMAIN-SUFFIX: 842
+# DOMAIN-KEYWORD: 5
+# IP-CIDR: 5
+# IP-CIDR6: 1
+# USER-AGENT: 1
+# TOTAL: 1147
 #
 # Combined advertising/hijacking/tracking blocking rules
 #
