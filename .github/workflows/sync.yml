@@ -271,7 +271,7 @@ jobs:
         if [ -f "ChinaIP.list" ]; then
           # Create temporary files
           temp_file="ChinaIP.list.tmp"
-          temp_file_resolve="ChinaIP_Resolve.list"
+          temp_file_resolve="ChinaIP_Resolve.list.tmp"
           
           # Process each line
           while IFS= read -r line; do
@@ -281,14 +281,14 @@ jobs:
             if [[ "$line" =~ .*:.* ]]; then
               # IPv6 address
               if [[ ! "$line" =~ ^IP-CIDR6, ]]; then
-                echo "IP-CIDR6,$line,no-resolve" >> "$temp_file"
-                echo "IP-CIDR6,$line" >> "$temp_file_resolve"
+                echo "IP-CIDR6,$line" >> "$temp_file"
+                echo "IP-CIDR6,$line,no-resolve" >> "$temp_file_resolve"
               fi
             elif [[ "$line" =~ ^([0-9]{1,3}\.){3}[0-9]{1,3}/[0-9]{1,2}$ ]]; then
               # IPv4 address
               if [[ ! "$line" =~ ^IP-CIDR, ]]; then
-                echo "IP-CIDR,$line,no-resolve" >> "$temp_file"
-                echo "IP-CIDR,$line" >> "$temp_file_resolve"
+                echo "IP-CIDR,$line" >> "$temp_file"
+                echo "IP-CIDR,$line,no-resolve" >> "$temp_file_resolve"
               fi
             else
               # Copy other lines as-is
@@ -297,58 +297,53 @@ jobs:
             fi
           done < "ChinaIP.list"
           
-          # Replace original file with the version containing no-resolve
+          # Replace original files with processed versions
           mv "$temp_file" "ChinaIP.list"
+          mv "$temp_file_resolve" "ChinaIP_Resolve.list"
         fi
 
         if [ -f "ChinaIPv4.list" ]; then
-          # Process IPv4 rules
           temp_file="ChinaIPv4.list.tmp"
-          temp_file_resolve="ChinaIPv4_Resolve.list"
+          temp_file_resolve="ChinaIPv4_Resolve.list.tmp"
           
           while IFS= read -r line; do
-            # Skip empty lines and comments
             [[ -z "$line" || "$line" =~ ^[[:space:]]*# ]] && continue
             
             if [[ "$line" =~ ^([0-9]{1,3}\.){3}[0-9]{1,3}/[0-9]{1,2}$ ]]; then
               if [[ ! "$line" =~ ^IP-CIDR, ]]; then
-                echo "IP-CIDR,$line,no-resolve" >> "$temp_file"
-                echo "IP-CIDR,$line" >> "$temp_file_resolve"
+                echo "IP-CIDR,$line" >> "$temp_file"
+                echo "IP-CIDR,$line,no-resolve" >> "$temp_file_resolve"
               fi
             else
-              # Copy other lines as-is
               echo "$line" >> "$temp_file"
               echo "$line" >> "$temp_file_resolve"
             fi
           done < "ChinaIPv4.list"
           
-          # Replace original file with the version containing no-resolve
           mv "$temp_file" "ChinaIPv4.list"
+          mv "$temp_file_resolve" "ChinaIPv4_Resolve.list"
         fi
 
         if [ -f "ChinaIPv6.list" ]; then
-          # Process IPv6 rules
           temp_file="ChinaIPv6.list.tmp"
-          temp_file_resolve="ChinaIPv6_Resolve.list"
+          temp_file_resolve="ChinaIPv6_Resolve.list.tmp"
           
           while IFS= read -r line; do
-            # Skip empty lines and comments
             [[ -z "$line" || "$line" =~ ^[[:space:]]*# ]] && continue
             
             if [[ "$line" =~ .*:.* ]]; then
               if [[ ! "$line" =~ ^IP-CIDR6, ]]; then
-                echo "IP-CIDR6,$line,no-resolve" >> "$temp_file"
-                echo "IP-CIDR6,$line" >> "$temp_file_resolve"
+                echo "IP-CIDR6,$line" >> "$temp_file"
+                echo "IP-CIDR6,$line,no-resolve" >> "$temp_file_resolve"
               fi
             else
-              # Copy other lines as-is
               echo "$line" >> "$temp_file"
               echo "$line" >> "$temp_file_resolve"
             fi
           done < "ChinaIPv6.list"
           
-          # Replace original file with the version containing no-resolve
           mv "$temp_file" "ChinaIPv6.list"
+          mv "$temp_file_resolve" "ChinaIPv6_Resolve.list"
         fi
 
         # Process AI Rules
