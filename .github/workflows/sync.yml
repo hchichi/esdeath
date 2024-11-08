@@ -206,7 +206,8 @@ jobs:
           {} \;
 
         # Add no-resolve to IP rules if missing
-        find . -type f -name "*.list" -exec sh -c '
+        #find . -type f -name "*.list" -exec sh -c '
+        find . -type f -name "*.list" ! -name "*_Resolve.list" -exec sh -c '
           for file do
             awk "/^IP-/ && !/,no-resolve/ {print \$0\",no-resolve\"; next} {print}" "$file" > "$file.tmp" && mv "$file.tmp" "$file"
           done
@@ -265,10 +266,10 @@ jobs:
           cat Streaming/Video/EmbyTest2.list >> Streaming/Video/EmbyTest.list
           rm -f Streaming/Video/EmbyTest2.list
         fi
-        
-        # # Process IP rules
+
+        # Process IP rules
         if [ -f "ChinaIP.list" ]; then
-          # Create temporary files for both versions
+          # Create temporary files
           temp_file="ChinaIP.list.tmp"
           temp_file_resolve="ChinaIP_Resolve.list"
           
@@ -280,34 +281,33 @@ jobs:
             if [[ "$line" =~ .*:.* ]]; then
               # IPv6 address
               if [[ ! "$line" =~ ^IP-CIDR6, ]]; then
-                # Write to both files - one with no-resolve, one without
                 echo "IP-CIDR6,$line,no-resolve" >> "$temp_file"
                 echo "IP-CIDR6,$line" >> "$temp_file_resolve"
               fi
             elif [[ "$line" =~ ^([0-9]{1,3}\.){3}[0-9]{1,3}/[0-9]{1,2}$ ]]; then
               # IPv4 address
               if [[ ! "$line" =~ ^IP-CIDR, ]]; then
-                # Write to both files - one with no-resolve, one without
                 echo "IP-CIDR,$line,no-resolve" >> "$temp_file"
                 echo "IP-CIDR,$line" >> "$temp_file_resolve"
               fi
             else
-              # Copy other lines as-is to both files
+              # Copy other lines as-is
               echo "$line" >> "$temp_file"
               echo "$line" >> "$temp_file_resolve"
             fi
           done < "ChinaIP.list"
           
-          # Replace original file and keep the _Resolve version
+          # Replace original file with the version containing no-resolve
           mv "$temp_file" "ChinaIP.list"
         fi
-        
-        # Similar process for IPv4
+
         if [ -f "ChinaIPv4.list" ]; then
+          # Process IPv4 rules
           temp_file="ChinaIPv4.list.tmp"
           temp_file_resolve="ChinaIPv4_Resolve.list"
           
           while IFS= read -r line; do
+            # Skip empty lines and comments
             [[ -z "$line" || "$line" =~ ^[[:space:]]*# ]] && continue
             
             if [[ "$line" =~ ^([0-9]{1,3}\.){3}[0-9]{1,3}/[0-9]{1,2}$ ]]; then
@@ -316,20 +316,23 @@ jobs:
                 echo "IP-CIDR,$line" >> "$temp_file_resolve"
               fi
             else
+              # Copy other lines as-is
               echo "$line" >> "$temp_file"
               echo "$line" >> "$temp_file_resolve"
             fi
           done < "ChinaIPv4.list"
           
+          # Replace original file with the version containing no-resolve
           mv "$temp_file" "ChinaIPv4.list"
         fi
-        
-        # Similar process for IPv6
+
         if [ -f "ChinaIPv6.list" ]; then
+          # Process IPv6 rules
           temp_file="ChinaIPv6.list.tmp"
           temp_file_resolve="ChinaIPv6_Resolve.list"
           
           while IFS= read -r line; do
+            # Skip empty lines and comments
             [[ -z "$line" || "$line" =~ ^[[:space:]]*# ]] && continue
             
             if [[ "$line" =~ .*:.* ]]; then
@@ -338,13 +341,16 @@ jobs:
                 echo "IP-CIDR6,$line" >> "$temp_file_resolve"
               fi
             else
+              # Copy other lines as-is
               echo "$line" >> "$temp_file"
               echo "$line" >> "$temp_file_resolve"
             fi
           done < "ChinaIPv6.list"
           
+          # Replace original file with the version containing no-resolve
           mv "$temp_file" "ChinaIPv6.list"
         fi
+
         # Process AI Rules
         cd AI
         curl -L -o "AI_Hiven.list" "https://raw.githubusercontent.com/hiven425/hiven/master/config/AI.list"
@@ -420,13 +426,13 @@ jobs:
         # Only process specific merged files
         for file in CDN.list Streaming/Music/NeteaseMusic.list Reject/Reject.list Reject/Ads_SukkaW.list AI/AI.list Direct/Direct_Sukkaw.list; do
           if [ -f "$file" ]; then
+            # Create temporary file in the same directory
             temp_file="${file}.tmp"
             grep -v '^\s*#' "$file" | grep -v '^\s*$' | sort -u > "$temp_file"
             mv "$temp_file" "$file"
           fi
         done
 
-        # Add headers after cleaning and sorting
         if [ -f "AI/AI.list" ]; then
           add_header "AI/AI.list" \
                     "AI Rules" \
@@ -434,6 +440,7 @@ jobs:
                     "https://ruleset.skk.moe/List/non_ip/ai.conf\nhttps://raw.githubusercontent.com/hiven425/hiven/master/config/AI.list\nhttps://proxyresource.pages.dev/Tool/Loon/Rule/AI.list\nhttps://github.com/ConnersHua/RuleGo/raw/master/Surge/Ruleset/Extra/AI.list"
         fi
 
+        # Add headers after cleaning and sorting
         if [ -f "Reject/Reject.list" ]; then
           add_header "Reject/Reject.list" \
                     "Advertising Reject Rules" \
