@@ -1,13 +1,13 @@
 # SukkaW CDN Rules
 #
-# Last Updated: 2024-11-09 00:38
+# Last Updated: 2024-11-09 01:34
 #
 # Rule Statistics:
-# DOMAIN: 1821
+# DOMAIN: 1822
 # DOMAIN-SUFFIX: 799
 # DOMAIN-KEYWORD: 5
 # URL-REGEX: 2
-# TOTAL: 2627
+# TOTAL: 2628
 #
 # Combined SukkaW CDN rules
 #
@@ -334,6 +334,7 @@ DOMAIN,cdn.bfe.dev
 DOMAIN,cdn.birdie.so
 DOMAIN,cdn.branch.io
 DOMAIN,cdn.britannica.com
+DOMAIN,cdn.bsky.app
 DOMAIN,cdn.bsky.social
 DOMAIN,cdn.builder.io
 DOMAIN,cdn.c1.amplience.net
