@@ -1,13 +1,13 @@
 # SukkaW CDN Rules
 #
-# Last Updated: 2024-11-08 13:35
+# Last Updated: 2024-11-08 14:38
 #
 # Rule Statistics:
-# DOMAIN: 1818
+# DOMAIN: 1821
 # DOMAIN-SUFFIX: 799
 # DOMAIN-KEYWORD: 5
 # URL-REGEX: 2
-# TOTAL: 2624
+# TOTAL: 2627
 #
 # Combined SukkaW CDN rules
 #
@@ -331,6 +331,7 @@ DOMAIN,cdn.autoketing.org
 DOMAIN,cdn.axieinfinity.com
 DOMAIN,cdn.babylonjs.com
 DOMAIN,cdn.bfe.dev
+DOMAIN,cdn.birdie.so
 DOMAIN,cdn.branch.io
 DOMAIN,cdn.britannica.com
 DOMAIN,cdn.bsky.social
@@ -1278,6 +1279,7 @@ DOMAIN,proxy.cors.sh
 DOMAIN,proxy.golang.org
 DOMAIN,proxy.joinmastodon.org
 DOMAIN,ps.w.org
+DOMAIN,psp-logos.uptimerobot.com
 DOMAIN,public-assets.typeform.com
 DOMAIN,public-cdn.bblmw.com
 DOMAIN,public-files.gumroad.com
@@ -1390,6 +1392,7 @@ DOMAIN,scontent.whatsapp.net
 DOMAIN,screenshots.codesandbox.io
 DOMAIN,screenshots.debian.net
 DOMAIN,screenshots.downloadtorrentfile.com
+DOMAIN,screenshots.webflow.com
 DOMAIN,scripts.dailymail.co.uk
 DOMAIN,scripts.webeo.com
 DOMAIN,sdata.ndtv.com
