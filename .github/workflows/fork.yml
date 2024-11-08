@@ -213,7 +213,7 @@ jobs:
         ' sh {} +
 
         # Convert domain-set to rule-set for specific files
-        for file in Reject/AdGuardChinese.list Reject/Ads_AWAvenue.list Reject/Ads_SukkaW.list Ads_SukkaW_Extra.list CDN.list; do
+        for file in Reject/AdGuardChinese.list Reject/Ads_AWAvenue.list Reject/Ads_SukkaW.list Reject/Ads_SukkaW_Extra.list CDN.list; do
           if [ -f "$file" ]; then
             sed -i -e '/^\./s/^\./DOMAIN-SUFFIX,/' \
                    -e '/^\s*$/b; /^\s*#/b; /^DOMAIN-SUFFIX,/b; s/^\([^#]\)/DOMAIN,\1/' "$file"
@@ -266,7 +266,7 @@ jobs:
           rm -f Streaming/Video/EmbyTest2.list
         fi
 
-                # Process IP rules
+        # Process IP rules
         if [ -f "ChinaIP.list" ]; then
           # Create temporary files
           temp_file="ChinaIP.list.tmp"
@@ -294,15 +294,39 @@ jobs:
         fi
 
         if [ -f "ChinaIPv4.list" ]; then
-          # Process IPv4 rules without duplicating prefix
-          sed -i '/^IP-CIDR,/!s/^/IP-CIDR,/' "ChinaIPv4.list" > "ChinaIPv4_No_Resolve.list"
-          sed -i '/^IP-CIDR,/!s/^/IP-CIDR,/; /,no-resolve$/!s/$/,no-resolve/' "ChinaIPv4.list"
+          # Process IPv4 rules
+          temp_file="ChinaIPv4.list.tmp"
+          temp_file_no_resolve="ChinaIPv4_No_Resolve.list"
+          
+          while IFS= read -r line; do
+            if [[ $line =~ ^([0-9]{1,3}\.){3}[0-9]{1,3}/[0-9]{1,2}$ ]]; then
+              echo "IP-CIDR,$line,no-resolve" >> "$temp_file"
+              echo "IP-CIDR,$line" >> "$temp_file_no_resolve"
+            else
+              echo "$line" >> "$temp_file"
+              echo "$line" >> "$temp_file_no_resolve"
+            fi
+          done < "ChinaIPv4.list"
+          
+          mv "$temp_file" "ChinaIPv4.list"
         fi
 
         if [ -f "ChinaIPv6.list" ]; then
-          # Process IPv6 rules without duplicating prefix
-          sed -i '/^IP-CIDR6,/!s/^/IP-CIDR6,/' "ChinaIPv6.list" > "ChinaIPv6_No_Resolve.list"
-          sed -i '/^IP-CIDR6,/!s/^/IP-CIDR6,/; /,no-resolve$/!s/$/,no-resolve/' "ChinaIPv6.list"
+          # Process IPv6 rules
+          temp_file="ChinaIPv6.list.tmp"
+          temp_file_no_resolve="ChinaIPv6_No_Resolve.list"
+          
+          while IFS= read -r line; do
+            if [[ $line =~ .*:.* ]]; then
+              echo "IP-CIDR6,$line,no-resolve" >> "$temp_file"
+              echo "IP-CIDR6,$line" >> "$temp_file_no_resolve"
+            else
+              echo "$line" >> "$temp_file"
+              echo "$line" >> "$temp_file_no_resolve"
+            fi
+          done < "ChinaIPv6.list"
+          
+          mv "$temp_file" "ChinaIPv6.list"
         fi
 
         # Process AI Rules
