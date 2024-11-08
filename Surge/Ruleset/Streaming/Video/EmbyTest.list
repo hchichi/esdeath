@@ -1,7 +1,11 @@
 # Emby Rules
 #
-# Last Updated: 2024-11-08 10:47
-# Size: 80
+# Last Updated: 2024-11-08 11:26
+#
+# Rule Statistics:
+# DOMAIN-SUFFIX: 78
+# IP-CIDR6: 2
+# TOTAL: 80
 #
 # Combined Emby rules
 #
