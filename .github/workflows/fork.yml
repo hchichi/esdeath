@@ -270,62 +270,83 @@ jobs:
         if [ -f "ChinaIP.list" ]; then
           # Create temporary files
           temp_file="ChinaIP.list.tmp"
-          temp_file_no_resolve="ChinaIP_No_Resolve.list"
+          temp_file_resolve="ChinaIP_Resolve.list"
           
           # Process each line
           while IFS= read -r line; do
-            if [[ $line =~ .*:.* ]]; then
+            # Skip empty lines and comments
+            [[ -z "$line" || "$line" =~ ^[[:space:]]*# ]] && continue
+            
+            if [[ "$line" =~ .*:.* ]]; then
               # IPv6 address
-              echo "IP-CIDR6,$line,no-resolve" >> "$temp_file"
-              echo "IP-CIDR6,$line" >> "$temp_file_no_resolve"
-            elif [[ $line =~ ^([0-9]{1,3}\.){3}[0-9]{1,3}/[0-9]{1,2}$ ]]; then
+              if [[ ! "$line" =~ ^IP-CIDR6, ]]; then
+                echo "IP-CIDR6,$line,no-resolve" >> "$temp_file"
+                echo "IP-CIDR6,$line" >> "$temp_file_resolve"
+              fi
+            elif [[ "$line" =~ ^([0-9]{1,3}\.){3}[0-9]{1,3}/[0-9]{1,2}$ ]]; then
               # IPv4 address
-              echo "IP-CIDR,$line,no-resolve" >> "$temp_file"
-              echo "IP-CIDR,$line" >> "$temp_file_no_resolve"
+              if [[ ! "$line" =~ ^IP-CIDR, ]]; then
+                echo "IP-CIDR,$line,no-resolve" >> "$temp_file"
+                echo "IP-CIDR,$line" >> "$temp_file_resolve"
+              fi
             else
               # Copy other lines as-is
               echo "$line" >> "$temp_file"
-              echo "$line" >> "$temp_file_no_resolve"
+              echo "$line" >> "$temp_file_resolve"
             fi
           done < "ChinaIP.list"
           
-          # Replace original file
+          # Replace original file with the version containing no-resolve
           mv "$temp_file" "ChinaIP.list"
         fi
 
         if [ -f "ChinaIPv4.list" ]; then
           # Process IPv4 rules
           temp_file="ChinaIPv4.list.tmp"
-          temp_file_no_resolve="ChinaIPv4_No_Resolve.list"
+          temp_file_resolve="ChinaIPv4_Resolve.list"
           
           while IFS= read -r line; do
-            if [[ $line =~ ^([0-9]{1,3}\.){3}[0-9]{1,3}/[0-9]{1,2}$ ]]; then
-              echo "IP-CIDR,$line,no-resolve" >> "$temp_file"
-              echo "IP-CIDR,$line" >> "$temp_file_no_resolve"
+            # Skip empty lines and comments
+            [[ -z "$line" || "$line" =~ ^[[:space:]]*# ]] && continue
+            
+            if [[ "$line" =~ ^([0-9]{1,3}\.){3}[0-9]{1,3}/[0-9]{1,2}$ ]]; then
+              if [[ ! "$line" =~ ^IP-CIDR, ]]; then
+                echo "IP-CIDR,$line,no-resolve" >> "$temp_file"
+                echo "IP-CIDR,$line" >> "$temp_file_resolve"
+              fi
             else
+              # Copy other lines as-is
               echo "$line" >> "$temp_file"
-              echo "$line" >> "$temp_file_no_resolve"
+              echo "$line" >> "$temp_file_resolve"
             fi
           done < "ChinaIPv4.list"
           
+          # Replace original file with the version containing no-resolve
           mv "$temp_file" "ChinaIPv4.list"
         fi
 
         if [ -f "ChinaIPv6.list" ]; then
           # Process IPv6 rules
           temp_file="ChinaIPv6.list.tmp"
-          temp_file_no_resolve="ChinaIPv6_No_Resolve.list"
+          temp_file_resolve="ChinaIPv6_Resolve.list"
           
           while IFS= read -r line; do
-            if [[ $line =~ .*:.* ]]; then
-              echo "IP-CIDR6,$line,no-resolve" >> "$temp_file"
-              echo "IP-CIDR6,$line" >> "$temp_file_no_resolve"
+            # Skip empty lines and comments
+            [[ -z "$line" || "$line" =~ ^[[:space:]]*# ]] && continue
+            
+            if [[ "$line" =~ .*:.* ]]; then
+              if [[ ! "$line" =~ ^IP-CIDR6, ]]; then
+                echo "IP-CIDR6,$line,no-resolve" >> "$temp_file"
+                echo "IP-CIDR6,$line" >> "$temp_file_resolve"
+              fi
             else
+              # Copy other lines as-is
               echo "$line" >> "$temp_file"
-              echo "$line" >> "$temp_file_no_resolve"
+              echo "$line" >> "$temp_file_resolve"
             fi
           done < "ChinaIPv6.list"
           
+          # Replace original file with the version containing no-resolve
           mv "$temp_file" "ChinaIPv6.list"
         fi
 
@@ -353,14 +374,41 @@ jobs:
           local sources=$4
           local temp_file="${file}.tmp"
           
-          # Count rules
-          local rules_count=$(grep -cE "^(DOMAIN|DOMAIN-SUFFIX|DOMAIN-KEYWORD|IP-CIDR|IP-CIDRUSER-AGENT|URL-REGEX|GEOIP|IP-ASN|PROCESS-NAME)" "$file")
+          # Count different types of rules
+          local domain_count=$(grep -c "^DOMAIN," "$file")
+          local domain_suffix_count=$(grep -c "^DOMAIN-SUFFIX," "$file")
+          local domain_keyword_count=$(grep -c "^DOMAIN-KEYWORD," "$file")
+          local ip_asn_count=$(grep -c "^IP-ASN," "$file")
+          local ip_cidr_count=$(grep -c "^IP-CIDR," "$file")
+          local ip_cidr6_count=$(grep -c "^IP-CIDR6," "$file")
+          local process_name_count=$(grep -c "^PROCESS-NAME," "$file")
+          local user_agent_count=$(grep -c "^USER-AGENT," "$file")
+          local url_regex_count=$(grep -c "^URL-REGEX," "$file")
+          local geoip_count=$(grep -c "^GEOIP," "$file")
+          
+          # Calculate total
+          local total_count=$((domain_count + domain_suffix_count + domain_keyword_count + 
+                             ip_asn_count + ip_cidr_count + ip_cidr6_count + 
+                             process_name_count + user_agent_count + url_regex_count + 
+                             geoip_count))
           
           {
             echo "# $title"
             echo "#"
             echo "# Last Updated: $(TZ='Asia/Shanghai' date +'%Y-%m-%d %H:%M')"
-            echo "# Size: $rules_count"
+            echo "#"
+            echo "# Rule Statistics:"
+            [ $domain_count -gt 0 ] && echo "# DOMAIN: $domain_count"
+            [ $domain_suffix_count -gt 0 ] && echo "# DOMAIN-SUFFIX: $domain_suffix_count"
+            [ $domain_keyword_count -gt 0 ] && echo "# DOMAIN-KEYWORD: $domain_keyword_count"
+            [ $ip_asn_count -gt 0 ] && echo "# IP-ASN: $ip_asn_count"
+            [ $ip_cidr_count -gt 0 ] && echo "# IP-CIDR: $ip_cidr_count"
+            [ $ip_cidr6_count -gt 0 ] && echo "# IP-CIDR6: $ip_cidr6_count"
+            [ $process_name_count -gt 0 ] && echo "# PROCESS-NAME: $process_name_count"
+            [ $user_agent_count -gt 0 ] && echo "# USER-AGENT: $user_agent_count"
+            [ $url_regex_count -gt 0 ] && echo "# URL-REGEX: $url_regex_count"
+            [ $geoip_count -gt 0 ] && echo "# GEOIP: $geoip_count"
+            echo "# TOTAL: $total_count"
             echo "#"
             echo "# $description"
             echo "#"
@@ -437,41 +485,41 @@ jobs:
         if [ -f "ChinaIP.list" ]; then
           add_header "ChinaIP.list" \
                     "China CIDR Rules" \
-                    "China CIDR rules" \
+                    "China CIDR rules with no-resolve option" \
+                    "https://raw.githubusercontent.com/missuo/ASN-China/main/IP.China.list"
+        fi
+
+        if [ -f "ChinaIP_Resolve.list" ]; then
+          add_header "ChinaIP_Resolve.list" \
+                    "China CIDR Rules" \
+                    "China CIDR rules without no-resolve option" \
                     "https://raw.githubusercontent.com/missuo/ASN-China/main/IP.China.list"
         fi
 
         if [ -f "ChinaIPv4.list" ]; then
           add_header "ChinaIPv4.list" \
-                    "China CIDR Rules" \
-                    "China CIDR rules (IPv4)" \
-                    "https://raw.githubusercontent.com/missuo/ASN-China/main/IP.China.list"
+                    "China CIDR Rules (IPv4)" \
+                    "China CIDR rules (IPv4) with no-resolve option" \
+                    "https://raw.githubusercontent.com/missuo/ASN-China/main/IPv4.China.list"
         fi
 
-        if [ -f "ChinaIPv6.list" ]; then
-          add_header "ChinaIPv6.list" \
-                    "China CIDR Rules" \
-                    "China CIDR rules (IPv6)" \
-                    "https://raw.githubusercontent.com/missuo/ASN-China/main/IPv6.China.list"
-        fi
-
-        if [ -f "ChinaIP_No_Resolve.list" ]; then
-          add_header "ChinaIP_No_Resolve.list" \
-                    "China CIDR Rules (No Resolve)" \
-                    "China CIDR rules without no-resolve option" \
-                    "https://raw.githubusercontent.com/missuo/ASN-China/main/IP.China.list"
-        fi
-
-        if [ -f "ChinaIPv4_No_Resolve.list" ]; then
-          add_header "ChinaIPv4_No_Resolve.list" \
-                    "China CIDR Rules (IPv4, No Resolve)" \
+        if [ -f "ChinaIPv4_Resolve.list" ]; then
+          add_header "ChinaIPv4_Resolve.list" \
+                    "China CIDR Rules (IPv4)" \
                     "China CIDR rules (IPv4) without no-resolve option" \
                     "https://raw.githubusercontent.com/missuo/ASN-China/main/IPv4.China.list"
         fi
 
-        if [ -f "ChinaIPv6_No_Resolve.list" ]; then
-          add_header "ChinaIPv6_No_Resolve.list" \
-                    "China CIDR Rules (IPv6, No Resolve)" \
+        if [ -f "ChinaIPv6.list" ]; then
+          add_header "ChinaIPv6.list" \
+                    "China CIDR Rules (IPv6)" \
+                    "China CIDR rules (IPv6) with no-resolve option" \
+                    "https://raw.githubusercontent.com/missuo/ASN-China/main/IPv6.China.list"
+        fi
+
+        if [ -f "ChinaIPv6_Resolve.list" ]; then
+          add_header "ChinaIPv6_Resolve.list" \
+                    "China CIDR Rules (IPv6)" \
                     "China CIDR rules (IPv6) without no-resolve option" \
                     "https://raw.githubusercontent.com/missuo/ASN-China/main/IPv6.China.list"
         fi
