@@ -1,13 +1,13 @@
 # SukkaW CDN Rules
 #
-# Last Updated: 2024-11-10 16:35
+# Last Updated: 2024-11-10 17:33
 #
 # Rule Statistics:
-# DOMAIN: 1825
+# DOMAIN: 1828
 # DOMAIN-SUFFIX: 805
 # DOMAIN-KEYWORD: 5
 # URL-REGEX: 2
-# TOTAL: 2637
+# TOTAL: 2640
 #
 # Combined SukkaW CDN rules
 #
@@ -1093,6 +1093,7 @@ DOMAIN,media.cmx.edu.kg
 DOMAIN,media.cnn.com
 DOMAIN,media.contentapi.ea.com
 DOMAIN,media.convertkit.com
+DOMAIN,media.datacenterdynamics.com
 DOMAIN,media.dev.to
 DOMAIN,media.discordapp.net
 DOMAIN,media.dlsite.com
@@ -1497,6 +1498,7 @@ DOMAIN,static.ada.support
 DOMAIN,static.addtoany.com
 DOMAIN,static.adguardvpn.com
 DOMAIN,static.agilebits.com
+DOMAIN,static.ahrefs.com
 DOMAIN,static.apkpure.com
 DOMAIN,static.arxiv.org
 DOMAIN,static.assetlab.io
@@ -1778,6 +1780,7 @@ DOMAIN,video1.7mmtv.sx
 DOMAIN,video2.7mmtv.sx
 DOMAIN,videos.elephas.app
 DOMAIN,videos2-h.sendvid.com
+DOMAIN,videos2.edclub.com
 DOMAIN,vir.wsj.net
 DOMAIN,viu-static.akamaized.net
 DOMAIN,vjs.zencdn.net
