@@ -3,14 +3,14 @@
 	"version": "1.0.0",
 	"type": "module",
 	"scripts": {
-	  "build": "ts-node --esm src/build.ts",
-	  "dev": "ts-node --esm src/build.ts && serve public"
+	  "build": "tsx src/build.ts",
+	  "dev": "tsx src/build.ts && serve public"
 	},
 	"devDependencies": {
 	  "@types/node": "^20.11.0",
 	  "pnpm": "^8.0.0",
 	  "serve": "^14.2.1",
-	  "ts-node": "^10.9.2",
+	  "tsx": "^4.7.0",
 	  "typescript": "^5.3.3"
 	}
   }

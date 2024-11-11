@@ -1,10 +1,14 @@
 /** @format */
 
-import path from "node:path";
-import { promises as fs, Dirent } from "node:fs"; // 使用 fs.promises 和 Dirent
+import { fileURLToPath } from 'node:url';
+import path from 'node:path';
+import { promises as fs, Dirent } from 'node:fs';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const REPO_URL = "https://raw.githubusercontent.com/hchichi/esdeath/main/";
-const ROOT_DIR = process.cwd(); // 根目录
+const ROOT_DIR = path.join(__dirname, '..');
 const OUTPUT_DIR = path.join(ROOT_DIR, "public");
 
 // 仅包括特定后缀类型的文件
