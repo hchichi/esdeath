@@ -14,7 +14,7 @@ const OUTPUT_DIR = path.join(ROOT_DIR, "public");
 
 // 允许的文件类型和目录
 const allowedExtensions = [".list", ".mmdb"];
-const allowedDirectories = ["Surge", "GeoIP"];
+const allowedDirectories = ["Surge", "GeoIP", "Ruleset"];
 
 const prioritySorter = (a: Dirent, b: Dirent) => {
     if (a.isDirectory() && !b.isDirectory()) return -1;
@@ -37,15 +37,22 @@ async function walk(dir: string, baseUrl: string) {
             continue;
         }
 
-        if (entry.isDirectory() && allowedDirectories.includes(entry.name)) {
-            tree += `
-                <li class="folder">
-                    ${entry.name}
-                    <ul>
-                        ${await walk(fullPath, baseUrl)}
-                    </ul>
-                </li>
-            `;
+        if (entry.isDirectory()) {
+            // 检查是否是允许的顶级目录或者是 Ruleset 的子目录
+            if (allowedDirectories.includes(entry.name) || 
+                path.dirname(relativePath).startsWith('Surge/Ruleset')) {
+                const subEntries = await walk(fullPath, baseUrl);
+                if (subEntries) {
+                    tree += `
+                        <li class="folder">
+                            ${entry.name}
+                            <ul>
+                                ${subEntries}
+                            </ul>
+                        </li>
+                    `;
+                }
+            }
         } else if (allowedExtensions.includes(path.extname(entry.name).toLowerCase())) {
             tree += `
                 <li>
