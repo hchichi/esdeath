@@ -142,8 +142,21 @@ function generateHtml(tree: string) {
         <body>
         <main class="container">
             <h1>Surge Rules Repository</h1>
-            <p>Last Updated: ${new Date().toLocaleString("zh-CN", { timeZone: "Asia/Shanghai" })}</p>
-            
+            <p>
+                Made by <a href="https://github.com/hchichi">IKE IKE</a> | 
+                <a href="https://github.com/hchichi/esdeath">Source @ GitHub</a> | 
+                Fork <a href="https://github.com/SukkaW/Surge">Sukka</a>
+            </p>
+            <p>
+                Thanks To <a href="https://github.com/luestr">iKeLee</a> For Her Great Work
+                <br>
+                Thanks To All Surge Contributors
+            </p>
+            <p>Last Updated: ${new Date().toLocaleString("zh-CN", { 
+                timeZone: "Asia/Shanghai" 
+            })}</p>
+            <br>
+
             <div class="search-section">
                 <input type="text" id="search" placeholder="🔍 搜索文件和文件夹..."/>
                 <span>ℹ️ 复制链接说明</span>

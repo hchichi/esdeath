@@ -1,13 +1,13 @@
 # SukkaW CDN Rules
 #
-# Last Updated: 2024-11-11 14:38
+# Last Updated: 2024-11-11 16:37
 #
 # Rule Statistics:
-# DOMAIN: 1828
+# DOMAIN: 1831
 # DOMAIN-SUFFIX: 805
 # DOMAIN-KEYWORD: 5
 # URL-REGEX: 2
-# TOTAL: 2640
+# TOTAL: 2643
 #
 # Combined SukkaW CDN rules
 #
@@ -184,6 +184,7 @@ DOMAIN,assets.scaleflex.com
 DOMAIN,assets.scroll.com
 DOMAIN,assets.sendinblue.com
 DOMAIN,assets.shazam.com
+DOMAIN,assets.sololearn.com
 DOMAIN,assets.squarespace.com
 DOMAIN,assets.st-note.com
 DOMAIN,assets.stash.com
@@ -254,6 +255,7 @@ DOMAIN,bcdn.starapps.studio
 DOMAIN,binaries.prisma.sh
 DOMAIN,blacklist.tampermonkey.net
 DOMAIN,blade-public-static.blade-group.com
+DOMAIN,blob.sololearn.com
 DOMAIN,boards.greenhouse.io
 DOMAIN,bot.ivy.ai
 DOMAIN,brick.a.ssl.fastly.net
@@ -1052,6 +1054,7 @@ DOMAIN,launcher.spot.im
 DOMAIN,launchercontent.mojang.com
 DOMAIN,lcdn-locator.apple.com
 DOMAIN,learn.optimizely.com
+DOMAIN,lecontent.sololearn.com
 DOMAIN,ledger-wp-website-s3-prd.ledger.com
 DOMAIN,lib.arvancloud.ir
 DOMAIN,libs.quillbot.com
