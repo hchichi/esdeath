@@ -11,101 +11,122 @@ const REPO_URL = "https://raw.githubusercontent.com/hchichi/esdeath/main/";
 const ROOT_DIR = path.join(__dirname, '..');
 const OUTPUT_DIR = path.join(ROOT_DIR, "public");
 
-// 仅包括特定后缀类型的文件
-const allowedExtensions = [
-    ".sgmodule",
-    ".list",
-    ".txt",
-    ".js",
-    ".json",
-    ".gitignore",
-    ".md",
-];
-const allowedDirectories = ["Official", "Surge", "Beta"];
+// 允许的文件类型
+const allowedExtensions = [".list", ".mmdb"];
 
+// 规则分类
+const RULE_CATEGORIES: { [key: string]: string } = {
+  "Surge": "Surge Rules",
+  "GeoIP": "GeoIP Database",
+  "AI": "AI Services",
+  "Apple": "Apple Services",
+  "Social": "Social Media",
+  "Google": "Google Services",
+  "Microsoft": "Microsoft Services",
+  "Oracle": "Oracle Cloud",
+  "Streaming": "Streaming Media",
+  "Extra": "Extra Rules",
+  "Reject": "Advertising Rules",
+  "Direct": "Direct Rules",
+  "Anti": "Anti-IP Attribution",
+  "Developer": "Developer Tools",
+  "Domestic": "China Rules",
+};
+
+// 统计规则数量
+async function countRules(filePath: string) {
+  const content = await fs.readFile(filePath, 'utf8');
+  const lines = content.split('\n');
+  
+  const stats = {
+    total: 0,
+    domain: 0,
+    domainSuffix: 0,
+    domainKeyword: 0,
+    ipCIDR: 0,
+    ipCIDR6: 0,
+    ipASN: 0,
+    geoip: 0,
+    userAgent: 0,
+    urlRegex: 0
+  };
+
+  for (const line of lines) {
+    const trimmedLine = line.trim();
+    if (!trimmedLine || trimmedLine.startsWith('#')) continue;
+
+    stats.total++;
+    if (trimmedLine.startsWith('DOMAIN,')) stats.domain++;
+    else if (trimmedLine.startsWith('DOMAIN-SUFFIX,')) stats.domainSuffix++;
+    else if (trimmedLine.startsWith('DOMAIN-KEYWORD,')) stats.domainKeyword++;
+    else if (trimmedLine.startsWith('IP-CIDR,')) stats.ipCIDR++;
+    else if (trimmedLine.startsWith('IP-CIDR6,')) stats.ipCIDR6++;
+    else if (trimmedLine.startsWith('IP-ASN,')) stats.ipASN++;
+    else if (trimmedLine.startsWith('GEOIP,')) stats.geoip++;
+    else if (trimmedLine.startsWith('USER-AGENT,')) stats.userAgent++;
+    else if (trimmedLine.startsWith('URL-REGEX,')) stats.urlRegex++;
+  }
+
+  return stats;
+}
+
+// 文件排序
 const prioritySorter = (a: Dirent, b: Dirent) => {
-    if (a.isDirectory() && !b.isDirectory()) return -1;
-    if (!a.isDirectory() && b.isDirectory()) return 1;
-    if (a.isDirectory() && b.isDirectory()) {
-        if (a.name === "Official") return -1;
-        if (b.name === "Official") return 1;
-    }
-    return a.name.localeCompare(b.name);
+  if (a.isDirectory() && !b.isDirectory()) return -1;
+  if (!a.isDirectory() && b.isDirectory()) return 1;
+  return a.name.localeCompare(b.name);
 };
 
 // 生成目录树
 async function walk(dir: string, baseUrl: string) {
-    let tree = "";
-    const entries = await fs.readdir(dir, { withFileTypes: true });
-    entries.sort(prioritySorter);
+  let tree = "";
+  const entries = await fs.readdir(dir, { withFileTypes: true });
+  entries.sort(prioritySorter);
 
-    for (const entry of entries) {
-        const fullPath = path.join(dir, entry.name);
-        const url = `${baseUrl}${encodeURIComponent(entry.name)}`;
-        const relativePath = path.relative(ROOT_DIR, fullPath);
-        const fileExt = path.extname(entry.name).toLowerCase();
-
-        if (entry.isDirectory() && allowedDirectories.includes(entry.name)) {
-            const categoryTitle = RULE_CATEGORIES[entry.name] || entry.name;
-            tree += `
-                <div class="category">
-                    <h2>${categoryTitle}</h2>
-                    <ul class="rule-list">
-                        ${await walk(fullPath, `${url}/`)}
-                    </ul>
-                </div>
-            `;
-        } else if (allowedExtensions.some((ext) => entry.name.endsWith(ext))) {
-            const stats = await getRuleStats(fullPath);
-            
-            // 根据文件类型生成不同的操作按钮
-            let actionButtons = '';
-            if (fileExt === '.sgmodule') {
-                // 模块文件
-                actionButtons = `
-                    <a class="action-button" href="surge:///install-module?url=${encodeURIComponent(url)}" target="_blank">
-                        导入模块
-                    </a>
-                    <a class="action-button" href="scriptable:///run/SurgeModuleTool?url=${encodeURIComponent(url)}" target="_blank">
-                        本地导入
-                    </a>
-                `;
-            } else if (fileExt === '.list') {
-                // 规则文件
-                actionButtons = `
-                    <a class="action-button" href="surge:///rule-set?url=${encodeURIComponent(url)}" target="_blank">
-                        导入规则
-                    </a>
-                    <div class="copy-section">
-                        <button class="action-button copy-button" data-url="${url}" title="复制原始链接">
-                            复制链接
-                        </button>
-                        <button class="action-button copy-rule-button" data-url="${url}" title="复制 Surge 规则集格式">
-                            复制规则集
-                        </button>
-                    </div>
-                `;
-            }
-
-            tree += `
-                <li class="rule-item">
-                    <div class="rule-header">
-                        <a class="rule-name" href="${url}" target="_blank">${entry.name}</a>
-                        <div class="rule-stats">
-                            <span title="总规则数">📋 ${stats.total}</span>
-                            ${stats.domain ? `<span title="域名规则">🌐 ${stats.domain}</span>` : ''}
-                            ${stats.domainSuffix ? `<span title="域名后缀">🔍 ${stats.domainSuffix}</span>` : ''}
-                            ${stats.ipCIDR || stats.ipCIDR6 ? `<span title="IP规则">🌍 ${stats.ipCIDR + stats.ipCIDR6}</span>` : ''}
-                        </div>
-                    </div>
-                    <div class="rule-actions">
-                        ${actionButtons}
-                    </div>
-                </li>
-            `;
-        }
+  for (const entry of entries) {
+    const fullPath = path.join(dir, entry.name);
+    const relativePath = path.relative(ROOT_DIR, fullPath);
+    
+    // 跳过 src 目录和其他不需要的文件
+    if (entry.name === 'src' || entry.name === 'node_modules' || entry.name.startsWith('.')) {
+      continue;
     }
-    return tree;
+
+    if (entry.isDirectory()) {
+      const categoryName = RULE_CATEGORIES[entry.name] || entry.name;
+      tree += `
+        <div class="category">
+          <h2>${categoryName}</h2>
+          <div class="rules-grid">
+            ${await walk(fullPath, `${baseUrl}${encodeURIComponent(entry.name)}/`)}
+          </div>
+        </div>`;
+    } else {
+      const fileExt = path.extname(entry.name).toLowerCase();
+      if (allowedExtensions.includes(fileExt)) {
+        const url = `${baseUrl}${encodeURIComponent(relativePath)}`;
+        const stats = await countRules(fullPath);
+        
+        tree += `
+          <div class="rule-card">
+            <div class="rule-header">
+              <a href="${url}" class="rule-name" target="_blank">${entry.name}</a>
+              <div class="rule-stats">
+                <span title="总规则数">📋 ${stats.total}</span>
+                ${stats.domain ? `<span title="域名规则">🌐 ${stats.domain}</span>` : ''}
+                ${stats.domainSuffix ? `<span title="域名后缀">🔍 ${stats.domainSuffix}</span>` : ''}
+                ${stats.ipCIDR || stats.ipCIDR6 ? `<span title="IP规则">🌍 ${stats.ipCIDR + stats.ipCIDR6}</span>` : ''}
+              </div>
+            </div>
+            <div class="rule-actions">
+              <button class="action-button copy-button" data-url="${url}">复制链接</button>
+              <button class="action-button copy-rule-button" data-url="${url}">复制规则集</button>
+            </div>
+          </div>`;
+      }
+    }
+  }
+  return tree;
 }
 
 function generateHtml(tree: string) {

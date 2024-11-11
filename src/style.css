@@ -196,3 +196,23 @@ ul li img {
         --secondary-hover: #2d3748;
     }
 }
+
+/* 添加规则卡片网格布局 */
+.rules-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.rule-card {
+  background: var(--bg-secondary);
+  border-radius: 8px;
+  padding: 1rem;
+  transition: transform 0.2s;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.rule-card:hover {
+  transform: translateY(-2px);
+}
