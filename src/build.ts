@@ -57,14 +57,14 @@ async function walk(dir: string, baseUrl: string) {
             tree += `
                 <li>
                     <a class="file" href="${url}" target="_blank">${entry.name}
-                        <a class="copy-link" style="border-bottom: none" data-url="${url}" href="javascript:void(0)">
+                        <button class="copy-button" data-url="${url}" style="border: none; background: none; padding: 0; cursor: pointer;">
                             <img
                                 alt="复制规则链接"
                                 title="复制规则链接"
                                 style="height: 22px"
                                 src="https://raw.githubusercontent.com/xream/scripts/refs/heads/main/scriptable/surge/surge-transparent.png"
                             />
-                        </a>
+                        </button>
                     </a>
                 </li>
             `;
@@ -204,14 +204,16 @@ function generateHtml(tree: string) {
                     });
                 });
 
-                // 复制链接功能
-                document.querySelectorAll('.copy-link').forEach(link => {
-                    link.addEventListener('click', async (e) => {
+                // 修复复制功能
+                document.querySelectorAll('.copy-button').forEach(button => {
+                    button.addEventListener('click', async (e) => {
                         e.preventDefault();
-                        const url = link.dataset.url;
+                        e.stopPropagation();
+                        
+                        const url = button.getAttribute('data-url');
                         try {
                             await navigator.clipboard.writeText(url);
-                            const img = link.querySelector('img');
+                            const img = button.querySelector('img');
                             const originalTitle = img.title;
                             img.title = '复制成功!';
                             setTimeout(() => {
@@ -219,7 +221,7 @@ function generateHtml(tree: string) {
                             }, 2000);
                         } catch (err) {
                             console.error('复制失败:', err);
-                            const img = link.querySelector('img');
+                            const img = button.querySelector('img');
                             img.title = '复制失败';
                         }
                     });
