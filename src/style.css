@@ -94,3 +94,105 @@ ul li img {
         padding: 10px;
     }
 }
+
+/* 添加到现有样式文件末尾 */
+
+.category {
+    margin: 2rem 0;
+    padding: 1rem;
+    background: var(--card-bg);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.category h2 {
+    margin: 0 0 1rem;
+    color: var(--primary);
+    font-size: 1.5rem;
+}
+
+.rule-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1rem;
+    margin: 0;
+    padding: 0;
+}
+
+.rule-item {
+    background: var(--bg-secondary);
+    border-radius: 6px;
+    padding: 1rem;
+    transition: transform 0.2s;
+}
+
+.rule-item:hover {
+    transform: translateY(-2px);
+}
+
+.rule-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.rule-name {
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.rule-stats {
+    display: flex;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.rule-stats span {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.rule-actions {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.action-button {
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    background: var(--primary);
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.action-button:hover {
+    background: var(--primary-hover);
+    text-decoration: none;
+}
+
+.copy-button {
+    background: var(--secondary);
+}
+
+.copy-button:hover {
+    background: var(--secondary-hover);
+}
+
+/* 暗色主题变量 */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --card-bg: #2a2a2a;
+        --bg-secondary: #333;
+        --text-primary: #e0e0e0;
+        --text-secondary: #999;
+        --secondary: #4a5568;
+        --secondary-hover: #2d3748;
+    }
+}
