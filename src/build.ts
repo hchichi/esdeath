@@ -11,26 +11,29 @@ const REPO_URL = "https://raw.githubusercontent.com/hchichi/esdeath/main/";
 const ROOT_DIR = path.join(__dirname, '..');
 const OUTPUT_DIR = path.join(ROOT_DIR, "public");
 
-// 允许的文件类型
+// 允许的文件类型和目录
 const allowedExtensions = [".list", ".mmdb"];
+const allowedDirectories = ["Surge", "GeoIP"];
 
-// 规则分类
+// 规则分类映射
 const RULE_CATEGORIES: { [key: string]: string } = {
-  "Surge": "Surge Rules",
-  "GeoIP": "GeoIP Database",
   "AI": "AI Services",
   "Apple": "Apple Services",
   "Social": "Social Media",
   "Google": "Google Services",
   "Microsoft": "Microsoft Services",
   "Oracle": "Oracle Cloud",
-  "Streaming": "Streaming Media",
-  "Extra": "Extra Rules",
+  "Streaming": {
+    "Video": "Video Streaming",
+    "Music": "Music Services"
+  },
   "Reject": "Advertising Rules",
   "Direct": "Direct Rules",
   "Anti": "Anti-IP Attribution",
   "Developer": "Developer Tools",
   "Domestic": "China Rules",
+  "CCC-Global": "Global CDN",
+  "SpeedTest": "Speed Test",
 };
 
 // 统计规则数量
@@ -86,118 +89,114 @@ async function walk(dir: string, baseUrl: string) {
   for (const entry of entries) {
     const fullPath = path.join(dir, entry.name);
     const relativePath = path.relative(ROOT_DIR, fullPath);
-    
-    // 跳过 src 目录和其他不需要的文件
+    const url = `${baseUrl}${encodeURIComponent(relativePath)}`;
+
+    // 跳过不需要的目录和文件
     if (entry.name === 'src' || entry.name === 'node_modules' || entry.name.startsWith('.')) {
       continue;
     }
 
     if (entry.isDirectory()) {
       const categoryName = RULE_CATEGORIES[entry.name] || entry.name;
-      tree += `
-        <div class="category">
-          <h2>${categoryName}</h2>
-          <div class="rules-grid">
-            ${await walk(fullPath, `${baseUrl}${encodeURIComponent(entry.name)}/`)}
-          </div>
-        </div>`;
-    } else {
-      const fileExt = path.extname(entry.name).toLowerCase();
-      if (allowedExtensions.includes(fileExt)) {
-        const url = `${baseUrl}${encodeURIComponent(relativePath)}`;
-        const stats = await countRules(fullPath);
-        
+      const subDirContent = await walk(fullPath, baseUrl);
+      if (subDirContent) {
         tree += `
-          <div class="rule-card">
-            <div class="rule-header">
-              <a href="${url}" class="rule-name" target="_blank">${entry.name}</a>
-              <div class="rule-stats">
-                <span title="总规则数">📋 ${stats.total}</span>
-                ${stats.domain ? `<span title="域名规则">🌐 ${stats.domain}</span>` : ''}
-                ${stats.domainSuffix ? `<span title="域名后缀">🔍 ${stats.domainSuffix}</span>` : ''}
-                ${stats.ipCIDR || stats.ipCIDR6 ? `<span title="IP规则">🌍 ${stats.ipCIDR + stats.ipCIDR6}</span>` : ''}
-              </div>
-            </div>
-            <div class="rule-actions">
-              <button class="action-button copy-button" data-url="${url}">复制链接</button>
-              <button class="action-button copy-rule-button" data-url="${url}">复制规则集</button>
+          <div class="category">
+            <h2>${categoryName}</h2>
+            <div class="rules-grid">
+              ${subDirContent}
             </div>
           </div>`;
       }
+    } else if (allowedExtensions.includes(path.extname(entry.name).toLowerCase())) {
+      const stats = await countRules(fullPath);
+      tree += `
+        <div class="rule-card">
+          <div class="rule-header">
+            <span class="rule-name">${entry.name}</span>
+            <div class="rule-stats">
+              ${stats.total ? `<span title="总规则数">📋 ${stats.total}</span>` : ''}
+              ${stats.domain ? `<span title="域名规则">🌐 ${stats.domain + stats.domainSuffix + stats.domainKeyword}</span>` : ''}
+              ${(stats.ipCIDR || stats.ipCIDR6) ? `<span title="IP规则">🌍 ${stats.ipCIDR + stats.ipCIDR6}</span>` : ''}
+            </div>
+          </div>
+          <div class="rule-actions">
+            <button class="action-button copy-rule-button" data-url="${url}">
+              <img src="https://raw.githubusercontent.com/xream/scripts/refs/heads/main/scriptable/surge/surge-transparent.png" 
+                   alt="Copy Rule" 
+                   style="height: 16px; vertical-align: middle;"/> 
+              复制规则集
+            </button>
+          </div>
+        </div>`;
     }
   }
   return tree;
 }
 
 function generateHtml(tree: string) {
-    return `
-        <!DOCTYPE html>
-        <html lang="zh-CN">
-        <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Surge Rules</title>
-            <link rel="stylesheet" href="style.css">
-        </head>
-        <body>
-            <main class="container">
-                <header>
-                    <h1>Surge Rules</h1>
-                    <p>自动更新的 Surge 规则集</p>
-                    <p>Last Build: ${new Date().toLocaleString("zh-CN", {
-                        timeZone: "Asia/Shanghai",
-                    })}</p>
-                </header>
-
-                <div class="search-section">
-                    <input type="text" id="search" placeholder="🔍 搜索规则文件..."/>
-                    <div class="tips">
-                        <p>💡 使用说明：</p>
-                        <ul>
-                            <li>规则文件(.list)：可直接导入规则集或复制规则集配置</li>
-                            <li>模块文件(.sgmodule)：可选择远程导入或本地导入</li>
-                            <li>点击文件名可查看原始内容</li>
-                        </ul>
-                    </div>
+  return `
+    <!DOCTYPE html>
+    <html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Surge Rules Repository</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div class="container">
+            <header>
+                <h1>Surge Rules Repository</h1>
+                <p>Last Updated: ${new Date().toLocaleString("zh-CN", { timeZone: "Asia/Shanghai" })}</p>
+                <div class="search-box">
+                    <input type="text" id="search" placeholder="🔍 搜索规则...">
                 </div>
-
+            </header>
+            <main>
                 ${tree}
             </main>
-
-            <script>
-                // 复制链接
-                document.querySelectorAll('.copy-button').forEach(button => {
-                    button.addEventListener('click', async () => {
-                        const url = button.dataset.url;
-                        await navigator.clipboard.writeText(url);
-                        button.textContent = '已复制';
-                        setTimeout(() => button.textContent = '复制链接', 2000);
-                    });
+        </div>
+        <script>
+            // 搜索功能
+            document.getElementById('search').addEventListener('input', (e) => {
+                const searchTerm = e.target.value.toLowerCase();
+                document.querySelectorAll('.rule-card').forEach(card => {
+                    const text = card.textContent.toLowerCase();
+                    const category = card.closest('.category');
+                    card.style.display = text.includes(searchTerm) ? '' : 'none';
+                    
+                    if (category) {
+                        const visibleCards = category.querySelectorAll('.rule-card[style="display: none"]');
+                        category.style.display = visibleCards.length === category.querySelectorAll('.rule-card').length ? 'none' : '';
+                    }
                 });
+            });
 
-                // 复制规则集格式
-                document.querySelectorAll('.copy-rule-button').forEach(button => {
-                    button.addEventListener('click', async () => {
-                        const url = button.dataset.url;
-                        const ruleset = \`RULE-SET,\${url},PROXY\`;
-                        await navigator.clipboard.writeText(ruleset);
-                        button.textContent = '已复制';
-                        setTimeout(() => button.textContent = '复制规则集', 2000);
-                    });
+            // 复制规则集功能
+            document.querySelectorAll('.copy-rule-button').forEach(button => {
+                button.addEventListener('click', async () => {
+                    const url = button.dataset.url;
+                    try {
+                        const response = await fetch(url);
+                        const text = await response.text();
+                        await navigator.clipboard.writeText(text);
+                        button.textContent = '复制成功!';
+                        setTimeout(() => {
+                            button.innerHTML = \`<img src="https://raw.githubusercontent.com/xream/scripts/refs/heads/main/scriptable/surge/surge-transparent.png" 
+                                                   alt="Copy Rule" 
+                                                   style="height: 16px; vertical-align: middle;"/> 复制规则集\`;
+                        }, 2000);
+                    } catch (err) {
+                        button.textContent = '复制失败';
+                        console.error('复制失败:', err);
+                    }
                 });
-
-                // 搜索功能
-                document.getElementById('search').addEventListener('input', (e) => {
-                    const searchTerm = e.target.value.toLowerCase();
-                    document.querySelectorAll('.rule-item').forEach(item => {
-                        const text = item.textContent.toLowerCase();
-                        item.style.display = text.includes(searchTerm) ? '' : 'none';
-                    });
-                });
-            </script>
-        </body>
-        </html>
-    `;
+            });
+        </script>
+    </body>
+    </html>
+  `;
 }
 
 async function writeHtmlFile(html: string) {
