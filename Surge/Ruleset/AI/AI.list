@@ -1,14 +1,14 @@
 # AI Rules
 #
-# Last Updated: 2024-11-12 07:34
+# Last Updated: 2024-11-12 08:48
 #
 # Rule Statistics:
 # DOMAIN: 31
-# DOMAIN-SUFFIX: 39
+# DOMAIN-SUFFIX: 40
 # DOMAIN-KEYWORD: 4
 # IP-CIDR: 1
 # IP-CIDR6: 1
-# TOTAL: 76
+# TOTAL: 77
 #
 # Combined AI rules
 #
@@ -18,7 +18,7 @@
 #  - https://proxyresource.pages.dev/Tool/Loon/Rule/AI.list
 #  - https://github.com/ConnersHua/RuleGo/raw/master/Surge/Ruleset/Extra/AI.list
 
-AND,((DOMAIN-KEYWORD,chatgpt-async-webps-prod-eastus-),(DOMAIN-SUFFIX,webpubsub.azure.com))
+AND,((DOMAIN-KEYWORD,chatgpt-async-webps-prod-),(DOMAIN-SUFFIX,webpubsub.azure.com))
 AND,((DOMAIN-KEYWORD,openaicom-api-),(DOMAIN-SUFFIX,azurefd.net))
 DOMAIN,ai.google.dev
 DOMAIN,aida.googleapis.com
@@ -63,6 +63,7 @@ DOMAIN-SUFFIX,challenges.cloudflare.com
 DOMAIN-SUFFIX,chatgpt.com
 DOMAIN-SUFFIX,claude.ai
 DOMAIN-SUFFIX,claude.ai.com
+DOMAIN-SUFFIX,claudeusercontent.com
 DOMAIN-SUFFIX,client-api.arkoselabs.com
 DOMAIN-SUFFIX,cursor.com
 DOMAIN-SUFFIX,cursor.sh
