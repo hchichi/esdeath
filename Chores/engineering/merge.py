@@ -78,7 +78,7 @@ hostname_append_content = ", ".join(unique_hostnames)
 
 current_date = datetime.now().strftime("%m/%d/%Y")
 
-template_path = 'Chores/engineering/data/templates/All-in-One-2.x.sgmodule.template'
+template_path = 'Chores/engineering/templates/All-in-One-2.x.sgmodule.template'
 output_path = 'Chores/sgmodule/All-in-One-2.x.sgmodule'
 
 with open(template_path, 'r') as template_file:
