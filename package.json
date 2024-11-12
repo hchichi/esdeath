@@ -2,12 +2,15 @@
 	"name": "esdeath",
 	"version": "1.0.0",
 	"description": "Rule sync automation",
+	"type": "module",
 	"scripts": {
-	  "sync": "ts-node Chores/scripts/main.ts"
+	  "sync": "ts-node --esm Chores/engineering/sync/main.ts",
+	  "build": "ts-node --esm Chores/engineering/web/build.ts",
+	  "dev": "npm run sync && npm run build"
 	},
 	"dependencies": {
-	  "@types/node": "^18.0.0",
-	  "typescript": "^4.9.0",
+	  "@types/node": "^20.11.0",
+	  "typescript": "^5.3.0",
 	  "ts-node": "^10.9.0"
 	}
   }

@@ -9,7 +9,7 @@ const __dirname = path.dirname(__filename);
 
 // 修正仓库 URL
 const REPO_URL = "https://raw.githubusercontent.com/hchichi/esdeath/main/";
-const ROOT_DIR = path.join(__dirname, '..');
+const ROOT_DIR = path.join(__dirname, '../../..');
 const OUTPUT_DIR = path.join(ROOT_DIR, "public");
 
 // 允许的文件类型和目录
@@ -259,6 +259,13 @@ async function writeHtmlFile(html: string) {
 // 构建
 async function build() {
     await fs.mkdir(OUTPUT_DIR, { recursive: true });
+    await fs.mkdir(path.join(OUTPUT_DIR, 'styles'), { recursive: true });
+    
+    // 复制 CSS 文件
+    await fs.copyFile(
+        path.join(__dirname, 'styles', 'main.css'),
+        path.join(OUTPUT_DIR, 'styles', 'main.css')
+    );
 
     const tree = await walk(ROOT_DIR, REPO_URL);
     const html = generateHtml(tree);

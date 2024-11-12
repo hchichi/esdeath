@@ -2,7 +2,7 @@
 import fs from 'fs';
 import path from 'path';
 import { RuleFile, RuleStats } from './types';
-import { getRuleStats } from './utils';
+import { getRuleStats } from '../utils.js';
 
 export class RuleProcessor {
   constructor(private repoPath: string) {}

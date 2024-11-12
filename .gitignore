@@ -1,1 +1,3 @@
-/Surge/Ruleset/NoAD/NoAds_fmz200.list
+node_modules/
+dist/
+*.log

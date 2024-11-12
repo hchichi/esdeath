@@ -11,9 +11,16 @@
     "rootDir": ".",
     "baseUrl": ".",
     "paths": {
-      "*": ["./node_modules/*"]
+      "@/*": ["Chores/*"],
+      "@sync/*": ["Chores/engineering/sync/*"],
+      "@web/*": ["Chores/engineering/web/*"]
     }
   },
-  "include": ["Chores/scripts/**/*", "Chores/engineering/config.ts", "Chores/engineering/main.ts", "Chores/engineering/ruleProcessor.ts", "Chores/engineering/types.ts", "Chores/engineering/utils.ts"],
-  "exclude": ["node_modules"]
+  "include": [
+    "Chores/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
 }

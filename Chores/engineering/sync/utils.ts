@@ -3,7 +3,7 @@ import fs from 'fs';
 import path from 'path';
 import { exec } from 'child_process';
 import { promisify } from 'util';
-import { RuleStats } from './types';
+import { RuleStats } from '@/engineering/types';
 
 const execAsync = promisify(exec);
 

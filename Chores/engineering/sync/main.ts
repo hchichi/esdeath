@@ -1,7 +1,7 @@
 // 主程序
 import { REPO_PATH, ruleGroups } from './config';
 import { RuleProcessor } from './ruleProcessor';
-import { downloadFile, ensureDirectoryExists } from './utils';
+import { downloadFile, ensureDirectoryExists } from '../utils.js';
 import path from 'path';
 
 async function main() {
