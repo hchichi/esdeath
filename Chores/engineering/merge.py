@@ -68,18 +68,18 @@ if sections["Rule"]:
 else:
     print("[Warning] No Rule content extracted")
 
-os.makedirs('Surge/Ruleset', exist_ok=True)
-with open('Surge/Ruleset/reject.list', 'w') as ruleset_file:
+os.makedirs('Chores/ruleset', exist_ok=True)
+with open('Chores/ruleset/reject.list', 'w') as ruleset_file:
     ruleset_file.write("\n".join(sections["Rule"]))
-print("Successfully saved [Rule] content to Surge/Ruleset/reject.list")
+print("Successfully saved [Rule] content to Chores/ruleset/reject.list")
 
 unique_hostnames = list(dict.fromkeys(sections["MITM"]))
 hostname_append_content = ", ".join(unique_hostnames)
 
 current_date = datetime.now().strftime("%m/%d/%Y")
 
-template_path = 'Surge/data/templates/All-in-One.sgmodule.template'
-output_path = 'Surge/Module/All-in-One.sgmodule'
+template_path = 'Chores/engineering/data/templates/All-in-One-2.x.sgmodule.template'
+output_path = 'Surge/Module/All-in-One-2.x.sgmodule.sgmodule'
 
 with open(template_path, 'r') as template_file:
     template_content = template_file.read()
