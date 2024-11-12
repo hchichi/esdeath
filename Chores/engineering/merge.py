@@ -79,7 +79,7 @@ hostname_append_content = ", ".join(unique_hostnames)
 current_date = datetime.now().strftime("%m/%d/%Y")
 
 template_path = 'Chores/engineering/data/templates/All-in-One-2.x.sgmodule.template'
-output_path = 'Surge/Module/All-in-One-2.x.sgmodule.sgmodule'
+output_path = 'Chores/sgmodule/All-in-One-2.x.sgmodule'
 
 with open(template_path, 'r') as template_file:
     template_content = template_file.read()
