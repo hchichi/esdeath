@@ -4,16 +4,13 @@
 #!url=https://chichi.sh/ADBlock
 #!category=🚭 AD Block
 #!author=@hchichi & Everyone in the community
-#!source=Rules@hchichi | Xiaohongshu@ddgksf2013 | Amap@kokoryh | Cainiao@Keywos | Weibo@RuCu6 | Zhihu@RuCu6 | MiniProgram@bunizao | Chores@bunizao |Tools@ScriptHub
+#!source=Rules@hchichi | Xiaohongshu@ddgksf2013 | Amap@kokoryh | Cainiao@Keywos | Weibo@RuCu6 | Zhihu@RuCu6 | MiniProgram@bunizao | Chores@bunizao | Tools@ScriptHub
 #------------------------------------------------------
-
 
 [Rule]
 DOMAIN,ad.12306.cn,DIRECT
-RULE-SET,https://raw.githubusercontent.com/hchichi/esdeath/main/Chores/ruleset/reject.list,REJECT,extended-matching,pre-matching
-
+RULE-SET,https://raw.githubusercontent.com/hchichi/esdeath/main/Chores/ruleset/reject.list,REJECT,pre-matching,extended-matching
 [URL Rewrite]
-
 # ----------- KeliAds ------------
 ^https?:\/\/api-access\.pangolin-sdk-toutiao\.com\/api\/ad\/union\/sdk - reject
 ^https:\/\/cdn\.web\.chelaile\.net\.cn\/info-flow\/index\.html - reject
@@ -134,7 +131,6 @@ RULE-SET,https://raw.githubusercontent.com/hchichi/esdeath/main/Chores/ruleset/r
 ^https:\/\/duckduckgo\.com\/\?q=([^&]+).+ https://www.google.com/search?q=$1 302
 
 # ----------- Eleme -----------
-
 ^https:\/\/elemecdn.com\/.+\/sitemap - reject
 ^https:\/\/fuss10.elemecdn.com\/.+\/w\/640\/h\/\d{3,4} - reject
 ^https:\/\/fuss10.elemecdn.com\/.+\/w\/750\/h\/\d{3,4} - reject
@@ -144,7 +140,6 @@ RULE-SET,https://raw.githubusercontent.com/hchichi/esdeath/main/Chores/ruleset/r
 ########################################################################################
 
 [Map Local]
-
 # ----------- KeliAds ------------
 ^https:\/\/home\.mi\.com\/cgi-op\/api\/v1\/recommendation\/(banner|carousel\/banners|myTab|openingBanner) data-type=text data="{}" status-code=200
 ^https?:\/\/api\.m\.mi\.com\/v\d\/app\/start data-type=text data=" " status-code=200
@@ -520,7 +515,6 @@ RULE-SET,https://raw.githubusercontent.com/hchichi/esdeath/main/Chores/ruleset/r
 ^https:\/\/ucmp\.sf-express\.com\/proxy\/esgcempcore\/memberGoods\/pointMallService\/goodsList$ data-type=text data="{}" status-code=200
 
 # ----------- Meituan -----------
-
 ^http:\/\/wmapi\.meituan\.com\/api\/v7\/(loadInfo|openscreen|startpicture)\? data-type=text data="{}" status-code=200
 ^https:\/\/flowplus\.meituan\.net\/v1\/mss_\w+\/linglong\/\d+\.jpg data-type=text data="{}" status-code=200
 ^https:\/\/img\.meituan\.net\/bizad\/bizad_brandCpt_\d+\.jpg data-type=text data="{}" status-code=200
@@ -529,7 +523,6 @@ RULE-SET,https://raw.githubusercontent.com/hchichi/esdeath/main/Chores/ruleset/r
 ########################################################################################
 
 [Script]
-
 # ---------- WeChatMini ----------
 body_rewrite_218 = type=http-response, pattern=^https:\/\/mcsp\.cloudpnr\.com\/api\/miniapp\/popular\/T_MINIAPP$, script-path=https://github.com/hchichi/esdeath/raw/main/Chores/js/body-rewrite.js, requires-body=true, max-size=-1, timeout=30, argument=%5B%5B%22json-del%22%2C%5B%22data%22%5D%5D%5D
 body_rewrite_219 = type=http-response, pattern=^https:\/\/saas-ad\.cloudpnr\.com\/huifuad-base-api\/api\/tactics\/ad$, script-path=https://github.com/hchichi/esdeath/raw/main/Chores/js/body-rewrite.js, requires-body=true, max-size=-1, timeout=30, argument=%5B%5B%22json-del%22%2C%5B%22data%5B0%5D%22%2C%22data%5B1%5D%22%2C%22data%5B2%5D%22%5D%5D%5D
