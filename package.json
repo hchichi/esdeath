@@ -1,16 +1,13 @@
 {
-	"name": "Beginning",
+	"name": "esdeath",
 	"version": "1.0.0",
-	"description": "Beginning",
-	"main": "dist/build.js",
+	"description": "Rule sync automation",
 	"scripts": {
-	  "build": "tsc && node dist/build.js",
-	  "dev": "ts-node src/build.ts"
+	  "sync": "ts-node Chores/scripts/main.ts"
 	},
-	"dependencies": {},
-	"devDependencies": {
+	"dependencies": {
 	  "@types/node": "^18.0.0",
-	  "typescript": "^4.7.4",
-	  "ts-node": "^10.8.1"
+	  "typescript": "^4.9.0",
+	  "ts-node": "^10.9.0"
 	}
   }

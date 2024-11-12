@@ -8,8 +8,12 @@
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "outDir": "./dist",
-    "rootDir": "./src"
+    "rootDir": ".",
+    "baseUrl": ".",
+    "paths": {
+      "*": ["./node_modules/*"]
+    }
   },
-  "include": ["src/**/*.ts"],
+  "include": ["Chores/scripts/**/*", "Chores/engineering/config.ts", "Chores/engineering/main.ts", "Chores/engineering/ruleProcessor.ts", "Chores/engineering/types.ts", "Chores/engineering/utils.ts"],
   "exclude": ["node_modules"]
 }

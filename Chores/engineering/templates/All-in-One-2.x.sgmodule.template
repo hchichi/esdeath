@@ -4,20 +4,16 @@
 #!url=https://chichi.sh/ADBlock
 #!category=🚭 AD Block
 #!author=@hchichi & Everyone in the community
-#!source=Rules@hchichi | Xiaohongshu@ddgksf2013 | Amap@kokoryh | Cainiao@Keywos | Weibo@RuCu6 | Zhihu@RuCu6 | MiniProgram@bunizao | Chores@bunizao |Tools@ScriptHub
+#!source=Rules@hchichi | Xiaohongshu@ddgksf2013 | Amap@kokoryh | Cainiao@Keywos | Weibo@RuCu6 | Zhihu@RuCu6 | MiniProgram@bunizao | Chores@bunizao | Tools@ScriptHub
 #------------------------------------------------------
-
 
 [Rule]
 DOMAIN,ad.12306.cn,DIRECT
-RULE-SET,https://raw.githubusercontent.com/hchichi/esdeath/main/Chores/ruleset/reject.list,REJECT,extended-matching,pre-matching
-
+RULE-SET,https://raw.githubusercontent.com/hchichi/esdeath/main/Chores/ruleset/reject.list,REJECT,pre-matching,extended-matching
 [URL Rewrite]
-
 {URL Rewrite}
 
 # ----------- Eleme -----------
-
 ^https:\/\/elemecdn.com\/.+\/sitemap - reject
 ^https:\/\/fuss10.elemecdn.com\/.+\/w\/640\/h\/\d{3,4} - reject
 ^https:\/\/fuss10.elemecdn.com\/.+\/w\/750\/h\/\d{3,4} - reject
@@ -27,11 +23,9 @@ RULE-SET,https://raw.githubusercontent.com/hchichi/esdeath/main/Chores/ruleset/r
 ########################################################################################
 
 [Map Local]
-
 {Map Local}
 
 # ----------- Meituan -----------
-
 ^http:\/\/wmapi\.meituan\.com\/api\/v7\/(loadInfo|openscreen|startpicture)\? data-type=text data="{}" status-code=200
 ^https:\/\/flowplus\.meituan\.net\/v1\/mss_\w+\/linglong\/\d+\.jpg data-type=text data="{}" status-code=200
 ^https:\/\/img\.meituan\.net\/bizad\/bizad_brandCpt_\d+\.jpg data-type=text data="{}" status-code=200
@@ -40,7 +34,6 @@ RULE-SET,https://raw.githubusercontent.com/hchichi/esdeath/main/Chores/ruleset/r
 ########################################################################################
 
 [Script]
-
 {Script}
 
 ########################################################################################

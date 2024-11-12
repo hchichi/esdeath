@@ -1,6 +1,0 @@
-{
-    "yaml.schemas": {
-        "https://json.schemastore.org/github-workflow.json": "file:///Users/jasperl./Documents/GitHub/esdeath/.github/workflows/main.yml",
-        "https://json.schemastore.org/github-action.json": "file:///Users/jasperl./Documents/GitHub/esdeath/.github/workflows/run.yml"
-    }
-}
