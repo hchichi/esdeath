@@ -13,8 +13,8 @@ const ROOT_DIR = path.join(__dirname, '..');
 const OUTPUT_DIR = path.join(ROOT_DIR, "public");
 
 // 允许的文件类型和目录
-const allowedExtensions = [".list", ".mmdb"];
-const allowedDirectories = ["Surge", "GeoIP", "Ruleset"];
+const allowedExtensions = [".list", ".mmdb", ".sgmodule"];
+const allowedDirectories = ["Surge", "GeoIP", "Ruleset", "Module"];
 
 const prioritySorter = (a: Dirent, b: Dirent) => {
     if (a.isDirectory() && !b.isDirectory()) return -1;
@@ -38,8 +38,8 @@ async function walk(dir: string, baseUrl: string) {
         }
 
         if (entry.isDirectory()) {
-            // 检查是否是允许的顶级目录或者是 Ruleset 的子目录
             if (allowedDirectories.includes(entry.name) || 
+                path.dirname(relativePath).startsWith('Surge/Module') ||
                 path.dirname(relativePath).startsWith('Surge/Ruleset')) {
                 const subEntries = await walk(fullPath, baseUrl);
                 if (subEntries) {
@@ -54,17 +54,21 @@ async function walk(dir: string, baseUrl: string) {
                 }
             }
         } else if (allowedExtensions.includes(path.extname(entry.name).toLowerCase())) {
+            const buttons = entry.name.endsWith('.sgmodule') 
+                ? `<button class="copy-button" data-url="${url}" style="border: none; background: none; padding: 0; cursor: pointer;">
+                       <img alt="复制模块链接" title="复制模块链接" style="height: 22px" src="https://raw.githubusercontent.com/xream/scripts/refs/heads/main/scriptable/surge/surge-transparent.png"/>
+                   </button>
+                   <a href="surge:///install-module?url=${encodeURIComponent(url)}" target="_blank" style="border: none; background: none; padding: 0; cursor: pointer;">
+                       <img alt="一键安装模块" title="一键安装模块" style="height: 22px" src="https://raw.githubusercontent.com/Script-Hub-Org/Script-Hub/refs/heads/main/assets/icon512x512.png"/>
+                   </a>`
+                : `<button class="copy-button" data-url="${url}" style="border: none; background: none; padding: 0; cursor: pointer;">
+                       <img alt="复制规则链接" title="复制规则链接" style="height: 22px" src="https://raw.githubusercontent.com/xream/scripts/refs/heads/main/scriptable/surge/surge-transparent.png"/>
+                   </button>`;
+
             tree += `
                 <li>
                     <a class="file" href="${url}" target="_blank">${entry.name}
-                        <button class="copy-button" data-url="${url}" style="border: none; background: none; padding: 0; cursor: pointer;">
-                            <img
-                                alt="复制规则链接"
-                                title="复制规则链接"
-                                style="height: 22px"
-                                src="https://raw.githubusercontent.com/xream/scripts/refs/heads/main/scriptable/surge/surge-transparent.png"
-                            />
-                        </button>
+                        ${buttons}
                     </a>
                 </li>
             `;
@@ -80,7 +84,7 @@ function generateHtml(tree: string) {
         <head>
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Surge Rules Repository</title>
+            <title>Surge Rules & Modules Repository</title>
             <link rel="stylesheet" href="https://cdn.skk.moe/ruleset/css/21d8777a.css" />
             <style>
                 .folder {
@@ -136,12 +140,15 @@ function generateHtml(tree: string) {
                         color: #e0e0e0;
                         border-color: #444;
                     }
+                    .folder ul {
+                        border-left-color: #444;
+                    }
                 }
             </style>
         </head>
         <body>
         <main class="container">
-            <h1>Surge Rules Repository</h1>
+            <h1>Surge Rules & Modules Repository</h1>
             <p>
                 Made by <a href="https://github.com/hchichi">IKE IKE</a> | 
                 <a href="https://github.com/hchichi/esdeath">Source @ GitHub</a> | 
@@ -159,16 +166,16 @@ function generateHtml(tree: string) {
 
             <div class="search-section">
                 <input type="text" id="search" placeholder="🔍 搜索文件和文件夹..."/>
-                <span>ℹ️ 复制链接说明</span>
+                <span>ℹ️ 操作说明</span>
                 <br>
                 <small>
-                    <img
-                        alt="复制规则链接"
-                        title="复制规则链接"
-                        style="height: 22px"
-                        src="https://raw.githubusercontent.com/xream/scripts/refs/heads/main/scriptable/surge/surge-transparent.png"
-                    />
-                    点击此图标可复制规则文件链接
+                    <img alt="复制链接" title="复制链接" style="height: 22px" src="https://raw.githubusercontent.com/xream/scripts/refs/heads/main/scriptable/surge/surge-transparent.png"/>
+                    点击此图标可复制文件链接
+                </small>
+                <br>
+                <small>
+                    <img alt="安装模块" title="安装模块" style="height: 22px" src="https://raw.githubusercontent.com/Script-Hub-Org/Script-Hub/refs/heads/main/assets/icon512x512.png"/>
+                    点击此图标可一键安装 Surge 模块
                 </small>
             </div>
 
@@ -204,7 +211,7 @@ function generateHtml(tree: string) {
                     });
                 });
 
-                // 修复复制功能
+                // 复制功能
                 document.querySelectorAll('.copy-button').forEach(button => {
                     button.addEventListener('click', async (e) => {
                         e.preventDefault();
