@@ -2,7 +2,8 @@
 #!desc=过滤喜马拉雅广告
 #!author=佚名
 #!icon=https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/Himalaya.png
-#!category=iKeLee
+#!category=🚫 AD Block
+
 #!openUrl=https://apps.apple.com/app/id876336838
 #!tag=去广告
 #!loon_version=3.2.1(749)
@@ -49,19 +50,19 @@
 
 [Script]
 # 首页顶部去除直播
-移除首页直播推广 = type=http-response, pattern=^https?:\/\/.*\.xima.*\.com\/discovery-category\/customCategories, script-path=https://raw.githubusercontent.com/jqyisbest/LoonKissSurge/refs/heads/main/Scripts/01d99adcfafcfecf1b64df9df1895f4bbd4db727be46b7fdece71d806c7fe02e.js, requires-body=true
+移除首页直播推广 = type=http-response, pattern=^https?:\/\/.*\.xima.*\.com\/discovery-category\/customCategories, script-path=https://github.com/hchichi/esdeath/raw/main/Chores/js/Himalaya_remove_ads.js, requires-body=true
 
 # 屏蔽首页横幅广告
-移除首页横幅广告 = type=http-response, pattern=^https?:\/\/.*\.xima.*\.com\/focus-mobile\/focusPic, script-path=https://raw.githubusercontent.com/jqyisbest/LoonKissSurge/refs/heads/main/Scripts/01d99adcfafcfecf1b64df9df1895f4bbd4db727be46b7fdece71d806c7fe02e.js, requires-body=true
+移除首页横幅广告 = type=http-response, pattern=^https?:\/\/.*\.xima.*\.com\/focus-mobile\/focusPic, script-path=https://github.com/hchichi/esdeath/raw/main/Chores/js/Himalaya_remove_ads.js, requires-body=true
 
 # 屏蔽首页动态广告
-移除首页动态广告 = type=http-response, pattern=^https?:\/\/.*\.xima.*\.com\/discovery-feed\/v\d\/mix, script-path=https://raw.githubusercontent.com/jqyisbest/LoonKissSurge/refs/heads/main/Scripts/01d99adcfafcfecf1b64df9df1895f4bbd4db727be46b7fdece71d806c7fe02e.js, requires-body=true
+移除首页动态广告 = type=http-response, pattern=^https?:\/\/.*\.xima.*\.com\/discovery-feed\/v\d\/mix, script-path=https://github.com/hchichi/esdeath/raw/main/Chores/js/Himalaya_remove_ads.js, requires-body=true
 
 # 屏蔽标签页滚动广告
-移除标签页滚动广告 = type=http-response, pattern=^https?:\/\/.*\.xima.*\.com\/discovery-category\/v\d/category, script-path=https://raw.githubusercontent.com/jqyisbest/LoonKissSurge/refs/heads/main/Scripts/01d99adcfafcfecf1b64df9df1895f4bbd4db727be46b7fdece71d806c7fe02e.js, requires-body=true
+移除标签页滚动广告 = type=http-response, pattern=^https?:\/\/.*\.xima.*\.com\/discovery-category\/v\d/category, script-path=https://github.com/hchichi/esdeath/raw/main/Chores/js/Himalaya_remove_ads.js, requires-body=true
 
 # 去除我的页面广告标签
-移除我的页面广告 = type=http-response, pattern=^https?:\/\/.*\.xima.*\.com\/mobile-user\/v\d\/homePage, script-path=https://raw.githubusercontent.com/jqyisbest/LoonKissSurge/refs/heads/main/Scripts/01d99adcfafcfecf1b64df9df1895f4bbd4db727be46b7fdece71d806c7fe02e.js, requires-body=true
+移除我的页面广告 = type=http-response, pattern=^https?:\/\/.*\.xima.*\.com\/mobile-user\/v\d\/homePage, script-path=https://github.com/hchichi/esdeath/raw/main/Chores/js/Himalaya_remove_ads.js, requires-body=true
 
 [MITM]
 hostname = %APPEND% *.xima*.*, *.xmcdn.*

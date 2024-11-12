@@ -1,16 +1,32 @@
-#!name=皮皮虾去广告
-#!desc=移除开屏广告、评论区广告、视频流广告，精简我的页面。已知问题，评论区无内容。
+#!name=一刻相册去广告
+#!desc=移除开屏广告、横幅广告和弹窗推广。
 #!author=可莉🅥[https://github.com/luestr/ProxyResource/blob/main/README.md]
-#!icon=https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/PiPiXia.png
+#!icon=https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/BaiduPhoto.png
 #!category=🚫 AD Block
 
-#!openUrl=https://apps.apple.com/app/id1393912676
+#!openUrl=https://apps.apple.com/app/id1467852587
 #!tag=去广告
 #!loon_version=3.2.1(749)
 #!homepage=https://github.com/luestr/ProxyResource/blob/main/README.md
-#!date=2024-09-09 10:35:01
+#!date=2024-11-11 15:27:11
 
 [Rule]
+# 百度联盟 - 广告服务商
+DOMAIN,afd.baidu.com,REJECT
+DOMAIN,als.baidu.com,REJECT
+DOMAIN,bgg.baidu.com,REJECT
+DOMAIN,cpro.baidustatic.com,REJECT
+DOMAIN,feed-image.baidu.com,REJECT
+DOMAIN,click-bes.baidu.com,REJECT
+DOMAIN,eclick.baidu.com,REJECT
+DOMAIN,mobads-logs.baidu.com,REJECT
+DOMAIN,mobads-pre-config.cdn.bcebos.com,REJECT
+DOMAIN,mobads.baidu.com,REJECT
+DOMAIN,nadvideo2.baidu.com,REJECT
+DOMAIN,wn.pos.baidu.com,REJECT
+DOMAIN,miniapp-ad.cdn.bcebos.com,REJECT
+DOMAIN-SUFFIX,union.baidu.cn,REJECT
+DOMAIN-SUFFIX,union.baidu.com,REJECT
 AND,((DOMAIN-KEYWORD,-ad-),(DOMAIN-SUFFIX,byteimg.com)),REJECT
 #AND, ((DOMAIN-KEYWORD, -sign-), (DOMAIN-SUFFIX, tiktokcdn.com)), REJECT
 AND,((DOMAIN-KEYWORD,-ttam-),(DOMAIN-SUFFIX,ibyteimg.com)),REJECT
@@ -62,22 +78,15 @@ DOMAIN-KEYWORD,video-cn.snssdk.com,REJECT
 DOMAIN-KEYWORD,asiad.byteactivity,REJECT
 
 [Map Local]
-# 广告下发
-^https:\/\/api(5-lq)?\.pipix\.com\/api\/ad\/ data-type=text data="{}" status-code=200
+# 一刻核心经常变更的配置
+^https:\/\/pan\.baidu\.com\/act\/api\/conf\?.*conf_key=youa_core_config_ios data-type=text data="{}" status-code=200
 
-# 横幅
-^https:\/\/api(5-lq)?\.pipix\.com\/bds\/banner\/ data-type=text data="{}" status-code=200
-
-# 关注 - 近期热门皮友
-^https:\/\/api(5-lq)?\.pipix\.com\/bds\/feed\/follow_feed\/ data-type=text data="{}" status-code=200
+# 弹窗推广
+^https:\/\/pan\.baidu\.com\/youai\/material\/v1\/getbynavid\?.*nav_id=1 data-type=text data="{}" status-code=200
 
 [Script]
-# 视频流广告
-移除视频流广告 = type=http-response, pattern=^https:\/\/api(5-lq)?\.pipix\.com\/bds\/feed\/stream\/v2\/, script-path=https://github.com/hchichi/esdeath/raw/main/Chores/js/PiPiXia_remove_ads.js, requires-body=true
-
-# 我的页面
-精简我的页面 = type=http-response, pattern=^https:\/\/api(5-lq)?\.pipix\.com\/bds\/user\/check_in\/, script-path=https://github.com/hchichi/esdeath/raw/main/Chores/js/PiPiXia_remove_ads.js, requires-body=true
+body_rewrite_85 = type=http-response, pattern=^https:\/\/mbd\.baidu\.com\/ccs\/v1\/start\/confsync\?, script-path=https://github.com/hchichi/esdeath/raw/main/Chores/js/body-rewrite.js, requires-body=true, max-size=-1, timeout=30, argument=%5B%5B%22json-del%22%2C%5B%22data.service.config.advertisement%22%2C%22data.service.config.youa.pm_config_ad%22%5D%5D%5D
 
 [MITM]
-hostname = %APPEND% api.pipix.com, api5-lq.pipix.com
+hostname = %APPEND% pan.baidu.com, mbd.baidu.com
 

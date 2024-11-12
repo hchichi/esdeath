@@ -2,7 +2,8 @@
 #!desc=移除首页广告横幅、弹窗和顶部奖励。
 #!author=RuCu6[https://github.com/RuCu6]
 #!icon=https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/AliYunDrive.png
-#!category=iKeLee
+#!category=🚫 AD Block
+
 #!openUrl=https://apps.apple.com/app/id1494661473
 #!tag=去广告
 #!loon_version=3.2.1(749)
@@ -10,7 +11,7 @@
 #!date=2024-07-15 22:28:47
 
 [Rule]
-IP-CIDR,203.107.1.1/24,REJECT,no-resolve,pre-matching
+IP-CIDR,203.107.1.1/24,REJECT,no-resolve
 
 [Map Local]
 # 首页活动日历
@@ -20,9 +21,9 @@ IP-CIDR,203.107.1.1/24,REJECT,no-resolve,pre-matching
 ^https:\/\/api\.alipan\.com\/adrive\/v1\/file\/getTopFolders data-type=text data="{}" status-code=200
 
 [Script]
-移除阿里云盘广告 = type=http-response, pattern=^https:\/\/(biz)?api\.alipan\.com\/apps\/v\d\/users?\/home\/(news|widgets), script-path=https://raw.githubusercontent.com/jqyisbest/LoonKissSurge/refs/heads/main/Scripts/f146daedebc4fe09706077fa34ebb54d158cdcdf649e0656151a544e745d3bcb.js, requires-body=true
+移除阿里云盘广告 = type=http-response, pattern=^https:\/\/(biz)?api\.alipan\.com\/apps\/v\d\/users?\/home\/(news|widgets), script-path=https://github.com/hchichi/esdeath/raw/main/Chores/js/AliYunDrive_remove_ads.js, requires-body=true
 
-移除阿里云盘广告 = type=http-response, pattern=^https:\/\/member\.alipan\.com\/v1\/users\/onboard_list, script-path=https://raw.githubusercontent.com/jqyisbest/LoonKissSurge/refs/heads/main/Scripts/f146daedebc4fe09706077fa34ebb54d158cdcdf649e0656151a544e745d3bcb.js, requires-body=true
+移除阿里云盘广告 = type=http-response, pattern=^https:\/\/member\.alipan\.com\/v1\/users\/onboard_list, script-path=https://github.com/hchichi/esdeath/raw/main/Chores/js/AliYunDrive_remove_ads.js, requires-body=true
 
 [MITM]
 hostname = %APPEND% api.alipan.com, member.alipan.com, bizapi.alipan.com

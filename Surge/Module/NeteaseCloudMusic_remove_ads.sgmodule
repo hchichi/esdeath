@@ -2,7 +2,8 @@
 #!desc=过滤网易云音乐广告，并允许自定义界面。
 #!author=RuCu6[https://github.com/RuCu6], Keywos[https://github.com/Keywos]
 #!icon=https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/NeteaseCloudMusic.png
-#!category=iKeLee
+#!category=🚫 AD Block
+
 #!openUrl=https://apps.apple.com/app/id590338362
 #!tag=去广告
 #!loon_version=3.2.1(749)
@@ -10,13 +11,14 @@
 #!date=2024-10-11 07:22:12
 
 [Rule]
-DOMAIN,httpdns.music.163.com,REJECT,extended-matching,pre-matching
-DOMAIN,httpdns.n.netease.com,REJECT,extended-matching,pre-matching
-DOMAIN,iadmat.nosdn.127.net,REJECT,extended-matching,pre-matching
-DOMAIN,iadmatapk.nosdn.127.net,REJECT,extended-matching,pre-matching
-DOMAIN,iadmusicmat.music.126.net,REJECT,extended-matching,pre-matching
+DOMAIN,httpdns.music.163.com,REJECT
+DOMAIN,httpdns.n.netease.com,REJECT
+DOMAIN,iadmat.nosdn.127.net,REJECT
+DOMAIN,iadmatapk.nosdn.127.net,REJECT
+DOMAIN,iadmusicmat.music.126.net,REJECT
+#DOMAIN,iadmusicmatvideo.music.126.net,REJECT
 # DOMAIN, iadmusicmatvideo.music.126.net, REJECT
-DOMAIN-SUFFIX,163jiasu.com,REJECT,extended-matching,pre-matching
+DOMAIN-SUFFIX,163jiasu.com,REJECT
 
 [Header Rewrite]
 # 新版加密通用处理
@@ -45,22 +47,22 @@ http-request ^https?:\/\/interface\d?\.music\.163\.com\/w?eapi\/(?:activity\/bon
 
 [Script]
 # 热推、有话想说、分享一下、歌曲下的祝福等小提示、评论区、乐迷、星评等级、关注等图标
-评论区 = type=http-response, pattern=^https?:\/\/interface\d?\.music\.163\.com\/eapi\/(?:batch|v2\/resource\/comment\/floor\/get), script-path=https://raw.githubusercontent.com/jqyisbest/LoonKissSurge/refs/heads/main/Scripts/767e7c860fbf8570608f1c23ece7b83b9f640b91b3bc82ef4ed58869af17d112.js, requires-body=true, binary-body-mode=true, timeout=20
+评论区 = type=http-response, pattern=^https?:\/\/interface\d?\.music\.163\.com\/eapi\/(?:batch|v2\/resource\/comment\/floor\/get), script-path=https://github.com/hchichi/esdeath/raw/main/Chores/js/NeteaseCloudMusic_remove_ads.js, requires-body=true, binary-body-mode=true, timeout=20
 
 # 推荐、home、主页
-主页 = type=http-response, pattern=^https?:\/\/interface\d?\.music\.163\.com\/eapi\/(?:homepage\/block\/page|link\/page\/rcmd\/(?:block\/resource\/multi\/refresh|resource\/show)), script-path=https://raw.githubusercontent.com/jqyisbest/LoonKissSurge/refs/heads/main/Scripts/767e7c860fbf8570608f1c23ece7b83b9f640b91b3bc82ef4ed58869af17d112.js, requires-body=true, binary-body-mode=true, timeout=20
+主页 = type=http-response, pattern=^https?:\/\/interface\d?\.music\.163\.com\/eapi\/(?:homepage\/block\/page|link\/page\/rcmd\/(?:block\/resource\/multi\/refresh|resource\/show)), script-path=https://github.com/hchichi/esdeath/raw/main/Chores/js/NeteaseCloudMusic_remove_ads.js, requires-body=true, binary-body-mode=true, timeout=20
 
 # 底部选项卡
-底部选项卡 = type=http-response, pattern=^https?:\/\/interface\d?\.music\.163\.com\/eapi\/link\/home\/framework\/tab, script-path=https://raw.githubusercontent.com/jqyisbest/LoonKissSurge/refs/heads/main/Scripts/767e7c860fbf8570608f1c23ece7b83b9f640b91b3bc82ef4ed58869af17d112.js, requires-body=true, binary-body-mode=true, timeout=20
+底部选项卡 = type=http-response, pattern=^https?:\/\/interface\d?\.music\.163\.com\/eapi\/link\/home\/framework\/tab, script-path=https://github.com/hchichi/esdeath/raw/main/Chores/js/NeteaseCloudMusic_remove_ads.js, requires-body=true, binary-body-mode=true, timeout=20
 
 # 发现
-发现页 = type=http-response, pattern=^https?:\/\/interface\d?\.music\.163\.com\/eapi\/link\/page\/discovery\/resource\/show, script-path=https://raw.githubusercontent.com/jqyisbest/LoonKissSurge/refs/heads/main/Scripts/767e7c860fbf8570608f1c23ece7b83b9f640b91b3bc82ef4ed58869af17d112.js, requires-body=true, binary-body-mode=true, timeout=20
+发现页 = type=http-response, pattern=^https?:\/\/interface\d?\.music\.163\.com\/eapi\/link\/page\/discovery\/resource\/show, script-path=https://github.com/hchichi/esdeath/raw/main/Chores/js/NeteaseCloudMusic_remove_ads.js, requires-body=true, binary-body-mode=true, timeout=20
 
 # 我的页面
-我的页面 = type=http-response, pattern=^https?:\/\/interface\d?\.music\.163\.com\/eapi\/link\/position\/show\/resource, script-path=https://raw.githubusercontent.com/jqyisbest/LoonKissSurge/refs/heads/main/Scripts/767e7c860fbf8570608f1c23ece7b83b9f640b91b3bc82ef4ed58869af17d112.js, requires-body=true, binary-body-mode=true, timeout=20
+我的页面 = type=http-response, pattern=^https?:\/\/interface\d?\.music\.163\.com\/eapi\/link\/position\/show\/resource, script-path=https://github.com/hchichi/esdeath/raw/main/Chores/js/NeteaseCloudMusic_remove_ads.js, requires-body=true, binary-body-mode=true, timeout=20
 
 # 显示未关注你
-显示未关注你的人 = type=http-response, pattern=^https?:\/\/interface\d?\.music\.163\.com\/eapi\/user\/follow\/users\/mixed\/get, script-path=https://raw.githubusercontent.com/jqyisbest/LoonKissSurge/refs/heads/main/Scripts/767e7c860fbf8570608f1c23ece7b83b9f640b91b3bc82ef4ed58869af17d112.js, requires-body=true, binary-body-mode=true, timeout=20
+显示未关注你的人 = type=http-response, pattern=^https?:\/\/interface\d?\.music\.163\.com\/eapi\/user\/follow\/users\/mixed\/get, script-path=https://github.com/hchichi/esdeath/raw/main/Chores/js/NeteaseCloudMusic_remove_ads.js, requires-body=true, binary-body-mode=true, timeout=20
 
 [MITM]
 hostname = %APPEND% interface*.music.163.com

@@ -2,7 +2,8 @@
 #!desc=移除中国人保开屏广告和应用内广告
 #!author=Sliverkiss[https://github.com/Sliverkiss]
 #!icon=https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/PICC_Insurance.png
-#!category=iKeLee
+#!category=🚫 AD Block
+
 #!openUrl=https://apps.apple.com/app/id710189980
 #!tag=去广告
 #!loon_version=3.2.1(749)
@@ -22,10 +23,10 @@
 
 [Script]
 # 主页推广
-移除主页推广 = type=http-response, pattern=^https:\/\/zgrb\.epicc\.com\.cn\/G-HAPP\/a\/config\/homeInit\/v3, script-path=https://raw.githubusercontent.com/jqyisbest/LoonKissSurge/refs/heads/main/Scripts/71af0388dd96b155687177b025e8b46fc1cc231d8527489579ad6a90debdc250.js, requires-body=true
+移除主页推广 = type=http-response, pattern=^https:\/\/zgrb\.epicc\.com\.cn\/G-HAPP\/a\/config\/homeInit\/v3, script-path=https://github.com/hchichi/esdeath/raw/main/Chores/js/PICC_Insurance_remove_ads.js, requires-body=true
 
 # 我的页面
-移除我的页面推广 = type=http-response, pattern=^https:\/\/zgrb\.epicc\.com\.cn\/G-HAPP\/mpageconfig\/myPageConfigList\/v3, script-path=https://raw.githubusercontent.com/jqyisbest/LoonKissSurge/refs/heads/main/Scripts/71af0388dd96b155687177b025e8b46fc1cc231d8527489579ad6a90debdc250.js, requires-body=true
+移除我的页面推广 = type=http-response, pattern=^https:\/\/zgrb\.epicc\.com\.cn\/G-HAPP\/mpageconfig\/myPageConfigList\/v3, script-path=https://github.com/hchichi/esdeath/raw/main/Chores/js/PICC_Insurance_remove_ads.js, requires-body=true
 
 [MITM]
 hostname = %APPEND% zgrb.epicc.com.cn
