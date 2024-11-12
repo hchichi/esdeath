@@ -1,19 +1,16 @@
 #!name=AD ByeBye+ 2.x
-#!desc=Most Optimized Ad-free Experience presented with automated updates. | 提供最优化无广告体验，自动同步更新。\nRepo: https://tuu.cat/repo・Update: {{currentDate}}・Support: @bunizao・ Channel: @hututu00
-#!include={headers}, Eleme, Meituan, MiniProgram, Pixiv
-#!url=https://tuu.cat/ADBlock
-#!category=🚫 AD Block
-#!author=@hututu0 & Everyone in the community
-#!source=Rules@hututu0 | Xiaohongshu@ddgksf2013 | Amap@kokoryh | Cainiao@Keywos | Weibo@RuCu6 | Zhihu@RuCu6 | MiniProgram@bunizao | Chores@bunizao |Tools@ScriptHub
-#!arguments=WeiboProxy:DIRECT
-#!arguments-desc=WeiboProxy:Customizable Weibo Strategy, defalt set to DIRECT.\n可指定微博策略，默认为直连。
+#!desc=Most Optimized Ad-free Experience presented with automated updates. | 提供最优化无广告体验，自动同步更新。\nRepo: https://tuu.cat/repo・Update: {{currentDate}}・Support: @bunizao・ Channel: @hututu00\nModified by @chichi for personal use.
+#!include={headers}, Eleme, Meituan
+#!url=https://chichi.sh/ADBlock
+#!category=🚭 AD Block
+#!author=@hchichi & Everyone in the community
+#!source=Rules@hchichi | Xiaohongshu@ddgksf2013 | Amap@kokoryh | Cainiao@Keywos | Weibo@RuCu6 | Zhihu@RuCu6 | MiniProgram@bunizao | Chores@bunizao |Tools@ScriptHub
 #------------------------------------------------------
 
 
 [Rule]
-DOMAIN,wbapp.uve.weibo.com,{{{WeiboProxy}}}
 DOMAIN,ad.12306.cn,DIRECT
-RULE-SET,https://raw.githubusercontent.com/bunizao/TutuBetterRules/tutu/RuleList/DOMAlN/AD.Reject.list,REJECT,extended-matching
+RULE-SET,https://raw.githubusercontent.com/hchichi/esdeath/main/Chores/ruleset/reject.list,REJECT,extended-matching,pre-matching
 
 [URL Rewrite]
 
@@ -33,45 +30,6 @@ RULE-SET,https://raw.githubusercontent.com/bunizao/TutuBetterRules/tutu/RuleList
 
 {Map Local}
 
-# ----------- MiniProgram -----------
-
-# > 麦当劳
-^https:\/\/api\.mcd\.cn\/bff\/portal\/home\/hotActivity data-type=text data="{}" status-code=200
-# > 必胜客
-^https:\/\/res\.pizzahut\.com\.cn\/CRM data-type=text data="{}" status-code=200
-# > 肯德基
-^https:\/\/orders\.kfc\.com\.cn\/preorder-portal\/api\/v2\/coupon data-type=text data="{}" status-code=200
-^https:\/\/dynamicad\.kfc\.com\.cn\/api data-type=text data="{}" status-code=200
-^https:\/\/res\.kfc\.com\.cn\/CRM\/kfcad\/custom_v2\/wxapp data-type=text data="{}" status-code=200
-^https:\/\/orders\.kfc\.com\.cn\/preorder-portal\/api\/v2\/activity data-type=text data="{}" status-code=200
-# > 星巴克
-^https:\/\/3pp\.starbucks\.com\.cn\/wxmem\/popup data-type=text data="{}" status-code=200
-^https:\/\/3pp\.starbucks\.com\.cn\/wxmem\/index\/banner data-type=text data="{}" status-code=200
-^https:\/\/3pp\.starbucks\.com\.cn\/wxmem\/index\/global data-type=text data="{}" status-code=200
-# > 丰巢
-^https:\/\/webchatapp\.fcbox\.com\/fcboxactivityweb\/api\/v2\/clientPage data-type=text data="{}" status-code=200
-^https:\/\/dsp\.fcbox\.com data-type=base64 data="5p+c6Zeo5bey5byA77yM6K+35bC95b+r5Y+W5Ye6fvCfpbM=" status-code=200
-# > 奈雪点单
-^https:\/\/tm-api\.pin-dao\.cn\/home\/api\/index\/activeConfig\/v2 data-type=text data="{}" status-code=200
-^https:\/\/tm-api\.pin-dao\.cn\/home\/api\/resource\/config\/homeBannerNodes data-type=text data="{}" status-code=200
-# > 青桔单车
-^https:\/\/htwkop\.xiaojukeji\.com\/gateway\?api=cms\.htw\.delivery data-type=text data="{}" status-code=200
-^https:\/\/htwkop\.xiaojukeji\.com\/gateway\?api=hm\.fa\.combineHomepageInfo data-type=text data="{}" status-code=200
-^https:\/\/htwkop\.xiaojukeji\.com\/gateway\?api=hm\.fa\.mallRecommend data-type=text data="{}" status-code=200
-# > 哈啰出行
-^https:\/\/api\.hellobike\.com\/api\?adx data-type=text data="{}" status-code=200
-# > 顺丰速运
-^https?:\/\/ucmp\.sf-express\.com\/proxy\/operation-platform\/info-flow-adver\/query$ data="" status-code=200
-# > 猫眼
-^https:\/\/vod-movie\.maoyan\.com\/vod\/video\/onlineMovies\.json data-type=text data="{}" status-code=200
-^https:\/\/wx\.maoyan\.com\/maoyansh\/myshow\/ajax\/movie\/wonderShow data-type=text data="{}" status-code=200
-^https:\/\/wx\.maoyan\.com\/maoyansh\/myshow\/ajax\/performances\/calendar\/0 data-type=text data="{}" status-code=200
-^https:\/\/wx\.maoyan\.com\/maoyansh\/myshow\/ajax\/performances\/rob\/main data-type=text data="{}" status-code=200
-^https:\/\/wx\.maoyan\.com\/maoyansh\/myshow\/ajax\/celebrityBasicList\/query data-type=text data="{}" status-code=200
-^https:\/\/wx\.maoyan\.com\/maoyansh\/myshow\/ajax\/recommend\/performances data-type=text data="{}" status-code=200
-^https:\/\/api\.maoyan\.com\/sns\/common\/feed\/channel\/v2\/list\.json data-type=text data="{}" status-code=200
-^https:\/\/ad\.maoyan\.com\/api\/position\/detail data-type=text data="{}" status-code=200
-
 # ----------- Meituan -----------
 
 ^http:\/\/wmapi\.meituan\.com\/api\/v7\/(loadInfo|openscreen|startpicture)\? data-type=text data="{}" status-code=200
@@ -85,13 +43,9 @@ RULE-SET,https://raw.githubusercontent.com/bunizao/TutuBetterRules/tutu/RuleList
 
 {Script}
 
-# ----------- Pixiv -----------
-
-pixivAd = type=http-response,pattern=^https?:\/\/oauth\.secure\.pixiv\.net\/(auth\/token),requires-body=1,max-size=3145728,script-path=https://github.com/bunizao/Mirrored/raw/main/Chores/js/pixivAds.js,script-update-interval=0
-
 ########################################################################################
 
 [MITM]
-hostname = %APPEND% oauth.secure.pixiv.net, api.mcd.cn, orders.kfc.com.cn, dynamicad.kfc.com.cn, res.kfc.com.cn, res.pizzahut.com.cn, 3pp.starbucks.com.cn, htwkop.xiaojukeji.com, tm-api.pin-dao.cn, webchatapp.fcbox.com, dsp.fcbox.com, go.heytea.com, api.hellobike.com, ucmp.sf-express.com, vod-movie.maoyan.com, api.maoyan.com, ad.maoyan.com, wx.maoyan.com, elemecdn.com, fuss10.elemecdn.com, www1.elecfans.com, flowplus.meituan.net, img.meituan.net, s3plus.meituan.net, {hostname_append}
+hostname = %APPEND% elemecdn.com, fuss10.elemecdn.com, www1.elecfans.com, flowplus.meituan.net, img.meituan.net, s3plus.meituan.net, {hostname_append}
 h2 = true
 tcp-connection = true

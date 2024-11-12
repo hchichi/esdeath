@@ -34,11 +34,18 @@ jobs:
           mkdir -p Surge/Module
           mkdir -p Surge/Ruleset
 
+      - name: Copy all sgmodules to Surge/Module
+        run: |
+          # 复制所有sgmodule文件
+          cp Chores/sgmodule/*.sgmodule Surge/Module/
+          # 确保文件权限正确
+          chmod 644 Surge/Module/*.sgmodule
+
       - name: Commit and push changes
         run: |
           git config --global user.name "github-actions"
           git config --global user.email "github-actions@github.com"
-          git add Chores/sgmodule/All-in-One-2.x.sgmodule Chores/ruleset/reject.list
+          git add Chores/sgmodule/All-in-One-2.x.sgmodule Chores/ruleset/reject.list Surge/Module/*.sgmodule
           if git diff --cached --quiet; then
             echo "No changes to commit"
           else
