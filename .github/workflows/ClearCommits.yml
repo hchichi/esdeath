@@ -16,7 +16,7 @@ jobs:
           git config --local user.name "GitHub Action"
           git checkout --orphan clearhistory
           git branch -D main
-          git checkout --orphan Master
+          git checkout --orphan main
           git add .
           git commit -m "ㅤ"
           git push -f -u origin main
