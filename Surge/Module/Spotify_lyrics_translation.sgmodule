@@ -2,7 +2,8 @@
 #!desc=将Spotify的外语歌词翻译为简体中文，并提供双语翻译支持。
 #!author=VirgilClyne[https://github.com/VirgilClyne]
 #!icon=https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/Spotify.png
-#!category=iKeLee
+#!category=🚫 AD Block
+
 #!openUrl=https://apps.apple.com/app/id324684580
 #!tag=功能增强
 #!loon_version=3.2.1(749)
@@ -10,19 +11,19 @@
 #!date=2024-02-20 11:11:20
 
 [Script]
-跟踪响应·JSON = type=http-response, pattern=^https?:\/\/api\.spotify\.com\/v1\/tracks\?, script-path=https://raw.githubusercontent.com/jqyisbest/LoonKissSurge/refs/heads/main/Scripts/df04695911f2a1b91480c5c18587e6c4a1a9eb41858674131202657ee92616ad.js, requires-body=true
+跟踪响应·JSON = type=http-response, pattern=^https?:\/\/api\.spotify\.com\/v1\/tracks\?, script-path=https://github.com/hchichi/esdeath/raw/main/Chores/js/Spotify_response.js, requires-body=true
 
-歌词请求·JSON = type=http-request, pattern=^https?:\/\/spclient\.wg\.spotify\.com\/color-lyrics\/v2\/track\/(.+)\?(.*)format=json, script-path=https://raw.githubusercontent.com/jqyisbest/LoonKissSurge/refs/heads/main/Scripts/4cf253475697577618aec0425836932b42c9bf90674f81098ca4cad9873bd5b1.js, requires-body=true
+歌词请求·JSON = type=http-request, pattern=^https?:\/\/spclient\.wg\.spotify\.com\/color-lyrics\/v2\/track\/(.+)\?(.*)format=json, script-path=https://github.com/hchichi/esdeath/raw/main/Chores/js/Spotify_request.js, requires-body=true
 
-歌词请求·Proto = type=http-request, pattern=^https?:\/\/spclient\.wg\.spotify\.com\/color-lyrics\/v2\/track\/\w+\?(.*), script-path=https://raw.githubusercontent.com/jqyisbest/LoonKissSurge/refs/heads/main/Scripts/4cf253475697577618aec0425836932b42c9bf90674f81098ca4cad9873bd5b1.js, requires-body=true, binary-body-mode=true
+歌词请求·Proto = type=http-request, pattern=^https?:\/\/spclient\.wg\.spotify\.com\/color-lyrics\/v2\/track\/\w+\?(.*), script-path=https://github.com/hchichi/esdeath/raw/main/Chores/js/Spotify_request.js, requires-body=true, binary-body-mode=true
 
-翻译歌词响应·JSON = type=http-response, pattern=^https?:\/\/spclient\.wg\.spotify\.com\/color-lyrics\/v2\/track\/(.+)\?(.*)format=json(.*)subtype=Translate, script-path=https://raw.githubusercontent.com/jqyisbest/LoonKissSurge/refs/heads/main/Scripts/a2ca25b53a87d45a04c62b2f8773fdf104e14fbc7ce4c2a3d7bf622e8d63548d.js, requires-body=true
+翻译歌词响应·JSON = type=http-response, pattern=^https?:\/\/spclient\.wg\.spotify\.com\/color-lyrics\/v2\/track\/(.+)\?(.*)format=json(.*)subtype=Translate, script-path=https://github.com/hchichi/esdeath/raw/main/Chores/js/Translate_response.js, requires-body=true
 
-翻译歌词响应·Proto = type=http-response, pattern=^https?:\/\/spclient\.wg\.spotify\.com\/color-lyrics\/v2\/track\/\w+\?(.*)subtype=Translate, script-path=https://raw.githubusercontent.com/jqyisbest/LoonKissSurge/refs/heads/main/Scripts/a2ca25b53a87d45a04c62b2f8773fdf104e14fbc7ce4c2a3d7bf622e8d63548d.js, requires-body=true, binary-body-mode=true
+翻译歌词响应·Proto = type=http-response, pattern=^https?:\/\/spclient\.wg\.spotify\.com\/color-lyrics\/v2\/track\/\w+\?(.*)subtype=Translate, script-path=https://github.com/hchichi/esdeath/raw/main/Chores/js/Translate_response.js, requires-body=true, binary-body-mode=true
 
-外部歌词响应·JSON = type=http-response, pattern=^https?:\/\/spclient\.wg\.spotify\.com\/color-lyrics\/v2\/track\/(.+)\?(.*)format=json(.*)subtype=External, script-path=https://raw.githubusercontent.com/jqyisbest/LoonKissSurge/refs/heads/main/Scripts/7ad55b87d03fabfb50591e9d4e154b572a7ade25eeba5dc7a70bee7cd4ef201f.js, requires-body=true
+外部歌词响应·JSON = type=http-response, pattern=^https?:\/\/spclient\.wg\.spotify\.com\/color-lyrics\/v2\/track\/(.+)\?(.*)format=json(.*)subtype=External, script-path=https://github.com/hchichi/esdeath/raw/main/Chores/js/External_Lyrics_response.js, requires-body=true
 
-外部歌词响应·Proto = type=http-response, pattern=^https?:\/\/spclient\.wg\.spotify\.com\/color-lyrics\/v2\/track\/\w+\?(.*)subtype=External, script-path=https://raw.githubusercontent.com/jqyisbest/LoonKissSurge/refs/heads/main/Scripts/7ad55b87d03fabfb50591e9d4e154b572a7ade25eeba5dc7a70bee7cd4ef201f.js, requires-body=true, binary-body-mode=true
+外部歌词响应·Proto = type=http-response, pattern=^https?:\/\/spclient\.wg\.spotify\.com\/color-lyrics\/v2\/track\/\w+\?(.*)subtype=External, script-path=https://github.com/hchichi/esdeath/raw/main/Chores/js/External_Lyrics_response.js, requires-body=true, binary-body-mode=true
 
 [MITM]
 hostname = %APPEND% api.spotify.com, spclient.wg.spotify.com

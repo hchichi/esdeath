@@ -2,7 +2,8 @@
 #!desc=WPS每日签到并兑换会员，需要进入此插件的主页链接，阅读使用说明操作。
 #!author=小白脸
 #!icon=https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/WPS.png
-#!category=iKeLee
+#!category=🚫 AD Block
+
 #!openUrl=https://apps.apple.com/app/id599852710
 #!tag=签到
 #!loon_version=3.2.1(749)
@@ -11,10 +12,10 @@
 
 [Script]
 # 捕获Cookie
-捕获Cookie = type=http-request, pattern=^https:\/\/moapi\.wps\.cn\/app\/ios\/v1\/app$, script-path=https://raw.githubusercontent.com/jqyisbest/LoonKissSurge/refs/heads/main/Scripts/6b5af72efd4857eee17f2bd2fe3ea96f9a7473839ea3f9cd84fc66ed98e3407d.js, requires-body=true
+捕获Cookie = type=http-request, pattern=^https:\/\/moapi\.wps\.cn\/app\/ios\/v1\/app$, script-path=https://github.com/hchichi/esdeath/raw/main/Chores/js/WPS_checkin.js, requires-body=true
 
 # 定时签到
-WPS每日签到 = type=cron, cronexp="null", script-path=https://raw.githubusercontent.com/jqyisbest/LoonKissSurge/refs/heads/main/Scripts/6b5af72efd4857eee17f2bd2fe3ea96f9a7473839ea3f9cd84fc66ed98e3407d.js, timeout=120, argument="[{AK},{SK},{MAX_RETRIES}]"
+WPS每日签到 = type=cron, cronexp="null", script-path=https://github.com/hchichi/esdeath/raw/main/Chores/js/WPS_checkin.js, timeout=120, argument="[{AK},{SK},{MAX_RETRIES}]"
 
 [MITM]
 hostname = %APPEND% moapi.wps.cn

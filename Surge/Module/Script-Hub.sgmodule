@@ -2,7 +2,8 @@
 #!desc=将其他工具的Rewrite、Rule和JavaScript资源转换为Loon能识别的格式，使用前请在本插件的详情页面为[PROXY]项分配代理策略。点击下方链接查看更详细的使用方法。
 #!author=xream[https://github.com/xream], Keywos[https://github.com/Keywos], CKYB[https://github.com/CKYB], 小白脸
 #!icon=https://raw.githubusercontent.com/luestr/IconResource/main/Other_icon/120px/Script-Hub.png
-#!category=iKeLee
+#!category=🚫 AD Block
+
 #!openUrl=http://127.0.0.1:9101/
 #!tag=资源转换
 #!loon_version=3.2.1(749)
@@ -13,13 +14,13 @@
 force-http-engine-hosts = %APPEND% script.hub, *.script.hub
 
 [Script]
-前端界面 = type=http-request, pattern=^https?:\/\/script\.hub\/($|edit\/|reload), script-path=https://raw.githubusercontent.com/jqyisbest/LoonKissSurge/refs/heads/main/Scripts/bb6707990055d08a648069d4b67891f8d723cdbd337de20f2d4c261390a96a54.js, timeout=120
+前端界面 = type=http-request, pattern=^https?:\/\/script\.hub\/($|edit\/|reload), script-path=https://github.com/hchichi/esdeath/raw/main/Chores/js/script-hub.beta.js, timeout=120
 
-Rewrite转换 = type=http-request, pattern=^https?:\/\/script\.hub\/file\/_start_\/.+type=(?:qx-rewrite|surge-module|loon-plugin|all-module), script-path=https://raw.githubusercontent.com/jqyisbest/LoonKissSurge/refs/heads/main/Scripts/1a270e11c684f5288821d32690ca285ea5fd4e95a1291d940fad341c991a8e77.js, timeout=120
+Rewrite转换 = type=http-request, pattern=^https?:\/\/script\.hub\/file\/_start_\/.+type=(?:qx-rewrite|surge-module|loon-plugin|all-module), script-path=https://github.com/hchichi/esdeath/raw/main/Chores/js/Rewrite-Parser.beta.js, timeout=120
 
-Rule转换 = type=http-request, pattern=^https?:\/\/script\.hub\/file\/_start_\/.+type=rule-set, script-path=https://raw.githubusercontent.com/jqyisbest/LoonKissSurge/refs/heads/main/Scripts/618342e21e814b712b18528990ca2ec91d722d101876dd88c86430471fd52607.js, timeout=120
+Rule转换 = type=http-request, pattern=^https?:\/\/script\.hub\/file\/_start_\/.+type=rule-set, script-path=https://github.com/hchichi/esdeath/raw/main/Chores/js/rule-parser.beta.js, timeout=120
 
-JavaScript转换 = type=http-request, pattern=^https?:\/\/script\.hub\/convert\/, script-path=https://raw.githubusercontent.com/jqyisbest/LoonKissSurge/refs/heads/main/Scripts/16fd3c262aff1dcc505ba01a6850854286d0ef53480542ddf971041aa5a45ee9.js, timeout=120
+JavaScript转换 = type=http-request, pattern=^https?:\/\/script\.hub\/convert\/, script-path=https://github.com/hchichi/esdeath/raw/main/Chores/js/script-converter.beta.js, timeout=120
 
 [MITM]
 hostname = %APPEND% script.hub, *.script.hub

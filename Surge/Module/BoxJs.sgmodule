@@ -2,7 +2,8 @@
 #!desc=JavaScript数据管理器，用于管理脚本储存的数据。使用前请在本插件的详情页面为[PROXY]项分配代理策略。
 #!author=chavyleung[https://github.com/chavyleung]
 #!icon=https://raw.githubusercontent.com/luestr/IconResource/main/Other_icon/120px/BoxJS.png
-#!category=iKeLee
+#!category=🚫 AD Block
+
 #!openUrl=http://boxjs.com
 #!tag=数据管理
 #!loon_version=3.2.1(749)
@@ -10,8 +11,8 @@
 #!date=2024-04-23 08:28:27
 
 [Script]
-# http-request ^https?:\/\/(.+\.)?boxjs\.(com|net) script-path = https://raw.githubusercontent.com/jqyisbest/LoonKissSurge/refs/heads/main/Scripts/8206d5f68738351b77b827760ee6e749aa4c807017b73963bab7886dd6f2e4db.js, requires-body =  true, tag = BoxJS, timeout = 120
-BoxJS = type=http-request, pattern=^https?:\/\/(.+\.)?boxjs\.(com|net), script-path=https://raw.githubusercontent.com/jqyisbest/LoonKissSurge/refs/heads/main/Scripts/7055226f4f1d8737245b28b7d05289f1b42880a418825ead3fe101b538e87409.js, requires-body=true, timeout=120
+# http-request ^https?:\/\/(.+\.)?boxjs\.(com|net) script-path = https://github.com/hchichi/esdeath/raw/main/Chores/js/BoxJs.js, requires-body =  true, tag = BoxJS, timeout = 120
+BoxJS = type=http-request, pattern=^https?:\/\/(.+\.)?boxjs\.(com|net), script-path=https://github.com/hchichi/esdeath/raw/main/Chores/js/chavy.boxjs.js, requires-body=true, timeout=120
 
 [MITM]
 hostname = %APPEND% boxjs.com, boxjs.net, *.boxjs.com, *.boxjs.net

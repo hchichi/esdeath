@@ -2,16 +2,17 @@
 #!desc=定时任务及Cookie获取
 #!author=MartinsKing（@ClydeTime）
 #!icon=https://raw.githubusercontent.com/ClydeTime/BiliBili/main/database/icon_Avatar.png
-#!category=iKeLee
+#!category=🚫 AD Block
+
 #!homepage=https://github.com/ClydeTime/BiliBili/tree/master
 
 [Script]
 # BiliBili每日等级任务
-B站每日等级任务 = type=cron, cronexp="30 7 * * *", script-path=https://raw.githubusercontent.com/jqyisbest/LoonKissSurge/refs/heads/main/Scripts/1a2a49e765ee8474dbca95195115f29b4bdc9671374f1ce1b740cc2b0297b55e.js
+B站每日等级任务 = type=cron, cronexp="30 7 * * *", script-path=https://github.com/hchichi/esdeath/raw/main/Chores/js/BiliBiliDailyBonus.js
 
-B站Cookie(APP) = type=http-request, pattern=^https?:\/\/app\.bilibili\.com\/x\/resource\/fingerprint\?, script-path=https://raw.githubusercontent.com/jqyisbest/LoonKissSurge/refs/heads/main/Scripts/1a2a49e765ee8474dbca95195115f29b4bdc9671374f1ce1b740cc2b0297b55e.js
+B站Cookie(APP) = type=http-request, pattern=^https?:\/\/app\.bilibili\.com\/x\/resource\/fingerprint\?, script-path=https://github.com/hchichi/esdeath/raw/main/Chores/js/BiliBiliDailyBonus.js
 
-B站Cookie(网页) = type=http-request, pattern=^https?:\/\/m.bilibili.com/$, script-path=https://raw.githubusercontent.com/jqyisbest/LoonKissSurge/refs/heads/main/Scripts/1a2a49e765ee8474dbca95195115f29b4bdc9671374f1ce1b740cc2b0297b55e.js
+B站Cookie(网页) = type=http-request, pattern=^https?:\/\/m.bilibili.com/$, script-path=https://github.com/hchichi/esdeath/raw/main/Chores/js/BiliBiliDailyBonus.js
 
 [MITM]
 hostname = %APPEND% app.bilibili.com, m.bilibili.com
