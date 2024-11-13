@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
     "target": "ESNext",
-    "module": "NodeNext",
-    "moduleResolution": "NodeNext",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
     "esModuleInterop": true,
     "skipLibCheck": true,
     "strict": true,
@@ -16,9 +16,11 @@
       "@web/*": ["Chores/engineering/web/*"]
     },
     "allowJs": true,
-    "resolveJsonModule": true,
-    "allowImportingTsExtensions": true,
-    "moduleDetection": "force"
+    "resolveJsonModule": true
+  },
+  "ts-node": {
+    "esm": true,
+    "experimentalSpecifierResolution": "node"
   },
   "include": [
     "Chores/**/*.ts"
