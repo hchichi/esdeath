@@ -55,15 +55,15 @@ async function walk(dir: string, baseUrl: string) {
             }
         } else if (allowedExtensions.includes(path.extname(entry.name).toLowerCase())) {
             const buttons = entry.name.endsWith('.sgmodule') 
-                ? `<button class="copy-button" data-url="${url}" style="border: none; background: none; padding: 0; cursor: pointer;">
-                       <img alt="复制模块链接" title="复制模块链接" style="height: 22px" src="https://raw.githubusercontent.com/xream/scripts/refs/heads/main/scriptable/surge/surge-transparent.png"/>
-                   </button>
-                   <a href="surge:///install-module?url=${encodeURIComponent(url)}" target="_blank" style="border: none; background: none; padding: 0; cursor: pointer;">
-                       <img alt="一键安装模块" title="一键安装模块" style="height: 22px" src="https://raw.githubusercontent.com/Script-Hub-Org/Script-Hub/refs/heads/main/assets/icon512x512.png"/>
+                ? `<a style="border-bottom: none" href="surge:///install-module?url=${encodeURIComponent(url)}" target="_blank">
+                       <img alt="导入 Surge(远程模块)" title="导入 Surge(远程模块)" style="height: 22px" src="https://raw.githubusercontent.com/xream/scripts/refs/heads/main/scriptable/surge/surge-transparent.png"/>
+                   </a>
+                   <a style="border-bottom: none" href="scriptable:///run/SurgeModuleTool?url=${encodeURIComponent(url)}" target="_blank">
+                       <img alt="导入 Surge(本地模块)" title="导入 Surge(本地模块 需配合 Scriptable + Script Hub)" style="height: 22px" src="https://raw.githubusercontent.com/Script-Hub-Org/Script-Hub/refs/heads/main/assets/icon512x512.png"/>
                    </a>`
-                : `<button class="copy-button" data-url="${url}" style="border: none; background: none; padding: 0; cursor: pointer;">
+                : `<a style="border-bottom: none" class="copy-button" data-url="${url}">
                        <img alt="复制规则链接" title="复制规则链接" style="height: 22px" src="https://raw.githubusercontent.com/xream/scripts/refs/heads/main/scriptable/surge/surge-transparent.png"/>
-                   </button>`;
+                   </a>`;
 
             tree += `
                 <li>

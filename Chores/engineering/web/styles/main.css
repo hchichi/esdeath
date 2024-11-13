@@ -23,6 +23,18 @@ body {
     padding: 2rem;
 }
 
+/* 暗黑模式 */
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #1a1a1a;
+        color: #e0e0e0;
+    }
+    
+    .folder ul {
+        border-left-color: #444;
+    }
+}
+
 header {
     text-align: center;
     margin-bottom: 2rem;
@@ -68,6 +80,30 @@ header {
 
 .rule-card:hover {
     transform: translateY(-2px);
+}
+
+/* 添加文件链接样式 */
+.file {
+    text-decoration: none;
+    color: var(--text-primary);
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s;
+}
+
+.file:hover {
+    border-bottom-color: var(--primary);
+}
+
+/* 图标对齐样式 */
+.file img {
+    vertical-align: middle;
+    margin-left: 8px;
+}
+
+/* 移除图标链接的下划线 */
+.file a {
+    border-bottom: none;
+    text-decoration: none;
 }
 
 /* ... 其余样式保持不变 ... */

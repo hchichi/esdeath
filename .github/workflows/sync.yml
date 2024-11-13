@@ -17,11 +17,10 @@ jobs:
         node-version: '18'
     
     - name: Install Dependencies
-      run: |
-        npm install typescript ts-node @types/node
+      run: npm install
         
     - name: Run Sync Script
-      run: npx ts-node Chores/engineering/sync/main.ts
+      run: npm run sync
       env:
         TZ: 'Asia/Shanghai'
         
