@@ -4,8 +4,8 @@
 	"description": "Rule sync automation",
 	"type": "module",
 	"scripts": {
-	  "sync": "ts-node --esm Chores/engineering/sync/main.ts",
-	  "build": "ts-node --esm Chores/engineering/web/build.ts",
+	  "sync": "node --loader ts-node/esm Chores/engineering/sync/main.ts",
+	  "build": "node --loader ts-node/esm Chores/engineering/web/build.ts",
 	  "dev": "npm run sync && npm run build"
 	},
 	"dependencies": {
