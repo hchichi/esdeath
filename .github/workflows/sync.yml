@@ -21,7 +21,7 @@ jobs:
         npm install typescript ts-node @types/node
         
     - name: Run Sync Script
-      run: npx ts-node Chores/scripts/main.ts
+      run: npx ts-node Chores/engineering/sync/main.ts
       env:
         TZ: 'Asia/Shanghai'
         
