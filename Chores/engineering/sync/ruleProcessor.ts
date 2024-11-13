@@ -1,8 +1,8 @@
 // 规则处理
 import fs from 'node:fs';
 import path from 'node:path';
-import { RuleFile, RuleStats } from './types.js';
-import { getRuleStats } from '../utils.js';
+import { RuleFile, RuleStats } from './types';
+import { getRuleStats } from '../utils';
 
 export class RuleProcessor {
   constructor(private readonly repoPath: string) {}

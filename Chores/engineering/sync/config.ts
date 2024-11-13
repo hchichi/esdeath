@@ -1,4 +1,4 @@
-import { RuleGroup } from './types.js';
+import { RuleGroup } from './types';
 
 export const REPO_PATH = 'esdeath-repo';
 
