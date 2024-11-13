@@ -4,8 +4,8 @@
 	"description": "sync-rules",
 	"type": "module",
 	"scripts": {
-	  "sync": "NODE_NO_WARNINGS=1 tsx Chores/engineering/sync/main.ts",
-	  "build": "tsx Chores/engineering/web/build.ts",
+	  "sync": "NODE_NO_WARNINGS=1 tsx --tsconfig tsconfig.json Chores/engineering/sync/main.ts",
+	  "build": "tsx --tsconfig tsconfig.json Chores/engineering/web/build.ts",
 	  "dev": "npm run sync && npm run build"
 	},
 	"dependencies": {
