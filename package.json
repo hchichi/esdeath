@@ -4,7 +4,7 @@
 	"description": "sync-rules",
 	"type": "module",
 	"scripts": {
-	  "sync": "node --loader ts-node/esm Chores/engineering/sync/main.ts",
+	  "sync": "NODE_OPTIONS='--experimental-specifier-resolution=node' node --loader ts-node/esm Chores/engineering/sync/main.ts",
 	  "build": "node --loader ts-node/esm Chores/engineering/web/build.ts",
 	  "dev": "npm run sync && npm run build"
 	},
@@ -12,5 +12,8 @@
 	  "@types/node": "^20.11.0",
 	  "typescript": "^5.6.3",
 	  "ts-node": "^10.9.0"
+	},
+	"engines": {
+	  "node": ">=20.0.0"
 	}
   }

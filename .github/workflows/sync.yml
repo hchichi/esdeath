@@ -12,17 +12,21 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     
-    - uses: actions/setup-node@v3
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
       with:
-        node-version: '18'
+        node-version: '20'
+        cache: 'npm'
     
     - name: Install Dependencies
-      run: npm install
+      run: |
+        npm ci
         
     - name: Run Sync Script
       run: npm run sync
       env:
         TZ: 'Asia/Shanghai'
+        NODE_OPTIONS: '--experimental-specifier-resolution=node'
         
     - name: Commit Changes
       run: |
