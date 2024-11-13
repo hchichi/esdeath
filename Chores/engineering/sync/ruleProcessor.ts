@@ -8,13 +8,19 @@ export class RuleProcessor {
   constructor(private readonly repoPath: string) {}
 
   async processRule(rule: RuleFile): Promise<void> {
-    const filePath = path.join(this.repoPath, rule.path);
-    const content = await fs.promises.readFile(filePath, 'utf8');
-    
-    const cleanedContent = this.cleanAndSortRules(content);
-    const processedContent = this.addHeader(cleanedContent, rule);
-    
-    await fs.promises.writeFile(filePath, processedContent, { mode: 0o644 });
+    try {
+      const filePath = path.join(this.repoPath, rule.path);
+      const content = await fs.promises.readFile(filePath, 'utf8');
+      
+      const cleanedContent = this.cleanAndSortRules(content);
+      const processedContent = this.addHeader(cleanedContent, rule);
+      
+      await fs.promises.writeFile(filePath, processedContent, { mode: 0o644 });
+    } catch (error) {
+      console.error(`处理规则 ${rule.path} 时发生错误:`, error);
+      // 根据需要决定是否继续或抛出错误
+      throw error;
+    }
   }
 
   private cleanAndSortRules(content: string): string {

@@ -34,4 +34,13 @@ async function main() {
   }
 }
 
-main(); 
+main().catch(error => {
+  console.error('Unhandled error in main:', error);
+  process.exit(1);
+});
+
+// 全局未处理的 Promise 拒绝处理
+process.on('unhandledRejection', (reason, promise) => {
+  console.error('Unhandled Rejection at:', promise, 'reason:', reason);
+  process.exit(1);
+}); 
