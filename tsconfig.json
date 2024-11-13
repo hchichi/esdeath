@@ -12,9 +12,6 @@
     "baseUrl": ".",
     "paths": {
       "*": ["*"]
-    },
-    "extensionAlias": {
-      ".js": [".ts", ".js"]
     }
   },
   "include": [

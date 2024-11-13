@@ -2,7 +2,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { RuleFile, RuleStats } from './types';
-import { getRuleStats } from '../utils';
+import { getRuleStats } from './utils';
 
 export class RuleProcessor {
   constructor(private readonly repoPath: string) {}

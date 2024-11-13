@@ -1,7 +1,7 @@
 // 主程序
 import { REPO_PATH, ruleGroups } from './config';
 import { RuleProcessor } from './ruleProcessor';
-import { downloadFile, ensureDirectoryExists } from '../utils';
+import { downloadFile, ensureDirectoryExists } from './utils';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { dirname } from 'node:path';
