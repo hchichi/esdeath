@@ -4,7 +4,7 @@
 	"description": "sync-rules",
 	"type": "module",
 	"scripts": {
-	  "sync": "NODE_OPTIONS='--experimental-specifier-resolution=node' node --loader ts-node/esm Chores/engineering/sync/main.ts",
+	  "sync": "node --loader ts-node/esm Chores/engineering/sync/main.ts",
 	  "build": "node --loader ts-node/esm Chores/engineering/web/build.ts",
 	  "dev": "npm run sync && npm run build"
 	},
