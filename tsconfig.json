@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "target": "ESNext",
-    "module": "ESNext",
+    "module": "NodeNext",
     "moduleResolution": "NodeNext",
     "esModuleInterop": true,
     "allowJs": true,
@@ -12,6 +12,9 @@
     "baseUrl": ".",
     "paths": {
       "*": ["*"]
+    },
+    "extensionAlias": {
+      ".js": [".ts", ".js"]
     }
   },
   "include": [
