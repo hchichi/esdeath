@@ -20,13 +20,11 @@ jobs:
     - name: Install Dependencies
       run: |
         npm install
-        npm install -g typescript ts-node
         
     - name: Run Sync Script
       run: npm run sync
       env:
         TZ: 'Asia/Shanghai'
-        NODE_OPTIONS: '--experimental-specifier-resolution=node'
         
     - name: Commit Changes
       run: |
