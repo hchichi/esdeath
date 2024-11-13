@@ -1,27 +1,37 @@
 // 主程序
 import { REPO_PATH, ruleGroups } from './config';
 import { RuleProcessor } from './ruleProcessor';
-import { downloadFile, ensureDirectoryExists } from '../utils.js';
-import path from 'path';
+import { downloadFile, ensureDirectoryExists } from '../utils';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { dirname } from 'node:path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 async function main() {
-  const processor = new RuleProcessor(REPO_PATH);
-
-  for (const group of ruleGroups) {
-    console.log(`Processing ${group.name} rules...`);
+  try {
+    const processor = new RuleProcessor(REPO_PATH);
     
-    for (const rule of group.files) {
-      const filePath = path.join(REPO_PATH, rule.path);
-      ensureDirectoryExists(path.dirname(filePath));
+    await Promise.all(ruleGroups.map(async (group) => {
+      console.log(`Processing ${group.name} rules...`);
       
-      try {
-        await downloadFile(rule.url, filePath);
-        await processor.processRule(rule);
-      } catch (error) {
-        console.error(`Error processing ${rule.path}:`, error);
-      }
-    }
+      await Promise.all(group.files.map(async (rule) => {
+        const filePath = path.join(REPO_PATH, rule.path);
+        ensureDirectoryExists(path.dirname(filePath));
+        
+        try {
+          await downloadFile(rule.url, filePath);
+          await processor.processRule(rule);
+        } catch (error) {
+          console.error(`Error processing ${rule.path}:`, error);
+        }
+      }));
+    }));
+  } catch (error) {
+    console.error('Fatal error:', error);
+    process.exit(1);
   }
 }
 
-main().catch(console.error); 
+main(); 

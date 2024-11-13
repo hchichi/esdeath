@@ -1,4 +1,4 @@
-import { RuleGroup } from './types';
+import { RuleGroup } from './types.js';
 
 export const REPO_PATH = 'esdeath-repo';
 
@@ -78,7 +78,7 @@ export const ruleGroups: RuleGroup[] = [
       },
       {
         path: 'Surge/Ruleset/Apple/Apple.list',
-        url: 'https://raw.githubusercontent.com/NobyDa/engineering/master/Surge/Apple.list',
+        url: 'https://raw.githubusercontent.com/NobyDa/Script/master/Surge/Apple.list',
         title: 'Apple General Rules',
         description: 'General rules for Apple services'
       },
@@ -443,7 +443,7 @@ export const ruleGroups: RuleGroup[] = [
     files: [
       {
         path: 'Surge/Ruleset/Domestic/WeChat.list',
-        url: 'https://raw.githubusercontent.com/NobyDa/engineering/master/Surge/WeChat.list',
+        url: 'https://raw.githubusercontent.com/NobyDa/Script/master/Surge/WeChat.list',
         title: 'WeChat Rules',
         description: 'Rules for WeChat'
       },

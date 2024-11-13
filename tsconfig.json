@@ -16,11 +16,9 @@
       "@web/*": ["Chores/engineering/web/*"]
     },
     "allowJs": true,
-    "resolveJsonModule": true
-  },
-  "ts-node": {
-    "esm": true,
-    "experimentalSpecifierResolution": "node"
+    "resolveJsonModule": true,
+    "allowImportingTsExtensions": true,
+    "moduleDetection": "force"
   },
   "include": [
     "Chores/**/*.ts"
