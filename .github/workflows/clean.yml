@@ -1,4 +1,4 @@
-name: Clear Commits
+name: Housekeeping Housekeeping
 
 on:
   workflow_dispatch:

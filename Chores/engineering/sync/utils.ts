@@ -14,13 +14,15 @@ const execAsync = promisify(exec);
  */
 export async function downloadFile(url: string, dest: string): Promise<void> {
   try {
-    const { stderr } = await execAsync(`curl -L -o "${dest}" "${url}"`);
-    if (stderr) {
-      throw new Error(`下载错误: ${stderr}`);
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
     }
-    console.log(`成功下载文件: ${url} 到 ${dest}`);
+    const buffer = await response.arrayBuffer();
+    await fs.promises.writeFile(dest, Buffer.from(buffer));
+    console.log(`Downloaded: ${url} -> ${dest}`);
   } catch (error) {
-    console.error(`下载文件失败: ${url}`, error);
+    console.error(`Download failed: ${url}`, error);
     throw error;
   }
 }
@@ -78,4 +80,34 @@ export function getRuleStats(content: string): RuleStats {
 
   console.log('规则统计:', stats);
   return stats;
+}
+
+/**
+ * 清理和排序规则
+ * @param content - 规则内容
+ * @returns - 清理和排序后的规则
+ */
+export function cleanAndSortRules(content: string): string {
+  return content
+    .split('\n')
+    .map(line => line.trim())
+    .filter(line => line && !line.startsWith('#'))
+    .sort()
+    .join('\n');
+}
+
+/**
+ * 验证规则
+ * @param rule - 规则
+ * @returns - 是否有效
+ */
+export function validateRule(rule: string): boolean {
+  const validRuleTypes = [
+    'DOMAIN', 'DOMAIN-SUFFIX', 'DOMAIN-KEYWORD',
+    'IP-CIDR', 'IP-CIDR6', 'GEOIP', 'URL-REGEX',
+    'USER-AGENT', 'IP-ASN', 'AND', 'OR', 'NOT'
+  ];
+  
+  const type = rule.split(',')[0]?.trim().toUpperCase();
+  return validRuleTypes.includes(type);
 } 

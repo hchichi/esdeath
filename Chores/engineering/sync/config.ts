@@ -1,6 +1,12 @@
-import { RuleGroup } from './types';
+import { RuleGroup, SpecialRuleConfig } from './types';
+import { fileURLToPath } from 'node:url';
+import { dirname } from 'node:path';
+import path from 'node:path';
 
-export const REPO_PATH = 'esdeath-repo';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+export const REPO_PATH = path.join(__dirname, '../../..');
 
 export const ruleGroups: RuleGroup[] = [
   {
@@ -32,6 +38,7 @@ export const ruleGroups: RuleGroup[] = [
       }
     ]
   },
+  /** 
   {
     name: 'CCC',
     files: [
@@ -67,6 +74,7 @@ export const ruleGroups: RuleGroup[] = [
       }
     ]
   },
+   */
   {
     name: 'Apple',
     files: [
@@ -135,18 +143,20 @@ export const ruleGroups: RuleGroup[] = [
   {
     name: 'AI',
     files: [
+      /** 
       {
         path: 'Surge/Ruleset/AI/OpenAI.list',
         url: 'https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/refs/heads/master/Clash/Rules/OpenAi.list',
         title: 'OpenAI Rules',
         description: 'Rules for OpenAI services'
       },
-      {
-        path: 'Surge/Ruleset/AI/Claude.list',
-        url: 'https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Claude.list',
-        title: 'Claude Rules',
-        description: 'Rules for Claude AI'
-      },
+      //{
+      //  path: 'Surge/Ruleset/AI/Claude.list',
+      //  url: 'https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Claude.list',
+      //  title: 'Claude Rules',
+      //  description: 'Rules for Claude AI'
+      //},
+      */
       {
         path: 'Surge/Ruleset/AI/AI.list',
         url: 'https://ruleset.skk.moe/List/non_ip/ai.conf',
@@ -253,6 +263,42 @@ export const ruleGroups: RuleGroup[] = [
         url: 'https://github.com/1120109856/lynn/raw/main/zl',
         title: 'Emby Test 2 Rules',
         description: 'Second test rules for Emby'
+      },
+      {
+        path: 'Surge/Ruleset/Streaming/CN.list',
+        url: 'https://raw.githubusercontent.com/ConnersHua/RuleGo/master/Surge/Ruleset/Extra/Streaming/CN.list',
+        title: 'China Streaming Rules',
+        description: 'Streaming rules for China services'
+      },
+      {
+        path: 'Surge/Ruleset/Streaming/!CN.list',
+        url: 'https://raw.githubusercontent.com/ConnersHua/RuleGo/master/Surge/Ruleset/Extra/Streaming/!CN.list',
+        title: 'Non-China Streaming Rules',
+        description: 'Streaming rules for non-China services'
+      },
+      {
+        path: 'Surge/Ruleset/Streaming/Video/BiliBiliIntl.list',
+        url: 'https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/BiliBiliIntl/BiliBiliIntl.list',
+        title: 'BiliBili International Rules',
+        description: 'Rules for BiliBili International'
+      },
+      {
+        path: 'Surge/Ruleset/Streaming/Video/Bilibili.list',
+        url: 'https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Bilibili.list',
+        title: 'Bilibili Rules',
+        description: 'Rules for Bilibili'
+      },
+      {
+        path: 'Surge/Ruleset/Streaming/Video/TikTok.list',
+        url: 'https://proxyresource.pages.dev/Tool/Loon/Rule/TikTok.list',
+        title: 'TikTok Rules',
+        description: 'Rules for TikTok'
+      },
+      {
+        path: 'Surge/Ruleset/Streaming/Video/HBO.list',
+        url: 'https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/HBO/HBO.list',
+        title: 'HBO Rules',
+        description: 'Rules for HBO'
       }
     ]
   },
@@ -472,13 +518,13 @@ export const ruleGroups: RuleGroup[] = [
         description: 'Rules for China'
       },
       {
-        path: 'Surge/Ruleset/ChinaMax.list',
+        path: 'Surge/Ruleset/Domestic/ChinaMax.list',
         url: 'https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/ChinaMax/ChinaMax.list',
         title: 'China Max Rules',
         description: 'Max rules for China'
       },
       {
-        path: 'Surge/Ruleset/cn.list',
+        path: 'Surge/Ruleset/Domestic/cn.list',
         url: 'https://raw.githubusercontent.com/Blankwonder/surge-list/master/cn.list',
         title: 'CN Rules',
         description: 'Rules for CN'
@@ -519,13 +565,13 @@ export const ruleGroups: RuleGroup[] = [
     name: 'IPCIDR',
     files: [
       {
-        path: 'Surge/Ruleset/ChinaIP_Sukkaw.list',
+        path: 'Surge/Ruleset/IPCIDR/ChinaIP_Sukkaw.list',
         url: 'https://ruleset.skk.moe/List/ip/china_ip.conf',
         title: 'China IP SukkaW Rules',
         description: 'IP rules for China from SukkaW'
       },
       {
-        path: 'Surge/Ruleset/ChinaIP.list',
+        path: 'Surge/Ruleset/IPCIDR/ChinaIP.list',
         url: 'https://raw.githubusercontent.com/missuo/ASN-China/main/IP.China.list',
         title: 'China IP Rules',
         description: 'IP rules for China'
@@ -543,15 +589,15 @@ export const ruleGroups: RuleGroup[] = [
         description: 'IPv6 rules for China'
       },
       {
-        path: 'Surge/Ruleset/ChinaASN.DH.list',
-        url: 'https://raw.githubusercontent.com/DH-Teams/DH-Geo_AS_IP_CN/main/Geo_AS_IP_CN_All_Surge.list',
-        title: 'China ASN DH Rules',
-        description: 'ASN rules for China from DH'
+        path: 'Surge/Ruleset/IPCIDR/ChinaIPv4.DH.list',
+        url: 'https://raw.githubusercontent.com/DH-Teams/DH-Geo_AS_IP_CN/main/Geo_AS_IP_CN_V4_Surge.list',
+        title: 'China IPv4 DH Rules',
+        description: 'IPv4 rules for China from DH'
       },
       {
-        path: 'Surge/Ruleset/ChinaASN.list',
+        path: 'Surge/Ruleset/ChinaASN.Fries.list',
         url: 'https://raw.githubusercontent.com/VirgilClyne/GetSomeFries/main/ruleset/ASN.China.list',
-        title: 'China ASN Rules',
+        title: 'China ASN Fries Rules',
         description: 'ASN rules for China'
       },
       {
@@ -559,6 +605,12 @@ export const ruleGroups: RuleGroup[] = [
         url: 'https://raw.githubusercontent.com/missuo/ASN-China/main/ASN.China.list',
         title: 'China ASN Missuo Rules',
         description: 'ASN rules for China from Missuo'
+      },
+      {
+        path: 'Surge/Ruleset/ChinaASN.DH.list',
+        url: 'https://raw.githubusercontent.com/DH-Teams/DH-Geo_AS_IP_CN/main/Geo_AS_CN.list',
+        title: 'China ASN DH Rules',
+        description: 'ASN rules for China from DH'
       }
     ]
   },
@@ -572,5 +624,219 @@ export const ruleGroups: RuleGroup[] = [
         description: 'Rules for local LAN'
       }
     ]
+  },
+  {
+    name: 'Social',
+    files: [
+      {
+        path: 'Surge/Ruleset/Social/Twitter.list',
+        url: 'https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Twitter.list',
+        title: 'Twitter Rules',
+        description: 'Rules for Twitter'
+      },
+      {
+        path: 'Surge/Ruleset/Social/Instagram.list',
+        url: 'https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Instagram.list',
+        title: 'Instagram Rules',
+        description: 'Rules for Instagram'
+      },
+      {
+        path: 'Surge/Ruleset/Social/Facebook.list',
+        url: 'https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Facebook.list',
+        title: 'Facebook Rules',
+        description: 'Rules for Facebook'
+      },
+      {
+        path: 'Surge/Ruleset/Telegram.list',
+        url: 'https://raw.githubusercontent.com/Repcz/Tool/X/Surge/Rules/Telegram.list',
+        title: 'Telegram Rules',
+        description: 'Rules for Telegram'
+      }
+    ]
+  },
+  {
+    name: 'Extra',
+    files: [
+      {
+        path: 'Surge/Ruleset/Extra/Direct.list',
+        url: 'https://raw.githubusercontent.com/Repcz/Tool/X/Surge/Rules/Direct.list',
+        title: 'Extra Direct Rules',
+        description: 'Extra direct routing rules'
+      },
+      {
+        path: 'Surge/Ruleset/Extra/Reject.list',
+        url: 'https://raw.githubusercontent.com/Repcz/Tool/X/Surge/Rules/Reject.list',
+        title: 'Extra Reject Rules',
+        description: 'Extra reject rules'
+      },
+      {
+        path: 'Surge/Ruleset/Extra/Proxy.list',
+        url: 'https://raw.githubusercontent.com/Repcz/Tool/X/Surge/Rules/Proxy.list',
+        title: 'Extra Proxy Rules',
+        description: 'Extra proxy rules'
+      },
+      {
+        path: 'Surge/Ruleset/Extra/Prevent_DNS_Leaks.list',
+        url: 'https://raw.githubusercontent.com/Repcz/Tool/X/Surge/Rules/Prevent_DNS_Leaks.list',
+        title: 'Prevent DNS Leaks Rules',
+        description: 'Rules to prevent DNS leaks'
+      }
+    ]
+  },
+  {
+    name: 'GFW',
+    files: [
+      {
+        path: 'Surge/Ruleset/ProxyGFW.list',
+        url: 'https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/ProxyGFWlist.list',
+        title: 'GFW Proxy Rules',
+        description: 'GFW proxy rules list'
+      },
+      {
+        path: 'Surge/Ruleset/Foreign.list',
+        url: 'https://raw.githubusercontent.com/LM-Firefly/Rules/master/PROXY.list',
+        title: 'Foreign Rules',
+        description: 'Rules for foreign services'
+      },
+      {
+        path: 'Surge/Ruleset/Proxy.list',
+        url: 'https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/Proxy/Proxy.list',
+        title: 'General Proxy Rules',
+        description: 'General proxy routing rules'
+      },
+      {
+        path: 'Surge/Ruleset/Global.list',
+        url: 'https://github.com/Tartarus2014/For-own-use/raw/master/Ruleset/Proxy.list',
+        title: 'Global Rules',
+        description: 'Global proxy rules'
+      }
+    ]
+  },
+  {
+    name: 'Google',
+    files: [
+      {
+        path: 'Surge/Ruleset/Google/Google.list',
+        url: 'https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Google.list',
+        title: 'Google Rules',
+        description: 'Rules for Google services'
+      }
+    ]
+  },
+  {
+    name: 'Microsoft',
+    files: [
+      {
+        path: 'Surge/Ruleset/Microsoft/Github.list',
+        url: 'https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Github.list',
+        title: 'GitHub Rules',
+        description: 'Rules for GitHub'
+      },
+      {
+        path: 'Surge/Ruleset/Microsoft/OneDrive.list',
+        url: 'https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/OneDrive.list',
+        title: 'OneDrive Rules',
+        description: 'Rules for OneDrive'
+      },
+      {
+        path: 'Surge/Ruleset/Microsoft/Microsoft.list',
+        url: 'https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Microsoft.list',
+        title: 'Microsoft Rules',
+        description: 'Rules for Microsoft services'
+      }
+    ]
+  },
+  {
+    name: 'Developer',
+    files: [
+      {
+        path: 'Surge/Ruleset/Developer/Gitlab.list',
+        url: 'https://raw.githubusercontent.com/LM-Firefly/Rules/master/PROXY/Gitlab.list',
+        title: 'GitLab Rules',
+        description: 'Rules for GitLab'
+      },
+      {
+        path: 'Surge/Ruleset/Developer/App-Activation.list',
+        url: 'https://raw.githubusercontent.com/LM-Firefly/Rules/master/Special/App-Activation.list',
+        title: 'App Activation Rules',
+        description: 'Rules for app activation'
+      }
+    ]
+  },
+  /** 
+  {
+    name: 'Oracle',
+    files: [
+      {
+        path: 'Surge/Ruleset/Oracle/Oracle.list',
+        url: 'https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/Oracle/Oracle.list',
+        title: 'Oracle Rules',
+        description: 'Rules for Oracle services'
+      }
+    ]
   }
-]; 
+    */
+];
+
+// Special rules configuration
+export const specialRules: SpecialRuleConfig[] = [
+  {
+    name: 'IP',
+    targetFile: 'Surge/Ruleset/ChinaIP.list',
+    sourceFiles: [
+      'Surge/Ruleset/ChinaIPv4.list',
+      'Surge/Ruleset/ChinaIPv6.list'
+    ],
+    generateResolveVersion: true,
+    cleanup: true
+  },
+  {
+    name: 'Reject',
+    targetFile: 'Surge/Ruleset/Reject/Reject.list',
+    sourceFiles: [
+      'Surge/Ruleset/Reject/Advertising.list',
+      'Surge/Ruleset/Reject/Malicious.list',
+      'Surge/Ruleset/Reject/Tracking.list'
+    ],
+    cleanup: true
+  },
+  {
+    name: 'AI',
+    targetFile: 'Surge/Ruleset/AI.list',
+    sourceFiles: [
+      'Surge/Ruleset/AI/AI_KELI.list',
+      'Surge/Ruleset/AI/AI_ConnersHua.list',
+      'Surge/Ruleset/AI/AI_Hiven.list'
+    ],
+    extraRules: ['DOMAIN-SUFFIX,openrouter.ai'],
+    cleanup: true
+  },
+  {
+    name: 'CDN',
+    targetFile: 'Surge/Ruleset/CDN.list',
+    sourceFiles: [
+      'Surge/Ruleset/CDN_NoIP.list'
+    ],
+    cleanup: true
+  },
+  {
+    name: 'NeteaseMusic',
+    targetFile: 'Surge/Ruleset/Streaming/Music/NeteaseMusic.list',
+    sourceFiles: [
+      'Surge/Ruleset/Streaming/Music/NeteaseMusic_NoIP.list'
+    ],
+    generateResolveVersion: true,
+    cleanup: true
+  }
+];
+
+export const config = {
+  repoPath: REPO_PATH,
+  defaultFormat: 'Surge' as const,
+  cleanup: true,
+  stats: true,
+  ipRules: {
+    generateResolveVersion: true,
+    resolveVersionSuffix: '_Resolve'
+  }
+}; 
