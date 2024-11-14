@@ -1,7 +1,7 @@
 #########################################
 # Sukka's Ruleset - CDN Domains
-# Last Updated: 2024-11-14T02:38:33.709Z
-# Size: 2655
+# Last Updated: 2024-11-14T03:41:53.359Z
+# Size: 2660
 # License: AGPL 3.0
 # Homepage: https://ruleset.skk.moe
 # GitHub: https://github.com/SukkaW/Surge
@@ -14,6 +14,7 @@ vetted.ai
 .pztv.ca
 .1passwordusercontent.ca
 .ungh.cc
+.imgimg.cc
 pengtu.cc
 .postimg.cc
 .imagehub.cc
@@ -537,6 +538,7 @@ minotar.net
 .jsdelivr.net
 .line-cdn.net
 .pixelcdn.net
+.px-cloud.net
 .quoracdn.net
 .sitescdn.net
 .smassets.net
@@ -616,6 +618,7 @@ akidoo.top
 .imglink.win
 .chcdn.xyz
 .gitcdn.xyz
+.imgpng.xyz
 .98avcdn.xyz
 .dogehls.xyz
 .pornimg.xyz
@@ -1375,6 +1378,7 @@ img.apponic.com
 cdn6.aptoide.com
 ws2-cache.aptoide.com
 cdn-mobile.aptoide.com
+media.beehiiv.com
 promotions.betfair.com
 api.bintray.com
 organizer.bizzabo.com
@@ -1433,6 +1437,7 @@ public.hare200.com
 static.heavy-r.com
 .js.hubspot.com
 .js-eu1.hubspot.com
+no-cache.hubspot.com
 .static2cdn.hubspot.com
 i.imgflip.com
 i.insider.com
@@ -2264,7 +2269,6 @@ connect.facebook.net
 img.javstore.net
 .cdn.nintendo.net
 .wikia.nocookie.net
-client.px-cloud.net
 assets.queue-it.net
 static.queue-it.net
 static.whatsapp.net
@@ -2431,6 +2435,7 @@ img.hentaihaven.xxx
 cdn-longterm.mee6.xyz
 img.timero.xyz
 img.catwvod.xyz
+image.jnislniv.xyz
 media.pullopen.xyz
 .ipfs.4everland.xyz
 rules1.clearurls.xyz
