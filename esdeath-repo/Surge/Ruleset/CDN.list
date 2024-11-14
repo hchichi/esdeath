@@ -1,7 +1,7 @@
 #########################################
 # Sukka's Ruleset - CDN Domains
-# Last Updated: 2024-11-14T03:41:53.359Z
-# Size: 2660
+# Last Updated: 2024-11-14T07:44:36.377Z
+# Size: 2661
 # License: AGPL 3.0
 # Homepage: https://ruleset.skk.moe
 # GitHub: https://github.com/SukkaW/Surge
@@ -592,6 +592,7 @@ vuejs.org
 .rawgit.org
 .f-droid.org
 .reactjs.org
+.typedoc.org
 .ziglang.org
 .cdnmania.org
 david-dm.org
