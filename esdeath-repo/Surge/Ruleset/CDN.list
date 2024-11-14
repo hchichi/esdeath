@@ -1,7 +1,7 @@
 #########################################
 # Sukka's Ruleset - CDN Domains
-# Last Updated: 2024-11-13T02:51:15.304Z
-# Size: 2651
+# Last Updated: 2024-11-14T02:38:33.709Z
+# Size: 2655
 # License: AGPL 3.0
 # Homepage: https://ruleset.skk.moe
 # GitHub: https://github.com/SukkaW/Surge
@@ -965,6 +965,7 @@ assets-v2.super.so
 cdn.birdie.so
 cdn.circle.so
 image-forwarder.notaku.so
+udata.namespace.so
 img.kemono.su
 piccdn.7mmtv.sx
 video1.7mmtv.sx
@@ -1506,6 +1507,7 @@ web-assets.zendesk.com
 .media.zestyio.com
 static.addtoany.com
 assets.adobedtm.com
+sentry.ainopara.com
 dl.airdroid.com
 cdn1.airdroid.com
 cdn2.airdroid.com
@@ -2467,6 +2469,7 @@ ipfs.d.tube
 .ipfs.litnet.work
 img.itch.zone
 static.bit.cloud
+patterns.hiive.cloud
 .ipfs.tubby.cloud
 .gateway.pinata.cloud
 resources-live.sketch.cloud
@@ -2475,6 +2478,7 @@ assets.buttondown.email
 .ipfs.telos.miami
 .ipfs.kavin.rocks
 cdn.deta.space
+cdn.hiive.space
 pics.javhd.today
 img.api.video
 fonts1.unidays.world
