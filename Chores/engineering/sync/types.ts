@@ -22,7 +22,7 @@ export interface ParsedRule {
   flags: RuleFlags;
 }
 
-export interface MergeConfig {
+export interface BaseRuleConfig {
   name: string;
   targetFile: string;
   sourceFiles: string[];
@@ -31,6 +31,11 @@ export interface MergeConfig {
     title?: string;
     description?: string;
   };
+}
+
+export interface SpecialRuleConfig extends BaseRuleConfig {
+  generateResolveVersion?: boolean;
+  extraRules?: string[];
 }
 
 export type RuleType = 
@@ -42,23 +47,6 @@ export type RuleType =
   | 'GEOIP'
   | 'URL-REGEX'
   | 'USER-AGENT';
-
-export interface IPRuleConfig extends MergeConfig {
-  generateResolveVersion?: boolean;
-}
-
-export interface SpecialRuleConfig {
-  name: string;
-  targetFile: string;
-  sourceFiles: string[];
-  cleanup?: boolean;
-  generateResolveVersion?: boolean;
-  extraRules?: string[];
-  header?: {
-    title?: string;
-    description?: string;
-  };
-}
 
 export interface RuleGroup {
   name: string;

@@ -1,6 +1,6 @@
 import { RuleConverter } from './rule-converter';
 import { RuleMerger } from './rule-merger';
-import { RuleFile, MergeConfig } from './types';
+import { RuleFile, SpecialRuleConfig } from './types';
 import fs from 'node:fs';
 import path from 'node:path';
 
@@ -11,9 +11,13 @@ export class RuleProcessor {
     private merger: RuleMerger
   ) {}
 
-  async process(rules: RuleFile[]): Promise<void> {
+  async process(rule: RuleFile): Promise<void> {
+    await this.processRule(rule);
+  }
+
+  async processSpecialRules(rules: SpecialRuleConfig[]): Promise<void> {
     for (const rule of rules) {
-      await this.processRule(rule);
+      await this.merger.mergeSpecialRules(rule);
     }
   }
 

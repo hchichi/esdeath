@@ -1,4 +1,4 @@
-import { RuleFile, SpecialRuleMerge, MergeConfig } from './types';
+import { SpecialRuleConfig } from './types';
 import { RuleConverter } from './rule-converter';
 import fs from 'node:fs';
 import path from 'node:path';
@@ -9,7 +9,7 @@ export class RuleMerger {
     private converter: RuleConverter
   ) {}
 
-  async mergeSpecialRules(config: SpecialRuleMerge): Promise<void> {
+  async mergeSpecialRules(config: SpecialRuleConfig): Promise<void> {
     const { name, targetFile, sourceFiles, extraRules } = config;
     console.log(`Merging special rules: ${name}`);
 

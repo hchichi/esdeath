@@ -2,12 +2,15 @@ import { RuleProcessor } from './rule-processor';
 import { RuleConverter } from './rule-converter';
 import { RuleMerger } from './rule-merger';
 import { config, ruleGroups, specialRules } from './config';
-import { ensureDirectoryExists } from './utils';
+import { ensureDirectoryExists, initializeDirectoryStructure } from './utils';
 import path from 'node:path';
 
 async function main() {
   try {
     console.log('Starting rule processing...');
+    
+    // 初始化目录结构
+    initializeDirectoryStructure(config.repoPath, ruleGroups, specialRules);
     
     const converter = new RuleConverter('Surge');
     const merger = new RuleMerger(config.repoPath, converter);

@@ -3,7 +3,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { exec } from 'node:child_process';
 import { promisify } from 'node:util';
-import { RuleStats } from './types';
+import { RuleStats, RuleGroup, SpecialRuleConfig } from './types';
 
 const execAsync = promisify(exec);
 
@@ -32,12 +32,9 @@ export async function downloadFile(url: string, dest: string): Promise<void> {
  * @param dirPath - 目录路径
  */
 export function ensureDirectoryExists(dirPath: string): void {
-  try {
-    fs.mkdirSync(dirPath, { recursive: true, mode: 0o755 });
-    console.log(`确保目录存在: ${dirPath}`);
-  } catch (error) {
-    console.error(`创建目录失败: ${dirPath}`, error);
-    throw error;
+  if (!fs.existsSync(dirPath)) {
+    fs.mkdirSync(dirPath, { recursive: true });
+    console.log(`Created directory: ${dirPath}`);
   }
 }
 
@@ -110,4 +107,35 @@ export function validateRule(rule: string): boolean {
   
   const type = rule.split(',')[0]?.trim().toUpperCase();
   return validRuleTypes.includes(type);
-} 
+}
+
+/**
+ * 初始化目录结构
+ * @param repoPath - 仓库路径
+ * @param ruleGroups - 规则组
+ * @param specialRules - 特殊规则
+ */
+export function initializeDirectoryStructure(
+  repoPath: string, 
+  ruleGroups: RuleGroup[], 
+  specialRules: SpecialRuleConfig[]
+): void {
+  // 从常规规则组收集目录
+  const groupDirs = ruleGroups.flatMap(group => 
+    group.files.map(file => path.dirname(file.path))
+  );
+
+  // 从特殊规则收集目录
+  const specialDirs = specialRules.map(rule => 
+    path.dirname(rule.targetFile)
+  );
+
+  // 合并所有目录并去重
+  const allDirs = [...new Set([...groupDirs, ...specialDirs])];
+
+  // 创建目录
+  for (const dir of allDirs) {
+    const fullPath = path.join(repoPath, dir);
+    ensureDirectoryExists(fullPath);
+  }
+}
