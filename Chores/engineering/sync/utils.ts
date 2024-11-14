@@ -87,6 +87,7 @@ export function cleanAndSortRules(content: string): string {
     .split('\n')
     .map(line => line.trim())
     .filter(line => line && !line.startsWith('#'))
+    .filter((value, index, self) => self.indexOf(value) === index)
     .sort()
     .join('\n');
 }

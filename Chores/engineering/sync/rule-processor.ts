@@ -29,25 +29,16 @@ export class RuleProcessor {
       // 如果文件不存在且有 URL，先下载
       if (rule.url && !fs.existsSync(filePath)) {
         await downloadFile(rule.url, filePath);
-        
-        // 如果是二进制文件，直接返回
-        if (path.extname(filePath) === '.mmdb') {
-          return;
-        }
       }
 
-      let content = await fs.promises.readFile(filePath, 'utf8');
+      // 读取文件内容
+      const content = await fs.promises.readFile(filePath, 'utf-8');
       
-      // 转换规则
-      content = this.convertRules(content);
+      // 清理和排序规则
+      const cleanedContent = this.merger.cleanAndSort(content);
       
-      // 清理和排序
-      content = await this.merger.cleanAndSort(content);
-      
-      // 添加头部信息
-      content = this.addHeader(content, rule);
-      
-      await fs.promises.writeFile(filePath, content);
+      // 写入处理后的内容
+      await fs.promises.writeFile(filePath, cleanedContent);
     } catch (error) {
       console.error(`Error processing ${rule.path}:`, error);
       throw error;

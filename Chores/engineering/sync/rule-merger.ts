@@ -2,12 +2,17 @@ import { SpecialRuleConfig } from './types';
 import { RuleConverter } from './rule-converter';
 import fs from 'node:fs';
 import path from 'node:path';
+import { cleanAndSortRules } from './utils';
 
 export class RuleMerger {
   constructor(
     private repoPath: string,
     private converter: RuleConverter
   ) {}
+
+  public cleanAndSort(content: string): string {
+    return cleanAndSortRules(content);
+  }
 
   async mergeSpecialRules(config: SpecialRuleConfig): Promise<void> {
     const { name, targetFile, sourceFiles, extraRules } = config;
@@ -73,9 +78,12 @@ export class RuleMerger {
       .join('\n')
       .split('\n')
       .filter(line => line.trim())
-      .map(line => this.converter.convert(line));
+      .map(line => this.converter.convert(line))
+      .filter((value, index, self) => self.indexOf(value) === index)
+      .sort()
+      .join('\n');
 
-    return [...new Set(rules)].sort().join('\n');
+    return rules;
   }
 
   private async mergeCDNRules(contents: string[]): Promise<string> {
