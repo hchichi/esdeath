@@ -73,13 +73,7 @@ export class RuleMerger {
       .join('\n')
       .split('\n')
       .filter(line => line.trim())
-      .map(line => {
-        const rule = this.converter.convertRule(line);
-        if (rule.includes('REJECT') && !rule.includes('pre-matching')) {
-          return `${rule},pre-matching`;
-        }
-        return rule;
-      });
+      .map(line => this.converter.convert(line));
 
     return [...new Set(rules)].sort().join('\n');
   }
@@ -108,7 +102,7 @@ export class RuleMerger {
       .join('\n')
       .split('\n')
       .filter(line => line.trim() && !line.startsWith('#'))
-      .map(line => this.converter.convertRule(line))
+      .map(line => this.converter.convert(line))
       .filter((value, index, self) => self.indexOf(value) === index)
       .sort()
       .join('\n');

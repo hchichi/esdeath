@@ -3,6 +3,7 @@ import { RuleMerger } from './rule-merger';
 import { RuleFile, SpecialRuleConfig } from './types';
 import fs from 'node:fs';
 import path from 'node:path';
+import { downloadFile } from './utils';
 
 export class RuleProcessor {
   constructor(
@@ -24,6 +25,17 @@ export class RuleProcessor {
   private async processRule(rule: RuleFile): Promise<void> {
     try {
       const filePath = path.join(this.repoPath, rule.path);
+      
+      // 如果文件不存在且有 URL，先下载
+      if (rule.url && !fs.existsSync(filePath)) {
+        await downloadFile(rule.url, filePath);
+        
+        // 如果是二进制文件，直接返回
+        if (path.extname(filePath) === '.mmdb') {
+          return;
+        }
+      }
+
       let content = await fs.promises.readFile(filePath, 'utf8');
       
       // 转换规则

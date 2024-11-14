@@ -1,11 +1,7 @@
 // 工具函数
 import fs from 'node:fs';
 import path from 'node:path';
-import { exec } from 'node:child_process';
-import { promisify } from 'node:util';
 import { RuleStats, RuleGroup, SpecialRuleConfig } from './types';
-
-const execAsync = promisify(exec);
 
 /**
  * 下载文件
@@ -14,13 +10,15 @@ const execAsync = promisify(exec);
  */
 export async function downloadFile(url: string, dest: string): Promise<void> {
   try {
+    console.log(`Downloading ${url} to ${dest}`);
     const response = await fetch(url);
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
+    
     const buffer = await response.arrayBuffer();
     await fs.promises.writeFile(dest, Buffer.from(buffer));
-    console.log(`Downloaded: ${url} -> ${dest}`);
+    console.log(`Downloaded: ${url}`);
   } catch (error) {
     console.error(`Download failed: ${url}`, error);
     throw error;

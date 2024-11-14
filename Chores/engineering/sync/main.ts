@@ -5,6 +5,10 @@ import { config, ruleGroups, specialRules } from './config';
 import { ensureDirectoryExists, initializeDirectoryStructure } from './utils';
 import path from 'node:path';
 
+async function cleanup(): Promise<void> {
+  console.log('Cleaning up...');
+}
+
 async function main() {
   try {
     console.log('Starting rule processing...');
@@ -21,10 +25,14 @@ async function main() {
       console.log(`Processing ${group.name} rules...`);
       
       for (const rule of group.files) {
-        const filePath = path.join(config.repoPath, rule.path);
-        ensureDirectoryExists(path.dirname(filePath));
-        
-        await processor.process(rule);
+        try {
+          const filePath = path.join(config.repoPath, rule.path);
+          ensureDirectoryExists(path.dirname(filePath));
+          await processor.process(rule);
+        } catch (error) {
+          console.error(`Error processing ${rule.path}:`, error);
+          // 继续处理其他规则
+        }
       }
     }
 
@@ -35,6 +43,7 @@ async function main() {
     console.log('Rule processing completed successfully.');
   } catch (error) {
     console.error('Fatal error:', error);
+    await cleanup();
     process.exit(1);
   }
 }
