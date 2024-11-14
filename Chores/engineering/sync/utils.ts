@@ -94,13 +94,29 @@ export function getRuleStats(content: string): RuleStats {
  * @param content - 规则内容
  * @returns - 清理和排序后的规则
  */
-export function cleanAndSortRules(content: string): string {
-  return content
-    .split('\n')
-    .map(line => line.trim())
-    .filter(line => line && !line.startsWith('#'))
-    .sort()
-    .join('\n');
+export function cleanAndSort(content: string, converter: RuleConverter): string {
+  const lines = content.split('\n');
+  const comments: string[] = [];
+  const rules: string[] = [];
+
+  lines.forEach(line => {
+    line = line.trim();
+    if (!line) return;
+    
+    if (line.startsWith('#')) {
+      comments.push(line);
+    } else {
+      const convertedRule = converter.convert(line);
+      if (convertedRule) {
+        rules.push(convertedRule);
+      }
+    }
+  });
+
+  // 去重和排序规则
+  const uniqueRules = [...new Set(rules)].sort();
+
+  return [...comments, '', ...uniqueRules].join('\n');
 }
 
 /**
@@ -148,4 +164,21 @@ export function initializeDirectoryStructure(
     const fullPath = path.join(repoPath, dir);
     ensureDirectoryExists(fullPath);
   }
+}
+
+/**
+ * 生成无解析版本
+ * @param content - 规则内容
+ * @returns - 无解析版本
+ */
+export function generateNoResolveVersion(content: string): string {
+  return content
+    .split('\n')
+    .map(line => {
+      if (line.startsWith('IP-CIDR') && !line.includes('no-resolve')) {
+        return `${line},no-resolve`;
+      }
+      return line;
+    })
+    .join('\n');
 }

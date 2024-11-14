@@ -271,18 +271,6 @@ export const ruleGroups: RuleGroup[] = [
         description: 'Second test rules for Emby'
       },
       {
-        path: 'Surge/Ruleset/Streaming/CN.list',
-        url: 'https://raw.githubusercontent.com/ConnersHua/RuleGo/master/Surge/Ruleset/Extra/Streaming/CN.list',
-        title: 'China Streaming Rules',
-        description: 'Streaming rules for China services'
-      },
-      {
-        path: 'Surge/Ruleset/Streaming/!CN.list',
-        url: 'https://raw.githubusercontent.com/ConnersHua/RuleGo/master/Surge/Ruleset/Extra/Streaming/!CN.list',
-        title: 'Non-China Streaming Rules',
-        description: 'Streaming rules for non-China services'
-      },
-      {
         path: 'Surge/Ruleset/Streaming/Video/BiliBiliIntl.list',
         url: 'https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/BiliBiliIntl/BiliBiliIntl.list',
         title: 'BiliBili International Rules',
@@ -305,6 +293,18 @@ export const ruleGroups: RuleGroup[] = [
         url: 'https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/HBO/HBO.list',
         title: 'HBO Rules',
         description: 'Rules for HBO'
+      },
+      {
+        path: 'Surge/Ruleset/Streaming/CN.list',
+        url: 'https://raw.githubusercontent.com/ConnersHua/RuleGo/master/Surge/Ruleset/Extra/Streaming/CN.list',
+        title: 'China Streaming Rules',
+        description: 'Streaming rules for China services'
+      },
+      {
+        path: 'Surge/Ruleset/Streaming/!CN.list',
+        url: 'https://raw.githubusercontent.com/ConnersHua/RuleGo/master/Surge/Ruleset/Extra/Streaming/!CN.list',
+        title: 'Non-China Streaming Rules',
+        description: 'Streaming rules for non-China services'
       }
     ]
   },
@@ -329,6 +329,7 @@ export const ruleGroups: RuleGroup[] = [
         title: 'Tracking Reject Rules',
         description: 'Rules to reject tracking'
       },
+      /**
       {
         path: 'Surge/Ruleset/Reject/Ads_EasyListChina.list',
         url: 'https://raw.githubusercontent.com/limbopro/Adblock4limbo/main/rule/Surge/easylistchina_surge.list',
@@ -359,6 +360,7 @@ export const ruleGroups: RuleGroup[] = [
         title: 'AdGuard Chinese Reject Rules',
         description: 'Rules to reject ads from AdGuard Chinese'
       },
+      */
       {
         path: 'Surge/Ruleset/Reject/Ads_fmz200.list',
         url: 'https://raw.githubusercontent.com/fmz200/wool_scripts/main/QuantumultX/filter/fenliu.list',
@@ -541,29 +543,34 @@ export const ruleGroups: RuleGroup[] = [
         title: 'Domestic Rules',
         description: 'General domestic rules'
       },
+    ]
+  },
+  {
+    name: 'CDN',
+    files: [
       {
-        path: 'Surge/Ruleset/CDN.list',
-        url: 'https://ruleset.skk.moe/List/domainset/cdn.conf',
-        title: 'CDN Rules',
-        description: 'Rules for CDN'
-      },
-      {
-        path: 'Surge/Ruleset/CDN_NoIP.list',
-        url: 'https://ruleset.skk.moe/List/non_ip/cdn.conf',
-        title: 'CDN No IP Rules',
-        description: 'Rules for CDN without IP'
-      },
-      {
-        path: 'Surge/Ruleset/DownloadCDN_Global.list',
+        path: 'Surge/Ruleset/CDN/DownloadCDN_Global.list',
         url: 'https://proxyresource.pages.dev/Tool/Loon/Rule/InternationalDownloadCDN.list',
         title: 'Global Download CDN Rules',
         description: 'Rules for global download CDN'
       },
       {
-        path: 'Surge/Ruleset/DownloadCDN_CN.list',
+        path: 'Surge/Ruleset/CDN/DownloadCDN_CN.list',
         url: 'https://proxyresource.pages.dev/Tool/Loon/Rule/ChinaDownloadCDN.list',
         title: 'China Download CDN Rules',
         description: 'Rules for China download CDN'
+      },
+      {
+        path: 'Surge/Ruleset/CDN/CDN.list',
+        url: 'https://ruleset.skk.moe/List/domainset/cdn.conf',
+        title: 'CDN Rules',
+        description: 'Rules for CDN'
+      },
+      {
+        path: 'Surge/Ruleset/CDN/CDN_NoIP.list',
+        url: 'https://ruleset.skk.moe/List/non_ip/cdn.conf',
+        title: 'CDN No IP Rules',
+        description: 'Rules for CDN without IP'
       }
     ]
   },
@@ -583,16 +590,10 @@ export const ruleGroups: RuleGroup[] = [
         description: 'IP rules for China'
       },
       {
-        path: 'Surge/Ruleset/ChinaIPv4.list',
+        path: 'Surge/Ruleset/IPCIDR/ChinaIPv4.list',
         url: 'https://raw.githubusercontent.com/missuo/ASN-China/main/IPv4.China.list',
         title: 'China IPv4 Rules',
         description: 'IPv4 rules for China'
-      },
-      {
-        path: 'Surge/Ruleset/ChinaIPv6.list',
-        url: 'https://raw.githubusercontent.com/missuo/ASN-China/main/IPv6.China.list',
-        title: 'China IPv6 Rules',
-        description: 'IPv6 rules for China'
       },
       {
         path: 'Surge/Ruleset/IPCIDR/ChinaIPv4.DH.list',
@@ -693,10 +694,24 @@ export const ruleGroups: RuleGroup[] = [
     name: 'GFW',
     files: [
       {
-        path: 'Surge/Ruleset/ProxyGFW.list',
+        path: 'Surge/Ruleset/Blocked.list',
         url: 'https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/ProxyGFWlist.list',
         title: 'GFW Proxy Rules',
         description: 'GFW proxy rules list'
+      },
+      /** 
+      {
+        path: 'Surge/Ruleset/ProxyLite_ACL4SSR.list',
+        url: 'https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/ProxyLite.list',
+        title: 'Lite Proxy Rules',
+        description: 'Lite proxy rules list'
+      },
+      */
+      {
+        path: 'Surge/Ruleset/ProxyLite.list',
+        url: 'https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/ProxyLite/ProxyLite.list',
+        title: 'Lite Proxy Rules',
+        description: 'Lite proxy rules list'
       },
       {
         path: 'Surge/Ruleset/Foreign.list',
@@ -752,6 +767,7 @@ export const ruleGroups: RuleGroup[] = [
       }
     ]
   },
+  /** 
   {
     name: 'Developer',
     files: [
@@ -769,7 +785,6 @@ export const ruleGroups: RuleGroup[] = [
       }
     ]
   },
-  /** 
   {
     name: 'Oracle',
     files: [
@@ -819,9 +834,9 @@ export const specialRules: SpecialRuleConfig[] = [
   },
   {
     name: 'CDN',
-    targetFile: 'Surge/Ruleset/CDN.list',
+    targetFile: 'Surge/Ruleset/CDN/CDN.list',
     sourceFiles: [
-      'Surge/Ruleset/CDN_NoIP.list'
+      'Surge/Ruleset/CDN/CDN_NoIP.list'
     ],
     cleanup: true
   },
