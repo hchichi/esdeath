@@ -1,0 +1,105 @@
+# 2024-11-12 08:18:31
+# > AI Studio
+# > ChatGPT
+# > Claude
+# > Copilot
+# > Gemini
+# Anthropic
+# Apple Intelligence
+# ChatGPT
+# Claude
+# Copilot
+# Gemini
+# GitHub Copilot
+# Google
+# JetBrains AI
+# Meta
+# Meta AI
+# Microsoft
+# Mistral AI
+# OpenAI
+# Perplexity
+# 内容：OpenAi Bard anthropic
+# 域名关键字匹配
+# 域名后缀匹配
+#DOMAIN
+AND,((DOMAIN-KEYWORD,chatgpt-async-webps-prod-),extended-matching
+AND,((DOMAIN-KEYWORD,openaicom-api-),extended-matching
+DOMAIN,ai.google.dev,extended-matching
+DOMAIN,aida.googleapis.com,extended-matching
+DOMAIN,aistudio.google.com,extended-matching
+DOMAIN,alkalimakersuite-pa.clients6.google.com,extended-matching
+DOMAIN,api-iam.intercom.io,extended-matching
+DOMAIN,api.githubcopilot.com,extended-matching
+DOMAIN,api.statsig.com,extended-matching
+DOMAIN,apple-relay.apple.com,extended-matching
+DOMAIN,apple-relay.cloudflare.com,extended-matching
+DOMAIN,apple-relay.fastly-edge.com,extended-matching
+DOMAIN,bard.google.com,extended-matching
+DOMAIN,cdn.usefathom.com,extended-matching
+DOMAIN,chat.mistral.ai,extended-matching
+DOMAIN,chatgpt.livekit.cloud,extended-matching
+DOMAIN,console.mistral.ai,extended-matching
+DOMAIN,copilot-proxy.githubusercontent.com,extended-matching
+DOMAIN,copilot.microsoft.com,extended-matching
+DOMAIN,cp4.cloudflare.com,extended-matching
+DOMAIN,gemini.google.com,extended-matching
+DOMAIN,generativelanguage.googleapis.com,extended-matching
+DOMAIN,guzzoni.apple.com,extended-matching
+DOMAIN,imagine.meta.com,extended-matching
+DOMAIN,makersuite.google.com,extended-matching
+DOMAIN,o33249.ingest.sentry.io,extended-matching
+DOMAIN,openaiapi-site.azureedge.net,extended-matching
+DOMAIN,openaicom.imgix.net,extended-matching
+DOMAIN,openaicomproductionae4b.blob.core.windows.net,extended-matching
+DOMAIN,production-openaicom-storage.azureedge.net,extended-matching
+DOMAIN,sfo3.turn.livekit.cloud,extended-matching
+DOMAIN,sydney.bing.com,extended-matching
+DOMAIN,www.bing.com,extended-matching
+DOMAIN-KEYWORD,Claude,extended-matching
+DOMAIN-KEYWORD,anthropic,extended-matching
+DOMAIN-KEYWORD,openai,extended-matching
+DOMAIN-KEYWORD,openaicom,extended-matching
+DOMAIN-SUFFIX,ai.com,extended-matching
+DOMAIN-SUFFIX,anthropic.com,extended-matching
+DOMAIN-SUFFIX,auth0.com,extended-matching
+DOMAIN-SUFFIX,bard.google.com,extended-matching
+DOMAIN-SUFFIX,challenges.cloudflare.com,extended-matching
+DOMAIN-SUFFIX,chatgpt.com,extended-matching
+DOMAIN-SUFFIX,claude.ai,extended-matching
+DOMAIN-SUFFIX,claude.ai.com,extended-matching
+DOMAIN-SUFFIX,claudeusercontent.com,extended-matching
+DOMAIN-SUFFIX,client-api.arkoselabs.com,extended-matching
+DOMAIN-SUFFIX,cursor.com,extended-matching
+DOMAIN-SUFFIX,cursor.sh,extended-matching
+DOMAIN-SUFFIX,cursor.so,extended-matching
+DOMAIN-SUFFIX,deepmind.com,extended-matching
+DOMAIN-SUFFIX,deepmind.google,extended-matching
+DOMAIN-SUFFIX,events.statsigapi.net,extended-matching
+DOMAIN-SUFFIX,featuregates.org,extended-matching
+DOMAIN-SUFFIX,gemini.google.com,extended-matching
+DOMAIN-SUFFIX,generativeai.google,extended-matching
+DOMAIN-SUFFIX,githubcopilot.com,extended-matching
+DOMAIN-SUFFIX,grazie.ai,extended-matching
+DOMAIN-SUFFIX,grazie.aws.intellij.net,extended-matching
+DOMAIN-SUFFIX,identrust.com,extended-matching
+DOMAIN-SUFFIX,intercom.io,extended-matching
+DOMAIN-SUFFIX,intercomcdn.com,extended-matching
+DOMAIN-SUFFIX,makersuite.google.com,extended-matching
+DOMAIN-SUFFIX,meta.ai,extended-matching
+DOMAIN-SUFFIX,mistral.ai,extended-matching
+DOMAIN-SUFFIX,oaistatic.com,extended-matching
+DOMAIN-SUFFIX,oaiusercontent.com,extended-matching
+DOMAIN-SUFFIX,openai.com,extended-matching
+DOMAIN-SUFFIX,openai.com.cdn.cloudflare.net,extended-matching
+DOMAIN-SUFFIX,openaiapi-site.azureedge.net,extended-matching
+DOMAIN-SUFFIX,openrouter.ai
+DOMAIN-SUFFIX,perplexity.ai,extended-matching
+DOMAIN-SUFFIX,perplexity.com,extended-matching
+DOMAIN-SUFFIX,pplx.ai,extended-matching
+DOMAIN-SUFFIX,proactivebackend-pa.googleapis.com,extended-matching
+DOMAIN-SUFFIX,sentry.io,extended-matching
+DOMAIN-SUFFIX,smoot.apple.com,extended-matching
+DOMAIN-SUFFIX,stripe.com,extended-matching
+IP-CIDR,160.79.104.0/23,no-resolve,no-resolve,extended-matching
+IP-CIDR6,2607:6bc0::/48,no-resolve,no-resolve,extended-matching
