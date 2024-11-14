@@ -174,6 +174,12 @@ export const ruleGroups: RuleGroup[] = [
         url: 'https://github.com/ConnersHua/RuleGo/raw/master/Surge/Ruleset/Extra/AI.list',
         title: 'AI ConnersHua Rules',
         description: 'Rules for AI ConnersHua'
+      },
+      {
+        path: 'Surge/Ruleset/AI/AI_Hiven.list',
+        url: 'https://raw.githubusercontent.com/hiven425/hiven/master/config/AI.list',
+        title: 'AI Hiven Rules',
+        description: 'Rules for AI Hiven'
       }
     ]
   },

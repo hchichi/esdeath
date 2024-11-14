@@ -4,6 +4,7 @@ import { RuleFile, SpecialRuleConfig } from './types';
 import fs from 'node:fs';
 import path from 'node:path';
 import { downloadFile } from './utils';
+import { getRuleStats } from './utils';
 
 export class RuleProcessor {
   constructor(
@@ -53,12 +54,28 @@ export class RuleProcessor {
   }
 
   private addHeader(content: string, rule: RuleFile): string {
+    const stats = getRuleStats(content);
+    const timestamp = new Date().toISOString();
+    
     const headers = [
       `# ${rule.title || path.basename(rule.path)}`,
       rule.description && `# ${rule.description}`,
       '',
+      '# Rule Statistics:',
+      `# Total: ${stats.total}`,
+      `# Domain: ${stats.domain}`,
+      `# Domain Suffix: ${stats.domainSuffix}`,
+      `# Domain Keyword: ${stats.domainKeyword}`,
+      `# IP-CIDR: ${stats.ipCidr}`,
+      `# IP-CIDR6: ${stats.ipCidr6}`,
+      `# User Agent: ${stats.userAgent}`,
+      `# URL Regex: ${stats.urlRegex}`,
+      `# Other: ${stats.other}`,
+      '',
       '# Source:',
-      ...(rule.sources || []).map(source => `# - ${source}`),
+      ...(rule.sources || [rule.url]).filter(Boolean).map(source => `# - ${source}`),
+      '',
+      `# Updated: ${timestamp}`,
       '',
       content
     ].filter(Boolean);

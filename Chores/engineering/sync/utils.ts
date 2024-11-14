@@ -42,38 +42,50 @@ export function ensureDirectoryExists(dirPath: string): void {
  * @returns - 规则统计
  */
 export function getRuleStats(content: string): RuleStats {
-  const patterns = {
-    domain: /^DOMAIN,/gm,
-    domainSuffix: /^DOMAIN-SUFFIX,/gm,
-    domainKeyword: /^DOMAIN-KEYWORD,/gm,
-    ipAsn: /^IP-ASN,/gm,
-    ipCidr: /^IP-CIDR,/gm,
-    ipCidr6: /^IP-CIDR6,/gm,
-    processName: /^PROCESS-NAME,/gm,
-    userAgent: /^USER-AGENT,/gm,
-    urlRegex: /^URL-REGEX,/gm,
-    geoip: /^GEOIP,/gm
-  };
-
   const stats: RuleStats = {
+    total: 0,
     domain: 0,
     domainSuffix: 0,
     domainKeyword: 0,
-    ipAsn: 0,
     ipCidr: 0,
     ipCidr6: 0,
-    processName: 0,
     userAgent: 0,
     urlRegex: 0,
-    geoip: 0
+    other: 0
   };
 
-  for (const [key, pattern] of Object.entries(patterns)) {
-    const matches = content.match(pattern);
-    stats[key as keyof RuleStats] = matches ? matches.length : 0;
-  }
+  const lines = content.split('\n').filter(line => line.trim() && !line.startsWith('#'));
+  stats.total = lines.length;
 
-  console.log('规则统计:', stats);
+  lines.forEach(line => {
+    const type = line.split(',')[0]?.trim().toUpperCase();
+    switch (type) {
+      case 'DOMAIN':
+        stats.domain++;
+        break;
+      case 'DOMAIN-SUFFIX':
+        stats.domainSuffix++;
+        break;
+      case 'DOMAIN-KEYWORD':
+        stats.domainKeyword++;
+        break;
+      case 'IP-CIDR':
+        stats.ipCidr++;
+        break;
+      case 'IP-CIDR6':
+        stats.ipCidr6++;
+        break;
+      case 'USER-AGENT':
+        stats.userAgent++;
+        break;
+      case 'URL-REGEX':
+        stats.urlRegex++;
+        break;
+      default:
+        stats.other++;
+    }
+  });
+
   return stats;
 }
 
@@ -87,7 +99,6 @@ export function cleanAndSortRules(content: string): string {
     .split('\n')
     .map(line => line.trim())
     .filter(line => line && !line.startsWith('#'))
-    .filter((value, index, self) => self.indexOf(value) === index)
     .sort()
     .join('\n');
 }

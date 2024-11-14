@@ -11,7 +11,26 @@ export class RuleMerger {
   ) {}
 
   public cleanAndSort(content: string): string {
-    return cleanAndSortRules(content);
+    return content
+      .split('\n')
+      .map(line => line.trim())
+      .filter(line => {
+        // 保留注释但不参与排序
+        if (line.startsWith('#')) return true;
+        // 过滤空行和无效规则
+        return line && validateRule(line);
+      })
+      .filter((value, index, self) => {
+        // 对非注释行去重
+        if (value.startsWith('#')) return true;
+        return self.indexOf(value) === index;
+      })
+      .sort((a, b) => {
+        // 注释行保持在原位置
+        if (a.startsWith('#') || b.startsWith('#')) return 0;
+        return a.localeCompare(b);
+      })
+      .join('\n');
   }
 
   async mergeSpecialRules(config: SpecialRuleConfig): Promise<void> {
