@@ -1,6 +1,6 @@
-# Reject
+# Advertising Reject Rules
 #
-# Last Updated: 2024/11/16 01:33:43
+# Last Updated: 2024/11/16 02:02:38
 #
 # Rule Statistics:
 # DOMAIN: 292
@@ -11,12 +11,12 @@
 # USER-AGENT: 1
 # TOTAL: 1145
 #
-# Reject Rules
+# Combined advertising/hijacking/tracking blocking rules
 #
 # Data from:
-#  - Surge/Ruleset/Reject/Advertising.list
-#  - Surge/Ruleset/Reject/Malicious.list
-#  - Surge/Ruleset/Reject/Tracking.list
+#  - https://raw.githubusercontent.com/ConnersHua/RuleGo/master/Surge/Ruleset/Extra/Reject/Advertising.list
+#  - https://raw.githubusercontent.com/ConnersHua/RuleGo/master/Surge/Ruleset/Extra/Reject/Malicious.list
+#  - https://raw.githubusercontent.com/ConnersHua/RuleGo/master/Surge/Ruleset/Extra/Reject/Tracking.list
 
 DOMAIN,118.89.204.198
 DOMAIN,a.wkanx.com

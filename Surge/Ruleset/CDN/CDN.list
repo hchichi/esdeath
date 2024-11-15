@@ -1,18 +1,20 @@
-# CDN
+# SukkaW CDN Rules
 #
-# Last Updated: 2024/11/16 01:33:43
+# Last Updated: 2024/11/16 02:02:38
 #
 # Rule Statistics:
 # DOMAIN: 3
 # DOMAIN-KEYWORD: 5
+# IP-CIDR: 3
 # URL-REGEX: 2
 # OTHER: 31
-# TOTAL: 41
+# TOTAL: 44
 #
-# CDN Rules
+# Combined SukkaW CDN rules
 #
 # Data from:
-#  - Surge/Ruleset/CDN/CDN_NoIP.list
+#  - https://ruleset.skk.moe/List/non_ip/cdn.conf
+#  - https://ruleset.skk.moe/List/ip/cdn.conf
 
 DOMAIN,cdn-msp.18comic.vip,extended-matching,extended-matching
 DOMAIN,cdn-msp.jmcomic.me,extended-matching,extended-matching
@@ -53,5 +55,8 @@ DOMAIN-WILDCARD,video-thumbnail2.liaoningmovie.net,extended-matching,extended-ma
 DOMAIN-WILDCARD,video?-thumbnail?.fc2.com,extended-matching,extended-matching
 DOMAIN-WILDCARD,video?-thumbnail?.liaoningmovie.net,extended-matching,extended-matching
 DOMAIN-WILDCARD,vip-videoprem*-thumbnail?.fc2.com,extended-matching,extended-matching
+IP-CIDR,162.159.200.1/32
+IP-CIDR,162.159.200.123/32
+IP-CIDR,185.199.108.0/22
 URL-REGEX,^http://www\.microsoft\.com/pki/,extended-matching,extended-matching
 URL-REGEX,^http://www\.microsoft\.com/pkiops/,extended-matching,extended-matching

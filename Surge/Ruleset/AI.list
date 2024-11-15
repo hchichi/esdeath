@@ -1,6 +1,6 @@
-# AI
+# AI Rules
 #
-# Last Updated: 2024/11/16 01:33:43
+# Last Updated: 2024/11/16 02:02:38
 #
 # Rule Statistics:
 # DOMAIN: 31
@@ -11,12 +11,12 @@
 # OTHER: 2
 # TOTAL: 80
 #
-# AI Rules
+# Combined AIGC rules
 #
 # Data from:
-#  - Surge/Ruleset/AI/AI_KELI.list
-#  - Surge/Ruleset/AI/AI_ConnersHua.list
-#  - Surge/Ruleset/AI/AI_Hiven.list
+#  - https://proxyresource.pages.dev/Tool/Loon/Rule/AI.list
+#  - https://github.com/ConnersHua/RuleGo/raw/master/Surge/Ruleset/Extra/AI.list
+#  - https://raw.githubusercontent.com/hiven425/hiven/master/config/AI.list
 
 AND,((DOMAIN-KEYWORD,chatgpt-async-webps-prod-)
 AND,((DOMAIN-KEYWORD,openaicom-api-)
