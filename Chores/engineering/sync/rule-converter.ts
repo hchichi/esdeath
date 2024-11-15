@@ -27,6 +27,15 @@ export class RuleConverter {
 
     if (!rule.trim()) return '';
 
+    // 处理 domain-set 格式转换为 rule-set
+    if (rule.startsWith('.')) {
+      // domain-set 中的 .xxx.com 转换为 DOMAIN-SUFFIX
+      return `DOMAIN-SUFFIX,${rule.slice(1)}`;
+    } else if (this.isDomain(rule) && !rule.includes(',')) {
+      // 纯域名转换为 DOMAIN
+      return `DOMAIN,${rule}`;
+    }
+
     // 处理纯 IP 地址
     if (this.isIPv4(rule)) {
       return `IP-CIDR,${rule}${this.options.enableNoResolve ? ',no-resolve' : ''}`;
@@ -35,20 +44,11 @@ export class RuleConverter {
       return `IP-CIDR6,${rule}${this.options.enableNoResolve ? ',no-resolve' : ''}`;
     }
 
-    // 处理域名
-    if (this.isDomain(rule)) {
-      if (rule.startsWith('.')) {
-        return `DOMAIN-SUFFIX,${rule.slice(1)}`;
-      }
-      if (rule.includes('*')) {
-        return `DOMAIN-KEYWORD,${rule.replace(/\*/g, '')}`;
-      }
-      return `DOMAIN,${rule}`;
-    }
-
+    // 处理已有规则的转换
     const parsed = this.parseRule(rule);
     if (!parsed) return rule;
 
+    // 处理规则标记
     this.processFlags(parsed);
     return this.generateRule(parsed);
   }
@@ -90,15 +90,25 @@ export class RuleConverter {
       rule.flags.noResolve = this.options.enableNoResolve ?? false;
     }
 
-    // 处理 pre-matching
-    if (rule.policy?.toUpperCase().startsWith('REJECT')) {
-      const isValidType = /^(DOMAIN|DOMAIN-SUFFIX|DOMAIN-KEYWORD|IP-CIDR|IP-CIDR6|GEOIP|IP-ASN)/i.test(rule.type);
-      rule.flags.preMatching = isValidType && (this.options.enablePreMatching ?? false);
+    // 处理 extended-matching (SNI)
+    if (this.format === 'Surge' && !rule.type.startsWith('IP-')) {
+      rule.flags.extended = this.options.enableExtended ?? false;
     }
 
-    // 处理 extended-matching
-    if (this.format === 'Surge') {
-      rule.flags.extended = this.options.enableExtended ?? false;
+    // 处理 pre-matching
+    if (rule.policy?.toUpperCase().startsWith('REJECT')) {
+      const validTypes = [
+        'DOMAIN',
+        'DOMAIN-SUFFIX',
+        'DOMAIN-KEYWORD',
+        'IP-CIDR',
+        'IP-CIDR6',
+        'GEOIP',
+        'IP-ASN'
+      ];
+      if (validTypes.includes(rule.type)) {
+        rule.flags.preMatching = this.options.enablePreMatching ?? false;
+      }
     }
   }
 
@@ -111,17 +121,12 @@ export class RuleConverter {
   }
 
   private generateRule(rule: ParsedRule): string {
-    const flags = Object.entries(rule.flags)
-      .filter(([_, value]) => value)
-      .map(([key]) => {
-        switch(key) {
-          case 'noResolve': return 'no-resolve';
-          case 'preMatching': return 'pre-matching';
-          case 'extended': return 'extended-matching';
-          default: return '';
-        }
-      })
-      .filter(Boolean);
+    const flags: string[] = [];
+    
+    // 按照特定顺序添加标记
+    if (rule.flags.noResolve) flags.push('no-resolve');
+    if (rule.flags.preMatching) flags.push('pre-matching');
+    if (rule.flags.extended) flags.push('extended-matching');
 
     const parts = [rule.type, rule.value];
     if (rule.policy) parts.push(rule.policy);

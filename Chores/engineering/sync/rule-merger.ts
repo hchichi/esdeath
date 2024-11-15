@@ -62,11 +62,14 @@ export class RuleMerger {
       // 清理和排序
       mergedContent = cleanAndSort(mergedContent, this.converter);
 
+      // 获取源文件的下载 URL
+      const sourceUrls = await this.getSourceUrls(sourceFiles);
+      
       // 添加头部注释
       mergedContent = addRuleHeader(mergedContent, {
-        title: name,
+        title: config.header?.title || `${name} Rules`,
         description: config.header?.description || `${name} Rules`,
-        sources: sourceFiles
+        sources: sourceUrls // 使用下载 URL 而不是文件路径
       });
 
       // 写入目标文件
@@ -115,5 +118,19 @@ export class RuleMerger {
           .catch((error: Error) => console.warn(`Failed to delete ${file}:`, error))
       )
     );
+  }
+
+  private async getSourceUrls(files: string[]): Promise<string[]> {
+    // 从 ruleGroups 中查找对应文件的 URL
+    const urls = files.map(file => {
+      for (const group of ruleGroups) {
+        const ruleFile = group.files.find(f => f.path === file);
+        if (ruleFile?.url) {
+          return ruleFile.url;
+        }
+      }
+      return file; // 如果找不到 URL，返回文件路径
+    });
+    return urls;
   }
 } 
