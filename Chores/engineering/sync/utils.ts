@@ -92,9 +92,10 @@ export function getRuleStats(content: string): RuleStats {
 /**
  * 清理和排序规则
  * @param content - 规则内容
+ * @param converter - 可选的规则转换器
  * @returns - 清理和排序后的规则
  */
-export function cleanAndSort(content: string, converter: RuleConverter): string {
+export function cleanAndSort(content: string, converter?: RuleConverter): string {
   const lines = content.split('\n');
   const comments: string[] = [];
   const rules: string[] = [];
@@ -106,16 +107,18 @@ export function cleanAndSort(content: string, converter: RuleConverter): string 
     if (line.startsWith('#')) {
       comments.push(line);
     } else {
-      const convertedRule = converter.convert(line);
-      if (convertedRule) {
-        rules.push(convertedRule);
+      // 如果提供了转换器就使用转换器,否则直接使用原始规则
+      const processedRule = converter ? converter.convert(line) : line;
+      if (processedRule) {
+        rules.push(processedRule);
       }
     }
   });
 
-  // 去重和排序规则
+  // 去重并排序规则
   const uniqueRules = [...new Set(rules)].sort();
 
+  // 组合注释和规则
   return [...comments, '', ...uniqueRules].join('\n');
 }
 

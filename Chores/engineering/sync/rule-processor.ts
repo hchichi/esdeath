@@ -4,13 +4,13 @@ import { RuleFile, SpecialRuleConfig } from './rule-types';
 import fs from 'node:fs';
 import path from 'node:path';
 import { downloadFile } from './utils';
-import { getRuleStats } from './utils';
+import { cleanAndSort } from './utils';
 
 export class RuleProcessor {
   constructor(
     private repoPath: string,
-    private converter: RuleConverter,
-    private merger: RuleMerger
+    private converter?: RuleConverter,
+    private merger?: RuleMerger
   ) {}
 
   async process(rule: RuleFile): Promise<void> {
@@ -35,51 +35,14 @@ export class RuleProcessor {
       // 读取文件内容
       const content = await fs.promises.readFile(filePath, 'utf-8');
       
-      // 清理和排序规则
-      const cleanedContent = this.merger.cleanAndSort(content);
+      // 使用 utils 中的 cleanAndSort
+      const processedContent = cleanAndSort(content, this.converter);
       
       // 写入处理后的内容
-      await fs.promises.writeFile(filePath, cleanedContent);
+      await fs.promises.writeFile(filePath, processedContent);
     } catch (error) {
       console.error(`Error processing ${rule.path}:`, error);
       throw error;
     }
-  }
-
-  private convertRules(content: string): string {
-    return content
-      .split('\n')
-      .map(line => this.converter.convert(line))
-      .join('\n');
-  }
-
-  private addHeader(content: string, rule: RuleFile): string {
-    const stats = getRuleStats(content);
-    const timestamp = new Date().toISOString();
-    
-    const headers = [
-      `# ${rule.title || path.basename(rule.path)}`,
-      rule.description && `# ${rule.description}`,
-      '',
-      '# Rule Statistics:',
-      `# Total: ${stats.total}`,
-      `# Domain: ${stats.domain}`,
-      `# Domain Suffix: ${stats.domainSuffix}`,
-      `# Domain Keyword: ${stats.domainKeyword}`,
-      `# IP-CIDR: ${stats.ipCidr}`,
-      `# IP-CIDR6: ${stats.ipCidr6}`,
-      `# User Agent: ${stats.userAgent}`,
-      `# URL Regex: ${stats.urlRegex}`,
-      `# Other: ${stats.other}`,
-      '',
-      '# Source:',
-      ...(rule.sources || [rule.url]).filter(Boolean).map(source => `# - ${source}`),
-      '',
-      `# Updated: ${timestamp}`,
-      '',
-      content
-    ].filter(Boolean);
-
-    return headers.join('\n');
   }
 } 

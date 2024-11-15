@@ -1,3 +1,22 @@
+# AI
+#
+# Last Updated: 2024/11/15 23:48:52
+#
+# Rule Statistics:
+# DOMAIN: 31
+# DOMAIN-SUFFIX: 41
+# DOMAIN-KEYWORD: 4
+# IP-CIDR: 1
+# IP-CIDR6: 1
+# OTHER: 2
+# TOTAL: 80
+#
+# AI Rules
+#
+# Data from:
+#  - Surge/Ruleset/AI/AI_KELI.list
+#  - Surge/Ruleset/AI/AI_ConnersHua.list
+#  - Surge/Ruleset/AI/AI_Hiven.list
 
 AND,((DOMAIN-KEYWORD,chatgpt-async-webps-prod-)
 AND,((DOMAIN-KEYWORD,openaicom-api-)

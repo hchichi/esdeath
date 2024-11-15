@@ -1,3 +1,18 @@
+# CDN
+#
+# Last Updated: 2024/11/15 23:48:52
+#
+# Rule Statistics:
+# DOMAIN: 3
+# DOMAIN-KEYWORD: 5
+# URL-REGEX: 2
+# OTHER: 31
+# TOTAL: 41
+#
+# CDN Rules
+#
+# Data from:
+#  - Surge/Ruleset/CDN/CDN_NoIP.list
 
 DOMAIN,cdn-msp.18comic.vip,extended-matching,extended-matching
 DOMAIN,cdn-msp.jmcomic.me,extended-matching,extended-matching
