@@ -3,6 +3,7 @@ import { RuleConverter } from './rule-converter';
 import fs from 'node:fs';
 import path from 'node:path';
 import { cleanAndSort, generateNoResolveVersion, addRuleHeader } from './utils';
+import { ruleGroups } from './rule-sources'; 
 
 export class RuleMerger {
   constructor(

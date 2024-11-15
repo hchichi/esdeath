@@ -490,7 +490,7 @@ export const ruleGroups: RuleGroup[] = [
       },
       {
         path: 'Surge/Ruleset/ChinaIP.list',
-        url: 'https://raw.githubusercontent.com/missuo/ASN-China/main/IPv4.China.list',
+        url: 'https://raw.githubusercontent.com/DH-Teams/DH-Geo_AS_IP_CN/main/Geo_AS_IP_CN.txt',
         title: 'China IPv4 Rules',
         description: 'IPv4 rules for China'
       },
@@ -710,8 +710,7 @@ export const specialRules: SpecialRuleConfig[] = [
     name: 'NeteaseMusic',
     targetFile: 'Surge/Ruleset/Streaming/Music/NeteaseMusic.list',
     sourceFiles: [
-      'Surge/Ruleset/Streaming/Music/NeteaseMusic_NoIP.list',
-      'Surge/Ruleset/Streaming/Music/NeteaseMusic.list'
+      'Surge/Ruleset/Streaming/Music/NeteaseMusic_NoIP.list'
     ],
     cleanup: true,
     header: {
