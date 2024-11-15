@@ -105,7 +105,6 @@ DOMAIN,gdfp.gifshow.com
 DOMAIN,open.e.kuaishou.com
 DOMAIN,adtrack.e.kuaishou.com
 DOMAIN-SUFFIX,adukwai.com
-DOMAIN-SUFFIX,adbkwai.com
 # SupersonicAds
 DOMAIN,init.supersonicads.com
 # APPSAD
@@ -218,6 +217,7 @@ DOMAIN,dnms.getui.com
 DOMAIN,ido.getui.net
 DOMAIN,sdk-conf.getui.com
 DOMAIN,sdk-open-phone.getui.com
+DOMAIN,ido.gepush.com
 DOMAIN-SUFFIX,mobileservice.cn
 DOMAIN-SUFFIX,getui.com
 DOMAIN-SUFFIX,igexin.com
@@ -325,6 +325,8 @@ DOMAIN,adx-sg-req.bridgeoos.com
 DOMAIN-SUFFIX,bridgeoos.com
 # 海南丽声影视文化传播有限公司
 DOMAIN,ad-evods.tianya.tv
+# 杭州推啊网络科技有限公司
+DOMAIN,adx.tuia.cn
 DOMAIN,adstats.tencentmusic.com
 DOMAIN,ad.tencentmusic.com
 DOMAIN,adcdn.tencentmusic.com
