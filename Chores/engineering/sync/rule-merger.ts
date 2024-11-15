@@ -2,7 +2,7 @@ import { SpecialRuleConfig } from './types';
 import { RuleConverter } from './rule-converter';
 import fs from 'node:fs';
 import path from 'node:path';
-import { cleanAndSortRules, generateNoResolveVersion } from './utils';
+import { cleanAndSort, generateNoResolveVersion } from './utils';
 
 export class RuleMerger {
   constructor(
@@ -17,7 +17,7 @@ export class RuleMerger {
   }
 
   public cleanAndSort(content: string): string {
-    return cleanAndSortRules(content);
+    return cleanAndSort(content, this.converter);
   }
 
   async mergeSpecialRules(config: SpecialRuleConfig): Promise<void> {
