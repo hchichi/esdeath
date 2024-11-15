@@ -1,4 +1,4 @@
-import { RuleGroup, SpecialRuleConfig } from './types';
+import { RuleGroup, SpecialRuleConfig } from './rule-types.js';
 import { fileURLToPath } from 'node:url';
 import { dirname } from 'node:path';
 import path from 'node:path';
@@ -578,25 +578,19 @@ export const ruleGroups: RuleGroup[] = [
     name: 'IPCIDR',
     files: [
       {
-        path: 'Surge/Ruleset/IPCIDR/ChinaIP_Sukkaw.list',
+        path: 'Surge/Ruleset/ChinaIP_Sukkaw.list',
         url: 'https://ruleset.skk.moe/List/ip/china_ip.conf',
         title: 'China IP SukkaW Rules',
         description: 'IP rules for China from SukkaW'
       },
       {
-        path: 'Surge/Ruleset/IPCIDR/ChinaIPv6.list',
-        url: 'https://raw.githubusercontent.com/missuo/ASN-China/main/IPv6.China.list',
-        title: 'China IP Rules',
-        description: 'IP rules for China'
-      },
-      {
-        path: 'Surge/Ruleset/IPCIDR/ChinaIPv4.list',
+        path: 'Surge/Ruleset/ChinaIP.list',
         url: 'https://raw.githubusercontent.com/missuo/ASN-China/main/IPv4.China.list',
         title: 'China IPv4 Rules',
         description: 'IPv4 rules for China'
       },
       {
-        path: 'Surge/Ruleset/IPCIDR/ChinaIPv4.DH.list',
+        path: 'Surge/Ruleset/ChinaIPv4.DH.list',
         url: 'https://raw.githubusercontent.com/DH-Teams/DH-Geo_AS_IP_CN/main/Geo_AS_IP_CN_V4_Surge.list',
         title: 'China IPv4 DH Rules',
         description: 'IPv4 rules for China from DH'
@@ -805,7 +799,6 @@ export const specialRules: SpecialRuleConfig[] = [
     name: 'IP',
     targetFile: 'Surge/Ruleset/ChinaIP.list',
     sourceFiles: [
-      'Surge/Ruleset/IPCIDR/ChinaIPv4.list',
     ],
     generateResolveVersion: true,
     cleanup: true
@@ -845,7 +838,6 @@ export const specialRules: SpecialRuleConfig[] = [
     sourceFiles: [
       'Surge/Ruleset/Streaming/Music/NeteaseMusic_NoIP.list'
     ],
-    generateResolveVersion: true,
     cleanup: true
   }
 ];

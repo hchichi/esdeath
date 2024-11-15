@@ -1,4 +1,4 @@
-import { RuleFormat, ParsedRule, RuleFlags } from './types';
+import { RuleFormat, RuleType, ParsedRule, RuleFlags } from './rule-types.js';
 
 interface ConverterOptions {
   enableNoResolve?: boolean;

@@ -1,6 +1,6 @@
 import { RuleConverter } from './rule-converter';
 import { RuleMerger } from './rule-merger';
-import { RuleFile, SpecialRuleConfig } from './types';
+import { RuleFile, SpecialRuleConfig } from './rule-types';
 import fs from 'node:fs';
 import path from 'node:path';
 import { downloadFile } from './utils';

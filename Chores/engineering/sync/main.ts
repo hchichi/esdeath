@@ -1,7 +1,7 @@
 import { RuleProcessor } from './rule-processor';
 import { RuleConverter } from './rule-converter';
 import { RuleMerger } from './rule-merger';
-import { config, ruleGroups, specialRules } from './config';
+import { config, ruleGroups, specialRules } from './rule-sources';
 import { ensureDirectoryExists, initializeDirectoryStructure } from './utils';
 import path from 'node:path';
 

@@ -1,7 +1,7 @@
 // 工具函数
 import fs from 'node:fs';
 import path from 'node:path';
-import { RuleStats, RuleGroup, SpecialRuleConfig } from './types';
+import { RuleStats, RuleGroup, SpecialRuleConfig } from './rule-types';
 
 /**
  * 下载文件
@@ -181,4 +181,47 @@ export function generateNoResolveVersion(content: string): string {
       return line;
     })
     .join('\n');
+}
+
+interface HeaderInfo {
+  title: string;
+  description: string;
+  sources: string[];
+}
+
+/**
+ * 添加规则文件头部注释
+ * @param content - 规则内容
+ * @param info - 头部信息
+ * @returns - 添加了头部的内容
+ */
+export function addRuleHeader(content: string, info: HeaderInfo): string {
+  const stats = getRuleStats(content);
+  const timestamp = new Date().toLocaleString('zh-CN', { timeZone: 'Asia/Shanghai' });
+  
+  const headers = [
+    `# ${info.title}`,
+    '#',
+    `# Last Updated: ${timestamp}`,
+    '#',
+    '# Rule Statistics:',
+    stats.domain > 0 && `# DOMAIN: ${stats.domain}`,
+    stats.domainSuffix > 0 && `# DOMAIN-SUFFIX: ${stats.domainSuffix}`,
+    stats.domainKeyword > 0 && `# DOMAIN-KEYWORD: ${stats.domainKeyword}`,
+    stats.ipCidr > 0 && `# IP-CIDR: ${stats.ipCidr}`,
+    stats.ipCidr6 > 0 && `# IP-CIDR6: ${stats.ipCidr6}`,
+    stats.userAgent > 0 && `# USER-AGENT: ${stats.userAgent}`,
+    stats.urlRegex > 0 && `# URL-REGEX: ${stats.urlRegex}`,
+    stats.other > 0 && `# OTHER: ${stats.other}`,
+    `# TOTAL: ${stats.total}`,
+    '#',
+    `# ${info.description}`,
+    '#',
+    '# Data from:',
+    ...info.sources.map(source => `#  - ${source}`),
+    '',
+    content
+  ].filter(Boolean);
+
+  return headers.join('\n');
 }
