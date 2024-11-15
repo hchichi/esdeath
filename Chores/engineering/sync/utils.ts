@@ -2,7 +2,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { RuleStats, RuleGroup, SpecialRuleConfig } from './rule-types';
-
+import { RuleConverter } from './rule-converter';
 /**
  * 下载文件
  * @param url - 下载URL

@@ -6,11 +6,12 @@
 # Homepage: https://ruleset.skk.moe
 # GitHub: https://github.com/SukkaW/Surge
 #########################################
+################## EOF ##################
+
 DOMAIN,this_ruleset_is_made_by_sukkaw.ruleset.skk.moe
-DOMAIN-SUFFIX,torrentmac.net
+DOMAIN-KEYWORD,mac-torrent-download
 DOMAIN-SUFFIX,download.555mac.com
 DOMAIN-SUFFIX,engage.cloudflareclient.com
-DOMAIN-KEYWORD,mac-torrent-download
+DOMAIN-SUFFIX,torrentmac.net
 PROCESS-NAME,AdGuardHome
 PROCESS-NAME,nmap
-################## EOF ##################
