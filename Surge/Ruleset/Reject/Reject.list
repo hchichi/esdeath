@@ -1,3 +1,22 @@
+# Reject
+#
+# Last Updated: 2024/11/15 23:48:52
+#
+# Rule Statistics:
+# DOMAIN: 292
+# DOMAIN-SUFFIX: 841
+# DOMAIN-KEYWORD: 5
+# IP-CIDR: 5
+# IP-CIDR6: 1
+# USER-AGENT: 1
+# TOTAL: 1145
+#
+# Reject Rules
+#
+# Data from:
+#  - Surge/Ruleset/Reject/Advertising.list
+#  - Surge/Ruleset/Reject/Malicious.list
+#  - Surge/Ruleset/Reject/Tracking.list
 
 DOMAIN,118.89.204.198
 DOMAIN,a.wkanx.com
