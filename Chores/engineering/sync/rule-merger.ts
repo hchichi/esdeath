@@ -59,7 +59,7 @@ export class RuleMerger {
 
       // 如果需要生成no-resolve版本
       if (generateResolveVersion) {
-        const noResolvePath = targetPath.replace('.list', '.no-resolve.list');
+        const noResolvePath = targetPath.replace('.list', '.noResolve.list');
         const noResolveContent = generateNoResolveVersion(mergedContent);
         await fs.promises.writeFile(noResolvePath, noResolveContent);
       }

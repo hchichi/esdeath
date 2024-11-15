@@ -584,8 +584,8 @@ export const ruleGroups: RuleGroup[] = [
         description: 'IP rules for China from SukkaW'
       },
       {
-        path: 'Surge/Ruleset/IPCIDR/ChinaIP.list',
-        url: 'https://raw.githubusercontent.com/missuo/ASN-China/main/IP.China.list',
+        path: 'Surge/Ruleset/IPCIDR/ChinaIPv6.list',
+        url: 'https://raw.githubusercontent.com/missuo/ASN-China/main/IPv6.China.list',
         title: 'China IP Rules',
         description: 'IP rules for China'
       },
@@ -805,8 +805,7 @@ export const specialRules: SpecialRuleConfig[] = [
     name: 'IP',
     targetFile: 'Surge/Ruleset/ChinaIP.list',
     sourceFiles: [
-      'Surge/Ruleset/ChinaIPv4.list',
-      'Surge/Ruleset/ChinaIPv6.list'
+      'Surge/Ruleset/IPCIDR/ChinaIPv4.list',
     ],
     generateResolveVersion: true,
     cleanup: true
