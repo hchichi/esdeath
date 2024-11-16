@@ -1,6 +1,6 @@
 # Advertising Reject Rules
 #
-# Last Updated: 2024/11/16 12:36:23
+# Last Updated: 2024/11/16 13:34:32
 #
 # Rule Statistics:
 # DOMAIN: 292
@@ -17,6 +17,114 @@
 #  - https://raw.githubusercontent.com/ConnersHua/RuleGo/master/Surge/Ruleset/Extra/Reject/Advertising.list
 #  - https://raw.githubusercontent.com/ConnersHua/RuleGo/master/Surge/Ruleset/Extra/Reject/Malicious.list
 #  - https://raw.githubusercontent.com/ConnersHua/RuleGo/master/Surge/Ruleset/Extra/Reject/Tracking.list
+# Advertising
+# > General
+# (0~9)
+# > 360
+# > 51wnl
+# (A)
+# > Apple
+# --- (Alibaba) ---
+# > YOUKU
+# > AMap
+# ------
+# > Autohome
+# (B)
+# --- (Baidu) ---
+# > iQIYI
+# ------
+# > ByteDance
+# > baicizhan
+# > BitAuto
+# > Braze
+# (C)
+# > CCTVVideo
+# > CNTV
+# > ChinaTelecom
+# > Chelaile
+# > Camera360
+# (G)
+# > Google
+# (H)
+# > HunanTV
+# > Hupu
+# > happycast
+# (J)
+# > jxedt
+# (K)
+# > Kingsoft
+# > Kuaishou
+# (L)
+# > LinkWiFi
+# (M)
+# > Microsoft
+# > MojiWeather
+# > MiguVideo
+# (N)
+# > NetEase
+# (P)
+# > PPTV
+# > Photoable
+# > PeanutWiFi
+# > PConline
+# > Phoenix New Media
+# (Q)
+# > QingTing
+# > OPPO
+# (S)
+# > Sina
+# > SOHU
+# > Snapchat
+# > Skyworth
+# (T)
+# --- (Tencent) ---
+# DOMAIN,wxsnsdy.wxs.qq.com
+# DOMAIN,wxsnsdythumb.wxs.qq.com
+# > Tencent Music (TME)
+# ------
+# > TongHuaShun
+# > The Paper
+# > Thunder
+# (V)
+# > VariFlight
+# > vivo
+# > Viber
+# (X)
+# > Ximalaya
+# > Xiaohongshu
+# (Y)
+# > Yahoo
+# (Z)
+# > Zhihu
+# > ZOL
+# > ZiTian
+# > funnull
+# > KuaiZip
+# https://zhuanlan.zhihu.com/p/39534279
+# > MacKeeper
+# https://www.lizhi.io/blog/40002904
+# > Adobe Flash China Special Edition
+# https://www.zhihu.com/question/281163698/answer/441388130
+# > C&J Marketing
+# https://www.zhihu.com/question/46746200
+# Privacy
+# > 51.LA
+# > 58
+# > Antiy
+# > Apple
+# > Baidu
+# > Daum
+# > Google
+# > GozenData
+# https://www.v2ex.com/t/772523
+# > GrowingIO
+# > Huawei
+# > MI
+# DOMAIN,api.miwifi.com // 影响 Mi Wi-Fi(id859962702)，但建议注意 https://www.v2ex.com/t/746094
+# > Microsoft
+# > TalkingData
+# > Tencent
+# > Tenjin
 
 DOMAIN,118.89.204.198
 DOMAIN,a.wkanx.com
