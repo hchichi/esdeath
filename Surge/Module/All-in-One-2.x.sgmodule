@@ -620,7 +620,6 @@ body_rewrite_24 = type=http-response, pattern=^https:\/\/edith\.xiaohongshu\.com
 微博轻享版去广告 = type=http-response, pattern=^https?:\/\/sdkapp\.uve\.weibo\.com\/interface\/sdk\/sdkad\.php, script-path=https://github.com/hchichi/esdeath/raw/main/Chores/js/Weibo_intl_remove_ads.js, requires-body=true
 
 # ----------- YouTube ------------
-YouTube请求 = type=http-request, pattern=^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|next|player|reel\/reel_watch_sequence|get_watch), script-path=https://github.com/hchichi/esdeath/raw/main/Chores/js/YouTube_remove_ads_request.js, requires-body=true, binary-body-mode=true
 YouTube响应 = type=http-response, pattern=^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|next|player|search|reel\/reel_watch_sequence|guide|account\/get_setting|get_watch), script-path=https://github.com/hchichi/esdeath/raw/main/Chores/js/YouTube_remove_ads_response.js, requires-body=true, binary-body-mode=true, argument="[{blockUpload},{blockImmersive},{captionLang},{lyricLang},{debug}]"
 
 # ------------ Zhihu -------------
