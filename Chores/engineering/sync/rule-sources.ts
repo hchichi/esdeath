@@ -94,12 +94,6 @@ export const ruleGroups: RuleGroup[] = [
         url: 'https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/AppleMedia/AppleMedia.list',
         title: 'Apple Media Rules',
         description: 'This file contains rules for AppleMedia.'
-      },
-      {
-        path: 'Surge/Ruleset/Apple/FitnessPlus.list',
-        url: 'https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/FitnessPlus/FitnessPlus.list',
-        title: 'Fitness Plus Rules',
-        description: 'This file contains rules for Apple FitnessPlus.'
       }
     ]
   },
@@ -347,53 +341,6 @@ export const ruleGroups: RuleGroup[] = [
         url: 'https://github.com/SunsetMkt/anti-ip-attribution/raw/main/generated/rule-set-reject.list',
         title: 'Anti Reject Rules',
         description: 'Anti IP attribution reject rules'
-      }
-    ]
-  },
-  {
-    name: 'AntiApp',
-    files: [
-      {
-        path: 'Surge/Ruleset/Anti/App/QQMusic.list',
-        url: 'https://github.com/SunsetMkt/anti-ip-attribution/raw/main/rules/QQ音乐.yaml',
-        title: 'Anti QQMusic Rules',
-        description: 'Anti IP attribution rules for QQMusic'
-      },
-      {
-        path: 'Surge/Ruleset/Anti/App/Bilibili.list',
-        url: 'https://github.com/SunsetMkt/anti-ip-attribution/raw/main/rules/哔哩哔哩.yaml',
-        title: 'Anti Bilibili Rules',
-        description: 'Anti IP attribution rules for Bilibili'
-      },
-      {
-        path: 'Surge/Ruleset/Anti/App/Xiaohongshu.list',
-        url: 'https://github.com/SunsetMkt/anti-ip-attribution/raw/main/rules/小红书.yaml',
-        title: 'Anti Xiaohongshu Rules',
-        description: 'Anti IP attribution rules for Xiaohongshu'
-      },
-      {
-        path: 'Surge/Ruleset/Anti/App/Douban.list',
-        url: 'https://github.com/SunsetMkt/anti-ip-attribution/raw/main/rules/豆瓣.yaml',
-        title: 'Anti Douban Rules',
-        description: 'Anti IP attribution rules for Douban'
-      },
-      {
-        path: 'Surge/Ruleset/Anti/App/NeteaseMusic.list',
-        url: 'https://github.com/SunsetMkt/anti-ip-attribution/raw/main/rules/网易云音乐.yaml',
-        title: 'Anti NeteaseMusic Rules',
-        description: 'Anti IP attribution rules for NeteaseMusic'
-      },
-      {
-        path: 'Surge/Ruleset/Anti/App/WeChat.list',
-        url: 'https://github.com/SunsetMkt/anti-ip-attribution/raw/main/rules/微信.yaml',
-        title: 'Anti WeChat Rules',
-        description: 'Anti IP attribution rules for WeChat'
-      },
-      {
-        path: 'Surge/Ruleset/Anti/App/Douyin.list',
-        url: 'https://github.com/SunsetMkt/anti-ip-attribution/raw/main/rules/抖音.yaml',
-        title: 'Anti Douyin Rules',
-        description: 'Anti IP attribution rules for Douyin'
       }
     ]
   },
@@ -672,7 +619,7 @@ export const specialRules: SpecialRuleConfig[] = [
       'Surge/Ruleset/Reject/Malicious.list',
       'Surge/Ruleset/Reject/Tracking.list'
     ],
-    cleanup: false,
+    cleanup: true,
     header: {
       title: 'Advertising Reject Rules',
       description: 'Combined advertising/hijacking/tracking blocking rules'
@@ -698,7 +645,7 @@ export const specialRules: SpecialRuleConfig[] = [
     targetFile: 'Surge/Ruleset/CDN/CDN.list',
     sourceFiles: [
       'Surge/Ruleset/CDN/CDN_NoIP.list',
-      'Surge/Ruleset/CDN/CDN_IP.list'
+      'Surge/Ruleset/CDN/CDN_IP.list',
     ],
     cleanup: true,
     header: {

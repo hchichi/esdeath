@@ -7,6 +7,7 @@ export interface RuleFile {
   title?: string;
   description?: string;
   sources?: string[];
+  cleanup?: boolean;
 }
 
 export interface RuleFlags {
@@ -36,6 +37,7 @@ export interface BaseRuleConfig {
 export interface SpecialRuleConfig extends BaseRuleConfig {
   generateResolveVersion?: boolean;
   extraRules?: string[];
+  cleanup?: boolean;
 }
 
 export type RuleType = 

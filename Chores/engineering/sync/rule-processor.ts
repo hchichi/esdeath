@@ -14,35 +14,53 @@ export class RuleProcessor {
   ) {}
 
   async process(rule: RuleFile): Promise<void> {
-    await this.processRule(rule);
+    try {
+      // 下载规则文件
+      if (rule.url) {
+        await downloadFile(rule.url, path.join(this.repoPath, rule.path));
+      }
+
+      // 读取文件内容
+      let content = await fs.promises.readFile(
+        path.join(this.repoPath, rule.path),
+        'utf-8'
+      );
+
+      // 转换规则
+      content = content
+        .split('\n')
+        .map(line => this.converter.convert(line))
+        .filter(Boolean)
+        .join('\n');
+
+      // 只在明确指定 cleanup: true 时才进行清理和排序
+      if (rule.cleanup === true) {
+        content = cleanAndSort(content, this.converter);
+      }
+
+      // 添加头部信息
+      if (rule.title || rule.description) {
+        content = addRuleHeader(content, {
+          title: rule.title || path.basename(rule.path),
+          description: rule.description || '',
+          sources: rule.url ? [rule.url] : []
+        });
+      }
+
+      // 写入文件
+      await fs.promises.writeFile(
+        path.join(this.repoPath, rule.path),
+        content
+      );
+    } catch (error) {
+      console.error(`Error processing ${rule.path}:`, error);
+      throw error;
+    }
   }
 
   async processSpecialRules(rules: SpecialRuleConfig[]): Promise<void> {
     for (const rule of rules) {
       await this.merger.mergeSpecialRules(rule);
-    }
-  }
-
-  private async processRule(rule: RuleFile): Promise<void> {
-    try {
-      const filePath = path.join(this.repoPath, rule.path);
-      
-      // 如果文件不存在且有 URL，先下载
-      if (rule.url && !fs.existsSync(filePath)) {
-        await downloadFile(rule.url, filePath);
-      }
-
-      // 读取文件内容
-      const content = await fs.promises.readFile(filePath, 'utf-8');
-      
-      // 使用 utils 中的 cleanAndSort
-      const processedContent = cleanAndSort(content, this.converter);
-      
-      // 写入处理后的内容
-      await fs.promises.writeFile(filePath, processedContent);
-    } catch (error) {
-      console.error(`Error processing ${rule.path}:`, error);
-      throw error;
     }
   }
 } 
