@@ -612,6 +612,33 @@ export const ruleGroups: RuleGroup[] = [
 // Special rules configuration
 export const specialRules: SpecialRuleConfig[] = [
   {
+    name: 'Emby',
+    targetFile: 'Surge/Ruleset/Streaming/Video/EmbyTest.list',
+    sourceFiles: [
+      'Surge/Ruleset/Streaming/Video/EmbyTest.list',
+      'Surge/Ruleset/Streaming/Video/EmbyTest2.list'
+    ],
+    cleanup: true,
+    header: {
+      title: 'Emby Rules',
+      description: 'Combined Emby test rules'
+    }
+  },
+  {
+    name: 'CDN',
+    targetFile: 'Surge/Ruleset/CDN/CDN.list',
+    sourceFiles: [
+      'Surge/Ruleset/CDN/CDN.list',  // domain-set
+      'Surge/Ruleset/CDN/CDN_NoIP.list',
+      'Surge/Ruleset/CDN/CDN_IP.list'
+    ],
+    cleanup: true,
+    header: {
+      title: 'CDN Rules',
+      description: 'Combined CDN rules including domain-set, IP and non-IP rules'
+    }
+  },
+  {
     name: 'Reject',
     targetFile: 'Surge/Ruleset/Reject/Reject.list',
     sourceFiles: [
@@ -638,19 +665,6 @@ export const specialRules: SpecialRuleConfig[] = [
     header: {
       title: 'AI Rules',
       description: 'Combined AIGC rules'
-    }
-  },
-  {
-    name: 'CDN',
-    targetFile: 'Surge/Ruleset/CDN/CDN.list',
-    sourceFiles: [
-      'Surge/Ruleset/CDN/CDN_NoIP.list',
-      'Surge/Ruleset/CDN/CDN_IP.list',
-    ],
-    cleanup: true,
-    header: {
-      title: 'SukkaW CDN Rules',
-      description: 'Combined SukkaW CDN rules'
     }
   },
   {

@@ -34,7 +34,7 @@ export class RuleMerger {
         mergedContent += '\n' + extraRules.join('\n');
       }
 
-      // 只在明确指定 cleanup: true 时才进行清理和排序
+      // 如果需要清理和排序
       if (cleanup === true) {
         mergedContent = cleanAndSort(mergedContent, this.converter);
       }
@@ -48,11 +48,28 @@ export class RuleMerger {
         });
       }
 
+      // 确保目标目录存在
+      const targetDir = path.dirname(path.join(this.repoPath, targetFile));
+      await fs.promises.mkdir(targetDir, { recursive: true });
+
       // 写入合并后的内容
       await fs.promises.writeFile(
         path.join(this.repoPath, targetFile),
         mergedContent
       );
+
+      // 删除源文件
+      for (const sourceFile of sourceFiles) {
+        if (sourceFile !== targetFile) { // 不删除目标文件
+          const fullPath = path.join(this.repoPath, sourceFile);
+          try {
+            await fs.promises.unlink(fullPath);
+            console.log(`Deleted source file: ${sourceFile}`);
+          } catch (error) {
+            console.warn(`Failed to delete source file: ${sourceFile}`, error);
+          }
+        }
+      }
 
       console.log(`Successfully merged ${name} rules to ${targetFile}`);
     } catch (error) {

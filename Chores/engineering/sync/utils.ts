@@ -206,8 +206,6 @@ export function addRuleHeader(content: string, info: HeaderInfo): string {
     `# ${info.title}`,
     '#',
     `# Last Updated: ${timestamp}`,
-    '#',
-    '# Rule Statistics:',
     stats.domain > 0 && `# DOMAIN: ${stats.domain}`,
     stats.domainSuffix > 0 && `# DOMAIN-SUFFIX: ${stats.domainSuffix}`,
     stats.domainKeyword > 0 && `# DOMAIN-KEYWORD: ${stats.domainKeyword}`,
