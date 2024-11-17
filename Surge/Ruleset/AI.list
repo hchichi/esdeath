@@ -1,13 +1,13 @@
 # AI Rules
 #
-# Last Updated: 2024/11/17 22:33:13
-# DOMAIN: 31
+# Last Updated: 2024/11/17 23:33:13
+# DOMAIN: 32
 # DOMAIN-SUFFIX: 41
 # DOMAIN-KEYWORD: 4
 # IP-CIDR: 1
 # IP-CIDR6: 1
 # OTHER: 2
-# TOTAL: 80
+# TOTAL: 81
 #
 # Combined AIGC rules
 #
@@ -71,6 +71,7 @@ DOMAIN,o33249.ingest.sentry.io
 DOMAIN,openaiapi-site.azureedge.net
 DOMAIN,openaicom.imgix.net
 DOMAIN,openaicomproductionae4b.blob.core.windows.net
+DOMAIN,proactivebackend-pa.googleapis.com
 DOMAIN,production-openaicom-storage.azureedge.net
 DOMAIN,sfo3.turn.livekit.cloud
 DOMAIN,sydney.bing.com
