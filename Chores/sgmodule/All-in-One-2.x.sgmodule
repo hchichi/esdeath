@@ -690,7 +690,6 @@ body_rewrite_34 = type=http-response, pattern=^https:\/\/m5-zb\.amap\.com\/ws\/s
 
 # ---------- MailMaster ----------
 body_rewrite_201 = type=http-response, pattern=^https:\/\/appconf\.mail\.163\.com\/mailmaster\/api\/page\/v2\/conf\.do$, script-path=https://github.com/hchichi/esdeath/raw/main/Chores/js/body-rewrite.js, requires-body=true, max-size=-1, timeout=30, argument=%5B%5B%22json-del%22%2C%5B%22data.functionOperatorInfoList%22%2C%22data.memberOperator%22%2C%22data.activityTabInfoList%22%5D%5D%5D
-body_rewrite_203 = type=http-response, pattern=^https:\/\/appconf\.mail\.163\.com\/mailmaster\/api\/config\/function\.do$, script-path=https://github.com/hchichi/esdeath/raw/main/Chores/js/body-rewrite.js, requires-body=true, max-size=-1, timeout=30, argument=%5B%5B%22json-del%22%2C%5B%22data.config%5B39%5D.result.tools%5B2%5D%22%5D%5D%5D
 
 # ----------- DuiTang ------------
 body_rewrite_127 = type=http-response, pattern=^https:\/\/(www|api)\.duitang\.com\/napi\/settings\/, script-path=https://github.com/hchichi/esdeath/raw/main/Chores/js/body-rewrite.js, requires-body=true, max-size=-1, timeout=30, argument=%5B%5B%22json-del%22%2C%5B%22data.REWARD_AD_PLACES%22%2C%22data.SPLASH_SWING_OPEN%22%2C%22data.REWARD_AD_PHOTO_EDITOR%22%2C%22data.REWARD_AD_PAG_EDITOR%22%2C%22data.AD_PRICE_SHOW%22%2C%22data.AD_SCREEN_WAKEUP_TIME%22%2C%22data.REWARD_AD_CUTOUT_NUM%22%2C%22data.AD_HOME_ENTER_POP_COUNT%22%2C%22data.SHARE_BANNER%22%2C%22data.AD_MENU_SELECTIONS%22%2C%22data.ME_TAB.ANNOUNCEMENT%22%2C%22data.ME_TAB.MEMBERSHIP%22%2C%22data.ME_TAB.MEMBERSHIP2%22%5D%5D%5D
