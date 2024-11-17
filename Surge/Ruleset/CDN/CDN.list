@@ -1,13 +1,13 @@
 # CDN Rules
 #
-# Last Updated: 2024/11/17 21:33:43
-# DOMAIN: 1866
+# Last Updated: 2024/11/17 22:33:13
+# DOMAIN: 1867
 # DOMAIN-SUFFIX: 815
 # DOMAIN-KEYWORD: 5
 # IP-CIDR: 3
 # URL-REGEX: 2
 # OTHER: 31
-# TOTAL: 2722
+# TOTAL: 2723
 #
 # Combined CDN rules including domain-set, IP and non-IP rules
 #
@@ -17,8 +17,8 @@
 #  - https://ruleset.skk.moe/List/ip/cdn.conf
 #########################################
 # Sukka's Ruleset - CDN Domains
-# Last Updated: 2024-11-17T10:32:56.650Z
-# Size: 2679
+# Last Updated: 2024-11-17T14:14:15.416Z
+# Size: 2680
 # License: AGPL 3.0
 # Homepage: https://ruleset.skk.moe
 # GitHub: https://github.com/SukkaW/Surge
@@ -1097,6 +1097,7 @@ DOMAIN,js.qualified.com
 DOMAIN,js.recurly.com
 DOMAIN,js.short.io
 DOMAIN,js.smile.io
+DOMAIN,js.stripe.com
 DOMAIN,js.upload.io
 DOMAIN,js.userflow.com
 DOMAIN,js.verygoodvault.com
