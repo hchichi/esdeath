@@ -1,9 +1,14 @@
-# UPDATED: 2024/11/18 13:34:57
+########################################
+# UPDATED: 2024/11/18 14:38:30
 # STATS:
-# OTHER: 1
-# TOTAL: 1
-[object Object]
-## > LocalLan
+# DOMAIN-SUFFIX: 117
+# IP-CIDR: 17
+# IP-CIDR6: 8
+# OTHER: 12
+# TOTAL: 154
+# SOURCES:
+#  - https://raw.githubusercontent.com/LM-Firefly/Rules/master/Special/Local-LAN.list
+########################################
 DOMAIN-SUFFIX,foo.com
 DOMAIN-SUFFIX,ip6-localhost
 DOMAIN-SUFFIX,ip6-loopback
@@ -11,15 +16,12 @@ DOMAIN-SUFFIX,lens.l.google.com
 DOMAIN-SUFFIX,n.n.srv.nintendo.net
 DOMAIN-SUFFIX,stun.l.google.com
 DOMAIN-SUFFIX,xnotify.xboxlive.com
-## >> special-use-domain-names
 DOMAIN-SUFFIX,lan
 DOMAIN-SUFFIX,localdomain
-## >> RFC2606 & RFC6761
 DOMAIN-SUFFIX,example
 DOMAIN-SUFFIX,invalid
 DOMAIN-SUFFIX,localhost
 DOMAIN-SUFFIX,test
-## >> RFC5735
 IP-CIDR,0.0.0.0/8,no-resolve
 IP-CIDR,10.0.0.0/8,no-resolve
 IP-CIDR,127.0.0.0/8,no-resolve
@@ -34,11 +36,8 @@ IP-CIDR,198.51.100.0/24,no-resolve
 IP-CIDR,203.0.113.0/24,no-resolve
 IP-CIDR,224.0.0.0/4,no-resolve
 IP-CIDR,240.0.0.0/4,no-resolve
-## >> RFC6762
 DOMAIN-SUFFIX,local
-## >> RFC8375
 DOMAIN-SUFFIX,home.arpa
-## >> RFC6303
 DOMAIN-SUFFIX,10.in-addr.arpa
 DOMAIN-SUFFIX,16.172.in-addr.arpa
 DOMAIN-SUFFIX,17.172.in-addr.arpa
@@ -72,7 +71,6 @@ DOMAIN-SUFFIX,9.e.f.ip6.arpa
 DOMAIN-SUFFIX,a.e.f.ip6.arpa
 DOMAIN-SUFFIX,b.e.f.ip6.arpa
 DOMAIN-SUFFIX,8.b.d.0.1.0.0.2.ip6.arpa
-## >> RFC7793
 DOMAIN-SUFFIX,64.100.in-addr.arpa
 DOMAIN-SUFFIX,65.100.in-addr.arpa
 DOMAIN-SUFFIX,66.100.in-addr.arpa
@@ -137,15 +135,11 @@ DOMAIN-SUFFIX,124.100.in-addr.arpa
 DOMAIN-SUFFIX,125.100.in-addr.arpa
 DOMAIN-SUFFIX,126.100.in-addr.arpa
 DOMAIN-SUFFIX,127.100.in-addr.arpa
-## >> ASUS router
 DOMAIN-SUFFIX,router.asus.com
-## >> QQ Loopback
 DOMAIN-SUFFIX,localhost.sec.qq.com
 DOMAIN-SUFFIX,localhost.ptlogin2.qq.com
-## >> Windows
 DOMAIN-SUFFIX,msftconnecttest.com
 DOMAIN-SUFFIX,msftncsi.com
-## > LocalLan CIDR
 IP-CIDR,100.64.0.0/10,no-resolve
 IP-CIDR,224.0.0.0/3,no-resolve
 IP-CIDR,255.255.255.255/32,no-resolve
@@ -157,7 +151,6 @@ IP-CIDR6,2001:db8::/32,no-resolve
 IP-CIDR6,fc00::/7,no-resolve
 IP-CIDR6,fe80::/10,no-resolve
 IP-CIDR6,ff00::/8,no-resolve
-## > LocalProxies
 PROCESS-NAME,shadowsocks-win.exe
 PROCESS-NAME,shadowsocksr-win.exe
 PROCESS-NAME,simple-obfs.exe

@@ -1,10 +1,15 @@
-# UPDATED: 2024/11/18 13:34:53
+########################################
+# UPDATED: 2024/11/18 14:38:27
 # STATS:
-# OTHER: 1
-# TOTAL: 1
-[object Object]
-# 内容：Netflix
-# 数量：41条
+# DOMAIN: 1
+# DOMAIN-SUFFIX: 18
+# DOMAIN-KEYWORD: 3
+# IP-CIDR: 18
+# USER-AGENT: 1
+# TOTAL: 41
+# SOURCES:
+#  - https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Netflix.list
+########################################
 USER-AGENT,Argo*
 DOMAIN-KEYWORD,apiproxy-device-prod-nlb-
 DOMAIN-KEYWORD,dualstack.apiproxy-

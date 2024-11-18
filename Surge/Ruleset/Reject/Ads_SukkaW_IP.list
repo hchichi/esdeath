@@ -1,22 +1,12 @@
-# UPDATED: 2024/11/18 13:34:55
+########################################
+# UPDATED: 2024/11/18 14:38:28
 # STATS:
-# OTHER: 1
-# TOTAL: 1
-[object Object]
-#########################################
-# Sukka's Ruleset - Anti Bogus Domain
-# Last Updated: 2024-11-14T02:12:54.877Z
-# Size: 135
-# License: AGPL 3.0
-# Homepage: https://ruleset.skk.moe
-# GitHub: https://github.com/SukkaW/Surge
-#
-# This file contains known addresses that are hijacking NXDOMAIN results returned by DNS servers, and botnet controller IPs.
-#
-# Data from:
-#  - https://github.com/felixonmars/dnsmasq-china-list
-#  - https://github.com/curbengh/botnet-filter
-#########################################
+# DOMAIN: 1
+# IP-CIDR: 134
+# TOTAL: 135
+# SOURCES:
+#  - https://ruleset.skk.moe/List/ip/reject.conf
+########################################
 DOMAIN,this_ruleset_is_made_by_sukkaw.ruleset.skk.moe
 IP-CIDR,3.228.226.42/32,no-resolve
 IP-CIDR,10.72.25.0/24,no-resolve
@@ -152,4 +142,3 @@ IP-CIDR,222.221.5.204/32,no-resolve
 IP-CIDR,222.221.5.252/31,no-resolve
 IP-CIDR,223.82.248.117/32,no-resolve
 IP-CIDR,0.0.0.0/24
-################## EOF ##################

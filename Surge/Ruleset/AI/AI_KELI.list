@@ -1,10 +1,15 @@
-# UPDATED: 2024/11/18 13:34:53
+########################################
+# UPDATED: 2024/11/18 14:38:26
 # STATS:
-# OTHER: 1
-# TOTAL: 1
-[object Object]
-# 2024-11-12 08:18:31
-# ChatGPT
+# DOMAIN: 21
+# DOMAIN-SUFFIX: 16
+# IP-CIDR: 1
+# IP-CIDR6: 1
+# OTHER: 2
+# TOTAL: 41
+# SOURCES:
+#  - https://proxyresource.pages.dev/Tool/Loon/Rule/AI.list
+########################################
 AND,((DOMAIN-KEYWORD,chatgpt-async-webps-prod-)
 AND,((DOMAIN-KEYWORD,openaicom-api-)
 DOMAIN,o33249.ingest.sentry.io
@@ -18,13 +23,11 @@ DOMAIN-SUFFIX,oaistatic.com
 DOMAIN-SUFFIX,oaiusercontent.com
 DOMAIN-SUFFIX,openai.com
 DOMAIN-SUFFIX,openai.com.cdn.cloudflare.net
-# Copilot
 DOMAIN,api.githubcopilot.com
 DOMAIN,copilot-proxy.githubusercontent.com
 DOMAIN,copilot.microsoft.com
 DOMAIN,sydney.bing.com
 DOMAIN,www.bing.com
-# Gemini
 DOMAIN,bard.google.com
 DOMAIN,gemini.google.com
 DOMAIN,generativelanguage.googleapis.com
@@ -33,23 +36,18 @@ DOMAIN,aida.googleapis.com
 DOMAIN,aistudio.google.com
 DOMAIN,alkalimakersuite-pa.clients6.google.com
 DOMAIN,makersuite.google.com
-# Claude
 DOMAIN-SUFFIX,anthropic.com
 DOMAIN-SUFFIX,claude.ai
 DOMAIN-SUFFIX,claudeusercontent.com
 IP-CIDR,160.79.104.0/23,no-resolve
 IP-CIDR6,2607:6bc0::/48,no-resolve
-# JetBrains AI
 DOMAIN-SUFFIX,grazie.ai
 DOMAIN-SUFFIX,grazie.aws.intellij.net
-# Meta AI
 DOMAIN,imagine.meta.com
 DOMAIN-SUFFIX,meta.ai
-# Perplexity
 DOMAIN-SUFFIX,pplx.ai
 DOMAIN-SUFFIX,perplexity.ai
 DOMAIN-SUFFIX,perplexity.com
-# Mistral AI
 DOMAIN,chat.mistral.ai
 DOMAIN,console.mistral.ai
 DOMAIN-SUFFIX,mistral.ai

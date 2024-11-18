@@ -1,10 +1,13 @@
-# UPDATED: 2024/11/18 13:34:53
+########################################
+# UPDATED: 2024/11/18 14:38:27
 # STATS:
-# OTHER: 1
-# TOTAL: 1
-[object Object]
-# OpenAI
-# > ChatGPT
+# DOMAIN: 22
+# DOMAIN-SUFFIX: 9
+# DOMAIN-KEYWORD: 1
+# TOTAL: 32
+# SOURCES:
+#  - https://github.com/ConnersHua/RuleGo/raw/master/Surge/Ruleset/Extra/AI.list
+########################################
 DOMAIN-SUFFIX,chatgpt.com
 DOMAIN-SUFFIX,oaistatic.com
 DOMAIN-SUFFIX,oaiusercontent.com
@@ -16,35 +19,24 @@ DOMAIN,o33249.ingest.sentry.io
 DOMAIN,openaiapi-site.azureedge.net
 DOMAIN,sfo3.turn.livekit.cloud
 DOMAIN-KEYWORD,openaicom
-# Apple Intelligence
 DOMAIN-SUFFIX,smoot.apple.com
 DOMAIN,apple-relay.apple.com
 DOMAIN,apple-relay.cloudflare.com
 DOMAIN,apple-relay.fastly-edge.com
 DOMAIN,cp4.cloudflare.com
 DOMAIN,guzzoni.apple.com
-# Anthropic
-# > Claude
 DOMAIN-SUFFIX,claude.ai
 DOMAIN-SUFFIX,anthropic.com
-# Google
-# > Gemini
 DOMAIN,ai.google.dev
 DOMAIN,bard.google.com
 DOMAIN,gemini.google.com
 DOMAIN,generativelanguage.googleapis.com
 DOMAIN,proactivebackend-pa.googleapis.com
-# > AI Studio
 DOMAIN,aistudio.google.com
 DOMAIN,alkalimakersuite-pa.clients6.google.com
-# JetBrains AI
 DOMAIN-SUFFIX,grazie.ai
-# Microsoft
-# > Copilot
 DOMAIN,copilot.microsoft.com
 DOMAIN,sydney.bing.com
 DOMAIN,www.bing.com
-# Meta
 DOMAIN,imagine.meta.com
-# GitHub Copilot
 DOMAIN-SUFFIX,githubcopilot.com

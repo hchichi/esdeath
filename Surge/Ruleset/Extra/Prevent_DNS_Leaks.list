@@ -1,8 +1,13 @@
-# UPDATED: 2024/11/18 13:34:58
+########################################
+# UPDATED: 2024/11/18 14:38:31
 # STATS:
-# OTHER: 1
-# TOTAL: 1
-[object Object]
+# DOMAIN: 1
+# DOMAIN-SUFFIX: 19
+# DOMAIN-KEYWORD: 1
+# TOTAL: 21
+# SOURCES:
+#  - https://raw.githubusercontent.com/Repcz/Tool/X/Surge/Rules/Prevent_DNS_Leaks.list
+########################################
 DOMAIN,ip-scan.adspower.net
 DOMAIN-SUFFIX,immersivetranslate.com
 DOMAIN-SUFFIX,browserscan.net

@@ -1,50 +1,37 @@
-# UPDATED: 2024/11/18 13:34:54
+########################################
+# UPDATED: 2024/11/18 14:38:27
 # STATS:
-# OTHER: 1
-# TOTAL: 1
-[object Object]
-#PandaTv
+# DOMAIN-SUFFIX: 28
+# TOTAL: 28
+# This file contains test rules for EmbyServer.
+# SOURCES:
+#  - https://github.com/1120109856/lynn/raw/main/zl
+########################################
 DOMAIN-SUFFIX,kr.pdatv.cc
-#pilipili
 DOMAIN-SUFFIX,pilipili.hitagi.me
 DOMAIN-SUFFIX,pilifun.top
 DOMAIN-SUFFIX,wawohk4837.pilifun.top
 DOMAIN-SUFFIX,cerahk.pilipili.club
 DOMAIN-SUFFIX,us.pilifun.top
-#Micu
 DOMAIN-SUFFIX,tv.micu.hk
 DOMAIN-SUFFIX,v0.micu.hk
-#gugu
 DOMAIN-SUFFIX,guguemby.site
-#1111
 DOMAIN-SUFFIX,pm.xmsl.org
 DOMAIN-SUFFIX,hd.xmsl.org
-#舒服
 DOMAIN-SUFFIX,jz.mcjoker.xyz
-#小筑
 DOMAIN-SUFFIX,emby.uhhdc.com
-#saturdy
 DOMAIN-SUFFIX,emby.saturday.video
-#Nanflix
 DOMAIN-SUFFIX,vip.nanflix.net
-#喜鹊
 DOMAIN-SUFFIX,henan.032095.xyz
-#开心
 DOMAIN-SUFFIX,emby.127255.best
 DOMAIN-SUFFIX,pemby.127255.best
-#好鸭
 DOMAIN-SUFFIX,niceduck.lol
-#众筹
 DOMAIN-SUFFIX,pemby.127255.best
 DOMAIN-SUFFIX,pemby.127066.xyz
 DOMAIN-SUFFIX,emby2.lilyya.xyz
-#桃子私
 DOMAIN-SUFFIX,embymv.top
-#蘑菇
 DOMAIN-SUFFIX,ss.ianong.cn
 DOMAIN-SUFFIX,mm.mooguu.xyz
 DOMAIN-SUFFIX,bx.mooguu.top
-#nfhk
 DOMAIN-SUFFIX,emby.uhhdc.com
-#风火轮
 DOMAIN-SUFFIX,emby2.ycxdy.top
