@@ -41,7 +41,9 @@ export function ensureDirectoryExists(dirPath: string): void {
  * @param content - 规则内容
  * @returns - 规则统计
  */
-export function getRuleStats(content: string): RuleStats {
+export function getRuleStats(content: string | Buffer): RuleStats {
+  const contentStr = Buffer.isBuffer(content) ? content.toString('utf-8') : String(content);
+  
   const stats: RuleStats = {
     total: 0,
     domain: 0,
@@ -54,7 +56,7 @@ export function getRuleStats(content: string): RuleStats {
     other: 0
   };
 
-  const lines = content.split('\n').filter(line => line.trim() && !line.startsWith('#'));
+  const lines = contentStr.split('\n').filter(line => line.trim() && !line.startsWith('#'));
   stats.total = lines.length;
 
   lines.forEach(line => {
@@ -95,8 +97,10 @@ export function getRuleStats(content: string): RuleStats {
  * @param converter - 可选的规则转换器
  * @returns - 清理和排序后的规则
  */
-export function cleanAndSort(content: string, converter?: RuleConverter): string {
-  const lines = content.split('\n');
+export function cleanAndSort(content: string | Buffer, converter?: RuleConverter): string {
+  const contentStr = Buffer.isBuffer(content) ? content.toString('utf-8') : String(content);
+  
+  const lines = contentStr.split('\n');
   const rules: string[] = [];
 
   lines.forEach(line => {
@@ -193,8 +197,10 @@ interface HeaderInfo {
  * @param info - 头部信息
  * @param sourceUrls - 源文件URLs（用于合并规则）
  */
-export function addRuleHeader(content: string, info?: HeaderInfo, sourceUrls?: string[]): string {
-  const stats = getRuleStats(content);
+export function addRuleHeader(content: string | Buffer, info?: HeaderInfo, sourceUrls?: string[]): string {
+  const contentStr = Buffer.isBuffer(content) ? content.toString('utf-8') : String(content);
+  
+  const stats = getRuleStats(contentStr);
   const timestamp = new Date().toLocaleString('zh-CN', { timeZone: 'Asia/Shanghai' });
   
   // 收集所有有效的 URLs
@@ -225,7 +231,7 @@ export function addRuleHeader(content: string, info?: HeaderInfo, sourceUrls?: s
       ...sources.map(source => `#  - ${source}`)
     ],
     '',
-    content
+    contentStr
   ].flat().filter(Boolean);
 
   return headers.join('\n');
