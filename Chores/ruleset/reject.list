@@ -33,7 +33,7 @@ DOMAIN,mallapi2.qinlinkeji.com
 # Pixiv - 作品底部广告
 DOMAIN,open-pixon.ads-pixiv.net
 AND,((DOMAIN-KEYWORD,-ad-),(DOMAIN-SUFFIX,byteimg.com))
-#AND, ((DOMAIN-KEYWORD, -sign-), (DOMAIN-SUFFIX, tiktokcdn.com))
+#AND,((DOMAIN-KEYWORD,-sign-),(DOMAIN-SUFFIX,tiktokcdn.com))
 AND,((DOMAIN-KEYWORD,-ttam-),(DOMAIN-SUFFIX,ibyteimg.com))
 AND,((DOMAIN-KEYWORD,ssdk-),(DOMAIN-SUFFIX,pangle.io))
 AND,((DOMAIN-KEYWORD,pangolin),(DOMAIN-SUFFIX,sgsnssdk.com))
@@ -105,7 +105,6 @@ DOMAIN,gdfp.gifshow.com
 DOMAIN,open.e.kuaishou.com
 DOMAIN,adtrack.e.kuaishou.com
 DOMAIN-SUFFIX,adukwai.com
-DOMAIN-SUFFIX,adbkwai.com
 # SupersonicAds
 DOMAIN,init.supersonicads.com
 # APPSAD
@@ -178,12 +177,12 @@ DOMAIN,info6.video.qq.com
 DOMAIN,ios.bugly.qq.com
 DOMAIN,pro.bugly.qq.com
 DOMAIN,ios.video.mpush.qq.com
-# DOMAIN, mazu.m.qq.com // 误杀
+# DOMAIN,mazu.m.qq.com // 误杀
 DOMAIN,mi.gdt.qq.com
 DOMAIN,otheve.beacon.qq.com
 DOMAIN,pgdt.gtimg.cn
 DOMAIN,pgdt.ugdtimg.com
-# DOMAIN, qzonestyle.gtimg.cn // 误杀
+# DOMAIN,qzonestyle.gtimg.cn // 误杀
 DOMAIN,qzs.gdtimg.com
 DOMAIN,qzs.qq.com
 DOMAIN,rmonitor.qq.com
@@ -218,6 +217,7 @@ DOMAIN,dnms.getui.com
 DOMAIN,ido.getui.net
 DOMAIN,sdk-conf.getui.com
 DOMAIN,sdk-open-phone.getui.com
+DOMAIN,ido.gepush.com
 DOMAIN-SUFFIX,mobileservice.cn
 DOMAIN-SUFFIX,getui.com
 DOMAIN-SUFFIX,igexin.com
@@ -325,6 +325,8 @@ DOMAIN,adx-sg-req.bridgeoos.com
 DOMAIN-SUFFIX,bridgeoos.com
 # 海南丽声影视文化传播有限公司
 DOMAIN,ad-evods.tianya.tv
+# 杭州推啊网络科技有限公司
+DOMAIN,adx.tuia.cn
 DOMAIN,adstats.tencentmusic.com
 DOMAIN,ad.tencentmusic.com
 DOMAIN,adcdn.tencentmusic.com
@@ -365,7 +367,7 @@ DOMAIN,huichuan-mc.sm.cn
 DOMAIN,huichuan.sm.cn
 DOMAIN,iyes.youku.com
 #DOMAIN,m-vali.cp31.ott.cibntv.net
-# DOMAIN, m-vali.cp31.ott.cibntv.net
+# DOMAIN,m-vali.cp31.ott.cibntv.net
 DOMAIN,mc.atm.youku.com
 DOMAIN,vali-g1.cp31.ott.cibntv.net
 DOMAIN,vali-ugc.cp31.ott.cibntv.net
@@ -387,7 +389,7 @@ DOMAIN,iadmat.nosdn.127.net
 DOMAIN,iadmatapk.nosdn.127.net
 DOMAIN,iadmusicmat.music.126.net
 #DOMAIN,iadmusicmatvideo.music.126.net
-# DOMAIN, iadmusicmatvideo.music.126.net
+# DOMAIN,iadmusicmatvideo.music.126.net
 DOMAIN-SUFFIX,163jiasu.com
 AND,((PROTOCOL,QUIC),(DOMAIN-SUFFIX,xiaohongshu.com))
 DOMAIN,aaid.uyunad.com
@@ -459,7 +461,7 @@ URL-REGEX,"^http:\/\/114\.110\.97\.97\/d"
 URL-REGEX,"^http:\/\/121\.5\.84\.85\/d"
 URL-REGEX,"^http:\/\/\[2402:4e00:1411:201:0:9964:ba21:5a41\]\/d"
 AND,((DOMAIN-KEYWORD,-ad-),(DOMAIN-SUFFIX,byteimg.com))
-#AND, ((DOMAIN-KEYWORD, -sign-), (DOMAIN-SUFFIX, tiktokcdn.com))
+#AND,((DOMAIN-KEYWORD,-sign-),(DOMAIN-SUFFIX,tiktokcdn.com))
 AND,((DOMAIN-KEYWORD,-ttam-),(DOMAIN-SUFFIX,ibyteimg.com))
 AND,((DOMAIN-KEYWORD,ssdk-),(DOMAIN-SUFFIX,pangle.io))
 AND,((DOMAIN-KEYWORD,pangolin),(DOMAIN-SUFFIX,sgsnssdk.com))
@@ -531,12 +533,12 @@ DOMAIN,info4.video.qq.com
 DOMAIN,info6.video.qq.com
 DOMAIN,ios.bugly.qq.com
 DOMAIN,ios.video.mpush.qq.com
-# DOMAIN, mazu.m.qq.com // 误杀
+# DOMAIN,mazu.m.qq.com // 误杀
 DOMAIN,mi.gdt.qq.com
 DOMAIN,otheve.beacon.qq.com
 DOMAIN,pgdt.gtimg.cn
 DOMAIN,pgdt.ugdtimg.com
-# DOMAIN, qzonestyle.gtimg.cn // 误杀
+# DOMAIN,qzonestyle.gtimg.cn // 误杀
 DOMAIN,qzs.gdtimg.com
 DOMAIN,qzs.qq.com
 DOMAIN,rmonitor.qq.com
@@ -623,7 +625,7 @@ DOMAIN-SUFFIX,bridgeoos.com
 # 拦截HTTPDNS
 DOMAIN,httpdns.yunxindns.com
 AND,((DOMAIN-KEYWORD,-ad-),(DOMAIN-SUFFIX,byteimg.com))
-#AND, ((DOMAIN-KEYWORD, -sign-), (DOMAIN-SUFFIX, tiktokcdn.com))
+#AND,((DOMAIN-KEYWORD,-sign-),(DOMAIN-SUFFIX,tiktokcdn.com))
 AND,((DOMAIN-KEYWORD,-ttam-),(DOMAIN-SUFFIX,ibyteimg.com))
 AND,((DOMAIN-KEYWORD,ssdk-),(DOMAIN-SUFFIX,pangle.io))
 AND,((DOMAIN-KEYWORD,pangolin),(DOMAIN-SUFFIX,sgsnssdk.com))
@@ -685,17 +687,17 @@ DOMAIN,ios.bugly.qq.com
 DOMAIN,sdk.e.qq.com
 DOMAIN-SUFFIX,ugdtimg.com
 #DOMAIN,adsmind.ugdtimg.com
-# DOMAIN, adsmind.ugdtimg.com
+# DOMAIN,adsmind.ugdtimg.com
 #DOMAIN,pgdt.ugdtimg.com
-# DOMAIN, pgdt.ugdtimg.com
+# DOMAIN,pgdt.ugdtimg.com
 DOMAIN-SUFFIX,gdtimg.com
 #DOMAIN,qzs.gdtimg.com
-# DOMAIN, qzs.gdtimg.com
+# DOMAIN,qzs.gdtimg.com
 DOMAIN-SUFFIX,gdt.qq.com
 #DOMAIN,mi.gdt.qq.com
-# DOMAIN, mi.gdt.qq.com
+# DOMAIN,mi.gdt.qq.com
 #DOMAIN,win.gdt.qq.com
-# DOMAIN, win.gdt.qq.com
+# DOMAIN,win.gdt.qq.com
 #DOMAIN,v2.gdt.qq.com
 # 友盟
 DOMAIN,cnlogs.umeng.com
@@ -710,7 +712,7 @@ DOMAIN,sdk.1rtb.net
 # 北京锐讯灵通科技有限公司
 DOMAIN,ztoken.uyunad.com
 AND,((DOMAIN-KEYWORD,-ad-),(DOMAIN-SUFFIX,byteimg.com))
-#AND, ((DOMAIN-KEYWORD, -sign-), (DOMAIN-SUFFIX, tiktokcdn.com))
+#AND,((DOMAIN-KEYWORD,-sign-),(DOMAIN-SUFFIX,tiktokcdn.com))
 AND,((DOMAIN-KEYWORD,-ttam-),(DOMAIN-SUFFIX,ibyteimg.com))
 AND,((DOMAIN-KEYWORD,ssdk-),(DOMAIN-SUFFIX,pangle.io))
 AND,((DOMAIN-KEYWORD,pangolin),(DOMAIN-SUFFIX,sgsnssdk.com))
@@ -781,16 +783,16 @@ DOMAIN,ios.bugly.qq.com
 DOMAIN,sdk.e.qq.com
 DOMAIN-SUFFIX,ugdtimg.com
 #DOMAIN,adsmind.ugdtimg.com
-# DOMAIN, adsmind.ugdtimg.com
+# DOMAIN,adsmind.ugdtimg.com
 #DOMAIN,pgdt.ugdtimg.com
-# DOMAIN, pgdt.ugdtimg.com
+# DOMAIN,pgdt.ugdtimg.com
 #DOMAIN,qzs.gdtimg.com
-# DOMAIN, qzs.gdtimg.com
+# DOMAIN,qzs.gdtimg.com
 DOMAIN-SUFFIX,gdt.qq.com
 #DOMAIN,mi.gdt.qq.com
-# DOMAIN, mi.gdt.qq.com
+# DOMAIN,mi.gdt.qq.com
 #DOMAIN,win.gdt.qq.com
-# DOMAIN, win.gdt.qq.com
+# DOMAIN,win.gdt.qq.com
 #DOMAIN,v2.gdt.qq.com
 # 个推
 DOMAIN-SUFFIX,mobileservice.cn
@@ -812,7 +814,7 @@ DOMAIN,ad.cyapi.cn
 DOMAIN,gather.colorfulclouds.net
 AND,((URL-REGEX,"^http:\/\/amdc\.m\.taobao\.com\/amdc\/mobileDispatch"),(USER-AGENT,"%E9%97%B2%E9%B1%BC*"))
 AND,((DOMAIN-KEYWORD,-ad-),(DOMAIN-SUFFIX,byteimg.com))
-#AND, ((DOMAIN-KEYWORD, -sign-), (DOMAIN-SUFFIX, tiktokcdn.com))
+#AND,((DOMAIN-KEYWORD,-sign-),(DOMAIN-SUFFIX,tiktokcdn.com))
 AND,((DOMAIN-KEYWORD,-ttam-),(DOMAIN-SUFFIX,ibyteimg.com))
 AND,((DOMAIN-KEYWORD,ssdk-),(DOMAIN-SUFFIX,pangle.io))
 AND,((DOMAIN-KEYWORD,pangolin),(DOMAIN-SUFFIX,sgsnssdk.com))
@@ -869,12 +871,12 @@ DOMAIN,info4.video.qq.com
 DOMAIN,info6.video.qq.com
 DOMAIN,ios.bugly.qq.com
 DOMAIN,ios.video.mpush.qq.com
-# DOMAIN, mazu.m.qq.com // 误杀
+# DOMAIN,mazu.m.qq.com // 误杀
 DOMAIN,mi.gdt.qq.com
 DOMAIN,otheve.beacon.qq.com
 DOMAIN,pgdt.gtimg.cn
 DOMAIN,pgdt.ugdtimg.com
-# DOMAIN, qzonestyle.gtimg.cn // 误杀
+# DOMAIN,qzonestyle.gtimg.cn // 误杀
 DOMAIN,qzs.gdtimg.com
 DOMAIN,qzs.qq.com
 DOMAIN,rmonitor.qq.com
@@ -935,12 +937,12 @@ DOMAIN,info4.video.qq.com
 DOMAIN,info6.video.qq.com
 DOMAIN,ios.bugly.qq.com
 DOMAIN,ios.video.mpush.qq.com
-# DOMAIN, mazu.m.qq.com // 误杀
+# DOMAIN,mazu.m.qq.com // 误杀
 DOMAIN,mi.gdt.qq.com
 DOMAIN,otheve.beacon.qq.com
 DOMAIN,pgdt.gtimg.cn
 DOMAIN,pgdt.ugdtimg.com
-# DOMAIN, qzonestyle.gtimg.cn // 误杀
+# DOMAIN,qzonestyle.gtimg.cn // 误杀
 DOMAIN,qzs.gdtimg.com
 DOMAIN,qzs.qq.com
 DOMAIN,rmonitor.qq.com
