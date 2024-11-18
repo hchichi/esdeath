@@ -12,7 +12,10 @@
     "baseUrl": ".",
     "paths": {
       "*": ["*"]
-    }
+    },
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "exactOptionalPropertyTypes": true
   },
   "include": [
     "Chores/**/*.ts"

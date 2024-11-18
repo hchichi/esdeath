@@ -1,35 +1,49 @@
-// 主程序
-import { REPO_PATH, ruleGroups } from './config';
-import { RuleProcessor } from './ruleProcessor';
-import { downloadFile, ensureDirectoryExists } from './utils';
+import { RuleProcessor } from './rule-processor';
+import { RuleConverter } from './rule-converter';
+import { RuleMerger } from './rule-merger';
+import { config, ruleGroups, specialRules } from './rule-sources';
+import { ensureDirectoryExists, initializeDirectoryStructure } from './utils';
 import path from 'node:path';
-import { fileURLToPath } from 'node:url';
-import { dirname } from 'node:path';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+async function cleanup(): Promise<void> {
+  console.log('Cleaning up...');
+}
 
 async function main() {
   try {
-    const processor = new RuleProcessor(REPO_PATH);
+    console.log('Starting rule processing...');
     
-    await Promise.all(ruleGroups.map(async (group) => {
+    // 初始化目录结构
+    initializeDirectoryStructure(config.repoPath, ruleGroups, specialRules);
+    
+    const converter = new RuleConverter('Surge');
+    const merger = new RuleMerger(config.repoPath, converter);
+    const processor = new RuleProcessor(config.repoPath, converter, merger);
+
+    // 处理常规规则组
+    for (const group of ruleGroups) {
       console.log(`Processing ${group.name} rules...`);
       
-      await Promise.all(group.files.map(async (rule) => {
-        const filePath = path.join(REPO_PATH, rule.path);
-        ensureDirectoryExists(path.dirname(filePath));
-        
+      for (const rule of group.files) {
         try {
-          await downloadFile(rule.url, filePath);
-          await processor.processRule(rule);
+          const filePath = path.join(config.repoPath, rule.path);
+          ensureDirectoryExists(path.dirname(filePath));
+          await processor.process(rule);
         } catch (error) {
           console.error(`Error processing ${rule.path}:`, error);
+          // 继续处理其他规则
         }
-      }));
-    }));
+      }
+    }
+
+    // 处理特殊规则
+    console.log('Processing special rules...');
+    await processor.processSpecialRules(specialRules);
+
+    console.log('Rule processing completed successfully.');
   } catch (error) {
     console.error('Fatal error:', error);
+    await cleanup();
     process.exit(1);
   }
 }

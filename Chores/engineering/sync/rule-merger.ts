@@ -12,7 +12,7 @@ export class RuleMerger {
   ) {}
 
   async mergeSpecialRules(config: SpecialRuleConfig): Promise<void> {
-    const { name, targetFile, sourceFiles, extraRules, cleanup } = config;
+    const { name, targetFile, sourceFiles, extraRules, cleanup, skipCleanup } = config;
     console.log(`Merging special rules: ${name}`);
 
     try {
@@ -34,19 +34,13 @@ export class RuleMerger {
         mergedContent += '\n' + extraRules.join('\n');
       }
 
-      // 如果需要清理和排序
-      if (cleanup === true) {
+      // 根据 skipCleanup 属性决定是否清理和排序
+      if (!skipCleanup && cleanup) {
         mergedContent = cleanAndSort(mergedContent, this.converter);
       }
 
-      // 添加头部注释
-      if (config.header) {
-        mergedContent = addRuleHeader(mergedContent, {
-          title: config.header.title || `${name} Rules`,
-          description: config.header.description || `Combined ${name} rules`,
-          sources: sourceUrls
-        });
-      }
+      // 添加头部信息
+      mergedContent = addRuleHeader(mergedContent, config.header);
 
       // 确保目标目录存在
       const targetDir = path.dirname(path.join(this.repoPath, targetFile));
@@ -57,19 +51,6 @@ export class RuleMerger {
         path.join(this.repoPath, targetFile),
         mergedContent
       );
-
-      // 删除源文件
-      for (const sourceFile of sourceFiles) {
-        if (sourceFile !== targetFile) { // 不删除目标文件
-          const fullPath = path.join(this.repoPath, sourceFile);
-          try {
-            await fs.promises.unlink(fullPath);
-            console.log(`Deleted source file: ${sourceFile}`);
-          } catch (error) {
-            console.warn(`Failed to delete source file: ${sourceFile}`, error);
-          }
-        }
-      }
 
       console.log(`Successfully merged ${name} rules to ${targetFile}`);
     } catch (error) {
