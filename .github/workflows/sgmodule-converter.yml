@@ -113,3 +113,10 @@ jobs:
             git commit -m "Update sgmodule files with GitHub-hosted JS resources"
             git push
           fi
+
+      - name: Trigger Deploy Workflow
+        if: success()
+        uses: peter-evans/repository-dispatch@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          event-type: trigger-deploy

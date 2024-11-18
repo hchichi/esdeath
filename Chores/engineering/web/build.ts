@@ -3,6 +3,7 @@
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 import { promises as fs, Dirent } from 'node:fs';
+import { getRuleStats } from '../sync/utils';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -16,65 +17,94 @@ const OUTPUT_DIR = path.join(ROOT_DIR, "public");
 const allowedExtensions = [".list", ".mmdb", ".sgmodule"];
 const allowedDirectories = ["Surge", "GeoIP", "Ruleset", "Module"];
 
-const prioritySorter = (a: Dirent, b: Dirent) => {
-    if (a.isDirectory() && !b.isDirectory()) return -1;
-    if (!a.isDirectory() && b.isDirectory()) return 1;
-    return a.name.localeCompare(b.name);
-};
+// 生成文件信息
+async function getFileInfo(filePath: string) {
+  const stats = await fs.stat(filePath);
+  const content = await fs.readFile(filePath, 'utf-8');
+  const ruleStats = filePath.endsWith('.list') ? getRuleStats(content) : null;
+  
+  return {
+    size: (stats.size / 1024).toFixed(2) + ' KB',
+    lastModified: new Date(stats.mtime).toLocaleString('zh-CN'),
+    ruleCount: ruleStats?.total || null
+  };
+}
 
 // 生成目录树
 async function walk(dir: string, baseUrl: string) {
-    let tree = "";
-    const entries = await fs.readdir(dir, { withFileTypes: true });
-    entries.sort(prioritySorter);
+  let tree = "";
+  const entries = await fs.readdir(dir, { withFileTypes: true });
+  entries.sort((a, b) => {
+    if (a.isDirectory() && !b.isDirectory()) return -1;
+    if (!a.isDirectory() && b.isDirectory()) return 1;
+    return a.name.localeCompare(b.name);
+  });
 
-    for (const entry of entries) {
-        const fullPath = path.join(dir, entry.name);
-        const relativePath = path.relative(ROOT_DIR, fullPath);
-        const url = `${baseUrl}${encodeURIComponent(relativePath)}`;
+  for (const entry of entries) {
+    const fullPath = path.join(dir, entry.name);
+    const relativePath = path.relative(ROOT_DIR, fullPath);
+    const url = `${baseUrl}${encodeURIComponent(relativePath)}`;
 
-        if (entry.name === 'src' || entry.name === 'node_modules' || entry.name.startsWith('.')) {
-            continue;
-        }
-
-        if (entry.isDirectory()) {
-            if (allowedDirectories.includes(entry.name) || 
-                path.dirname(relativePath).startsWith('Surge/Module') ||
-                path.dirname(relativePath).startsWith('Surge/Ruleset')) {
-                const subEntries = await walk(fullPath, baseUrl);
-                if (subEntries) {
-                    tree += `
-                        <li class="folder">
-                            ${entry.name}
-                            <ul>
-                                ${subEntries}
-                            </ul>
-                        </li>
-                    `;
-                }
-            }
-        } else if (allowedExtensions.includes(path.extname(entry.name).toLowerCase())) {
-            const buttons = entry.name.endsWith('.sgmodule') 
-                ? `<a style="border-bottom: none" href="surge:///install-module?url=${encodeURIComponent(url)}" target="_blank">
-                       <img alt="导入 Surge(远程模块)" title="导入 Surge(远程模块)" style="height: 22px" src="https://raw.githubusercontent.com/xream/scripts/refs/heads/main/scriptable/surge/surge-transparent.png"/>
-                   </a>
-                   <a style="border-bottom: none" href="scriptable:///run/SurgeModuleTool?url=${encodeURIComponent(url)}" target="_blank">
-                       <img alt="导入 Surge(本地模块)" title="导入 Surge(本地模块 需配合 Scriptable + Script Hub)" style="height: 22px" src="https://raw.githubusercontent.com/Script-Hub-Org/Script-Hub/refs/heads/main/assets/icon512x512.png"/>
-                   </a>`
-                : `<a style="border-bottom: none" class="copy-button" data-url="${url}">
-                       <img alt="复制规则链接" title="复制规则链接" style="height: 22px" src="https://raw.githubusercontent.com/xream/scripts/refs/heads/main/scriptable/surge/surge-transparent.png"/>
-                   </a>`;
-
-            tree += `
-                <li>
-                    <a class="file" href="${url}" target="_blank">${entry.name}
-                        ${buttons}
-                    </a>
-                </li>
-            `;
-        }
+    if (entry.name === 'src' || entry.name === 'node_modules' || entry.name.startsWith('.')) {
+      continue;
     }
-    return tree;
+
+    if (entry.isDirectory()) {
+      if (allowedDirectories.includes(entry.name) || 
+          path.dirname(relativePath).startsWith('Surge/Module') ||
+          path.dirname(relativePath).startsWith('Surge/Ruleset')) {
+        const subEntries = await walk(fullPath, baseUrl);
+        if (subEntries) {
+          tree += `
+            <li class="folder">
+              <div class="folder-header">
+                <i class="fas fa-folder"></i>
+                <span>${entry.name}</span>
+              </div>
+              <ul class="folder-content">
+                ${subEntries}
+              </ul>
+            </li>
+          `;
+        }
+      }
+    } else if (allowedExtensions.includes(path.extname(entry.name).toLowerCase())) {
+      const fileInfo = await getFileInfo(fullPath);
+      const fileIcon = entry.name.endsWith('.sgmodule') ? 'fa-cube' : 
+                      entry.name.endsWith('.list') ? 'fa-list' : 'fa-file';
+      
+      const buttons = entry.name.endsWith('.sgmodule') 
+        ? `<div class="action-buttons">
+            <a href="surge:///install-module?url=${encodeURIComponent(url)}" class="btn btn-surge" title="导入 Surge(远程模块)">
+              <i class="fas fa-cloud-download-alt"></i>
+            </a>
+            <a href="scriptable:///run/SurgeModuleTool?url=${encodeURIComponent(url)}" class="btn btn-script" title="导入 Surge(本地模块)">
+              <i class="fas fa-file-download"></i>
+            </a>
+          </div>`
+        : `<div class="action-buttons">
+            <button class="btn btn-copy" data-url="${url}" title="复制规则链接">
+              <i class="fas fa-copy"></i>
+            </button>
+          </div>`;
+
+      tree += `
+        <li class="file">
+          <div class="file-info">
+            <i class="fas ${fileIcon}"></i>
+            <a href="${url}" target="_blank">${entry.name}</a>
+            <span class="file-meta">
+              ${fileInfo.ruleCount ? `<span class="rule-count">${fileInfo.ruleCount} rules</span>` : ''}
+              <span class="file-size">${fileInfo.size}</span>
+              <span class="last-modified">${fileInfo.lastModified}</span>
+            </span>
+            ${buttons}
+          </div>
+        </li>
+      `;
+    }
+  }
+  return tree;
 }
 
 function generateHtml(tree: string) {
@@ -271,7 +301,7 @@ async function build() {
     const html = generateHtml(tree);
     await writeHtmlFile(html);
 }
-
 build().catch((err) => {
     console.error("Error during build:", err);
 });
+

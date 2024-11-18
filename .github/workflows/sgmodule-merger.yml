@@ -52,5 +52,14 @@ jobs:
             git commit -m "Update merged All-in-One-2.x.sgmodule and reject list"
             git push
           fi
+
+      - name: Trigger Deploy Workflow
+        if: success()
+        uses: peter-evans/repository-dispatch@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          event-type: trigger-deploy
+
         env:
           TOKEN: ${{ secrets.GITHUB_TOKEN }}
+

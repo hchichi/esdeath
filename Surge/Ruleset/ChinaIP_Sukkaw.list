@@ -1,12 +1,3 @@
-########################################
-# UPDATED: 2024/11/18 14:38:30
-# STATS:
-# DOMAIN: 1
-# IP-CIDR: 4176
-# TOTAL: 4177
-# SOURCES:
-#  - https://ruleset.skk.moe/List/ip/china_ip.conf
-########################################
 DOMAIN,this_ruleset_is_made_by_sukkaw.ruleset.skk.moe
 IP-CIDR,1.1.8.0/24
 IP-CIDR,1.2.4.0/24

@@ -3,7 +3,8 @@ name: Sync Ruleset
 on:
   workflow_dispatch:
   schedule:
-    - cron: "30 * * * *"
+    #- cron: "30 * * * *"
+    - cron: "0 6,18 * * *"
   
 jobs:
   Sync-Rules:
@@ -43,6 +44,7 @@ jobs:
         keep_minimum_runs: 2
 
     - name: Trigger Deploy Workflow  
+      if: success()
       uses: peter-evans/repository-dispatch@v2
       with:
         token: ${{ secrets.GITHUB_TOKEN }}

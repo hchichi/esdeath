@@ -1,3 +1,14 @@
+########################################
+# REJECT (Anti-IP Attribution)
+# Last updated: 2024/11/18 14:41:59
+# DOMAIN: 1
+# IP-CIDR: 18
+# IP-CIDR6: 1
+# Total: 20
+# Anti IP attribution reject rules
+# Data sources:
+#  - https://github.com/SunsetMkt/anti-ip-attribution/raw/main/generated/rule-set-reject.list
+########################################
 DOMAIN,httpdns.bilivideo.com
 IP-CIDR,47.101.175.206/32,no-resolve
 IP-CIDR,47.100.123.169/32,no-resolve
