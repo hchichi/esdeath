@@ -1,17 +1,3 @@
-########################################
-# 🌐 ASN China Rules by Missuo
-# Last updated: 2024/11/18 15:27:46
-# DOMAIN: 2
-# IP-ASN: 4974
-# OTHER: 1
-# Total: 4977
-# Match all domains and IPs in Mainland China ASN to direct
-# Data sources:
-#  - https://raw.githubusercontent.com/missuo/ASN-China/main/ASN.China.list
-########################################
-DOMAIN,// ASN Information in China. (https://github.com/missuo/ASN-China)
-DOMAIN,// Last Updated: UTC 2024-11-17 16:04:41
-// Made by Vincent,All rights reserved.
 IP-ASN,140731 // TOHU Public Internet
 IP-ASN,24429 // Zhejiang Taobao Network Co.,Ltd
 IP-ASN,132203 // Shenzhen Tencent Computer Systems Company Limited

@@ -182,9 +182,17 @@ export function getRuleStats(content: string | Buffer): RuleStats {
 export function cleanAndSort(content: string | Buffer, converter?: RuleConverter): string {
   const contentStr = Buffer.isBuffer(content) ? content.toString('utf-8') : String(content);
   
-  // 将内容分行并过滤空行
-  const lines = contentStr.split('\n').map(line => line.trim()).filter(Boolean);
+  // 将内容分行
+  const lines = contentStr.split('\n').map(line => line.trim());
+
   const rules = new Set<string>();
+
+  for (let line of lines) {
+    // 如果启用了 preserveComments，保留空行
+    if (converter?.options.preserveComments && !line) {
+      rules.add('');
+      continue;
+    }
 
   for (let line of lines) {
     // 跳过注释行

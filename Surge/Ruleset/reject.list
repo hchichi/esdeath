@@ -1,6 +1,6 @@
 ########################################
-# REJECT
-# Last updated: 2024/11/18 15:27:50
+# Advertising & malicious & Tracking
+# Last updated: 2024/11/18 16:04:26
 # DOMAIN: 292
 # DOMAIN-SUFFIX: 841
 # DOMAIN-KEYWORD: 5
@@ -8,7 +8,7 @@
 # IP-CIDR6: 1
 # USER-AGENT: 1
 # Total: 1145
-# This file contains rules for advertising, hijacking, and tracking.
+# Made by RuleGo, All rights reserved
 # Data sources:
 #  - https://raw.githubusercontent.com/ConnersHua/RuleGo/master/Surge/Ruleset/Extra/Reject/Advertising.list
 #  - https://raw.githubusercontent.com/ConnersHua/RuleGo/master/Surge/Ruleset/Extra/Reject/Malicious.list

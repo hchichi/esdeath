@@ -80,15 +80,15 @@ export const ruleGroups: RuleGroup[] = [
         url: 'https://ruleset.skk.moe/List/non_ip/ai.conf',
       },
       {
-        path: 'Surge/Ruleset/aigc/aigc_keli.list',
+        path: 'Surge/Ruleset/aigc_keli.list',
         url: 'https://proxyresource.pages.dev/Tool/Loon/Rule/AI.list',
       },
       {
-        path: 'Surge/Ruleset/aigc/aigc_connershua.list',
+        path: 'Surge/Ruleset/aigc_connershua.list',
         url: 'https://github.com/ConnersHua/RuleGo/raw/master/Surge/Ruleset/Extra/AI.list',
       },
       {
-        path: 'Surge/Ruleset/aigc/aigc_hiven.list',
+        path: 'Surge/Ruleset/aigc_hiven.list',
         url: 'https://raw.githubusercontent.com/hiven425/hiven/master/config/AI.list',
       }
     ]
@@ -312,15 +312,15 @@ export const ruleGroups: RuleGroup[] = [
         url: 'https://proxyresource.pages.dev/Tool/Loon/Rule/ChinaDownloadCDN.list',
       },
       {
-        path: 'Surge/Ruleset/cdn/cdn.list',
+        path: 'Surge/Ruleset/cdn.list',
         url: 'https://ruleset.skk.moe/List/domainset/cdn.conf',
       },
       {
-        path: 'Surge/Ruleset/cdn/cdn_noip.list',
+        path: 'Surge/Ruleset/cdn_noip.list',
         url: 'https://ruleset.skk.moe/List/non_ip/cdn.conf',
       },
       { 
-        path: 'Surge/Ruleset/cdn/cdn_ip.list',
+        path: 'Surge/Ruleset/cdn_ip.list',
         url: 'https://ruleset.skk.moe/List/ip/cdn.conf',
       }
     ]
@@ -498,7 +498,7 @@ export const specialRules: SpecialRuleConfig[] = [
   },
   {
     name: 'Emby',
-    targetFile: 'Surge/Ruleset/Streaming/Video/EmbyTest.list',
+    targetFile: 'Surge/Ruleset/streaming/video/embytest.list',
     sourceFiles: [
       'Surge/Ruleset/streaming/video/embytest.list',
       'Surge/Ruleset/streaming/video/embytest2.list'
@@ -514,9 +514,8 @@ export const specialRules: SpecialRuleConfig[] = [
     name: 'CDN',
     targetFile: 'Surge/Ruleset/cdn.list',
     sourceFiles: [
-      'Surge/Ruleset/cdn/cdn.list',  // domain-set
-      'Surge/Ruleset/cdn/cdn_noip.list',
-      'Surge/Ruleset/cdn/cdn_ip.list'
+      'Surge/Ruleset/cdn_noip.list',
+      'Surge/Ruleset/cdn_ip.list'
     ],
     cleanup: true,
     header: {
@@ -544,9 +543,9 @@ export const specialRules: SpecialRuleConfig[] = [
     name: 'AI',
     targetFile: 'Surge/Ruleset/aigc.list',
     sourceFiles: [
-      'Surge/Ruleset/aigc/aigc_keli.list',
-      'Surge/Ruleset/aigc/aigc_connershua.list',
-      'Surge/Ruleset/aigc/aigc_hiven.list'
+      'Surge/Ruleset/aigc_keli.list',
+      'Surge/Ruleset/aigc_connershua.list',
+      'Surge/Ruleset/aigc_hiven.list'
     ],
     extraRules: ['DOMAIN-SUFFIX,openrouter.ai'],
     cleanup: true,
@@ -600,6 +599,7 @@ export const config = {
   defaultFormat: 'Surge' as const,
   cleanup: false,
   stats: true,
+  preserveComments: true,  // 添加此行
   ipRules: {
     generateResolveVersion: false,
     resolveVersionSuffix: '_Resolve'

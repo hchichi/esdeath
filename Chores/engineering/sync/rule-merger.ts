@@ -58,6 +58,15 @@ export class RuleMerger {
       await fs.promises.writeFile(targetPath, mergedContent);
 
       console.log(`Successfully merged ${name} rules to ${targetFile}`);
+
+      // 8. 删除源文件
+      await Promise.all(
+        sourceFiles.map(async file => {
+          const filePath = path.join(this.repoPath, file);
+          await fs.promises.unlink(filePath);
+          console.log(`Deleted source file: ${filePath}`);
+        })
+      );
     } catch (error) {
       console.error(`Error merging ${name} rules:`, error);
       throw error;
