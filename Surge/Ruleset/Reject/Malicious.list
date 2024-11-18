@@ -1,9 +1,12 @@
-# UPDATED: 2024/11/18 13:34:55
+########################################
+# UPDATED: 2024/11/18 14:30:19
 # STATS:
-# OTHER: 1
-# TOTAL: 1
-[object Object]
-# > ZiTian
+# DOMAIN: 2
+# DOMAIN-SUFFIX: 89
+# TOTAL: 91
+# SOURCES:
+#  - https://raw.githubusercontent.com/ConnersHua/RuleGo/master/Surge/Ruleset/Extra/Reject/Malicious.list
+########################################
 DOMAIN-SUFFIX,51.la
 DOMAIN-SUFFIX,bootcdn.net
 DOMAIN-SUFFIX,bootcss.com
@@ -16,7 +19,6 @@ DOMAIN-SUFFIX,staticfile.org
 DOMAIN-SUFFIX,unionadjs.com
 DOMAIN-SUFFIX,xhsbpza.com
 DOMAIN,union.macoms.la
-# > funnull
 DOMAIN-SUFFIX,fn01.vip
 DOMAIN-SUFFIX,fnvip001.com
 DOMAIN-SUFFIX,funnull.com
@@ -24,19 +26,11 @@ DOMAIN-SUFFIX,funnull01.vip
 DOMAIN-SUFFIX,goedge.cloud
 DOMAIN-SUFFIX,goedge.cn
 DOMAIN-SUFFIX,jsdelivr.vip
-# > KuaiZip
-# https://zhuanlan.zhihu.com/p/39534279
 DOMAIN-SUFFIX,kuaizip.com
-# > MacKeeper
-# https://www.lizhi.io/blog/40002904
 DOMAIN-SUFFIX,mackeeper.com
 DOMAIN-SUFFIX,zryydi.com
-# > Adobe Flash China Special Edition
-# https://www.zhihu.com/question/281163698/answer/441388130
 DOMAIN-SUFFIX,flash.cn
 DOMAIN,geo2.adobe.com
-# > C&J Marketing
-# https://www.zhihu.com/question/46746200
 DOMAIN-SUFFIX,4009997658.com
 DOMAIN-SUFFIX,abbyychina.com
 DOMAIN-SUFFIX,affinitychina.cn

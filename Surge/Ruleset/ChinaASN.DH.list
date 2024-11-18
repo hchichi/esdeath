@@ -1,8 +1,13 @@
-# UPDATED: 2024/11/18 13:34:57
+########################################
+# 🌐 ASN China Rules by DH
+# UPDATED: 2024/11/18 14:30:22
 # STATS:
-# OTHER: 1
-# TOTAL: 1
-[object Object]
+# OTHER: 4964
+# TOTAL: 4964
+# 匹配中国大陆ASN的域名与IP全部直连
+# SOURCES:
+#  - https://raw.githubusercontent.com/DH-Teams/DH-Geo_AS_IP_CN/main/Geo_AS_CN.list
+########################################
 IP-ASN,4134
 IP-ASN,4538
 IP-ASN,4611

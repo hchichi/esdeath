@@ -1,21 +1,16 @@
-# UPDATED: 2024/11/18 13:34:56
+########################################
+# UPDATED: 2024/11/18 14:30:21
 # STATS:
-# OTHER: 1
-# TOTAL: 1
-[object Object]
-# NAME: ChinaMax
-# AUTHOR: blackmatrix7
-# REPO: https://gitlab.com/blackmatrix7/ios_rule_script
-# UPDATED: 2024-11-18 02:13:11
-# DOMAIN: 426
+# DOMAIN-SUFFIX: 43
 # DOMAIN-KEYWORD: 13
-# DOMAIN-SUFFIX: 92654
-# IP-ASN: 1
 # IP-CIDR: 8351
 # IP-CIDR6: 12498
-# PROCESS-NAME: 12
 # USER-AGENT: 65
-# TOTAL: 114020
+# OTHER: 13
+# TOTAL: 20983
+# SOURCES:
+#  - https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/ChinaMax/ChinaMax.list
+########################################
 DOMAIN-SUFFIX,cn
 DOMAIN-SUFFIX,ms
 DOMAIN-SUFFIX,alibaba

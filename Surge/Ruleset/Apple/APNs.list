@@ -1,11 +1,14 @@
-# UPDATED: 2024/11/18 13:34:52
+########################################
+# UPDATED: 2024/11/18 14:30:17
 # STATS:
-# OTHER: 1
-# TOTAL: 1
-[object Object]
-# Author: 可莉🅥
-# 引用地址 https://support.apple.com/en-us/HT210060
-# Apple 推送通知 - 当使用 Apple 推送通知服务 (APNS) 时，Apple 设备需要访问以下主机。
+# DOMAIN: 1
+# DOMAIN-SUFFIX: 1
+# IP-CIDR: 5
+# IP-CIDR6: 4
+# TOTAL: 11
+# SOURCES:
+#  - https://proxyresource.pages.dev/Tool/Loon/Rule/ApplePushNotificationService.list
+########################################
 DOMAIN-SUFFIX,push.apple.com //推送通知
 DOMAIN,identity.apple.com //APNs 证书请求门户
 IP-CIDR,17.249.0.0/16,no-resolve

@@ -1,23 +1,6 @@
-# CDN Rules
-# UPDATED: 2024/11/18 13:34:58
-# STATS:
-# DOMAIN: 1868
-# DOMAIN-SUFFIX: 815
-# DOMAIN-KEYWORD: 5
-# IP-CIDR: 3
-# URL-REGEX: 2
-# OTHER: 31
-# TOTAL: 2724
-# Combined CDN rules including domain-set, IP and non-IP rules
-# SOURCES:
-#  - https://ruleset.skk.moe/List/domainset/cdn.conf
-#  - https://ruleset.skk.moe/List/domainset/cdn.conf
-#  - https://ruleset.skk.moe/List/non_ip/cdn.conf
-#  - https://ruleset.skk.moe/List/ip/cdn.conf
 DOMAIN,0x0.st
 DOMAIN,3dna.nationbuilder.com
 DOMAIN,4gtvimg2.4gtv.tv
-DOMAIN,[object Object]
 DOMAIN,a.deviantart.net
 DOMAIN,a.fireside.fm
 DOMAIN,a5.behance.net
@@ -2706,8 +2689,8 @@ DOMAIN-WILDCARD,*.ffzy-online?.com
 DOMAIN-WILDCARD,*.ffzy-play?.com
 DOMAIN-WILDCARD,*.fsvod?.com
 DOMAIN-WILDCARD,*.kuaikan-cdn?.com
-DOMAIN-WILDCARD,*.lz-cdn?.com
 DOMAIN-WILDCARD,*.lz-cdn??.com
+DOMAIN-WILDCARD,*.lz-cdn?.com
 DOMAIN-WILDCARD,appcenter-filemanagement-*.cloudapp.net
 DOMAIN-WILDCARD,blog-imgs-??.2nt.com
 DOMAIN-WILDCARD,blog-imgs-??.fc2.com
@@ -2724,17 +2707,15 @@ DOMAIN-WILDCARD,ocsp.*.amazontrust.com
 DOMAIN-WILDCARD,proxy-*.dailymotion.com
 DOMAIN-WILDCARD,rr?---??.ouo.si
 DOMAIN-WILDCARD,s3.*.wasabisys.com
-DOMAIN-WILDCARD,static*.tgstat.ru
 DOMAIN-WILDCARD,static-??-cdn.eporner.com
+DOMAIN-WILDCARD,static*.tgstat.ru
 DOMAIN-WILDCARD,t?.nhentai.net
-DOMAIN-WILDCARD,video*.cloudokyo.cloud
 DOMAIN-WILDCARD,video-thumbnail2.fc2.com
 DOMAIN-WILDCARD,video-thumbnail2.liaoningmovie.net
 DOMAIN-WILDCARD,video?-thumbnail?.fc2.com
 DOMAIN-WILDCARD,video?-thumbnail?.liaoningmovie.net
+DOMAIN-WILDCARD,video*.cloudokyo.cloud
 DOMAIN-WILDCARD,vip-videoprem*-thumbnail?.fc2.com
 IP-CIDR,162.159.200.1/32
 IP-CIDR,162.159.200.123/32
 IP-CIDR,185.199.108.0/22
-URL-REGEX,^http://www\.microsoft\.com/pki/
-URL-REGEX,^http://www\.microsoft\.com/pkiops/

@@ -1,18 +1,15 @@
-# UPDATED: 2024/11/18 13:34:56
+########################################
+# UPDATED: 2024/11/18 14:30:20
 # STATS:
-# OTHER: 1
-# TOTAL: 1
-[object Object]
-#########################################
-# Sukka's Ruleset - Direct Rules
-# Last Updated: 2024-10-19T16:38:53.164Z
-# Size: 217
-# License: AGPL 3.0
-# Homepage: https://ruleset.skk.moe
-# GitHub: https://github.com/SukkaW/Surge
-#
-# This file contains domains and process that should not be proxied.
-#########################################
+# DOMAIN: 16
+# DOMAIN-SUFFIX: 155
+# DOMAIN-KEYWORD: 9
+# USER-AGENT: 1
+# OTHER: 36
+# TOTAL: 217
+# SOURCES:
+#  - https://ruleset.skk.moe/List/non_ip/direct.conf
+########################################
 DOMAIN,this_ruleset_is_made_by_sukkaw.ruleset.skk.moe
 DOMAIN-SUFFIX,lan
 DOMAIN-SUFFIX,m2m
@@ -230,4 +227,3 @@ PROCESS-NAME,SunloginClient_Helper
 PROCESS-NAME,BaiduNetdisk_mac
 PROCESS-NAME,Logi Options
 PROCESS-NAME,Logi Options Daemon
-################## EOF ##################

@@ -1,10 +1,12 @@
-# UPDATED: 2024/11/18 13:34:58
+########################################
+# UPDATED: 2024/11/18 14:30:23
 # STATS:
-# OTHER: 1
-# TOTAL: 1
-[object Object]
-# 内容：Github
-# 数量：6条
+# DOMAIN-SUFFIX: 5
+# DOMAIN-KEYWORD: 1
+# TOTAL: 6
+# SOURCES:
+#  - https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Github.list
+########################################
 DOMAIN-KEYWORD,github
 DOMAIN-SUFFIX,github.com
 DOMAIN-SUFFIX,github.io

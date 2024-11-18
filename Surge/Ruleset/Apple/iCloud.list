@@ -1,15 +1,12 @@
-# UPDATED: 2024/11/18 13:34:52
+########################################
+# UPDATED: 2024/11/18 14:30:18
 # STATS:
-# OTHER: 1
-# TOTAL: 1
-[object Object]
-# NAME: iCloud
-# AUTHOR: blackmatrix7
-# REPO: https://github.com/blackmatrix7/ios_rule_script
-# UPDATED: 2024-11-14 02:10:59
-# DOMAIN-KEYWORD: 1
 # DOMAIN-SUFFIX: 58
+# DOMAIN-KEYWORD: 1
 # TOTAL: 59
+# SOURCES:
+#  - https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/iCloud/iCloud.list
+########################################
 DOMAIN-SUFFIX,apple-cloudkit.com
 DOMAIN-SUFFIX,apple-icloud.cn
 DOMAIN-SUFFIX,apple-livephotoskit.com

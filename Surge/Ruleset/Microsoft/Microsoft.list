@@ -1,10 +1,12 @@
-# UPDATED: 2024/11/18 13:34:58
+########################################
+# UPDATED: 2024/11/18 14:30:23
 # STATS:
-# OTHER: 1
-# TOTAL: 1
-[object Object]
-# 内容：Microsoft
-# 数量：79条
+# DOMAIN-SUFFIX: 77
+# DOMAIN-KEYWORD: 2
+# TOTAL: 79
+# SOURCES:
+#  - https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Microsoft.list
+########################################
 DOMAIN-KEYWORD,1drv
 DOMAIN-KEYWORD,microsoft
 DOMAIN-SUFFIX,aadrm.com

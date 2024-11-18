@@ -1,10 +1,13 @@
-# UPDATED: 2024/11/18 13:34:57
+########################################
+# UPDATED: 2024/11/18 14:30:22
 # STATS:
-# OTHER: 1
-# TOTAL: 1
-[object Object]
-# 内容：Facebook
-# 数量：21条
+# DOMAIN-SUFFIX: 5
+# DOMAIN-KEYWORD: 2
+# IP-CIDR: 14
+# TOTAL: 21
+# SOURCES:
+#  - https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Facebook.list
+########################################
 DOMAIN-KEYWORD,facebook
 DOMAIN-KEYWORD,fbcdn
 DOMAIN-SUFFIX,facebook.com

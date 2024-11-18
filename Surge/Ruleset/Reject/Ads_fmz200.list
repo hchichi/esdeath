@@ -1,29 +1,13 @@
-# UPDATED: 2024/11/18 13:34:55
+########################################
+# UPDATED: 2024/11/18 14:30:20
 # STATS:
-# OTHER: 1
-# TOTAL: 1
-[object Object]
-#!name=广告拦截合集-分流
-#!desc=(F)针对部分APP和小程序广告进行拦截，某些APP要清除缓存或者重新安装APP，拦截广告才会生效！
-#!author=奶思
-#!homepage=https://github.com/fmz200/wool_scripts
-#!icon=https://raw.githubusercontent.com/fmz200/wool_scripts/main/icons/gif/naisi-01.gif
-#!raw-url=https://github.com/fmz200/wool_scripts/raw/main/QuantumultX/filter/fenliu.list
-#!tg-group=https://t.me/lanjieguanggao
-#!date=2024-10-18 23:10:00
-#!support=约9392行
-#!proxy-select=reject
-#############################################
-# "reject"        策略返回 HTTP 状态码 404,不附带任何额外内容
-# "reject-200"    策略返回 HTTP 状态码 200,不附带任何额外内容
-# "reject-img"    策略返回 HTTP 状态码 200,同时附带 1px gif
-# "reject-dict"   策略返回 HTTP 状态码 200,同时附带一个空的 JSON 对象
-# "reject-array"  策略返回 HTTP 状态码 200,同时附带一个空的 JSON 数组
-# 1.2.3.4/24      /24表示网络的子网掩码长度，即前24位是网络部分，后8位是主机部分。这种表示法常用于描述特定范围内的IP地址
-# 6.7.8.9/32      /32表示整个32位的IP地址都用于表示这一个地址，即单独的一个IP地址
-#############################################
-# >>>>>>>>>>>>>>> ✅ # ✅ <<<<<<<<<<<<<<
-# > 广告联盟
+# IP-CIDR: 207
+# USER-AGENT: 1
+# OTHER: 9452
+# TOTAL: 9660
+# SOURCES:
+#  - https://raw.githubusercontent.com/fmz200/wool_scripts/main/QuantumultX/filter/fenliu.list
+########################################
 host-suffix,miaozhen.com,reject
 host-suffix,ad-sign.byteimg.com,reject
 host-suffix,tos.pstatp.com,reject
@@ -38,44 +22,25 @@ host-suffix,gepush.com,reject
 host-suffix,igexin.com,reject
 host-suffix,log.aliyuncs.com,reject
 host-suffix,zlsdk.1rtb.net,reject
-# > 收集用户隐私联盟，若有问题自行设置白名单
 host-keyword,volc,reject
 host-keyword,umeng,reject
-# >>>>>>>>>>>>>>> ✅ # ✅ <<<<<<<<<<<<<<
 host,api.liquidlink.cn,reject
-# >>>>>>>>>>>>>>> ✅ 0 ✅ <<<<<<<<<<<<<<
-# >>>>>>>>>>>>>>> ✅ 1 ✅ <<<<<<<<<<<<<<
-# > 交管12123
 host-suffix,v3.fstats.xyz,reject
 host-suffix,wss.haoyundmn.com,reject
 host-suffix,new.xiongzhangad.com,reject
 host-suffix,alexametrics.com,reject
 host-keyword,in-page-push,reject
-# >>>>>>>>>>>>>>> ✅ 2 ✅ <<<<<<<<<<<<<<
-# >>>>>>>>>>>>>>> ✅ 3 ✅ <<<<<<<<<<<<<<
 host,ad.mcloud.139.com,reject
-# >>>>>>>>>>>>>>> ✅ 4 ✅ <<<<<<<<<<<<<<
-# >>>>>>>>>>>>>>> ✅ 5 ✅ <<<<<<<<<<<<<<
-# > 51wnl
 host,ad.51wnl-cq.com,reject
 host,adextra.51wnl-cq.com,reject
 host,log.51wnl-cq.com,reject
 host,r.51wnl-cq.com,reject
-# > 51.LA
 host,js.users.51.la,reject
 host,mc.51.la,reject
 host,wc.51.la,reject
-# > 58同城
 host,track.58.com,reject
 host,tracklog.58.com,reject
-# >>>>>>>>>>>>>>> ✅ 6 ✅ <<<<<<<<<<<<<<
-# >>>>>>>>>>>>>>> ✅ 7 ✅ <<<<<<<<<<<<<<
-# >>>>>>>>>>>>>>> ✅ 8 ✅ <<<<<<<<<<<<<<
-# >>>>>>>>>>>>>>> ✅ 9 ✅ <<<<<<<<<<<<<<
-# >>>>>>>>>>>>>>> ✅ A ✅ <<<<<<<<<<<<<<
-# > Adobe Flash China Special Edition
 host,geo2.adobe.com,reject
-# > Apple
 host,advertising.apple.com,reject
 host,api-adservices.apple.com,reject
 host,apple.comscoreresearch.com,reject
@@ -93,7 +58,6 @@ host,webproxy-advp.iad-apple.com,reject
 host,webproxy-advp.iad-apple.com.akadns.net,reject
 host-suffix,advp.apple.com,reject
 host-suffix,iadsdk.apple.com,reject
-# 安全浏览限制解除
 host,lookup.api.bsb.baidu.com,reject
 host,proxy.safebrowsing.apple,reject
 host,safebrowsing.g.applimg.com,reject
@@ -103,9 +67,7 @@ host,token.safebrowsing.apple,reject
 host,vs6.bj2ct.u3.ucweb.com,reject
 host-suffix,safebrowsing.apple,reject
 host-suffix,u3.ucweb.com,reject
-# > 阿里云
 IP-CIDR,203.107.1.1/24,reject
-# > 爱奇艺
 host,api.iqiyi.com,reject
 host,cr-status.iqiyi.com,reject
 host,f74f7f7765f8a2f6.ngaa.net.cn,reject
@@ -151,8 +113,6 @@ IP-CIDR,101.227.97.240/32,reject
 IP-CIDR,101.227.200.11/32,reject
 IP-CIDR,101.227.200.28/32,reject
 IP-CIDR,124.192.153.42/32,reject
-# >>>>>>>>>>>>>>> ✅ B ✅ <<<<<<<<<<<<<<
-# > 百度
 host-suffix,duapps.com,reject
 host-suffix,cpro.baidu.com,reject
 host-suffix,pos.baidu.com,reject
@@ -301,14 +261,11 @@ host-suffix,mobads-logs.baidu.com,reject
 host-suffix,nsclick.baidu.com,reject
 host,hm.baidu.com,reject
 host,hmma.baidu.com,reject
-# 百度地图
 host,afd.baidu.com,reject
 host,afdconf.baidu.com,reject
 host,httpdns.baidubce.com,reject
 host,lc.map.baidu.com,reject
-# > 百度贴吧 屏蔽域名dns查询
 IP-CIDR,180.76.76.200/32,reject
-# > 哔哩哔哩
 ;HOST,mall.bilibili.com,REJECT
 ;HOST,passport.bilibili.com,REJECT
 host-keyword,api.sobot.com,reject
@@ -316,10 +273,8 @@ host-suffix,cm.ad.bilibili.com,reject
 host-suffix,cm.adcommon.bilibili.com,reject
 host-suffix,cm.game.bilibili.com,reject
 host-suffix,cm.track.biligame.bilibili.com,reject
-# > 百词斩
 host,advertise.baicizhan.com,reject
 host,advertise.baicizhan.org,reject
-# > Braze
 host-suffix,iad.appboy.com,reject
 host-suffix,iad-03.appboy.com,reject
 host-suffix,iad-01.braze.com,reject
@@ -329,9 +284,6 @@ host-suffix,iad-04.braze.com,reject
 host-suffix,iad-05.braze.com,reject
 host-suffix,iad-06.braze.com,reject
 host-suffix,iad-08.braze.com,reject
-# >>>>>>>>>>>>>>> ✅ C ✅ <<<<<<<<<<<<<<
-# > C&J Marketing
-# https://www.zhihu.com/question/46746200, reject
 host-suffix,alienskins.cn,reject
 host-suffix,anydeskchina.cn,reject
 host-suffix,betterzipcn.com,reject
@@ -346,49 +298,31 @@ host-suffix,mindmanager.cn,reject
 host-suffix,officesoftcn.com,reject
 host-suffix,photozoomchina.com,reject
 host-suffix,xitongqingli.com,reject
-# > Camera360
 host,dispatcher.360in.com,reject
 host,ad.360in.com,reject
 host,exp.360in.com,reject
-# > 车来乐
 host,atrace.chelaile.net.cn,reject
 host,logs.chelaile.net.cn,reject
-# > 创维
 host-suffix,hoisin.coocaa.com,reject
 host-suffix,hoisin.coocaatv.com,reject
 host,data-hoisin.coocaa.com,reject
-# > 车来了（包括小程序）
 host-suffix,atrace.chelaile.net.cn,reject
 host,logs.chelaile.net.cn,reject
 host,ad.chelaile.net.cn,reject
-# >>>>>>>>>>>>>>> ✅ D ✅ <<<<<<<<<<<<<<
-# > Dr.Peng
 ;IP-CIDR,10.72.25.0/24,reject
 IP-CIDR,211.161.101.110/32,reject
-# > 叮嗒出行
 host-keyword,image.bianxianmao.com,reject
-# > 滴滴青桔（支付界面图片有误杀）
 ;host-keyword,pt-starimg.didistatic.com,reject
 ip-cidr,203.107.1.1/24,reject
-# > 懂车帝
 host-keyword,p3-pack.byteimg.com,reject
 host-keyword,p6-pack.byteimg.com,reject
-# > 懂球帝
 host-keyword,apimg.qunliao.info,reject
-# > 抖音
 host-keyword,bds.snssdk.com,reject
 host-keyword,p3.pstatp.com,reject
-# > 多多视频
 host-suffix,bayescom.com,reject
-# > Daum
 host,track.tiara.daum.net,reject
 host,track.tiara.kakao.com,reject
-# > 朵朵校友圈 微信小程序去广告
 host-suffix,ad.duoduo.link,reject
-# > 盯盯拍 广告联盟已包含
-# >>>>>>>>>>>>>>> ✅ E ✅ <<<<<<<<<<<<<<
-# >>>>>>>>>>>>>>> ✅ F ✅ <<<<<<<<<<<<<<
-# > 番茄小说
 host-suffix,byteimg.com,DIRECT
 host,i.snssdk.com,REJECT
 host,i-lq.snssdk.com,REJECT
@@ -398,7 +332,6 @@ host,mcs.snssdk.com,REJECT
 host,tnc3-alisc1.snssdk.com,REJECT
 host,security-lq.snssdk.com,REJECT
 host,tnc3-aliec2.snssdk.com,REJECT
-#host, is.snssdk.com, REJECT
 host,i.snssdk.com,REJECT
 host,v6-novelapp.ixigua.com,REJECT
 host-suffix,novelapp.ixigua.com,REJECT
@@ -407,30 +340,20 @@ host,msync-im1-vip6-std.easemob.com,REJECT
 host,apd-pcdnwxlogin.teg.tencent-cloud.net,REJECT
 host,api.iegadp.qq.com,REJECT
 host-suffix,byteorge.com,REJECT
-# 下面两条误杀严重导致懂车帝无法正常使用
-#host-suffix, bytegoofy.com, REJECT
-#host-suffix, bytedance.com, REJECT
 IP-CIDR,49.71.37.101/32,REJECT
 IP-CIDR,117.71.105.23/32,REJECT
 IP-CIDR,218.94.207.205/32,REJECT
 IP-CIDR,117.92.229.188/32,REJECT
 IP-CIDR,101.36.166.16/32,REJECT
 IP-CIDR,180.96.2.114/32,REJECT
-# > 凤凰新媒体
 host-suffix,deliver.ifeng.com,reject
 host,api.newad.ifeng.com,reject
 host,ifengad.3g.ifeng.com,reject
-# >>>>>>>>>>>>>>> ✅ G ✅ <<<<<<<<<<<<<<
-# > GozenData
-# https://www.v2ex.com/t/772523, reject
 host-suffix,gozendata.com,reject
 host-suffix,gzads.com,reject
 host-suffix,gz-data.com,reject
-# > GrowingIO
 host-suffix,giocdn.com,reject
-# > 光大银行阳光惠生活
 host-keyword,talk.bz.getui.com,reject
-# > 谷歌
 host-suffix,google-analytics.com,reject
 host,safebrowsing.googleapis.com,reject
 host-suffix,doubleclick.net,reject
@@ -454,7 +377,6 @@ host-suffix,afd.l.google.com,reject
 host-suffix,www.googleadservices.com,reject
 host-suffix,www.google-analytics.com,reject
 host,ads.youtube.com,reject
-# > 高德
 ;host,restapi.amap.com,reject
 host-suffix,adiu.amap.com,reject
 host,aboard.apilocate.amap.com,reject
@@ -470,16 +392,10 @@ host,optimus-ads.amap.com.w.alikunlun.com,reject
 host-suffix,shouji.sougou.com,reject
 host,u51.me,reject
 host-suffix,u51.me,reject
-# > 广州地铁乘车码
-# 多个广告 感谢CtrlMusic🐓分享
 host,apis.alenable.com,reject
-# >>>>>>>>>>>>>>> ✅ H ✅ <<<<<<<<<<<<<<
-# > HDO
 ;host-suffix,applovin.com,reject
 ;host-suffix,applvn.com,reject
-# > Huawei AspiegelBot
 IP-CIDR,114.119.160.0/21,reject
-# > 湖南卫视
 host-suffix,da.hunantv.com,reject
 host-suffix,log.hunantv.com,reject
 host-suffix,v2.hunantv.com,reject
@@ -491,29 +407,22 @@ host-suffix,x1.da.hunantv.com,reject
 host-suffix,y.da.hunantv.com,reject
 host-suffix,log.v2.hunantv.com,reject
 host-suffix,v2.log.hunantv.com,reject
-# > 虎扑
 host,adx.hupu.com,reject
 host,adx-api.hupu.com,reject
 host,goblin.hupu.com,reject
-# > 虎牙直播 开屏广告
 host,pp-cdnfile2pcdn.msstatic.com,reject
 host,livewebbs2pcdn.msstatic.com,reject
 host,huyafile.msstatic.com,reject
 host,livewebbs2.msstatic.com,reject
 host,business.msstatic.com,reject
 host-suffix,v1d.szbdyd.com,reject
-# > 哈啰 大部分图片无法正常加载
 ;host-keyword,assets.51downapp.cn,reject
-# > 黄油相机 #开屏广告 感谢#Dragon分享
 host-suffix,anythinktech.com,reject
 host-suffix,adkwai.com,reject
 host-suffix,mob.com,reject
-# >>>>>>>>>>>>>>> ✅ J ✅ <<<<<<<<<<<<<<
-# > jxedt
 host,richmanapi.jxedt.com,reject
 host,richmanmain.jxedt.com,reject
 host,richmanrules.jxedt.com,reject
-# > 金山词霸
 host,ad-stat.ksosoft.com,reject
 host,img.auction-ads.wpscdn.cn,reject
 host,counter.kingsoft.com,reject
@@ -522,7 +431,6 @@ host,minfo.wps.cn,reject
 host,mobad.ijinshan.com,reject
 host,ups.ksmobile.net,reject
 host,ws.ksmobile.net,reject
-# > 今日头条
 host,dm.toutiao.com,reject
 host-keyword,ad.toutiao.com,reject
 host-keyword,clk.gentags.net,reject
@@ -541,7 +449,6 @@ host-keyword,a3.bytecdn.cn,reject
 ;host-keyword,ichannel.snssdk.com,reject
 host,ad.toutiao.com,reject
 host,dsp.toutiao.com,reject
-# > 京东
 host-suffix,jzt.jd.com,reject
 host-suffix,img-x.jd.com,reject
 host-suffix,du.jd.com,reject
@@ -553,19 +460,13 @@ host-keyword,kepler.jd.com,reject
 host-keyword,bdsp.x.jd.com,reject
 host-keyword,keplerapi.jd.com,reject
 host-keyword,mapi.m.jd.com,reject
-# 屏蔽DNS
 host,dns.jd.com,reject
 IP-CIDR,101.124.19.122/32,reject
 IP6-CIDR,2402:db40:5100:1011::5/128,reject
-# > 建行生活
-# 内置饿了么外卖弹窗
 host,o2o-ad-log-gateway.alibaba.com,reject
-# >>>>>>>>>>>>>>> ✅ K ✅ <<<<<<<<<<<<<<
-# > keep
 host,apm.gotokeep.com,reject
 host,kad.gotokeep.com,reject
 host,hc-ssp.sm.cn,reject
-# > 快乐广播
 host,ad.hpplay.cn,reject
 host,adc.hpplay.cn,reject
 host,adcdn.hpplay.cn,reject
@@ -573,16 +474,13 @@ host,adeng.hpplay.cn,reject
 host,pin.hpplay.cn,reject
 host,rp.hpplay.cn,reject
 host,rpt.hpplay.cn,reject
-# > 快手
 ;host-suffix,yximgs.com,reject
 ;host,js-ad.a.yximgs.com,reject
 host-suffix,e.kuaishou.com,reject
 host-suffix,cm.downloader.commercial.kuaishou.com,reject
 host-suffix,cm.ad.gifshow.com,reject
 host-suffix,cm.kwad.com,reject
-# > 快压zip
 host-suffix,kuaizip.com,reject
-# > 酷狗音乐
 host,adserviceretry.kugou.com,reject
 host,ads.service.kugou.com,reject
 host,adsfile.bssdlbig.kugou.com,reject
@@ -638,7 +536,6 @@ host-suffix,log.web.kugou.com,reject
 host-suffix,kgmobilestat.kugou.com,reject
 host-suffix,kgmobilestatbak.kugou.com,reject
 host-suffix,mobilelog.kugou.com,reject
-# > 酷我音乐
 host,mobilead.kuwo.cn,reject
 host,rich.kuwo.cn,reject
 host-keyword,rich.kuwo.cn,reject
@@ -655,26 +552,17 @@ host-suffix,wa.kuwo.cn,reject
 host-suffix,webstat.kuwo.cn,reject
 host-suffix,mobilead.kuwo.cn,reject
 host-suffix,rich.kuwo.cn,reject
-# > 酷安 广告联盟已包含
-# >>>>>>>>>>>>>>> ✅ L ✅ <<<<<<<<<<<<<<
-# > LinkWiFi
 host,a.wkanx.com,reject
 host,cwx.lianwangtech.com,reject
 host,c1wx.lianwangtech.com,reject
-# > 蓝基因（弹窗还在，需要手动关闭）
 host-keyword,medicine.lanjiyin.com.cn,reject
-# > 两步路
 host-suffix,admobile.top,reject
-# > 乐视
 host-suffix,webp2p.letv.com,reject
 host,ark.letv.com,reject
 host,emma-414870e223.huodonghezi.com,reject
 host,g3.letv.com,reject
 host,n.mark.letv.com,reject
-# >>>>>>>>>>>>>>> ✅ M ✅ <<<<<<<<<<<<<<
-# > MacKeeper
 host-suffix,zryydi.com,reject
-# > 美团
 host,flowplus.meituan.net,reject
 host-suffix,analytics.meituan.net,reject
 host-suffix,meituan.xn,reject
@@ -686,19 +574,15 @@ host-suffix,ad.e.waimai.sankuai.com,reject
 host-suffix,mads.meituan.com,reject
 host-suffix,dreport.meituan.net,reject
 host-suffix,d.meituan.net,reject
-# > 美颜相机 去首页和轮播广告
 host,adui.tg.meitu.com,reject
 host,aaid.uyunad.com,reject
-# > 买单吧
 host-suffix,c-hzgt2.getui.com,reject
 host-suffix,c-hzgt2.getui.com,reject
 host-suffix,gs.getui.com,reject
-# > 民生银行
 host-keyword,cm-10-134.getui.com,reject
 host-keyword,sdk.open.talk.getui.com,reject
 host-keyword,cm-10-35.getui.com,reject
 host-keyword,c-hzgt2.getui.com,reject
-# > 墨迹天气
 host-keyword,fds.api.moji.com,reject
 host-keyword,me.api.moji.com,reject
 host-keyword,android.bugly.qq.com,reject
@@ -710,7 +594,6 @@ host,ad.api.moji.com,reject
 host,adlaunch.moji.com,reject
 host,ads.mojicdn.com,reject
 host,v1.log.moji.com,reject
-# > 咪咕视频
 host-suffix,ad.cmvideo.cn,reject
 host,ggc.cmvideo.cn,reject
 host,ggic03.miguvideo.com,reject
@@ -718,9 +601,7 @@ host,ggmk.miguvideo.com,reject
 host,ggv.cmvideo.cn,reject
 host,ggx.cmvideo.cn,reject
 host,ggx03.miguvideo.com,reject
-# > 小米米家
 host,sdkconfig.ad.xiaomi.com,reject
-# > 芒果TV
 host,dflow.bz.mgtv.com,reject
 host,encounter.bz.mgtv.com,reject
 host,floor.bz.mgtv.com,reject
@@ -750,41 +631,29 @@ host-suffix,web.da.mgtv.com,reject
 host-suffix,x.da.mgtv.com,reject
 host-suffix,y.da.mgtv.com,reject
 host-suffix,da.mgtv.com,reject
-# >>>>>>>>>>>>>>> ✅ N ✅ <<<<<<<<<<<<<<
-# > NicoNico
 host,ads.nicovideo.jp,reject
-# >>>>>>>>>>>>>>> ✅ O ✅ <<<<<<<<<<<<<<
-# > OPPO
 host,adsfs.oppomobile.com,reject
 host-suffix,ads.oppomobile.com,reject
-# > Outlook
 host,acdn.adnxs.com,reject
 host,mediation.adnxs.com,reject
 host,sin3-ib.adnxs.com,reject
-# >>>>>>>>>>>>>>> ✅ P ✅ <<<<<<<<<<<<<<
-# > PPTV
 host,ads.aplus.pptv.com,reject
 host,ads.aplusapi.pptv.com,reject
 host,asimgs.pplive.cn,reject
 host,de.as.pptv.com,reject
-# > Photoable
 host,regist.fotoable.com,reject
 host,cdn.adapi.fotoable.com,reject
-# > PeanutWiFi
 host,adnew.wifi8.com,reject
 host,adfile.wifi8.com,reject
-# > PConline
 host,ad-analysis.pconline.com.cn,reject
 host,iad0ssl.pcauto.com.cn,reject
 host,iad0ssl.pconline.com.cn,reject
 host,imgad0.pcauto.com.cn,reject
 host,imgad0.pconline.com.cn,reject
 host,ivy.pchouse.com.cn,reject
-# > 皮皮虾（推荐视频不能预览）
 host-keyword,log-api.pangolin-sdk-toutiao-b.com,reject
 host-keyword,log-api.pangolin-sdk-toutiao.com,reject
 host-keyword,api-access.pangolin-sdk-toutiao.com,reject
-# > 皮皮虾（比较激进，需要的自己开启）
 ;host-keyword,snssdk.com,reject
 ;host-keyword,mssdk.bytedance.com,reject
 ;host-keyword,api.ribaoapi.com,reject
@@ -794,10 +663,7 @@ host-keyword,api-access.pangolin-sdk-toutiao.com,reject
 ;host-keyword,365yg.com,reject
 ;host-keyword,ppx.byteimg.com,reject
 ;host-keyword,i.snssdk.com,reject
-# > 影响端传媒正常运行，默认关闭
 ;host-suffix,cloudfront.net,reject
-# >>>>>>>>>>>>>>> ✅ Q ✅ <<<<<<<<<<<<<<
-# > QQ音乐
 host,adstats.tencentmusic.com,REJECT
 host,ad.tencentmusic.com,REJECT
 host,adcdn.tencentmusic.com,REJECT
@@ -827,11 +693,9 @@ host-suffix,android.rqd.qq.com,reject
 host-suffix,e.qq.com,reject
 host-suffix,beacon.qq.com,reject
 host-suffix,v.gdt.qq.com,reject
-# > 蜻蜓FM
 host,ad.qingting.fm,reject
 host,adlaunch.qingting.fm,reject
 host,ad-cdn.qingting.fm,reject
-# > 七猫小说
 host,cdn-new-ad.wtzw.com,REJECT
 host,a-remad.qm989.com,REJECT
 host,mobads.baidu.com,REJECT
@@ -839,7 +703,6 @@ host-suffix,gdt.qq.com,REJECT
 host,qzs.gdtimg.com,REJECT
 host,mobads-pre-config.cdn.bcebos.com,REJECT
 host,pgdt.ugdtimg.com,REJECT
-# > 汽车之家
 host-keyword,adm3.autoimg.cn,reject
 ;host-keyword,audid-api.taobao.com,reject
 host-keyword,collectionpv.che168.com,reject
@@ -853,9 +716,6 @@ host,adm0.autoimg.cn,reject
 host,adm1.autoimg.cn,reject
 host,adm2.autoimg.cn,reject
 host,adm3.autoimg.cn,reject
-# >>>>>>>>>>>>>>> ✅ R ✅ <<<<<<<<<<<<<<
-# >>>>>>>>>>>>>>> ✅ S ✅ <<<<<<<<<<<<<<
-# > soul
 host,soul-ad.soulapp.cn,reject
 host,ad-r.soulapp.cn,reject
 host,ad-reward.soulapp.cn,reject
@@ -865,15 +725,12 @@ IP-CIDR,47.97.215.55/32,REJECT
 IP-CIDR,47.99.42.29/32,REJECT
 IP-CIDR,120.27.235.201/32,REJECT
 IP-CIDR,121.196.197.147/32,REJECT
-# > Snapchat
 host,ads.snapchat.com,reject
 host,adsapi.snapchat.com,reject
-# > 搜狐
 host-suffix,ad.sohu.com,reject
 host-suffix,ads.sohu.com,reject
 host-suffix,aty.sohu.com,reject
 host,hui.sohu.com,reject
-# > 搜狗
 ;host,indivi-cdn.shouji.sogou.com,reject
 host-suffix,epro.sogou.com,reject
 host-suffix,golden1.sogou.com,reject
@@ -893,16 +750,11 @@ host-suffix,bazinga.mse.sogou.com,reject
 host-suffix,bite.theta.sogoucdn.com,reject
 host-suffix,brand.sogou.com,reject
 host-suffix,bsiet.husky.sogou.com,reject
-# 屏蔽京东和搜狗收集信息 @jFrecht
 host-suffix,jdqd.jd.com,reject
 host-suffix,shouji.sougou.com,reject
-# > 搜狗输入法
 ;host-keyword,business-cdn.shouji.sogou.com,reject
-# > 深圳通微信小程序
 host-suffix,wxsnsdythumb.wxs.qq.com,reject
-# > 收钱吧 买单小程序去广告
 host,ads-shopping.shouqianba.com,reject
-# > 什么值得买
 host,aaid.uyunad.com,REJECT
 host,acs4baichuan.m.taobao.com,REJECT
 host,adashxgc.ut.taobao.com,REJECT
@@ -913,8 +765,6 @@ host,msg.umengcloud.com,REJECT
 host,sec.umeng.com,REJECT
 host,ulogs.umeng.com,REJECT
 host,ynuf.aliapp.org,REJECT
-# >>>>>>>>>>>>>>> ✅ T ✅ <<<<<<<<<<<<<<
-# > TubeMax  感谢@可莉分享
 host-suffix,adjust.com,reject
 host-suffix,applvn.com,reject
 host-suffix,app-measurement.com,reject
@@ -923,21 +773,16 @@ host-suffix,applovin.com,reject
 host-suffix,appier.net,reject
 host-suffix,adsmoloco.com,reject
 host-suffix,adcanvas.com,reject
-# > The Paper
 host,admonitor.thepaper.cn,reject
 host,adpai.thepaper.cn,reject
 host,imgadpai.thepaper.cn,reject
-# > TalkingData
 host-suffix,cpatrk.net,reject
-# > Talkatone
 host-suffix,tappx.com,reject
-# > 天神
 host,track.tenjin.com,reject
 host,track.tenjin.io,reject
 host,errlog.umeng.com,reject
 host,lf9-cdn-tos.bytegecko.com,reject
 host,novel.pangolin-sdk-toutiao.com,reject
-# > 淘宝
 host-suffix,apoll.m.taobao.com,reject
 host-suffix,h-adashx.ut.taobao.com,reject
 host-suffix,w.m.taobao.com,reject
@@ -971,7 +816,6 @@ host-suffix,click.tz.simba.taobao.com,reject
 host-suffix,stat.simba.taobao.com,reject
 host-suffix,m-adash.m.taobao.com,reject
 host-suffix,adashbc.m.taobao.com,reject
-# > 腾讯视频
 host,adsmind.gdtimg.com,reject
 host,btrace.qq.com,reject
 host,btrace.video.qq.com,reject
@@ -991,7 +835,6 @@ host-suffix,stat.tpns.tencent.com,reject
 host,h.trace.qq.com,reject
 host-keyword,omgmta.qq.com,reject
 host-keyword,omgmta1.qq.com,reject
-# >  腾讯
 host-suffix,news.ssp.qq.com,reject
 host-suffix,news.l.qq.com,reject
 host-suffix,activeqq.3g.qq.com,reject
@@ -1090,16 +933,11 @@ host,vv.video.qq.com,reject
 host,wa.gtimg.com,reject
 host,wxsnsdy.wxs.qq.com,reject
 host,wxsmsdy.video.qq.com,reject
-# > 同花顺
 host,adm.10jqka.com.cn,reject
 host,stat.10jqka.com.cn,reject
-# > 迅雷
 host,adsp.xunlei.com,reject
 host,etl.xlmc.sandai.net,reject
-# > 团油
 host-keyword,img1.czb365.com,reject
-# >>>>>>>>>>>>>>> ✅ U ✅ <<<<<<<<<<<<<<
-# > UC浏览器
 host-keyword,m.atm.youku.com,reject
 host-keyword,adp.atm.youku.com,reject
 host-keyword,clickc.admaster.com,reject
@@ -1212,12 +1050,9 @@ host,mercury-sdk.snssdk.com,reject
 host,tbm.snssdk.com,reject
 host,toblog.ctobsnssdk.com,reject
 host,tnc3-aliec2.snssdk.com,reject
-# >>>>>>>>>>>>>>> ✅ V ✅ <<<<<<<<<<<<<<
-# > VariFlight
 host,adv-adlog.variflight.com,reject
 host,adv-ads.variflight.com,reject
 host,app-ad.variflight.com,reject
-# > vivo
 host,adlog.vivo.com.cn,reject
 host,adreq.vivo.com.cn,reject
 host,ads-marketing-vivofs.vivo.com.cn,reject
@@ -1227,15 +1062,9 @@ host,adxlog.vivo.com.cn,reject
 host,vcardsdkservice.vivo.com.cn,reject
 host-keyword,stsdk.vivo.com.cn,reject
 host-keyword,stsdk.vivoglobal.com,reject
-# > VIVO商城
 host-keyword,paradisestatic.vivo.com.cn,reject
-# >>>>>>>>>>>>>>> ✅ W ✅ <<<<<<<<<<<<<<
-# > 万能钥匙专业版
-# 感谢【All in 梭哈】分享
 host-suffix,mi.gdt.qq.com,reject
-# 去除导航栏免费短剧
 host,taichi.51y5.net,reject
-# > WiFi万能钥匙
 host-keyword,app.51y5.net,reject
 host-keyword,apiinit.amap.com,reject
 host-keyword,c.51y5.net,reject
@@ -1254,7 +1083,6 @@ host-keyword,insurance.lianwifi.com,reject
 host-keyword,config.51y5.net,reject
 host-keyword,static.wkanx.com,reject
 host-keyword,config.y5en.com,reject
-# > 微博
 host-suffix,fastimage.uve.weibo.com,reject
 host-suffix,adimg.vue.weibo.com,reject
 host-suffix,zymo.mps.weibo.com,reject
@@ -1282,9 +1110,7 @@ host-suffix,alitui.weibo.com.cn,reject
 host-suffix,tui.weibo.com,reject
 host-suffix,wax.weibo.com.cn,reject
 host-suffix,ad.weibo.com,reject
-# 微博开屏广告预加载
 host,bootpreload.uve.weibo.com,reject
-# > 网易
 host-suffix,dsp.youdao.com,reject
 host-suffix,union.youdao.com,reject
 host,ad.bn.netease.com,reject
@@ -1302,27 +1128,19 @@ host,n.3g.163.com,reject
 host,nex.163.com,reject
 host,yt-adp.nosdn.127.net,reject
 host,yt-adp.ws.126.net,reject
-# > 网易云
-# 此条会导致"淘宝->成就中心->淘宝人生"进不去
 ;host-keyword,ossgw.alicdn.com,reject
-# > 微软
 host-suffix,ads.msn.com,reject
 host-suffix,ads1.msn.com,reject
 host-suffix,ads2.msn.com,reject
 host-suffix,bingads.microsoft.com,reject
 host-suffix,rads.msn.com,reject
 host,mobileads.msn.com,reject
-# > 歪麦去开屏 
 host-suffix,ad.gameley.com,reject
 host-suffix,zlsdk.1rtb.net,reject
-# > 威锋 广告联盟已包含
-# >>>>>>>>>>>>>>> ✅ X ✅ <<<<<<<<<<<<<<
-# > 讯飞输入法
 host-keyword,ossp.voicecloud.cn,reject
 host-keyword,bj.imp.voiceads.cn,reject
 host-keyword,m.panda.voiceads.cn,reject
 host-keyword,iflyad.bj.openstorage.cn,reject
-# > 喜马拉雅
 host,adbehavior.ximalaya.com,reject
 host,adwbs.ximalaya.com,reject
 host-suffix,ad.test.ximalaya.com,reject
@@ -1338,38 +1156,27 @@ host-suffix,adse.wsa.ximalaya.com,reject
 host-suffix,adbehavior.wsa.ximalaya.com,reject
 host-suffix,adsebs.ximalaya.com,reject
 host-suffix,adbs.ximalaya.com,reject
-# > 小红书
 host,ads-img-qc.xhscdn.com,reject
 host,ads-video-al.xhscdn.com,reject
 host,ads-video-qc.xhscdn.com,reject
 host,t-ads.xiaohongshu.com,reject
-# > 小米
 host,data.mistat.xiaomi.com,reject
 host,tracking.intl.miui.com,reject
-# > 小小影视
 host,39d83s.com,reject
-# > 小利生活
 host-keyword,mpos-pic.helipay.com,reject
-# > 晓晓优选
 host-SUFFIX,api-htp.beizi.biz,REJECT
-# > 新浪
 host-suffix,beacon.sina.com.cn,reject
 host,u1.img.mobile.sina.cn,reject
 host,sax.sina.com.cn,reject
 host,saxs.sina.com.cn,reject
 host,saxn.sina.com.cn,reject
-# > 雪球（可以去掉倒计时，但是误杀很多图片，默认关闭）
 ;host-keyword,xqimg.imedao.com,reject
-# > 向日葵 见重写
-# >>>>>>>>>>>>>>> ✅ Y ✅ <<<<<<<<<<<<<<
-# > 云闪付
 host,ads.95516.com,reject
 host,tysdk.95516.com,reject
 host,cm-10-138.getui.com,reject
 host,sdk.open.talk.getui.net,reject
 host,sdk-conf.getui.com,reject
 host,switch.cup.com.cn,reject
-# > 雅虎
 host-suffix,adserver.yahoo.com,reject
 host-suffix,adspecs.yahoo.com,reject
 host-suffix,advertising.yahoo.com,reject
@@ -1379,7 +1186,6 @@ host,ads.auctions.yahoo.com,reject
 host,ads.finance.yahoo.com,reject
 host,ads.yahoo.com,reject
 host,ads.yahoo.de,reject
-# > 优酷
 host,adsmind.ugdtimg.com,reject
 host,amdc.m.youku.com,reject
 host,apiv4-iyes.youku.com,reject
@@ -1438,10 +1244,8 @@ host-suffix,val.api.youku.com,reject
 host-suffix,wan.youku.com,reject
 host-suffix,ykatr.youku.com,reject
 host-suffix,ykrec.youku.com,reject
-# > 易车
 host,adx.yiche.com,reject
 host,log.ycapp.yiche.com,reject
-# > 央视
 host,galaxy.bjcathay.com,reject
 host,mdrecv.app.cntvwb.cn,reject
 host,sdapprecv.app.cntvwb.cn,reject
@@ -1459,9 +1263,6 @@ host-suffix,cws-cctv.conviva.com,reject
 host-suffix,mdrecv.app.cntvwb.cn,reject
 host-suffix,sdapprecv.app.cntvwb.cn,reject
 host-suffix,vdapprecv.app.cntvwb.cn,reject
-# > 一刻相册 广告联盟已包含
-# >>>>>>>>>>>>>>> ✅ Z ✅ <<<<<<<<<<<<<<
-# > 知乎
 USER-AGENT,AVOS*,reject
 host,appcloud.zhihu.com,reject
 host,appcloud2.in.zhihu.com,reject
@@ -1471,43 +1272,33 @@ host,crash2.zhihu.com,reject
 host,118.89.204.198,reject
 IP-CIDR,118.89.204.198/32,reject
 IP6-CIDR,2402:4e00:1200:ed00:0:9089:6dac:96b6/128,reject
-# > 中关村
 host,apppv.zol.com.cn,reject
 host,pvnapp.zol.com.cn,reject
-# > 中国移动
 IP-CIDR,120.240.95.37/32,reject
-# > 中国联通
 host-suffix,m1.ad.10010.com,reject
-# > 中国电信
 host,ad.21cn.com,reject
 host,ad.k.21cn.com,reject
 host,admarket.21cn.com,reject
 host,adshows.21cn.com,reject
 IP-CIDR,122.229.8.47/32,reject
 IP-CIDR,122.229.29.89/32,reject
-# > 中信银行
 ;host-suffix,sis.jpush.io,reject
 ;host-suffix,s.jpush.cn,reject
 ;host-suffix,jpush.cn,reject
 ;host-suffix,im64.jpush.cn,reject
 ;host-suffix,im.jpush.cn,reject
 ;host-suffix,jpush.html5.qq.com,reject
-# > 中华万年历广告
 host-keyword,lkme.cc,reject
 host-keyword,api.freed.so,reject
 host-keyword,log-dmp.suishenyun.cn,reject
 host-keyword,client-dmp.suishenyun.cn,reject
 host-keyword,pc.suishenyun.net,reject
 host-keyword,v0-client-lz.rili.cn,reject
-# > 招钱进宝 广告联盟已包含
-# > 真不卡
 host-suffix,ttayy.cn,reject
 host-suffix,zhengxiaoliu.top,reject
-# > 字节跳动
 host,ad.zijieapi.com,reject
 host,applog.zijieapi.com,reject
 host-suffix,-normal-lq.zijieapi.com,reject
-# >>>>>>>>>>>>>>> ✅ 其他广告 ✅ <<<<<<<<<<<<<<
 host-keyword,112wan,reject
 host-keyword,789htbet,reject
 host-suffix,XiaoQiang,reject
@@ -1932,7 +1723,6 @@ host-suffix,vegent.cn,reject
 host-suffix,vipads.cn,reject
 host-suffix,vmzqwz.cn,reject
 host-suffix,voiceads.cn,reject
-#host-suffix, vungle.cn, reject
 host-suffix,vwkhdi.cn,reject
 host-suffix,waps.cn,reject
 host-suffix,wapx.cn,reject
@@ -8343,7 +8133,6 @@ host-suffix,impservice.youdao.com,reject
 host-suffix,impservice2.youdao.com,reject
 host-suffix,log-yex.youdao.com,reject
 host-suffix,rlogs.youdao.com,reject
-#host-suffix, shared.youdao.com, reject
 host-suffix,ydpushserver.youdao.com,reject
 host-suffix,b.clkservice.youdao.com,reject
 host-suffix,d.clkservice.youdao.com,reject
@@ -9698,7 +9487,6 @@ host-suffix,yumcs.xiaohuau.xyz,reject
 host-suffix,banner.itweb.co.za,reject
 host-suffix,banners.itweb.co.za,reject
 host-suffix,xn--3bs795g.zone,reject
-# IPV4 addresses
 IP-CIDR,117.177.248.17/32,reject
 IP-CIDR,117.177.248.41/32,reject
 IP-CIDR,223.87.176.139/32,reject

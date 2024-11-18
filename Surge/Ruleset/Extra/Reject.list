@@ -1,8 +1,16 @@
-# UPDATED: 2024/11/18 13:34:57
+########################################
+# UPDATED: 2024/11/18 14:30:22
 # STATS:
-# OTHER: 1
-# TOTAL: 1
-[object Object]
+# DOMAIN: 316
+# DOMAIN-SUFFIX: 931
+# DOMAIN-KEYWORD: 35
+# IP-CIDR: 5
+# IP-CIDR6: 1
+# USER-AGENT: 1
+# TOTAL: 1289
+# SOURCES:
+#  - https://raw.githubusercontent.com/Repcz/Tool/X/Surge/Rules/Reject.list
+########################################
 DOMAIN,118.89.204.198
 DOMAIN,25e87c0802f91cf8cgg.6uzxtlv.cn
 DOMAIN,a.wkanx.com
