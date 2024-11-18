@@ -26,20 +26,14 @@ export class RuleProcessor {
         'utf-8'
       );
 
-      // 转换规则时，如果需要清理，则不保留注释
-      if (rule.cleanup === true) {
-        this.converter.setOptions({ preserveComments: false });
-      } else {
-        this.converter.setOptions({ preserveComments: true });
-      }
-
+      // 转换规则
       content = content
         .split('\n')
         .map(line => this.converter.convert(line))
         .filter(Boolean)
         .join('\n');
 
-      // 清理和排序
+      // 只在明确指定 cleanup: true 时才进行清理和排序
       if (rule.cleanup === true) {
         content = cleanAndSort(content, this.converter);
       }

@@ -285,6 +285,12 @@ export const ruleGroups: RuleGroup[] = [
         description: 'This file contains extra rules to reject ads from SukkaW.'
       },
       {
+        path: 'Surge/Ruleset/Reject/Ads_SukkaW_IP.list',
+        url: 'https://ruleset.skk.moe/List/ip/reject.conf',
+        title: 'SukkaW IP Ads Reject Rules',
+        description: 'This file contains rules to reject ads from SukkaW with IP.'
+      },
+      {
         path: 'Surge/Ruleset/Reject/Ads_limbopro.list',
         url: 'https://raw.githubusercontent.com/limbopro/Adblock4limbo/main/Adblock4limbo_surge.list',
         title: 'Limbopro Ads Reject Rules',
@@ -430,7 +436,7 @@ export const ruleGroups: RuleGroup[] = [
         description: 'IP rules for China from SukkaW'
       },
       {
-        path: 'Surge/Ruleset/ChinaIP.DH.list',
+        path: 'Surge/Ruleset/ChinaIP.list',
         url: 'https://raw.githubusercontent.com/DH-Teams/DH-Geo_AS_IP_CN/main/Geo_AS_IP_CN.txt',
         title: 'China IPv4 Rules',
         description: 'IPv4 rules for China'
@@ -606,21 +612,6 @@ export const ruleGroups: RuleGroup[] = [
 // Special rules configuration
 export const specialRules: SpecialRuleConfig[] = [
   {
-    name: 'SukkaW Ads',
-    targetFile: 'Surge/Ruleset/Reject/Ads_SukkaW_Combined.list',
-    sourceFiles: [
-      'Surge/Ruleset/Reject/Ads_SukkaW.list',
-      'Surge/Ruleset/Reject/Ads_SukkaW_NoIP.list',
-      'Surge/Ruleset/Reject/Ads_SukkaW_Extra.list'
-    ],
-    cleanup: true,
-    skipCleanup: false,
-    header: {
-      title: 'SukkaW Ads Reject Rules',
-      description: 'Combined rules to reject ads from SukkaW.'
-    }
-  },
-  {
     name: 'Emby',
     targetFile: 'Surge/Ruleset/Streaming/Video/EmbyTest.list',
     sourceFiles: [
@@ -656,7 +647,6 @@ export const specialRules: SpecialRuleConfig[] = [
       'Surge/Ruleset/Reject/Tracking.list'
     ],
     cleanup: true,
-    skipCleanup: true,
     header: {
       title: 'Advertising Reject Rules',
       description: 'Combined advertising/hijacking/tracking blocking rules'

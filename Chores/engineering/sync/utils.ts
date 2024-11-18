@@ -97,24 +97,29 @@ export function getRuleStats(content: string): RuleStats {
  */
 export function cleanAndSort(content: string, converter?: RuleConverter): string {
   const lines = content.split('\n');
+  const comments: string[] = [];
   const rules: string[] = [];
 
   lines.forEach(line => {
     line = line.trim();
-    if (!line || line.startsWith('#')) return; // 跳过空行和注释行
-
-    // 如果提供了转换器就使用转换器,否则直接使用原始规则
-    const processedRule = converter ? converter.convert(line) : line;
-    if (processedRule) {
-      rules.push(processedRule);
+    if (!line) return;
+    
+    if (line.startsWith('#')) {
+      comments.push(line);
+    } else {
+      // 如果提供了转换器就使用转换器,否则直接使用原始规则
+      const processedRule = converter ? converter.convert(line) : line;
+      if (processedRule) {
+        rules.push(processedRule);
+      }
     }
   });
 
   // 去重并排序规则
   const uniqueRules = [...new Set(rules)].sort();
 
-  // 返回排序后的规则
-  return uniqueRules.join('\n');
+  // 组合注释和规则
+  return [...comments, '', ...uniqueRules].join('\n');
 }
 
 /**
@@ -199,7 +204,7 @@ export function addRuleHeader(content: string, info: HeaderInfo): string {
   
   const headers = [
     `# ${info.title}`,
-    // '#',
+    '#',
     `# Last Updated: ${timestamp}`,
     stats.domain > 0 && `# DOMAIN: ${stats.domain}`,
     stats.domainSuffix > 0 && `# DOMAIN-SUFFIX: ${stats.domainSuffix}`,
@@ -210,9 +215,9 @@ export function addRuleHeader(content: string, info: HeaderInfo): string {
     stats.urlRegex > 0 && `# URL-REGEX: ${stats.urlRegex}`,
     stats.other > 0 && `# OTHER: ${stats.other}`,
     `# TOTAL: ${stats.total}`,
-    // '#',
+    '#',
     `# ${info.description}`,
-    // '#',
+    '#',
     '# Data from:',
     ...info.sources.map(source => `#  - ${source}`),
     '',

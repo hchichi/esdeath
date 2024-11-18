@@ -12,7 +12,7 @@ export class RuleMerger {
   ) {}
 
   async mergeSpecialRules(config: SpecialRuleConfig): Promise<void> {
-    const { name, targetFile, sourceFiles, extraRules, cleanup, skipCleanup } = config;
+    const { name, targetFile, sourceFiles, extraRules, cleanup } = config;
     console.log(`Merging special rules: ${name}`);
 
     try {
@@ -34,8 +34,8 @@ export class RuleMerger {
         mergedContent += '\n' + extraRules.join('\n');
       }
 
-      // 根据 skipCleanup 属性决定是否清理和排序
-      if (!skipCleanup && cleanup) {
+      // 如果需要清理和排序
+      if (cleanup === true) {
         mergedContent = cleanAndSort(mergedContent, this.converter);
       }
 

@@ -38,7 +38,6 @@ export interface SpecialRuleConfig extends BaseRuleConfig {
   generateResolveVersion?: boolean;
   extraRules?: string[];
   cleanup?: boolean;
-  skipCleanup?: boolean;
 }
 
 export type RuleType = 
