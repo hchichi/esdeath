@@ -517,7 +517,7 @@ export const specialRules: SpecialRuleConfig[] = [
     name: 'CDN',
     targetFile: 'Surge/Ruleset/cdn.list',
     sourceFiles: [
-      'Surge/Ruleset/cdn.list',  // domain-set
+      'Surge/Ruleset/cdn/cdn.list',  // domain-set
       'Surge/Ruleset/cdn/cdn_noip.list',
       'Surge/Ruleset/cdn/cdn_ip.list'
     ],
