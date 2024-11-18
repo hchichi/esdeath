@@ -1,6 +1,9 @@
+#
 # AI Rules
 #
-# Last Updated: 2024/11/18 08:46:54
+# Last Updated: 2024/11/18 10:53:40
+#
+# 规则统计:
 # DOMAIN: 32
 # DOMAIN-SUFFIX: 41
 # DOMAIN-KEYWORD: 4
@@ -13,35 +16,9 @@
 #
 # Data from:
 #  - https://proxyresource.pages.dev/Tool/Loon/Rule/AI.list
+#  - https://proxyresource.pages.dev/Tool/Loon/Rule/AI.list
 #  - https://github.com/ConnersHua/RuleGo/raw/master/Surge/Ruleset/Extra/AI.list
 #  - https://raw.githubusercontent.com/hiven425/hiven/master/config/AI.list
-# 2024-11-12 08:18:31
-# ChatGPT
-# Copilot
-# Gemini
-# Claude
-# JetBrains AI
-# Meta AI
-# Perplexity
-# Mistral AI
-# OpenAI
-# > ChatGPT
-# Apple Intelligence
-# Anthropic
-# > Claude
-# Google
-# > Gemini
-# > AI Studio
-# JetBrains AI
-# Microsoft
-# > Copilot
-# Meta
-# GitHub Copilot
-# 内容：OpenAi Bard anthropic
-# 域名关键字匹配
-# 域名后缀匹配
-#DOMAIN
-
 AND,((DOMAIN-KEYWORD,chatgpt-async-webps-prod-)
 AND,((DOMAIN-KEYWORD,openaicom-api-)
 DOMAIN,ai.google.dev
