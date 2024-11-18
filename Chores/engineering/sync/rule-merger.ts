@@ -12,49 +12,50 @@ export class RuleMerger {
   ) {}
 
   async mergeSpecialRules(config: SpecialRuleConfig): Promise<void> {
-    const { name, targetFile, sourceFiles, extraRules, cleanup, skipCleanup } = config;
+    const { name, targetFile, sourceFiles, extraRules, cleanup } = config;
     console.log(`Merging special rules: ${name}`);
 
     try {
-      // 获取源文件的下载 URL
+      // 1. 获取源文件的下载 URL
       const sourceUrls = await this.getSourceUrls(sourceFiles);
       
-      // 读取所有源文件内容
+      // 2. 读取所有源文件内容
       const contents = await Promise.all(
-        sourceFiles.map(file =>
-          fs.promises.readFile(path.join(this.repoPath, file), 'utf-8')
-        )
+        sourceFiles.map(async file => {
+          const content = await fs.promises.readFile(
+            path.join(this.repoPath, file), 
+            'utf-8'
+          );
+          // 移除现有的头部信息
+          return content.replace(/^#.*\n/gm, '').trim();
+        })
       );
 
-      // 合并内容
+      // 3. 合并内容
       let mergedContent = contents.join('\n');
 
-      // 添加额外规则
+      // 4. 添加额外规则
       if (extraRules?.length) {
         mergedContent += '\n' + extraRules.join('\n');
       }
 
-      // 根据 skipCleanup 属性决定是否清理和排序
-      if (!skipCleanup && cleanup) {
+      // 5. 如果需要清理，进行清理和排序
+      if (cleanup) {
         mergedContent = cleanAndSort(mergedContent, this.converter);
       }
 
-      // 添加规则头部信息
-      mergedContent = addRuleHeader(mergedContent, {
-        title: config.header?.title,
-        description: config.header?.description,
-        url: sourceUrls[0]  // 使用第一个URL作为主要来源
-      }, sourceUrls);  // 所有URL作为数据来源
+      // 6. 添加规则头部信息（除非明确禁用）
+      if (config.header?.enable !== true) {
+        mergedContent = addRuleHeader(mergedContent, {
+          title: config.header?.title,
+          description: config.header?.description
+        }, sourceUrls);
+      }
 
-      // 确保目标目录存在
-      const targetDir = path.dirname(path.join(this.repoPath, targetFile));
-      await fs.promises.mkdir(targetDir, { recursive: true });
-
-      // 写入合并后的内容
-      await fs.promises.writeFile(
-        path.join(this.repoPath, targetFile),
-        mergedContent
-      );
+      // 7. 写入合并后的内容
+      const targetPath = path.join(this.repoPath, targetFile);
+      await fs.promises.mkdir(path.dirname(targetPath), { recursive: true });
+      await fs.promises.writeFile(targetPath, mergedContent);
 
       console.log(`Successfully merged ${name} rules to ${targetFile}`);
     } catch (error) {

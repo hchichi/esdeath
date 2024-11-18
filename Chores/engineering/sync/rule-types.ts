@@ -8,6 +8,9 @@ export interface RuleFile {
   description?: string;
   sources?: string[];
   cleanup?: boolean;
+  header?: {
+    enable?: boolean;
+  };
 }
 
 export interface RuleFlags {
@@ -29,6 +32,7 @@ export interface BaseRuleConfig {
   sourceFiles: string[];
   cleanup?: boolean;
   header?: {
+    enable?: boolean;
     title?: string;
     description?: string;
   };
@@ -37,8 +41,6 @@ export interface BaseRuleConfig {
 export interface SpecialRuleConfig extends BaseRuleConfig {
   generateResolveVersion?: boolean;
   extraRules?: string[];
-  cleanup?: boolean;
-  skipCleanup?: boolean;
 }
 
 export type RuleType = 

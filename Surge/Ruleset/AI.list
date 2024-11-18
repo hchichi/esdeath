@@ -1,9 +1,6 @@
-#
 # AI Rules
-#
-# Last Updated: 2024/11/18 10:53:40
-#
-# 规则统计:
+# UPDATED: 2024/11/18 11:19:38
+# STATS:
 # DOMAIN: 32
 # DOMAIN-SUFFIX: 41
 # DOMAIN-KEYWORD: 4
@@ -11,10 +8,8 @@
 # IP-CIDR6: 1
 # OTHER: 2
 # TOTAL: 81
-#
 # Combined AIGC rules
-#
-# Data from:
+# SOURCES:
 #  - https://proxyresource.pages.dev/Tool/Loon/Rule/AI.list
 #  - https://proxyresource.pages.dev/Tool/Loon/Rule/AI.list
 #  - https://github.com/ConnersHua/RuleGo/raw/master/Surge/Ruleset/Extra/AI.list

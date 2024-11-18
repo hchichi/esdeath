@@ -14,51 +14,41 @@ export class RuleProcessor {
 
   async process(rule: RuleFile): Promise<void> {
     try {
-      // 确保 converter 存在且已初始化
-      if (!this.converter) {
-        throw new Error('Rule converter not initialized');
-      }
-
-      // 下载规则文件
+      const filePath = path.join(this.repoPath, rule.path);
+      
+      // 1. 下载文件
       if (rule.url) {
-        await downloadFile(rule.url, path.join(this.repoPath, rule.path));
+        await downloadFile(rule.url, filePath);
       }
 
-      // 读取文件内容
-      let content = await fs.promises.readFile(
-        path.join(this.repoPath, rule.path),
-        'utf-8'
-      );
+      // 2. 读取内容
+      let content = await fs.promises.readFile(filePath, 'utf-8');
 
-      // 转换规则时，如果需要清理，则不保留注释
-      if (rule.cleanup === true) {
-        this.converter.setOptions({ preserveComments: false });
-      } else {
-        this.converter.setOptions({ preserveComments: true });
-      }
-
+      // 3. 转换规则
       content = content
         .split('\n')
         .map(line => this.converter.convert(line))
         .filter(Boolean)
         .join('\n');
 
-      // 清理和排序
-      if (rule.cleanup === true) {
+      // 4. 如果需要清理，进行清理和排序
+      if (rule.cleanup) {
         content = cleanAndSort(content, this.converter);
       }
 
-      // 添加规则头
-      const header = await addRuleHeader(rule);
-      
-      // 处理规则内容
-      let processedContent = header + '\n' + content;
+      // 5. 添加规则头部信息（除非明确禁用）
+      if (rule.header?.enable !== true) {
+        const headerInfo = {
+          title: rule.title,
+          description: rule.description,
+          url: rule.url
+        };
+        content = addRuleHeader(content, headerInfo);
+      }
 
-      // 写入文件
-      await fs.promises.writeFile(
-        path.join(this.repoPath, rule.path),
-        processedContent
-      );
+      // 6. 写入文件
+      await fs.promises.writeFile(filePath, content);
+
     } catch (error) {
       console.error(`Error processing ${rule.path}:`, error);
       throw error;

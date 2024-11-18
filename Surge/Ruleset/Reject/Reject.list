@@ -1,9 +1,6 @@
-#
 # Advertising Reject Rules
-#
-# Last Updated: 2024/11/18 10:53:40
-#
-# 规则统计:
+# UPDATED: 2024/11/18 11:19:38
+# STATS:
 # DOMAIN: 292
 # DOMAIN-SUFFIX: 841
 # DOMAIN-KEYWORD: 5
@@ -11,10 +8,8 @@
 # IP-CIDR6: 1
 # USER-AGENT: 1
 # TOTAL: 1145
-#
 # Combined advertising/hijacking/tracking blocking rules
-#
-# Data from:
+# SOURCES:
 #  - https://raw.githubusercontent.com/ConnersHua/RuleGo/master/Surge/Ruleset/Extra/Reject/Advertising.list
 #  - https://raw.githubusercontent.com/ConnersHua/RuleGo/master/Surge/Ruleset/Extra/Reject/Advertising.list
 #  - https://raw.githubusercontent.com/ConnersHua/RuleGo/master/Surge/Ruleset/Extra/Reject/Malicious.list

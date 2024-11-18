@@ -1,9 +1,6 @@
-#
 # CDN Rules
-#
-# Last Updated: 2024/11/18 10:53:40
-#
-# 规则统计:
+# UPDATED: 2024/11/18 11:19:38
+# STATS:
 # DOMAIN: 1867
 # DOMAIN-SUFFIX: 815
 # DOMAIN-KEYWORD: 5
@@ -11,10 +8,8 @@
 # URL-REGEX: 2
 # OTHER: 31
 # TOTAL: 2723
-#
 # Combined CDN rules including domain-set, IP and non-IP rules
-#
-# Data from:
+# SOURCES:
 #  - https://ruleset.skk.moe/List/domainset/cdn.conf
 #  - https://ruleset.skk.moe/List/domainset/cdn.conf
 #  - https://ruleset.skk.moe/List/non_ip/cdn.conf

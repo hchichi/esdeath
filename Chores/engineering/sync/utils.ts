@@ -100,25 +100,72 @@ export function getRuleStats(content: string | Buffer): RuleStats {
 export function cleanAndSort(content: string | Buffer, converter?: RuleConverter): string {
   const contentStr = Buffer.isBuffer(content) ? content.toString('utf-8') : String(content);
   
-  const lines = contentStr.split('\n');
-  const rules: string[] = [];
+  // 将内容分行并过滤空行
+  const lines = contentStr.split('\n').map(line => line.trim()).filter(Boolean);
+  const rules = new Set<string>();
 
-  lines.forEach(line => {
-    line = line.trim();
-    if (!line || line.startsWith('#')) return; // 跳过空行和注释行
-
-    // 如果提供了转换器就使用转换器,否则直接使用原始规则
-    const processedRule = converter ? converter.convert(line) : line;
-    if (processedRule) {
-      rules.push(processedRule);
+  for (let line of lines) {
+    // 跳过注释行
+    if (line.startsWith('#') || line.startsWith(';') || line.startsWith('//')) {
+      continue;
     }
-  });
 
-  // 去重并排序规则
-  const uniqueRules = [...new Set(rules)].sort();
+    // 基础清理
+    line = line
+      .replace(/^payload:/, '')
+      .replace(/^ *- */, '')
+      .replace(/(^[^#].+)\x20+\/\/.+/, '$1') // 删除行尾注释
+      .replace(/(\{[0-9]+)\,([0-9]*\})/g, '$1t&zd;$2')
+      .replace(/'|"/g, '')
+      .trim();
+
+    // 跳过空行或包含特殊字符的行
+    if (!line || line.includes('[object Object]') || line.match(/(\[|=|{|\\|\/.*\.js)/)) {
+      continue;
+    }
+
+    // 处理没有类型前缀的规则
+    if (!line.includes(',')) {
+      if (line.match(/[0-9]\/[0-9]/)) {
+        line = 'IP-CIDR,' + line;
+      } else if (line.match(/([0-9]|[a-z]):([0-9]|[a-z])/)) {
+        line = 'IP-CIDR6,' + line;
+      } else {
+        line = 'DOMAIN,' + line;
+      }
+    }
+
+    // 标准化规则类型
+    line = line
+      .replace(/^host-wildcard/i, 'HOST-WILDCARD')
+      .replace(/^host/i, 'DOMAIN')
+      .replace(/^dest-port/i, 'DST-PORT')
+      .replace(/^ip6-cidr/i, 'IP-CIDR6');
+
+    // 如果有转换器，使用转换器处理
+    if (converter) {
+      const processedRule = converter.convert(line);
+      if (processedRule) {
+        rules.add(processedRule);
+      }
+    } else {
+      rules.add(line);
+    }
+  }
 
   // 返回排序后的规则
-  return uniqueRules.join('\n');
+  return Array.from(rules)
+    .sort((a, b) => {
+      // 首先按规则类型排序
+      const typeA = a.split(',')[0];
+      const typeB = b.split(',')[0];
+      if (typeA !== typeB) {
+        return typeA.localeCompare(typeB);
+      }
+      // 然后按规则内容排序
+      return a.localeCompare(b);
+    })
+    .join('\n');
 }
 
 /**
@@ -203,13 +250,14 @@ export function addRuleHeader(content: string | Buffer, info?: HeaderInfo, sourc
   const stats = getRuleStats(contentStr);
   const timestamp = new Date().toLocaleString('zh-CN', { timeZone: 'Asia/Shanghai' });
   
-  // 收集所有有效的 URLs
-  const sources = [
+  // 收集所有有效的 URLs 并去重
+  const sources = [...new Set([
     info?.url,           // 单个规则的 URL
     ...(sourceUrls || []) // 合并规则的源文件 URLs
-  ].filter(Boolean); // 过滤掉空值
+  ].filter(Boolean))];
   
   const headers = [
+    '########################################',
     // 只有在有 title 时才添加
     info?.title && `# ${info.title}`,
     `# UPDATED: ${timestamp}`,
@@ -230,6 +278,7 @@ export function addRuleHeader(content: string | Buffer, info?: HeaderInfo, sourc
       '# SOURCES:',
       ...sources.map(source => `#  - ${source}`)
     ],
+    '########################################',
     '',
     contentStr
   ].flat().filter(Boolean);
