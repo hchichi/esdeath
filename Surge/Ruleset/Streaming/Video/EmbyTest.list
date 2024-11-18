@@ -1,16 +1,3 @@
-# Emby Rules
-# UPDATED: 2024/11/18 13:34:58
-# STATS:
-# DOMAIN: 1
-# DOMAIN-SUFFIX: 83
-# IP-CIDR6: 2
-# TOTAL: 86
-# Combined Emby test rules
-# SOURCES:
-#  - https://github.com/1120109856/lynn/raw/main/fxw
-#  - https://github.com/1120109856/lynn/raw/main/fxw
-#  - https://github.com/1120109856/lynn/raw/main/zl
-DOMAIN,[object Object]
 DOMAIN-SUFFIX,7777777.buzz
 DOMAIN-SUFFIX,955557.xyz
 DOMAIN-SUFFIX,apopcloud.com

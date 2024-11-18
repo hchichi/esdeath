@@ -1,10 +1,13 @@
-# UPDATED: 2024/11/18 13:34:54
+########################################
+# UPDATED: 2024/11/18 14:38:27
 # STATS:
-# OTHER: 1
-# TOTAL: 1
-[object Object]
-# TikTok by 可莉
-# 2024-05-16 17:23:42
+# DOMAIN: 35
+# DOMAIN-SUFFIX: 54
+# DOMAIN-KEYWORD: 7
+# TOTAL: 96
+# SOURCES:
+#  - https://proxyresource.pages.dev/Tool/Loon/Rule/TikTok.list
+########################################
 DOMAIN,api.snapkit.com
 DOMAIN,cocacola.co.jp
 DOMAIN,courses.snapsolve.com

@@ -1,21 +1,4 @@
-# Advertising Reject Rules
-# UPDATED: 2024/11/18 13:34:58
-# STATS:
-# DOMAIN: 293
-# DOMAIN-SUFFIX: 841
-# DOMAIN-KEYWORD: 5
-# IP-CIDR: 5
-# IP-CIDR6: 1
-# USER-AGENT: 1
-# TOTAL: 1146
-# Combined advertising/hijacking/tracking blocking rules
-# SOURCES:
-#  - https://raw.githubusercontent.com/ConnersHua/RuleGo/master/Surge/Ruleset/Extra/Reject/Advertising.list
-#  - https://raw.githubusercontent.com/ConnersHua/RuleGo/master/Surge/Ruleset/Extra/Reject/Advertising.list
-#  - https://raw.githubusercontent.com/ConnersHua/RuleGo/master/Surge/Ruleset/Extra/Reject/Malicious.list
-#  - https://raw.githubusercontent.com/ConnersHua/RuleGo/master/Surge/Ruleset/Extra/Reject/Tracking.list
 DOMAIN,118.89.204.198
-DOMAIN,[object Object]
 DOMAIN,a.wkanx.com
 DOMAIN,a0.app.xiaomi.com
 DOMAIN,abema-adx.ameba.jp
@@ -159,7 +142,7 @@ DOMAIN,appnext.hs.llnwd.net
 DOMAIN,apppv.zol.com.cn
 DOMAIN,asimgs.pplive.cn
 DOMAIN,atrace.chelaile.net.cn
-DOMAIN,browsercfg-drcn.cloud.dbankcloud.cn // 甚至想 DOMAIN-KEYWORD,drcn.cloud.dbankcloud.cn
+DOMAIN,browsercfg-drcn.cloud.dbankcloud.cn
 DOMAIN,business-cdn.shouji.sogou.com
 DOMAIN,c.bing.com
 DOMAIN,c.clarity.ms

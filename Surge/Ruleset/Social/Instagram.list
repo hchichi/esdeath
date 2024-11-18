@@ -1,10 +1,12 @@
-# UPDATED: 2024/11/18 13:34:57
+########################################
+# UPDATED: 2024/11/18 14:38:30
 # STATS:
-# OTHER: 1
-# TOTAL: 1
-[object Object]
-# 内容：Instagram
-# 数量：4条
+# DOMAIN-SUFFIX: 3
+# DOMAIN-KEYWORD: 1
+# TOTAL: 4
+# SOURCES:
+#  - https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Instagram.list
+########################################
 DOMAIN-KEYWORD,instagram
 DOMAIN-SUFFIX,cdninstagram.com
 DOMAIN-SUFFIX,instagr.am

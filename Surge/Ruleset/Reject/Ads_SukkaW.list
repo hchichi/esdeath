@@ -1,37 +1,12 @@
-# UPDATED: 2024/11/18 13:34:55
+########################################
+# UPDATED: 2024/11/18 14:38:28
 # STATS:
-# OTHER: 1
-# TOTAL: 1
-[object Object]
-#########################################
-# Sukka's Ruleset - Reject Base
-# Last Updated: 2024-11-17T14:14:15.149Z
-# Size: 109376
-# License: AGPL 3.0
-# Homepage: https://ruleset.skk.moe
-# GitHub: https://github.com/SukkaW/Surge
-#
-# The domainset supports AD blocking, tracking protection, privacy protection, anti-phishing, anti-mining
-#
-# Build from:
-#  - https://raw.githubusercontent.com/crazy-max/WindowsSpyBlocker/master/data/hosts/spy.txt
-#  - https://raw.githubusercontent.com/jerryn70/GoodbyeAds/master/Extension/GoodbyeAds-Xiaomi-Extension.txt
-#  - https://raw.githubusercontent.com/jerryn70/GoodbyeAds/master/Extension/GoodbyeAds-Huawei-AdBlock.txt
-#  - https://raw.githubusercontent.com/durablenapkin/block/master/luminati.txt
-#  - https://raw.githubusercontent.com/durablenapkin/block/master/tvstream.txt
-#  - https://zerodot1.gitlab.io/CoinBlockerLists/list_browser.txt
-#  - https://raw.githubusercontent.com/hoshsadiq/adblock-nocoin-list/master/nocoin.txt
-#  - https://easylist.to/easylist/easylist.txt
-#  - https://easylist.to/easylist/easyprivacy.txt
-#  - https://adguardteam.github.io/AdGuardSDNSFilter/Filters/filter.txt
-#  - https://filters.adtidy.org/extension/ublock/filters/2_without_easylist.txt
-#  - https://filters.adtidy.org/extension/ublock/filters/11_optimized.txt
-#  - https://filters.adtidy.org/extension/ublock/filters/3_optimized.txt
-#  - https://filters.adtidy.org/extension/ublock/filters/224_optimized.txt
-#  - https://raw.githubusercontent.com/DandelionSprout/adfilt/master/GameConsoleAdblockList.txt
-#  - https://perflyst.github.io/PiHoleBlocklist/SmartTV-AGH.txt
-#  - https://ublockorigin.github.io/uAssetsCDN/filters/unbreak.min.txt
-#########################################
+# DOMAIN: 779
+# DOMAIN-SUFFIX: 108597
+# TOTAL: 109376
+# SOURCES:
+#  - https://ruleset.skk.moe/List/domainset/reject.conf
+########################################
 DOMAIN-SUFFIX,say.ac
 DOMAIN-SUFFIX,mysp.ac
 DOMAIN-SUFFIX,tube.ac
@@ -109408,4 +109383,3 @@ DOMAIN-SUFFIX,server2.www1.dr.goldenserviceawards.net.jumia.co.ke
 DOMAIN-SUFFIX,ei-api.testlb-gwy.easyjet.com.edgekey.net.easyjet.com
 DOMAIN-SUFFIX,origin.www.images.2.forms.healthcare.philips.com
 DOMAIN,this_ruleset_is_made_by_sukkaw.ruleset.skk.moe
-################## EOF ##################

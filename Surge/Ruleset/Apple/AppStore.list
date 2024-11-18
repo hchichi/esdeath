@@ -1,7 +1,10 @@
-# UPDATED: 2024/11/18 13:34:52
+########################################
+# UPDATED: 2024/11/18 14:38:25
 # STATS:
-# OTHER: 1
-# TOTAL: 1
-[object Object]
+# DOMAIN: 2
+# TOTAL: 2
+# SOURCES:
+#  - https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/source/rule/AppStore/AppStore.list
+########################################
 DOMAIN,apps.apple.com
 DOMAIN,itunes.apple.com

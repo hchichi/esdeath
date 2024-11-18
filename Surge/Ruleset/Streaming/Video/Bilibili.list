@@ -1,10 +1,13 @@
-# UPDATED: 2024/11/18 13:34:54
+########################################
+# UPDATED: 2024/11/18 14:38:27
 # STATS:
-# OTHER: 1
-# TOTAL: 1
-[object Object]
-# 内容：Bilibili 哔哩哔哩
-# 数量：23条
+# DOMAIN: 2
+# DOMAIN-SUFFIX: 18
+# USER-AGENT: 3
+# TOTAL: 23
+# SOURCES:
+#  - https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Bilibili.list
+########################################
 USER-AGENT,Bilibili*
 USER-AGENT,bili*
 USER-AGENT,bili-inter*

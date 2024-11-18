@@ -1,17 +1,14 @@
-# UPDATED: 2024/11/18 13:34:52
+########################################
+# UPDATED: 2024/11/18 14:38:26
 # STATS:
-# OTHER: 1
-# TOTAL: 1
-[object Object]
-# NAME: AppleMusic
-# AUTHOR: blackmatrix7
-# REPO: https://github.com/blackmatrix7/ios_rule_script
-# UPDATED: 2024-07-03 16:14:52
 # DOMAIN: 6
 # DOMAIN-SUFFIX: 3
-# PROCESS-NAME: 1
 # USER-AGENT: 1
+# OTHER: 1
 # TOTAL: 11
+# SOURCES:
+#  - https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/AppleMusic/AppleMusic.list
+########################################
 DOMAIN,aod-ssl.itunes.apple.com
 DOMAIN,aod.itunes.apple.com
 DOMAIN,audio-ssl.itunes.apple.com

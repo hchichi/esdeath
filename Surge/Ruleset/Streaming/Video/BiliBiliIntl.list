@@ -1,14 +1,11 @@
-# UPDATED: 2024/11/18 13:34:54
+########################################
+# UPDATED: 2024/11/18 14:38:27
 # STATS:
-# OTHER: 1
-# TOTAL: 1
-[object Object]
-# NAME: BiliBiliIntl
-# AUTHOR: blackmatrix7
-# REPO: https://github.com/blackmatrix7/ios_rule_script
-# UPDATED: 2024-07-03 16:17:00
 # DOMAIN-SUFFIX: 1
-# PROCESS-NAME: 1
+# OTHER: 1
 # TOTAL: 2
+# SOURCES:
+#  - https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/BiliBiliIntl/BiliBiliIntl.list
+########################################
 DOMAIN-SUFFIX,bilibili.tv
 PROCESS-NAME,com.bstar.intl

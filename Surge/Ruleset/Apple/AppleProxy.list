@@ -1,17 +1,14 @@
-# UPDATED: 2024/11/18 13:34:53
+########################################
+# UPDATED: 2024/11/18 14:38:26
 # STATS:
-# OTHER: 1
-# TOTAL: 1
-[object Object]
-# NAME: AppleProxy
-# AUTHOR: blackmatrix7
-# REPO: https://github.com/blackmatrix7/ios_rule_script
-# UPDATED: 2024-07-03 16:16:17
 # DOMAIN: 27
 # DOMAIN-SUFFIX: 12
-# PROCESS-NAME: 1
 # USER-AGENT: 5
+# OTHER: 1
 # TOTAL: 45
+# SOURCES:
+#  - https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/AppleProxy/AppleProxy.list
+########################################
 DOMAIN,api-glb-sea.smoot.apple.com
 DOMAIN,apple.comscoreresearch.com
 DOMAIN,books.itunes.apple.com

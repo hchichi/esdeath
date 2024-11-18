@@ -1,18 +1,15 @@
-# UPDATED: 2024/11/18 13:34:54
+########################################
+# UPDATED: 2024/11/18 14:38:27
 # STATS:
-# OTHER: 1
-# TOTAL: 1
-[object Object]
-# NAME: Spotify
-# AUTHOR: blackmatrix7
-# REPO: https://github.com/blackmatrix7/ios_rule_script
-# UPDATED: 2024-11-17 02:11:54
 # DOMAIN: 6
-# DOMAIN-KEYWORD: 1
 # DOMAIN-SUFFIX: 19
+# DOMAIN-KEYWORD: 1
 # IP-CIDR: 2
-# PROCESS-NAME: 1
+# OTHER: 1
 # TOTAL: 29
+# SOURCES:
+#  - https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Spotify/Spotify.list
+########################################
 DOMAIN,audio4-ak-spotify-com.akamaized.net
 DOMAIN,cdn-spotify-experiments.conductrics.com
 DOMAIN,heads-ak-spotify-com.akamaized.net

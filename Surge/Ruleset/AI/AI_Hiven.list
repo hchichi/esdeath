@@ -1,14 +1,16 @@
-# UPDATED: 2024/11/18 13:34:53
+########################################
+# UPDATED: 2024/11/18 14:38:27
 # STATS:
-# OTHER: 1
-# TOTAL: 1
-[object Object]
-# 内容：OpenAi Bard anthropic
-# 域名关键字匹配
+# DOMAIN: 5
+# DOMAIN-SUFFIX: 29
+# DOMAIN-KEYWORD: 3
+# TOTAL: 37
+# SOURCES:
+#  - https://raw.githubusercontent.com/hiven425/hiven/master/config/AI.list
+########################################
 DOMAIN-KEYWORD,openai
 DOMAIN-KEYWORD,anthropic
 DOMAIN-KEYWORD,Claude
-# 域名后缀匹配
 DOMAIN-SUFFIX,perplexity.ai
 DOMAIN-SUFFIX,chatgpt.com
 DOMAIN-SUFFIX,auth0.com
@@ -38,7 +40,6 @@ DOMAIN-SUFFIX,proactivebackend-pa.googleapis.com
 DOMAIN-SUFFIX,cursor.sh
 DOMAIN-SUFFIX,cursor.so
 DOMAIN-SUFFIX,cursor.com
-#DOMAIN
 DOMAIN,cdn.usefathom.com
 DOMAIN,ai.google.dev
 DOMAIN,alkalimakersuite-pa.clients6.google.com

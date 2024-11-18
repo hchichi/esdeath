@@ -1,8 +1,13 @@
-# UPDATED: 2024/11/18 13:34:57
+########################################
+# 🌐 IPv4 China Rules by DH
+# UPDATED: 2024/11/18 14:38:30
 # STATS:
-# OTHER: 1
-# TOTAL: 1
-[object Object]
+# IP-CIDR: 4643
+# TOTAL: 4643
+# 匹配中国大陆IPv4的域名与IP全部直连
+# SOURCES:
+#  - https://raw.githubusercontent.com/DH-Teams/DH-Geo_AS_IP_CN/main/Geo_AS_IP_CN_V4_Surge.list
+########################################
 IP-CIDR,1.1.8.0/24,no-resolve
 IP-CIDR,1.2.4.0/24,no-resolve
 IP-CIDR,1.8.1.0/24,no-resolve

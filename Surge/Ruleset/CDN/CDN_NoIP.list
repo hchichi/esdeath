@@ -1,18 +1,14 @@
-# UPDATED: 2024/11/18 13:34:57
+########################################
+# UPDATED: 2024/11/18 14:38:30
 # STATS:
-# OTHER: 1
-# TOTAL: 1
-[object Object]
-#########################################
-# Sukka's Ruleset - CDN Domains
-# Last Updated: 2024-11-01T19:54:19.060Z
-# Size: 41
-# License: AGPL 3.0
-# Homepage: https://ruleset.skk.moe
-# GitHub: https://github.com/SukkaW/Surge
-#
-# This file contains object storage and static assets CDN domains.
-#########################################
+# DOMAIN: 3
+# DOMAIN-KEYWORD: 5
+# URL-REGEX: 2
+# OTHER: 31
+# TOTAL: 41
+# SOURCES:
+#  - https://ruleset.skk.moe/List/non_ip/cdn.conf
+########################################
 DOMAIN,this_ruleset_is_made_by_sukkaw.ruleset.skk.moe
 DOMAIN,cdn-msp.jmcomic.me
 DOMAIN,cdn-msp.18comic.vip
@@ -54,4 +50,3 @@ DOMAIN-WILDCARD,image*.cloudokyo.cloud
 DOMAIN-WILDCARD,video*.cloudokyo.cloud
 URL-REGEX,^http://www\.microsoft\.com/pki/
 URL-REGEX,^http://www\.microsoft\.com/pkiops/
-################## EOF ##################

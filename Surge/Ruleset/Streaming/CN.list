@@ -1,9 +1,14 @@
-# UPDATED: 2024/11/18 13:34:54
+########################################
+# UPDATED: 2024/11/18 14:38:27
 # STATS:
-# OTHER: 1
-# TOTAL: 1
-[object Object]
-# > bilibili
+# DOMAIN: 12
+# DOMAIN-SUFFIX: 1
+# DOMAIN-KEYWORD: 1
+# IP-CIDR: 2
+# TOTAL: 16
+# SOURCES:
+#  - https://raw.githubusercontent.com/ConnersHua/RuleGo/master/Surge/Ruleset/Extra/Streaming/CN.list
+########################################
 DOMAIN,api.biliapi.com
 DOMAIN,api.biliapi.net
 DOMAIN,api.bilibili.com
@@ -15,10 +20,8 @@ DOMAIN,m.bilibili.com
 DOMAIN,upos-hz-mirrorakam.akamaized.net
 DOMAIN,www.bilibili.com
 DOMAIN-KEYWORD,cn-hk-eq-bcache-
-# > 愛奇藝台灣站
 DOMAIN,cache.video.iqiyi.com
 IP-CIDR,116.211.202.206/32,no-resolve
 IP-CIDR,116.211.202.216/32,no-resolve
-# > MangoTV(芒果TV国际)
 DOMAIN-SUFFIX,api.mgtv.com
 DOMAIN,mobileso.bz.mgtv.com

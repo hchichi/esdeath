@@ -1,18 +1,13 @@
-# UPDATED: 2024/11/18 13:34:53
+########################################
+# UPDATED: 2024/11/18 14:38:26
 # STATS:
-# OTHER: 1
-# TOTAL: 1
-[object Object]
-#########################################
-# Sukka's Ruleset - AIGC Domains
-# Last Updated: 2024-11-07T11:56:47.136Z
-# Size: 33
-# License: AGPL 3.0
-# Homepage: https://ruleset.skk.moe
-# GitHub: https://github.com/SukkaW/Surge
-#
-# This file contains domains of OpenAI, Claude.
-#########################################
+# DOMAIN: 5
+# DOMAIN-SUFFIX: 27
+# DOMAIN-KEYWORD: 1
+# TOTAL: 33
+# SOURCES:
+#  - https://ruleset.skk.moe/List/non_ip/ai.conf
+########################################
 DOMAIN,this_ruleset_is_made_by_sukkaw.ruleset.skk.moe
 DOMAIN-SUFFIX,x.ai
 DOMAIN-SUFFIX,dify.ai
@@ -46,4 +41,3 @@ DOMAIN,alkalicore-pa.clients6.google.com
 DOMAIN,alkalimakersuite-pa.clients6.google.com
 DOMAIN,gateway.ai.cloudflare.com
 DOMAIN-KEYWORD,openai
-################## EOF ##################
