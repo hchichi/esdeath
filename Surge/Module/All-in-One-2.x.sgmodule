@@ -1,5 +1,5 @@
 #!name=AD ByeBye+ 2.x
-#!desc=Most Optimized Ad-free Experience presented with automated updates. | 提供最优化无广告体验，自动同步更新。\nRepo: https://tuu.cat/repo・Update: 11/16/2024・Support: @bunizao・ Channel: @hututu00\nModified by @chichi for personal use.
+#!desc=Most Optimized Ad-free Experience presented with automated updates. | 提供最优化无广告体验，自动同步更新。\nRepo: https://tuu.cat/repo・Update: 11/18/2024・Support: @bunizao・ Channel: @hututu00\nModified by @chichi for personal use.
 #!include=KeliAds, BlockAds, QQMusic, WeChatMini, Himalaya, WeChatOA, Snowball, Cainiao, Weibo, NetEaseMusic, Spotify, RedPaper, SMZDM, WeiboIntl, YouTube, Zhihu, Amap, Umetrip, Caixin, JD, Taobao, 12306, DiDi, Aiinquiry, QiXinBao, iMaiCai, MailMaster, VideoGo, DuiTang, ColorfulClouds, FleaMarket, BooHee, MeiTu, Keep, SFExpress, WeChatUnlock, UnnooQuan, QuickSearch, Eleme, Meituan
 #!url=https://chichi.sh/ADBlock
 #!category=🚭 AD Block
@@ -620,7 +620,6 @@ body_rewrite_24 = type=http-response, pattern=^https:\/\/edith\.xiaohongshu\.com
 微博轻享版去广告 = type=http-response, pattern=^https?:\/\/sdkapp\.uve\.weibo\.com\/interface\/sdk\/sdkad\.php, script-path=https://github.com/hchichi/esdeath/raw/main/Chores/js/Weibo_intl_remove_ads.js, requires-body=true
 
 # ----------- YouTube ------------
-YouTube请求 = type=http-request, pattern=^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|next|player|reel\/reel_watch_sequence|get_watch), script-path=https://github.com/hchichi/esdeath/raw/main/Chores/js/YouTube_remove_ads_request.js, requires-body=true, binary-body-mode=true
 YouTube响应 = type=http-response, pattern=^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|next|player|search|reel\/reel_watch_sequence|guide|account\/get_setting|get_watch), script-path=https://github.com/hchichi/esdeath/raw/main/Chores/js/YouTube_remove_ads_response.js, requires-body=true, binary-body-mode=true, argument="[{blockUpload},{blockImmersive},{captionLang},{lyricLang},{debug}]"
 
 # ------------ Zhihu -------------
@@ -691,7 +690,6 @@ body_rewrite_34 = type=http-response, pattern=^https:\/\/m5-zb\.amap\.com\/ws\/s
 
 # ---------- MailMaster ----------
 body_rewrite_201 = type=http-response, pattern=^https:\/\/appconf\.mail\.163\.com\/mailmaster\/api\/page\/v2\/conf\.do$, script-path=https://github.com/hchichi/esdeath/raw/main/Chores/js/body-rewrite.js, requires-body=true, max-size=-1, timeout=30, argument=%5B%5B%22json-del%22%2C%5B%22data.functionOperatorInfoList%22%2C%22data.memberOperator%22%2C%22data.activityTabInfoList%22%5D%5D%5D
-body_rewrite_203 = type=http-response, pattern=^https:\/\/appconf\.mail\.163\.com\/mailmaster\/api\/config\/function\.do$, script-path=https://github.com/hchichi/esdeath/raw/main/Chores/js/body-rewrite.js, requires-body=true, max-size=-1, timeout=30, argument=%5B%5B%22json-del%22%2C%5B%22data.config%5B39%5D.result.tools%5B2%5D%22%5D%5D%5D
 
 # ----------- DuiTang ------------
 body_rewrite_127 = type=http-response, pattern=^https:\/\/(www|api)\.duitang\.com\/napi\/settings\/, script-path=https://github.com/hchichi/esdeath/raw/main/Chores/js/body-rewrite.js, requires-body=true, max-size=-1, timeout=30, argument=%5B%5B%22json-del%22%2C%5B%22data.REWARD_AD_PLACES%22%2C%22data.SPLASH_SWING_OPEN%22%2C%22data.REWARD_AD_PHOTO_EDITOR%22%2C%22data.REWARD_AD_PAG_EDITOR%22%2C%22data.AD_PRICE_SHOW%22%2C%22data.AD_SCREEN_WAKEUP_TIME%22%2C%22data.REWARD_AD_CUTOUT_NUM%22%2C%22data.AD_HOME_ENTER_POP_COUNT%22%2C%22data.SHARE_BANNER%22%2C%22data.AD_MENU_SELECTIONS%22%2C%22data.ME_TAB.ANNOUNCEMENT%22%2C%22data.ME_TAB.MEMBERSHIP%22%2C%22data.ME_TAB.MEMBERSHIP2%22%5D%5D%5D
