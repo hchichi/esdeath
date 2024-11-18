@@ -1,3 +1,20 @@
+########################################
+# Domestic Rules (Sukkaw)
+# Last updated: 2024/11/18 14:42:06
+# DOMAIN: 31
+# DOMAIN-SUFFIX: 892
+# DOMAIN-KEYWORD: 9
+# IP-CIDR: 2
+# PROCESS-NAME: 36
+# USER-AGENT: 4
+# OTHER: 1
+# Total: 975
+# This file contains known domains and IPs that are avaliable in the Mainland China.
+# Data sources:
+#  - https://ruleset.skk.moe/List/non_ip/domestic.conf
+#  - https://ruleset.skk.moe/List/ip/domestic.conf
+#  - https://ruleset.skk.moe/List/non_ip/direct.conf
+########################################
 DOMAIN,acg.tv
 DOMAIN,assets1.xboxlive.cn
 DOMAIN,assets2.xboxlive.cn

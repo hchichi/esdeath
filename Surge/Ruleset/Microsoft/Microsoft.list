@@ -1,12 +1,3 @@
-########################################
-# UPDATED: 2024/11/18 14:38:31
-# STATS:
-# DOMAIN-SUFFIX: 77
-# DOMAIN-KEYWORD: 2
-# TOTAL: 79
-# SOURCES:
-#  - https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Microsoft.list
-########################################
 DOMAIN-KEYWORD,1drv
 DOMAIN-KEYWORD,microsoft
 DOMAIN-SUFFIX,aadrm.com

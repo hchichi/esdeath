@@ -1,11 +1,2 @@
-########################################
-# UPDATED: 2024/11/18 14:38:27
-# STATS:
-# DOMAIN-SUFFIX: 1
-# OTHER: 1
-# TOTAL: 2
-# SOURCES:
-#  - https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/BiliBiliIntl/BiliBiliIntl.list
-########################################
 DOMAIN-SUFFIX,bilibili.tv
 PROCESS-NAME,com.bstar.intl

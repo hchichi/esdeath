@@ -1,14 +1,3 @@
-########################################
-# UPDATED: 2024/11/18 14:38:27
-# STATS:
-# DOMAIN: 12
-# DOMAIN-SUFFIX: 1
-# DOMAIN-KEYWORD: 1
-# IP-CIDR: 2
-# TOTAL: 16
-# SOURCES:
-#  - https://raw.githubusercontent.com/ConnersHua/RuleGo/master/Surge/Ruleset/Extra/Streaming/CN.list
-########################################
 DOMAIN,api.biliapi.com
 DOMAIN,api.biliapi.net
 DOMAIN,api.bilibili.com

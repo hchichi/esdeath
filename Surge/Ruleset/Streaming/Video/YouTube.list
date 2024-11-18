@@ -1,14 +1,3 @@
-########################################
-# UPDATED: 2024/11/18 14:38:27
-# STATS:
-# DOMAIN: 2
-# DOMAIN-SUFFIX: 11
-# DOMAIN-KEYWORD: 1
-# USER-AGENT: 3
-# TOTAL: 17
-# SOURCES:
-#  - https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/YouTube.list
-########################################
 USER-AGENT,*youtube*
 USER-AGENT,YouTube*
 USER-AGENT,com.google.ios.youtube*

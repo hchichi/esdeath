@@ -1,15 +1,3 @@
-########################################
-# UPDATED: 2024/11/18 14:38:31
-# STATS:
-# DOMAIN: 50
-# DOMAIN-SUFFIX: 404
-# DOMAIN-KEYWORD: 4
-# IP-CIDR: 13
-# IP-CIDR6: 5
-# TOTAL: 476
-# SOURCES:
-#  - https://github.com/Tartarus2014/For-own-use/raw/master/Ruleset/Proxy.list
-########################################
 DOMAIN-SUFFIX,ipwho.is
 DOMAIN-SUFFIX,dmhy.org
 DOMAIN-SUFFIX,mikanani.me

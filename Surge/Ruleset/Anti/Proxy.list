@@ -1,3 +1,15 @@
+########################################
+# PROXY (Anti-IP Attribution)
+# Last updated: 2024/11/18 14:41:59
+# DOMAIN: 47
+# DOMAIN-SUFFIX: 29
+# DOMAIN-KEYWORD: 14
+# IP-CIDR: 97
+# Total: 187
+# Anti IP attribution proxy rules
+# Data sources:
+#  - https://github.com/SunsetMkt/anti-ip-attribution/raw/main/generated/rule-set-proxy.list
+########################################
 DOMAIN-SUFFIX,biliapi.net
 DOMAIN-SUFFIX,biliapi.com
 DOMAIN-SUFFIX,bilibili.com

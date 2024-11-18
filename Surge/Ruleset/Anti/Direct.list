@@ -1,3 +1,13 @@
+########################################
+# DIRECT (Anti-IP Attribution)
+# Last updated: 2024/11/18 14:41:59
+# DOMAIN: 3
+# DOMAIN-SUFFIX: 20
+# Total: 23
+# Anti IP attribution direct rules
+# Data sources:
+#  - https://github.com/SunsetMkt/anti-ip-attribution/raw/main/generated/rule-set-direct.list
+########################################
 DOMAIN-SUFFIX,bilivideo.com
 DOMAIN-SUFFIX,akamaized.net
 DOMAIN-SUFFIX,hdslb.com
