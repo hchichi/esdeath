@@ -8,17 +8,18 @@ interface ConverterOptions {
 }
 
 export class RuleConverter {
-  private options: ConverterOptions = {
-    preserveComments: true
-  };
+  private format: RuleFormat;
+  private options: any;
 
-  constructor(
-    private format: RuleFormat,
-    options: ConverterOptions = {}
-  ) {
+  constructor(format: RuleFormat) {
+    this.format = format;
+    this.options = {};
+  }
+
+  setOptions(options: any) {
     this.options = { ...this.options, ...options };
   }
-  
+
   convert(rule: string): string {
     // 处理注释
     if (rule.startsWith('#')) {

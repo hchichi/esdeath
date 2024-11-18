@@ -15,6 +15,11 @@ export class RuleProcessor {
 
   async process(rule: RuleFile): Promise<void> {
     try {
+      // 确保 converter 存在且已初始化
+      if (!this.converter) {
+        throw new Error('Rule converter not initialized');
+      }
+
       // 下载规则文件
       if (rule.url) {
         await downloadFile(rule.url, path.join(this.repoPath, rule.path));

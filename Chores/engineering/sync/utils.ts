@@ -182,25 +182,35 @@ export function generateNoResolveVersion(content: string): string {
 }
 
 interface HeaderInfo {
-  title: string;
-  description: string;
-  sources: string[];
+  title?: string;
+  description?: string;
+  url?: string;
 }
 
 /**
  * 添加规则文件头部注释
  * @param content - 规则内容
  * @param info - 头部信息
- * @returns - 添加了头部的内容
+ * @param sourceUrls - 源文件URLs（用于合并规则）
  */
-export function addRuleHeader(content: string, info: HeaderInfo): string {
+export function addRuleHeader(content: string, info?: HeaderInfo, sourceUrls?: string[]): string {
   const stats = getRuleStats(content);
   const timestamp = new Date().toLocaleString('zh-CN', { timeZone: 'Asia/Shanghai' });
   
+  // 收集所有有效的 URLs
+  const sources = [
+    info?.url,           // 单个规则的 URL
+    ...(sourceUrls || []) // 合并规则的源文件 URLs
+  ].filter(Boolean); // 过滤掉空值
+  
   const headers = [
-    `# ${info.title}`,
+    '#',
+    // 只有在有 title 时才添加
+    info?.title && `# ${info.title}`,
     '#',
     `# Last Updated: ${timestamp}`,
+    '#',
+    '# 规则统计:',
     stats.domain > 0 && `# DOMAIN: ${stats.domain}`,
     stats.domainSuffix > 0 && `# DOMAIN-SUFFIX: ${stats.domainSuffix}`,
     stats.domainKeyword > 0 && `# DOMAIN-KEYWORD: ${stats.domainKeyword}`,
@@ -211,13 +221,17 @@ export function addRuleHeader(content: string, info: HeaderInfo): string {
     stats.other > 0 && `# OTHER: ${stats.other}`,
     `# TOTAL: ${stats.total}`,
     '#',
-    `# ${info.description}`,
+    // 只有在有 description 时才添加
+    info?.description && `# ${info.description}`,
     '#',
-    '# Data from:',
-    ...info.sources.map(source => `#  - ${source}`),
+    // 只有在有 sources 时才添加数据来源部分
+    sources.length > 0 && [
+      '# Data from:',
+      ...sources.map(source => `#  - ${source}`)
+    ],
     '',
     content
-  ].filter(Boolean);
+  ].flat().filter(Boolean);
 
   return headers.join('\n');
 }
