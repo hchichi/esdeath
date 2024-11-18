@@ -1,13 +1,13 @@
 # Advertising Reject Rules
-# UPDATED: 2024/11/18 11:19:38
+# UPDATED: 2024/11/18 11:28:35
 # STATS:
-# DOMAIN: 292
+# DOMAIN: 293
 # DOMAIN-SUFFIX: 841
 # DOMAIN-KEYWORD: 5
 # IP-CIDR: 5
 # IP-CIDR6: 1
 # USER-AGENT: 1
-# TOTAL: 1145
+# TOTAL: 1146
 # Combined advertising/hijacking/tracking blocking rules
 # SOURCES:
 #  - https://raw.githubusercontent.com/ConnersHua/RuleGo/master/Surge/Ruleset/Extra/Reject/Advertising.list
@@ -15,6 +15,7 @@
 #  - https://raw.githubusercontent.com/ConnersHua/RuleGo/master/Surge/Ruleset/Extra/Reject/Malicious.list
 #  - https://raw.githubusercontent.com/ConnersHua/RuleGo/master/Surge/Ruleset/Extra/Reject/Tracking.list
 DOMAIN,118.89.204.198
+DOMAIN,[object Object]
 DOMAIN,a.wkanx.com
 DOMAIN,a0.app.xiaomi.com
 DOMAIN,abema-adx.ameba.jp

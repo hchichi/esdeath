@@ -1,3 +1,8 @@
+# UPDATED: 2024/11/18 11:28:32
+# STATS:
+# OTHER: 1
+# TOTAL: 1
+[object Object]
 # 针对部分网站显示IP归属地的分流规则
 # anti-ip-attribution rule-set-reject.list v0.3.1 24db48a4973b31d718703136cfcc2b3621171f36
 # https://github.com/SunsetMkt/anti-ip-attribution

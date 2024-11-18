@@ -1,13 +1,14 @@
 # NeteaseMusic Rules
-# UPDATED: 2024/11/18 11:19:38
+# UPDATED: 2024/11/18 11:28:35
 # STATS:
-# DOMAIN: 1
+# DOMAIN: 2
 # IP-CIDR: 17
-# TOTAL: 18
+# TOTAL: 19
 # Combined NeteaseMusic rules
 # SOURCES:
 #  - https://ruleset.skk.moe/List/ip/neteasemusic.conf
 #  - https://ruleset.skk.moe/List/ip/neteasemusic.conf
+DOMAIN,[object Object]
 DOMAIN,this_ruleset_is_made_by_sukkaw.ruleset.skk.moe
 IP-CIDR,101.71.154.241/32,no-resolve
 IP-CIDR,103.126.92.132/31,no-resolve

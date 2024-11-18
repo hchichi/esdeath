@@ -1,7 +1,11 @@
+# UPDATED: 2024/11/18 11:28:32
+# STATS:
+# OTHER: 1
+# TOTAL: 1
+[object Object]
 # Author: 可莉🅥
 # 引用: https://github.com/dogfight360/UsbEAm
 # 2024-05-07 00:02:23
-
 # EPIC游戏下载、更新[国际]
 DOMAIN,download.epicgames.com
 DOMAIN,download2.epicgames.com
@@ -11,8 +15,7 @@ DOMAIN,epicgames-download1.akamaized.net
 DOMAIN,fastly-download.epicgames.com
 DOMAIN,ipv4.egdownload.fastly-edge.com
 DOMAIN-KEYWORD,epicgames-download
-AND,((DOMAIN-KEYWORD,cdn),(DOMAIN-KEYWORD,-epicgames-))
-
+AND,((DOMAIN-KEYWORD,cdn)
 # Battle.net战网游戏下载、更新[国际]
 DOMAIN,blzddist1-a.akamaihd.net
 DOMAIN,blzddistkr1-a.akamaihd.net
@@ -21,12 +24,10 @@ DOMAIN,eu.cdn.blizzard.com
 DOMAIN,kr.cdn.blizzard.com
 DOMAIN,level3.blizzard.com
 DOMAIN,us.cdn.blizzard.com
-
 # GOG游戏下载、更新[国际]
 DOMAIN,gog-cdn-fastly-cp77.gog.com
 DOMAIN,gog-cdn-fastly.gog.com
 DOMAIN,gog-cdn-lumen.secure2.footprint.net
-
 # 微软游戏下载、更新[国际]
 DOMAIN,assets1.xboxlive.com
 DOMAIN,assets2.xboxlive.com
@@ -34,7 +35,6 @@ DOMAIN,ak.tiles.virtualearth.net
 DOMAIN,pf-cdn-content-prod.azureedge.net
 DOMAIN,xvcf1.xboxlive.com
 DOMAIN,xvcf2.xboxlive.com
-
 # 微软全家桶上传、下载、同步、在线安装[国际]
 DOMAIN,azurestackhubuat.download.prss.microsoft.com
 DOMAIN,azurestackreleases.download.prss.microsoft.com
@@ -85,22 +85,18 @@ DOMAIN,volic.download.prss.microsoft.com
 DOMAIN,visualstudio.download.prss.microsoft.com
 DOMAIN,windbg.download.prss.microsoft.com
 DOMAIN-SUFFIX,storage.live.com
-
 # UBisoft Connect(Uplay)育碧游戏下载、更新[国际]
 DOMAIN,uplaypc-s-ubisoft.cdn.ubi.com
 DOMAIN,uplaypc-s-ubisoft-ww.cdn.ubi.com
-
 # Origin艺电游戏平台[国际]
 DOMAIN,download.dm.origin.com
 DOMAIN,origin-a.akamaihd.net
 DOMAIN,ssl-lvlt.cdn.ea.com
-
 # EA Desktop游戏下载[国际]
 DOMAIN,origin-a.akamaihd.net
 DOMAIN,ssl-lvlt.cdn.ea.com
-
 # Steam游戏下载、游戏更新、创意工坊下载、Steam.TV直播、社区实况直播[国际]
-AND,((DOMAIN-KEYWORD,cache),(DOMAIN-SUFFIX,steamcontent.com))
+AND,((DOMAIN-KEYWORD,cache)
 DOMAIN,avatars.akamai.steamstatic.com
 DOMAIN,avatars.cloudflare.steamstatic.com
 DOMAIN,avatars.steamstatic.com
@@ -130,7 +126,6 @@ DOMAIN,steamuserimages-a.akamaihd.net
 DOMAIN,store.cloudflare.steamstatic.com
 DOMAIN,upos-hz-mirrorakam.akamaized.net
 DOMAIN,video.cloudflare.steamstatic.com
-
 # Riot游戏下载、更新[国际]
 DOMAIN,bacon.secure.dyn.riotcdn.net
 DOMAIN,bacon.dyn.riotcdn.net
@@ -142,7 +137,6 @@ DOMAIN,riot-client.secure.dyn.riotcdn.net
 DOMAIN,riot-client.dyn.riotcdn.net
 DOMAIN,valorant.secure.dyn.riotcdn.net
 DOMAIN,valorant.dyn.riotcdn.net
-
 # FiveM游戏下载、更新[国际]
 DOMAIN,changelogs-live.fivem.net
 DOMAIN,c.fivem.net
@@ -179,21 +173,17 @@ DOMAIN,storage.fivem.net
 DOMAIN,servers-frontend.fivem.net
 DOMAIN,status.fivem.net
 DOMAIN,wiki.fivem.net
-
 # Bethesda贝塞斯达客户端、游戏及mod的下载、更新[国际]
 DOMAIN,content.cdp.bethesda.net
 DOMAIN,download.cdp.bethesda.net
-
 # Hikari Field游戏下载及更新[国际]
 DOMAIN,download.hikarifield.co.jp
-
 # Dlsite游戏下载[国际]
 DOMAIN,download.dlsite.com
 DOMAIN,file.chobit.cc
 DOMAIN,img.dlsite.jp
 DOMAIN,play.dl.dlsite.com
 DOMAIN,trial.dlsite.com
-
 # Bandai Namco万代南梦宫[国际]
 DOMAIN,account.bandainamcoid.com
 DOMAIN,account-api.bandainamcoid.com
@@ -209,6 +199,5 @@ DOMAIN,object-bnolauncher-pf.bandainamco-ol.jp
 DOMAIN,object-web.blue-protocol.com
 DOMAIN,object.gundamevolution.jp
 DOMAIN,object-web.gundamevolution.jp
-
 # Cloudflare云存储
 DOMAIN-SUFFIX,cloudflarestorage.com

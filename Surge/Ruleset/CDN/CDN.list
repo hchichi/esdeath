@@ -1,13 +1,13 @@
 # CDN Rules
-# UPDATED: 2024/11/18 11:19:38
+# UPDATED: 2024/11/18 11:28:35
 # STATS:
-# DOMAIN: 1867
+# DOMAIN: 1868
 # DOMAIN-SUFFIX: 815
 # DOMAIN-KEYWORD: 5
 # IP-CIDR: 3
 # URL-REGEX: 2
 # OTHER: 31
-# TOTAL: 2723
+# TOTAL: 2724
 # Combined CDN rules including domain-set, IP and non-IP rules
 # SOURCES:
 #  - https://ruleset.skk.moe/List/domainset/cdn.conf
@@ -17,6 +17,7 @@
 DOMAIN,0x0.st
 DOMAIN,3dna.nationbuilder.com
 DOMAIN,4gtvimg2.4gtv.tv
+DOMAIN,[object Object]
 DOMAIN,a.deviantart.net
 DOMAIN,a.fireside.fm
 DOMAIN,a5.behance.net
