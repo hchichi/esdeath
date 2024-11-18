@@ -3,14 +3,13 @@ import { RuleMerger } from './rule-merger';
 import { RuleFile, SpecialRuleConfig } from './rule-types';
 import fs from 'node:fs';
 import path from 'node:path';
-import { downloadFile } from './utils';
-import { cleanAndSort } from './utils';
+import { downloadFile,cleanAndSort,addRuleHeader } from './utils';
 
 export class RuleProcessor {
   constructor(
     private repoPath: string,
-    private converter?: RuleConverter,
-    private merger?: RuleMerger
+    private converter: RuleConverter,
+    private merger: RuleMerger
   ) {}
 
   async process(rule: RuleFile): Promise<void> {
@@ -49,19 +48,16 @@ export class RuleProcessor {
         content = cleanAndSort(content, this.converter);
       }
 
-      // 添加头部信息
-      if (rule.title || rule.description) {
-        content = addRuleHeader(content, {
-          title: rule.title || path.basename(rule.path),
-          description: rule.description || '',
-          sources: rule.url ? [rule.url] : []
-        });
-      }
+      // 添加规则头
+      const header = await addRuleHeader(rule);
+      
+      // 处理规则内容
+      let processedContent = header + '\n' + content;
 
       // 写入文件
       await fs.promises.writeFile(
         path.join(this.repoPath, rule.path),
-        content
+        processedContent
       );
     } catch (error) {
       console.error(`Error processing ${rule.path}:`, error);

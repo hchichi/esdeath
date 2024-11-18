@@ -204,13 +204,10 @@ export function addRuleHeader(content: string, info?: HeaderInfo, sourceUrls?: s
   ].filter(Boolean); // 过滤掉空值
   
   const headers = [
-    '#',
     // 只有在有 title 时才添加
     info?.title && `# ${info.title}`,
-    '#',
-    `# Last Updated: ${timestamp}`,
-    '#',
-    '# 规则统计:',
+    `# UPDATED: ${timestamp}`,
+    '# STATS:',
     stats.domain > 0 && `# DOMAIN: ${stats.domain}`,
     stats.domainSuffix > 0 && `# DOMAIN-SUFFIX: ${stats.domainSuffix}`,
     stats.domainKeyword > 0 && `# DOMAIN-KEYWORD: ${stats.domainKeyword}`,
@@ -220,13 +217,11 @@ export function addRuleHeader(content: string, info?: HeaderInfo, sourceUrls?: s
     stats.urlRegex > 0 && `# URL-REGEX: ${stats.urlRegex}`,
     stats.other > 0 && `# OTHER: ${stats.other}`,
     `# TOTAL: ${stats.total}`,
-    '#',
     // 只有在有 description 时才添加
     info?.description && `# ${info.description}`,
-    '#',
     // 只有在有 sources 时才添加数据来源部分
     sources.length > 0 && [
-      '# Data from:',
+      '# SOURCES:',
       ...sources.map(source => `#  - ${source}`)
     ],
     '',
