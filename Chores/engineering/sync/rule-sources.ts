@@ -335,8 +335,8 @@ export const ruleGroups: RuleGroup[] = [
       {
         path: 'Surge/Ruleset/ipcird/chinaip.list',
         url: 'https://raw.githubusercontent.com/DH-Teams/DH-Geo_AS_IP_CN/main/Geo_AS_IP_CN.txt',
-        title: '🌐 IPv4+IPv6 China Rules by DH',
-        description: 'Match all domains and IPs in Mainland China IPv4 and IPv6 to direct',
+        title: 'IPv4+IPv6 Information in China.',
+        description: 'Made by DH-Teams, All rights reserved',
         header: {
           enable: true  // 明确启用 header
         } 
@@ -344,8 +344,8 @@ export const ruleGroups: RuleGroup[] = [
       {
         path: 'Surge/Ruleset/ipcird/chinaipv4_dh.list',
         url: 'https://raw.githubusercontent.com/DH-Teams/DH-Geo_AS_IP_CN/main/Geo_AS_IP_CN_V4_Surge.list',
-        title: '🌐 IPv4 China Rules by DH',
-        description: 'Match all domains and IPs in Mainland China IPv4 to direct',
+        title: 'IPv4 Information in China.',
+        description: 'Made by DH-Teams, All rights reserved',
         header: {
           enable: true  // 明确启用 header
         } 
@@ -353,21 +353,18 @@ export const ruleGroups: RuleGroup[] = [
       {
         path: 'Surge/Ruleset/ipcird/chinaasn_fries.list',
         url: 'https://raw.githubusercontent.com/VirgilClyne/GetSomeFries/main/ruleset/ASN.China.list',
+        cleanup: false,
       },
       {
         path: 'Surge/Ruleset/chinaasn_missuo.list',
         url: 'https://raw.githubusercontent.com/missuo/ASN-China/main/ASN.China.list',
-        title: '🌐 ASN China Rules by Missuo',
-        description: 'Match all domains and IPs in Mainland China ASN to direct',
-        header: {
-          enable: true  // 明确启用 header
-        } 
+        cleanup: false,
       },
       {
         path: 'Surge/Ruleset/ipcird/chinaasn_dh.list',
         url: 'https://raw.githubusercontent.com/DH-Teams/DH-Geo_AS_IP_CN/main/Geo_AS_CN.list',
-        title: '🌐 ASN China Rules by DH',
-        description: 'Match all domains and IPs in Mainland China ASN to direct',
+        title: 'ASN Information in China.',
+        description: 'Made by DH-Teams, All rights reserved',
         header: {
           enable: true  // 明确启用 header
         } 
@@ -495,8 +492,8 @@ export const specialRules: SpecialRuleConfig[] = [
     cleanup: true,
     header: {
       enable: true,  // 明确启用 header
-      title: 'Sukka Ads Reject Rules (Combined)',
-      description: 'This file contains rules for advertising, privacy protection, malware, and phishing.'
+      title: 'Advertising & Privacy Protection & Malware & Phishing ',
+      description: 'Made by Sukka, All rights reserved'
     }
   },
   {
@@ -509,8 +506,8 @@ export const specialRules: SpecialRuleConfig[] = [
     cleanup: true,
     header: {
       enable: true,  // 明确启用 header
-      title: 'EMBY (FOR TESTING ONLY)',
-      description: 'This file contains EMBY testing rules.'
+      title: 'EMBY Streaming',
+      description: 'Made by CC, All rights reserved'
     }
   },
   {
@@ -524,8 +521,8 @@ export const specialRules: SpecialRuleConfig[] = [
     cleanup: true,
     header: {
       enable: true,  // 明确启用 header
-      title: 'CDN',
-      description: 'This file contains rules for common static CDNs.'
+      title: 'Common Static CDNs',
+      description: 'Made by Sukka, All rights reserved'
     }
   },
   {
@@ -539,8 +536,8 @@ export const specialRules: SpecialRuleConfig[] = [
     cleanup: true,
     header: {
       enable: true,  // 明确启用 header
-      title: 'REJECT',
-      description: 'This file contains rules for advertising, hijacking, and tracking.'
+      title: 'Advertising & malicious & Tracking',
+      description: 'Made by RuleGo, All rights reserved'
     }
   },
   {

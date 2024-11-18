@@ -22,7 +22,7 @@ export class RuleConverter {
 
   convert(rule: string): string {
     // 处理注释
-    if (rule.startsWith('#')) {
+    if (rule.trim().startsWith('#') || rule.trim().startsWith('//')) {
       return this.options.preserveComments ? rule : '';
     }
 
