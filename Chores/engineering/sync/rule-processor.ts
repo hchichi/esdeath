@@ -31,13 +31,13 @@ export class RuleProcessor {
         .filter(Boolean)
         .join('\n');
 
-      // 4. 如果需要清理，进行清理和排序
-      if (rule.cleanup) {
+      // 4. 只在明确指定时才清理和排序
+      if (rule.cleanup === true) {
         content = cleanAndSort(content, this.converter);
       }
 
-      // 5. 添加规则头部信息（除非明确禁用）
-      if (rule.header?.enable !== true) {
+      // 5. 只在明确启用时才添加规则头部信息
+      if (rule.header?.enable === true) {
         const headerInfo = {
           title: rule.title,
           description: rule.description,

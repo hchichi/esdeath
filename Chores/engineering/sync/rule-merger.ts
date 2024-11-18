@@ -12,7 +12,7 @@ export class RuleMerger {
   ) {}
 
   async mergeSpecialRules(config: SpecialRuleConfig): Promise<void> {
-    const { name, targetFile, sourceFiles, extraRules, cleanup } = config;
+    const { name, targetFile, sourceFiles, extraRules } = config;
     console.log(`Merging special rules: ${name}`);
 
     try {
@@ -39,13 +39,13 @@ export class RuleMerger {
         mergedContent += '\n' + extraRules.join('\n');
       }
 
-      // 5. 如果需要清理，进行清理和排序
-      if (cleanup) {
+      // 只在明确指定时才清理和排序
+      if (config.cleanup === true) {
         mergedContent = cleanAndSort(mergedContent, this.converter);
       }
 
-      // 6. 添加规则头部信息（除非明确禁用）
-      if (config.header?.enable !== true) {
+      // 只在明确启用时才添加规则头部信息
+      if (config.header?.enable === true) {
         mergedContent = addRuleHeader(mergedContent, {
           title: config.header?.title,
           description: config.header?.description

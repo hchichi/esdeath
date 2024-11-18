@@ -46,13 +46,41 @@ export function getRuleStats(content: string | Buffer): RuleStats {
   
   const stats: RuleStats = {
     total: 0,
+    // 域名类规则统计
     domain: 0,
     domainSuffix: 0,
     domainKeyword: 0,
+    domainSet: 0,
+    
+    // IP 类规则统计
     ipCidr: 0,
     ipCidr6: 0,
-    userAgent: 0,
+    ipAsn: 0,
+    ipSuffix: 0,
+    
+    // GEO 类规则统计
+    geoip: 0,
+    geosite: 0,
+    
+    // 进程类规则统计
+    processName: 0,
+    processPath: 0,
+    
+    // 端口类规则统计
+    destPort: 0,
+    srcPort: 0,
+    
+    // 协议类规则统计
+    protocol: 0,
+    network: 0,
+    
+    // HTTP 类规则统计
+    ruleSet: 0,
     urlRegex: 0,
+    userAgent: 0,
+    header: 0,
+    
+    // 其他规则统计
     other: 0
   };
 
@@ -62,6 +90,7 @@ export function getRuleStats(content: string | Buffer): RuleStats {
   lines.forEach(line => {
     const type = line.split(',')[0]?.trim().toUpperCase();
     switch (type) {
+      // 域名类规则
       case 'DOMAIN':
         stats.domain++;
         break;
@@ -71,18 +100,71 @@ export function getRuleStats(content: string | Buffer): RuleStats {
       case 'DOMAIN-KEYWORD':
         stats.domainKeyword++;
         break;
+      case 'DOMAIN-SET':
+        stats.domainSet++;
+        break;
+      
+      // IP 类规则
       case 'IP-CIDR':
         stats.ipCidr++;
         break;
       case 'IP-CIDR6':
         stats.ipCidr6++;
         break;
-      case 'USER-AGENT':
-        stats.userAgent++;
+      case 'IP-ASN':
+        stats.ipAsn++;
+        break;
+      case 'IP-SUFFIX':
+        stats.ipSuffix++;
+        break;
+      
+      // GEO 类规则
+      case 'GEOIP':
+        stats.geoip++;
+        break;
+      case 'GEOSITE':
+        stats.geosite++;
+        break;
+      
+      // 进程类规则
+      case 'PROCESS-NAME':
+        stats.processName++;
+        break;
+      case 'PROCESS-PATH':
+        stats.processPath++;
+        break;
+      
+      // 端口类规则
+      case 'DEST-PORT':
+      case 'DST-PORT':
+        stats.destPort++;
+        break;
+      case 'SRC-PORT':
+        stats.srcPort++;
+        break;
+      
+      // 协议类规则
+      case 'PROTOCOL':
+        stats.protocol++;
+        break;
+      case 'NETWORK':
+        stats.network++;
+        break;
+      
+      // HTTP 类规则
+      case 'RULE-SET':
+        stats.ruleSet++;
         break;
       case 'URL-REGEX':
         stats.urlRegex++;
         break;
+      case 'USER-AGENT':
+        stats.userAgent++;
+        break;
+      case 'HEADER':
+        stats.header++;
+        break;
+      
       default:
         stats.other++;
     }
@@ -258,24 +340,51 @@ export function addRuleHeader(content: string | Buffer, info?: HeaderInfo, sourc
   
   const headers = [
     '########################################',
-    // 只有在有 title 时才添加
     info?.title && `# ${info.title}`,
-    `# UPDATED: ${timestamp}`,
-    '# STATS:',
+    `# Last updated: ${timestamp}`,
+    
+    // 域名类规则
     stats.domain > 0 && `# DOMAIN: ${stats.domain}`,
     stats.domainSuffix > 0 && `# DOMAIN-SUFFIX: ${stats.domainSuffix}`,
     stats.domainKeyword > 0 && `# DOMAIN-KEYWORD: ${stats.domainKeyword}`,
+    stats.domainSet > 0 && `# DOMAIN-SET: ${stats.domainSet}`,
+    
+    // IP 类规则
     stats.ipCidr > 0 && `# IP-CIDR: ${stats.ipCidr}`,
     stats.ipCidr6 > 0 && `# IP-CIDR6: ${stats.ipCidr6}`,
-    stats.userAgent > 0 && `# USER-AGENT: ${stats.userAgent}`,
+    stats.ipAsn > 0 && `# IP-ASN: ${stats.ipAsn}`,
+    stats.ipSuffix > 0 && `# IP-SUFFIX: ${stats.ipSuffix}`,
+    
+    // GEO 类规则
+    stats.geoip > 0 && `# GEOIP: ${stats.geoip}`,
+    stats.geosite > 0 && `# GEOSITE: ${stats.geosite}`,
+    
+    // 进程类规则
+    stats.processName > 0 && `# PROCESS-NAME: ${stats.processName}`,
+    stats.processPath > 0 && `# PROCESS-PATH: ${stats.processPath}`,
+    
+    // 端口类规则
+    stats.destPort > 0 && `# DEST-PORT: ${stats.destPort}`,
+    stats.srcPort > 0 && `# SRC-PORT: ${stats.srcPort}`,
+    
+    // 协议类规则
+    stats.protocol > 0 && `# PROTOCOL: ${stats.protocol}`,
+    stats.network > 0 && `# NETWORK: ${stats.network}`,
+    
+    // HTTP 类规则
+    stats.ruleSet > 0 && `# RULE-SET: ${stats.ruleSet}`,
     stats.urlRegex > 0 && `# URL-REGEX: ${stats.urlRegex}`,
+    stats.userAgent > 0 && `# USER-AGENT: ${stats.userAgent}`,
+    stats.header > 0 && `# HEADER: ${stats.header}`,
+    
     stats.other > 0 && `# OTHER: ${stats.other}`,
-    `# TOTAL: ${stats.total}`,
+    `# Total: ${stats.total}`,
+    
     // 只有在有 description 时才添加
     info?.description && `# ${info.description}`,
     // 只有在有 sources 时才添加数据来源部分
     sources.length > 0 && [
-      '# SOURCES:',
+      '# Data sources:',
       ...sources.map(source => `#  - ${source}`)
     ],
     '########################################',

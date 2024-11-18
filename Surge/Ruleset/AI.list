@@ -1,13 +1,13 @@
 # AI Rules
-# UPDATED: 2024/11/18 11:19:38
+# UPDATED: 2024/11/18 13:34:58
 # STATS:
-# DOMAIN: 32
+# DOMAIN: 33
 # DOMAIN-SUFFIX: 41
 # DOMAIN-KEYWORD: 4
 # IP-CIDR: 1
 # IP-CIDR6: 1
 # OTHER: 2
-# TOTAL: 81
+# TOTAL: 82
 # Combined AIGC rules
 # SOURCES:
 #  - https://proxyresource.pages.dev/Tool/Loon/Rule/AI.list
@@ -16,6 +16,7 @@
 #  - https://raw.githubusercontent.com/hiven425/hiven/master/config/AI.list
 AND,((DOMAIN-KEYWORD,chatgpt-async-webps-prod-)
 AND,((DOMAIN-KEYWORD,openaicom-api-)
+DOMAIN,[object Object]
 DOMAIN,ai.google.dev
 DOMAIN,aida.googleapis.com
 DOMAIN,aistudio.google.com
