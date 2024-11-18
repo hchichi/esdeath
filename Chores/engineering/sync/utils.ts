@@ -181,7 +181,7 @@ export function getRuleStats(content: string | Buffer): RuleStats {
  */
 export function cleanAndSort(content: string | Buffer, converter?: RuleConverter): string {
   const contentStr = Buffer.isBuffer(content) ? content.toString('utf-8') : String(content);
-  
+
   // 将内容分行
   const lines = contentStr.split('\n').map(line => line.trim());
 
@@ -194,9 +194,11 @@ export function cleanAndSort(content: string | Buffer, converter?: RuleConverter
       continue;
     }
 
-  for (let line of lines) {
     // 跳过注释行
     if (line.startsWith('#') || line.startsWith(';') || line.startsWith('//')) {
+      if (converter?.options.preserveComments) {
+        rules.add(line);
+      }
       continue;
     }
 
@@ -243,19 +245,7 @@ export function cleanAndSort(content: string | Buffer, converter?: RuleConverter
     }
   }
 
-  // 返回排序后的规则
-  return Array.from(rules)
-    .sort((a, b) => {
-      // 首先按规则类型排序
-      const typeA = a.split(',')[0];
-      const typeB = b.split(',')[0];
-      if (typeA !== typeB) {
-        return typeA.localeCompare(typeB);
-      }
-      // 然后按规则内容排序
-      return a.localeCompare(b);
-    })
-    .join('\n');
+  return Array.from(rules).join('\n');
 }
 
 /**
