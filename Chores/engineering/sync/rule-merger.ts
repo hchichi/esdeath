@@ -39,16 +39,12 @@ export class RuleMerger {
         mergedContent = cleanAndSort(mergedContent, this.converter);
       }
 
-      // 收集所有源文件的 URL
-      const sourceUrls = config.sourceFiles
-        .map(file => {
-          const ruleFile = this.findRuleFile(file);
-          return ruleFile?.url;
-        })
-        .filter(Boolean);
-
       // 添加规则头部信息
-      mergedContent = addRuleHeader(mergedContent, config.header, sourceUrls);
+      mergedContent = addRuleHeader(mergedContent, {
+        title: config.header?.title,
+        description: config.header?.description,
+        url: sourceUrls[0]  // 使用第一个URL作为主要来源
+      }, sourceUrls);  // 所有URL作为数据来源
 
       // 确保目标目录存在
       const targetDir = path.dirname(path.join(this.repoPath, targetFile));
