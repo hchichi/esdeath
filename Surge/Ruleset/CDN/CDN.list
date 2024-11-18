@@ -1,3 +1,18 @@
+########################################
+# CDN
+# Last updated: 2024/11/18 14:42:06
+# DOMAIN: 1867
+# DOMAIN-SUFFIX: 815
+# DOMAIN-KEYWORD: 5
+# IP-CIDR: 3
+# OTHER: 31
+# Total: 2721
+# This file contains rules for common static CDNs.
+# Data sources:
+#  - https://ruleset.skk.moe/List/domainset/cdn.conf
+#  - https://ruleset.skk.moe/List/non_ip/cdn.conf
+#  - https://ruleset.skk.moe/List/ip/cdn.conf
+########################################
 DOMAIN,0x0.st
 DOMAIN,3dna.nationbuilder.com
 DOMAIN,4gtvimg2.4gtv.tv

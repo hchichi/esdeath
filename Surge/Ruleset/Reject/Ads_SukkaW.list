@@ -1,12 +1,3 @@
-########################################
-# UPDATED: 2024/11/18 14:38:28
-# STATS:
-# DOMAIN: 779
-# DOMAIN-SUFFIX: 108597
-# TOTAL: 109376
-# SOURCES:
-#  - https://ruleset.skk.moe/List/domainset/reject.conf
-########################################
 DOMAIN-SUFFIX,say.ac
 DOMAIN-SUFFIX,mysp.ac
 DOMAIN-SUFFIX,tube.ac

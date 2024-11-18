@@ -1,17 +1,3 @@
-########################################
-# UPDATED: 2024/11/18 14:38:28
-# STATS:
-# DOMAIN: 56
-# DOMAIN-SUFFIX: 16
-# DOMAIN-KEYWORD: 48
-# IP-CIDR: 26
-# IP-CIDR6: 4
-# URL-REGEX: 2
-# OTHER: 7
-# TOTAL: 159
-# SOURCES:
-#  - https://ruleset.skk.moe/List/non_ip/reject.conf
-########################################
 DOMAIN,this_ruleset_is_made_by_sukkaw.ruleset.skk.moe
 DOMAIN-SUFFIX,histats.com
 DOMAIN-SUFFIX,notify6.com

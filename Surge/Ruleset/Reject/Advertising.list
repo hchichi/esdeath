@@ -1,16 +1,3 @@
-########################################
-# UPDATED: 2024/11/18 14:38:28
-# STATS:
-# DOMAIN: 260
-# DOMAIN-SUFFIX: 696
-# DOMAIN-KEYWORD: 5
-# IP-CIDR: 5
-# IP-CIDR6: 1
-# USER-AGENT: 1
-# TOTAL: 968
-# SOURCES:
-#  - https://raw.githubusercontent.com/ConnersHua/RuleGo/master/Surge/Ruleset/Extra/Reject/Advertising.list
-########################################
 DOMAIN-KEYWORD,adservice
 DOMAIN-SUFFIX,17gouwuba.com
 DOMAIN-SUFFIX,186078.com

@@ -1,17 +1,3 @@
-########################################
-# UPDATED: 2024/11/18 14:38:31
-# STATS:
-# DOMAIN: 22
-# DOMAIN-SUFFIX: 16165
-# DOMAIN-KEYWORD: 2
-# IP-CIDR: 410
-# IP-CIDR6: 104
-# USER-AGENT: 3
-# OTHER: 17
-# TOTAL: 16723
-# SOURCES:
-#  - https://raw.githubusercontent.com/LM-Firefly/Rules/master/PROXY.list
-########################################
 DOMAIN-SUFFIX,9cdn.net
 DOMAIN-SUFFIX,9nation.com.au
 DOMAIN-SUFFIX,9news.com.au
