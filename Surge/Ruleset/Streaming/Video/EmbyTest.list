@@ -1,0 +1,96 @@
+########################################
+# EMBY Streaming
+# Last updated: 2024/11/18 16:04:26
+# DOMAIN-SUFFIX: 83
+# IP-CIDR6: 2
+# Total: 85
+# Made by CC, All rights reserved
+# Data sources:
+#  - https://github.com/1120109856/lynn/raw/main/fxw
+#  - https://github.com/1120109856/lynn/raw/main/zl
+########################################
+DOMAIN-SUFFIX,7777777.buzz
+DOMAIN-SUFFIX,955557.xyz
+DOMAIN-SUFFIX,apopcloud.com
+DOMAIN-SUFFIX,bgka.me
+DOMAIN-SUFFIX,bili.bili.rip
+DOMAIN-SUFFIX,bx.mooguu.top
+DOMAIN-SUFFIX,c.emby.pro
+DOMAIN-SUFFIX,carlos.trade
+DOMAIN-SUFFIX,cc.coemn.com
+DOMAIN-SUFFIX,cdn.lyrebirdemby.com
+DOMAIN-SUFFIX,cdsalw2lw.catlinks.co.uk
+DOMAIN-SUFFIX,cerahk.pilipili.club
+DOMAIN-SUFFIX,cf.bili.rip
+DOMAIN-SUFFIX,cfde.xmsl.org
+DOMAIN-SUFFIX,cn.apopcloud.live
+DOMAIN-SUFFIX,dl.carryz.net
+DOMAIN-SUFFIX,emby-mica-us-v1.mius.uk
+DOMAIN-SUFFIX,emby-micax-ca-v2.mius.uk
+DOMAIN-SUFFIX,emby-us-v4.mius.uk
+DOMAIN-SUFFIX,emby.127255.best
+DOMAIN-SUFFIX,emby.as174.com
+DOMAIN-SUFFIX,emby.cbcb.lol
+DOMAIN-SUFFIX,emby.misakaf.org
+DOMAIN-SUFFIX,emby.pilipiliultra.com
+DOMAIN-SUFFIX,emby.pilipiliultra.top
+DOMAIN-SUFFIX,emby.saturday.video
+DOMAIN-SUFFIX,emby.tnx.one
+DOMAIN-SUFFIX,emby.uhhdc.com
+DOMAIN-SUFFIX,emby.yomo.lol
+DOMAIN-SUFFIX,emby2.lilyya.xyz
+DOMAIN-SUFFIX,emby2.ycxdy.top
+DOMAIN-SUFFIX,emby3.mcjoker.xyz
+DOMAIN-SUFFIX,embymv.link
+DOMAIN-SUFFIX,embymv.top
+DOMAIN-SUFFIX,embyplus.org
+DOMAIN-SUFFIX,entry.zox.show
+DOMAIN-SUFFIX,film.hovervan.org
+DOMAIN-SUFFIX,flare.catlinks.co.uk
+DOMAIN-SUFFIX,gd.9521732.xyz
+DOMAIN-SUFFIX,guguemby.site
+DOMAIN-SUFFIX,hd.xmsl.org
+DOMAIN-SUFFIX,heisi.nekobox.best
+DOMAIN-SUFFIX,henan.032095.xyz
+DOMAIN-SUFFIX,hxd.as174.com
+DOMAIN-SUFFIX,jellyfin.asia
+DOMAIN-SUFFIX,jpp.809688.xyz
+DOMAIN-SUFFIX,jz.mcjoker.xyz
+DOMAIN-SUFFIX,kr.pdatv.cc
+DOMAIN-SUFFIX,line.emby.moe
+DOMAIN-SUFFIX,line.xmsl.org
+DOMAIN-SUFFIX,magpie.bond
+DOMAIN-SUFFIX,magpie.cyou
+DOMAIN-SUFFIX,main.gugumedia.site
+DOMAIN-SUFFIX,mjjemby.org
+DOMAIN-SUFFIX,mm.mooguu.xyz
+DOMAIN-SUFFIX,niceduck.lol
+DOMAIN-SUFFIX,node1.guguemby.site
+DOMAIN-SUFFIX,pdatv.cc
+DOMAIN-SUFFIX,pemby.127066.xyz
+DOMAIN-SUFFIX,pemby.127255.best
+DOMAIN-SUFFIX,pilifun.top
+DOMAIN-SUFFIX,pilipili.club
+DOMAIN-SUFFIX,pilipili.hitagi.me
+DOMAIN-SUFFIX,pm.xmsl.org
+DOMAIN-SUFFIX,poloemby.xyz
+DOMAIN-SUFFIX,pornemby.com
+DOMAIN-SUFFIX,smartcdn.gugumedia.site
+DOMAIN-SUFFIX,ss.ianong.cn
+DOMAIN-SUFFIX,stream-link.online
+DOMAIN-SUFFIX,stream-link.org
+DOMAIN-SUFFIX,stream.ntrrr.top
+DOMAIN-SUFFIX,su.viclub.top
+DOMAIN-SUFFIX,teachers.sportemby.com
+DOMAIN-SUFFIX,temby.285286.xyz
+DOMAIN-SUFFIX,tv.micu.hk
+DOMAIN-SUFFIX,us.pilifun.top
+DOMAIN-SUFFIX,v.20120714.xyz
+DOMAIN-SUFFIX,v0.micu.hk
+DOMAIN-SUFFIX,vip.nanflix.net
+DOMAIN-SUFFIX,wawohk4837.pilifun.top
+DOMAIN-SUFFIX,www.tanhuatv.site
+DOMAIN-SUFFIX,xgwc6.sharepoint.com
+DOMAIN-SUFFIX,zox.show
+IP-CIDR6,2602:294:0:D4F::999/128
+IP-CIDR6,2A0A:4CC0:1:11C2:145B:39FF:FE00:BAAC/128

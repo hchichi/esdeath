@@ -1,9 +1,9 @@
 ########################################
-# 🌐 IPv4 China Rules by DH
-# Last updated: 2024/11/18 15:27:46
+# IPv4 Information in China.
+# Last updated: 2024/11/18 16:04:19
 # IP-CIDR: 4643
 # Total: 4643
-# Match all domains and IPs in Mainland China IPv4 to direct
+# Made by DH-Teams, All rights reserved
 # Data sources:
 #  - https://raw.githubusercontent.com/DH-Teams/DH-Geo_AS_IP_CN/main/Geo_AS_IP_CN_V4_Surge.list
 ########################################
