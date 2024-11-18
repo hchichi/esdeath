@@ -1,16 +1,11 @@
-#
 # Emby Rules
-#
-# Last Updated: 2024/11/18 10:53:40
-#
-# 规则统计:
+# UPDATED: 2024/11/18 11:19:38
+# STATS:
 # DOMAIN-SUFFIX: 83
 # IP-CIDR6: 2
 # TOTAL: 85
-#
 # Combined Emby test rules
-#
-# Data from:
+# SOURCES:
 #  - https://github.com/1120109856/lynn/raw/main/fxw
 #  - https://github.com/1120109856/lynn/raw/main/fxw
 #  - https://github.com/1120109856/lynn/raw/main/zl
