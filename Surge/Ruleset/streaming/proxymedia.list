@@ -31,7 +31,6 @@ DOMAIN-SUFFIX,amazonvideo.com
 DOMAIN-SUFFIX,media-amazon.com
 DOMAIN-SUFFIX,pv-cdn.net
 DOMAIN-SUFFIX,seattlespheres.com
-URL-REGEX,^https?:\/\/www\.amazon\.com\/(Amazon-Video|gp\/video)\/
 USER-AGENT,AppleNews*
 USER-AGENT,com.apple.news*
 DOMAIN,gspe1-ssl.ls.apple.com
@@ -108,7 +107,6 @@ DOMAIN-SUFFIX,encoretvb.com
 USER-AGENT,FOX%20NOW*
 DOMAIN-SUFFIX,fox.com
 DOMAIN-SUFFIX,foxdcg.com
-DOMAIN-SUFFIX,uplynk.com
 USER-AGENT,HBO%20NOW*
 USER-AGENT,HBOMAX*
 DOMAIN-SUFFIX,hbo.com
@@ -278,7 +276,6 @@ DOMAIN-SUFFIX,oaistatic.com
 DOMAIN-SUFFIX,oaiusercontent.com
 DOMAIN-SUFFIX,openai.com
 DOMAIN-SUFFIX,openaiapi-site.azureedge.net
-DOMAIN-SUFFIX,sentry.io
 DOMAIN-SUFFIX,stripe.com
 USER-AGENT,PBS*
 DOMAIN-SUFFIX,pbs.org

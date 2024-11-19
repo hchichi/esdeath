@@ -111,8 +111,6 @@ DOMAIN-SUFFIX,servers.xeton.dev
 DOMAIN-SUFFIX,emby1.medi4.org
 DOMAIN-SUFFIX,emby2.medi4.org
 DOMAIN-SUFFIX,91ai.de
-DOMAIN-SUFFIX,stream.synn.cc
-DOMAIN-SUFFIX,stream.ntrrr.top
 DOMAIN,notnetflix.cos.cat
 DOMAIN,cminf.sfcat.link
 DOMAIN,cuinf.sfcat.link
@@ -136,9 +134,6 @@ DOMAIN-SUFFIX,embyclub.com
 DOMAIN-SUFFIX,az-hk.embyclub.com
 DOMAIN-SUFFIX,azsgp.embyclub.com
 DOMAIN-SUFFIX,emby.xeton.dev
-DOMAIN-SUFFIX,jellyfin.xeton.dev
-DOMAIN-SUFFIX,movie.xeton.dev
-DOMAIN-SUFFIX,servers.xeton.dev
 DOMAIN-SUFFIX,emby.ytoo.li
 DOMAIN-SUFFIX,emby.wtf
 DOMAIN-SUFFIX,pub1.emby.wtf

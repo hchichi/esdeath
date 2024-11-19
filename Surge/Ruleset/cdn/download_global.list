@@ -77,8 +77,6 @@ DOMAIN,uplaypc-s-ubisoft-ww.cdn.ubi.com
 DOMAIN,download.dm.origin.com
 DOMAIN,origin-a.akamaihd.net
 DOMAIN,ssl-lvlt.cdn.ea.com
-DOMAIN,origin-a.akamaihd.net
-DOMAIN,ssl-lvlt.cdn.ea.com
 AND,((DOMAIN-KEYWORD,cache)
 DOMAIN,avatars.akamai.steamstatic.com
 DOMAIN,avatars.cloudflare.steamstatic.com
