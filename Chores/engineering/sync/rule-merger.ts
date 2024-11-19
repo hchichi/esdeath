@@ -3,6 +3,7 @@ import { RuleConverter } from './rule-converter';
 import fs from 'node:fs';
 import path from 'node:path';
 import { cleanAndSort, addRuleHeader } from './utils';
+import { ruleGroups } from './rule-sources'; 
 
 export class RuleMerger {
   constructor(
@@ -15,7 +16,10 @@ export class RuleMerger {
     console.log(`Merging special rules: ${name}`);
 
     try {
-      // 1. Read all source file contents
+      // 1. 获取源文件的下载 URL
+      const sourceUrls = await this.getSourceUrls(sourceFiles);
+      
+      // 2. 读取所有源文件内容
       const contents = await Promise.all(
         sourceFiles.map(async file => {
           const content = await fs.promises.readFile(
@@ -43,7 +47,7 @@ export class RuleMerger {
         mergedContent = addRuleHeader(mergedContent, {
           title: config.header?.title,
           description: config.header?.description
-        });
+        }, sourceUrls);
       }
 
       // 6. Write merged content to target file
@@ -65,5 +69,19 @@ export class RuleMerger {
       console.error(`Error merging ${name} rules:`, error);
       throw error;
     }
+  }
+
+  private async getSourceUrls(files: string[]): Promise<string[]> {
+    // 从 ruleGroups 中查找对应文件的 URL
+    const urls = files.map(file => {
+      for (const group of ruleGroups) {
+        const ruleFile = group.files.find(f => f.path === file);
+        if (ruleFile?.url) {
+          return ruleFile.url;
+        }
+      }
+      return file; // 如果找不到 URL，返回文件路径
+    });
+    return urls;
   }
 } 
