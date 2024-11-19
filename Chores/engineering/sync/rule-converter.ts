@@ -1,172 +1,121 @@
 import { RuleFormat, RuleType, ParsedRule, RuleFlags } from './rule-types.js';
 
 interface ConverterOptions {
-  enableNoResolve?: boolean;
-  enablePreMatching?: boolean;
-  enableExtended?: boolean;
-  preserveComments?: boolean;
+  format?: RuleFormat;
+  cleanup?: boolean;
 }
 
 export class RuleConverter {
-  private format: RuleFormat;
   private options: ConverterOptions;
 
-  constructor(format: RuleFormat) {
-    this.format = format;
-    this.options = {};
-  }
-
-  setOptions(options: ConverterOptions) {
-    this.options = { ...this.options, ...options };
+  constructor(options: ConverterOptions = {}) {
+    this.options = {
+      format: options.format || 'Surge',
+      cleanup: options.cleanup || false
+    };
   }
 
   convert(rule: string): string {
-    // Handle comments
-    if (rule.trim().startsWith('#') || rule.trim().startsWith('//')) {
-      return this.options.preserveComments ? rule : '';
+    // 空行处理
+    if(!rule.trim()) return rule;
+
+    // 注释处理
+    if(rule.startsWith('#') || rule.startsWith(';')) {
+      return this.options.cleanup ? '' : rule;
     }
 
-    if (!rule.trim()) return '';
+    try {
+      // 解析规则
+      const parsed = this.parseRule(rule);
+      if(!parsed) return rule;
 
-    // Handle domain-set to rule-set conversion
-    if (rule.startsWith('.')) {
-      return `DOMAIN-SUFFIX,${rule.slice(1)}`;
-    } else if (this.isDomain(rule) && !rule.includes(',')) {
-      return `DOMAIN,${rule}`;
+      // 转换规则
+      return this.formatRule(parsed);
+    } catch(e) {
+      console.warn(`Failed to convert rule: ${rule}`, e);
+      return rule;
     }
-
-    // Handle IP addresses
-    if (this.isIPv4(rule)) {
-      return `IP-CIDR,${rule}${this.options.enableNoResolve ? ',no-resolve' : ''}`;
-    }
-    if (this.isIPv6(rule)) {
-      return `IP-CIDR6,${rule}${this.options.enableNoResolve ? ',no-resolve' : ''}`;
-    }
-
-    // Handle host rules
-    if (this.isHost(rule)) {
-      return `HOST,${rule}`;
-    }
-
-    // Handle domain-keyword rules
-    if (this.isDomainKeyword(rule)) {
-      return `DOMAIN-KEYWORD,${rule}`;
-    }
-
-    // Handle geoip rules
-    if (this.isGeoIP(rule)) {
-      return `GEOIP,${rule}`;
-    }
-
-    // Handle IP-ASN rules
-    if (this.isIPASN(rule)) {
-      return `IP-ASN,${rule}`;
-    }
-
-    // Handle existing rules
-    const parsed = this.parseRule(rule);
-    if (!parsed) return rule;
-
-    // Process rule flags
-    this.processFlags(parsed);
-    return this.generateRule(parsed);
-  }
-
-  private isIPv4(str: string): boolean {
-    return /^(\d{1,3}\.){3}\d{1,3}(\/\d{1,2})?$/.test(str);
-  }
-
-  private isIPv6(str: string): boolean {
-    return /^([0-9a-fA-F]{0,4}:){1,7}[0-9a-fA-F]{0,4}(\/\d{1,3})?$/.test(str);
-  }
-
-  private isDomain(str: string): boolean {
-    return /^([a-zA-Z0-9]([a-zA-Z0-9-]*[a-zA-Z0-9])?\.)+[a-zA-Z]{2,}$/.test(str);
-  }
-
-  private isHost(str: string): boolean {
-    return /^[a-zA-Z0-9.-]+$/.test(str) && !this.isIPv4(str) && !this.isIPv6(str);
-  }
-
-  private isDomainKeyword(str: string): boolean {
-    return /^[a-zA-Z0-9-]+$/.test(str);
-  }
-
-  private isGeoIP(str: string): boolean {
-    return /^GEOIP,[A-Z]{2}$/.test(str);
-  }
-
-  private isIPASN(str: string): boolean {
-    return /^AS\d+$/.test(str);
   }
 
   private parseRule(rule: string): ParsedRule | null {
-    const parts = rule.split(',').map(p => p.trim());
+    // 解析有类型的规则
+    if(rule.includes(',')) {
+      const [type, ...parts] = rule.split(',');
+      const value = parts[0]?.trim();
+      const policy = parts[1]?.trim();
+      const flags: RuleFlags = {
+        noResolve: parts.includes('no-resolve'),
+        preMatching: parts.includes('pre-matching'),
+        extended: parts.includes('extended')
+      };
 
-    if (parts.length < 2) {
       return {
-        type: 'DOMAIN',
-        value: parts[0],
-        flags: this.parseFlags([])
+        type: this.normalizeType(type),
+        value,
+        policy: policy?.toUpperCase(),
+        flags
       };
     }
 
-    return {
-      type: parts[0] as RuleType,
-      value: parts[1],
-      policy: parts[2],
-      flags: this.parseFlags(parts.slice(3))
+    // 解析无类型规则
+    return this.inferRuleType(rule.trim());
+  }
+
+  private normalizeType(type: string): RuleType {
+    // 规则类型标准化
+    const typeMap: Record<string, RuleType> = {
+      'HOST': 'DOMAIN',
+      'HOST-SUFFIX': 'DOMAIN-SUFFIX',
+      'HOST-KEYWORD': 'DOMAIN-KEYWORD',
+      'HOST-WILDCARD': 'DOMAIN',
+      'DOMAIN-SET': 'DOMAIN-SET',
+      'IP6-CIDR': 'IP-CIDR6',
+      'IP-ASN': 'IP-ASN',
+      'IP-SUFFIX': 'IP-SUFFIX',
+      'DEST-PORT': 'DST-PORT',
+      'SRC-PORT': 'SRC-PORT',
+      'IN-PORT': 'IN-PORT',
+      // ... 其他类型映射
     };
+
+    const normalized = type.trim().toUpperCase();
+    return typeMap[normalized] || normalized as RuleType;
   }
 
-  private processFlags(rule: ParsedRule): void {
-    // Handle no-resolve
-    if (rule.type.startsWith('IP-')) {
-      rule.flags.noResolve = this.options.enableNoResolve ?? false;
-    }
+  private inferRuleType(value: string): ParsedRule {
+    // 推断规则类型
+    const flags: RuleFlags = {};
 
-    // Handle extended-matching (SNI)
-    if (this.format === 'Surge' && !rule.type.startsWith('IP-')) {
-      rule.flags.extended = this.options.enableExtended ?? false;
+    if(value.includes('*')) {
+      return { type: 'DOMAIN-KEYWORD', value, flags };
     }
-
-    // Handle pre-matching
-    if (rule.policy?.toUpperCase().startsWith('REJECT')) {
-      const validTypes = [
-        'DOMAIN',
-        'DOMAIN-SUFFIX',
-        'DOMAIN-KEYWORD',
-        'IP-CIDR',
-        'IP-CIDR6',
-        'GEOIP',
-        'IP-ASN'
-      ];
-      if (validTypes.includes(rule.type)) {
-        rule.flags.preMatching = this.options.enablePreMatching ?? false;
-      }
+    if(value.includes('/')) {
+      const type = value.includes(':') ? 'IP-CIDR6' : 'IP-CIDR';
+      return { type, value, flags: { noResolve: true } };
     }
+    if(/^(\d{1,3}\.){3}\d{1,3}$/.test(value)) {
+      return { type: 'IP-CIDR', value: `${value}/32`, flags: { noResolve: true } };
+    }
+    if(value.includes(':')) {
+      return { type: 'IP-CIDR6', value: `${value}/128`, flags: { noResolve: true } };
+    }
+    return { type: 'DOMAIN', value, flags };
   }
 
-  private parseFlags(flags: string[]): RuleFlags {
-    return {
-      noResolve: flags.includes('no-resolve'),
-      preMatching: flags.includes('pre-matching'),
-      extended: flags.includes('extended-matching')
-    };
-  }
+  private formatRule(rule: ParsedRule): string {
+    const { type, value, policy, flags } = rule;
+    
+    let formatted = `${type},${value}`;
+    
+    if(policy) {
+      formatted += `,${policy}`;
+    }
 
-  private generateRule(rule: ParsedRule): string {
-    const flags: string[] = [];
+    // 添加规则标志
+    if(flags.noResolve) formatted += ',no-resolve';
+    if(flags.preMatching) formatted += ',pre-matching';
+    if(flags.extended) formatted += ',extended';
 
-    // Add flags in a specific order
-    if (rule.flags.noResolve) flags.push('no-resolve');
-    if (rule.flags.preMatching) flags.push('pre-matching');
-    if (rule.flags.extended) flags.push('extended-matching');
-
-    const parts = [rule.type, rule.value];
-    if (rule.policy) parts.push(rule.policy);
-    if (flags.length > 0) parts.push(...flags);
-
-    return parts.join(',');
+    return formatted;
   }
 } 

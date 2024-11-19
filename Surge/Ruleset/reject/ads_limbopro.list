@@ -12,7 +12,6 @@ DOMAIN-SUFFIX,youradexchange.com,reject
 DOMAIN-SUFFIX,zprofuqkssny.com,reject
 DOMAIN-SUFFIX,vjugz.com,reject
 DOMAIN-SUFFIX,du0pud0sdlmzf.cloudfront.net,reject
-DOMAIN-SUFFIX,cdn.tsyndicate.com,reject
 DOMAIN-SUFFIX,effectscouncilman.com,reject
 DOMAIN-SUFFIX,histats.com,reject
 DOMAIN-SUFFIX,kkjhgfds.top,reject
@@ -23,7 +22,6 @@ DOMAIN-SUFFIX,6fi3bv9.cn,reject
 DOMAIN-SUFFIX,6uzxtlv.cn,reject
 DOMAIN-SUFFIX,xn--qrq171dxpq.com,reject
 DOMAIN-SUFFIX,clarity.ms,reject
-DOMAIN-SUFFIX,histats.com,reject
 DOMAIN-SUFFIX,5e87c0802f91cf8cgg.6uzxtlv.cn,reject
 DOMAIN-SUFFIX,popin.cc,reject
 DOMAIN-SUFFIX,double.net,reject
@@ -31,14 +29,11 @@ DOMAIN-SUFFIX,spotxchange.com,reject
 DOMAIN-SUFFIX,stat.gn01.top,reject
 DOMAIN-SUFFIX,ad.vidverto.io,reject
 DOMAIN-SUFFIX,googlesyndication.com,reject
-DOMAIN-SUFFIX,pagead2.googlesyndication.com,reject
 DOMAIN-SUFFIX,gn01.top,reject
 DOMAIN-SUFFIX,b1sync.zemanta.com,reject
 DOMAIN-SUFFIX,tu.xasnjafnvn.com,reject
 DOMAIN-SUFFIX,bn.ufitjvn.com,reject
 DOMAIN-SUFFIX,v3.fstats.xyz,reject
-DOMAIN-SUFFIX,wpadmngr.com,reject
-DOMAIN-SUFFIX,histats.com,reject
 DOMAIN-SUFFIX,son-in-lawmorbid.com,reject
 DOMAIN-SUFFIX,mc.yandex.ru,reject
 DOMAIN-SUFFIX,amung.us,reject
@@ -80,13 +75,9 @@ DOMAIN-SUFFIX,alexametrics.com,reject
 DOMAIN-SUFFIX,designslicensedeep.com,reject
 DOMAIN-SUFFIX,a.bestcontentfood.top,reject
 DOMAIN-SUFFIX,tsyndicate.com,reject
-DOMAIN-SUFFIX,cashewsforlife208.com,reject
 DOMAIN-SUFFIX,e67repidwnfu7gcha.com,reject
 DOMAIN-SUFFIX,mc7clurd09pla4nrtat7ion.com,reject
-DOMAIN-SUFFIX,e67repidwnfu7gcha.com,reject
 DOMAIN-SUFFIX,wuzbhjpvsf.com,reject
-DOMAIN-SUFFIX,a.realsrv.com,reject
-DOMAIN-SUFFIX,a.shukriya90.com,reject
 DOMAIN-SUFFIX,a.shukriya90.com,reject
 DOMAIN-SUFFIX,creative.xlviirdr.com,reject
 DOMAIN-SUFFIX,realsrv.com,reject
@@ -106,7 +97,6 @@ DOMAIN-SUFFIX,xn--3bs795g.zone,reject
 DOMAIN-SUFFIX,xn--2qux23c9ziyrq.plus,reject
 DOMAIN-SUFFIX,xn--2qux23c9ziyrq.club,reject
 DOMAIN-SUFFIX,xn--xhq9mt12cf5v.xn--io0a7i,reject
-DOMAIN-SUFFIX,ddmax20.xyz,reject
 DOMAIN-SUFFIX,xn--3bs795g.link,reject
 DOMAIN-SUFFIX,show.suning.beer,reject
 DOMAIN-SUFFIX,www.govshenzhen.cn,reject
@@ -175,7 +165,6 @@ DOMAIN-SUFFIX,iycwl.com,reject
 DOMAIN-SUFFIX,haoyundm.com,reject
 DOMAIN-SUFFIX,qqq123987.site,reject
 DOMAIN-SUFFIX,qweewq2021.online,reject
-DOMAIN-SUFFIX,qqq123987.site,reject
 DOMAIN-SUFFIX,jianxinshanghai.com,reject
 DOMAIN-SUFFIX,js.51toubu.com,reject
 DOMAIN-SUFFIX,img.hylmxing.com,reject
@@ -187,8 +176,6 @@ DOMAIN-SUFFIX,bizhixiang.cn,reject
 DOMAIN-SUFFIX,jspassport.ssl.qhimg.com,reject
 DOMAIN-SUFFIX,ads.superad.cc,reject
 DOMAIN-SUFFIX,wpncdn.com,reject
-DOMAIN-SUFFIX,exosrv.com,reject
-DOMAIN-SUFFIX,jads.co,reject
 DOMAIN-KEYWORD,toateeli,reject
 DOMAIN-KEYWORD,greenplasticdua,reject
 DOMAIN-KEYWORD,bongacash,reject
@@ -197,7 +184,6 @@ DOMAIN-KEYWORD,stunninglover,reject
 DOMAIN-KEYWORD,jads,reject
 DOMAIN-KEYWORD,trwl1,reject
 DOMAIN-KEYWORD,o333o,reject
-DOMAIN-SUFFIX,ad.pornimg.xyz,reject
 DOMAIN-SUFFIX,x2sfa.javgg.eu,reject
 DOMAIN-SUFFIX,xd3r.javgg.eu,reject
 DOMAIN-SUFFIX,p242.plainwrk.name,reject
@@ -211,10 +197,8 @@ DOMAIN-SUFFIX,impactserving.com,reject
 DOMAIN-SUFFIX,addthis.com,reject
 DOMAIN-SUFFIX,magsrv.com,reject
 DOMAIN-SUFFIX,creative.kbnmnl.com,reject
-DOMAIN-SUFFIX,adxadserv.com,reject
 DOMAIN-SUFFIX,xlivrdr.com,reject
 DOMAIN-SUFFIX,fanza.cc,reject
-DOMAIN-SUFFIX,go.mnaspm.com,reject
 DOMAIN-SUFFIX,referrer.disqus.com,reject
 DOMAIN-SUFFIX,links.services.disqus.com,reject
 DOMAIN-SUFFIX,disqusads.com,reject
@@ -250,7 +234,6 @@ DOMAIN-SUFFIX,onerousethelpictures.com,reject
 DOMAIN-SUFFIX,exemptambientcream.com,reject
 DOMAIN-SUFFIX,catdomepimyth.com,reject
 DOMAIN-SUFFIX,farwine.com,reject
-DOMAIN-SUFFIX,pc.stgowan.com,reject
 DOMAIN-SUFFIX,2xmzazd.cn,reject
 DOMAIN-SUFFIX,2qpqwkx.cn,reject
 DOMAIN-SUFFIX,server.mch3.com,reject
@@ -326,7 +309,6 @@ DOMAIN,exp.360in.com,reject
 DOMAIN-SUFFIX,doubleclick.net,reject
 DOMAIN-SUFFIX,googleadservices.com,reject
 DOMAIN-SUFFIX,googleadsserving.cn,reject
-DOMAIN-SUFFIX,googlesyndication.com,reject
 DOMAIN-SUFFIX,googletagservices.com,reject
 DOMAIN,ads.youtube.com,reject
 DOMAIN-SUFFIX,da.mgtv.com,reject

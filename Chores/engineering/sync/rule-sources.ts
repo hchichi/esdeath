@@ -1,4 +1,4 @@
-import { RuleGroup, SpecialRuleConfig } from './rule-types.js';
+import { RuleGroup, SpecialRuleConfig,GlobalConfig } from './rule-types.js';
 import { fileURLToPath } from 'node:url';
 import { dirname } from 'node:path';
 import path from 'node:path';
@@ -596,12 +596,10 @@ export const specialRules: SpecialRuleConfig[] = [
 
 export const config = {
   repoPath: REPO_PATH,
-  defaultFormat: 'Surge' as const,
+  defaultFormat: 'Surge',
   cleanup: false,
   stats: true,
-  preserveComments: true,  // 添加此行
-  ipRules: {
-    generateResolveVersion: false,
-    resolveVersionSuffix: '_Resolve'
+  converter: {
+    format: 'Surge'
   }
 }; 

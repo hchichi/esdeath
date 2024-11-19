@@ -1,5 +1,5 @@
 // 基础类型定义
-export type RuleFormat = 'Surge' | 'Clash' | 'Stash' | 'Loon';
+export type RuleFormat = 'Surge' | 'Clash' | 'Quantumult X';
 
 export interface RuleFile {
   path: string;
@@ -141,6 +141,41 @@ export interface RuleStats {
   
   // 其他规则统计
   other: number;
+}
+
+// rule-types.ts
+export interface GlobalConfig {
+  repoPath: string;
+  defaultFormat: RuleFormat;
+  cleanup: boolean;
+  stats: boolean;
+  converter: ConverterOptions; // 将converter配置集成到全局配置中
+}
+
+export interface ConverterOptions {
+  format?: RuleFormat;
+  cleanup?: boolean; 
+  flags?: RuleFlags;
+}
+
+// 基础配置接口
+export interface BaseRuleConfig {
+  name: string;
+  targetFile: string;
+  sourceFiles: string[];
+  cleanup?: boolean;
+  header?: {
+    enable?: boolean;
+    title?: string;
+    description?: string;
+  };
+}
+
+// 特殊规则配置接口
+export interface SpecialRuleConfig extends BaseRuleConfig {
+  generateResolveVersion?: boolean;  // 是否生成无解析版本
+  extraRules?: string[];  // 额外的规则
+  resolveVersionSuffix?: string;  // 无解析版本的后缀
 }
 
 // ... 其他类型定义 

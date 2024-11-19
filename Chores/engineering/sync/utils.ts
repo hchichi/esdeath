@@ -174,78 +174,39 @@ export function getRuleStats(content: string | Buffer): RuleStats {
 }
 
 /**
- * 清理和排序规则
- * @param content - 规则内容
- * @param converter - 可选的规则转换器
- * @returns - 清理和排序后的规则
+ * Clean and sort rules
+ * @param content - The content to clean and sort
+ * @param converter - The rule converter
+ * @param cleanup - Whether to perform cleanup and sorting
+ * @returns - Cleaned and sorted content
  */
-export function cleanAndSort(content: string | Buffer, converter?: RuleConverter): string {
-  const contentStr = Buffer.isBuffer(content) ? content.toString('utf-8') : String(content);
-
-  // 将内容分行
-  const lines = contentStr.split('\n').map(line => line.trim());
-
-  const rules = new Set<string>();
-
-  for (let line of lines) {
-    // 如果启用了 preserveComments，保留空行
-    if (converter?.options.preserveComments && !line) {
-      rules.add('');
-      continue;
-    }
-
-    // 跳过注释行
-    if (line.startsWith('#') || line.startsWith(';') || line.startsWith('//')) {
-      if (converter?.options.preserveComments) {
-        rules.add(line);
-      }
-      continue;
-    }
-
-    // 基础清理
-    line = line
-      .replace(/^payload:/, '')
-      .replace(/^ *- */, '')
-      .replace(/(^[^#].+)\x20+\/\/.+/, '$1') // 删除行尾注释
-      .replace(/(\{[0-9]+)\,([0-9]*\})/g, '$1t&zd;$2')
-      .replace(/'|"/g, '')
-      .trim();
-
-    // 跳过空行或包含特殊字符的行
-    if (!line || line.includes('[object Object]') || line.match(/(\[|=|{|\\|\/.*\.js)/)) {
-      continue;
-    }
-
-    // 处理没有类型前缀的规则
-    if (!line.includes(',')) {
-      if (line.match(/[0-9]\/[0-9]/)) {
-        line = 'IP-CIDR,' + line;
-      } else if (line.match(/([0-9]|[a-z]):([0-9]|[a-z])/)) {
-        line = 'IP-CIDR6,' + line;
-      } else {
-        line = 'DOMAIN,' + line;
-      }
-    }
-
-    // 标准化规则类型
-    line = line
-      .replace(/^host-wildcard/i, 'HOST-WILDCARD')
-      .replace(/^host/i, 'DOMAIN')
-      .replace(/^dest-port/i, 'DST-PORT')
-      .replace(/^ip6-cidr/i, 'IP-CIDR6');
-
-    // 如果有转换器，使用转换器处理
-    if (converter) {
-      const processedRule = converter.convert(line);
-      if (processedRule) {
-        rules.add(processedRule);
-      }
-    } else {
-      rules.add(line);
-    }
+export function cleanAndSort(content: string, converter: RuleConverter, cleanup: boolean = false): string {
+  if (!cleanup) {
+    // 仅去重,保留注释和空行
+    return removeDuplicateRules(content);
   }
+  
+  // 完整清理:去重、去注释、去空行、重排序
+  return content
+    .split('\n')
+    .map(line => line.trim())
+    .filter(line => line && !line.startsWith('#'))
+    .filter((line, index, arr) => arr.indexOf(line) === index)
+    .sort()
+    .join('\n');
+}
 
-  return Array.from(rules).join('\n');
+export function removeDuplicateRules(content: string): string {
+  const lines = content.split('\n');
+  const uniqueLines = new Set();
+  return lines
+    .filter(line => {
+      if(!line.trim() || line.startsWith('#')) return true;
+      if(uniqueLines.has(line)) return false;
+      uniqueLines.add(line);
+      return true;
+    })
+    .join('\n');
 }
 
 /**

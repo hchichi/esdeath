@@ -1,5 +1,5 @@
-DOMAIN-SUFFIX,push.apple.com //推送通知
-DOMAIN,identity.apple.com //APNs 证书请求门户
+DOMAIN-SUFFIX,push.apple.com
+DOMAIN,identity.apple.com
 IP-CIDR,17.249.0.0/16,no-resolve
 IP-CIDR,17.252.0.0/16,no-resolve
 IP-CIDR,17.57.144.0/22,no-resolve
