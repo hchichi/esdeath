@@ -1,14 +1,14 @@
 ########################################
 # Domestic Rules (Sukka)
-# Last updated: 2024/11/19 15:02:24
-# DOMAIN: 31
+# Last updated: 2024/11/20 02:02:50
+# DOMAIN: 33
 # DOMAIN-SUFFIX: 892
 # DOMAIN-KEYWORD: 9
 # IP-CIDR: 2
 # PROCESS-NAME: 36
 # USER-AGENT: 4
 # OTHER: 1
-# Total: 975
+# Total: 977
 # This file contains known domains and IPs that are avaliable in the Mainland China.
 # Data sources:
 #  - https://ruleset.skk.moe/List/non_ip/domestic.conf
@@ -763,6 +763,8 @@ DOMAIN-SUFFIX,steam.clngaa.com
 DOMAIN-SUFFIX,dl.eccdnx.com
 DOMAIN,www.layuicdn.com
 DOMAIN,cdnstatic.tencentcs.com
+DOMAIN,ocsp.globalsign.com
+DOMAIN,ocsp2.globalsign.com
 DOMAIN-SUFFIX,dl.pinyuncloud.com
 DOMAIN-SUFFIX,dl.bscstorage.net
 DOMAIN,cn.download.nvidia.com
