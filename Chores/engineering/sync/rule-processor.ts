@@ -3,7 +3,7 @@ import { RuleMerger } from './rule-merger';
 import { RuleFile, SpecialRuleConfig } from './rule-types';
 import fs from 'node:fs';
 import path from 'node:path';
-import { downloadFile,cleanAndSort,addRuleHeader } from './utils';
+import { downloadFile, cleanAndSort, addRuleHeader } from './utils';
 
 export class RuleProcessor {
   constructor(
@@ -16,27 +16,25 @@ export class RuleProcessor {
     try {
       const filePath = path.join(this.repoPath, rule.path);
       
-      // 1. 下载文件
+      // 1. Download file if URL is provided
       if (rule.url) {
         await downloadFile(rule.url, filePath);
       }
 
-      // 2. 读取内容
+      // 2. Read file content
       let content = await fs.promises.readFile(filePath, 'utf-8');
 
-      // 3. 转换规则
+      // 3. Convert rules
       content = content
         .split('\n')
         .map(line => this.converter.convert(line))
         .filter(Boolean)
         .join('\n');
 
-      // 4. 只在明确指定时才清理和排序
-      if (rule.cleanup === true) {
-        content = cleanAndSort(content, this.converter);
-      }
+      // 4. Clean and sort only if cleanup is enabled
+      content = cleanAndSort(content, this.converter, rule.cleanup ?? false);
 
-      // 5. 只在明确启用时才添加规则头部信息
+      // 5. Add header only if explicitly enabled
       if (rule.header?.enable === true) {
         const headerInfo = {
           title: rule.title,
@@ -46,7 +44,7 @@ export class RuleProcessor {
         content = addRuleHeader(content, headerInfo);
       }
 
-      // 6. 写入文件
+      // 6. Write the processed content back to the file
       await fs.promises.writeFile(filePath, content);
 
     } catch (error) {

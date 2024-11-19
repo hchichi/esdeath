@@ -9,35 +9,33 @@ interface ConverterOptions {
 
 export class RuleConverter {
   private format: RuleFormat;
-  private options: any;
+  private options: ConverterOptions;
 
   constructor(format: RuleFormat) {
     this.format = format;
     this.options = {};
   }
 
-  setOptions(options: any) {
+  setOptions(options: ConverterOptions) {
     this.options = { ...this.options, ...options };
   }
 
   convert(rule: string): string {
-    // 处理注释
+    // Handle comments
     if (rule.trim().startsWith('#') || rule.trim().startsWith('//')) {
       return this.options.preserveComments ? rule : '';
     }
 
     if (!rule.trim()) return '';
 
-    // 处理 domain-set 格式转换为 rule-set
+    // Handle domain-set to rule-set conversion
     if (rule.startsWith('.')) {
-      // domain-set 中的 .xxx.com 转换为 DOMAIN-SUFFIX
       return `DOMAIN-SUFFIX,${rule.slice(1)}`;
     } else if (this.isDomain(rule) && !rule.includes(',')) {
-      // 纯域名转换为 DOMAIN
       return `DOMAIN,${rule}`;
     }
 
-    // 处理纯 IP 地址
+    // Handle IP addresses
     if (this.isIPv4(rule)) {
       return `IP-CIDR,${rule}${this.options.enableNoResolve ? ',no-resolve' : ''}`;
     }
@@ -45,11 +43,31 @@ export class RuleConverter {
       return `IP-CIDR6,${rule}${this.options.enableNoResolve ? ',no-resolve' : ''}`;
     }
 
-    // 处理已有规则的转换
+    // Handle host rules
+    if (this.isHost(rule)) {
+      return `HOST,${rule}`;
+    }
+
+    // Handle domain-keyword rules
+    if (this.isDomainKeyword(rule)) {
+      return `DOMAIN-KEYWORD,${rule}`;
+    }
+
+    // Handle geoip rules
+    if (this.isGeoIP(rule)) {
+      return `GEOIP,${rule}`;
+    }
+
+    // Handle IP-ASN rules
+    if (this.isIPASN(rule)) {
+      return `IP-ASN,${rule}`;
+    }
+
+    // Handle existing rules
     const parsed = this.parseRule(rule);
     if (!parsed) return rule;
 
-    // 处理规则标记
+    // Process rule flags
     this.processFlags(parsed);
     return this.generateRule(parsed);
   }
@@ -66,9 +84,25 @@ export class RuleConverter {
     return /^([a-zA-Z0-9]([a-zA-Z0-9-]*[a-zA-Z0-9])?\.)+[a-zA-Z]{2,}$/.test(str);
   }
 
+  private isHost(str: string): boolean {
+    return /^[a-zA-Z0-9.-]+$/.test(str) && !this.isIPv4(str) && !this.isIPv6(str);
+  }
+
+  private isDomainKeyword(str: string): boolean {
+    return /^[a-zA-Z0-9-]+$/.test(str);
+  }
+
+  private isGeoIP(str: string): boolean {
+    return /^GEOIP,[A-Z]{2}$/.test(str);
+  }
+
+  private isIPASN(str: string): boolean {
+    return /^AS\d+$/.test(str);
+  }
+
   private parseRule(rule: string): ParsedRule | null {
     const parts = rule.split(',').map(p => p.trim());
-    
+
     if (parts.length < 2) {
       return {
         type: 'DOMAIN',
@@ -86,17 +120,17 @@ export class RuleConverter {
   }
 
   private processFlags(rule: ParsedRule): void {
-    // 处理 no-resolve
+    // Handle no-resolve
     if (rule.type.startsWith('IP-')) {
       rule.flags.noResolve = this.options.enableNoResolve ?? false;
     }
 
-    // 处理 extended-matching (SNI)
+    // Handle extended-matching (SNI)
     if (this.format === 'Surge' && !rule.type.startsWith('IP-')) {
       rule.flags.extended = this.options.enableExtended ?? false;
     }
 
-    // 处理 pre-matching
+    // Handle pre-matching
     if (rule.policy?.toUpperCase().startsWith('REJECT')) {
       const validTypes = [
         'DOMAIN',
@@ -123,8 +157,8 @@ export class RuleConverter {
 
   private generateRule(rule: ParsedRule): string {
     const flags: string[] = [];
-    
-    // 按照特定顺序添加标记
+
+    // Add flags in a specific order
     if (rule.flags.noResolve) flags.push('no-resolve');
     if (rule.flags.preMatching) flags.push('pre-matching');
     if (rule.flags.extended) flags.push('extended-matching');
