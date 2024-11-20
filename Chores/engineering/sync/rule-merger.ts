@@ -12,7 +12,7 @@ export class RuleMerger {
   ) {}
 
   async mergeSpecialRules(config: SpecialRuleConfig): Promise<void> {
-    const { name, targetFile, sourceFiles, extraRules } = config;
+    const { name, targetFile, sourceFiles, extraRules, cleanup } = config;
     console.log(`Merging special rules: ${name}`);
 
     try {
@@ -39,15 +39,17 @@ export class RuleMerger {
         mergedContent += '\n' + extraRules.join('\n');
       }
 
-      // 4. Clean and sort the merged content (default is true)
-      mergedContent = cleanAndSort(mergedContent, this.converter, config.cleanup ?? true);
+      // 4. Clean and sort (默认清理、去重)
+      mergedContent = cleanAndSort(mergedContent, this.converter, cleanup ?? true);
 
-      // 5. Add header if enabled (default is true)
+      // 5. Add header (默认添加头信息)
       if (config.header?.enable !== false) {
-        mergedContent = addRuleHeader(mergedContent, {
-          title: config.header?.title,
-          description: config.header?.description
-        }, sourceUrls);
+        const headerInfo = {
+          title: config.header.title ?? name,
+          description: config.header.description,
+          url: ''
+        };
+        mergedContent = addRuleHeader(mergedContent, headerInfo);
       }
 
       // 6. Write merged content to target file

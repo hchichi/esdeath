@@ -11,6 +11,9 @@ export interface RuleFile {
   header?: {
     enable?: boolean;  // 默认为 false，除非明确设置为 true
   };
+  noResolve?: boolean;
+  preMatching?: boolean;
+  extendedMatching?: boolean;
 }
 
 export interface RuleFlags {

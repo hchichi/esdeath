@@ -31,10 +31,10 @@ export class RuleProcessor {
         .filter(Boolean)
         .join('\n');
 
-      // 4. Clean and sort only if cleanup is enabled
+      // 4. Clean and sort based on rule.cleanup
       content = cleanAndSort(content, this.converter, rule.cleanup ?? false);
 
-      // 5. Add header only if explicitly enabled
+      // 5. Add header based on rule.header
       if (rule.header?.enable === true) {
         const headerInfo = {
           title: rule.title,
