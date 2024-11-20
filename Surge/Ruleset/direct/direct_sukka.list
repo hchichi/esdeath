@@ -1,14 +1,12 @@
 ########################################
 # Direct (Sukka)
-# Last updated: 2024/11/20 11:15:17
+# Last updated: 2024/11/20 11:50:17
 # DOMAIN: 1
 # DOMAIN-SUFFIX: 3
 # DOMAIN-KEYWORD: 1
 # PROCESS-NAME: 2
 # Total: 7
 # This file contains rules for direct access to domains and IPs in the Mainland China.
-# Data sources:
-#  - https://ruleset.skk.moe/List/non_ip/my_direct.conf
 ########################################
 DOMAIN,this_ruleset_is_made_by_sukkaw.ruleset.skk.moe
 DOMAIN-KEYWORD,mac-torrent-download

@@ -1,6 +1,6 @@
 ########################################
 # Domestic Rules (Sukka)
-# Last updated: 2024/11/20 11:15:17
+# Last updated: 2024/11/20 11:50:17
 # DOMAIN: 33
 # DOMAIN-SUFFIX: 892
 # DOMAIN-KEYWORD: 9
@@ -10,10 +10,6 @@
 # OTHER: 1
 # Total: 977
 # This file contains known domains and IPs that are avaliable in the Mainland China.
-# Data sources:
-#  - https://ruleset.skk.moe/List/non_ip/domestic.conf
-#  - https://ruleset.skk.moe/List/ip/domestic.conf
-#  - https://ruleset.skk.moe/List/non_ip/direct.conf
 ########################################
 DOMAIN,acg.tv
 DOMAIN,assets1.xboxlive.cn
