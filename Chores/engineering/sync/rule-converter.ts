@@ -23,33 +23,48 @@ export class RuleConverter {
   convert(rule: string, cleanup: boolean = false): string {
     let line = rule;
     
-    // 只在cleanup时移除空格和注释
+    // 处理空行和注释
     if(cleanup) {
       line = line.trim();
-      if(!line.trim() || line.startsWith('#') || line.startsWith(';')||line.startsWith('//')) {
+      if(!line || line.startsWith('#') || line.startsWith(';') || line.startsWith('//')) {
         return '';
       }
     } else {
-      // 非cleanup模式保留空格和注释
-      if(!line.trim() || line.startsWith('#') || line.startsWith(';')||line.startsWith('//')) {
+      if(!line.trim() || line.startsWith('#') || line.startsWith(';') || line.startsWith('//')) {
         return line;
       }
     }
 
-    // 转换规则类型
-    if(line.includes(',')) {
-      // 有类型的规则转换
-      const parts = line.split(',').map(p => p.trim());
-      const [type, value, policy = ''] = parts;
+    // 处理 domain-set 格式转换为 ruleset 格式
+    if(!line.includes(',')) {
+      // domain-set 格式的规则处理
+      line = line.trim();
       
-      // 转换类型（保持现有的类型转换逻辑）
+      if(line.startsWith('.')) {
+        // 以点开头的视为 DOMAIN-SUFFIX
+        return `DOMAIN-SUFFIX,${line.substring(1)}`;
+      } else if(line.includes('*')) {
+        // 包含通配符的视为 DOMAIN-WILDCARD
+        return `DOMAIN-WILDCARD,${line}`;
+      } else {
+        // 其他情况视为 DOMAIN
+        return `DOMAIN,${line}`;
+      }
+    }
+
+    // 处理已有类型的规则
+    if(line.includes(',')) {
+      const parts = line.split(',').map(p => p.trim());
+      const [type, value, policy = '', ...flags] = parts;
+      
+      // 转换类型
       let newType = type
         .replace(/^HOST-WILDCARD/i, 'DOMAIN-WILDCARD')
         .replace(/^HOST-SUFFIX/i, 'DOMAIN-SUFFIX')
         .replace(/^HOST-KEYWORD/i, 'DOMAIN-KEYWORD')
         .replace(/^HOST/i, 'DOMAIN')
         .replace(/^DOMAIN-KEYWORD/i, 'DOMAIN-KEYWORD')
-        .replace(/^DOMAIN-SUFFIX/i, 'DOMAIN-SUFFIX') 
+        .replace(/^DOMAIN-SUFFIX/i, 'DOMAIN-SUFFIX')
         .replace(/^DOMAIN-SET/i, 'DOMAIN-SET')
         .replace(/^DOMAIN/i, 'DOMAIN')
         .replace(/^IP-CIDR6/i, 'IP-CIDR6')
@@ -65,7 +80,7 @@ export class RuleConverter {
         .replace(/^IN-PORT/i, 'IN-PORT')
         .replace(/^PROTOCOL/i, 'PROTOCOL');
 
-      // 转换策略（统一大写）
+      // 处理策略
       let newPolicy = policy.toUpperCase();
       if(newPolicy) {
         newPolicy = newPolicy
@@ -76,34 +91,37 @@ export class RuleConverter {
           .replace(/^PROXY$/i, 'PROXY');
       }
 
-      line = newPolicy ? `${newType},${value},${newPolicy}` : `${newType},${value}`;
+      // 处理规则标志
+      const ruleFlags: string[] = [...flags]; // 保留现有标志
 
-    } else {
-      // 无类型规则自动判断类型
-      const value = line.trim();
-      let type: string;
-
-      if(value.includes('*')) {
-        // 包含通配符
-        type = 'DOMAIN-WILDCARD';
-      } else if(value.includes('/')) {
-        // CIDR格式
-        type = value.includes(':') ? 'IP-CIDR6' : 'IP-CIDR';
-      } else if(/^(\d{1,3}\.){3}\d{1,3}$/.test(value)) {
-        // IPv4，添加 /32
-        type = 'IP-CIDR';
-        line = `${value}/32`;
-      } else if(value.includes(':')) {
-        // IPv6，添加 /128
-        type = 'IP-CIDR6';
-        line = `${value}/128`;
-      } else {
-        // 域名
-        type = 'DOMAIN';
+      // 根据规则类型和选项添加标志
+      if (this.options.enableNoResolve && 
+          ['IP-CIDR', 'IP-CIDR6', 'GEOIP'].includes(newType.toUpperCase())) {
+        if (!ruleFlags.includes('no-resolve')) {
+          ruleFlags.push('no-resolve');
+        }
       }
 
-      // 保持原始格式，不添加默认策略
-      line = `${type},${line}`;
+      if (this.options.enablePreMatching && 
+          newPolicy.toUpperCase() === 'REJECT') {
+        if (!ruleFlags.includes('pre-matching')) {
+          ruleFlags.push('pre-matching');
+        }
+      }
+
+      if (this.options.enableExtended && 
+          newType.toUpperCase().startsWith('DOMAIN')) {
+        if (!ruleFlags.includes('extended-matching')) {
+          ruleFlags.push('extended-matching');
+        }
+      }
+
+      // 构建最终规则
+      const parts = [newType, value];
+      if (newPolicy) parts.push(newPolicy);
+      if (ruleFlags.length > 0) parts.push(...ruleFlags);
+
+      return parts.join(',');
     }
 
     return line;

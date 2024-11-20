@@ -10,7 +10,13 @@ export class RuleProcessor {
     private repoPath: string,
     private converter: RuleConverter,
     private merger: RuleMerger
-  ) {}
+  ) {
+    this.converter.setOptions({
+      enableNoResolve: true,
+      enablePreMatching: true,
+      enableExtended: true
+    });
+  }
 
   async process(rule: RuleFile): Promise<void> {
     try {

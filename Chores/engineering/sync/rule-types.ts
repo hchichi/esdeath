@@ -1,6 +1,7 @@
 // 基础类型定义
 export type RuleFormat = 'Surge' | 'Clash' | 'Quantumult X';
 
+
 export interface RuleFile {
   path: string;
   url?: string;
@@ -50,6 +51,10 @@ export interface SpecialRuleConfig extends BaseRuleConfig {
     title?: string;
     description?: string;
   };
+  // 添加新的配置选项
+  noResolve?: boolean;
+  preMatching?: boolean;
+  extendedMatching?: boolean;
 }
 
 export type RuleType = 

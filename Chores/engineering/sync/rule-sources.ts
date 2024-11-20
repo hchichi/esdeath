@@ -1,4 +1,4 @@
-import { RuleGroup, SpecialRuleConfig,GlobalConfig } from './rule-types.js';
+import { RuleGroup, SpecialRuleConfig } from './rule-types.js';
 import { fileURLToPath } from 'node:url';
 import { dirname } from 'node:path';
 import path from 'node:path';
@@ -533,6 +533,7 @@ export const specialRules: SpecialRuleConfig[] = [
       'Surge/Ruleset/reject/tracking.list'
     ],
     cleanup: true,
+    preMatching: true, // 启用 pre-matching
     header: {
       enable: true,  // 明确启用 header
       title: 'Advertising & malicious & Tracking',
