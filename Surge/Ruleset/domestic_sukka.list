@@ -1,14 +1,14 @@
 ########################################
 # Domestic Rules (Sukka)
-# Last updated: 2024/11/20 16:21:09
+# Last updated: 2024/11/20 17:25:44
 # DOMAIN: 33
-# DOMAIN-SUFFIX: 892
+# DOMAIN-SUFFIX: 893
 # DOMAIN-KEYWORD: 9
 # IP-CIDR: 2
 # PROCESS-NAME: 36
 # USER-AGENT: 4
 # OTHER: 1
-# Total: 977
+# Total: 978
 # This file contains known domains and IPs that are avaliable in the Mainland China.
 # Data sources:
 #  - https://ruleset.skk.moe/List/non_ip/domestic.conf
@@ -333,6 +333,7 @@ DOMAIN-SUFFIX,ctrip.com
 DOMAIN-SUFFIX,cz88.net
 DOMAIN-SUFFIX,dancf.com
 DOMAIN-SUFFIX,dangdang.com
+DOMAIN-SUFFIX,daocloud.io
 DOMAIN-SUFFIX,dbank.com
 DOMAIN-SUFFIX,dbankcdn.cn
 DOMAIN-SUFFIX,dbankcdn.com
