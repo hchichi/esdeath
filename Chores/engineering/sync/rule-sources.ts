@@ -1,4 +1,5 @@
-import { RuleGroup, SpecialRuleConfig,GlobalConfig } from './rule-types.js';
+// rule-sources.ts
+import { RuleGroup, SpecialRule } from './rule-types';
 import { fileURLToPath } from 'node:url';
 import { dirname } from 'node:path';
 import path from 'node:path';
@@ -480,7 +481,7 @@ export const ruleGroups: RuleGroup[] = [
 ];
 
 // Special rules configuration
-export const specialRules: SpecialRuleConfig[] = [
+export const specialRules: SpecialRule[] = [
   {
     name: 'Reject (Sukka)',
     targetFile: 'Surge/Ruleset/reject_sukka.list',

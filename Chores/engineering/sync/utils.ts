@@ -1,6 +1,7 @@
 // 工具函数
 import fs from 'node:fs';
 import path from 'node:path';
+import https from 'https';
 import { RuleStats, RuleGroup, SpecialRuleConfig } from './rule-types';
 import { RuleConverter } from './rule-converter';
 /**
@@ -8,21 +9,15 @@ import { RuleConverter } from './rule-converter';
  * @param url - 下载URL
  * @param dest - 目标路径
  */
-export async function downloadFile(url: string, dest: string): Promise<void> {
-  try {
-    console.log(`Downloading ${url} to ${dest}`);
-    const response = await fetch(url);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    
-    const buffer = await response.arrayBuffer();
-    await fs.promises.writeFile(dest, Buffer.from(buffer));
-    console.log(`Downloaded: ${url}`);
-  } catch (error) {
-    console.error(`Download failed: ${url}`, error);
-    throw error;
-  }
+export async function downloadFile(url: string): Promise<string> {
+  return new Promise((resolve, reject) => {
+    https.get(url, (res) => {
+      let data = '';
+      res.on('data', chunk => data += chunk);
+      res.on('end', () => resolve(data));
+      res.on('error', reject);
+    }).on('error', reject);
+  });
 }
 
 /**
@@ -352,4 +347,75 @@ export function addRuleHeader(content: string | Buffer, info?: HeaderInfo, sourc
   ].flat().filter(Boolean);
 
   return headers.join('\n');
+}
+
+/**
+ * 检查主机名是否为 IPv4 地址
+ * 此实现针对已确认为有效主机名的情况优化
+ */
+export function isProbablyIpv4(hostname: string): boolean {
+  // IPv4 长度检查: 最短 1.1.1.1, 最长 255.255.255.255
+  if (hostname.length < 7 || hostname.length > 15) {
+    return false;
+  }
+
+  let numberOfDots = 0;
+
+  // 使用 charCode 检查而不是正则,性能更好
+  for (let i = 0; i < hostname.length; i++) {
+    const code = hostname.charCodeAt(i);
+
+    if (code === 46) { // '.' 的 charCode
+      numberOfDots++;
+    } else if (code < 48 || code > 57) { // 非数字
+      return false;
+    }
+  }
+
+  // 确保有3个点且首尾不是点
+  return (
+    numberOfDots === 3 
+    && hostname.charCodeAt(0) !== 46
+    && hostname.charCodeAt(hostname.length - 1) !== 46
+  );
+}
+
+/**
+ * 检查主机名是否为 IPv6 地址
+ * 支持标准格式和方括号格式
+ */
+export function isProbablyIpv6(hostname: string): boolean {
+  if (hostname.length < 3) {
+    return false;
+  }
+
+  // 处理可能的方括号
+  let start = hostname[0] === '[' ? 1 : 0;
+  let end = hostname.length;
+  if (hostname[end - 1] === ']') {
+    end--;
+  }
+
+  // 标准 IPv6 最大长度检查
+  if (end - start > 39) {
+    return false;
+  }
+
+  let hasColon = false;
+
+  for (; start < end; start++) {
+    const code = hostname.charCodeAt(start);
+
+    if (code === 58) { // ':' 的 charCode
+      hasColon = true;
+    } else if (!(
+      (code >= 48 && code <= 57) || // 0-9
+      (code >= 97 && code <= 102) || // a-f
+      (code >= 65 && code <= 70) // A-F
+    )) {
+      return false;
+    }
+  }
+
+  return hasColon;
 }
