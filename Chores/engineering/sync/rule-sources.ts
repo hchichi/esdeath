@@ -1,4 +1,12 @@
-import { RuleGroup, SpecialRuleConfig } from './rule-types.js';
+import { RuleGroup, SpecialRuleConfig,GlobalConfig } from './rule-types.js';
+import { fileURLToPath } from 'node:url';
+import { dirname } from 'node:path';
+import path from 'node:path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+export const REPO_PATH = path.join(__dirname, '../../..');
 
 export const ruleGroups: RuleGroup[] = [
   {
@@ -584,4 +592,14 @@ export const specialRules: SpecialRuleConfig[] = [
       description: 'This file contains rules for direct access to domains and IPs in the Mainland China.'
     }
   }
-]; 
+];
+
+export const config = {
+  repoPath: REPO_PATH,
+  defaultFormat: 'Surge',
+  cleanup: false,
+  stats: true,
+  converter: {
+    format: 'Surge'
+  }
+}; 

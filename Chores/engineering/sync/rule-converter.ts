@@ -1,96 +1,194 @@
-import { RuleFormat, RuleType, ParsedRule, RuleFlags } from './rule-types.js';
-
-interface ConverterOptions {
-  enableNoResolve?: boolean;
-  enablePreMatching?: boolean;
-  enableExtended?: boolean;
-  preserveComments?: boolean;
-}
+import { RuleOptions } from './rule-types';
+import { isProbablyIpv4, isProbablyIpv6 } from './utils';
 
 export class RuleConverter {
-  private format: RuleFormat;
-  private options: ConverterOptions;
+  private options: RuleOptions;
 
-  constructor(format: RuleFormat) {
-    this.format = format;
-    this.options = {};
+  constructor(options: RuleOptions = {}) {
+    this.options = options;
   }
 
-  setOptions(options: ConverterOptions) {
-    this.options = { ...this.options, ...options };
+  // 将域名通配符转换为正则表达式
+  private domainWildCardToRegex(wildcard: string): string {
+    return wildcard
+      .replace(/\./g, '\\.')
+      .replace(/\*/g, '.*')
+      .replace(/\?/g, '.');
   }
 
-  convert(rule: string, cleanup: boolean = false): string {
-    let line = rule;
+  // 转换域名类规则
+  convertDomain(rule: string): string {
+    const [type, value] = rule.split(',').map(x => x.trim());
     
-    // 只在cleanup时移除空格和注释
-    if(cleanup) {
-      line = line.trim();
-      if(line.startsWith('#') || line.startsWith(';')) {
-        return '';
-      }
-    } else {
-      // 非cleanup模式保留空格和注释
-      if(!line.trim() || line.startsWith('#') || line.startsWith(';')) {
-        return line;
-      }
+    switch(type.toUpperCase()) {
+      case 'DOMAIN':
+        return `DOMAIN,${value}`;
+      case 'DOMAIN-SUFFIX':
+        return `DOMAIN-SUFFIX,${value}`; 
+      case 'DOMAIN-KEYWORD':
+        return `DOMAIN-KEYWORD,${value}`;
+      case 'DOMAIN-SET':
+        // 将 DOMAIN-SET 转换为 RULE-SET
+        const rulesetPath = value.endsWith('.txt') ? 
+          value.replace('.txt', '.list') : value;
+        return `RULE-SET,${rulesetPath}`;
+      case 'DOMAIN-WILDCARD':
+        // 支持通配符域名
+        return `DOMAIN-WILDCARD,${value}`;
+      default:
+        // 如果是纯域名,转换为DOMAIN
+        if(!type.includes('-') && !this.isIPAddress(type)) {
+          return `DOMAIN,${type}`;
+        }
+        return rule;
+    }
+  }
+
+  // 转换IP类规则
+  convertIP(rule: string): string {
+    const [type, value] = rule.split(',').map(x => x.trim());
+    const noResolve = this.options.noResolve ? ',no-resolve' : '';
+
+    switch(type.toUpperCase()) {
+      case 'IP-CIDR':
+        return `IP-CIDR,${value}${noResolve}`;
+      case 'IP-CIDR6': 
+        return `IP-CIDR6,${value}${noResolve}`;
+      case 'IP-ASN':
+        return `IP-ASN,${value}${noResolve}`;
+      case 'SRC-IP':
+      case 'SOURCE-IP':
+        if(value.includes('/')) {
+          return `SRC-IP-CIDR,${value}`;
+        }
+        if(isProbablyIpv4(value)) {
+          return `SRC-IP-CIDR,${value}/32`;
+        }
+        if(isProbablyIpv6(value)) {
+          return `SRC-IP-CIDR6,${value}/128`;
+        }
+        return rule;
+      case 'GEOIP':
+        return `GEOIP,${value}${noResolve}`;
+      default:
+        return rule;
+    }
+  }
+
+  // 转换端口类规则
+  convertPort(rule: string): string {
+    const [type, value] = rule.split(',').map(x => x.trim());
+
+    switch(type.toUpperCase()) {
+      case 'DEST-PORT':
+      case 'DST-PORT':
+        return `DEST-PORT,${value}`;
+      case 'SRC-PORT':
+      case 'SOURCE-PORT':
+        return `SRC-PORT,${value}`;
+      case 'IN-PORT':
+        return `IN-PORT,${value}`;
+      default:
+        return rule;
+    }
+  }
+
+  // 转换进程类规则
+  convertProcess(rule: string): string {
+    const [type, value] = rule.split(',').map(x => x.trim());
+
+    switch(type.toUpperCase()) {
+      case 'PROCESS-NAME':
+        return `PROCESS-NAME,${value}`;
+      case 'PROCESS-PATH':
+        return `PROCESS-PATH,${value}`;
+      default:
+        return rule;
+    }
+  }
+
+  // 转换HTTP类规则
+  convertHttp(rule: string): string {
+    const [type, value] = rule.split(',').map(x => x.trim());
+
+    switch(type.toUpperCase()) {
+      case 'URL-REGEX':
+        return `URL-REGEX,${value}`;
+      case 'USER-AGENT':
+        return `USER-AGENT,${value}`;
+      case 'HEADER':
+        return `HEADER,${value}`;
+      default:
+        return rule;
+    }
+  }
+
+  // 转换其他类型规则
+  convertOther(rule: string): string {
+    const [type, value] = rule.split(',').map(x => x.trim());
+    
+    switch(type.toUpperCase()) {
+      case 'PROTOCOL':
+        return `PROTOCOL,${value}`;
+      case 'NETWORK':
+        return `NETWORK,${value}`;
+      case 'RULE-SET':
+        return `RULE-SET,${value}`;
+      case 'FINAL':
+        return 'FINAL';
+      default:
+        // 如果是纯IP,转换为CIDR
+        if(this.isIPAddress(type)) {
+          return this.convertPureIP(type);
+        }
+        // 如果是纯域名,转换为DOMAIN
+        if(!type.includes('-') && !this.isIPAddress(type)) {
+          return `DOMAIN,${type}`;
+        }
+        return rule;
+    }
+  }
+
+  // 主转换方法
+  convert(rule: string): string {
+    // 保留注释和空行
+    if(!rule.trim() || rule.startsWith('#') || rule.startsWith(';')) {
+      return rule;
     }
 
-    // 转换规则类型
-    if(line.includes(',')) {
-      // 有类型的规则转换
-      line = line
-        // 基础类型转换
-        .replace(/^DOMAIN-KEYWORD/i, 'DOMAIN-KEYWORD')
-        .replace(/^DOMAIN-SUFFIX/i, 'DOMAIN-SUFFIX') 
-        .replace(/^DOMAIN-SET/i, 'DOMAIN-SET')
-        .replace(/^DOMAIN/i, 'DOMAIN')
-        .replace(/^HOST-WILDCARD/i, 'HOST-WILDCARD')
-        .replace(/^HOST-SUFFIX/i, 'DOMAIN-SUFFIX')
-        .replace(/^HOST-KEYWORD/i, 'DOMAIN-KEYWORD')
-        .replace(/^HOST/i, 'DOMAIN')
-        .replace(/^IP-CIDR6/i, 'IP-CIDR6')
-        .replace(/^IP-CIDR/i, 'IP-CIDR')
-        .replace(/^IP6-CIDR/i, 'IP-CIDR6')
-        .replace(/^GEOIP/i, 'GEOIP')
-        .replace(/^USER-AGENT/i, 'USER-AGENT')
-        .replace(/^URL-REGEX/i, 'URL-REGEX')
-        .replace(/^PROCESS-NAME/i, 'PROCESS-NAME')
-        .replace(/^DEST-PORT/i, 'DST-PORT')
-        .replace(/^SRC-PORT/i, 'SRC-PORT')
-        .replace(/^SRC-IP/i, 'SRC-IP')
-        .replace(/^IN-PORT/i, 'IN-PORT')
-        .replace(/^PROTOCOL/i, 'PROTOCOL')
-        
-        // 策略转换
-        .replace(/,reject$/i, ',REJECT')
-        .replace(/,reject-drop$/i, ',REJECT-DROP')
-        .replace(/,reject-tinygif$/i, ',REJECT-TINYGIF')
-        .replace(/,reject-dict$/i, ',REJECT-DICT')
-        .replace(/,reject-array$/i, ',REJECT-ARRAY')
-        .replace(/,direct$/i, ',DIRECT')
-        .replace(/,proxy$/i, ',PROXY');
+    const type = rule.split(',')[0]?.trim().toUpperCase();
 
-    } else {
-      // 无类型规则自动判断类型
-      if(line.includes('*')) {
-        // 包含通配符
-        line = `DOMAIN-WILDCARD,${line}`; 
-      } else if(line.includes('/')) {
-        // CIDR格式
-        line = line.includes(':') ? `IP-CIDR6,${line}` : `IP-CIDR,${line}`;
-      } else if(/^(\d{1,3}\.){3}\d{1,3}$/.test(line)) {
-        // IPv4
-        line = `IP-CIDR,${line}/32`;
-      } else if(line.includes(':')) {
-        // IPv6
-        line = `IP-CIDR6,${line}/128`;
-      } else {
-        // 域名
-        line = `DOMAIN,${line}`;
-      }
+    // 处理纯IP地址
+    if(this.isIPAddress(type)) {
+      return this.convertPureIP(type);
     }
 
-    return line;
+    // 域名类规则
+    if(type.startsWith('DOMAIN') || (!type.includes('-') && !this.isIPAddress(type))) {
+      return this.convertDomain(rule);
+    }
+    
+    // IP类规则 
+    if(type.startsWith('IP-') || type.startsWith('SRC-IP') || type === 'GEOIP') {
+      return this.convertIP(rule);
+    }
+
+    // 端口类规则
+    if(type.includes('PORT')) {
+      return this.convertPort(rule);
+    }
+
+    // 进程类规则
+    if(type.startsWith('PROCESS')) {
+      return this.convertProcess(rule);
+    }
+
+    // HTTP类规则
+    if(type.startsWith('URL') || type === 'USER-AGENT' || type === 'HEADER') {
+      return this.convertHttp(rule);
+    }
+
+    // 其他规则
+    return this.convertOther(rule);
   }
 }

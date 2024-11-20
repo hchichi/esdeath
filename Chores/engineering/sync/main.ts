@@ -1,24 +1,48 @@
-import { ruleGroups, specialRules } from './rule-sources';
 import { RuleProcessor } from './rule-processor';
-import { initializeDirectoryStructure } from './utils';
+import { ruleGroups, specialRules } from './rule-sources';
+import { downloadFile, ensureDirectoryExists } from './utils';
+import path from 'path';
 
 async function main() {
-    const repoPath = '.'; // Replace with your repository path
+  const processor = new RuleProcessor({
+    noResolve: true
+  });
 
-    // Initialize directory structure
-    initializeDirectoryStructure(repoPath, ruleGroups, specialRules);
+  // 处理常规规则组
+  for(const group of ruleGroups) {
+    for(const file of group.files) {
+      const content = await downloadFile(file.url);
+      const processed = await processor.processRuleFile(
+        content,
+        file.cleanup,
+        file.header
+      );
+      
+      const targetPath = path.join(process.cwd(), file.path);
+      ensureDirectoryExists(path.dirname(targetPath));
+      await fs.promises.writeFile(targetPath, processed);
+    }
+  }
 
-    const converterOptions = {
-        noResolve: true,
-        preMatching: false,
-        extendedMatching: false,
-    };
+  // 处理特殊规则
+  for(const rule of specialRules) {
+    const contents = await Promise.all(
+      rule.sourceFiles.map(async file => {
+        const filePath = path.join(process.cwd(), file);
+        return fs.promises.readFile(filePath, 'utf-8');
+      })
+    );
 
-    const processor = new RuleProcessor(ruleGroups, specialRules, repoPath, converterOptions);
-    await processor.processRules();
+    const merged = await processor.mergeRuleFiles(
+      contents,
+      rule.cleanup,
+      rule.header
+    );
+
+    const targetPath = path.join(process.cwd(), rule.targetFile);
+    ensureDirectoryExists(path.dirname(targetPath));
+    await fs.promises.writeFile(targetPath, merged);
+  }
 }
 
-main().catch(err => {
-    console.error(err);
-    process.exit(1);
-}); 
+main().catch(console.error); 
