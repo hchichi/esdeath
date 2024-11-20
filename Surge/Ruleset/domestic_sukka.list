@@ -1,14 +1,19 @@
 ########################################
 # Domestic Rules (Sukka)
-# Last updated: 2024/11/20 14:25:16
+# Last updated: 2024/11/20 16:21:09
 # DOMAIN: 33
 # DOMAIN-SUFFIX: 892
 # DOMAIN-KEYWORD: 9
 # IP-CIDR: 2
 # PROCESS-NAME: 36
 # USER-AGENT: 4
-# Total: 976
+# OTHER: 1
+# Total: 977
 # This file contains known domains and IPs that are avaliable in the Mainland China.
+# Data sources:
+#  - https://ruleset.skk.moe/List/non_ip/domestic.conf
+#  - https://ruleset.skk.moe/List/ip/domestic.conf
+#  - https://ruleset.skk.moe/List/non_ip/direct.conf
 ########################################
 DOMAIN,acg.tv
 DOMAIN,assets1.xboxlive.cn
@@ -944,6 +949,7 @@ DOMAIN-SUFFIX,zjcdn.com
 DOMAIN-SUFFIX,zui.com
 DOMAIN-SUFFIX,zuimeitianqi.com
 DOMAIN-SUFFIX,zuoyebang.com
+DOMAIN-WILDCARD,*.qhimgs?.com
 IP-CIDR,140.205.1.0/24,no-resolve
 IP-CIDR,162.14.0.0/18,no-resolve
 PROCESS-NAME,BaiduNetdisk_mac
