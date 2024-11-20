@@ -1,6 +1,6 @@
 ########################################
 # AIGC
-# Last updated: 2024/11/20 14:25:16
+# Last updated: 2024/11/20 15:03:28
 # DOMAIN: 32
 # DOMAIN-SUFFIX: 41
 # DOMAIN-KEYWORD: 4
@@ -9,9 +9,13 @@
 # OTHER: 2
 # Total: 81
 # This file contains rules for AIGC services, including OpenAI, Google Gemini, Claude, Perplexity, etc.
+# Data sources:
+#  - https://proxyresource.pages.dev/Tool/Loon/Rule/AI.list
+#  - https://github.com/ConnersHua/RuleGo/raw/master/Surge/Ruleset/Extra/AI.list
+#  - https://raw.githubusercontent.com/hiven425/hiven/master/config/AI.list
 ########################################
-AND,((DOMAIN-KEYWORD,chatgpt-async-webps-prod-)
-AND,((DOMAIN-KEYWORD,openaicom-api-)
+AND,((DOMAIN-KEYWORD,chatgpt-async-webps-prod-),(DOMAIN-SUFFIX,webpubsub.azure.com))
+AND,((DOMAIN-KEYWORD,openaicom-api-),(DOMAIN-SUFFIX,azurefd.net))
 DOMAIN,ai.google.dev
 DOMAIN,aida.googleapis.com
 DOMAIN,aistudio.google.com
