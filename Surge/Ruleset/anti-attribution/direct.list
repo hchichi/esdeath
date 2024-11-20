@@ -1,6 +1,6 @@
 ########################################
 # DIRECT (Anti-IP Attribution)
-# Last updated: 2024/11/20 02:02:43
+# Last updated: 2024/11/20 11:11:25
 # DOMAIN: 3
 # DOMAIN-SUFFIX: 20
 # Total: 23
@@ -8,6 +8,10 @@
 # Data sources:
 #  - https://github.com/SunsetMkt/anti-ip-attribution/raw/main/generated/rule-set-direct.list
 ########################################
+# 针对部分网站显示IP归属地的分流规则
+# anti-ip-attribution rule-set-direct.list v0.3.1 24db48a4973b31d718703136cfcc2b3621171f36
+# https://github.com/SunsetMkt/anti-ip-attribution
+# 适用于Clash RULE-SET
 DOMAIN-SUFFIX,bilivideo.com
 DOMAIN-SUFFIX,akamaized.net
 DOMAIN-SUFFIX,hdslb.com
