@@ -23,7 +23,7 @@ export interface RuleFlags {
 }
 
 export interface ParsedRule {
-  type: RuleType;
+  type: string;
   value: string;
   policy?: string;
   flags: RuleFlags;

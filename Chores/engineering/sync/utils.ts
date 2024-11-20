@@ -214,15 +214,22 @@ export function removeDuplicateRules(content: string): string {
  * @param rule - 规则
  * @returns - 是否有效
  */
-export function validateRule(rule: string): boolean {
-  const validRuleTypes = [
+export function validateRule(rule: string, format: RuleFormat = 'Surge'): boolean {
+  if (!rule.trim() || rule.startsWith('#')) return true;
+
+  const parts = rule.split(',');
+  if (parts.length < 2) return false;
+
+  const type = parts[0].trim().toUpperCase();
+  const validTypes = new Set([
     'DOMAIN', 'DOMAIN-SUFFIX', 'DOMAIN-KEYWORD',
     'IP-CIDR', 'IP-CIDR6', 'GEOIP', 'URL-REGEX',
-    'USER-AGENT', 'IP-ASN', 'AND', 'OR', 'NOT'
-  ];
-  
-  const type = rule.split(',')[0]?.trim().toUpperCase();
-  return validRuleTypes.includes(type);
+    'USER-AGENT', 'IP-ASN', 'AND', 'OR', 'NOT',
+    'DST-PORT', 'SRC-PORT', 'PROCESS-NAME', 'IN-PORT',
+    'PROTOCOL', 'RULE-SET'
+  ]);
+
+  return validTypes.has(type);
 }
 
 /**

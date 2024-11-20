@@ -7,6 +7,13 @@ interface ConverterOptions {
 
 export class RuleConverter {
   private options: ConverterOptions;
+  private readonly validRuleTypes = new Set([
+    'DOMAIN', 'DOMAIN-SUFFIX', 'DOMAIN-KEYWORD',
+    'IP-CIDR', 'IP-CIDR6', 'GEOIP', 'URL-REGEX',
+    'USER-AGENT', 'IP-ASN', 'AND', 'OR', 'NOT',
+    'DEST-PORT', 'SRC-PORT', 'PROCESS-NAME', 'IN-PORT',
+    'PROTOCOL', 'RULE-SET'
+  ]);
 
   constructor(options: ConverterOptions = {}) {
     this.options = {
@@ -16,106 +23,82 @@ export class RuleConverter {
   }
 
   convert(rule: string): string {
-    // 空行处理
-    if(!rule.trim()) return rule;
-
-    // 注释处理
-    if(rule.startsWith('#') || rule.startsWith(';')) {
+    if (!rule.trim() || rule.startsWith('#') || rule.startsWith(';')) {
       return this.options.cleanup ? '' : rule;
     }
 
     try {
-      // 解析规则
       const parsed = this.parseRule(rule);
-      if(!parsed) return rule;
-
-      // 转换规则
+      if (!parsed) return '';
       return this.formatRule(parsed);
-    } catch(e) {
+    } catch (e) {
       console.warn(`Failed to convert rule: ${rule}`, e);
-      return rule;
+      return '';
     }
   }
 
   private parseRule(rule: string): ParsedRule | null {
-    // 解析有类型的规则
-    if(rule.includes(',')) {
-      const [type, ...parts] = rule.split(',');
-      const value = parts[0]?.trim();
-      const policy = parts[1]?.trim();
-      const flags: RuleFlags = {
-        noResolve: parts.includes('no-resolve'),
-        preMatching: parts.includes('pre-matching'),
-        extended: parts.includes('extended')
-      };
+    const parts = rule.split(',').map(part => part.trim());
+    if (parts.length < 2) return null;
 
-      return {
-        type: this.normalizeType(type),
-        value,
-        policy: policy?.toUpperCase(),
-        flags
-      };
-    }
+    const [type, value, ...rest] = parts;
+    const policy = rest.find(p => !this.isFlag(p));
+    
+    const flags: RuleFlags = {
+      noResolve: parts.some(p => p.toLowerCase() === 'no-resolve'),
+      preMatching: parts.some(p => p.toLowerCase() === 'pre-matching'),
+      extended: parts.some(p => p.toLowerCase() === 'extended')
+    };
 
-    // 解析无类型规则
-    return this.inferRuleType(rule.trim());
+    return { type, value, policy, flags };
+  }
+
+  private isFlag(part: string): boolean {
+    const flags = ['no-resolve', 'pre-matching', 'extended', 'extended-matching', 'force-remote-dns'];
+    return flags.includes(part.toLowerCase());
   }
 
   private normalizeType(type: string): RuleType {
-    // 规则类型标准化
-    const typeMap: Record<string, RuleType> = {
+    const upperType = type.trim().toUpperCase();
+    
+    // 处理特殊规则类型转换
+    const typeMapping: Record<string, RuleType> = {
+      'IP-SUFFIX': 'IP-CIDR',
+      'DEST-PORT': 'DST-PORT',
+      'SRC-IP-CIDR': 'SRC-IP',
+      'IP': 'IP-CIDR',
+      'DOMAIN-FULL': 'DOMAIN',
       'HOST': 'DOMAIN',
       'HOST-SUFFIX': 'DOMAIN-SUFFIX',
-      'HOST-KEYWORD': 'DOMAIN-KEYWORD',
-      'HOST-WILDCARD': 'DOMAIN',
-      'DOMAIN-SET': 'DOMAIN-SET',
-      'IP6-CIDR': 'IP-CIDR6',
-      'IP-ASN': 'IP-ASN',
-      'IP-SUFFIX': 'IP-SUFFIX',
-      'DEST-PORT': 'DST-PORT',
-      'SRC-PORT': 'SRC-PORT',
-      'IN-PORT': 'IN-PORT',
-      // ... 其他类型映射
+      'HOST-KEYWORD': 'DOMAIN-KEYWORD'
     };
 
-    const normalized = type.trim().toUpperCase();
-    return typeMap[normalized] || normalized as RuleType;
+    return typeMapping[upperType] || upperType as RuleType;
   }
 
-  private inferRuleType(value: string): ParsedRule {
-    // 推断规则类型
-    const flags: RuleFlags = {};
-
-    if(value.includes('*')) {
-      return { type: 'DOMAIN-KEYWORD', value, flags };
-    }
-    if(value.includes('/')) {
-      const type = value.includes(':') ? 'IP-CIDR6' : 'IP-CIDR';
-      return { type, value, flags: { noResolve: true } };
-    }
-    if(/^(\d{1,3}\.){3}\d{1,3}$/.test(value)) {
-      return { type: 'IP-CIDR', value: `${value}/32`, flags: { noResolve: true } };
-    }
-    if(value.includes(':')) {
-      return { type: 'IP-CIDR6', value: `${value}/128`, flags: { noResolve: true } };
-    }
-    return { type: 'DOMAIN', value, flags };
-  }
-
-  private formatRule(rule: ParsedRule): string {
-    const { type, value, policy, flags } = rule;
+  private formatRule(parsed: ParsedRule): string {
+    const { type, value, policy, flags } = parsed;
     
-    let formatted = `${type},${value}`;
+    // 规范化规则类型
+    const normalizedType = this.normalizeType(type);
     
-    if(policy) {
-      formatted += `,${policy}`;
+    if (!this.validRuleTypes.has(normalizedType)) {
+      console.warn(`Unsupported rule type: ${normalizedType}`);
+      return ''; // 返回空字符串，表示该规则将被过滤掉
     }
 
-    // 添加规则标志
-    if(flags.noResolve) formatted += ',no-resolve';
-    if(flags.preMatching) formatted += ',pre-matching';
-    if(flags.extended) formatted += ',extended';
+    // 处理标志位，避免重复
+    const uniqueFlags = new Set<string>();
+    
+    if (flags.noResolve) uniqueFlags.add('no-resolve');
+    if (flags.extended) uniqueFlags.add('extended-matching');
+    if (flags.preMatching) uniqueFlags.add('force-remote-dns');
 
-    return formatted;
+    // 构建规则字符串
+    const parts = [normalizedType, value];
+    if (policy) parts.push(policy);
+    uniqueFlags.forEach(flag => parts.push(flag));
+
+    return parts.join(',');
   }
 } 
