@@ -1,104 +1,96 @@
 import { RuleFormat, RuleType, ParsedRule, RuleFlags } from './rule-types.js';
 
 interface ConverterOptions {
-  format?: RuleFormat;
-  cleanup?: boolean;
+  enableNoResolve?: boolean;
+  enablePreMatching?: boolean;
+  enableExtended?: boolean;
+  preserveComments?: boolean;
 }
 
 export class RuleConverter {
+  private format: RuleFormat;
   private options: ConverterOptions;
-  private readonly validRuleTypes = new Set([
-    'DOMAIN', 'DOMAIN-SUFFIX', 'DOMAIN-KEYWORD',
-    'IP-CIDR', 'IP-CIDR6', 'GEOIP', 'URL-REGEX',
-    'USER-AGENT', 'IP-ASN', 'AND', 'OR', 'NOT',
-    'DEST-PORT', 'SRC-PORT', 'PROCESS-NAME', 'IN-PORT',
-    'PROTOCOL', 'RULE-SET'
-  ]);
 
-  constructor(options: ConverterOptions = {}) {
-    this.options = {
-      format: options.format || 'Surge',
-      cleanup: options.cleanup || false
-    };
+  constructor(format: RuleFormat) {
+    this.format = format;
+    this.options = {};
   }
 
-  convert(rule: string): string {
-    if (!rule.trim() || rule.startsWith('#') || rule.startsWith(';')) {
-      return this.options.cleanup ? '' : rule;
+  setOptions(options: ConverterOptions) {
+    this.options = { ...this.options, ...options };
+  }
+
+  convert(rule: string, cleanup: boolean = false): string {
+    let line = rule;
+    
+    // 只在cleanup时移除空格和注释
+    if(cleanup) {
+      line = line.trim();
+      if(line.startsWith('#') || line.startsWith(';')) {
+        return '';
+      }
+    } else {
+      // 非cleanup模式保留空格和注释
+      if(!line.trim() || line.startsWith('#') || line.startsWith(';')) {
+        return line;
+      }
     }
 
-    try {
-      const parsed = this.parseRule(rule);
-      if (!parsed) return '';
-      return this.formatRule(parsed);
-    } catch (e) {
-      console.warn(`Failed to convert rule: ${rule}`, e);
-      return '';
-    }
-  }
+    // 转换规则类型
+    if(line.includes(',')) {
+      // 有类型的规则转换
+      line = line
+        // 基础类型转换
+        .replace(/^DOMAIN-KEYWORD/i, 'DOMAIN-KEYWORD')
+        .replace(/^DOMAIN-SUFFIX/i, 'DOMAIN-SUFFIX') 
+        .replace(/^DOMAIN-SET/i, 'DOMAIN-SET')
+        .replace(/^DOMAIN/i, 'DOMAIN')
+        .replace(/^HOST-WILDCARD/i, 'HOST-WILDCARD')
+        .replace(/^HOST-SUFFIX/i, 'DOMAIN-SUFFIX')
+        .replace(/^HOST-KEYWORD/i, 'DOMAIN-KEYWORD')
+        .replace(/^HOST/i, 'DOMAIN')
+        .replace(/^IP-CIDR6/i, 'IP-CIDR6')
+        .replace(/^IP-CIDR/i, 'IP-CIDR')
+        .replace(/^IP6-CIDR/i, 'IP-CIDR6')
+        .replace(/^GEOIP/i, 'GEOIP')
+        .replace(/^USER-AGENT/i, 'USER-AGENT')
+        .replace(/^URL-REGEX/i, 'URL-REGEX')
+        .replace(/^PROCESS-NAME/i, 'PROCESS-NAME')
+        .replace(/^DEST-PORT/i, 'DST-PORT')
+        .replace(/^SRC-PORT/i, 'SRC-PORT')
+        .replace(/^SRC-IP/i, 'SRC-IP')
+        .replace(/^IN-PORT/i, 'IN-PORT')
+        .replace(/^PROTOCOL/i, 'PROTOCOL')
+        
+        // 策略转换
+        .replace(/,reject$/i, ',REJECT')
+        .replace(/,reject-drop$/i, ',REJECT-DROP')
+        .replace(/,reject-tinygif$/i, ',REJECT-TINYGIF')
+        .replace(/,reject-dict$/i, ',REJECT-DICT')
+        .replace(/,reject-array$/i, ',REJECT-ARRAY')
+        .replace(/,direct$/i, ',DIRECT')
+        .replace(/,proxy$/i, ',PROXY');
 
-  private parseRule(rule: string): ParsedRule | null {
-    const parts = rule.split(',').map(part => part.trim());
-    if (parts.length < 2) return null;
-
-    const [type, value, ...rest] = parts;
-    const policy = rest.find(p => !this.isFlag(p));
-    
-    const flags: RuleFlags = {
-      noResolve: parts.some(p => p.toLowerCase() === 'no-resolve'),
-      preMatching: parts.some(p => p.toLowerCase() === 'pre-matching'),
-      extended: parts.some(p => p.toLowerCase() === 'extended')
-    };
-
-    return { type, value, policy, flags };
-  }
-
-  private isFlag(part: string): boolean {
-    const flags = ['no-resolve', 'pre-matching', 'extended', 'extended-matching', 'force-remote-dns'];
-    return flags.includes(part.toLowerCase());
-  }
-
-  private normalizeType(type: string): RuleType {
-    const upperType = type.trim().toUpperCase();
-    
-    // 处理特殊规则类型转换
-    const typeMapping: Record<string, RuleType> = {
-      'IP-SUFFIX': 'IP-CIDR',
-      'DEST-PORT': 'DST-PORT',
-      'SRC-IP-CIDR': 'SRC-IP',
-      'IP': 'IP-CIDR',
-      'DOMAIN-FULL': 'DOMAIN',
-      'HOST': 'DOMAIN',
-      'HOST-SUFFIX': 'DOMAIN-SUFFIX',
-      'HOST-KEYWORD': 'DOMAIN-KEYWORD'
-    };
-
-    return typeMapping[upperType] || upperType as RuleType;
-  }
-
-  private formatRule(parsed: ParsedRule): string {
-    const { type, value, policy, flags } = parsed;
-    
-    // 规范化规则类型
-    const normalizedType = this.normalizeType(type);
-    
-    if (!this.validRuleTypes.has(normalizedType)) {
-      console.warn(`Unsupported rule type: ${normalizedType}`);
-      return ''; // 返回空字符串，表示该规则将被过滤掉
+    } else {
+      // 无类型规则自动判断类型
+      if(line.includes('*')) {
+        // 包含通配符
+        line = `DOMAIN-WILDCARD,${line}`; 
+      } else if(line.includes('/')) {
+        // CIDR格式
+        line = line.includes(':') ? `IP-CIDR6,${line}` : `IP-CIDR,${line}`;
+      } else if(/^(\d{1,3}\.){3}\d{1,3}$/.test(line)) {
+        // IPv4
+        line = `IP-CIDR,${line}/32`;
+      } else if(line.includes(':')) {
+        // IPv6
+        line = `IP-CIDR6,${line}/128`;
+      } else {
+        // 域名
+        line = `DOMAIN,${line}`;
+      }
     }
 
-    // 处理标志位，避免重复
-    const uniqueFlags = new Set<string>();
-    
-    if (flags.noResolve) uniqueFlags.add('no-resolve');
-    if (flags.extended) uniqueFlags.add('extended-matching');
-    if (flags.preMatching) uniqueFlags.add('force-remote-dns');
-
-    // 构建规则字符串
-    const parts = [normalizedType, value];
-    if (policy) parts.push(policy);
-    uniqueFlags.forEach(flag => parts.push(flag));
-
-    return parts.join(',');
+    return line;
   }
-} 
+}
