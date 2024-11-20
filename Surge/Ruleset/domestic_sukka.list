@@ -1,6 +1,6 @@
 ########################################
 # Domestic Rules (Sukka)
-# Last updated: 2024/11/20 17:25:44
+# Last updated: 2024/11/21 00:54:01
 # DOMAIN: 33
 # DOMAIN-SUFFIX: 893
 # DOMAIN-KEYWORD: 9
@@ -951,8 +951,8 @@ DOMAIN-SUFFIX,zui.com
 DOMAIN-SUFFIX,zuimeitianqi.com
 DOMAIN-SUFFIX,zuoyebang.com
 DOMAIN-WILDCARD,*.qhimgs?.com
-IP-CIDR,140.205.1.0/24,no-resolve
-IP-CIDR,162.14.0.0/18,no-resolve
+IP-CIDR,140.205.1.0/24,NO-RESOLVE
+IP-CIDR,162.14.0.0/18,NO-RESOLVE
 PROCESS-NAME,BaiduNetdisk_mac
 PROCESS-NAME,BitComet
 PROCESS-NAME,ClashX

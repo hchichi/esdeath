@@ -12,8 +12,8 @@ DOMAIN,www.bilibili.com
 DOMAIN-KEYWORD,cn-hk-eq-bcache-
 # > 愛奇藝台灣站
 DOMAIN,cache.video.iqiyi.com
-IP-CIDR,116.211.202.206/32,no-resolve
-IP-CIDR,116.211.202.216/32,no-resolve
+IP-CIDR,116.211.202.206/32,NO-RESOLVE
+IP-CIDR,116.211.202.216/32,NO-RESOLVE
 # > MangoTV(芒果TV国际)
 DOMAIN-SUFFIX,api.mgtv.com
 DOMAIN,mobileso.bz.mgtv.com

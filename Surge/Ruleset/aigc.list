@@ -1,6 +1,6 @@
 ########################################
 # AIGC
-# Last updated: 2024/11/20 17:25:44
+# Last updated: 2024/11/21 00:54:01
 # DOMAIN: 32
 # DOMAIN-SUFFIX: 41
 # DOMAIN-KEYWORD: 4
@@ -14,8 +14,8 @@
 #  - https://github.com/ConnersHua/RuleGo/raw/master/Surge/Ruleset/Extra/AI.list
 #  - https://raw.githubusercontent.com/hiven425/hiven/master/config/AI.list
 ########################################
-AND,((DOMAIN-KEYWORD,chatgpt-async-webps-prod-),(DOMAIN-SUFFIX,webpubsub.azure.com))
-AND,((DOMAIN-KEYWORD,openaicom-api-),(DOMAIN-SUFFIX,azurefd.net))
+AND,((DOMAIN-KEYWORD,CHATGPT-ASYNC-WEBPS-PROD-)
+AND,((DOMAIN-KEYWORD,OPENAICOM-API-)
 DOMAIN,ai.google.dev
 DOMAIN,aida.googleapis.com
 DOMAIN,aistudio.google.com
@@ -93,5 +93,5 @@ DOMAIN-SUFFIX,proactivebackend-pa.googleapis.com
 DOMAIN-SUFFIX,sentry.io
 DOMAIN-SUFFIX,smoot.apple.com
 DOMAIN-SUFFIX,stripe.com
-IP-CIDR,160.79.104.0/23,no-resolve
-IP-CIDR6,2607:6bc0::/48,no-resolve
+IP-CIDR,160.79.104.0/23,NO-RESOLVE
+IP-CIDR6,2607:6bc0::/48,NO-RESOLVE
