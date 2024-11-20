@@ -334,7 +334,7 @@ export const ruleGroups: RuleGroup[] = [
       },
       {
         path: 'Surge/Ruleset/ipcird/chinaip.list',
-        url: 'https://raw.githubusercontent.com/DH-Teams/DH-Geo_AS_IP_CN/main/Geo_AS_IP_CN.txt',
+        url: 'https://raw.githubusercontent.com/DH-Teams/DH-Geo_AS_IP_CN/main/Geo_AS_IP_CN_All.txt',
         title: 'IPv4+IPv6 Information in China.',
         description: 'Made by DH-Teams, All rights reserved',
         header: {
@@ -343,7 +343,7 @@ export const ruleGroups: RuleGroup[] = [
       },
       {
         path: 'Surge/Ruleset/ipcird/chinaipv4_dh.list',
-        url: 'https://raw.githubusercontent.com/DH-Teams/DH-Geo_AS_IP_CN/main/Geo_AS_IP_CN_V4_Surge.list',
+        url: 'https://raw.githubusercontent.com/DH-Teams/DH-Geo_AS_IP_CN/main/Geo_AS_IP_CN.txt',
         title: 'IPv4 Information in China.',
         description: 'Made by DH-Teams, All rights reserved',
         header: {
