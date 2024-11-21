@@ -7,7 +7,7 @@ import path from 'path';
 import fs from 'fs';
 
 async function main() {
-  // 初始化 converter 并设置选项
+  // Initialize converter and set options
   const converter = new RuleConverter('Surge');
   converter.setOptions({
     enableNoResolve: true,
@@ -15,49 +15,67 @@ async function main() {
     enableExtended: true
   });
 
-  // 初始化 merger
+  // Initialize merger
   const merger = new RuleMerger(process.cwd(), converter);
 
-  // 初始化 processor
+  // Initialize processor
   const processor = new RuleProcessor(
     process.cwd(),
     converter,
     merger
   );
 
-  // 处理常规规则组
-  for(const group of ruleGroups) {
-    for(const file of group.files) {
+  // Process regular rule groups
+  for (const group of ruleGroups) {
+    for (const file of group.files) {
       if (!file.url || !file.path) {
         console.warn(`Skipping file with missing url or path: ${JSON.stringify(file)}`);
         continue;
       }
 
       try {
-        const content = await downloadFile(file.url, path.join(process.cwd(), file.path));
-        const processed = await processor.processRuleFile(
-          content,
-          file.cleanup,
-          file.header,
-          {
-            noResolve: file.noResolve,
-            preMatching: file.preMatching,
-            extendedMatching: file.extendedMatching
-          }
-        );
-      
         const targetPath = path.join(process.cwd(), file.path);
+
+        // Ensure the directory exists before downloading
         ensureDirectoryExists(path.dirname(targetPath));
-        await fs.promises.writeFile(targetPath, processed);
-        console.log(`Processed and saved: ${file.path}`);
+
+        // Download the file
+        await downloadFile(file.url, targetPath);
+
+        // Determine the file extension
+        const ext = path.extname(file.path).toLowerCase();
+
+        if (ext === '.mmdb') {
+          // Binary file; skip processing
+          console.log(`Skipping processing for binary file: ${file.path}`);
+        } else {
+          // Read the content as text
+          let content = await fs.promises.readFile(targetPath, 'utf-8');
+
+          // Process the content
+          const processed = await processor.processRuleFile(
+            content,
+            file.cleanup,
+            file.header,
+            {
+              noResolve: file.noResolve,
+              preMatching: file.preMatching,
+              extendedMatching: file.extendedMatching
+            }
+          );
+
+          // Write the processed content back to the file
+          await fs.promises.writeFile(targetPath, processed, 'utf-8');
+          console.log(`Processed and saved: ${file.path}`);
+        }
       } catch (error) {
         console.error(`Error processing file ${file.path}:`, error);
       }
     }
   }
 
-  // 处理特殊规则
-  for(const rule of specialRules) {
+  // Process special rules
+  for (const rule of specialRules) {
     try {
       const contents = await Promise.all(
         rule.sourceFiles.map(async file => {
@@ -79,7 +97,7 @@ async function main() {
 
       const targetPath = path.join(process.cwd(), rule.targetFile);
       ensureDirectoryExists(path.dirname(targetPath));
-      await fs.promises.writeFile(targetPath, merged);
+      await fs.promises.writeFile(targetPath, merged, 'utf-8');
       console.log(`Merged and saved: ${rule.targetFile}`);
     } catch (error) {
       console.error(`Error processing special rule ${rule.name}:`, error);
@@ -87,7 +105,7 @@ async function main() {
   }
 }
 
-// 添加错误处理
+// Add error handling
 main().catch(error => {
   console.error('Fatal error:', error);
   process.exit(1);
