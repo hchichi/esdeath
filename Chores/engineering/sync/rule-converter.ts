@@ -23,50 +23,32 @@ export class RuleConverter {
   convert(rule: string, cleanup: boolean = false): string {
     let line = rule;
     
-    // 处理空行和注释
+    // 只在cleanup时移除空格和注释
     if(cleanup) {
       line = line.trim();
-      if(!line || line.startsWith('#') || line.startsWith(';') || line.startsWith('//')) {
+      if(line.startsWith('#') || line.startsWith(';')) {
         return '';
       }
     } else {
-      if(!line.trim() || line.startsWith('#') || line.startsWith(';') || line.startsWith('//')) {
+      // 非cleanup模式保留空格和注释
+      if(!line.trim() || line.startsWith('#') || line.startsWith(';')) {
         return line;
       }
     }
 
-    // 处理 domain-set 格式转换为 ruleset 格式
-    if(!line.includes(',')) {
-      // domain-set 格式的规则处理
-      line = line.trim();
-      
-      if(line.startsWith('.')) {
-        // 以点开头的视为 DOMAIN-SUFFIX
-        return `DOMAIN-SUFFIX,${line.substring(1)}`;
-      } else if(line.includes('*')) {
-        // 包含通配符的视为 DOMAIN-WILDCARD
-        return `DOMAIN-WILDCARD,${line}`;
-      } else {
-        // 其他情况视为 DOMAIN
-        return `DOMAIN,${line}`;
-      }
-    }
-
-    // 处理已有类型的规则
+    // 转换规则类型
     if(line.includes(',')) {
-      const ruleParts = line.split(',').map(p => p.trim());
-      const [type, value, policy = '', ...flags] = ruleParts;
-      
-      // 转换类型
-      let newType = type
-        .replace(/^HOST-WILDCARD/i, 'DOMAIN-WILDCARD')
+      // 有类型的规则转换
+      line = line
+        // 基础类型转换
+        .replace(/^DOMAIN-KEYWORD/i, 'DOMAIN-KEYWORD')
+        .replace(/^DOMAIN-SUFFIX/i, 'DOMAIN-SUFFIX') 
+        .replace(/^DOMAIN-SET/i, 'DOMAIN-SET')
+        .replace(/^DOMAIN/i, 'DOMAIN')
+        .replace(/^HOST-WILDCARD/i, 'HOST-WILDCARD')
         .replace(/^HOST-SUFFIX/i, 'DOMAIN-SUFFIX')
         .replace(/^HOST-KEYWORD/i, 'DOMAIN-KEYWORD')
         .replace(/^HOST/i, 'DOMAIN')
-        .replace(/^DOMAIN-KEYWORD/i, 'DOMAIN-KEYWORD')
-        .replace(/^DOMAIN-SUFFIX/i, 'DOMAIN-SUFFIX')
-        .replace(/^DOMAIN-SET/i, 'DOMAIN-SET')
-        .replace(/^DOMAIN/i, 'DOMAIN')
         .replace(/^IP-CIDR6/i, 'IP-CIDR6')
         .replace(/^IP-CIDR/i, 'IP-CIDR')
         .replace(/^IP6-CIDR/i, 'IP-CIDR6')
@@ -78,50 +60,35 @@ export class RuleConverter {
         .replace(/^SRC-PORT/i, 'SRC-PORT')
         .replace(/^SRC-IP/i, 'SRC-IP')
         .replace(/^IN-PORT/i, 'IN-PORT')
-        .replace(/^PROTOCOL/i, 'PROTOCOL');
+        .replace(/^PROTOCOL/i, 'PROTOCOL')
+        
+        // 策略转换
+        .replace(/,reject$/i, ',REJECT')
+        .replace(/,reject-drop$/i, ',REJECT-DROP')
+        .replace(/,reject-tinygif$/i, ',REJECT-TINYGIF')
+        .replace(/,reject-dict$/i, ',REJECT-DICT')
+        .replace(/,reject-array$/i, ',REJECT-ARRAY')
+        .replace(/,direct$/i, ',DIRECT')
+        .replace(/,proxy$/i, ',PROXY');
 
-      // 处理策略
-      let newPolicy = policy.toUpperCase();
-      if(newPolicy) {
-        newPolicy = newPolicy
-          .replace(/^REJECT$/i, 'REJECT')
-          .replace(/^REJECT-DROP$/i, 'REJECT-DROP')
-          .replace(/^REJECT-TINYGIF$/i, 'REJECT-TINYGIF')
-          .replace(/^DIRECT$/i, 'DIRECT')
-          .replace(/^PROXY$/i, 'PROXY');
+    } else {
+      // 无类型规则自动判断类型
+      if(line.includes('*')) {
+        // 包含通配符
+        line = `DOMAIN-WILDCARD,${line}`; 
+      } else if(line.includes('/')) {
+        // CIDR格式
+        line = line.includes(':') ? `IP-CIDR6,${line}` : `IP-CIDR,${line}`;
+      } else if(/^(\d{1,3}\.){3}\d{1,3}$/.test(line)) {
+        // IPv4
+        line = `IP-CIDR,${line}/32`;
+      } else if(line.includes(':')) {
+        // IPv6
+        line = `IP-CIDR6,${line}/128`;
+      } else {
+        // 域名
+        line = `DOMAIN,${line}`;
       }
-
-      // 处理规则标志
-      const ruleFlags: string[] = [...flags]; // 保留现有标志
-
-      // 根据规则类型和选项添加标志
-      if (this.options.enableNoResolve && 
-          ['IP-CIDR', 'IP-CIDR6', 'GEOIP'].includes(newType.toUpperCase())) {
-        if (!ruleFlags.includes('no-resolve')) {
-          ruleFlags.push('no-resolve');
-        }
-      }
-
-      if (this.options.enablePreMatching && 
-          newPolicy.toUpperCase() === 'REJECT') {
-        if (!ruleFlags.includes('pre-matching')) {
-          ruleFlags.push('pre-matching');
-        }
-      }
-
-      if (this.options.enableExtended && 
-          newType.toUpperCase().startsWith('DOMAIN')) {
-        if (!ruleFlags.includes('extended-matching')) {
-          ruleFlags.push('extended-matching');
-        }
-      }
-
-      // 构建最终规则
-      const finalParts = [newType, value];
-      if (newPolicy) finalParts.push(newPolicy);
-      if (ruleFlags.length > 0) finalParts.push(...ruleFlags);
-
-      return finalParts.join(',');
     }
 
     return line;

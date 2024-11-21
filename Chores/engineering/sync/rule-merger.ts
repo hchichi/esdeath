@@ -12,16 +12,7 @@ export class RuleMerger {
   ) {}
 
   async mergeSpecialRules(config: SpecialRuleConfig): Promise<void> {
-    const { 
-      name, 
-      targetFile, 
-      sourceFiles, 
-      extraRules, 
-      cleanup,
-      noResolve,
-      preMatching,
-      extendedMatching 
-    } = config;
+    const { name, targetFile, sourceFiles, extraRules, cleanup } = config;
     
     console.log(`Merging special rules: ${name}`);
 
@@ -52,43 +43,7 @@ export class RuleMerger {
       // 4. Clean and sort the merged content (default is true)
       mergedContent = cleanAndSort(mergedContent, this.converter, cleanup ?? true);
 
-      // 5. 根据配置应用规则标志
-      if (noResolve || preMatching || extendedMatching) {
-        mergedContent = mergedContent
-          .split('\n')
-          .map(line => {
-            if (!line || line.startsWith('#')) return line;
-            
-            const parts = line.split(',');
-            const type = parts[0].toUpperCase();
-            const flags: string[] = [];
-
-            // 添加 no-resolve 标志
-            if (noResolve && 
-                ['IP-CIDR', 'IP-CIDR6', 'GEOIP'].includes(type)) {
-              flags.push('no-resolve');
-            }
-
-            // 添加 pre-matching 标志
-            if (preMatching && parts[2]?.toUpperCase() === 'REJECT') {
-              flags.push('pre-matching');
-            }
-
-            // 添加 extended-matching 标志
-            if (extendedMatching && type.startsWith('DOMAIN')) {
-              flags.push('extended-matching');
-            }
-
-            // 合并标志
-            if (flags.length > 0) {
-              return [...parts, ...flags].join(',');
-            }
-            return line;
-          })
-          .join('\n');
-      }
-
-      // 6. Add header
+      // 5. Add header if enabled (default is true)
       if (config.header?.enable !== false) {
         mergedContent = addRuleHeader(mergedContent, {
           title: config.header?.title,
@@ -96,14 +51,14 @@ export class RuleMerger {
         }, sourceUrls);
       }
 
-      // 7. Write merged content to target file
+      // 6. Write merged content to target file
       const targetPath = path.join(this.repoPath, targetFile);
       await fs.promises.mkdir(path.dirname(targetPath), { recursive: true });
       await fs.promises.writeFile(targetPath, mergedContent);
 
       console.log(`Successfully merged ${name} rules to ${targetFile}`);
 
-      // 8. Delete source files
+      // 7. Delete source files
       await Promise.all(
         sourceFiles.map(async file => {
           const filePath = path.join(this.repoPath, file);
