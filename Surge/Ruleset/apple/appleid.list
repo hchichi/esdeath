@@ -4,7 +4,7 @@
 # UPDATED: 2024-01-08 16:02:50
 # DOMAIN: 4
 # TOTAL: 4
-DOMAIN,appleid.apple.com,DIRECT
-DOMAIN,appleid.cdn-apple.com,DIRECT
-DOMAIN,gsa.apple.com,DIRECT
-DOMAIN,idmsa.apple.com,DIRECT
+DOMAIN,appleid.apple.com
+DOMAIN,appleid.cdn-apple.com
+DOMAIN,gsa.apple.com
+DOMAIN,idmsa.apple.com

@@ -1,5 +1,5 @@
 // Common Static CDNs
-// Last updated: 2024/11/21 22:50:22
+// Last updated: 2024/11/21 22:57:43
 // DOMAIN: 3
 // DOMAIN-KEYWORD: 5
 // IP-CIDR: 3
@@ -10,47 +10,47 @@
 // Data sources:
 //  - https://ruleset.skk.moe/List/non_ip/cdn.conf
 //  - https://ruleset.skk.moe/List/ip/cdn.conf
-DOMAIN,cdn-msp.18comic.vip,DIRECT
-DOMAIN,cdn-msp.jmcomic.me,DIRECT
-DOMAIN,this_ruleset_is_made_by_sukkaw.ruleset.skk.moe,DIRECT
-DOMAIN-KEYWORD,-files.gitbook.io,DIRECT
-DOMAIN-KEYWORD,-res.cloudinary.com,DIRECT
-DOMAIN-KEYWORD,dsn.algolia.net,DIRECT
-DOMAIN-KEYWORD,vod-adaptive.akamaized.net,DIRECT
-DOMAIN-KEYWORD,web-assets.zendesk,DIRECT
-DOMAIN-WILDCARD,*.ffzy-online?.com,DIRECT
-DOMAIN-WILDCARD,*.ffzy-play?.com,DIRECT
-DOMAIN-WILDCARD,*.fsvod?.com,DIRECT
-DOMAIN-WILDCARD,*.kuaikan-cdn?.com,DIRECT
-DOMAIN-WILDCARD,*.lz-cdn?.com,DIRECT
-DOMAIN-WILDCARD,*.lz-cdn??.com,DIRECT
-DOMAIN-WILDCARD,appcenter-filemanagement-*.cloudapp.net,DIRECT
-DOMAIN-WILDCARD,blog-imgs-??.2nt.com,DIRECT
-DOMAIN-WILDCARD,blog-imgs-??.fc2.com,DIRECT
-DOMAIN-WILDCARD,cdn-msp?.18comic.vip,DIRECT
-DOMAIN-WILDCARD,cdn-msp?.jmcomic.me,DIRECT
-DOMAIN-WILDCARD,cdn?-dl.pornhost.com,DIRECT
-DOMAIN-WILDCARD,cdn?-thumbs.pornhost.com,DIRECT
-DOMAIN-WILDCARD,cdn?.mikuclub.fun,DIRECT
-DOMAIN-WILDCARD,cdns.*.gigya.com,DIRECT
-DOMAIN-WILDCARD,file?.mikuclub.fun,DIRECT
-DOMAIN-WILDCARD,i?.nhentai.net,DIRECT
-DOMAIN-WILDCARD,image*.cloudokyo.cloud,DIRECT
-DOMAIN-WILDCARD,ocsp.*.amazontrust.com,DIRECT
-DOMAIN-WILDCARD,proxy-*.dailymotion.com,DIRECT
-DOMAIN-WILDCARD,rr?---??.ouo.si,DIRECT
-DOMAIN-WILDCARD,s3.*.wasabisys.com,DIRECT
-DOMAIN-WILDCARD,static*.tgstat.ru,DIRECT
-DOMAIN-WILDCARD,static-??-cdn.eporner.com,DIRECT
-DOMAIN-WILDCARD,t?.nhentai.net,DIRECT
-DOMAIN-WILDCARD,video*.cloudokyo.cloud,DIRECT
-DOMAIN-WILDCARD,video-thumbnail2.fc2.com,DIRECT
-DOMAIN-WILDCARD,video-thumbnail2.liaoningmovie.net,DIRECT
-DOMAIN-WILDCARD,video?-thumbnail?.fc2.com,DIRECT
-DOMAIN-WILDCARD,video?-thumbnail?.liaoningmovie.net,DIRECT
-DOMAIN-WILDCARD,vip-videoprem*-thumbnail?.fc2.com,DIRECT
-IP-CIDR,162.159.200.1/32,DIRECT
-IP-CIDR,162.159.200.123/32,DIRECT
-IP-CIDR,185.199.108.0/22,DIRECT
-URL-REGEX,^http://www\.microsoft\.com/pki/,DIRECT
-URL-REGEX,^http://www\.microsoft\.com/pkiops/,DIRECT
+DOMAIN,cdn-msp.18comic.vip
+DOMAIN,cdn-msp.jmcomic.me
+DOMAIN,this_ruleset_is_made_by_sukkaw.ruleset.skk.moe
+DOMAIN-KEYWORD,-files.gitbook.io
+DOMAIN-KEYWORD,-res.cloudinary.com
+DOMAIN-KEYWORD,dsn.algolia.net
+DOMAIN-KEYWORD,vod-adaptive.akamaized.net
+DOMAIN-KEYWORD,web-assets.zendesk
+DOMAIN-WILDCARD,*.ffzy-online?.com
+DOMAIN-WILDCARD,*.ffzy-play?.com
+DOMAIN-WILDCARD,*.fsvod?.com
+DOMAIN-WILDCARD,*.kuaikan-cdn?.com
+DOMAIN-WILDCARD,*.lz-cdn?.com
+DOMAIN-WILDCARD,*.lz-cdn??.com
+DOMAIN-WILDCARD,appcenter-filemanagement-*.cloudapp.net
+DOMAIN-WILDCARD,blog-imgs-??.2nt.com
+DOMAIN-WILDCARD,blog-imgs-??.fc2.com
+DOMAIN-WILDCARD,cdn-msp?.18comic.vip
+DOMAIN-WILDCARD,cdn-msp?.jmcomic.me
+DOMAIN-WILDCARD,cdn?-dl.pornhost.com
+DOMAIN-WILDCARD,cdn?-thumbs.pornhost.com
+DOMAIN-WILDCARD,cdn?.mikuclub.fun
+DOMAIN-WILDCARD,cdns.*.gigya.com
+DOMAIN-WILDCARD,file?.mikuclub.fun
+DOMAIN-WILDCARD,i?.nhentai.net
+DOMAIN-WILDCARD,image*.cloudokyo.cloud
+DOMAIN-WILDCARD,ocsp.*.amazontrust.com
+DOMAIN-WILDCARD,proxy-*.dailymotion.com
+DOMAIN-WILDCARD,rr?---??.ouo.si
+DOMAIN-WILDCARD,s3.*.wasabisys.com
+DOMAIN-WILDCARD,static*.tgstat.ru
+DOMAIN-WILDCARD,static-??-cdn.eporner.com
+DOMAIN-WILDCARD,t?.nhentai.net
+DOMAIN-WILDCARD,video*.cloudokyo.cloud
+DOMAIN-WILDCARD,video-thumbnail2.fc2.com
+DOMAIN-WILDCARD,video-thumbnail2.liaoningmovie.net
+DOMAIN-WILDCARD,video?-thumbnail?.fc2.com
+DOMAIN-WILDCARD,video?-thumbnail?.liaoningmovie.net
+DOMAIN-WILDCARD,vip-videoprem*-thumbnail?.fc2.com
+IP-CIDR,162.159.200.1/32
+IP-CIDR,162.159.200.123/32
+IP-CIDR,185.199.108.0/22
+URL-REGEX,^http://www\.microsoft\.com/pki/
+URL-REGEX,^http://www\.microsoft\.com/pkiops/

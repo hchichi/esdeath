@@ -5,6 +5,6 @@
 # DOMAIN: 2
 # DOMAIN-KEYWORD: 1
 # TOTAL: 3
-DOMAIN,beta.apple.com,DIRECT
-DOMAIN,testflight.apple.com,DIRECT
-DOMAIN-KEYWORD,testflight,DIRECT
+DOMAIN,beta.apple.com
+DOMAIN,testflight.apple.com
+DOMAIN-KEYWORD,testflight
