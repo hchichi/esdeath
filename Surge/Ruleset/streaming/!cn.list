@@ -1,303 +1,296 @@
 # Streaming Media
-
 # (Live)
 # > Twitch
-DOMAIN-SUFFIX,ext-twitch.tv
-DOMAIN-SUFFIX,jtvnw.net
-DOMAIN-SUFFIX,ttvnw.net
-DOMAIN-SUFFIX,twitch.tv
-DOMAIN-SUFFIX,twitchcdn.net
-DOMAIN-SUFFIX,twitch-ext.rootonline.de
-
+DOMAIN-SUFFIX,ext-twitch.tv,extended-matching
+DOMAIN-SUFFIX,jtvnw.net,extended-matching
+DOMAIN-SUFFIX,ttvnw.net,extended-matching
+DOMAIN-SUFFIX,twitch.tv,extended-matching
+DOMAIN-SUFFIX,twitchcdn.net,extended-matching
+DOMAIN-SUFFIX,twitch-ext.rootonline.de,extended-matching
 # (Music)
 # > Deezer
-DOMAIN-SUFFIX,deezer.com
-DOMAIN-SUFFIX,dzcdn.net
+DOMAIN-SUFFIX,deezer.com,extended-matching
+DOMAIN-SUFFIX,dzcdn.net,extended-matching
 # > JOOX
-DOMAIN-SUFFIX,joox.com
-DOMAIN-KEYWORD,jooxweb-api
+DOMAIN-SUFFIX,joox.com,extended-matching
+DOMAIN-KEYWORD,jooxweb-api,extended-matching
 # > KKBOX
-DOMAIN-SUFFIX,kkbox.com
-DOMAIN-SUFFIX,kkbox.com.tw
-DOMAIN-SUFFIX,kfs.io
+DOMAIN-SUFFIX,kkbox.com,extended-matching
+DOMAIN-SUFFIX,kkbox.com.tw,extended-matching
+DOMAIN-SUFFIX,kfs.io,extended-matching
 # > Pandora
-DOMAIN-SUFFIX,pandora.com
-DOMAIN-SUFFIX,p-cdn.us
+DOMAIN-SUFFIX,pandora.com,extended-matching
+DOMAIN-SUFFIX,p-cdn.us,extended-matching
 # > SoundCloud
-DOMAIN-SUFFIX,p-cdn.us
-DOMAIN-SUFFIX,sndcdn.com
-DOMAIN-SUFFIX,soundcloud.com
+DOMAIN-SUFFIX,sndcdn.com,extended-matching
+DOMAIN-SUFFIX,soundcloud.com,extended-matching
 # > Spotify
-DOMAIN-SUFFIX,pscdn.co
-DOMAIN-SUFFIX,scdn.co
-DOMAIN-SUFFIX,spotify.com
-DOMAIN-SUFFIX,spoti.fi
-DOMAIN-KEYWORD,spotify.com
-DOMAIN-KEYWORD,-spotify-com
+DOMAIN-SUFFIX,pscdn.co,extended-matching
+DOMAIN-SUFFIX,scdn.co,extended-matching
+DOMAIN-SUFFIX,spotify.com,extended-matching
+DOMAIN-SUFFIX,spoti.fi,extended-matching
+DOMAIN-KEYWORD,spotify.com,extended-matching
+DOMAIN-KEYWORD,-spotify-com,extended-matching
 # > TIDAL
-DOMAIN-SUFFIX,tidal.com
+DOMAIN-SUFFIX,tidal.com,extended-matching
 # > YouTubeMusic
-
 # (Podcast)
 # > Himalaya
-DOMAIN-SUFFIX,himalaya.com
+DOMAIN-SUFFIX,himalaya.com,extended-matching
 # > Overcast
-DOMAIN-SUFFIX,overcast.fm
-
+DOMAIN-SUFFIX,overcast.fm,extended-matching
 # (Video)
 # > AbemaTV
-DOMAIN-SUFFIX,abema.io
-DOMAIN-SUFFIX,abema.tv
-DOMAIN-SUFFIX,abema-tv.com
-DOMAIN-SUFFIX,ameba.jp
-DOMAIN-SUFFIX,hayabusa.io
-DOMAIN-SUFFIX,hayabusa.media
-DOMAIN,api-abematv.bucketeer.jp
-DOMAIN-KEYWORD,abematv.akamaized.net
+DOMAIN-SUFFIX,abema.io,extended-matching
+DOMAIN-SUFFIX,abema.tv,extended-matching
+DOMAIN-SUFFIX,abema-tv.com,extended-matching
+DOMAIN-SUFFIX,ameba.jp,extended-matching
+DOMAIN-SUFFIX,hayabusa.io,extended-matching
+DOMAIN-SUFFIX,hayabusa.media,extended-matching
+DOMAIN,api-abematv.bucketeer.jp,extended-matching
+DOMAIN-KEYWORD,abematv.akamaized.net,extended-matching
 # > All 4
-DOMAIN-SUFFIX,c4assets.com
-DOMAIN-SUFFIX,channel4.com
+DOMAIN-SUFFIX,c4assets.com,extended-matching
+DOMAIN-SUFFIX,channel4.com,extended-matching
 # > Amazon Prime Video
-DOMAIN-SUFFIX,aiv-cdn.net
-DOMAIN-SUFFIX,aiv-delivery.net
-DOMAIN-SUFFIX,amazonvideo.com
-DOMAIN-SUFFIX,media-amazon.com
-DOMAIN-SUFFIX,primevideo.com
-DOMAIN-SUFFIX,pv-cdn.net
-DOMAIN,atv-ps.amazon.com
-DOMAIN,fls-na.amazon.com
-DOMAIN,avodmp4s3ww-a.akamaihd.net
-DOMAIN,d25xi40x97liuc.cloudfront.net
-DOMAIN,dmqdd6hw24ucf.cloudfront.net
-DOMAIN,dmqdd6hw24ucf.cloudfront.net
-DOMAIN,d22qjgkvxw22r6.cloudfront.net
-DOMAIN,d1v5ir2lpwr8os.cloudfront.net
-DOMAIN,d27xxe7juh1us6.cloudfront.net
+DOMAIN-SUFFIX,aiv-cdn.net,extended-matching
+DOMAIN-SUFFIX,aiv-delivery.net,extended-matching
+DOMAIN-SUFFIX,amazonvideo.com,extended-matching
+DOMAIN-SUFFIX,media-amazon.com,extended-matching
+DOMAIN-SUFFIX,primevideo.com,extended-matching
+DOMAIN-SUFFIX,pv-cdn.net,extended-matching
+DOMAIN,atv-ps.amazon.com,extended-matching
+DOMAIN,fls-na.amazon.com,extended-matching
+DOMAIN,avodmp4s3ww-a.akamaihd.net,extended-matching
+DOMAIN,d25xi40x97liuc.cloudfront.net,extended-matching
+DOMAIN,dmqdd6hw24ucf.cloudfront.net,extended-matching
+DOMAIN,d22qjgkvxw22r6.cloudfront.net,extended-matching
+DOMAIN,d1v5ir2lpwr8os.cloudfront.net,extended-matching
+DOMAIN,d27xxe7juh1us6.cloudfront.net,extended-matching
 # DOMAIN,www.amazon.com
-DOMAIN-KEYWORD,avoddashs
+DOMAIN-KEYWORD,avoddashs,extended-matching
 # > Apple Music TV
-DOMAIN,tv.applemusic.com
+DOMAIN,tv.applemusic.com,extended-matching
 # > Apple TV
-DOMAIN,linear.tv.apple.com
-DOMAIN,play-edge.itunes.apple.com
-DOMAIN,uts-api.itunes.apple.com
+DOMAIN,linear.tv.apple.com,extended-matching
+DOMAIN,play-edge.itunes.apple.com,extended-matching
+DOMAIN,uts-api.itunes.apple.com,extended-matching
 # > Bahamut
-DOMAIN-SUFFIX,bahamut.com.tw
-DOMAIN-SUFFIX,gamer.com.tw
-DOMAIN,bahamut.akamaized.net
-DOMAIN,gamer-cds.cdn.hinet.net
-DOMAIN,gamer2-cds.cdn.hinet.net
+DOMAIN-SUFFIX,bahamut.com.tw,extended-matching
+DOMAIN-SUFFIX,gamer.com.tw,extended-matching
+DOMAIN,bahamut.akamaized.net,extended-matching
+DOMAIN,gamer-cds.cdn.hinet.net,extended-matching
+DOMAIN,gamer2-cds.cdn.hinet.net,extended-matching
 # > BBC iPlayer
-DOMAIN-SUFFIX,bbc.co.uk
-DOMAIN-SUFFIX,bbci.co.uk
-DOMAIN-KEYWORD,bbcfmt
-DOMAIN-KEYWORD,uk-live
+DOMAIN-SUFFIX,bbc.co.uk,extended-matching
+DOMAIN-SUFFIX,bbci.co.uk,extended-matching
+DOMAIN-KEYWORD,bbcfmt,extended-matching
+DOMAIN-KEYWORD,uk-live,extended-matching
 # > bilibili Intl
-DOMAIN-SUFFIX,biliintl.com
-DOMAIN,apm-misaka.biliapi.net
-DOMAIN,p.bstarstatic.com
-DOMAIN,p-bstarstatic.akamaized.net
-DOMAIN,upos-bstar-mirrorakam.akamaized.net
-DOMAIN,upos-bstar1-mirrorakam.akamaized.net
+DOMAIN-SUFFIX,biliintl.com,extended-matching
+DOMAIN,apm-misaka.biliapi.net,extended-matching
+DOMAIN,p.bstarstatic.com,extended-matching
+DOMAIN,p-bstarstatic.akamaized.net,extended-matching
+DOMAIN,upos-bstar-mirrorakam.akamaized.net,extended-matching
+DOMAIN,upos-bstar1-mirrorakam.akamaized.net,extended-matching
 # > DAZN
-DOMAIN-SUFFIX,dazn.com
-DOMAIN-SUFFIX,dazn-api.com
-DOMAIN-SUFFIX,dazndn.com
-DOMAIN-SUFFIX,indazn.com
-DOMAIN,d151l6v8er5bdm.cloudfront.net
-DOMAIN-KEYWORD,voddazn
+DOMAIN-SUFFIX,dazn.com,extended-matching
+DOMAIN-SUFFIX,dazn-api.com,extended-matching
+DOMAIN-SUFFIX,dazndn.com,extended-matching
+DOMAIN-SUFFIX,indazn.com,extended-matching
+DOMAIN,d151l6v8er5bdm.cloudfront.net,extended-matching
+DOMAIN-KEYWORD,voddazn,extended-matching
 # > discovery+
-DOMAIN-SUFFIX,disco-api.com
-DOMAIN-SUFFIX,discoveryplus.co.uk
-DOMAIN-SUFFIX,discoveryplus.com
-DOMAIN-SUFFIX,discoveryplus.in
-DOMAIN-SUFFIX,dnitv.com
+DOMAIN-SUFFIX,disco-api.com,extended-matching
+DOMAIN-SUFFIX,discoveryplus.co.uk,extended-matching
+DOMAIN-SUFFIX,discoveryplus.com,extended-matching
+DOMAIN-SUFFIX,discoveryplus.in,extended-matching
+DOMAIN-SUFFIX,dnitv.com,extended-matching
 # DOMAIN,go-prod-vz.akamaized.net
-DOMAIN,x-default-stgec.uplynk.com
-DOMAIN-KEYWORD,discovery.uplynk.com
+DOMAIN,x-default-stgec.uplynk.com,extended-matching
+DOMAIN-KEYWORD,discovery.uplynk.com,extended-matching
 # > Disney+
-DOMAIN-SUFFIX,bamgrid.com
-DOMAIN-SUFFIX,disneyplus.com
-DOMAIN-SUFFIX,disney-plus.net
-DOMAIN-SUFFIX,disneystreaming.com
-DOMAIN-SUFFIX,dssott.com
-DOMAIN,cdn.registerdisney.go.com
+DOMAIN-SUFFIX,bamgrid.com,extended-matching
+DOMAIN-SUFFIX,disneyplus.com,extended-matching
+DOMAIN-SUFFIX,disney-plus.net,extended-matching
+DOMAIN-SUFFIX,disneystreaming.com,extended-matching
+DOMAIN-SUFFIX,dssott.com,extended-matching
+DOMAIN,cdn.registerdisney.go.com,extended-matching
 # > DMM
-DOMAIN-SUFFIX,dmm.co.jp
-DOMAIN-SUFFIX,dmm.com
-DOMAIN-SUFFIX,dmm-extension.com
+DOMAIN-SUFFIX,dmm.co.jp,extended-matching
+DOMAIN-SUFFIX,dmm.com,extended-matching
+DOMAIN-SUFFIX,dmm-extension.com,extended-matching
 # > encoreTVB
-DOMAIN-SUFFIX,encoretvb.com
-DOMAIN,edge.api.brightcove.com
-DOMAIN,bcbolt446c5271-a.akamaihd.net
+DOMAIN-SUFFIX,encoretvb.com,extended-matching
+DOMAIN,edge.api.brightcove.com,extended-matching
+DOMAIN,bcbolt446c5271-a.akamaihd.net,extended-matching
 # > Hami Video
-DOMAIN-SUFFIX,ott.hinet.net
-DOMAIN-SUFFIX,hamivideo.hinet.net
-DOMAIN,hls-hichannel.cdn.hinet.net
-DOMAIN-KEYWORD,hamivideo.cdn.hinet.net
+DOMAIN-SUFFIX,ott.hinet.net,extended-matching
+DOMAIN-SUFFIX,hamivideo.hinet.net,extended-matching
+DOMAIN,hls-hichannel.cdn.hinet.net,extended-matching
+DOMAIN-KEYWORD,hamivideo.cdn.hinet.net,extended-matching
 # > HBO Asia
-DOMAIN-SUFFIX,hbogoasia.com
-DOMAIN-SUFFIX,hbogoasia.hk
-DOMAIN-KEYWORD,.hbogoasia.
-DOMAIN,44wilhpljf.execute-api.ap-southeast-1.amazonaws.com
-DOMAIN,bcbolthboa-a.akamaihd.net
-DOMAIN,cf-images.ap-southeast-1.prod.boltdns.net
-DOMAIN,dai3fd1oh325y.cloudfront.net
-DOMAIN,hboasia1-i.akamaihd.net
-DOMAIN,hboasia2-i.akamaihd.net
-DOMAIN,hboasia3-i.akamaihd.net
-DOMAIN,hboasia4-i.akamaihd.net
-DOMAIN,hboasia5-i.akamaihd.net
-DOMAIN,hboasialive.akamaized.net
-DOMAIN,hbogoprod-vod.akamaized.net
-DOMAIN,hbolb.onwardsmg.com
-DOMAIN,hbounify-prod.evergent.com
-DOMAIN,players.brightcove.net
-DOMAIN,s3-ap-southeast-1.amazonaws.com
+DOMAIN-SUFFIX,hbogoasia.com,extended-matching
+DOMAIN-SUFFIX,hbogoasia.hk,extended-matching
+DOMAIN-KEYWORD,.hbogoasia.,extended-matching
+DOMAIN,44wilhpljf.execute-api.ap-southeast-1.amazonaws.com,extended-matching
+DOMAIN,bcbolthboa-a.akamaihd.net,extended-matching
+DOMAIN,cf-images.ap-southeast-1.prod.boltdns.net,extended-matching
+DOMAIN,dai3fd1oh325y.cloudfront.net,extended-matching
+DOMAIN,hboasia1-i.akamaihd.net,extended-matching
+DOMAIN,hboasia2-i.akamaihd.net,extended-matching
+DOMAIN,hboasia3-i.akamaihd.net,extended-matching
+DOMAIN,hboasia4-i.akamaihd.net,extended-matching
+DOMAIN,hboasia5-i.akamaihd.net,extended-matching
+DOMAIN,hboasialive.akamaized.net,extended-matching
+DOMAIN,hbogoprod-vod.akamaized.net,extended-matching
+DOMAIN,hbolb.onwardsmg.com,extended-matching
+DOMAIN,hbounify-prod.evergent.com,extended-matching
+DOMAIN,players.brightcove.net,extended-matching
+DOMAIN,s3-ap-southeast-1.amazonaws.com,extended-matching
 # > 华文电视
-DOMAIN-SUFFIX,5itv.tv
-DOMAIN-SUFFIX,ocnttv.com
+DOMAIN-SUFFIX,5itv.tv,extended-matching
+DOMAIN-SUFFIX,ocnttv.com,extended-matching
 # > Hulu
-DOMAIN-SUFFIX,hulu.com
-DOMAIN-SUFFIX,huluim.com
-DOMAIN-SUFFIX,huluqa.com
-DOMAIN-SUFFIX,hulustream.com
+DOMAIN-SUFFIX,hulu.com,extended-matching
+DOMAIN-SUFFIX,huluim.com,extended-matching
+DOMAIN-SUFFIX,huluqa.com,extended-matching
+DOMAIN-SUFFIX,hulustream.com,extended-matching
 # > Hulu / フールー
-DOMAIN-SUFFIX,happyon.jp
-DOMAIN-SUFFIX,hjholdings.jp
-DOMAIN-SUFFIX,hulu.jp
+DOMAIN-SUFFIX,happyon.jp,extended-matching
+DOMAIN-SUFFIX,hjholdings.jp,extended-matching
+DOMAIN-SUFFIX,hulu.jp,extended-matching
 # > ITV
-DOMAIN-SUFFIX,itv.com
-DOMAIN-SUFFIX,itvstatic.com
-DOMAIN,itvpnpmobile-a.akamaihd.net
+DOMAIN-SUFFIX,itv.com,extended-matching
+DOMAIN-SUFFIX,itvstatic.com,extended-matching
+DOMAIN,itvpnpmobile-a.akamaihd.net,extended-matching
 # > iQIYI
-DOMAIN-SUFFIX,iq.com
-DOMAIN,intl.iqiyi.com
-DOMAIN,intl-rcd.iqiyi.com
-DOMAIN,intl-subscription.iqiyi.com
-IP-CIDR,23.53.32.88/32,no-resolve
-IP-CIDR,23.211.15.99/32,no-resolve
-IP-CIDR,103.5.34.153/32,no-resolve
-IP-CIDR,104.109.129.153/32,no-resolve
-IP-CIDR,110.238.107.47/32,no-resolve
-IP-CIDR,118.26.32.178/32,no-resolve
-IP-CIDR,203.74.95.131/32,no-resolve
-IP-CIDR,203.74.95.139/32,no-resolve
-IP-CIDR,203.74.95.153/32,no-resolve
-IP-CIDR,203.211.4.169/32,no-resolve
-IP-CIDR,203.211.4.193/32,no-resolve
-IP-CIDR,210.71.227.200/32,no-resolve
-IP-CIDR,210.71.227.202/32,no-resolve
-IP-CIDR,210.201.32.8/32,no-resolve
-IP-CIDR,210.201.32.11/32,no-resolve
+DOMAIN-SUFFIX,iq.com,extended-matching
+DOMAIN,intl.iqiyi.com,extended-matching
+DOMAIN,intl-rcd.iqiyi.com,extended-matching
+DOMAIN,intl-subscription.iqiyi.com,extended-matching
+IP-CIDR,23.53.32.88/32,NO-RESOLVE,no-resolve
+IP-CIDR,23.211.15.99/32,NO-RESOLVE,no-resolve
+IP-CIDR,103.5.34.153/32,NO-RESOLVE,no-resolve
+IP-CIDR,104.109.129.153/32,NO-RESOLVE,no-resolve
+IP-CIDR,110.238.107.47/32,NO-RESOLVE,no-resolve
+IP-CIDR,118.26.32.178/32,NO-RESOLVE,no-resolve
+IP-CIDR,203.74.95.131/32,NO-RESOLVE,no-resolve
+IP-CIDR,203.74.95.139/32,NO-RESOLVE,no-resolve
+IP-CIDR,203.74.95.153/32,NO-RESOLVE,no-resolve
+IP-CIDR,203.211.4.169/32,NO-RESOLVE,no-resolve
+IP-CIDR,203.211.4.193/32,NO-RESOLVE,no-resolve
+IP-CIDR,210.71.227.200/32,NO-RESOLVE,no-resolve
+IP-CIDR,210.71.227.202/32,NO-RESOLVE,no-resolve
+IP-CIDR,210.201.32.8/32,NO-RESOLVE,no-resolve
+IP-CIDR,210.201.32.11/32,NO-RESOLVE,no-resolve
 # > KKTV
-DOMAIN-SUFFIX,kktv.com.tw
-DOMAIN-SUFFIX,kktv.me
-DOMAIN,kktv-theater.kk.stream
-DOMAIN,theater-kktv.cdn.hinet.net
+DOMAIN-SUFFIX,kktv.com.tw,extended-matching
+DOMAIN-SUFFIX,kktv.me,extended-matching
+DOMAIN,kktv-theater.kk.stream,extended-matching
+DOMAIN,theater-kktv.cdn.hinet.net,extended-matching
 # > LINE TV
-DOMAIN-SUFFIX,linetv.tw
-DOMAIN,d3c7rimkq79yfu.cloudfront.net
+DOMAIN-SUFFIX,linetv.tw,extended-matching
+DOMAIN,d3c7rimkq79yfu.cloudfront.net,extended-matching
 # > LiTV
-DOMAIN-SUFFIX,litv.tv
-DOMAIN,litvfreemobile-hichannel.cdn.hinet.net
+DOMAIN-SUFFIX,litv.tv,extended-matching
+DOMAIN,litvfreemobile-hichannel.cdn.hinet.net,extended-matching
 # > Max
-DOMAIN-SUFFIX,discomax.com
-DOMAIN-SUFFIX,hbo.com
-DOMAIN-SUFFIX,hbogo.com
-DOMAIN-SUFFIX,hbomax.com
-DOMAIN-SUFFIX,hbomaxcdn.com
-DOMAIN-SUFFIX,hbonow.com
-DOMAIN-SUFFIX,max.com
+DOMAIN-SUFFIX,discomax.com,extended-matching
+DOMAIN-SUFFIX,hbo.com,extended-matching
+DOMAIN-SUFFIX,hbogo.com,extended-matching
+DOMAIN-SUFFIX,hbomax.com,extended-matching
+DOMAIN-SUFFIX,hbomaxcdn.com,extended-matching
+DOMAIN-SUFFIX,hbonow.com,extended-matching
+DOMAIN-SUFFIX,max.com,extended-matching
 # > My5
-DOMAIN-SUFFIX,channel5.com
-DOMAIN-SUFFIX,my5.tv
-DOMAIN,d349g9zuie06uo.cloudfront.net
+DOMAIN-SUFFIX,channel5.com,extended-matching
+DOMAIN-SUFFIX,my5.tv,extended-matching
+DOMAIN,d349g9zuie06uo.cloudfront.net,extended-matching
 # > myTV SUPER
-DOMAIN-SUFFIX,mytvsuper.com
-DOMAIN-SUFFIX,tvb.com
+DOMAIN-SUFFIX,mytvsuper.com,extended-matching
+DOMAIN-SUFFIX,tvb.com,extended-matching
 # > Naver TV
-DOMAIN-SUFFIX,naver.com
-DOMAIN-SUFFIX,smartmediarep.com
+DOMAIN-SUFFIX,naver.com,extended-matching
+DOMAIN-SUFFIX,smartmediarep.com,extended-matching
 # > Netflix
-DOMAIN-SUFFIX,fast.com
-DOMAIN-SUFFIX,netflix.com
-DOMAIN-SUFFIX,netflix.net
-DOMAIN-SUFFIX,nflxext.com
-DOMAIN-SUFFIX,nflximg.com
-DOMAIN-SUFFIX,nflximg.net
-DOMAIN-SUFFIX,nflxso.net
-DOMAIN-SUFFIX,nflxvideo.net
-DOMAIN-KEYWORD,netflixdnstest
-DOMAIN-KEYWORD,apiproxy-device-prod-nlb-
-DOMAIN-KEYWORD,dualstack.apiproxy-
-GEOIP,NETFLIX,no-resolve
+DOMAIN-SUFFIX,fast.com,extended-matching
+DOMAIN-SUFFIX,netflix.com,extended-matching
+DOMAIN-SUFFIX,netflix.net,extended-matching
+DOMAIN-SUFFIX,nflxext.com,extended-matching
+DOMAIN-SUFFIX,nflximg.com,extended-matching
+DOMAIN-SUFFIX,nflximg.net,extended-matching
+DOMAIN-SUFFIX,nflxso.net,extended-matching
+DOMAIN-SUFFIX,nflxvideo.net,extended-matching
+DOMAIN-KEYWORD,netflixdnstest,extended-matching
+DOMAIN-KEYWORD,apiproxy-device-prod-nlb-,extended-matching
+DOMAIN-KEYWORD,dualstack.apiproxy-,extended-matching
+GEOIP,NETFLIX,NO-RESOLVE,no-resolve
 # > niconico
-DOMAIN-SUFFIX,dmc.nico
-DOMAIN-SUFFIX,nicovideo.jp
-DOMAIN-SUFFIX,nimg.jp
+DOMAIN-SUFFIX,dmc.nico,extended-matching
+DOMAIN-SUFFIX,nicovideo.jp,extended-matching
+DOMAIN-SUFFIX,nimg.jp,extended-matching
 # > Now E
-DOMAIN-SUFFIX,nowe.com
-DOMAIN-SUFFIX,nowestatic.com
+DOMAIN-SUFFIX,nowe.com,extended-matching
+DOMAIN-SUFFIX,nowestatic.com,extended-matching
 # > Paramount+
-DOMAIN-SUFFIX,cbsi.com
-DOMAIN-SUFFIX,cbsaavideo.com
-DOMAIN-SUFFIX,cbsivideo.com
-DOMAIN-SUFFIX,paramountplus.com
-DOMAIN-SUFFIX,pplusstatic.com
-DOMAIN,cbsi.live.ott.irdeto.com
-DOMAIN,cbsplaylistserver.aws.syncbak.com
-DOMAIN,cbsservice.aws.syncbak.com
-DOMAIN,link.theplatform.com
+DOMAIN-SUFFIX,cbsi.com,extended-matching
+DOMAIN-SUFFIX,cbsaavideo.com,extended-matching
+DOMAIN-SUFFIX,cbsivideo.com,extended-matching
+DOMAIN-SUFFIX,paramountplus.com,extended-matching
+DOMAIN-SUFFIX,pplusstatic.com,extended-matching
+DOMAIN,cbsi.live.ott.irdeto.com,extended-matching
+DOMAIN,cbsplaylistserver.aws.syncbak.com,extended-matching
+DOMAIN,cbsservice.aws.syncbak.com,extended-matching
+DOMAIN,link.theplatform.com,extended-matching
 # > PBS
-DOMAIN-SUFFIX,pbs.org
+DOMAIN-SUFFIX,pbs.org,extended-matching
 # > Peacock
-DOMAIN-SUFFIX,peacocktv.com
+DOMAIN-SUFFIX,peacocktv.com,extended-matching
 # > Pornhub
-DOMAIN-SUFFIX,phncdn.com
-DOMAIN-SUFFIX,phprcdn.com
-DOMAIN-SUFFIX,pornhub.com
-DOMAIN-SUFFIX,pornhubpremium.com
+DOMAIN-SUFFIX,phncdn.com,extended-matching
+DOMAIN-SUFFIX,phprcdn.com,extended-matching
+DOMAIN-SUFFIX,pornhub.com,extended-matching
+DOMAIN-SUFFIX,pornhubpremium.com,extended-matching
 # > 台湾好
-DOMAIN-SUFFIX,skyking.com.tw
-DOMAIN,hamifans.emome.net
+DOMAIN-SUFFIX,skyking.com.tw,extended-matching
+DOMAIN,hamifans.emome.net,extended-matching
 # > TikTok
-DOMAIN-SUFFIX,byteoversea.com
-DOMAIN-SUFFIX,ibytedtos.com
-DOMAIN-SUFFIX,muscdn.com
-DOMAIN-SUFFIX,musical.ly
-DOMAIN-SUFFIX,tiktok.com
-DOMAIN-SUFFIX,tik-tokapi.com
-DOMAIN-SUFFIX,tiktokcdn.com
-DOMAIN-SUFFIX,tiktokv.com
-DOMAIN-SUFFIX,ttwstatic.com
-DOMAIN-KEYWORD,tiktokcdn-
+DOMAIN-SUFFIX,byteoversea.com,extended-matching
+DOMAIN-SUFFIX,ibytedtos.com,extended-matching
+DOMAIN-SUFFIX,muscdn.com,extended-matching
+DOMAIN-SUFFIX,musical.ly,extended-matching
+DOMAIN-SUFFIX,tiktok.com,extended-matching
+DOMAIN-SUFFIX,tik-tokapi.com,extended-matching
+DOMAIN-SUFFIX,tiktokcdn.com,extended-matching
+DOMAIN-SUFFIX,tiktokv.com,extended-matching
+DOMAIN-SUFFIX,ttwstatic.com,extended-matching
+DOMAIN-KEYWORD,tiktokcdn-,extended-matching
 # > TVer
-DOMAIN-SUFFIX,tver.jp
-DOMAIN,edge.api.brightcove.com
+DOMAIN-SUFFIX,tver.jp,extended-matching
 # > ViuTV
-DOMAIN-SUFFIX,viu.com
-DOMAIN-SUFFIX,viu.tv
-DOMAIN,api.viu.now.com
-DOMAIN,d1ckiw6kv3s3l5.cloudfront.net
-DOMAIN,d1k2us671qcoau.cloudfront.net
-DOMAIN,d2anahhhmp1ffz.cloudfront.net
-DOMAIN,d3o7oi00quuwqu.cloudfront.net
-DOMAIN,dfp6rglgjqszk.cloudfront.net
+DOMAIN-SUFFIX,viu.com,extended-matching
+DOMAIN-SUFFIX,viu.tv,extended-matching
+DOMAIN,api.viu.now.com,extended-matching
+DOMAIN,d1ckiw6kv3s3l5.cloudfront.net,extended-matching
+DOMAIN,d1k2us671qcoau.cloudfront.net,extended-matching
+DOMAIN,d2anahhhmp1ffz.cloudfront.net,extended-matching
+DOMAIN,d3o7oi00quuwqu.cloudfront.net,extended-matching
+DOMAIN,dfp6rglgjqszk.cloudfront.net,extended-matching
 # > WeTV
-DOMAIN-SUFFIX,wetv.vip
-DOMAIN-SUFFIX,wetvinfo.com
-IP-CIDR,150.109.28.51/32,no-resolve
+DOMAIN-SUFFIX,wetv.vip,extended-matching
+DOMAIN-SUFFIX,wetvinfo.com,extended-matching
+IP-CIDR,150.109.28.51/32,NO-RESOLVE,no-resolve
 # > YouTube
-DOMAIN-SUFFIX,googlevideo.com
-DOMAIN-SUFFIX,withyoutube.com
-DOMAIN-SUFFIX,youtu.be
-DOMAIN-SUFFIX,youtube.com
-DOMAIN-SUFFIX,youtubeeducation.com
-DOMAIN-SUFFIX,youtubegaming.com
-DOMAIN-SUFFIX,youtubekids.com
-DOMAIN-SUFFIX,youtube-nocookie.com
-DOMAIN-SUFFIX,yt.be
-DOMAIN-SUFFIX,ytimg.com
-DOMAIN,youtubei.googleapis.com
-DOMAIN,yt3.ggpht.com
+DOMAIN-SUFFIX,googlevideo.com,extended-matching
+DOMAIN-SUFFIX,withyoutube.com,extended-matching
+DOMAIN-SUFFIX,youtu.be,extended-matching
+DOMAIN-SUFFIX,youtube.com,extended-matching
+DOMAIN-SUFFIX,youtubeeducation.com,extended-matching
+DOMAIN-SUFFIX,youtubegaming.com,extended-matching
+DOMAIN-SUFFIX,youtubekids.com,extended-matching
+DOMAIN-SUFFIX,youtube-nocookie.com,extended-matching
+DOMAIN-SUFFIX,yt.be,extended-matching
+DOMAIN-SUFFIX,ytimg.com,extended-matching
+DOMAIN,youtubei.googleapis.com,extended-matching
+DOMAIN,yt3.ggpht.com,extended-matching
