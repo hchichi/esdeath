@@ -6,19 +6,19 @@
 # DOMAIN-KEYWORD: 1
 # DOMAIN-SUFFIX: 6
 # TOTAL: 16
-DOMAIN,atv-ps.amazon.com,extended-matching
-DOMAIN,avodmp4s3ww-a.akamaihd.net,extended-matching
-DOMAIN,d1v5ir2lpwr8os.cloudfront.net,extended-matching
-DOMAIN,d22qjgkvxw22r6.cloudfront.net,extended-matching
-DOMAIN,d25xi40x97liuc.cloudfront.net,extended-matching
-DOMAIN,d27xxe7juh1us6.cloudfront.net,extended-matching
-DOMAIN,dmqdd6hw24ucf.cloudfront.net,extended-matching
-DOMAIN,fls-na.amazon.com,extended-matching
-DOMAIN,www.amazon.com,extended-matching
-DOMAIN-SUFFIX,aiv-cdn.net,extended-matching
-DOMAIN-SUFFIX,aiv-delivery.net,extended-matching
-DOMAIN-SUFFIX,amazonvideo.com,extended-matching
-DOMAIN-SUFFIX,media-amazon.com,extended-matching
-DOMAIN-SUFFIX,primevideo.com,extended-matching
-DOMAIN-SUFFIX,pv-cdn.net,extended-matching
-DOMAIN-KEYWORD,avoddashs,extended-matching
+DOMAIN,atv-ps.amazon.com,DIRECT
+DOMAIN,avodmp4s3ww-a.akamaihd.net,DIRECT
+DOMAIN,d1v5ir2lpwr8os.cloudfront.net,DIRECT
+DOMAIN,d22qjgkvxw22r6.cloudfront.net,DIRECT
+DOMAIN,d25xi40x97liuc.cloudfront.net,DIRECT
+DOMAIN,d27xxe7juh1us6.cloudfront.net,DIRECT
+DOMAIN,dmqdd6hw24ucf.cloudfront.net,DIRECT
+DOMAIN,fls-na.amazon.com,DIRECT
+DOMAIN,www.amazon.com,DIRECT
+DOMAIN-SUFFIX,aiv-cdn.net,DIRECT
+DOMAIN-SUFFIX,aiv-delivery.net,DIRECT
+DOMAIN-SUFFIX,amazonvideo.com,DIRECT
+DOMAIN-SUFFIX,media-amazon.com,DIRECT
+DOMAIN-SUFFIX,primevideo.com,DIRECT
+DOMAIN-SUFFIX,pv-cdn.net,DIRECT
+DOMAIN-KEYWORD,avoddashs,DIRECT

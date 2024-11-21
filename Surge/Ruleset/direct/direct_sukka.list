@@ -1,19 +1,17 @@
-########################################
-# Direct (Sukka)
-# Last updated: 2024/11/21 12:58:15
-# DOMAIN: 1
-# DOMAIN-SUFFIX: 3
-# DOMAIN-KEYWORD: 1
-# PROCESS-NAME: 2
-# Total: 7
-# This file contains rules for direct access to domains and IPs in the Mainland China.
-# Data sources:
-#  - https://ruleset.skk.moe/List/non_ip/my_direct.conf
-########################################
-DOMAIN,this_ruleset_is_made_by_sukkaw.ruleset.skk.moe,extended-matching
-DOMAIN-KEYWORD,mac-torrent-download,extended-matching
-DOMAIN-SUFFIX,download.555mac.com,extended-matching
-DOMAIN-SUFFIX,engage.cloudflareclient.com,extended-matching
-DOMAIN-SUFFIX,torrentmac.net,extended-matching
-PROCESS-NAME,AdGuardHome
-PROCESS-NAME,nmap
+// Direct (Sukka)
+// Last updated: 2024/11/21 14:05:00
+// DOMAIN: 1
+// DOMAIN-SUFFIX: 3
+// DOMAIN-KEYWORD: 1
+// PROCESS-NAME: 2
+// Total: 7
+// This file contains rules for direct access to domains and IPs in the Mainland China.
+// Data sources:
+//  - https://ruleset.skk.moe/List/non_ip/my_direct.conf
+DOMAIN,this_ruleset_is_made_by_sukkaw.ruleset.skk.moe,DIRECT
+DOMAIN-KEYWORD,mac-torrent-download,DIRECT
+DOMAIN-SUFFIX,download.555mac.com,DIRECT
+DOMAIN-SUFFIX,engage.cloudflareclient.com,DIRECT
+DOMAIN-SUFFIX,torrentmac.net,DIRECT
+PROCESS-NAME,AdGuardHome,DIRECT
+PROCESS-NAME,nmap,DIRECT

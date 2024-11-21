@@ -1,37 +1,35 @@
-########################################
-# DIRECT (Anti-IP Attribution)
-# Last updated: 2024/11/21 12:54:18
-# DOMAIN: 3
-# DOMAIN-SUFFIX: 20
-# Total: 23
-# Anti IP attribution direct rules
-# Data sources:
-#  - https://github.com/SunsetMkt/anti-ip-attribution/raw/main/generated/rule-set-direct.list
-########################################
+// DIRECT (Anti-IP Attribution)
+// Last updated: 2024/11/21 14:01:03
+// DOMAIN: 3
+// DOMAIN-SUFFIX: 20
+// Total: 23
+// Anti IP attribution direct rules
+// Data sources:
+//  - https://github.com/SunsetMkt/anti-ip-attribution/raw/main/generated/rule-set-direct.list
 # 针对部分网站显示IP归属地的分流规则
 # anti-ip-attribution rule-set-direct.list v0.3.1 24db48a4973b31d718703136cfcc2b3621171f36
 # https://github.com/SunsetMkt/anti-ip-attribution
 # 适用于Clash RULE-SET
-DOMAIN-SUFFIX,bilivideo.com,extended-matching
-DOMAIN-SUFFIX,akamaized.net,extended-matching
-DOMAIN-SUFFIX,hdslb.com,extended-matching
-DOMAIN-SUFFIX,szbdyd.com,extended-matching
-DOMAIN-SUFFIX,zijieapi.com,extended-matching
-DOMAIN-SUFFIX,ecombdapi.com,extended-matching
-DOMAIN-SUFFIX,lf127.net,extended-matching
-DOMAIN-SUFFIX,hls3-akm.douyucdn.cn,extended-matching
-DOMAIN-SUFFIX,hlsa-akm.douyucdn.cn,extended-matching
-DOMAIN-SUFFIX,hls1a-akm.douyucdn.cn,extended-matching
-DOMAIN-SUFFIX,hls3a-akm.douyucdn.cn,extended-matching
-DOMAIN-SUFFIX,vplay1a.douyucdn.cn,extended-matching
-DOMAIN-SUFFIX,vplay3a.douyucdn.cn,extended-matching
-DOMAIN-SUFFIX,ws-tct.douyucdn.cn,extended-matching
-DOMAIN-SUFFIX,akm-tct.douyucdn.cn,extended-matching
-DOMAIN-SUFFIX,tx2play1.douyucdn.cn,extended-matching
-DOMAIN-SUFFIX,tc-tct1.douyucdn.cn,extended-matching
-DOMAIN-SUFFIX,wsproxy.douyu.com,extended-matching
-DOMAIN-SUFFIX,danmuproxy.douyu.com,extended-matching
-DOMAIN-SUFFIX,img.douyucdn.cn,extended-matching
-DOMAIN,y.qq.com,extended-matching
-DOMAIN,china-img.soulapp.cn,extended-matching
-DOMAIN,img.soulapp.cn,extended-matching
+DOMAIN-SUFFIX,bilivideo.com,DIRECT
+DOMAIN-SUFFIX,akamaized.net,DIRECT
+DOMAIN-SUFFIX,hdslb.com,DIRECT
+DOMAIN-SUFFIX,szbdyd.com,DIRECT
+DOMAIN-SUFFIX,zijieapi.com,DIRECT
+DOMAIN-SUFFIX,ecombdapi.com,DIRECT
+DOMAIN-SUFFIX,lf127.net,DIRECT
+DOMAIN-SUFFIX,hls3-akm.douyucdn.cn,DIRECT
+DOMAIN-SUFFIX,hlsa-akm.douyucdn.cn,DIRECT
+DOMAIN-SUFFIX,hls1a-akm.douyucdn.cn,DIRECT
+DOMAIN-SUFFIX,hls3a-akm.douyucdn.cn,DIRECT
+DOMAIN-SUFFIX,vplay1a.douyucdn.cn,DIRECT
+DOMAIN-SUFFIX,vplay3a.douyucdn.cn,DIRECT
+DOMAIN-SUFFIX,ws-tct.douyucdn.cn,DIRECT
+DOMAIN-SUFFIX,akm-tct.douyucdn.cn,DIRECT
+DOMAIN-SUFFIX,tx2play1.douyucdn.cn,DIRECT
+DOMAIN-SUFFIX,tc-tct1.douyucdn.cn,DIRECT
+DOMAIN-SUFFIX,wsproxy.douyu.com,DIRECT
+DOMAIN-SUFFIX,danmuproxy.douyu.com,DIRECT
+DOMAIN-SUFFIX,img.douyucdn.cn,DIRECT
+DOMAIN,y.qq.com,DIRECT
+DOMAIN,china-img.soulapp.cn,DIRECT
+DOMAIN,img.soulapp.cn,DIRECT

@@ -1,8 +1,8 @@
 # 内容：Github
 # 数量：6条
-DOMAIN-KEYWORD,github,extended-matching
-DOMAIN-SUFFIX,github.com,extended-matching
-DOMAIN-SUFFIX,github.io,extended-matching
-DOMAIN-SUFFIX,githubapp.com,extended-matching
-DOMAIN-SUFFIX,githubassets.com,extended-matching
-DOMAIN-SUFFIX,githubusercontent.com,extended-matching
+DOMAIN-KEYWORD,github,DIRECT
+DOMAIN-SUFFIX,github.com,DIRECT
+DOMAIN-SUFFIX,github.io,DIRECT
+DOMAIN-SUFFIX,githubapp.com,DIRECT
+DOMAIN-SUFFIX,githubassets.com,DIRECT
+DOMAIN-SUFFIX,githubusercontent.com,DIRECT
