@@ -1,6 +1,6 @@
 # 内容：Instagram
 # 数量：4条
-DOMAIN-KEYWORD,instagram,extended-matching
-DOMAIN-SUFFIX,cdninstagram.com,extended-matching
-DOMAIN-SUFFIX,instagr.am,extended-matching
-DOMAIN-SUFFIX,instagram.com,extended-matching
+DOMAIN-KEYWORD,instagram,DIRECT
+DOMAIN-SUFFIX,cdninstagram.com,DIRECT
+DOMAIN-SUFFIX,instagr.am,DIRECT
+DOMAIN-SUFFIX,instagram.com,DIRECT

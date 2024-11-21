@@ -1,97 +1,95 @@
-########################################
-# AIGC
-# Last updated: 2024/11/21 12:58:15
-# DOMAIN: 32
-# DOMAIN-SUFFIX: 41
-# DOMAIN-KEYWORD: 4
-# IP-CIDR: 1
-# IP-CIDR6: 1
-# OTHER: 2
-# Total: 81
-# This file contains rules for AIGC services, including OpenAI, Google Gemini, Claude, Perplexity, etc.
-# Data sources:
-#  - https://proxyresource.pages.dev/Tool/Loon/Rule/AI.list
-#  - https://github.com/ConnersHua/RuleGo/raw/master/Surge/Ruleset/Extra/AI.list
-#  - https://raw.githubusercontent.com/hiven425/hiven/master/config/AI.list
-########################################
-AND,((DOMAIN-KEYWORD,CHATGPT-ASYNC-WEBPS-PROD-),(DOMAIN-SUFFIX,webpubsub.azure.com))
-AND,((DOMAIN-KEYWORD,OPENAICOM-API-),(DOMAIN-SUFFIX,azurefd.net))
-DOMAIN,ai.google.dev,extended-matching
-DOMAIN,aida.googleapis.com,extended-matching
-DOMAIN,aistudio.google.com,extended-matching
-DOMAIN,alkalimakersuite-pa.clients6.google.com,extended-matching
-DOMAIN,api-iam.intercom.io,extended-matching
-DOMAIN,api.githubcopilot.com,extended-matching
-DOMAIN,api.statsig.com,extended-matching
-DOMAIN,apple-relay.apple.com,extended-matching
-DOMAIN,apple-relay.cloudflare.com,extended-matching
-DOMAIN,apple-relay.fastly-edge.com,extended-matching
-DOMAIN,bard.google.com,extended-matching
-DOMAIN,cdn.usefathom.com,extended-matching
-DOMAIN,chat.mistral.ai,extended-matching
-DOMAIN,chatgpt.livekit.cloud,extended-matching
-DOMAIN,console.mistral.ai,extended-matching
-DOMAIN,copilot-proxy.githubusercontent.com,extended-matching
-DOMAIN,copilot.microsoft.com,extended-matching
-DOMAIN,cp4.cloudflare.com,extended-matching
-DOMAIN,gemini.google.com,extended-matching
-DOMAIN,generativelanguage.googleapis.com,extended-matching
-DOMAIN,guzzoni.apple.com,extended-matching
-DOMAIN,imagine.meta.com,extended-matching
-DOMAIN,makersuite.google.com,extended-matching
-DOMAIN,o33249.ingest.sentry.io,extended-matching
-DOMAIN,openaiapi-site.azureedge.net,extended-matching
-DOMAIN,openaicom.imgix.net,extended-matching
-DOMAIN,openaicomproductionae4b.blob.core.windows.net,extended-matching
-DOMAIN,proactivebackend-pa.googleapis.com,extended-matching
-DOMAIN,production-openaicom-storage.azureedge.net,extended-matching
-DOMAIN,sfo3.turn.livekit.cloud,extended-matching
-DOMAIN,sydney.bing.com,extended-matching
-DOMAIN,www.bing.com,extended-matching
-DOMAIN-KEYWORD,Claude,extended-matching
-DOMAIN-KEYWORD,anthropic,extended-matching
-DOMAIN-KEYWORD,openai,extended-matching
-DOMAIN-KEYWORD,openaicom,extended-matching
-DOMAIN-SUFFIX,ai.com,extended-matching
-DOMAIN-SUFFIX,anthropic.com,extended-matching
-DOMAIN-SUFFIX,auth0.com,extended-matching
-DOMAIN-SUFFIX,bard.google.com,extended-matching
-DOMAIN-SUFFIX,challenges.cloudflare.com,extended-matching
-DOMAIN-SUFFIX,chatgpt.com,extended-matching
-DOMAIN-SUFFIX,claude.ai,extended-matching
-DOMAIN-SUFFIX,claude.ai.com,extended-matching
-DOMAIN-SUFFIX,claudeusercontent.com,extended-matching
-DOMAIN-SUFFIX,client-api.arkoselabs.com,extended-matching
-DOMAIN-SUFFIX,cursor.com,extended-matching
-DOMAIN-SUFFIX,cursor.sh,extended-matching
-DOMAIN-SUFFIX,cursor.so,extended-matching
-DOMAIN-SUFFIX,deepmind.com,extended-matching
-DOMAIN-SUFFIX,deepmind.google,extended-matching
-DOMAIN-SUFFIX,events.statsigapi.net,extended-matching
-DOMAIN-SUFFIX,featuregates.org,extended-matching
-DOMAIN-SUFFIX,gemini.google.com,extended-matching
-DOMAIN-SUFFIX,generativeai.google,extended-matching
-DOMAIN-SUFFIX,githubcopilot.com,extended-matching
-DOMAIN-SUFFIX,grazie.ai,extended-matching
-DOMAIN-SUFFIX,grazie.aws.intellij.net,extended-matching
-DOMAIN-SUFFIX,identrust.com,extended-matching
-DOMAIN-SUFFIX,intercom.io,extended-matching
-DOMAIN-SUFFIX,intercomcdn.com,extended-matching
-DOMAIN-SUFFIX,makersuite.google.com,extended-matching
-DOMAIN-SUFFIX,meta.ai,extended-matching
-DOMAIN-SUFFIX,mistral.ai,extended-matching
-DOMAIN-SUFFIX,oaistatic.com,extended-matching
-DOMAIN-SUFFIX,oaiusercontent.com,extended-matching
-DOMAIN-SUFFIX,openai.com,extended-matching
-DOMAIN-SUFFIX,openai.com.cdn.cloudflare.net,extended-matching
-DOMAIN-SUFFIX,openaiapi-site.azureedge.net,extended-matching
+// AIGC
+// Last updated: 2024/11/21 18:14:04
+// DOMAIN: 32
+// DOMAIN-SUFFIX: 41
+// DOMAIN-KEYWORD: 4
+// IP-CIDR: 1
+// IP-CIDR6: 1
+// OTHER: 2
+// Total: 81
+// This file contains rules for AIGC services, including OpenAI, Google Gemini, Claude, Perplexity, etc.
+// Data sources:
+//  - https://proxyresource.pages.dev/Tool/Loon/Rule/AI.list
+//  - https://github.com/ConnersHua/RuleGo/raw/master/Surge/Ruleset/Extra/AI.list
+//  - https://raw.githubusercontent.com/hiven425/hiven/master/config/AI.list
+AND,((DOMAIN-KEYWORD,DIRECT,chatgpt-async-webps-prod-),(DOMAIN-SUFFIX,webpubsub.azure.com))
+AND,((DOMAIN-KEYWORD,DIRECT,openaicom-api-),(DOMAIN-SUFFIX,azurefd.net))
+DOMAIN,ai.google.dev,DIRECT
+DOMAIN,aida.googleapis.com,DIRECT
+DOMAIN,aistudio.google.com,DIRECT
+DOMAIN,alkalimakersuite-pa.clients6.google.com,DIRECT
+DOMAIN,api-iam.intercom.io,DIRECT
+DOMAIN,api.githubcopilot.com,DIRECT
+DOMAIN,api.statsig.com,DIRECT
+DOMAIN,apple-relay.apple.com,DIRECT
+DOMAIN,apple-relay.cloudflare.com,DIRECT
+DOMAIN,apple-relay.fastly-edge.com,DIRECT
+DOMAIN,bard.google.com,DIRECT
+DOMAIN,cdn.usefathom.com,DIRECT
+DOMAIN,chat.mistral.ai,DIRECT
+DOMAIN,chatgpt.livekit.cloud,DIRECT
+DOMAIN,console.mistral.ai,DIRECT
+DOMAIN,copilot-proxy.githubusercontent.com,DIRECT
+DOMAIN,copilot.microsoft.com,DIRECT
+DOMAIN,cp4.cloudflare.com,DIRECT
+DOMAIN,gemini.google.com,DIRECT
+DOMAIN,generativelanguage.googleapis.com,DIRECT
+DOMAIN,guzzoni.apple.com,DIRECT
+DOMAIN,imagine.meta.com,DIRECT
+DOMAIN,makersuite.google.com,DIRECT
+DOMAIN,o33249.ingest.sentry.io,DIRECT
+DOMAIN,openaiapi-site.azureedge.net,DIRECT
+DOMAIN,openaicom.imgix.net,DIRECT
+DOMAIN,openaicomproductionae4b.blob.core.windows.net,DIRECT
+DOMAIN,proactivebackend-pa.googleapis.com,DIRECT
+DOMAIN,production-openaicom-storage.azureedge.net,DIRECT
+DOMAIN,sfo3.turn.livekit.cloud,DIRECT
+DOMAIN,sydney.bing.com,DIRECT
+DOMAIN,www.bing.com,DIRECT
+DOMAIN-KEYWORD,Claude,DIRECT
+DOMAIN-KEYWORD,anthropic,DIRECT
+DOMAIN-KEYWORD,openai,DIRECT
+DOMAIN-KEYWORD,openaicom,DIRECT
+DOMAIN-SUFFIX,ai.com,DIRECT
+DOMAIN-SUFFIX,anthropic.com,DIRECT
+DOMAIN-SUFFIX,auth0.com,DIRECT
+DOMAIN-SUFFIX,bard.google.com,DIRECT
+DOMAIN-SUFFIX,challenges.cloudflare.com,DIRECT
+DOMAIN-SUFFIX,chatgpt.com,DIRECT
+DOMAIN-SUFFIX,claude.ai,DIRECT
+DOMAIN-SUFFIX,claude.ai.com,DIRECT
+DOMAIN-SUFFIX,claudeusercontent.com,DIRECT
+DOMAIN-SUFFIX,client-api.arkoselabs.com,DIRECT
+DOMAIN-SUFFIX,cursor.com,DIRECT
+DOMAIN-SUFFIX,cursor.sh,DIRECT
+DOMAIN-SUFFIX,cursor.so,DIRECT
+DOMAIN-SUFFIX,deepmind.com,DIRECT
+DOMAIN-SUFFIX,deepmind.google,DIRECT
+DOMAIN-SUFFIX,events.statsigapi.net,DIRECT
+DOMAIN-SUFFIX,featuregates.org,DIRECT
+DOMAIN-SUFFIX,gemini.google.com,DIRECT
+DOMAIN-SUFFIX,generativeai.google,DIRECT
+DOMAIN-SUFFIX,githubcopilot.com,DIRECT
+DOMAIN-SUFFIX,grazie.ai,DIRECT
+DOMAIN-SUFFIX,grazie.aws.intellij.net,DIRECT
+DOMAIN-SUFFIX,identrust.com,DIRECT
+DOMAIN-SUFFIX,intercom.io,DIRECT
+DOMAIN-SUFFIX,intercomcdn.com,DIRECT
+DOMAIN-SUFFIX,makersuite.google.com,DIRECT
+DOMAIN-SUFFIX,meta.ai,DIRECT
+DOMAIN-SUFFIX,mistral.ai,DIRECT
+DOMAIN-SUFFIX,oaistatic.com,DIRECT
+DOMAIN-SUFFIX,oaiusercontent.com,DIRECT
+DOMAIN-SUFFIX,openai.com,DIRECT
+DOMAIN-SUFFIX,openai.com.cdn.cloudflare.net,DIRECT
+DOMAIN-SUFFIX,openaiapi-site.azureedge.net,DIRECT
 DOMAIN-SUFFIX,openrouter.ai
-DOMAIN-SUFFIX,perplexity.ai,extended-matching
-DOMAIN-SUFFIX,perplexity.com,extended-matching
-DOMAIN-SUFFIX,pplx.ai,extended-matching
-DOMAIN-SUFFIX,proactivebackend-pa.googleapis.com,extended-matching
-DOMAIN-SUFFIX,sentry.io,extended-matching
-DOMAIN-SUFFIX,smoot.apple.com,extended-matching
-DOMAIN-SUFFIX,stripe.com,extended-matching
-IP-CIDR,160.79.104.0/23,NO-RESOLVE,no-resolve
-IP-CIDR6,2607:6bc0::/48,NO-RESOLVE,no-resolve
+DOMAIN-SUFFIX,perplexity.ai,DIRECT
+DOMAIN-SUFFIX,perplexity.com,DIRECT
+DOMAIN-SUFFIX,pplx.ai,DIRECT
+DOMAIN-SUFFIX,proactivebackend-pa.googleapis.com,DIRECT
+DOMAIN-SUFFIX,sentry.io,DIRECT
+DOMAIN-SUFFIX,smoot.apple.com,DIRECT
+DOMAIN-SUFFIX,stripe.com,DIRECT
+IP-CIDR,160.79.104.0/23,DIRECT,no-resolve
+IP-CIDR6,2607:6bc0::/48,DIRECT,no-resolve

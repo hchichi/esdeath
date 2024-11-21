@@ -1,14 +1,14 @@
 # 内容：Twitter
 # 数量：11条
-DOMAIN-KEYWORD,twitter,extended-matching
-DOMAIN-SUFFIX,periscope.tv,extended-matching
-DOMAIN-SUFFIX,pscp.tv,extended-matching
-DOMAIN-SUFFIX,t.co,extended-matching
-DOMAIN-SUFFIX,twimg.co,extended-matching
-DOMAIN-SUFFIX,twimg.com,extended-matching
-DOMAIN-SUFFIX,twimg.org,extended-matching
-DOMAIN-SUFFIX,twitpic.com,extended-matching
-DOMAIN-SUFFIX,twitter.com,extended-matching
-DOMAIN-SUFFIX,twitter.jp,extended-matching
-DOMAIN-SUFFIX,vine.co,extended-matching
-DOMAIN-SUFFIX,x.com,extended-matching
+DOMAIN-KEYWORD,twitter,DIRECT
+DOMAIN-SUFFIX,periscope.tv,DIRECT
+DOMAIN-SUFFIX,pscp.tv,DIRECT
+DOMAIN-SUFFIX,t.co,DIRECT
+DOMAIN-SUFFIX,twimg.co,DIRECT
+DOMAIN-SUFFIX,twimg.com,DIRECT
+DOMAIN-SUFFIX,twimg.org,DIRECT
+DOMAIN-SUFFIX,twitpic.com,DIRECT
+DOMAIN-SUFFIX,twitter.com,DIRECT
+DOMAIN-SUFFIX,twitter.jp,DIRECT
+DOMAIN-SUFFIX,vine.co,DIRECT
+DOMAIN-SUFFIX,x.com,DIRECT
