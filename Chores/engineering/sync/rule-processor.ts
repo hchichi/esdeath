@@ -28,7 +28,8 @@ export class RuleProcessor {
       content = content
         .split('\n')
         .map(line => this.converter.convert(line))
-        .filter(Boolean)
+        //.filter(Boolean)
+        //.filter(line => line !== null && line !== undefined)
         .join('\n');
 
       // 4. Clean and sort based on rule.cleanup

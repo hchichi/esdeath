@@ -34,12 +34,10 @@ export const ruleGroups: RuleGroup[] = [
   {
     name: 'Apple',
     files: [
-      /** 
       {
         path: 'Surge/Ruleset/apple/apns.list',
-        url: 'https://proxyresource.pages.dev/Tool/Loon/Rule/ApplePushNotificationService.list',
+        url: 'https://kelee.one/Tool/Loon/Rule/ApplePushNotificationService.list',
       },
-      */
       {
         path: 'Surge/Ruleset/apple/apple.list',
         url: 'https://raw.githubusercontent.com/NobyDa/Script/master/Surge/Apple.list',
@@ -81,12 +79,10 @@ export const ruleGroups: RuleGroup[] = [
         path: 'Surge/Ruleset/aigc.list',
         url: 'https://ruleset.skk.moe/List/non_ip/ai.conf',
       },
-      /** 
       {
         path: 'Surge/Ruleset/aigc_keli.list',
-        url: 'https://proxyresource.pages.dev/Tool/Loon/Rule/AI.list',
+        url: 'https://kelee.one/Tool/Loon/Rule/AI.list',
       },
-      */
       {
         path: 'Surge/Ruleset/aigc_connershua.list',
         url: 'https://github.com/ConnersHua/RuleGo/raw/master/Surge/Ruleset/Extra/AI.list',
@@ -315,16 +311,14 @@ export const ruleGroups: RuleGroup[] = [
   {
     name: 'CDN',
     files: [
-      /** 
       { 
         path: 'Surge/Ruleset/cdn/download_global.list',
-        url: 'https://proxyresource.pages.dev/Tool/Loon/Rule/InternationalDownloadCDN.list',
+        url: 'https://kelee.one/Tool/Loon/Rule/InternationalDownloadCDN.list',
       },
       {
-      //  path: 'Surge/Ruleset/cdn/download_cn.list',
-        url: 'https://proxyresource.pages.dev/Tool/Loon/Rule/ChinaDownloadCDN.list',
+        path: 'Surge/Ruleset/cdn/download_cn.list',
+        url: 'https://kelee.one/Tool/Loon/Rule/ChinaDownloadCDN.list',
       },
-      */
       {
         path: 'Surge/Ruleset/cdn.list',
         url: 'https://ruleset.skk.moe/List/domainset/cdn.conf',

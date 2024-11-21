@@ -2,7 +2,7 @@ import { SpecialRuleConfig } from './rule-types';
 import { RuleConverter } from './rule-converter';
 import fs from 'node:fs';
 import path from 'node:path';
-import { cleanAndSort, addRuleHeader } from './utils';
+import { cleanAndSort, removeDuplicateRules, addRuleHeader } from './utils';
 import { ruleGroups } from './rule-sources'; 
 
 export class RuleMerger {
@@ -40,7 +40,11 @@ export class RuleMerger {
         mergedContent += '\n' + extraRules.join('\n');
       }
 
+      // ** 删除重复规则 **
+      mergedContent = removeDuplicateRules(mergedContent);
+
       // 4. Clean and sort the merged content (default is true)
+
       mergedContent = cleanAndSort(mergedContent, this.converter, cleanup ?? true);
 
       // 5. Add header if enabled (default is true)
