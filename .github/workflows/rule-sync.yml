@@ -4,7 +4,8 @@ on:
   workflow_dispatch:
   schedule:
     #- cron: "30 * * * *"
-    - cron: "0 6,18 * * *"
+    #- cron: "0 6,18 * * *"
+    - cron: '5,30,55 * * * *'
   
 jobs:
   Sync-Rules:
