@@ -1,4 +1,5 @@
 # Streaming Media
+
 # (Live)
 # > Twitch
 DOMAIN-SUFFIX,ext-twitch.tv
@@ -7,6 +8,7 @@ DOMAIN-SUFFIX,ttvnw.net
 DOMAIN-SUFFIX,twitch.tv
 DOMAIN-SUFFIX,twitchcdn.net
 DOMAIN-SUFFIX,twitch-ext.rootonline.de
+
 # (Music)
 # > Deezer
 DOMAIN-SUFFIX,deezer.com
@@ -22,6 +24,7 @@ DOMAIN-SUFFIX,kfs.io
 DOMAIN-SUFFIX,pandora.com
 DOMAIN-SUFFIX,p-cdn.us
 # > SoundCloud
+DOMAIN-SUFFIX,p-cdn.us
 DOMAIN-SUFFIX,sndcdn.com
 DOMAIN-SUFFIX,soundcloud.com
 # > Spotify
@@ -34,11 +37,13 @@ DOMAIN-KEYWORD,-spotify-com
 # > TIDAL
 DOMAIN-SUFFIX,tidal.com
 # > YouTubeMusic
+
 # (Podcast)
 # > Himalaya
 DOMAIN-SUFFIX,himalaya.com
 # > Overcast
 DOMAIN-SUFFIX,overcast.fm
+
 # (Video)
 # > AbemaTV
 DOMAIN-SUFFIX,abema.io
@@ -63,6 +68,7 @@ DOMAIN,atv-ps.amazon.com
 DOMAIN,fls-na.amazon.com
 DOMAIN,avodmp4s3ww-a.akamaihd.net
 DOMAIN,d25xi40x97liuc.cloudfront.net
+DOMAIN,dmqdd6hw24ucf.cloudfront.net
 DOMAIN,dmqdd6hw24ucf.cloudfront.net
 DOMAIN,d22qjgkvxw22r6.cloudfront.net
 DOMAIN,d1v5ir2lpwr8os.cloudfront.net
@@ -169,21 +175,21 @@ DOMAIN-SUFFIX,iq.com
 DOMAIN,intl.iqiyi.com
 DOMAIN,intl-rcd.iqiyi.com
 DOMAIN,intl-subscription.iqiyi.com
-IP-CIDR,23.53.32.88/32,NO-RESOLVE
-IP-CIDR,23.211.15.99/32,NO-RESOLVE
-IP-CIDR,103.5.34.153/32,NO-RESOLVE
-IP-CIDR,104.109.129.153/32,NO-RESOLVE
-IP-CIDR,110.238.107.47/32,NO-RESOLVE
-IP-CIDR,118.26.32.178/32,NO-RESOLVE
-IP-CIDR,203.74.95.131/32,NO-RESOLVE
-IP-CIDR,203.74.95.139/32,NO-RESOLVE
-IP-CIDR,203.74.95.153/32,NO-RESOLVE
-IP-CIDR,203.211.4.169/32,NO-RESOLVE
-IP-CIDR,203.211.4.193/32,NO-RESOLVE
-IP-CIDR,210.71.227.200/32,NO-RESOLVE
-IP-CIDR,210.71.227.202/32,NO-RESOLVE
-IP-CIDR,210.201.32.8/32,NO-RESOLVE
-IP-CIDR,210.201.32.11/32,NO-RESOLVE
+IP-CIDR,23.53.32.88/32,no-resolve
+IP-CIDR,23.211.15.99/32,no-resolve
+IP-CIDR,103.5.34.153/32,no-resolve
+IP-CIDR,104.109.129.153/32,no-resolve
+IP-CIDR,110.238.107.47/32,no-resolve
+IP-CIDR,118.26.32.178/32,no-resolve
+IP-CIDR,203.74.95.131/32,no-resolve
+IP-CIDR,203.74.95.139/32,no-resolve
+IP-CIDR,203.74.95.153/32,no-resolve
+IP-CIDR,203.211.4.169/32,no-resolve
+IP-CIDR,203.211.4.193/32,no-resolve
+IP-CIDR,210.71.227.200/32,no-resolve
+IP-CIDR,210.71.227.202/32,no-resolve
+IP-CIDR,210.201.32.8/32,no-resolve
+IP-CIDR,210.201.32.11/32,no-resolve
 # > KKTV
 DOMAIN-SUFFIX,kktv.com.tw
 DOMAIN-SUFFIX,kktv.me
@@ -225,7 +231,7 @@ DOMAIN-SUFFIX,nflxvideo.net
 DOMAIN-KEYWORD,netflixdnstest
 DOMAIN-KEYWORD,apiproxy-device-prod-nlb-
 DOMAIN-KEYWORD,dualstack.apiproxy-
-GEOIP,NETFLIX,NO-RESOLVE
+GEOIP,NETFLIX,no-resolve
 # > niconico
 DOMAIN-SUFFIX,dmc.nico
 DOMAIN-SUFFIX,nicovideo.jp
@@ -268,6 +274,7 @@ DOMAIN-SUFFIX,ttwstatic.com
 DOMAIN-KEYWORD,tiktokcdn-
 # > TVer
 DOMAIN-SUFFIX,tver.jp
+DOMAIN,edge.api.brightcove.com
 # > ViuTV
 DOMAIN-SUFFIX,viu.com
 DOMAIN-SUFFIX,viu.tv
@@ -280,7 +287,7 @@ DOMAIN,dfp6rglgjqszk.cloudfront.net
 # > WeTV
 DOMAIN-SUFFIX,wetv.vip
 DOMAIN-SUFFIX,wetvinfo.com
-IP-CIDR,150.109.28.51/32,NO-RESOLVE
+IP-CIDR,150.109.28.51/32,no-resolve
 # > YouTube
 DOMAIN-SUFFIX,googlevideo.com
 DOMAIN-SUFFIX,withyoutube.com
