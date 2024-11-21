@@ -5,10 +5,6 @@ import { config, ruleGroups, specialRules } from './rule-sources';
 import { ensureDirectoryExists, initializeDirectoryStructure } from './utils';
 import path from 'node:path';
 
-async function cleanup(): Promise<void> {
-  console.log('Cleaning up...');
-}
-
 async function main() {
   try {
     console.log('Starting rule processing...');
@@ -16,7 +12,15 @@ async function main() {
     // 初始化目录结构
     initializeDirectoryStructure(config.repoPath, ruleGroups, specialRules);
     
+    const options = {
+      enableNoResolve: true,
+      enablePreMatching: true,
+      enableExtended: true
+    };
+
     const converter = new RuleConverter('Surge');
+    converter.setOptions(options);
+
     const merger = new RuleMerger(config.repoPath, converter);
     const processor = new RuleProcessor(config.repoPath, converter, merger);
 
@@ -43,18 +47,11 @@ async function main() {
     console.log('Rule processing completed successfully.');
   } catch (error) {
     console.error('Fatal error:', error);
-    await cleanup();
     process.exit(1);
   }
 }
 
 main().catch(error => {
   console.error('Unhandled error in main:', error);
-  process.exit(1);
-});
-
-// 全局未处理的 Promise 拒绝处理
-process.on('unhandledRejection', (reason, promise) => {
-  console.error('Unhandled Rejection at:', promise, 'reason:', reason);
   process.exit(1);
 }); 
