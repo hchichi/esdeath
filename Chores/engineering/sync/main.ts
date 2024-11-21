@@ -13,9 +13,9 @@ async function main() {
     initializeDirectoryStructure(config.repoPath, ruleGroups, specialRules);
     
     const options = {
-      enableNoResolve: true,
-      enablePreMatching: true,
-      enableExtended: true
+      enableNoResolve: false,
+      enablePreMatching: false,
+      enableExtended: false
     };
 
     const converter = new RuleConverter('Surge');

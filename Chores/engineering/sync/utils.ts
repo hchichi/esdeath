@@ -84,7 +84,7 @@ export function getRuleStats(content: string | Buffer): RuleStats {
     other: 0
   };
 
-  const lines = contentStr.split('\n').filter(line => line.trim() && !line.startsWith('#'));
+  const lines = contentStr.split('\n').filter(line => line.trim() && !line.startsWith('#') && !line.startsWith(';') && !line.startsWith('//'));
   stats.total = lines.length;
 
   lines.forEach(line => {
@@ -113,9 +113,6 @@ export function getRuleStats(content: string | Buffer): RuleStats {
         break;
       case 'IP-ASN':
         stats.ipAsn++;
-        break;
-      case 'IP-SUFFIX':
-        stats.ipSuffix++;
         break;
       
       // GEO 类规则
@@ -190,7 +187,7 @@ export function cleanAndSort(content: string, converter: RuleConverter, cleanup:
   return content
     .split('\n')
     .map(line => line.trim())
-    .filter(line => line && !line.startsWith('#'))
+    .filter(line => line && !line.startsWith('#') && !line.startsWith(';') && !line.startsWith('//'))
     .filter((line, index, arr) => arr.indexOf(line) === index)
     .sort()
     .join('\n');
@@ -201,7 +198,7 @@ export function removeDuplicateRules(content: string): string {
   const uniqueLines = new Set();
   return lines
     .filter(line => {
-      if(!line.trim() || line.startsWith('#')) return true;
+      if(!line.trim() || line.startsWith('#') || line.startsWith(';') || line.startsWith('//')) return true;
       if(uniqueLines.has(line)) return false;
       uniqueLines.add(line);
       return true;
@@ -298,55 +295,53 @@ export function addRuleHeader(content: string | Buffer, info?: HeaderInfo, sourc
   ].filter(Boolean))];
   
   const headers = [
-    '########################################',
-    info?.title && `# ${info.title}`,
-    `# Last updated: ${timestamp}`,
+    '',
+    info?.title && `// ${info.title}`,
+    `// Last updated: ${timestamp}`,
     
     // 域名类规则
-    stats.domain > 0 && `# DOMAIN: ${stats.domain}`,
-    stats.domainSuffix > 0 && `# DOMAIN-SUFFIX: ${stats.domainSuffix}`,
-    stats.domainKeyword > 0 && `# DOMAIN-KEYWORD: ${stats.domainKeyword}`,
-    stats.domainSet > 0 && `# DOMAIN-SET: ${stats.domainSet}`,
+    stats.domain > 0 && `// DOMAIN: ${stats.domain}`,
+    stats.domainSuffix > 0 && `// DOMAIN-SUFFIX: ${stats.domainSuffix}`,
+    stats.domainKeyword > 0 && `// DOMAIN-KEYWORD: ${stats.domainKeyword}`,
+    stats.domainSet > 0 && `// DOMAIN-SET: ${stats.domainSet}`,
     
     // IP 类规则
-    stats.ipCidr > 0 && `# IP-CIDR: ${stats.ipCidr}`,
-    stats.ipCidr6 > 0 && `# IP-CIDR6: ${stats.ipCidr6}`,
-    stats.ipAsn > 0 && `# IP-ASN: ${stats.ipAsn}`,
-    stats.ipSuffix > 0 && `# IP-SUFFIX: ${stats.ipSuffix}`,
+    stats.ipCidr > 0 && `// IP-CIDR: ${stats.ipCidr}`,
+    stats.ipCidr6 > 0 && `// IP-CIDR6: ${stats.ipCidr6}`,
+    stats.ipAsn > 0 && `// IP-ASN: ${stats.ipAsn}`,
     
     // GEO 类规则
-    stats.geoip > 0 && `# GEOIP: ${stats.geoip}`,
-    stats.geosite > 0 && `# GEOSITE: ${stats.geosite}`,
+    stats.geoip > 0 && `// GEOIP: ${stats.geoip}`,
+    stats.geosite > 0 && `// GEOSITE: ${stats.geosite}`,
     
     // 进程类规则
-    stats.processName > 0 && `# PROCESS-NAME: ${stats.processName}`,
-    stats.processPath > 0 && `# PROCESS-PATH: ${stats.processPath}`,
+    stats.processName > 0 && `// PROCESS-NAME: ${stats.processName}`,
+    stats.processPath > 0 && `// PROCESS-PATH: ${stats.processPath}`,
     
     // 端口类规则
-    stats.destPort > 0 && `# DEST-PORT: ${stats.destPort}`,
-    stats.srcPort > 0 && `# SRC-PORT: ${stats.srcPort}`,
-    
+    //stats.destPort > 0 && `// DEST-PORT: ${stats.destPort}`,
+    //stats.srcPort > 0 && `// SRC-PORT: ${stats.srcPort}`,
     // 协议类规则
-    stats.protocol > 0 && `# PROTOCOL: ${stats.protocol}`,
-    stats.network > 0 && `# NETWORK: ${stats.network}`,
+    //stats.protocol > 0 && `// PROTOCOL: ${stats.protocol}`,
+    //stats.network > 0 && `// NETWORK: ${stats.network}`,
     
     // HTTP 类规则
-    stats.ruleSet > 0 && `# RULE-SET: ${stats.ruleSet}`,
-    stats.urlRegex > 0 && `# URL-REGEX: ${stats.urlRegex}`,
-    stats.userAgent > 0 && `# USER-AGENT: ${stats.userAgent}`,
-    stats.header > 0 && `# HEADER: ${stats.header}`,
+    stats.ruleSet > 0 && `// RULE-SET: ${stats.ruleSet}`,
+    stats.urlRegex > 0 && `// URL-REGEX: ${stats.urlRegex}`,
+    stats.userAgent > 0 && `// USER-AGENT: ${stats.userAgent}`,
+    stats.header > 0 && `// HEADER: ${stats.header}`,
     
-    stats.other > 0 && `# OTHER: ${stats.other}`,
-    `# Total: ${stats.total}`,
+    stats.other > 0 && `// OTHER: ${stats.other}`,
+    `// Total: ${stats.total}`,
     
     // 只有在有 description 时才添加
-    info?.description && `# ${info.description}`,
+    info?.description && `// ${info.description}`,
     // 只有在有 sources 时才添加数据来源部分
     sources.length > 0 && [
-      '# Data sources:',
-      ...sources.map(source => `#  - ${source}`)
+      '// Data sources:',
+      ...sources.map(source => `//  - ${source}`)
     ],
-    '########################################',
+    '',
     '',
     contentStr
   ].flat().filter(Boolean);

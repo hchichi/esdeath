@@ -44,18 +44,32 @@ export class RuleConverter {
 
     // 处理规则行，提取类型、值、策略和标志
     let components = line.split(',');
+
     if (components.length >= 2) {
       type = components[0].trim().toUpperCase();
       value = components[1].trim();
 
-      // 检查是否有策略
-      if (components.length >= 3) {
-        policy = components[2].trim().toUpperCase();
-      }
+      // 可能的策略或标志
+      let possiblePolicyOrFlag = components[2]?.trim();
 
-      // 检查是否有flags
-      if (components.length > 3) {
-        flags = components.slice(3).map(flag => flag.trim());
+      // 定义有效的策略集合
+      const validPolicies = new Set([
+        'REJECT', 'DIRECT', 'PROXY',
+        'REJECT-DROP', 'REJECT-TINYGIF', 'REJECT-DICT', 'REJECT-ARRAY',
+        // 如果有其他有效策略，请在此添加
+      ]);
+
+      // 检查可能的策略或标志是否为有效策略
+      if (possiblePolicyOrFlag && validPolicies.has(possiblePolicyOrFlag.toUpperCase())) {
+        policy = possiblePolicyOrFlag.toUpperCase();
+        // 剩余的部分作为标志
+        if (components.length > 3) {
+          flags = components.slice(3).map(flag => flag.trim());
+        }
+      } else {
+        // 没有有效的策略，可能是标志
+        policy = ''; // 可以在这里设置默认策略
+        flags = components.slice(2).map(flag => flag.trim());
       }
     } else {
       // 无类型的规则自动判断类型
@@ -67,13 +81,27 @@ export class RuleConverter {
         // CIDR格式
         type = value.includes(':') ? 'IP-CIDR6' : 'IP-CIDR';
       } else if (/^(\d{1,3}\.){3}\d{1,3}$/.test(value)) {
-        // IPv4
-        type = 'IP-CIDR';
-        value += '/32';
+        // 纯 IPv4 地址
+        if (this.format === 'Surge' || this.format === 'Quantumult X') {
+          type = 'IP-CIDR';
+          value += '/32';
+        } else if (this.format === 'Clash') {
+          type = 'IP-CIDR';
+        } else {
+          type = 'IP-CIDR';
+          value += '/32';
+        }
       } else if (value.includes(':')) {
-        // IPv6
-        type = 'IP-CIDR6';
-        value += '/128';
+        // 纯 IPv6 地址
+        if (this.format === 'Surge' || this.format === 'Quantumult X') {
+          type = 'IP-CIDR6';
+          value += '/128';
+        } else if (this.format === 'Clash') {
+          type = 'IP-CIDR6';
+        } else {
+          type = 'IP-CIDR6';
+          value += '/128';
+        }
       } else {
         // 域名
         type = 'DOMAIN';
@@ -86,25 +114,19 @@ export class RuleConverter {
                .replace(/^HOST-KEYWORD$/i, 'DOMAIN-KEYWORD')
                .replace(/^HOST$/i, 'DOMAIN')
                .replace(/^IP6-CIDR$/i, 'IP-CIDR6')
-               .replace(/^IP-CIDR6$/i, 'IP-CIDR6')
                .replace(/^GEOIP$/i, 'GEOIP')
                .replace(/^IP-ASN$/i, 'IP-ASN')
                .replace(/^DEST-PORT$/i, 'DST-PORT');
 
     // 处理策略转换
     if (policy) {
-      policy = policy.replace(/^REJECT$/i, 'REJECT')
-                     .replace(/^REJECT-DROP$/i, 'REJECT-DROP')
-                     .replace(/^REJECT-TINYGIF$/i, 'REJECT-TINYGIF')
-                     .replace(/^REJECT-DICT$/i, 'REJECT-DICT')
-                     .replace(/^REJECT-ARRAY$/i, 'REJECT-ARRAY')
-                     .replace(/^DIRECT$/i, 'DIRECT')
-                     .replace(/^PROXY$/i, 'PROXY');
+      policy = policy.toUpperCase();
     } else {
-      policy = ''; // 可以设置为默认策略
+      // 当策略缺失时，可以设置默认策略，例如 'DIRECT'
+      policy = 'DIRECT';
     }
 
-    // 添加flags
+    // 添加flags，避免重复
     if (this.options.enableNoResolve && ['IP-CIDR', 'IP-CIDR6', 'GEOIP', 'IP-ASN'].includes(type)) {
       if (!flags.includes('no-resolve')) {
         flags.push('no-resolve');
@@ -124,11 +146,16 @@ export class RuleConverter {
       }
     }
 
+    // 避免重复添加相同的标志
+    flags = Array.from(new Set(flags));
+
     // 重组规则
     let convertedRule = [type, value];
+
     if (policy) {
       convertedRule.push(policy);
     }
+
     if (flags.length > 0) {
       convertedRule = convertedRule.concat(flags);
     }
