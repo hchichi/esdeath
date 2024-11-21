@@ -170,6 +170,14 @@ export const ruleGroups: RuleGroup[] = [
       {
         path: 'Surge/Ruleset/streaming/!cn.list',
         url: 'https://raw.githubusercontent.com/ConnersHua/RuleGo/master/Surge/Ruleset/Extra/Streaming/!CN.list',
+      },
+      {
+        path: 'Surge/Ruleset/streaming/streaming.list',
+        url: 'https://ruleset.skk.moe/List/non_ip/stream.conf',
+      },
+      {
+        path: 'Surge/Ruleset/streaming/streaming_ip.list',
+        url: 'https://ruleset.skk.moe/List/ip/stream.conf',
       }
     ]
   },
@@ -428,6 +436,10 @@ export const ruleGroups: RuleGroup[] = [
     name: 'GFW',
     files: [
       {
+        path: 'Surge/Ruleset/global.list',
+        url: 'https://ruleset.skk.moe/List/non_ip/global.conf',
+      },
+      {
         path: 'Surge/Ruleset/blocked.list',
         url: 'https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/ProxyGFWlist.list',
       },
@@ -442,7 +454,7 @@ export const ruleGroups: RuleGroup[] = [
         url: 'https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/ProxyLite/ProxyLite.list',
       },
       {
-        path: 'Surge/Ruleset/foreign.list',
+        path: 'Surge/Ruleset/proxy_lm.list',
         url: 'https://raw.githubusercontent.com/LM-Firefly/Rules/master/PROXY.list',
       },
       {
@@ -450,7 +462,7 @@ export const ruleGroups: RuleGroup[] = [
         url: 'https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/Proxy/Proxy.list',
       },
       {
-        path: 'Surge/Ruleset/global.list',
+        path: 'Surge/Ruleset/proxy_tartarus.list',
         url: 'https://github.com/Tartarus2014/For-own-use/raw/master/Ruleset/Proxy.list',
       }
     ]
@@ -482,46 +494,18 @@ export const ruleGroups: RuleGroup[] = [
 // Special rules configuration
 export const specialRules: SpecialRuleConfig[] = [
   {
-    name: 'Reject (Sukka)',
-    targetFile: 'Surge/Ruleset/reject_sukka.list',
+    name: 'AI',
+    targetFile: 'Surge/Ruleset/aigc.list',
     sourceFiles: [
-      'Surge/Ruleset/reject/ads_sukka.list',
-      'Surge/Ruleset/reject/ads_sukka_noip.list',
-      'Surge/Ruleset/reject/ads_sukka_extra.list'
+      'Surge/Ruleset/aigc_keli.list',
+      'Surge/Ruleset/aigc_connershua.list',
+      'Surge/Ruleset/aigc_hiven.list'
     ],
+    extraRules: ['DOMAIN-SUFFIX,openrouter.ai'],
     cleanup: true,
     header: {
-      enable: true,  // 明确启用 header
-      title: 'Advertising & Privacy Protection & Malware & Phishing ',
-      description: 'Made by Sukka, All rights reserved'
-    }
-  },
-  {
-    name: 'Emby',
-    targetFile: 'Surge/Ruleset/streaming/video/embytest.list',
-    sourceFiles: [
-      'Surge/Ruleset/streaming/video/embytest.list',
-      'Surge/Ruleset/streaming/video/embytest2.list'
-    ],
-    cleanup: true,
-    header: {
-      enable: true,  // 明确启用 header
-      title: 'EMBY Streaming',
-      description: 'Made by CC, All rights reserved'
-    }
-  },
-  {
-    name: 'CDN',
-    targetFile: 'Surge/Ruleset/cdn.list',
-    sourceFiles: [
-      'Surge/Ruleset/cdn_noip.list',
-      'Surge/Ruleset/cdn_ip.list'
-    ],
-    cleanup: true,
-    header: {
-      enable: true,  // 明确启用 header
-      title: 'Common Static CDNs',
-      description: 'Made by Sukka, All rights reserved'
+      title: 'AIGC',
+      description: 'This file contains rules for AIGC services, including OpenAI, Google Gemini, Claude, Perplexity, etc.'
     }
   },
   {
@@ -540,21 +524,48 @@ export const specialRules: SpecialRuleConfig[] = [
     }
   },
   {
-    name: 'AI',
-    targetFile: 'Surge/Ruleset/aigc.list',
+    name: 'Reject (Sukka)',
+    targetFile: 'Surge/Ruleset/reject_sukka.list',
     sourceFiles: [
-      'Surge/Ruleset/aigc_keli.list',
-      'Surge/Ruleset/aigc_connershua.list',
-      'Surge/Ruleset/aigc_hiven.list'
+      'Surge/Ruleset/reject/ads_sukka.list',
+      'Surge/Ruleset/reject/ads_sukka_noip.list',
+      'Surge/Ruleset/reject/ads_sukka_extra.list'
     ],
-    extraRules: ['DOMAIN-SUFFIX,openrouter.ai'],
     cleanup: true,
     header: {
-      title: 'AIGC',
-      description: 'This file contains rules for AIGC services, including OpenAI, Google Gemini, Claude, Perplexity, etc.'
+      enable: true,  // 明确启用 header
+      title: 'Advertising & Privacy Protection & Malware & Phishing ',
+      description: 'Made by Sukka, All rights reserved'
     }
   },
-
+  {
+    name: 'CDN',
+    targetFile: 'Surge/Ruleset/cdn.list',
+    sourceFiles: [
+      'Surge/Ruleset/cdn_noip.list',
+      'Surge/Ruleset/cdn_ip.list'
+    ],
+    cleanup: true,
+    header: {
+      enable: true,  // 明确启用 header
+      title: 'Common Static CDNs',
+      description: 'Made by Sukka, All rights reserved'
+    }
+  },
+  {
+    name: 'Emby',
+    targetFile: 'Surge/Ruleset/streaming/video/embytest.list',
+    sourceFiles: [
+      'Surge/Ruleset/streaming/video/embytest.list',
+      'Surge/Ruleset/streaming/video/embytest2.list'
+    ],
+    cleanup: true,
+    header: {
+      enable: true,  // 明确启用 header
+      title: 'EMBY Streaming',
+      description: 'Made by CC, All rights reserved'
+    }
+  },
   {
     name: 'NeteaseMusic',
     targetFile: 'Surge/Ruleset/streaming/music/neteasemusic.list',
@@ -565,6 +576,13 @@ export const specialRules: SpecialRuleConfig[] = [
     header: {
       title: '网易云音乐',
     }
+  },
+  {
+    name: 'Streaming',
+    targetFile: 'Surge/Ruleset/streaming/streaming.list',
+    sourceFiles: [
+      'Surge/Ruleset/streaming/streaming_ip.list'
+    ],
   },
   {
     name: 'Domestic (Sukka)',
