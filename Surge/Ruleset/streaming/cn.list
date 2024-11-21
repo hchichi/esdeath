@@ -1,19 +1,19 @@
 # > bilibili
-DOMAIN,api.biliapi.com,extended-matching
-DOMAIN,api.biliapi.net,extended-matching
-DOMAIN,api.bilibili.com,extended-matching
-DOMAIN,app.biliapi.com,extended-matching
-DOMAIN,app.biliapi.net,extended-matching
-DOMAIN,app.bilibili.com,extended-matching
-DOMAIN,grpc.biliapi.net,extended-matching
-DOMAIN,m.bilibili.com,extended-matching
-DOMAIN,upos-hz-mirrorakam.akamaized.net,extended-matching
-DOMAIN,www.bilibili.com,extended-matching
-DOMAIN-KEYWORD,cn-hk-eq-bcache-,extended-matching
+DOMAIN,api.biliapi.com,DIRECT
+DOMAIN,api.biliapi.net,DIRECT
+DOMAIN,api.bilibili.com,DIRECT
+DOMAIN,app.biliapi.com,DIRECT
+DOMAIN,app.biliapi.net,DIRECT
+DOMAIN,app.bilibili.com,DIRECT
+DOMAIN,grpc.biliapi.net,DIRECT
+DOMAIN,m.bilibili.com,DIRECT
+DOMAIN,upos-hz-mirrorakam.akamaized.net,DIRECT
+DOMAIN,www.bilibili.com,DIRECT
+DOMAIN-KEYWORD,cn-hk-eq-bcache-,DIRECT
 # > 愛奇藝台灣站
-DOMAIN,cache.video.iqiyi.com,extended-matching
-IP-CIDR,116.211.202.206/32,NO-RESOLVE,no-resolve
-IP-CIDR,116.211.202.216/32,NO-RESOLVE,no-resolve
+DOMAIN,cache.video.iqiyi.com,DIRECT
+IP-CIDR,116.211.202.206/32,DIRECT,no-resolve
+IP-CIDR,116.211.202.216/32,DIRECT,no-resolve
 # > MangoTV(芒果TV国际)
-DOMAIN-SUFFIX,api.mgtv.com,extended-matching
-DOMAIN,mobileso.bz.mgtv.com,extended-matching
+DOMAIN-SUFFIX,api.mgtv.com,DIRECT
+DOMAIN,mobileso.bz.mgtv.com,DIRECT

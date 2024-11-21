@@ -34,10 +34,12 @@ export const ruleGroups: RuleGroup[] = [
   {
     name: 'Apple',
     files: [
+      /** 
       {
         path: 'Surge/Ruleset/apple/apns.list',
         url: 'https://proxyresource.pages.dev/Tool/Loon/Rule/ApplePushNotificationService.list',
       },
+      */
       {
         path: 'Surge/Ruleset/apple/apple.list',
         url: 'https://raw.githubusercontent.com/NobyDa/Script/master/Surge/Apple.list',
@@ -79,10 +81,12 @@ export const ruleGroups: RuleGroup[] = [
         path: 'Surge/Ruleset/aigc.list',
         url: 'https://ruleset.skk.moe/List/non_ip/ai.conf',
       },
+      /** 
       {
         path: 'Surge/Ruleset/aigc_keli.list',
         url: 'https://proxyresource.pages.dev/Tool/Loon/Rule/AI.list',
       },
+      */
       {
         path: 'Surge/Ruleset/aigc_connershua.list',
         url: 'https://github.com/ConnersHua/RuleGo/raw/master/Surge/Ruleset/Extra/AI.list',
@@ -159,10 +163,10 @@ export const ruleGroups: RuleGroup[] = [
         path: 'Surge/Ruleset/streaming/video/bilibili.list',
         url: 'https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Bilibili.list',
       },
-      {
-        path: 'Surge/Ruleset/streaming/video/tiktok.list',
-        url: 'https://proxyresource.pages.dev/Tool/Loon/Rule/TikTok.list',
-      },
+      //{
+      //  path: 'Surge/Ruleset/streaming/video/tiktok.list',
+      //  url: 'https://proxyresource.pages.dev/Tool/Loon/Rule/TikTok.list',
+      //},
       {
         path: 'Surge/Ruleset/streaming/cn.list',
         url: 'https://raw.githubusercontent.com/ConnersHua/RuleGo/master/Surge/Ruleset/Extra/Streaming/CN.list',
@@ -311,14 +315,16 @@ export const ruleGroups: RuleGroup[] = [
   {
     name: 'CDN',
     files: [
+      /** 
       { 
         path: 'Surge/Ruleset/cdn/download_global.list',
         url: 'https://proxyresource.pages.dev/Tool/Loon/Rule/InternationalDownloadCDN.list',
       },
       {
-        path: 'Surge/Ruleset/cdn/download_cn.list',
+      //  path: 'Surge/Ruleset/cdn/download_cn.list',
         url: 'https://proxyresource.pages.dev/Tool/Loon/Rule/ChinaDownloadCDN.list',
       },
+      */
       {
         path: 'Surge/Ruleset/cdn.list',
         url: 'https://ruleset.skk.moe/List/domainset/cdn.conf',
@@ -497,7 +503,7 @@ export const specialRules: SpecialRuleConfig[] = [
     name: 'AI',
     targetFile: 'Surge/Ruleset/aigc.list',
     sourceFiles: [
-      'Surge/Ruleset/aigc_keli.list',
+      //'Surge/Ruleset/aigc_keli.list',
       'Surge/Ruleset/aigc_connershua.list',
       'Surge/Ruleset/aigc_hiven.list'
     ],

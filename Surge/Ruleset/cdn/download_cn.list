@@ -2,7 +2,7 @@
 # 引用: https://github.com/dogfight360/UsbEAm
 # 2023-12-18 16:00:40
 # EPIC游戏下载、更新[中国]
-DOMAIN,epicgames-download1-1251447533.file.myqcloud.com,extended-matching
+DOMAIN,epicgames-download1-1251447533.file.myqcloud.com,DIRECT
 # Battle.net 战网游戏下载、更新[中国]
 # DOMAIN-SUFFIX,pdl.wow.battlenet.com.cn
 # DOMAIN,client05.pdl.wow.battlenet.com.cn
@@ -11,26 +11,26 @@ DOMAIN,epicgames-download1-1251447533.file.myqcloud.com,extended-matching
 # GOG游戏下载、更新[中国]
 # DOMAIN,gog.qtlglb.com
 # 微软商店游戏下载、应用下载、系统更新[中国]
-DOMAIN,assets1.xboxlive.cn,extended-matching
-DOMAIN,assets2.xboxlive.cn,extended-matching
-DOMAIN,dl.delivery.mp.microsoft.com,extended-matching
-DOMAIN,tlu.dl.delivery.mp.microsoft.com,extended-matching
+DOMAIN,assets1.xboxlive.cn,DIRECT
+DOMAIN,assets2.xboxlive.cn,DIRECT
+DOMAIN,dl.delivery.mp.microsoft.com,DIRECT
+DOMAIN,tlu.dl.delivery.mp.microsoft.com,DIRECT
 # UBisoft Connect(Uplay)育碧游戏下载、更新[中国]
-DOMAIN,uplaypc-s-ubisoft.cdn.ubionline.com.cn,extended-matching
+DOMAIN,uplaypc-s-ubisoft.cdn.ubionline.com.cn,DIRECT
 # Origin艺电游戏平台[中国]
 # EA Desktop游戏下载[中国]
 # Steam游戏下载、更新[中国]
-DOMAIN,alibaba.cdn.steampipe.steamcontent.com,extended-matching
-DOMAIN,cdn-qc.content.steamchina.com,extended-matching
-DOMAIN,cdn-ws.content.steamchina.com,extended-matching
-DOMAIN,cdn-ali.content.steamchina.com,extended-matching
-DOMAIN,dl.steam.clngaa.com,extended-matching
-DOMAIN,lv.queniujq.cn,extended-matching
-DOMAIN,st.dl.eccdnx.com,extended-matching
-DOMAIN,st.dl.bscstorage.net,extended-matching
-DOMAIN,steampipe.steamcontent.tnkjmec.com,extended-matching
-DOMAIN,trts.baishancdnx.cn,extended-matching
-DOMAIN,xz.pphimalayanrt.com,extended-matching
+DOMAIN,alibaba.cdn.steampipe.steamcontent.com,DIRECT
+DOMAIN,cdn-qc.content.steamchina.com,DIRECT
+DOMAIN,cdn-ws.content.steamchina.com,DIRECT
+DOMAIN,cdn-ali.content.steamchina.com,DIRECT
+DOMAIN,dl.steam.clngaa.com,DIRECT
+DOMAIN,lv.queniujq.cn,DIRECT
+DOMAIN,st.dl.eccdnx.com,DIRECT
+DOMAIN,st.dl.bscstorage.net,DIRECT
+DOMAIN,steampipe.steamcontent.tnkjmec.com,DIRECT
+DOMAIN,trts.baishancdnx.cn,DIRECT
+DOMAIN,xz.pphimalayanrt.com,DIRECT
 # Riot游戏下载、更新[中国]
 # FiveM游戏下载、更新、社区[中国]
 # Bethesda贝塞斯达客户端、游戏及mod的下载、更新[中国]

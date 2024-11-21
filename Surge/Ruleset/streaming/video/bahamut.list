@@ -1,8 +1,8 @@
 # 内容：Bahamut
 # 数量：6条
-USER-AGENT,Anime*
-DOMAIN,bahamut.akamaized.net,extended-matching
-DOMAIN,gamer-cds.cdn.hinet.net,extended-matching
-DOMAIN,gamer2-cds.cdn.hinet.net,extended-matching
-DOMAIN-SUFFIX,bahamut.com.tw,extended-matching
-DOMAIN-SUFFIX,gamer.com.tw,extended-matching
+USER-AGENT,Anime*,DIRECT
+DOMAIN,bahamut.akamaized.net,DIRECT
+DOMAIN,gamer-cds.cdn.hinet.net,DIRECT
+DOMAIN,gamer2-cds.cdn.hinet.net,DIRECT
+DOMAIN-SUFFIX,bahamut.com.tw,DIRECT
+DOMAIN-SUFFIX,gamer.com.tw,DIRECT
