@@ -54,8 +54,8 @@ export class RuleConverter {
 
     // 处理已有类型的规则
     if(line.includes(',')) {
-      const parts = line.split(',').map(p => p.trim());
-      const [type, value, policy = '', ...flags] = parts;
+      const ruleParts = line.split(',').map(p => p.trim());
+      const [type, value, policy = '', ...flags] = ruleParts;
       
       // 转换类型
       let newType = type
@@ -117,11 +117,11 @@ export class RuleConverter {
       }
 
       // 构建最终规则
-      const parts = [newType, value];
-      if (newPolicy) parts.push(newPolicy);
-      if (ruleFlags.length > 0) parts.push(...ruleFlags);
+      const finalParts = [newType, value];
+      if (newPolicy) finalParts.push(newPolicy);
+      if (ruleFlags.length > 0) finalParts.push(...ruleFlags);
 
-      return parts.join(',');
+      return finalParts.join(',');
     }
 
     return line;
