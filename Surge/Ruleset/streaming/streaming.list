@@ -1,0 +1,27 @@
+// Last updated: 2024/11/21 22:50:22
+// DOMAIN: 1
+// IP-CIDR: 15
+// IP-CIDR6: 4
+// Total: 20
+// Data sources:
+//  - https://ruleset.skk.moe/List/ip/stream.conf
+DOMAIN,this_ruleset_is_made_by_sukkaw.ruleset.skk.moe,DIRECT
+IP-CIDR,108.175.32.0/20,DIRECT,no-resolve
+IP-CIDR,150.109.28.51/32,DIRECT,no-resolve
+IP-CIDR,185.2.220.0/22,DIRECT,no-resolve
+IP-CIDR,185.9.188.0/22,DIRECT,no-resolve
+IP-CIDR,192.173.64.0/18,DIRECT,no-resolve
+IP-CIDR,198.38.96.0/19,DIRECT,no-resolve
+IP-CIDR,198.45.48.0/20,DIRECT,no-resolve
+IP-CIDR,208.75.76.0/22,DIRECT,no-resolve
+IP-CIDR,23.246.18.0/23,DIRECT,no-resolve
+IP-CIDR,35.186.224.47/32,DIRECT,no-resolve
+IP-CIDR,37.77.184.0/21,DIRECT,no-resolve
+IP-CIDR,45.57.0.0/17,DIRECT,no-resolve
+IP-CIDR,64.120.128.0/17,DIRECT,no-resolve
+IP-CIDR,66.197.128.0/17,DIRECT,no-resolve
+IP-CIDR,69.53.224.0/19,DIRECT,no-resolve
+IP-CIDR6,2607:fb10::/32,DIRECT,no-resolve
+IP-CIDR6,2620:10c:7000::/44,DIRECT,no-resolve
+IP-CIDR6,2a00:86c0::/32,DIRECT,no-resolve
+IP-CIDR6,2a03:5640::/32,DIRECT,no-resolve
