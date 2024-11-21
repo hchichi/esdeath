@@ -1,35 +1,24 @@
 // AIGC
-// Last updated: 2024/11/21 18:14:04
-// DOMAIN: 32
-// DOMAIN-SUFFIX: 41
+// Last updated: 2024/11/21 22:46:28
+// DOMAIN: 24
+// DOMAIN-SUFFIX: 33
 // DOMAIN-KEYWORD: 4
-// IP-CIDR: 1
-// IP-CIDR6: 1
-// OTHER: 2
-// Total: 81
+// Total: 61
 // This file contains rules for AIGC services, including OpenAI, Google Gemini, Claude, Perplexity, etc.
 // Data sources:
-//  - https://proxyresource.pages.dev/Tool/Loon/Rule/AI.list
 //  - https://github.com/ConnersHua/RuleGo/raw/master/Surge/Ruleset/Extra/AI.list
 //  - https://raw.githubusercontent.com/hiven425/hiven/master/config/AI.list
-AND,((DOMAIN-KEYWORD,DIRECT,chatgpt-async-webps-prod-),(DOMAIN-SUFFIX,webpubsub.azure.com))
-AND,((DOMAIN-KEYWORD,DIRECT,openaicom-api-),(DOMAIN-SUFFIX,azurefd.net))
 DOMAIN,ai.google.dev,DIRECT
-DOMAIN,aida.googleapis.com,DIRECT
 DOMAIN,aistudio.google.com,DIRECT
 DOMAIN,alkalimakersuite-pa.clients6.google.com,DIRECT
 DOMAIN,api-iam.intercom.io,DIRECT
-DOMAIN,api.githubcopilot.com,DIRECT
 DOMAIN,api.statsig.com,DIRECT
 DOMAIN,apple-relay.apple.com,DIRECT
 DOMAIN,apple-relay.cloudflare.com,DIRECT
 DOMAIN,apple-relay.fastly-edge.com,DIRECT
 DOMAIN,bard.google.com,DIRECT
 DOMAIN,cdn.usefathom.com,DIRECT
-DOMAIN,chat.mistral.ai,DIRECT
 DOMAIN,chatgpt.livekit.cloud,DIRECT
-DOMAIN,console.mistral.ai,DIRECT
-DOMAIN,copilot-proxy.githubusercontent.com,DIRECT
 DOMAIN,copilot.microsoft.com,DIRECT
 DOMAIN,cp4.cloudflare.com,DIRECT
 DOMAIN,gemini.google.com,DIRECT
@@ -39,10 +28,7 @@ DOMAIN,imagine.meta.com,DIRECT
 DOMAIN,makersuite.google.com,DIRECT
 DOMAIN,o33249.ingest.sentry.io,DIRECT
 DOMAIN,openaiapi-site.azureedge.net,DIRECT
-DOMAIN,openaicom.imgix.net,DIRECT
-DOMAIN,openaicomproductionae4b.blob.core.windows.net,DIRECT
 DOMAIN,proactivebackend-pa.googleapis.com,DIRECT
-DOMAIN,production-openaicom-storage.azureedge.net,DIRECT
 DOMAIN,sfo3.turn.livekit.cloud,DIRECT
 DOMAIN,sydney.bing.com,DIRECT
 DOMAIN,www.bing.com,DIRECT
@@ -50,7 +36,6 @@ DOMAIN-KEYWORD,Claude,DIRECT
 DOMAIN-KEYWORD,anthropic,DIRECT
 DOMAIN-KEYWORD,openai,DIRECT
 DOMAIN-KEYWORD,openaicom,DIRECT
-DOMAIN-SUFFIX,ai.com,DIRECT
 DOMAIN-SUFFIX,anthropic.com,DIRECT
 DOMAIN-SUFFIX,auth0.com,DIRECT
 DOMAIN-SUFFIX,bard.google.com,DIRECT
@@ -58,7 +43,6 @@ DOMAIN-SUFFIX,challenges.cloudflare.com,DIRECT
 DOMAIN-SUFFIX,chatgpt.com,DIRECT
 DOMAIN-SUFFIX,claude.ai,DIRECT
 DOMAIN-SUFFIX,claude.ai.com,DIRECT
-DOMAIN-SUFFIX,claudeusercontent.com,DIRECT
 DOMAIN-SUFFIX,client-api.arkoselabs.com,DIRECT
 DOMAIN-SUFFIX,cursor.com,DIRECT
 DOMAIN-SUFFIX,cursor.sh,DIRECT
@@ -71,25 +55,17 @@ DOMAIN-SUFFIX,gemini.google.com,DIRECT
 DOMAIN-SUFFIX,generativeai.google,DIRECT
 DOMAIN-SUFFIX,githubcopilot.com,DIRECT
 DOMAIN-SUFFIX,grazie.ai,DIRECT
-DOMAIN-SUFFIX,grazie.aws.intellij.net,DIRECT
 DOMAIN-SUFFIX,identrust.com,DIRECT
 DOMAIN-SUFFIX,intercom.io,DIRECT
 DOMAIN-SUFFIX,intercomcdn.com,DIRECT
 DOMAIN-SUFFIX,makersuite.google.com,DIRECT
-DOMAIN-SUFFIX,meta.ai,DIRECT
-DOMAIN-SUFFIX,mistral.ai,DIRECT
 DOMAIN-SUFFIX,oaistatic.com,DIRECT
 DOMAIN-SUFFIX,oaiusercontent.com,DIRECT
 DOMAIN-SUFFIX,openai.com,DIRECT
-DOMAIN-SUFFIX,openai.com.cdn.cloudflare.net,DIRECT
 DOMAIN-SUFFIX,openaiapi-site.azureedge.net,DIRECT
 DOMAIN-SUFFIX,openrouter.ai
 DOMAIN-SUFFIX,perplexity.ai,DIRECT
-DOMAIN-SUFFIX,perplexity.com,DIRECT
-DOMAIN-SUFFIX,pplx.ai,DIRECT
 DOMAIN-SUFFIX,proactivebackend-pa.googleapis.com,DIRECT
 DOMAIN-SUFFIX,sentry.io,DIRECT
 DOMAIN-SUFFIX,smoot.apple.com,DIRECT
 DOMAIN-SUFFIX,stripe.com,DIRECT
-IP-CIDR,160.79.104.0/23,DIRECT,no-resolve
-IP-CIDR6,2607:6bc0::/48,DIRECT,no-resolve
