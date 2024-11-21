@@ -39,7 +39,7 @@ export class RuleConverter {
     // 解析规则及参数
     let type = '';
     let value = '';
-    let policy = '';
+    let policy: string | undefined;
     let flags: string[] = [];
 
     // 处理规则行，提取类型、值、策略和标志
@@ -56,7 +56,6 @@ export class RuleConverter {
       const validPolicies = new Set([
         'REJECT', 'DIRECT', 'PROXY',
         'REJECT-DROP', 'REJECT-TINYGIF', 'REJECT-DICT', 'REJECT-ARRAY',
-        // 如果有其他有效策略，请在此添加
       ]);
 
       // 检查可能的策略或标志是否为有效策略
@@ -67,8 +66,8 @@ export class RuleConverter {
           flags = components.slice(3).map(flag => flag.trim());
         }
       } else {
-        // 没有有效的策略，可能是标志
-        policy = ''; // 可以在这里设置默认策略
+        // 没有有效的策略，可能是标志或未指定
+        policy = undefined;
         flags = components.slice(2).map(flag => flag.trim());
       }
     } else {
@@ -133,8 +132,8 @@ export class RuleConverter {
     if (policy) {
       policy = policy.toUpperCase();
     } else {
-      // 当策略缺失时，可以设置默认策略，例如 'DIRECT'
-      policy = 'DIRECT';
+      // 当策略缺失时，不自动添加默认策略
+      policy = undefined;
     }
 
     // 添加flags，避免重复
