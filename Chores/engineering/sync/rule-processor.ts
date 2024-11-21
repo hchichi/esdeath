@@ -1,68 +1,61 @@
-import fs from 'fs';
-import path from 'path';
-import { RuleGroup, SpecialRuleConfig } from './rule-types';
 import { RuleConverter } from './rule-converter';
 import { RuleMerger } from './rule-merger';
-import { ensureDirectoryExists } from './utils';
+import { RuleFile, SpecialRuleConfig } from './rule-types';
+import fs from 'node:fs';
+import path from 'node:path';
+import { downloadFile, cleanAndSort, addRuleHeader } from './utils';
 
 export class RuleProcessor {
-    constructor(
-        private ruleGroups: RuleGroup[],
-        private specialRules: SpecialRuleConfig[],
-        private repoPath: string,
-        private converterOptions: {
-            noResolve?: boolean;
-            preMatching?: boolean;
-            extendedMatching?: boolean;
-        }
-    ) {}
+  constructor(
+    private repoPath: string,
+    private converter: RuleConverter,
+    private merger: RuleMerger
+  ) {}
 
-    public async processRules(): Promise<void> {
-        const converter = new RuleConverter(this.converterOptions);
+  async process(rule: RuleFile): Promise<void> {
+    try {
+      const filePath = path.join(this.repoPath, rule.path);
+      
+      // 1. Download file if URL is provided
+      if (rule.url) {
+        await downloadFile(rule.url, filePath);
+      }
 
-        // Process normal rules
-        for (const group of this.ruleGroups) {
-            for (const file of group.files) {
-                const cleanup = file.cleanup || false;
-                const addHeader = file.header?.enable || false;
-                const merger = new RuleMerger(converter, cleanup, addHeader);
+      // 2. Read file content
+      let content = await fs.promises.readFile(filePath, 'utf-8');
 
-                const content = await merger.mergeRules([file]);
+      // 3. Convert rules
+      content = content
+        .split('\n')
+        .map(line => this.converter.convert(line))
+        .filter(Boolean)
+        .join('\n');
 
-                let finalContent = content;
-                if (addHeader) {
-                    finalContent = merger.addHeader(content, file);
-                }
+      // 4. Clean and sort based on rule.cleanup
+      content = cleanAndSort(content, this.converter, rule.cleanup ?? false);
 
-                const outputPath = path.join(this.repoPath, file.path);
-                ensureDirectoryExists(path.dirname(outputPath));
-                fs.writeFileSync(outputPath, finalContent);
-            }
-        }
+      // 5. Add header based on rule.header
+      if (rule.header?.enable === true) {
+        const headerInfo = {
+          title: rule.title,
+          description: rule.description,
+          url: rule.url
+        };
+        content = addRuleHeader(content, headerInfo);
+      }
 
-        // Process special rules
-        for (const specialRule of this.specialRules) {
-            const cleanup = specialRule.cleanup !== undefined ? specialRule.cleanup : true;
-            const addHeader = specialRule.header?.enable !== false; // default to true
-            const merger = new RuleMerger(converter, cleanup, addHeader);
+      // 6. Write the processed content back to the file
+      await fs.promises.writeFile(filePath, content);
 
-            const sourceFiles = specialRule.sourceFiles.map(sourceFile => ({
-                path: sourceFile
-            }));
-
-            const content = await merger.mergeRules(sourceFiles);
-
-            let finalContent = content;
-            if (addHeader) {
-                finalContent = merger.addHeader(content, {
-                    path: specialRule.targetFile,
-                    header: specialRule.header
-                }, sourceFiles.map(f => f.path));
-            }
-
-            const outputPath = path.join(this.repoPath, specialRule.targetFile);
-            ensureDirectoryExists(path.dirname(outputPath));
-            fs.writeFileSync(outputPath, finalContent);
-        }
+    } catch (error) {
+      console.error(`Error processing ${rule.path}:`, error);
+      throw error;
     }
+  }
+
+  async processSpecialRules(rules: SpecialRuleConfig[]): Promise<void> {
+    for (const rule of rules) {
+      await this.merger.mergeSpecialRules(rule);
+    }
+  }
 } 
