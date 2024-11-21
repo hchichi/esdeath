@@ -74,13 +74,19 @@ export class RuleConverter {
     } else {
       // 无类型的规则自动判断类型
       value = components[0].trim();
+
+      // 处理域名规则
+      // 1. 包含 '*' 的为 DOMAIN-WILDCARD
       if (value.includes('*')) {
-        // 包含通配符
         type = 'DOMAIN-WILDCARD';
-      } else if (value.includes('/')) {
-        // CIDR格式
-        type = value.includes(':') ? 'IP-CIDR6' : 'IP-CIDR';
-      } else if (/^(\d{1,3}\.){3}\d{1,3}$/.test(value)) {
+      }
+      // 2. 以 '.' 开头的为 DOMAIN-SUFFIX，去掉开头的 '.'
+      else if (value.startsWith('.')) {
+        type = 'DOMAIN-SUFFIX';
+        value = value.substring(1);
+      }
+      // 3. 全数字的 IP 地址，处理为 IP 类型
+      else if (/^(\d{1,3}\.){3}\d{1,3}$/.test(value)) {
         // 纯 IPv4 地址
         if (this.format === 'Surge' || this.format === 'Quantumult X') {
           type = 'IP-CIDR';
@@ -102,8 +108,13 @@ export class RuleConverter {
           type = 'IP-CIDR6';
           value += '/128';
         }
-      } else {
-        // 域名
+      }
+      // 4. 正则表达式，匹配以 '/' 开头和结尾的
+      else if (/^\/.*\/$/.test(value)) {
+        type = 'USER-AGENT'; // 或者其他合适的类型
+      }
+      // 5. 默认处理为 DOMAIN
+      else {
         type = 'DOMAIN';
       }
     }
