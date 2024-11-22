@@ -16,17 +16,18 @@ const execAsync = promisify(exec);
 export async function downloadFile(url: string, dest: string): Promise<void> {
   try {
     console.log(`Downloading ${url} to ${dest}`);
+    const response = await fetch(url, {
+      headers: {
+        'User-Agent': 'Quantumult%20X/1.0.30 (iPhone14,2; iOS 15.6)',
+      }
+    });
     
-    // 构建 curl 命令
-    const curlCommand = `curl -L -o "${dest}" "${url}" --retry 3 --retry-delay 2 --connect-timeout 10 -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36"`;
-    
-    // 执行 curl 命令
-    const { stdout, stderr } = await execAsync(curlCommand);
-    
-    if (stderr && !fs.existsSync(dest)) {
-      throw new Error(`Download failed: ${stderr}`);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
     }
     
+    const buffer = await response.arrayBuffer();
+    await fs.promises.writeFile(dest, Buffer.from(buffer));
     console.log(`Downloaded: ${url}`);
   } catch (error) {
     console.error(`Download failed: ${url}`, error);
