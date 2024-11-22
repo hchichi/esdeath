@@ -1,5 +1,5 @@
 // Direct (Sukka)
-// Last updated: 2024/11/21 22:50:22
+// Last updated: 2024/11/23 00:14:27
 // DOMAIN: 1
 // DOMAIN-SUFFIX: 3
 // DOMAIN-KEYWORD: 1
@@ -8,10 +8,10 @@
 // This file contains rules for direct access to domains and IPs in the Mainland China.
 // Data sources:
 //  - https://ruleset.skk.moe/List/non_ip/my_direct.conf
-DOMAIN,this_ruleset_is_made_by_sukkaw.ruleset.skk.moe,DIRECT
-DOMAIN-KEYWORD,mac-torrent-download,DIRECT
-DOMAIN-SUFFIX,download.555mac.com,DIRECT
-DOMAIN-SUFFIX,engage.cloudflareclient.com,DIRECT
-DOMAIN-SUFFIX,torrentmac.net,DIRECT
-PROCESS-NAME,AdGuardHome,DIRECT
-PROCESS-NAME,nmap,DIRECT
+DOMAIN,this_ruleset_is_made_by_sukkaw.ruleset.skk.moe
+DOMAIN-KEYWORD,mac-torrent-download
+DOMAIN-SUFFIX,download.555mac.com
+DOMAIN-SUFFIX,engage.cloudflareclient.com
+DOMAIN-SUFFIX,torrentmac.net
+PROCESS-NAME,AdGuardHome
+PROCESS-NAME,nmap

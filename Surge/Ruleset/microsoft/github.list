@@ -1,8 +1,8 @@
 # 内容：Github
 # 数量：6条
-DOMAIN-KEYWORD,github,DIRECT
-DOMAIN-SUFFIX,github.com,DIRECT
-DOMAIN-SUFFIX,github.io,DIRECT
-DOMAIN-SUFFIX,githubapp.com,DIRECT
-DOMAIN-SUFFIX,githubassets.com,DIRECT
-DOMAIN-SUFFIX,githubusercontent.com,DIRECT
+DOMAIN-KEYWORD,github
+DOMAIN-SUFFIX,github.com
+DOMAIN-SUFFIX,github.io
+DOMAIN-SUFFIX,githubapp.com
+DOMAIN-SUFFIX,githubassets.com
+DOMAIN-SUFFIX,githubusercontent.com

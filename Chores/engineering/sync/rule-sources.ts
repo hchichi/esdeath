@@ -497,7 +497,7 @@ export const specialRules: SpecialRuleConfig[] = [
     name: 'AI',
     targetFile: 'Surge/Ruleset/aigc.list',
     sourceFiles: [
-      //'Surge/Ruleset/aigc_keli.list',
+      'Surge/Ruleset/aigc_keli.list',
       'Surge/Ruleset/aigc_connershua.list',
       'Surge/Ruleset/aigc_hiven.list'
     ],
