@@ -3,6 +3,11 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { RuleStats, RuleGroup, SpecialRuleConfig } from './rule-types';
 import { RuleConverter } from './rule-converter';
+import { exec } from 'node:child_process';
+import { promisify } from 'node:util';
+
+const execAsync = promisify(exec);
+
 /**
  * 下载文件
  * @param url - 下载URL
@@ -11,13 +16,17 @@ import { RuleConverter } from './rule-converter';
 export async function downloadFile(url: string, dest: string): Promise<void> {
   try {
     console.log(`Downloading ${url} to ${dest}`);
-    const response = await fetch(url);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
+    
+    // 构建 curl 命令
+    const curlCommand = `curl -L -o "${dest}" "${url}" --retry 3 --retry-delay 2 --connect-timeout 10 -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36"`;
+    
+    // 执行 curl 命令
+    const { stdout, stderr } = await execAsync(curlCommand);
+    
+    if (stderr && !fs.existsSync(dest)) {
+      throw new Error(`Download failed: ${stderr}`);
     }
     
-    const buffer = await response.arrayBuffer();
-    await fs.promises.writeFile(dest, Buffer.from(buffer));
     console.log(`Downloaded: ${url}`);
   } catch (error) {
     console.error(`Download failed: ${url}`, error);
