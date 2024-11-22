@@ -14,14 +14,23 @@
 # > "reject-dict"   策略返回 HTTP 状态码 200,同时附带一个空的 JSON 对象
 # > "reject-array"  策略返回 HTTP 状态码 200,同时附带一个空的 JSON 数组
 #############################################
+
+
+
 # >>>>>>>>>>>>>>> ✅ 1 ✅ <<<<<<<<<<<<<<
 DOMAIN,ad.12306.cn,DIRECT
+
+
+
+
 # >>>>>>>>>>>>>>> ✅ A ✅ <<<<<<<<<<<<<<
 # > anti-ad
 DOMAIN-KEYWORD,anti-ad.net,DIRECT
+
 # > Alibaba
 DOMAIN,log.mmstat.com,DIRECT
 DOMAIN,sycm.mmstat.com,DIRECT
+
 # > 爱影视
 DOMAIN,static.jssp.tv,DIRECT
 DOMAIN,lain.bgm.tv,DIRECT
@@ -36,6 +45,9 @@ DOMAIN-KEYWORD,vip.lz-cdn,DIRECT
 DOMAIN-KEYWORD,ax1x.com,DIRECT
 DOMAIN-KEYWORD,o.lencr.org,DIRECT
 DOMAIN-KEYWORD,ttcdn-tos.kkimg.cc,DIRECT
+
+
+
 # >>>>>>>>>>>>>>> ✅ D ✅ <<<<<<<<<<<<<<
 # > 大师兄影视
 DOMAIN,sdk.alibaba.com.ailbaba.me,DIRECT
@@ -51,6 +63,9 @@ DOMAIN-KEYWORD,bfzycdn.com,DIRECT
 DOMAIN-KEYWORD,vip.kuaikan-cdn,DIRECT
 DOMAIN-KEYWORD,vip.ffzy-play,DIRECT
 DOMAIN-KEYWORD,vip.ffzy-online,DIRECT
+
+
+
 # >>>>>>>>>>>>>>> ✅ P ✅ <<<<<<<<<<<<<<
 # > 苹果推送服务
 DOMAIN-KEYWORD,push.apple.com,DIRECT
@@ -81,26 +96,43 @@ DOMAIN-KEYWORD,gsa.apple.com,DIRECT
 DOMAIN-KEYWORD,ess.apple.com,DIRECT
 # > 苹果app store
 DOMAIN,itunes.apple.com,DIRECT
+
+
+
 # >>>>>>>>>>>>>>> ✅ Q ✅ <<<<<<<<<<<<<<
 # > QQ空间
 DOMAIN-KEYWORD,ctc.qzs.qzone.qq.com,DIRECT
+
+
 # >>>>>>>>>>>>>>> ✅ S ✅ <<<<<<<<<<<<<<
 # > Strava
 DOMAIN,analytics.strava.com,DIRECT
+
+
+
 # >>>>>>>>>>>>>>> ✅ T ✅ <<<<<<<<<<<<<<
 # > Tencent
 DOMAIN,fairplay.l.qq.com,DIRECT
 DOMAIN,livew.l.qq.com,DIRECT
 DOMAIN,vd.l.qq.com,DIRECT
 DOMAIN,vi.l.qq.com,DIRECT
+
+
+
 # >>>>>>>>>>>>>>> ✅ U ✅ <<<<<<<<<<<<<<
 # > Umeng
 DOMAIN,msg.umeng.com,DIRECT
 DOMAIN,msg.umengcloud.com,DIRECT
+
+
+
 # >>>>>>>>>>>>>>> ✅ X ✅ <<<<<<<<<<<<<<
 # > 携程
 DOMAIN-KEYWORD,aw-s.tripcdn.com,DIRECT
 DOMAIN-KEYWORD,trip.com,DIRECT
+
+
+
 # > 其他分流修正
 # > 路由器后台
 IP-CIDR,192.168.0.1/24,DIRECT
