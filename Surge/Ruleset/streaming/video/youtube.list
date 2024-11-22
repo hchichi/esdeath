@@ -1,19 +1,19 @@
 # 内容：YouTube
 # 数量：17条
-USER-AGENT,*youtube*,DIRECT
-USER-AGENT,YouTube*,DIRECT
-USER-AGENT,com.google.ios.youtube*,DIRECT
-DOMAIN-KEYWORD,youtube,DIRECT
-DOMAIN,youtubei.googleapis.com,DIRECT
-DOMAIN,yt3.ggpht.com,DIRECT
-DOMAIN-SUFFIX,googlevideo.com,DIRECT
-DOMAIN-SUFFIX,gvt2.com,DIRECT
-DOMAIN-SUFFIX,withyoutube.com,DIRECT
-DOMAIN-SUFFIX,youtu.be,DIRECT
-DOMAIN-SUFFIX,youtube-nocookie.com,DIRECT
-DOMAIN-SUFFIX,youtube.com,DIRECT
-DOMAIN-SUFFIX,youtubeeducation.com,DIRECT
-DOMAIN-SUFFIX,youtubegaming.com,DIRECT
-DOMAIN-SUFFIX,youtubekids.com,DIRECT
-DOMAIN-SUFFIX,yt.be,DIRECT
-DOMAIN-SUFFIX,ytimg.com,DIRECT
+USER-AGENT,*youtube*
+USER-AGENT,YouTube*
+USER-AGENT,com.google.ios.youtube*
+DOMAIN-KEYWORD,youtube
+DOMAIN,youtubei.googleapis.com
+DOMAIN,yt3.ggpht.com
+DOMAIN-SUFFIX,googlevideo.com
+DOMAIN-SUFFIX,gvt2.com
+DOMAIN-SUFFIX,withyoutube.com
+DOMAIN-SUFFIX,youtu.be
+DOMAIN-SUFFIX,youtube-nocookie.com
+DOMAIN-SUFFIX,youtube.com
+DOMAIN-SUFFIX,youtubeeducation.com
+DOMAIN-SUFFIX,youtubegaming.com
+DOMAIN-SUFFIX,youtubekids.com
+DOMAIN-SUFFIX,yt.be
+DOMAIN-SUFFIX,ytimg.com
