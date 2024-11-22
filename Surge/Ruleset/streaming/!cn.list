@@ -1,4 +1,5 @@
 # Streaming Media
+
 # (Live)
 # > Twitch
 DOMAIN-SUFFIX,ext-twitch.tv
@@ -7,6 +8,7 @@ DOMAIN-SUFFIX,ttvnw.net
 DOMAIN-SUFFIX,twitch.tv
 DOMAIN-SUFFIX,twitchcdn.net
 DOMAIN-SUFFIX,twitch-ext.rootonline.de
+
 # (Music)
 # > Deezer
 DOMAIN-SUFFIX,deezer.com
@@ -34,11 +36,13 @@ DOMAIN-KEYWORD,-spotify-com
 # > TIDAL
 DOMAIN-SUFFIX,tidal.com
 # > YouTubeMusic
+
 # (Podcast)
 # > Himalaya
 DOMAIN-SUFFIX,himalaya.com
 # > Overcast
 DOMAIN-SUFFIX,overcast.fm
+
 # (Video)
 # > AbemaTV
 DOMAIN-SUFFIX,abema.io
