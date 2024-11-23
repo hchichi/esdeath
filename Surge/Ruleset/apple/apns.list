@@ -1,14 +1,85 @@
-# Author: 可莉🅥
-# 引用地址 https://support.apple.com/en-us/HT210060
-# Apple 推送通知 - 当使用 Apple 推送通知服务 (APNS) 时，Apple 设备需要访问以下主机。
-DOMAIN-SUFFIX,push.apple.com //推送通知,DIRECT
-DOMAIN,identity.apple.com //APNs 证书请求门户,DIRECT
-IP-CIDR,17.249.0.0/16,DIRECT,no-resolve
-IP-CIDR,17.252.0.0/16,DIRECT,no-resolve
-IP-CIDR,17.57.144.0/22,DIRECT,no-resolve
-IP-CIDR,17.188.128.0/18,DIRECT,no-resolve
-IP-CIDR,17.188.20.0/23,DIRECT,no-resolve
-IP-CIDR6,2620:149:a44::/48,DIRECT,no-resolve
-IP-CIDR6,2403:300:a42::/48,DIRECT,no-resolve
-IP-CIDR6,2403:300:a51::/48,DIRECT,no-resolve
-IP-CIDR6,2a01:b740:a42::/48,DIRECT,no-resolve
+DOMAIN,<!DOCTYPE html>
+DOMAIN,<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en-US"> <![endif]-->
+DOMAIN,<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en-US"> <![endif]-->
+DOMAIN,<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en-US"> <![endif]-->
+DOMAIN,<!--[if gt IE 8]><!--> <html class="no-js" lang="en-US"> <!--<![endif]-->
+DOMAIN,<head>
+DOMAIN,<title>Attention Required! | Cloudflare</title>
+DOMAIN,<meta charset="UTF-8" />
+DOMAIN,<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+DOMAIN,<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<META NAME="ROBOTS" CONTENT="NOINDEX,nofollow" />
+<META NAME="VIEWPORT" CONTENT="WIDTH=DEVICE-WIDTH,initial-scale=1" />
+DOMAIN,<link rel="stylesheet" id="cf_styles-css" href="/cdn-cgi/styles/cf.errors.css" />
+DOMAIN,<!--[if lt IE 9]><link rel="stylesheet" id='cf_styles-ie-css' href="/cdn-cgi/styles/cf.errors.ie.css" /><![endif]-->
+IP-CIDR6,<style>body{margin:0;padding:0}</style>/128
+
+
+DOMAIN,<!--[if gte IE 10]><!-->
+DOMAIN,<script>
+DOMAIN,if (!navigator.cookieEnabled) {
+WINDOW.ADDEVENTLISTENER('DOMCONTENTLOADED',function () {
+DOMAIN,var cookieEl = document.getElementById('cookie-alert');
+DOMAIN,cookieEl.style.display = 'block';
+DOMAIN,})
+DOMAIN,}
+DOMAIN,</script>
+DOMAIN,<!--<![endif]-->
+
+
+DOMAIN,</head>
+DOMAIN,<body>
+DOMAIN,<div id="cf-wrapper">
+DOMAIN,<div class="cf-alert cf-alert-error cf-cookie-error" id="cookie-alert" data-translate="enable_cookies">Please enable cookies.</div>
+DOMAIN,<div id="cf-error-details" class="cf-error-details-wrapper">
+DOMAIN,<div class="cf-wrapper cf-header cf-error-overview">
+<H1 DATA-TRANSLATE="BLOCK_HEADLINE">SORRY,you have been blocked</h1>
+DOMAIN,<h2 class="cf-subheadline"><span data-translate="unable_to_access">You are unable to access</span> kelee.one</h2>
+DOMAIN,</div><!-- /.header -->
+
+DOMAIN,<div class="cf-section cf-highlight">
+DOMAIN,<div class="cf-wrapper">
+DOMAIN,<div class="cf-screenshot-container cf-screenshot-full">
+            
+DOMAIN,<span class="cf-no-screenshot error"></span>
+            
+DOMAIN,</div>
+DOMAIN,</div><!-- /.captcha-container -->
+
+DOMAIN,<div class="cf-section cf-wrapper">
+DOMAIN,<div class="cf-columns two">
+DOMAIN,<div class="cf-column">
+DOMAIN,<h2 data-translate="blocked_why_headline">Why have I been blocked?</h2>
+
+<P DATA-TRANSLATE="BLOCKED_WHY_DETAIL">THIS WEBSITE IS USING A SECURITY SERVICE TO PROTECT ITSELF FROM ONLINE ATTACKS. THE ACTION YOU JUST PERFORMED TRIGGERED THE SECURITY SOLUTION. THERE ARE SEVERAL ACTIONS THAT COULD TRIGGER THIS BLOCK INCLUDING SUBMITTING A CERTAIN WORD OR PHRASE,a SQL command or malformed data.</p>
+
+DOMAIN,<h2 data-translate="blocked_resolve_headline">What can I do to resolve this?</h2>
+
+DOMAIN,<p data-translate="blocked_resolve_detail">You can email the site owner to let them know you were blocked. Please include what you were doing when this page came up and the Cloudflare Ray ID found at the bottom of this page.</p>
+DOMAIN,</div><!-- /.section -->
+
+IP-CIDR6,<div class="cf-error-footer cf-wrapper w-240 lg:w-full py-10 sm:py-4 sm:px-8 mx-auto text-center sm:text-left border-solid border-0 border-t border-gray-300">/128
+DOMAIN,<p class="text-13">
+IP-CIDR6,<span class="cf-footer-item sm:block sm:mb-1">Cloudflare Ray ID: <strong class="font-semibold">8e70d7bbacece604</strong></span>/128
+IP-CIDR6,<span class="cf-footer-separator sm:hidden">&bull;</span>/128
+IP-CIDR6,<span id="cf-footer-item-ip" class="cf-footer-item hidden sm:block sm:mb-1">/128
+IP-CIDR6,Your IP:/128
+DOMAIN,<button type="button" id="cf-footer-ip-reveal" class="cf-footer-ip-reveal-btn">Click to reveal</button>
+DOMAIN,<span class="hidden" id="cf-footer-ip">20.97.191.178</span>
+DOMAIN,</span>
+IP-CIDR6,<span class="cf-footer-item sm:block sm:mb-1"><span>Performance &amp; security by</span> <a rel="noopener noreferrer" href="https://www.cloudflare.com/5xx-error-landing" id="brand_link" target="_blank">Cloudflare</a></span>/128
+    
+DOMAIN,</p>
+<SCRIPT>(FUNCTION(){FUNCTION D(){VAR B=A.GETELEMENTBYID("CF-FOOTER-ITEM-IP"),c=a.getElementById("cf-footer-ip-reveal");b&&"classList"in b&&(b.classList.remove("hidden"),c.addEventListener("click",function(){c.classList.add("hidden");a.getElementById("cf-footer-ip").classList.remove("hidden")}))}var a=document;document.addEventListener&&a.addEventListener("DOMContentLoaded",d)})();</script>
+DOMAIN,</div><!-- /.error-footer -->
+
+
+DOMAIN,</div><!-- /#cf-error-details -->
+DOMAIN,</div><!-- /#cf-wrapper -->
+
+DOMAIN,window._cf_translation = {};
+  
+  
+
+DOMAIN,</body>
+DOMAIN,</html>

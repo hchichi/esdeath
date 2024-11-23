@@ -1,13 +1,68 @@
 // AIGC
-// Last updated: 2024/11/23 00:36:49
-// DOMAIN: 24
+// Last updated: 2024/11/23 19:33:19
+// DOMAIN: 77
 // DOMAIN-SUFFIX: 33
 // DOMAIN-KEYWORD: 4
-// Total: 61
+// IP-CIDR6: 7
+// OTHER: 6
+// Total: 127
 // This file contains rules for AIGC services, including OpenAI, Google Gemini, Claude, Perplexity, etc.
 // Data sources:
+//  - https://kelee.one/Tool/Loon/Rule/AI.list
 //  - https://github.com/ConnersHua/RuleGo/raw/master/Surge/Ruleset/Extra/AI.list
 //  - https://raw.githubusercontent.com/hiven425/hiven/master/config/AI.list
+<H1 DATA-TRANSLATE="BLOCK_HEADLINE">SORRY,you have been blocked</h1>
+<META NAME="ROBOTS" CONTENT="NOINDEX,nofollow" />
+<META NAME="VIEWPORT" CONTENT="WIDTH=DEVICE-WIDTH,initial-scale=1" />
+<P DATA-TRANSLATE="BLOCKED_WHY_DETAIL">THIS WEBSITE IS USING A SECURITY SERVICE TO PROTECT ITSELF FROM ONLINE ATTACKS. THE ACTION YOU JUST PERFORMED TRIGGERED THE SECURITY SOLUTION. THERE ARE SEVERAL ACTIONS THAT COULD TRIGGER THIS BLOCK INCLUDING SUBMITTING A CERTAIN WORD OR PHRASE,a SQL command or malformed data.</p>
+<SCRIPT>(FUNCTION(){FUNCTION D(){VAR B=A.GETELEMENTBYID("CF-FOOTER-ITEM-IP"),c=a.getElementById("cf-footer-ip-reveal");b&&"classList"in b&&(b.classList.remove("hidden"),c.addEventListener("click",function(){c.classList.add("hidden");a.getElementById("cf-footer-ip").classList.remove("hidden")}))}var a=document;document.addEventListener&&a.addEventListener("DOMContentLoaded",d)})();</script>
+DOMAIN,<!--<![endif]-->
+DOMAIN,<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en-US"> <![endif]-->
+DOMAIN,<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en-US"> <![endif]-->
+DOMAIN,<!--[if gt IE 8]><!--> <html class="no-js" lang="en-US"> <!--<![endif]-->
+DOMAIN,<!--[if gte IE 10]><!-->
+DOMAIN,<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en-US"> <![endif]-->
+DOMAIN,<!--[if lt IE 9]><link rel="stylesheet" id='cf_styles-ie-css' href="/cdn-cgi/styles/cf.errors.ie.css" /><![endif]-->
+DOMAIN,<!DOCTYPE html>
+DOMAIN,</body>
+DOMAIN,</div>
+DOMAIN,</div><!-- /#cf-error-details -->
+DOMAIN,</div><!-- /#cf-wrapper -->
+DOMAIN,</div><!-- /.captcha-container -->
+DOMAIN,</div><!-- /.error-footer -->
+DOMAIN,</div><!-- /.header -->
+DOMAIN,</div><!-- /.section -->
+DOMAIN,</head>
+DOMAIN,</html>
+DOMAIN,</p>
+DOMAIN,</script>
+DOMAIN,</span>
+DOMAIN,<body>
+DOMAIN,<button type="button" id="cf-footer-ip-reveal" class="cf-footer-ip-reveal-btn">Click to reveal</button>
+DOMAIN,<div class="cf-alert cf-alert-error cf-cookie-error" id="cookie-alert" data-translate="enable_cookies">Please enable cookies.</div>
+DOMAIN,<div class="cf-column">
+DOMAIN,<div class="cf-columns two">
+DOMAIN,<div class="cf-screenshot-container cf-screenshot-full">
+DOMAIN,<div class="cf-section cf-highlight">
+DOMAIN,<div class="cf-section cf-wrapper">
+DOMAIN,<div class="cf-wrapper cf-header cf-error-overview">
+DOMAIN,<div class="cf-wrapper">
+DOMAIN,<div id="cf-error-details" class="cf-error-details-wrapper">
+DOMAIN,<div id="cf-wrapper">
+DOMAIN,<h2 class="cf-subheadline"><span data-translate="unable_to_access">You are unable to access</span> kelee.one</h2>
+DOMAIN,<h2 data-translate="blocked_resolve_headline">What can I do to resolve this?</h2>
+DOMAIN,<h2 data-translate="blocked_why_headline">Why have I been blocked?</h2>
+DOMAIN,<head>
+DOMAIN,<link rel="stylesheet" id="cf_styles-css" href="/cdn-cgi/styles/cf.errors.css" />
+DOMAIN,<meta charset="UTF-8" />
+DOMAIN,<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+DOMAIN,<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+DOMAIN,<p class="text-13">
+DOMAIN,<p data-translate="blocked_resolve_detail">You can email the site owner to let them know you were blocked. Please include what you were doing when this page came up and the Cloudflare Ray ID found at the bottom of this page.</p>
+DOMAIN,<script>
+DOMAIN,<span class="cf-no-screenshot error"></span>
+DOMAIN,<span class="hidden" id="cf-footer-ip">20.97.191.178</span>
+DOMAIN,<title>Attention Required! | Cloudflare</title>
 DOMAIN,ai.google.dev
 DOMAIN,aistudio.google.com
 DOMAIN,alkalimakersuite-pa.clients6.google.com
@@ -19,11 +74,13 @@ DOMAIN,apple-relay.fastly-edge.com
 DOMAIN,bard.google.com
 DOMAIN,cdn.usefathom.com
 DOMAIN,chatgpt.livekit.cloud
+DOMAIN,cookieEl.style.display = 'block';
 DOMAIN,copilot.microsoft.com
 DOMAIN,cp4.cloudflare.com
 DOMAIN,gemini.google.com
 DOMAIN,generativelanguage.googleapis.com
 DOMAIN,guzzoni.apple.com
+DOMAIN,if (!navigator.cookieEnabled) {
 DOMAIN,imagine.meta.com
 DOMAIN,makersuite.google.com
 DOMAIN,o33249.ingest.sentry.io
@@ -31,7 +88,11 @@ DOMAIN,openaiapi-site.azureedge.net
 DOMAIN,proactivebackend-pa.googleapis.com
 DOMAIN,sfo3.turn.livekit.cloud
 DOMAIN,sydney.bing.com
+DOMAIN,var cookieEl = document.getElementById('cookie-alert');
+DOMAIN,window._cf_translation = {};
 DOMAIN,www.bing.com
+DOMAIN,}
+DOMAIN,})
 DOMAIN-KEYWORD,Claude
 DOMAIN-KEYWORD,anthropic
 DOMAIN-KEYWORD,openai
@@ -69,3 +130,11 @@ DOMAIN-SUFFIX,proactivebackend-pa.googleapis.com
 DOMAIN-SUFFIX,sentry.io
 DOMAIN-SUFFIX,smoot.apple.com
 DOMAIN-SUFFIX,stripe.com
+IP-CIDR6,<div class="cf-error-footer cf-wrapper w-240 lg:w-full py-10 sm:py-4 sm:px-8 mx-auto text-center sm:text-left border-solid border-0 border-t border-gray-300">/128
+IP-CIDR6,<span class="cf-footer-item sm:block sm:mb-1"><span>Performance &amp; security by</span> <a rel="noopener noreferrer" href="https://www.cloudflare.com/5xx-error-landing" id="brand_link" target="_blank">Cloudflare</a></span>/128
+IP-CIDR6,<span class="cf-footer-item sm:block sm:mb-1">Cloudflare Ray ID: <strong class="font-semibold">8e70d7c2fee6c942</strong></span>/128
+IP-CIDR6,<span class="cf-footer-separator sm:hidden">&bull;</span>/128
+IP-CIDR6,<span id="cf-footer-item-ip" class="cf-footer-item hidden sm:block sm:mb-1">/128
+IP-CIDR6,<style>body{margin:0;padding:0}</style>/128
+IP-CIDR6,Your IP:/128
+WINDOW.ADDEVENTLISTENER('DOMCONTENTLOADED',function () {

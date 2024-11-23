@@ -1,196 +1,85 @@
-# Author: 可莉🅥
-# 引用: https://github.com/dogfight360/UsbEAm
-# 2024-05-07 00:02:23
-# EPIC游戏下载、更新[国际]
-DOMAIN,download.epicgames.com,DIRECT
-DOMAIN,download2.epicgames.com,DIRECT
-DOMAIN,download3.epicgames.com,DIRECT
-DOMAIN,download4.epicgames.com,DIRECT
-DOMAIN,epicgames-download1.akamaized.net,DIRECT
-DOMAIN,fastly-download.epicgames.com,DIRECT
-DOMAIN,ipv4.egdownload.fastly-edge.com,DIRECT
-DOMAIN-KEYWORD,epicgames-download,DIRECT
-AND,((DOMAIN-KEYWORD,DIRECT,cdn),(DOMAIN-KEYWORD,-epicgames-))
-# Battle.net战网游戏下载、更新[国际]
-DOMAIN,blzddist1-a.akamaihd.net,DIRECT
-DOMAIN,blzddistkr1-a.akamaihd.net,DIRECT
-DOMAIN,blizzard.gcdn.cloudn.co.kr,DIRECT
-DOMAIN,eu.cdn.blizzard.com,DIRECT
-DOMAIN,kr.cdn.blizzard.com,DIRECT
-DOMAIN,level3.blizzard.com,DIRECT
-DOMAIN,us.cdn.blizzard.com,DIRECT
-# GOG游戏下载、更新[国际]
-DOMAIN,gog-cdn-fastly-cp77.gog.com,DIRECT
-DOMAIN,gog-cdn-fastly.gog.com,DIRECT
-DOMAIN,gog-cdn-lumen.secure2.footprint.net,DIRECT
-# 微软游戏下载、更新[国际]
-DOMAIN,assets1.xboxlive.com,DIRECT
-DOMAIN,assets2.xboxlive.com,DIRECT
-DOMAIN,ak.tiles.virtualearth.net,DIRECT
-DOMAIN,pf-cdn-content-prod.azureedge.net,DIRECT
-DOMAIN,xvcf1.xboxlive.com,DIRECT
-DOMAIN,xvcf2.xboxlive.com,DIRECT
-# 微软全家桶上传、下载、同步、在线安装[国际]
-DOMAIN,azurestackhubuat.download.prss.microsoft.com,DIRECT
-DOMAIN,azurestackreleases.download.prss.microsoft.com,DIRECT
-DOMAIN,azuremigratetest.download.prss.microsoft.com,DIRECT
-DOMAIN,azuremigrate.download.prss.microsoft.com,DIRECT
-DOMAIN,afdshield-or.download.prss.microsoft.com,DIRECT
-DOMAIN,azurestackhub.download.prss.microsoft.com,DIRECT
-DOMAIN,contentsync.onenote.com,DIRECT
-DOMAIN,collaborateppe.download.prss.microsoft.com,DIRECT
-DOMAIN,cbdstest.download.prss.microsoft.com,DIRECT
-DOMAIN,collaborate.download.prss.microsoft.com,DIRECT
-DOMAIN,d.docs.live.net,DIRECT
-DOMAIN,dreamspark.download.prss.microsoft.com,DIRECT
-DOMAIN,db.download.prss.microsoft.com,DIRECT
-DOMAIN,dreamsparkuat.download.prss.microsoft.com,DIRECT
-DOMAIN,hierarchyapi.onenote.com,DIRECT
-DOMAIN,itacademy.download.prss.microsoft.com,DIRECT
-DOMAIN,itacademyuat.download.prss.microsoft.com,DIRECT
-DOMAIN,lex.download.prss.microsoft.com,DIRECT
-DOMAIN,lexuat.download.prss.microsoft.com,DIRECT
-DOMAIN,msproductuat.download.prss.microsoft.com,DIRECT
-DOMAIN,msconnect.download.prss.microsoft.com,DIRECT
-DOMAIN,mbsuat.download.prss.microsoft.com,DIRECT
-DOMAIN,myvsuat.download.prss.microsoft.com,DIRECT
-DOMAIN,msdprod-ad.download.prss.microsoft.com,DIRECT
-DOMAIN,mpnbenefitsrtl.download.prss.microsoft.com,DIRECT
-DOMAIN,msdn.download.prss.microsoft.com,DIRECT
-DOMAIN,myvs.download.prss.microsoft.com,DIRECT
-DOMAIN,mpnbenefitsrtluat.download.prss.microsoft.com,DIRECT
-DOMAIN,msproduct.download.prss.microsoft.com,DIRECT
-DOMAIN,mbs.download.prss.microsoft.com,DIRECT
-DOMAIN,mpnbenefits.download.prss.microsoft.com,DIRECT
-DOMAIN,officecdn.microsoft.com,DIRECT
-DOMAIN,oemsocuat.download.prss.microsoft.com,DIRECT
-DOMAIN,officemkt.download.prss.microsoft.com,DIRECT
-DOMAIN,oemsoc.download.prss.microsoft.com,DIRECT
-DOMAIN,osrelease.download.prss.microsoft.com,DIRECT
-DOMAIN,officemktuat.download.prss.microsoft.com,DIRECT
-DOMAIN,public.bn.files.1drv.com,DIRECT
-DOMAIN,rsm.download.prss.microsoft.com,DIRECT
-DOMAIN,rsmuat.download.prss.microsoft.com,DIRECT
-DOMAIN,storecorefulfillment.download.prss.microsoft.com,DIRECT
-DOMAIN,surface.download.prss.microsoft.com,DIRECT
-DOMAIN,software-static.download.prss.microsoft.com,DIRECT
-DOMAIN,software.download.prss.microsoft.com,DIRECT
-DOMAIN,vlportal.download.prss.microsoft.com,DIRECT
-DOMAIN,volic.download.prss.microsoft.com,DIRECT
-DOMAIN,visualstudio.download.prss.microsoft.com,DIRECT
-DOMAIN,windbg.download.prss.microsoft.com,DIRECT
-DOMAIN-SUFFIX,storage.live.com,DIRECT
-# UBisoft Connect(Uplay)育碧游戏下载、更新[国际]
-DOMAIN,uplaypc-s-ubisoft.cdn.ubi.com,DIRECT
-DOMAIN,uplaypc-s-ubisoft-ww.cdn.ubi.com,DIRECT
-# Origin艺电游戏平台[国际]
-DOMAIN,download.dm.origin.com,DIRECT
-DOMAIN,origin-a.akamaihd.net,DIRECT
-DOMAIN,ssl-lvlt.cdn.ea.com,DIRECT
-# EA Desktop游戏下载[国际]
-# Steam游戏下载、游戏更新、创意工坊下载、Steam.TV直播、社区实况直播[国际]
-AND,((DOMAIN-KEYWORD,DIRECT,cache),(DOMAIN-SUFFIX,steamcontent.com))
-DOMAIN,avatars.akamai.steamstatic.com,DIRECT
-DOMAIN,avatars.cloudflare.steamstatic.com,DIRECT
-DOMAIN,avatars.steamstatic.com,DIRECT
-DOMAIN,cdn.cloudflare.steamstatic.com,DIRECT
-DOMAIN,cdn.steamstatic.com,DIRECT
-DOMAIN,clan.cloudflare.steamstatic.com,DIRECT
-DOMAIN,community.akamai.steamstatic.com,DIRECT
-DOMAIN,community.cloudflare.steamstatic.com,DIRECT
-DOMAIN,community.steamstatic.com,DIRECT
-DOMAIN,dfs.cloudflare.steamstatic.com,DIRECT
-DOMAIN,edge.steam-dns.top.comcast.net,DIRECT
-DOMAIN,level3.cdn.steampipe.steamcontent.com,DIRECT
-DOMAIN,media.st.dl.eccdnx.com,DIRECT
-DOMAIN,media.steampowered.com,DIRECT
-DOMAIN,steam.eca.qtlglb.com,DIRECT
-DOMAIN,steam.naeu.qtlglb.com,DIRECT
-DOMAIN,steam.ru.qtlglb.com,DIRECT
-DOMAIN,steamcdn-a.akamaihd.net,DIRECT
-DOMAIN,steamcommunity-a.akamaihd.net,DIRECT
-DOMAIN,steampipe-kr.akamaized.net,DIRECT
-DOMAIN,steampipe-partner.akamaized.net,DIRECT
-DOMAIN,steampipe-partner.secure2.footprint.net,DIRECT
-DOMAIN,steampipe.akamaized.net,DIRECT
-DOMAIN,steamstore-a.akamaihd.net,DIRECT
-DOMAIN,steamusercontent-a.akamaihd.net,DIRECT
-DOMAIN,steamuserimages-a.akamaihd.net,DIRECT
-DOMAIN,store.cloudflare.steamstatic.com,DIRECT
-DOMAIN,upos-hz-mirrorakam.akamaized.net,DIRECT
-DOMAIN,video.cloudflare.steamstatic.com,DIRECT
-# Riot游戏下载、更新[国际]
-DOMAIN,bacon.secure.dyn.riotcdn.net,DIRECT
-DOMAIN,bacon.dyn.riotcdn.net,DIRECT
-DOMAIN,ks-foundation.secure.dyn.riotcdn.net,DIRECT
-DOMAIN,ks-foundation.dyn.riotcdn.net,DIRECT
-DOMAIN,lol.secure.dyn.riotcdn.net,DIRECT
-DOMAIN,lol.dyn.riotcdn.net,DIRECT
-DOMAIN,riot-client.secure.dyn.riotcdn.net,DIRECT
-DOMAIN,riot-client.dyn.riotcdn.net,DIRECT
-DOMAIN,valorant.secure.dyn.riotcdn.net,DIRECT
-DOMAIN,valorant.dyn.riotcdn.net,DIRECT
-# FiveM游戏下载、更新[国际]
-DOMAIN,changelogs-live.fivem.net,DIRECT
-DOMAIN,c.fivem.net,DIRECT
-DOMAIN,cnl-hb-live.fivem.net,DIRECT
-DOMAIN,cookbook.fivem.net,DIRECT
-DOMAIN,crash-ingress.fivem.net,DIRECT
-DOMAIN,crashes.fivem.net,DIRECT
-DOMAIN,content.cfx.re,DIRECT
-DOMAIN,docs.fivem.net,DIRECT
-DOMAIN,docs-backend.fivem.net,DIRECT
-DOMAIN,forum.fivem.net,DIRECT
-DOMAIN,fx-crashingress-1.live.fivem.net,DIRECT
-DOMAIN,forum.cfx.re,DIRECT
-DOMAIN,git.fivem.net,DIRECT
-DOMAIN,idms.fivem.net,DIRECT
-DOMAIN,keymaster.fivem.net,DIRECT
-DOMAIN,kibana-live.fivem.net,DIRECT
-DOMAIN,largo.live.fivem.net,DIRECT
-DOMAIN,lambda.fivem.net,DIRECT
-DOMAIN,mirrors.fivem.net,DIRECT
-DOMAIN,minio-cluster.fivem.net,DIRECT
-DOMAIN,native-collector-live.fivem.net,DIRECT
-DOMAIN,netdata-internal.fivem.net,DIRECT
-DOMAIN,netdata.fivem.net,DIRECT
-DOMAIN,policy-live.fivem.net,DIRECT
-DOMAIN,runtime.fivem.net,DIRECT
-DOMAIN,rethinkdb-admin.fivem.net,DIRECT
-DOMAIN,servers.fivem.net,DIRECT
-DOMAIN,servers-staging.fivem.net,DIRECT
-DOMAIN,sentry.fivem.net,DIRECT
-DOMAIN,servers-ingress-live.fivem.net,DIRECT
-DOMAIN,servers-live.fivem.net,DIRECT
-DOMAIN,storage.fivem.net,DIRECT
-DOMAIN,servers-frontend.fivem.net,DIRECT
-DOMAIN,status.fivem.net,DIRECT
-DOMAIN,wiki.fivem.net,DIRECT
-# Bethesda贝塞斯达客户端、游戏及mod的下载、更新[国际]
-DOMAIN,content.cdp.bethesda.net,DIRECT
-DOMAIN,download.cdp.bethesda.net,DIRECT
-# Hikari Field游戏下载及更新[国际]
-DOMAIN,download.hikarifield.co.jp,DIRECT
-# Dlsite游戏下载[国际]
-DOMAIN,download.dlsite.com,DIRECT
-DOMAIN,file.chobit.cc,DIRECT
-DOMAIN,img.dlsite.jp,DIRECT
-DOMAIN,play.dl.dlsite.com,DIRECT
-DOMAIN,trial.dlsite.com,DIRECT
-# Bandai Namco万代南梦宫[国际]
-DOMAIN,account.bandainamcoid.com,DIRECT
-DOMAIN,account-api.bandainamcoid.com,DIRECT
-DOMAIN,clientpatch.aws.blue-protocol.com,DIRECT
-DOMAIN,clientpatch.blue-protocol.com,DIRECT
-DOMAIN,client-patch.gundamevogame.com,DIRECT
-DOMAIN,datastore-main.aws.blue-protocol.com,DIRECT
-DOMAIN,flg-main.aws.blue-protocol.com,DIRECT
-DOMAIN,g-ahpatch-prod.blue-protocol.com,DIRECT
-DOMAIN,masterdata-main.aws.blue-protocol.com,DIRECT
-DOMAIN,object-bnolauncher-ct.bandainamco-ol.jp,DIRECT
-DOMAIN,object-bnolauncher-pf.bandainamco-ol.jp,DIRECT
-DOMAIN,object-web.blue-protocol.com,DIRECT
-DOMAIN,object.gundamevolution.jp,DIRECT
-DOMAIN,object-web.gundamevolution.jp,DIRECT
-# Cloudflare云存储
-DOMAIN-SUFFIX,cloudflarestorage.com,DIRECT
+DOMAIN,<!DOCTYPE html>
+DOMAIN,<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en-US"> <![endif]-->
+DOMAIN,<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en-US"> <![endif]-->
+DOMAIN,<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en-US"> <![endif]-->
+DOMAIN,<!--[if gt IE 8]><!--> <html class="no-js" lang="en-US"> <!--<![endif]-->
+DOMAIN,<head>
+DOMAIN,<title>Attention Required! | Cloudflare</title>
+DOMAIN,<meta charset="UTF-8" />
+DOMAIN,<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+DOMAIN,<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<META NAME="ROBOTS" CONTENT="NOINDEX,nofollow" />
+<META NAME="VIEWPORT" CONTENT="WIDTH=DEVICE-WIDTH,initial-scale=1" />
+DOMAIN,<link rel="stylesheet" id="cf_styles-css" href="/cdn-cgi/styles/cf.errors.css" />
+DOMAIN,<!--[if lt IE 9]><link rel="stylesheet" id='cf_styles-ie-css' href="/cdn-cgi/styles/cf.errors.ie.css" /><![endif]-->
+IP-CIDR6,<style>body{margin:0;padding:0}</style>/128
+
+
+DOMAIN,<!--[if gte IE 10]><!-->
+DOMAIN,<script>
+DOMAIN,if (!navigator.cookieEnabled) {
+WINDOW.ADDEVENTLISTENER('DOMCONTENTLOADED',function () {
+DOMAIN,var cookieEl = document.getElementById('cookie-alert');
+DOMAIN,cookieEl.style.display = 'block';
+DOMAIN,})
+DOMAIN,}
+DOMAIN,</script>
+DOMAIN,<!--<![endif]-->
+
+
+DOMAIN,</head>
+DOMAIN,<body>
+DOMAIN,<div id="cf-wrapper">
+DOMAIN,<div class="cf-alert cf-alert-error cf-cookie-error" id="cookie-alert" data-translate="enable_cookies">Please enable cookies.</div>
+DOMAIN,<div id="cf-error-details" class="cf-error-details-wrapper">
+DOMAIN,<div class="cf-wrapper cf-header cf-error-overview">
+<H1 DATA-TRANSLATE="BLOCK_HEADLINE">SORRY,you have been blocked</h1>
+DOMAIN,<h2 class="cf-subheadline"><span data-translate="unable_to_access">You are unable to access</span> kelee.one</h2>
+DOMAIN,</div><!-- /.header -->
+
+DOMAIN,<div class="cf-section cf-highlight">
+DOMAIN,<div class="cf-wrapper">
+DOMAIN,<div class="cf-screenshot-container cf-screenshot-full">
+            
+DOMAIN,<span class="cf-no-screenshot error"></span>
+            
+DOMAIN,</div>
+DOMAIN,</div><!-- /.captcha-container -->
+
+DOMAIN,<div class="cf-section cf-wrapper">
+DOMAIN,<div class="cf-columns two">
+DOMAIN,<div class="cf-column">
+DOMAIN,<h2 data-translate="blocked_why_headline">Why have I been blocked?</h2>
+
+<P DATA-TRANSLATE="BLOCKED_WHY_DETAIL">THIS WEBSITE IS USING A SECURITY SERVICE TO PROTECT ITSELF FROM ONLINE ATTACKS. THE ACTION YOU JUST PERFORMED TRIGGERED THE SECURITY SOLUTION. THERE ARE SEVERAL ACTIONS THAT COULD TRIGGER THIS BLOCK INCLUDING SUBMITTING A CERTAIN WORD OR PHRASE,a SQL command or malformed data.</p>
+
+DOMAIN,<h2 data-translate="blocked_resolve_headline">What can I do to resolve this?</h2>
+
+DOMAIN,<p data-translate="blocked_resolve_detail">You can email the site owner to let them know you were blocked. Please include what you were doing when this page came up and the Cloudflare Ray ID found at the bottom of this page.</p>
+DOMAIN,</div><!-- /.section -->
+
+IP-CIDR6,<div class="cf-error-footer cf-wrapper w-240 lg:w-full py-10 sm:py-4 sm:px-8 mx-auto text-center sm:text-left border-solid border-0 border-t border-gray-300">/128
+DOMAIN,<p class="text-13">
+IP-CIDR6,<span class="cf-footer-item sm:block sm:mb-1">Cloudflare Ray ID: <strong class="font-semibold">8e70d7e9d8dbd6e5</strong></span>/128
+IP-CIDR6,<span class="cf-footer-separator sm:hidden">&bull;</span>/128
+IP-CIDR6,<span id="cf-footer-item-ip" class="cf-footer-item hidden sm:block sm:mb-1">/128
+IP-CIDR6,Your IP:/128
+DOMAIN,<button type="button" id="cf-footer-ip-reveal" class="cf-footer-ip-reveal-btn">Click to reveal</button>
+DOMAIN,<span class="hidden" id="cf-footer-ip">20.97.191.178</span>
+DOMAIN,</span>
+IP-CIDR6,<span class="cf-footer-item sm:block sm:mb-1"><span>Performance &amp; security by</span> <a rel="noopener noreferrer" href="https://www.cloudflare.com/5xx-error-landing" id="brand_link" target="_blank">Cloudflare</a></span>/128
+    
+DOMAIN,</p>
+<SCRIPT>(FUNCTION(){FUNCTION D(){VAR B=A.GETELEMENTBYID("CF-FOOTER-ITEM-IP"),c=a.getElementById("cf-footer-ip-reveal");b&&"classList"in b&&(b.classList.remove("hidden"),c.addEventListener("click",function(){c.classList.add("hidden");a.getElementById("cf-footer-ip").classList.remove("hidden")}))}var a=document;document.addEventListener&&a.addEventListener("DOMContentLoaded",d)})();</script>
+DOMAIN,</div><!-- /.error-footer -->
+
+
+DOMAIN,</div><!-- /#cf-error-details -->
+DOMAIN,</div><!-- /#cf-wrapper -->
+
+DOMAIN,window._cf_translation = {};
+  
+  
+
+DOMAIN,</body>
+DOMAIN,</html>
