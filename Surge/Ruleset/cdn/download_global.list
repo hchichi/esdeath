@@ -60,12 +60,12 @@ DOMAIN,</div><!-- /.section -->
 
 IP-CIDR6,<div class="cf-error-footer cf-wrapper w-240 lg:w-full py-10 sm:py-4 sm:px-8 mx-auto text-center sm:text-left border-solid border-0 border-t border-gray-300">/128
 DOMAIN,<p class="text-13">
-IP-CIDR6,<span class="cf-footer-item sm:block sm:mb-1">Cloudflare Ray ID: <strong class="font-semibold">8e6fd3632bb33af9</strong></span>/128
+IP-CIDR6,<span class="cf-footer-item sm:block sm:mb-1">Cloudflare Ray ID: <strong class="font-semibold">8e6ff31a0bd807bd</strong></span>/128
 IP-CIDR6,<span class="cf-footer-separator sm:hidden">&bull;</span>/128
 IP-CIDR6,<span id="cf-footer-item-ip" class="cf-footer-item hidden sm:block sm:mb-1">/128
 IP-CIDR6,Your IP:/128
 DOMAIN,<button type="button" id="cf-footer-ip-reveal" class="cf-footer-ip-reveal-btn">Click to reveal</button>
-DOMAIN,<span class="hidden" id="cf-footer-ip">20.185.156.192</span>
+DOMAIN,<span class="hidden" id="cf-footer-ip">20.97.191.136</span>
 DOMAIN,</span>
 IP-CIDR6,<span class="cf-footer-item sm:block sm:mb-1"><span>Performance &amp; security by</span> <a rel="noopener noreferrer" href="https://www.cloudflare.com/5xx-error-landing" id="brand_link" target="_blank">Cloudflare</a></span>/128
     
