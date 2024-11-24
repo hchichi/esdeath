@@ -9,7 +9,7 @@
 #!tg-group=https://t.me/lanjieguanggao
 #!tag=去广告, fmz200, 奶思
 #!system=ios
-#!date=2024-11-24 09:30:00
+#!date=2024-11-24 22:30:00
 #!support=支持约511款APP/小程序
 #!remark=下方的所有规则都标注了对应的hostname，可能存在错误或者遗漏，欢迎反馈。对于无法/可选MITM的hostname都特别做了“如开启可自行添加主机名”提示，如果提示后面没有标注主机名则包含所有主机名，否则只包含提示语后面的主机名。
 
@@ -3348,11 +3348,8 @@ UnblockURLinWeChat-解除微信链接限制 = type=http-response, pattern=^https
 # 去除我的页面Ad_Tag
 喜马拉雅去除我的页面Ad_Tag = type=http-response, pattern=^https?:\/\/.*\.xima.*\.com\/mobile-user\/v\d\/homePage, script-path=https://github.com/hchichi/esdeath/raw/main/Chores/js/xmly_json.js, requires-body=true, timeout=60
 
-# 请求体
-YouTube请求体 = type=http-request, pattern=^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|get_watch|next|player|reel\/reel_watch_sequence), script-path=https://github.com/hchichi/esdeath/raw/main/Chores/js/youtube.request.preview.js, requires-body=true, binary-body-mode=true, timeout=60
-
 # 响应体
-YouTube响应体 = type=http-response, pattern=^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(account\/get_setting|browse|get_watch|guide|next|player|reel\/reel_watch_sequence|search), script-path=https://github.com/hchichi/esdeath/raw/main/Chores/js/youtube.response.preview.js, requires-body=true, binary-body-mode=true, timeout=60
+YouTube响应体 = type=http-response, pattern=^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|next|player|search|reel\/reel_watch_sequence|guide|account\/get_setting|get_watch), script-path=https://github.com/hchichi/esdeath/raw/main/Chores/js/youtube.response.preview.js, requires-body=true, binary-body-mode=true, timeout=60
 
 # 播放详情页,首页信息流,顶部tab,我的页面,评论区
 优酷 = type=http-response, pattern=^https?:\/\/acs\.youku\.com\/gw\/mtop\.youku\.columbus\.(gateway\.new\.execute|home\.feed|home\.query|uc\.query|ycp\.query), script-path=https://github.com/hchichi/esdeath/raw/main/Chores/js/cnftp.js, requires-body=true, timeout=60
