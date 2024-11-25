@@ -39,7 +39,7 @@ export const ruleGroups: RuleGroup[] = [
         url: 'https://kelee.one/Tool/Loon/Rule/ApplePushNotificationService.list',
       },
       {
-        path: 'Surge/Ruleset/apple/apple.list',
+        path: 'Surge/Ruleset/apple/apple.conf',
         url: 'https://ruleset.skk.moe/List/non_ip/apple_services.conf',
       },
       {
@@ -51,7 +51,7 @@ export const ruleGroups: RuleGroup[] = [
         url: 'https://ruleset.skk.moe/List/domainset/apple_cdn.conf',
       },
       {
-        path: 'Surge/Ruleset/apple/apple_ip.list',
+        path: 'Surge/Ruleset/apple/apple_ip.conf',
         url: 'https://ruleset.skk.moe/List/ip/apple_services.conf',
       },
       {
@@ -529,8 +529,9 @@ export const specialRules: SpecialRuleConfig[] = [
     name: 'Apple',
     targetFile: 'Surge/Ruleset/apple/apple.list',
     sourceFiles: [
+      'Surge/Ruleset/apple/apple.conf',
       'Surge/Ruleset/apple/apple_cn.list',
-      'Surge/Ruleset/apple/apple_ip.list',
+      'Surge/Ruleset/apple/apple_ip.conf',
       'Surge/Ruleset/apple/apple_cdn.list'
     ],
     cleanup: true,
