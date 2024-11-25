@@ -40,7 +40,23 @@ export const ruleGroups: RuleGroup[] = [
       },
       {
         path: 'Surge/Ruleset/apple/apple.list',
-        url: 'https://raw.githubusercontent.com/NobyDa/Script/master/Surge/Apple.list',
+        url: 'https://ruleset.skk.moe/List/non_ip/apple_services.conf',
+      },
+      {
+        path: 'Surge/Ruleset/apple/apple_cn.list',
+        url: 'https://ruleset.skk.moe/List/non_ip/apple_cn.conf',
+      },
+      {
+        path: 'Surge/Ruleset/apple/apple_cdn.list',
+        url: 'https://ruleset.skk.moe/List/domainset/apple_cdn.conf',
+      },
+      {
+        path: 'Surge/Ruleset/apple/apple_ip.list',
+        url: 'https://ruleset.skk.moe/List/ip/apple_services.conf',
+      },
+      {
+        path: 'Surge/Ruleset/apple/apple_all.list',
+        url: 'https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Surge/Apple/Apple_All.list',
       },
       {
         path: 'Surge/Ruleset/apple/appstore.list',
@@ -349,6 +365,7 @@ export const ruleGroups: RuleGroup[] = [
           enable: true  // 明确启用 header
         } 
       },
+      
       {
         path: 'Surge/Ruleset/ipcird/chinaipv4_dh.list',
         url: 'https://raw.githubusercontent.com/DH-Teams/DH-Geo_AS_IP_CN/main/Geo_AS_IP_CN_V4_Surge.list',
@@ -506,6 +523,20 @@ export const specialRules: SpecialRuleConfig[] = [
     header: {
       title: 'AIGC',
       description: 'This file contains rules for AIGC services, including OpenAI, Google Gemini, Claude, Perplexity, etc.'
+    }
+  },
+  {
+    name: 'Apple',
+    targetFile: 'Surge/Ruleset/apple/apple.list',
+    sourceFiles: [
+      'Surge/Ruleset/apple/apple_cn.list',
+      'Surge/Ruleset/apple/apple_ip.list',
+      'Surge/Ruleset/apple/apple_cdn.list'
+    ],
+    cleanup: true,
+    header: {
+      title: 'Apple',
+      description: 'This file contains rules for Apple services, including services operated in mainland China ( iCloud.com.cn, Apple Maps China, etc).'
     }
   },
   {
