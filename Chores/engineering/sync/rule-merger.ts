@@ -20,7 +20,19 @@ export class RuleMerger {
       // 1. 获取源文件的下载 URL
       const sourceUrls = await this.getSourceUrls(sourceFiles);
       
-      // 2. 读取所有源文件内容
+      // 2. 读取目标文件的内容（如果存在）
+      const targetPath = path.join(this.repoPath, targetFile);
+      let targetContent = '';
+      try {
+        targetContent = await fs.promises.readFile(targetPath, 'utf-8');
+        // Remove existing headers from target content
+        targetContent = targetContent.replace(/^#.*\n/gm, '').trim();
+      } catch (error) {
+        // 如果文件不存在，使用空字符串
+        console.log(`Target file ${targetFile} does not exist yet, will create it`);
+      }
+
+      // 3. 读取所有源文件内容
       const contents = await Promise.all(
         sourceFiles.map(async file => {
           const content = await fs.promises.readFile(
@@ -32,22 +44,21 @@ export class RuleMerger {
         })
       );
 
-      // 2. Merge contents
-      let mergedContent = contents.join('\n');
+      // 4. 合并所有内容，包括目标文件的内容
+      let mergedContent = [targetContent, ...contents].join('\n');
 
-      // 3. Add extra rules if provided
+      // 5. Add extra rules if provided
       if (extraRules) {
         mergedContent += '\n' + extraRules.join('\n');
       }
 
-      // ** 删除重复规则 **
+      // 6. 删除重复规则
       mergedContent = removeDuplicateRules(mergedContent);
 
-      // 4. Clean and sort the merged content (default is true)
-
+      // 7. Clean and sort the merged content (default is true)
       mergedContent = cleanAndSort(mergedContent, this.converter, cleanup ?? true);
 
-      // 5. Add header if enabled (default is true)
+      // 8. Add header if enabled (default is true)
       if (config.header?.enable !== false) {
         mergedContent = addRuleHeader(mergedContent, {
           title: config.header?.title,
@@ -55,14 +66,13 @@ export class RuleMerger {
         }, sourceUrls);
       }
 
-      // 6. Write merged content to target file
-      const targetPath = path.join(this.repoPath, targetFile);
+      // 9. Write merged content to target file
       await fs.promises.mkdir(path.dirname(targetPath), { recursive: true });
       await fs.promises.writeFile(targetPath, mergedContent);
 
       console.log(`Successfully merged ${name} rules to ${targetFile}`);
 
-      // 7. Delete source files
+      // 10. Delete source files (optional, you might want to keep them)
       await Promise.all(
         sourceFiles.map(async file => {
           const filePath = path.join(this.repoPath, file);

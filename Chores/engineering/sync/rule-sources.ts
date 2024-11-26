@@ -175,10 +175,10 @@ export const ruleGroups: RuleGroup[] = [
         path: 'Surge/Ruleset/streaming/video/bilibili.list',
         url: 'https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Bilibili.list',
       },
-      //{
-      //  path: 'Surge/Ruleset/streaming/video/tiktok.list',
-      //  url: 'https://proxyresource.pages.dev/Tool/Loon/Rule/TikTok.list',
-      //},
+      {
+        path: 'Surge/Ruleset/streaming/video/tiktok.list',
+        url: 'https://kelee.one/Tool/Loon/Rule/TikTok.list',
+      },
       {
         path: 'Surge/Ruleset/streaming/cn.list',
         url: 'https://raw.githubusercontent.com/ConnersHua/RuleGo/master/Surge/Ruleset/Extra/Streaming/CN.list',
@@ -426,10 +426,10 @@ export const ruleGroups: RuleGroup[] = [
       }
     ]
   },
-  /**
   {
     name: 'Extra',
     files: [
+        /**
       {
         path: 'Surge/Ruleset/extra/direct.list',
         url: 'https://raw.githubusercontent.com/Repcz/Tool/X/Surge/Rules/Direct.list',
@@ -446,9 +446,13 @@ export const ruleGroups: RuleGroup[] = [
         path: 'Surge/Ruleset/extra/prevent_dns_leaks.list',
         url: 'https://raw.githubusercontent.com/Repcz/Tool/X/Surge/Rules/Prevent_DNS_Leaks.list',
       }
+          */
+      {
+        path: 'Surge/Ruleset/extra/speedtest.list',
+        url: 'https://kelee.one/Tool/Loon/Rule/OoklaSpeedtest.list.list',
+      }
     ]
   },
-  */
   {
     name: 'GFW',
     files: [
@@ -588,7 +592,6 @@ export const specialRules: SpecialRuleConfig[] = [
     name: 'Emby',
     targetFile: 'Surge/Ruleset/streaming/video/embytest.list',
     sourceFiles: [
-      'Surge/Ruleset/streaming/video/embytest.list',
       'Surge/Ruleset/streaming/video/embytest2.list'
     ],
     cleanup: true,
