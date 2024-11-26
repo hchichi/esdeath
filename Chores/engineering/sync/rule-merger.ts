@@ -89,14 +89,30 @@ export class RuleMerger {
   private async getSourceUrls(files: string[]): Promise<string[]> {
     // 从 ruleGroups 中查找对应文件的 URL
     const urls = files.map(file => {
+      // 在所有规则组中查找
       for (const group of ruleGroups) {
         const ruleFile = group.files.find(f => f.path === file);
         if (ruleFile?.url) {
           return ruleFile.url;
         }
       }
+      
+      // 如果在规则组中找不到，尝试在 specialRules 中查找
+      const specialRule = specialRules.find(rule => 
+        rule.targetFile === file || rule.sourceFiles.includes(file)
+      );
+      if (specialRule) {
+        // 如果是目标文件，可以从规则组中查找对应的 URL
+        const targetFileRule = ruleGroups.flatMap(g => g.files)
+          .find(f => f.path === file);
+        if (targetFileRule?.url) {
+          return targetFileRule.url;
+        }
+      }
+      
       return file; // 如果找不到 URL，返回文件路径
     });
-    return urls;
+    
+    return urls.filter(Boolean); // 过滤掉可能的空值
   }
 } 
