@@ -676,7 +676,7 @@ body_rewrite_34 = type=http-response, pattern=^https:\/\/m5-zb\.amap\.com\/ws\/s
 
 # ------------ 12306 -------------
 移除12306开屏广告 = type=http-request, pattern=^https:\/\/ad\.12306\.cn\/ad\/ser\/getAdList$, script-path=https://github.com/hchichi/esdeath/raw/main/Chores/js/12306_remove_splashscreen_ads.js, requires-body=true
-移除12306应用内广告 = type=http-response, pattern=^https:\/\/mobile\.12306\.cn\/otsmobile\/app\/mgs\/mgw\.htm$, script-path=https://github.com/hchichi/esdeath/raw/main/Chores/js/12306_remove_ads.js
+移除12306应用内广告 = type=http-request, pattern=^https:\/\/mobile\.12306\.cn\/otsmobile\/app\/mgs\/mgw\.htm$, script-path=https://github.com/hchichi/esdeath/raw/main/Chores/js/12306_remove_ads.js
 
 # ------------- DiDi -------------
 移除广告 = type=http-response, pattern=^https:\/\/common\.diditaxi\.com\.cn\/common\/v\d\/usercenter\/me, script-path=https://github.com/hchichi/esdeath/raw/main/Chores/js/DiDi_remove_ads.js, requires-body=true
