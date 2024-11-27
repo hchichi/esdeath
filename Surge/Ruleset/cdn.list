@@ -1,12 +1,12 @@
 // Common Static CDNs
-// Last updated: 2024/11/27 18:14:42
-// DOMAIN: 1900
+// Last updated: 2024/11/27 18:42:09
+// DOMAIN: 1902
 // DOMAIN-SUFFIX: 824
 // DOMAIN-KEYWORD: 5
 // IP-CIDR: 3
 // URL-REGEX: 2
 // OTHER: 31
-// Total: 2765
+// Total: 2767
 // Made by Sukka, All rights reserved
 // Data sources:
 //  - https://ruleset.skk.moe/List/non_ip/cdn.conf
@@ -723,6 +723,7 @@ DOMAIN,ec-prod.scene7.com
 DOMAIN,edata.ndtv.com
 DOMAIN,edge-consumer-static.azureedge.net
 DOMAIN,edge-mobile-static.azureedge.net
+DOMAIN,edge.marker.io
 DOMAIN,edge.personalizer.io
 DOMAIN,edge1.certona.net
 DOMAIN,edgeassetservice.azureedge.net
@@ -1380,6 +1381,7 @@ DOMAIN,resource.fs.com
 DOMAIN,resource.video.nimg.jp
 DOMAIN,resources-cache.prod.sketch.com
 DOMAIN,resources-live.sketch.cloud
+DOMAIN,resources.esportsinsider.com
 DOMAIN,resources.help.salesforce.com
 DOMAIN,rsi.grafana.com
 DOMAIN,rsms.me
