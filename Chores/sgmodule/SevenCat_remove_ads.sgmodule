@@ -6,9 +6,9 @@
 
 #!openUrl=https://apps.apple.com/app/id1387717110
 #!tag=去广告
-#!loon_version=3.2.1(749)
+#!loon_version=3.2.4(787)
 #!homepage=https://github.com/luestr/ProxyResource/blob/main/README.md
-#!date=2024-09-29 12:44:08
+#!date=2024-11-28 00:00:00
 
 [Rule]
 DOMAIN,cdn-ad.wtzw.com,REJECT
@@ -57,7 +57,7 @@ DOMAIN-SUFFIX,gdt.qq.com,REJECT
 ^https:\/\/xiaoshuo\.wtzw\.com\/api\/v\d\/withdraw\/init data-type=text data="{}" status-code=200
 
 [Script]
-body_rewrite_44 = type=http-response, pattern=^https:\/\/xiaoshuo\.wtzw\.com\/api\/v\d\/user\/my-center\?, script-path=https://github.com/hchichi/esdeath/raw/main/Chores/js/body-rewrite.js, requires-body=true, max-size=-1, timeout=30, argument=%5B%5B%22json-del%22%2C%5B%22data.func_area%5B1%5D%22%2C%22data.func_area%5B2%5D%22%5D%5D%5D
+body_rewrite_44 = type=http-response, pattern=^https:\/\/xiaoshuo\.wtzw\.com\/api\/v\d\/user\/my-center\?, script-path=https://github.com/ilychi/esdeath/raw/main/Chores/js/body-rewrite.js, requires-body=true, max-size=-1, timeout=30, argument=%5B%5B%22json-del%22%2C%5B%22data.func_area%5B1%5D%22%2C%22data.func_area%5B2%5D%22%5D%5D%5D
 
 [MITM]
 hostname = %APPEND% api-cfg.wtzw.com, sf3-fe-tos.pglstatp-toutiao.com, api-bc.wtzw.com, api-gw.wtzw.com, cdn.wtzw.com

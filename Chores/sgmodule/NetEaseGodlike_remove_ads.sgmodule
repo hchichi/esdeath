@@ -6,9 +6,9 @@
 
 #!openUrl=https://apps.apple.com/app/id1359055423
 #!tag=去广告
-#!loon_version=3.2.1(749)
+#!loon_version=3.2.4(787)
 #!homepage=https://github.com/luestr/ProxyResource/blob/main/README.md
-#!date=2024-09-20 21:37:41
+#!date=2024-11-28 00:00:00
 
 [Rule]
 # 拦截HTTPDNS
@@ -32,9 +32,9 @@ IP-CIDR,115.236.121.195/32,REJECT,no-resolve
 ^https:\/\/god\.gameyw\.netease\.com\/v\d\/app\/static\/conf\/getByModuleNameList$ data-type=text data="{}" status-code=200
 
 [Script]
-body_rewrite_29 = type=http-response, pattern=#^https:\/\/god-act\.gameyw\.netease\.com\/v1\/act\/pageConf\/commonAppConfig$, script-path=https://github.com/hchichi/esdeath/raw/main/Chores/js/body-rewrite.js, requires-body=true, max-size=-1, timeout=30, argument=%5B%5B%22json-del%22%2C%5B%22result.itemList%5B1%5D.itemList%5B4%5D.itemList%5B2%5D%22%5D%5D%5D
+body_rewrite_29 = type=http-response, pattern=#^https:\/\/god-act\.gameyw\.netease\.com\/v1\/act\/pageConf\/commonAppConfig$, script-path=https://github.com/ilychi/esdeath/raw/main/Chores/js/body-rewrite.js, requires-body=true, max-size=-1, timeout=30, argument=%5B%5B%22json-del%22%2C%5B%22result.itemList%5B1%5D.itemList%5B4%5D.itemList%5B2%5D%22%5D%5D%5D
 
-body_rewrite_31 = type=http-response, pattern=^https:\/\/app-conf\.ds\.163\.com\/v\d\/app\/base\/conf\/static\/start-config\?, script-path=https://github.com/hchichi/esdeath/raw/main/Chores/js/body-rewrite.js, requires-body=true, max-size=-1, timeout=30, argument=%5B%5B%22json-del%22%2C%5B%22result.updateConfig%5B2%5D.itemList%5B94%5D.itemList%5B2%5D%22%5D%5D%5D
+body_rewrite_31 = type=http-response, pattern=^https:\/\/app-conf\.ds\.163\.com\/v\d\/app\/base\/conf\/static\/start-config\?, script-path=https://github.com/ilychi/esdeath/raw/main/Chores/js/body-rewrite.js, requires-body=true, max-size=-1, timeout=30, argument=%5B%5B%22json-del%22%2C%5B%22result.updateConfig%5B2%5D.itemList%5B94%5D.itemList%5B2%5D%22%5D%5D%5D
 
 [MITM]
 hostname = %APPEND% god.gameyw.netease.com, app-conf.ds.163.com

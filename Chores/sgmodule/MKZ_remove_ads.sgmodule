@@ -6,9 +6,9 @@
 
 #!openUrl=https://apps.apple.com/app/id1189885433
 #!tag=去广告
-#!loon_version=3.2.1(749)
+#!loon_version=3.2.4(787)
 #!homepage=https://github.com/luestr/ProxyResource/blob/main/README.md
-#!date=2024-07-18 21:07:01
+#!date=2024-11-28 00:00:00
 
 [Rule]
 AND,((DOMAIN-KEYWORD,-ad-),(DOMAIN-SUFFIX,byteimg.com)),REJECT
@@ -136,7 +136,7 @@ DOMAIN,plbslog.umeng.com,REJECT
 
 [Script]
 # 配置修改
-配置修改 = type=http-response, pattern=^https:\/\/base\.mkzcdn\.com\/app\/config\/, script-path=https://github.com/hchichi/esdeath/raw/main/Chores/js/MKZ_remove_ads.js, requires-body=true
+配置修改 = type=http-response, pattern=^https:\/\/base\.mkzcdn\.com\/app\/config\/, script-path=https://github.com/ilychi/esdeath/raw/main/Chores/js/MKZ_remove_ads.js, requires-body=true
 
 [MITM]
 hostname = %APPEND% base.mkzcdn.com

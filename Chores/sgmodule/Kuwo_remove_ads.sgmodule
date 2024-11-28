@@ -6,9 +6,9 @@
 
 #!openUrl=https://apps.apple.com/app/id588673713
 #!tag=去广告
-#!loon_version=3.2.1(749)
+#!loon_version=3.2.4(787)
 #!homepage=https://github.com/luestr/ProxyResource/blob/main/README.md
-#!date=2024-07-18 05:09:37
+#!date=2024-11-28 00:00:00
 
 [Rule]
 # 拦截HTTPDNS
@@ -75,7 +75,7 @@ URL-REGEX,"^http:\/\/wapi\.kuwo\.cn\/openapi\/v\d\/album\/adBar\/",REJECT-TINYGI
 
 [Script]
 # 移除听书页面广告
-移除听书页面广告 = type=http-response, pattern=^http:\/\/wapi\.kuwo\.cn\/openapi\/v\d\/tingshu\/index\/radio, script-path=https://github.com/hchichi/esdeath/raw/main/Chores/js/Kuwo_remove_ads.js, requires-body=true
+移除听书页面广告 = type=http-response, pattern=^http:\/\/wapi\.kuwo\.cn\/openapi\/v\d\/tingshu\/index\/radio, script-path=https://github.com/ilychi/esdeath/raw/main/Chores/js/Kuwo_remove_ads.js, requires-body=true
 
 [MITM]
 hostname = %APPEND% appi.kuwo.cn, mc.tencentmusic.com, vip*.kuwo.cn, tingshu.kuwo.cn

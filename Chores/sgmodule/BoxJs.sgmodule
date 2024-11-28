@@ -6,13 +6,13 @@
 
 #!openUrl=http://boxjs.com
 #!tag=数据管理
-#!loon_version=3.2.1(749)
+#!loon_version=3.2.4(787)
 #!homepage=https://github.com/luestr/ProxyResource/blob/main/README.md
-#!date=2024-04-23 08:28:27
+#!date=2024-11-28 00:00:00
 
 [Script]
-# http-request ^https?:\/\/(.+\.)?boxjs\.(com|net) script-path=https://github.com/hchichi/esdeath/raw/main/Chores/js/BoxJs.js,requires-body= true,tag=BoxJS,timeout=120
-BoxJS = type=http-request, pattern=^https?:\/\/(.+\.)?boxjs\.(com|net), script-path=https://github.com/hchichi/esdeath/raw/main/Chores/js/chavy.boxjs.js, requires-body=true, timeout=120
+# http-request ^https?:\/\/(.+\.)?boxjs\.(com|net) script-path=https://github.com/ilychi/esdeath/raw/main/Chores/js/BoxJs.js,requires-body= true,tag=BoxJS,timeout=120
+BoxJS = type=http-request, pattern=^https?:\/\/(.+\.)?boxjs\.(com|net), script-path=https://github.com/ilychi/esdeath/raw/main/Chores/js/chavy.boxjs.js, requires-body=true, timeout=120
 
 [MITM]
 hostname = %APPEND% boxjs.com, boxjs.net, *.boxjs.com, *.boxjs.net

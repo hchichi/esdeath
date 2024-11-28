@@ -6,9 +6,9 @@
 
 #!openUrl=https://apps.apple.com/app/id353115739
 #!tag=去广告
-#!loon_version=3.2.1(749)
+#!loon_version=3.2.4(787)
 #!homepage=https://github.com/luestr/ProxyResource/blob/main/README.md
-#!date=2024-09-07 23:36:24
+#!date=2024-11-28 00:00:00
 
 [Rule]
 # 拦截HTTPDNS
@@ -43,11 +43,11 @@ DOMAIN,aaid.umeng.com,REJECT
 ^https:\/\/gorgon\.youdao\.com\/gorgon\/request\.s\? data-type=text data="{}" status-code=200
 
 [Script]
-body_rewrite_39 = type=http-response, pattern=^https:\/\/dict\.youdao\.com\/homepage\/toolbar\/get\?, script-path=https://github.com/hchichi/esdeath/raw/main/Chores/js/body-rewrite.js, requires-body=true, max-size=-1, timeout=30, argument=%5B%5B%22json-del%22%2C%5B%22data.vipTag%22%5D%5D%5D
+body_rewrite_39 = type=http-response, pattern=^https:\/\/dict\.youdao\.com\/homepage\/toolbar\/get\?, script-path=https://github.com/ilychi/esdeath/raw/main/Chores/js/body-rewrite.js, requires-body=true, max-size=-1, timeout=30, argument=%5B%5B%22json-del%22%2C%5B%22data.vipTag%22%5D%5D%5D
 
-body_rewrite_43 = type=http-response, pattern=^https:\/\/dict\.youdao\.com\/course\/tab\/translateTab\?, script-path=https://github.com/hchichi/esdeath/raw/main/Chores/js/body-rewrite.js, requires-body=true, max-size=-1, timeout=30, argument=%5B%5B%22json-del%22%2C%5B%22data%22%5D%5D%5D
+body_rewrite_43 = type=http-response, pattern=^https:\/\/dict\.youdao\.com\/course\/tab\/translateTab\?, script-path=https://github.com/ilychi/esdeath/raw/main/Chores/js/body-rewrite.js, requires-body=true, max-size=-1, timeout=30, argument=%5B%5B%22json-del%22%2C%5B%22data%22%5D%5D%5D
 
-body_rewrite_45 = type=http-response, pattern=^https:\/\/dict\.youdao\.com\/course\/tab\/home\?, script-path=https://github.com/hchichi/esdeath/raw/main/Chores/js/body-rewrite.js, requires-body=true, max-size=-1, timeout=30, argument=%5B%5B%22json-del%22%2C%5B%22data.popup%22%2C%22data.tab%22%2C%22data.searchSuggestList%22%2C%22data.newBanner%22%2C%22data.icon.promotionList%22%2C%22data.icon.iconList%5B1%5D.bubble%22%2C%22data.icon.iconList%5B2%5D.bubble%22%2C%22data.icon.iconList%5B8%5D.bubble%22%5D%5D%5D
+body_rewrite_45 = type=http-response, pattern=^https:\/\/dict\.youdao\.com\/course\/tab\/home\?, script-path=https://github.com/ilychi/esdeath/raw/main/Chores/js/body-rewrite.js, requires-body=true, max-size=-1, timeout=30, argument=%5B%5B%22json-del%22%2C%5B%22data.popup%22%2C%22data.tab%22%2C%22data.searchSuggestList%22%2C%22data.newBanner%22%2C%22data.icon.promotionList%22%2C%22data.icon.iconList%5B1%5D.bubble%22%2C%22data.icon.iconList%5B2%5D.bubble%22%2C%22data.icon.iconList%5B8%5D.bubble%22%5D%5D%5D
 
 [MITM]
 hostname = %APPEND% gorgon.youdao.com, dict.youdao.com

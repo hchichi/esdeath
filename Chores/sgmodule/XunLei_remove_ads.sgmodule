@@ -6,9 +6,9 @@
 
 #!openUrl=https://apps.apple.com/app/id1503466530
 #!tag=去广告
-#!loon_version=3.2.1(749)
+#!loon_version=3.2.4(787)
 #!homepage=https://github.com/luestr/ProxyResource/blob/main/README.md
-#!date=2024-07-14 20:23:48
+#!date=2024-11-28 00:00:00
 
 [Rule]
 AND,((DOMAIN-KEYWORD,-ad-),(DOMAIN-SUFFIX,byteimg.com)),REJECT
@@ -110,7 +110,7 @@ DOMAIN,et.tanx.com,REJECT
 
 [Script]
 # 精简我的页面
-精简我的页面 = type=http-response, pattern=^https:\/\/conf-m-ssl\.xunlei\.com\/external\/, script-path=https://github.com/hchichi/esdeath/raw/main/Chores/js/XunLei_remove_ads.js, requires-body=true
+精简我的页面 = type=http-response, pattern=^https:\/\/conf-m-ssl\.xunlei\.com\/external\/, script-path=https://github.com/ilychi/esdeath/raw/main/Chores/js/XunLei_remove_ads.js, requires-body=true
 
 [MITM]
 hostname = %APPEND% api-shoulei-ssl.xunlei.com, conf-m-ssl.xunlei.com

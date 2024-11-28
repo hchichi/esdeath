@@ -6,9 +6,9 @@
 
 #!openUrl=https://apps.apple.com/app/id600273928
 #!tag=去广告
-#!loon_version=3.2.1(749)
+#!loon_version=3.2.4(787)
 #!homepage=https://getupnote.com/share/notes/zSn1ShBmzNYISKcTgjXE5oHMrNf2/34bf3aad-7872-497d-b239-198e27e8c84c
-#!date=2024-09-13 23:29:54
+#!date=2024-11-28 00:00:00
 
 [Rule]
 # 开屏广告
@@ -20,11 +20,11 @@ DOMAIN,tysdk.95516.com,REJECT
 ^https:\/\/wallet\.95516\.com(:10533)?\/s\/wl\/icon\/large\/1 - reject
 
 [Script]
-移除云闪付推广 = type=http-response, pattern=^https:\/\/base\.95516\.com\/app\/inApp\/sys\/appShowGroup\/, script-path=https://github.com/hchichi/esdeath/raw/main/Chores/js/UnionPay_remove_ads_with_ssl_unpinning.js, requires-body=true
+移除云闪付推广 = type=http-response, pattern=^https:\/\/base\.95516\.com\/app\/inApp\/sys\/appShowGroup\/, script-path=https://github.com/ilychi/esdeath/raw/main/Chores/js/UnionPay_remove_ads_with_ssl_unpinning.js, requires-body=true
 
-移除云闪付推广 = type=http-response, pattern=^https:\/\/account\.95516\.com\/fortune\/inApp\/common\/, script-path=https://github.com/hchichi/esdeath/raw/main/Chores/js/UnionPay_remove_ads_with_ssl_unpinning.js, requires-body=true
+移除云闪付推广 = type=http-response, pattern=^https:\/\/account\.95516\.com\/fortune\/inApp\/common\/, script-path=https://github.com/ilychi/esdeath/raw/main/Chores/js/UnionPay_remove_ads_with_ssl_unpinning.js, requires-body=true
 
-移除云闪付推广 = type=http-response, pattern=^https:\/\/content\.95516\.com\/koala-pre\/koala\/(recommend\/hotList|right\/queryAllRights), script-path=https://github.com/hchichi/esdeath/raw/main/Chores/js/UnionPay_remove_ads_with_ssl_unpinning.js, requires-body=true
+移除云闪付推广 = type=http-response, pattern=^https:\/\/content\.95516\.com\/koala-pre\/koala\/(recommend\/hotList|right\/queryAllRights), script-path=https://github.com/ilychi/esdeath/raw/main/Chores/js/UnionPay_remove_ads_with_ssl_unpinning.js, requires-body=true
 
 [MITM]
 hostname = %APPEND% account.95516.com, base.95516.com, content.95516.com

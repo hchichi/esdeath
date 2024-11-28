@@ -6,9 +6,9 @@
 
 #!openUrl=https://apps.apple.com/app/id1528682937
 #!tag=去广告
-#!loon_version=3.2.1(749)
+#!loon_version=3.2.4(787)
 #!homepage=https://github.com/luestr/ProxyResource/blob/main/README.md
-#!date=2024-06-30 01:25:09
+#!date=2024-11-28 00:00:00
 
 [Map Local]
 # 首页 - 轮播图
@@ -19,7 +19,7 @@
 
 [Script]
 # 查老板 - 推荐老板
-移除推荐老板 = type=http-response, pattern=^https:\/\/m\.riskbird\.com\/prod-qbb-api\/query\/person\/personRecommend, script-path=https://github.com/hchichi/esdeath/raw/main/Chores/js/RiskBird_remove_ads.js, requires-body=true
+移除推荐老板 = type=http-response, pattern=^https:\/\/m\.riskbird\.com\/prod-qbb-api\/query\/person\/personRecommend, script-path=https://github.com/ilychi/esdeath/raw/main/Chores/js/RiskBird_remove_ads.js, requires-body=true
 
 [MITM]
 hostname = %APPEND% m.riskbird.com
