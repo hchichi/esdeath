@@ -449,7 +449,7 @@ export const ruleGroups: RuleGroup[] = [
           */
       {
         path: 'Surge/Ruleset/extra/speedtest.list',
-        url: 'https://kelee.one/Tool/Loon/Rule/OoklaSpeedtest.list.list',
+        url: 'https://kelee.one/Tool/Loon/Rule/OoklaSpeedtest.list',
       }
     ]
   },
