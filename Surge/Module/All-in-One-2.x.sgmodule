@@ -1,5 +1,5 @@
 #!name=AD ByeBye+ 2.x
-#!desc=Most Optimized Ad-free Experience presented with automated updates. | 提供最优化无广告体验，自动同步更新。\nRepo: https://tuu.cat/repo・Update: 11/26/2024・Support: @bunizao・ Channel: @hututu00\nModified by @chichi for personal use.
+#!desc=Most Optimized Ad-free Experience presented with automated updates. | 提供最优化无广告体验，自动同步更新。\nRepo: https://tuu.cat/repo・Update: 11/28/2024・Support: @bunizao・ Channel: @hututu00\nModified by @chichi for personal use.
 #!include=KeliAds, BlockAds, QQMusic, WeChatMini, Himalaya, WeChatOA, Snowball, Cainiao, Weibo, NetEaseMusic, Spotify, RedPaper, SMZDM, WeiboIntl, YouTube, Zhihu, Amap, Umetrip, Caixin, JD, Taobao, 12306, DiDi, Aiinquiry, QiXinBao, iMaiCai, MailMaster, VideoGo, DuiTang, ColorfulClouds, FleaMarket, BooHee, MeiTu, Keep, SFExpress, WeChatUnlock, UnnooQuan, QuickSearch, Eleme, Meituan
 #!url=https://chichi.sh/ADBlock
 #!category=🚭 AD Block
@@ -97,7 +97,7 @@ RULE-SET,https://raw.githubusercontent.com/hchichi/esdeath/main/Chores/ruleset/r
 # ------------ Zhihu -------------
 ^https:\/\/api\.zhihu\.com\/unlimited\/go\/my_card - reject
 ^https:\/\/www\.zhihu\.com\/appview\/v3\/zhmore - reject
-^https:\/\/link\.zhihu\.com\/\?target=(?:https?)?(?:%3A|:)?(?:\/\/|%2F%2F)?(.*) http://$1 302
+^https:\/\/link\.zhihu\.com\/\?target=(?:https?)?(?:%3A|:)?(?:\/\/|%2F%2F)?(.*) http://$1 307
 
 # ---------- Aiinquiry -----------
 ^https:\/\/aiqicha\.baidu\.com\/app\/commonstatusAjax - reject
@@ -121,14 +121,14 @@ RULE-SET,https://raw.githubusercontent.com/hchichi/esdeath/main/Chores/ruleset/r
 ^https:\/\/images\.pinduoduo\.com\/marketing_api\/ - reject
 
 # --------- QuickSearch ----------
-^https:\/\/duckduckgo\.com\/\?q=bd\+([^&]+).+ https://www.baidu.com/s?wd=$1 302
-^https:\/\/duckduckgo\.com\/\?q=bdimg\+([^&]+).+ https://image.baidu.com/search/index?tn=baiduimage&word=$1 302
-^https:\/\/duckduckgo\.com\/\?q=gimg\+([^&]+).+ https://www.google.com/search?&tbm=isch&q=$1 302
-^https:\/\/duckduckgo\.com\/\?q=b\+([^&]+).+ https://www.bing.com/search?q=$1 302
-^https:\/\/duckduckgo\.com\/\?q=wk\+([^&]+).+ https://zh.wikipedia.org/wiki/$1 302
-^https:\/\/duckduckgo\.com\/\?q=qm\+([^&]+).+ https://www.qimai.cn/search/index/country/cn/search/$1 302
-^https:\/\/duckduckgo\.com\/\?q=gh\+([^&]+).+ https://github.com/search?q=$1 302
-^https:\/\/duckduckgo\.com\/\?q=([^&]+).+ https://www.google.com/search?q=$1 302
+^https:\/\/duckduckgo\.com\/\?q=bd\+([^&]+).+ https://www.baidu.com/s?wd=$1 307
+^https:\/\/duckduckgo\.com\/\?q=bdimg\+([^&]+).+ https://image.baidu.com/search/index?tn=baiduimage&word=$1 307
+^https:\/\/duckduckgo\.com\/\?q=gimg\+([^&]+).+ https://www.google.com/search?&tbm=isch&q=$1 307
+^https:\/\/duckduckgo\.com\/\?q=b\+([^&]+).+ https://www.bing.com/search?q=$1 307
+^https:\/\/duckduckgo\.com\/\?q=wk\+([^&]+).+ https://zh.wikipedia.org/wiki/$1 307
+^https:\/\/duckduckgo\.com\/\?q=qm\+([^&]+).+ https://www.qimai.cn/search/index/country/cn/search/$1 307
+^https:\/\/duckduckgo\.com\/\?q=gh\+([^&]+).+ https://github.com/search?q=$1 307
+^https:\/\/duckduckgo\.com\/\?q=([^&]+).+ https://www.google.com/search?q=$1 307
 
 # ----------- Eleme -----------
 ^https:\/\/elemecdn.com\/.+\/sitemap - reject
@@ -353,7 +353,7 @@ RULE-SET,https://raw.githubusercontent.com/hchichi/esdeath/main/Chores/ruleset/r
 ^https?:\/\/weibointl\.api\.weibo\.cn\/portal\.php\?a=hot_search_users data-type=text data="{}" status-code=200
 
 # ----------- YouTube ------------
-^https?:\/\/[\w-]+\.googlevideo\.com\/initplayback.+&oad data-type=file data="https://kelee.one/Resource/Script/YouTube/YouTube_remove_ads/YouTube_502Bad.mock" status-code=502 header="Content-Type:text/plain"
+^https?:\/\/[\w-]+\.googlevideo\.com\/initplayback.+&oad data-type=text data="" status-code=502 header="Content-Type:text/plain"
 
 # ------------ Zhihu -------------
 ^https:\/\/api\.zhihu\.com\/commercial_api\/ data-type=text data="{}" status-code=200
@@ -676,7 +676,7 @@ body_rewrite_34 = type=http-response, pattern=^https:\/\/m5-zb\.amap\.com\/ws\/s
 
 # ------------ 12306 -------------
 移除12306开屏广告 = type=http-request, pattern=^https:\/\/ad\.12306\.cn\/ad\/ser\/getAdList$, script-path=https://github.com/hchichi/esdeath/raw/main/Chores/js/12306_remove_splashscreen_ads.js, requires-body=true
-移除12306应用内广告 = type=http-response, pattern=^https:\/\/mobile\.12306\.cn\/otsmobile\/app\/mgs\/mgw\.htm$, script-path=https://github.com/hchichi/esdeath/raw/main/Chores/js/12306_remove_ads.js
+移除12306应用内广告 = type=http-request, pattern=^https:\/\/mobile\.12306\.cn\/otsmobile\/app\/mgs\/mgw\.htm$, script-path=https://github.com/hchichi/esdeath/raw/main/Chores/js/12306_remove_ads.js
 
 # ------------- DiDi -------------
 移除广告 = type=http-response, pattern=^https:\/\/common\.diditaxi\.com\.cn\/common\/v\d\/usercenter\/me, script-path=https://github.com/hchichi/esdeath/raw/main/Chores/js/DiDi_remove_ads.js, requires-body=true
