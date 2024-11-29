@@ -356,6 +356,8 @@ DOMAIN,ads-shopping.shouqianba.com
 DOMAIN,ad.maoyan.com
 # 捷停车 @怎么肥事
 DOMAIN,e.jparking.cn
+# 广告下发
+DOMAIN,adse.ximalaya.com
 DOMAIN-SUFFIX,wxs.qq.com
 URL-REGEX,"^http:\/\/119\.29\.29\.98\/d\?"
 AND,((URL-REGEX,"^http:\/\/.+\/amdc\/mobileDispatch"),(USER-AGENT,"Cainiao4iPhone*"))
