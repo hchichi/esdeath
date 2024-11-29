@@ -1,12 +1,12 @@
 // Common Static CDNs
-// Last updated: 2024/11/29 19:01:54
-// DOMAIN: 1908
+// Last updated: 2024/11/29 19:14:15
+// DOMAIN: 1913
 // DOMAIN-SUFFIX: 824
 // DOMAIN-KEYWORD: 5
 // IP-CIDR: 3
 // URL-REGEX: 2
 // OTHER: 31
-// Total: 2773
+// Total: 2778
 // Made by Sukka, All rights reserved
 // Data sources:
 //  - https://ruleset.skk.moe/List/non_ip/cdn.conf
@@ -112,6 +112,7 @@ DOMAIN,assets.chaos.social
 DOMAIN,assets.chess24.com
 DOMAIN,assets.clever-cloud.com
 DOMAIN,assets.clickfunnels.com
+DOMAIN,assets.cloudpilot.ai
 DOMAIN,assets.codepen.io
 DOMAIN,assets.coinbase.com
 DOMAIN,assets.coingecko.com
@@ -894,6 +895,7 @@ DOMAIN,image.gyutto.jp
 DOMAIN,image.ibb.co
 DOMAIN,image.jnislniv.xyz
 DOMAIN,image.lichess1.org
+DOMAIN,image.mgstage.com
 DOMAIN,image.mux.com
 DOMAIN,image.nmb.best
 DOMAIN,image.p-c2-x.abema-tv.com
@@ -1507,6 +1509,7 @@ DOMAIN,sp.replit.com
 DOMAIN,spcdn.incartupsell.com
 DOMAIN,spoppe-b.azureedge.net
 DOMAIN,spoprod-a.akamaihd.net
+DOMAIN,sprig.figma.com
 DOMAIN,st-eu.dynamicyield.com
 DOMAIN,st.agrd.eu
 DOMAIN,st.deviantart.net
@@ -1738,6 +1741,7 @@ DOMAIN,staticw2.yotpo.com
 DOMAIN,stats.codesandbox.io
 DOMAIN,stats.setapp.com
 DOMAIN,stats.setapp.macpaw.dev
+DOMAIN,status.ui.com
 DOMAIN,steamcdn-a.akamaihd.net
 DOMAIN,steamusercontent-a.akamaihd.net
 DOMAIN,steamuserimages-a.akamaihd.net
@@ -1770,6 +1774,7 @@ DOMAIN,t3.gstatic.com
 DOMAIN,t3.picb.cc
 DOMAIN,t4.picb.cc
 DOMAIN,tag.trovo-tag.com
+DOMAIN,tag.unifyintent.com
 DOMAIN,tags.bkrtx.com
 DOMAIN,tags.nationwide.com
 DOMAIN,tags.news.com.au
