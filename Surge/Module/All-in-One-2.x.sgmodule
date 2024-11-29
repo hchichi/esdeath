@@ -76,7 +76,6 @@ RULE-SET,https://raw.githubusercontent.com/hchichi/esdeath/main/Chores/ruleset/r
 
 # ----------- Himalaya -----------
 ^https:\/\/gslbali\.ximalaya\.com\/linkeye-cloud\/httpdns\/ - reject
-^http:\/\/xmc\.ximalaya\.com\/xmlymain-login-web\/login\/ - reject
 
 # ------------ Zhihu -------------
 ^https:\/\/api\.zhihu\.com\/unlimited\/go\/my_card - reject
