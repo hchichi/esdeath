@@ -1,12 +1,12 @@
 // Common Static CDNs
-// Last updated: 2024/11/29 21:22:31
-// DOMAIN: 1913
+// Last updated: 2024/11/29 21:41:29
+// DOMAIN: 1914
 // DOMAIN-SUFFIX: 824
 // DOMAIN-KEYWORD: 5
 // IP-CIDR: 3
 // URL-REGEX: 2
 // OTHER: 31
-// Total: 2778
+// Total: 2779
 // Made by Sukka, All rights reserved
 // Data sources:
 //  - https://ruleset.skk.moe/List/non_ip/cdn.conf
@@ -1725,6 +1725,7 @@ DOMAIN,static1.squarespace.com
 DOMAIN,static10.lottiefiles.com
 DOMAIN,static2.avg.com
 DOMAIN,static2.lottiefiles.com
+DOMAIN,static2.onlyfans.com
 DOMAIN,static2.sharepointonline.com
 DOMAIN,static3.lottiefiles.com
 DOMAIN,static3.squarespace.com
