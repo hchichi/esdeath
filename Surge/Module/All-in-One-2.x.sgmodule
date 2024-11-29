@@ -74,6 +74,10 @@ RULE-SET,https://raw.githubusercontent.com/hchichi/esdeath/main/Chores/ruleset/r
 ^https:\/\/api\.pinduoduo\.com\/api\/ktt_gateway\/activity\/feeds\/personal_home_page\/ - reject
 ^https:\/\/api\.szbgcx\.cn\/account\/adv\/ - reject
 
+# ----------- Himalaya -----------
+^https:\/\/gslbali\.ximalaya\.com\/linkeye-cloud\/httpdns\/ - reject
+^http:\/\/xmc\.ximalaya\.com\/xmlymain-login-web\/login\/ - reject
+
 # ------------ Zhihu -------------
 ^https:\/\/api\.zhihu\.com\/unlimited\/go\/my_card - reject
 ^https:\/\/www\.zhihu\.com\/appview\/v3\/zhmore - reject
@@ -262,11 +266,11 @@ RULE-SET,https://raw.githubusercontent.com/hchichi/esdeath/main/Chores/ruleset/r
 ^https:\/\/daijia\.kuaidadi\.com\/gateway\?api=prado\.cms\.delivery\.batch&apiVe data-type=text data="{}" status-code=200
 
 # ----------- Himalaya -----------
-^https:\/\/gslbali\.ximalaya\.com\/linkeye-cloud\/httpdns\/ data-type=text data="{}" status-code=200
 ^https:\/\/(search|searchwsa)\.ximalaya\.com\/hub\/guideWordV\d\/ data-type=text data="{}" status-code=200
 ^https:\/\/(mobile|mobilehera)\.ximalaya\.com\/discovery-feed\/v\d\/scene\/listen\/refresh\? data-type=text data="{}" status-code=200
 ^https:\/\/(mobile|mobilehera)\.ximalaya\.com\/subscribe\/v\d\/subscribe\/tagAlbumList$ data-type=text data="{}" status-code=200
 ^https:\/\/(mobile|mobilehera)\.ximalaya\.com\/mobile-playpage\/playpage\/recommend\/resource\/allocation\/ data-type=text data="{}" status-code=200
+^https:\/\/(mobile|mobilehera)\.ximalaya\.com\/firework-portal\/v\d+\/sync\? data-type=text data="{}" status-code=200
 
 # ----------- WeChatOA -----------
 ^https:\/\/mp\.weixin\.qq\.com\/mp\/(cps_product_info|getappmsgad|jsmonitor|masonryfeed|relatedarticle)\? data-type=text data="{}" status-code=200
@@ -527,7 +531,7 @@ T3出行去广告 = type=http-response, pattern=^https:\/\/passenger\.t3go\.cn\/
 古茗去广告 = type=http-response, pattern=^https:\/\/newton\.gumingnc\.com\/newton-buyer\/newton\/buyer\/(ump|touch|external\/front), script-path=https://github.com/hchichi/esdeath/raw/main/Chores/js/ming.js, requires-body=true
 
 # ----------- Himalaya -----------
-body_rewrite_27 = type=http-response, pattern=^https:\/\/(mobile|mobilehera)\.ximalaya\.com\/football-portal\/diff2\/batch\?, script-path=https://github.com/hchichi/esdeath/raw/main/Chores/js/body-rewrite.js, requires-body=true, max-size=-1, timeout=30, argument=%5B%5B%22json-del%22%2C%5B%22json.ad%22%5D%5D%5D
+body_rewrite_31 = type=http-response, pattern=^https:\/\/(mobile|mobilehera)\.ximalaya\.com\/football-portal\/diff2\/batch\?, script-path=https://github.com/hchichi/esdeath/raw/main/Chores/js/body-rewrite.js, requires-body=true, max-size=-1, timeout=30, argument=%5B%5B%22json-del%22%2C%5B%22json.ad%22%5D%5D%5D
 
 # ----------- Cainiao ------------
 移除我的页面推广 = type=http-response, pattern=^https:\/\/cn-acs\.m\.cainiao\.com\/gw\/mtop\.cainiao\.app\.mine\.main\.cn, script-path=https://github.com/hchichi/esdeath/raw/main/Chores/js/Cainiao_remove_ads.js, requires-body=true

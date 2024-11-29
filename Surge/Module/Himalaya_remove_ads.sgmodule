@@ -8,7 +8,7 @@
 #!tag=去广告
 #!loon_version=3.2.4(787)
 #!homepage=https://github.com/luestr/ProxyResource/blob/main/README.md
-#!date=2024-11-29 11:40:08
+#!date=2024-11-29 11:43:00
 
 [Rule]
 # 广告下发
@@ -16,11 +16,11 @@ DOMAIN,adse.ximalaya.com,REJECT
 DOMAIN,adse.wsa.ximalaya.com,REJECT
 # 拦截HTTPDNS
 DOMAIN,dns2.q2cdn.com,REJECT
+URL-REGEX,"^http:\/\/xmc\.ximalaya\.com\/xmlymain-login-web\/login\/",REJECT
 
 [URL Rewrite]
 # 拦截HTTPDNS
 ^https:\/\/gslbali\.ximalaya\.com\/linkeye-cloud\/httpdns\/ - reject
-^http:\/\/xmc\.ximalaya\.com\/xmlymain-login-web\/login\/ - reject
 
 [Map Local]
 # 搜索词

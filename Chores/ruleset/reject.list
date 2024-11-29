@@ -358,6 +358,9 @@ DOMAIN,ad.maoyan.com
 DOMAIN,e.jparking.cn
 # 广告下发
 DOMAIN,adse.ximalaya.com
+DOMAIN,adse.wsa.ximalaya.com
+# 拦截HTTPDNS
+DOMAIN,dns2.q2cdn.com
 DOMAIN-SUFFIX,wxs.qq.com
 URL-REGEX,"^http:\/\/119\.29\.29\.98\/d\?"
 AND,((URL-REGEX,"^http:\/\/.+\/amdc\/mobileDispatch"),(USER-AGENT,"Cainiao4iPhone*"))
