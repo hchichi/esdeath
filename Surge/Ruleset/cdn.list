@@ -1,12 +1,12 @@
 // Common Static CDNs
-// Last updated: 2024/11/30 22:03:07
-// DOMAIN: 1914
+// Last updated: 2024/11/30 23:03:33
+// DOMAIN: 1916
 // DOMAIN-SUFFIX: 824
 // DOMAIN-KEYWORD: 5
 // IP-CIDR: 3
 // URL-REGEX: 2
 // OTHER: 31
-// Total: 2779
+// Total: 2781
 // Made by Sukka, All rights reserved
 // Data sources:
 //  - https://ruleset.skk.moe/List/non_ip/cdn.conf
@@ -398,6 +398,7 @@ DOMAIN,cdn.freebiesupply.com
 DOMAIN,cdn.freecodecamp.org
 DOMAIN,cdn.freshdesk.com
 DOMAIN,cdn.getkoala.com
+DOMAIN,cdn.gettr.com
 DOMAIN,cdn.ghostery.com
 DOMAIN,cdn.glitch.com
 DOMAIN,cdn.glitch.global
@@ -1054,6 +1055,7 @@ DOMAIN,imgrs.apkcombo.com
 DOMAIN,imgs.plurk.com
 DOMAIN,imgs.search.brave.com
 DOMAIN,imgs.xkcd.com
+DOMAIN,imgs3.hcaptcha.com
 DOMAIN,imgsrv.crunchyroll.com
 DOMAIN,imgssl.constantcontact.com
 DOMAIN,ims.windy.com
