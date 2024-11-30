@@ -76,6 +76,10 @@ RULE-SET,https://raw.githubusercontent.com/hchichi/esdeath/main/Chores/ruleset/r
 
 # ----------- Himalaya -----------
 ^https:\/\/gslbali\.ximalaya\.com\/linkeye-cloud\/httpdns\/ - reject
+^https:\/\/video-dsp\.pddpic\.com\/market-dsp-video\/ - reject
+^https:\/\/t-dsp\.pinduoduo\.com\/dspcb\/i\/mrk_union - reject
+^https:\/\/images\.pinduoduo\.com\/mrk\/ - reject
+^https:\/\/images\.pinduoduo\.com\/marketing_api\/ - reject
 
 # ------------ Zhihu -------------
 ^https:\/\/api\.zhihu\.com\/unlimited\/go\/my_card - reject
@@ -539,8 +543,8 @@ T3出行去广告 = type=http-response, pattern=^https:\/\/passenger\.t3go\.cn\/
 古茗去广告 = type=http-response, pattern=^https:\/\/newton\.gumingnc\.com\/newton-buyer\/newton\/buyer\/(ump|touch|external\/front), script-path=https://github.com/hchichi/esdeath/raw/main/Chores/js/ming.js, requires-body=true
 
 # ----------- Himalaya -----------
-body_rewrite_23 = type=http-response, pattern=^https:\/\/(mobile|mobilehera)\.ximalaya\.com\/football-portal\/diff2\/batch\?, script-path=https://github.com/hchichi/esdeath/raw/main/Chores/js/body-rewrite.js, requires-body=true, max-size=-1, timeout=30, argument=%5B%5B%22json-del%22%2C%5B%22json.ad%22%2C%22json.toc%22%5D%5D%5D
-body_rewrite_33 = type=http-response, pattern=^https:\/\/(mobile|mobilehera)\.ximalaya\.com\/mobile-user\/v\d\/homePage\/, script-path=https://github.com/hchichi/esdeath/raw/main/Chores/js/body-rewrite.js, requires-body=true, max-size=-1, timeout=30, argument=%5B%5B%22json-del%22%2C%5B%22data.freeListenV2%22%5D%5D%5D
+body_rewrite_153 = type=http-response, pattern=^https:\/\/(mobile|mobilehera)\.ximalaya\.com\/football-portal\/diff2\/batch\?, script-path=https://github.com/hchichi/esdeath/raw/main/Chores/js/body-rewrite.js, requires-body=true, max-size=-1, timeout=30, argument=%5B%5B%22json-del%22%2C%5B%22json.ad%22%2C%22json.toc%22%5D%5D%5D
+body_rewrite_163 = type=http-response, pattern=^https:\/\/(mobile|mobilehera)\.ximalaya\.com\/mobile-user\/v\d\/homePage\/, script-path=https://github.com/hchichi/esdeath/raw/main/Chores/js/body-rewrite.js, requires-body=true, max-size=-1, timeout=30, argument=%5B%5B%22json-del%22%2C%5B%22data.freeListenV2%22%5D%5D%5D
 
 # ----------- Cainiao ------------
 移除我的页面推广 = type=http-response, pattern=^https:\/\/cn-acs\.m\.cainiao\.com\/gw\/mtop\.cainiao\.app\.mine\.main\.cn, script-path=https://github.com/hchichi/esdeath/raw/main/Chores/js/Cainiao_remove_ads.js, requires-body=true
