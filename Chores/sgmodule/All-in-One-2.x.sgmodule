@@ -270,7 +270,7 @@ RULE-SET,https://raw.githubusercontent.com/hchichi/esdeath/main/Chores/ruleset/r
 ^https:\/\/(m|mwsa)\.ximalaya\.com\/x-web-activity\/signIn\/getHomePageSignInInfo\/ data-type=text data="{}" status-code=200
 ^https:\/\/(mobile|mobilehera)\.ximalaya\.com\/subscribe\/v\d\/subscribe\/tagAlbumList$ data-type=text data="{}" status-code=200
 ^https:\/\/(mobile|mobilehera)\.ximalaya\.com\/track-feed\/v\d\/chase\/recommend\/ data-type=text data="{}" status-code=200
-^https:\/\/mobile\.ximalaya\.com\/social-web\/follow-stream\/category\/\d+$ data-type=text data="{}" status-code=200
+^https:\/\/(mobile|mobilehera)\.ximalaya\.com\/social-web\/follow-stream\/category\/\d+$ data-type=text data="{}" status-code=200
 ^https:\/\/(mobile|mobilehera)\.ximalaya\.com\/mobile-playpage\/playpage\/recommendContentV\d\/ data-type=text data="{}" status-code=200
 ^https:\/\/(mobile|mobilehera)\.ximalaya\.com\/mobile-playpage\/playpage\/recommend\/resource\/allocation\/ data-type=text data="{}" status-code=200
 ^https:\/\/(mobile|mobilehera)\.ximalaya\.com\/firework-portal\/v\d+\/sync\? data-type=text data="{}" status-code=200
