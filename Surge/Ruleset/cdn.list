@@ -1,12 +1,12 @@
 // Common Static CDNs
-// Last updated: 2024/12/1 17:41:03
-// DOMAIN: 1916
+// Last updated: 2024/12/1 18:03:09
+// DOMAIN: 1918
 // DOMAIN-SUFFIX: 824
 // DOMAIN-KEYWORD: 5
 // IP-CIDR: 3
 // URL-REGEX: 2
 // OTHER: 31
-// Total: 2781
+// Total: 2783
 // Made by Sukka, All rights reserved
 // Data sources:
 //  - https://ruleset.skk.moe/List/non_ip/cdn.conf
@@ -1462,6 +1462,7 @@ DOMAIN,screenshots.webflow.com
 DOMAIN,scripts.dailymail.co.uk
 DOMAIN,scripts.webeo.com
 DOMAIN,sdata.ndtv.com
+DOMAIN,sdk.listenlive.co
 DOMAIN,sdk.qikify.com
 DOMAIN,sdk.snapkit.com
 DOMAIN,sdk.split.io
@@ -1904,6 +1905,7 @@ DOMAIN,widget.user.com
 DOMAIN,widget.usersnap.com
 DOMAIN,widget.uservoice.com
 DOMAIN,widgets-red.media.weather.com
+DOMAIN,widgets.listenlive.co
 DOMAIN,widgets.media.weather.com
 DOMAIN,widgets.outbrain.com
 DOMAIN,widgets.tree-nation.com
