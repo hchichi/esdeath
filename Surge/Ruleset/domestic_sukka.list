@@ -1,13 +1,13 @@
 // Domestic Rules (Sukka)
-// Last updated: 2024/12/2 23:46:06
+// Last updated: 2024/12/3 00:04:53
 // DOMAIN: 33
-// DOMAIN-SUFFIX: 893
+// DOMAIN-SUFFIX: 894
 // DOMAIN-KEYWORD: 9
 // IP-CIDR: 2
 // PROCESS-NAME: 36
 // USER-AGENT: 4
 // OTHER: 1
-// Total: 978
+// Total: 979
 // This file contains known domains and IPs that are avaliable in the Mainland China.
 // Data sources:
 //  - https://ruleset.skk.moe/List/non_ip/domestic.conf
@@ -261,6 +261,7 @@ DOMAIN-SUFFIX,cabdirect.org
 DOMAIN-SUFFIX,cailianpress.com
 DOMAIN-SUFFIX,cainiao.com
 DOMAIN-SUFFIX,cainiaoyizhan.com
+DOMAIN-SUFFIX,caiyunapp.com
 DOMAIN-SUFFIX,camera360.com
 DOMAIN-SUFFIX,camscanner.com
 DOMAIN-SUFFIX,ccb.com
