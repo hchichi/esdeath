@@ -1,12 +1,12 @@
 // Common Static CDNs
-// Last updated: 2024/12/2 14:40:53
-// DOMAIN: 1918
+// Last updated: 2024/12/2 16:03:35
+// DOMAIN: 1920
 // DOMAIN-SUFFIX: 824
 // DOMAIN-KEYWORD: 5
 // IP-CIDR: 3
 // URL-REGEX: 2
 // OTHER: 31
-// Total: 2783
+// Total: 2785
 // Made by Sukka, All rights reserved
 // Data sources:
 //  - https://ruleset.skk.moe/List/non_ip/cdn.conf
@@ -247,6 +247,7 @@ DOMAIN,avatars.plurk.com
 DOMAIN,avts.wmlabs.net
 DOMAIN,axiecdn.axieinfinity.com
 DOMAIN,az700632.vo.msecnd.net
+DOMAIN,b.sf-syn.com
 DOMAIN,badbits.dwebops.pub
 DOMAIN,badge.buildkite.com
 DOMAIN,badge.fury.io
@@ -1826,6 +1827,7 @@ DOMAIN,ui-cdn.digitalocean.com
 DOMAIN,ui.contentstack.com
 DOMAIN,ui.trailhead.com
 DOMAIN,unlimited-cdn.waifu2x.net
+DOMAIN,unsubscribe-imgs.leavemealone.com
 DOMAIN,updates.signal.org
 DOMAIN,updates2.signal.org
 DOMAIN,upload.filebase.com
