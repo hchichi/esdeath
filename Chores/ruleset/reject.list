@@ -139,6 +139,7 @@ DOMAIN,mobads.baidu.com
 DOMAIN,nadvideo2.baidu.com
 DOMAIN,wn.pos.baidu.com
 DOMAIN,miniapp-ad.cdn.bcebos.com
+DOMAIN,mobads-pre-config.cdn.bcebos.com
 DOMAIN-SUFFIX,union.baidu.cn
 DOMAIN-SUFFIX,union.baidu.com
 DOMAIN,adsmind.gdtimg.com
@@ -269,6 +270,7 @@ DOMAIN,adx-sg-req.bridgeoos.com
 DOMAIN-SUFFIX,bridgeoos.com
 DOMAIN,ad-evods.tianya.tv
 DOMAIN,adx.tuia.cn
+DOMAIN-SUFFIX,66mobi.com
 DOMAIN,adstats.tencentmusic.com
 DOMAIN,ad.tencentmusic.com
 DOMAIN,adcdn.tencentmusic.com
