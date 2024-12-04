@@ -67,7 +67,7 @@ jobs:
             fi
             
             encoded_plugin_name=$(echo "$plugin_name" | jq -sRr @uri)
-            download_url="http://localhost:9101/file/_start_/${plugin_url}/_end_/${encoded_plugin_name}.sgmodule?type=loon-plugin&target=surge-module&target=surge-module&sni=%20%2C%20&del=true&pm=REJECT&category=${encoded_category}"
+            download_url="http://localhost:9101/file/_start_/${plugin_url}/_end_/${encoded_plugin_name}.sgmodule?type=loon-plugin&target=surge-module&sni=%20%2C%20&del=true&pm=REJECT&category=${encoded_category}"
             
             echo "Downloading from $download_url"
             curl -A "Surge Mac/2985" -L -o "Chores/sgmodule/${plugin_name}.sgmodule" "$download_url" || echo "Failed to download ${plugin_name}.sgmodule"
