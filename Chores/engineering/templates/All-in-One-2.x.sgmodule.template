@@ -8,8 +8,8 @@
 #------------------------------------------------------
 
 [Rule]
-DOMAIN,ad.12306.cn,DIRECT
-RULE-SET,https://raw.githubusercontent.com/hchichi/esdeath/main/Chores/ruleset/reject.list,REJECT,pre-matching,extended-matching
+RULE-SET,https://raw.githubusercontent.com/ilychi/esdeath/main/Chores/ruleset/direct.list,DIRECT,extended-matching
+RULE-SET,https://raw.githubusercontent.com/ilychi/esdeath/main/Chores/ruleset/reject.list,REJECT,pre-matching,extended-matching
 [URL Rewrite]
 {URL Rewrite}
 

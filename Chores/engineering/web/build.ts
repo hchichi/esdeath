@@ -8,7 +8,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // 修正仓库 URL
-const REPO_URL = "https://raw.githubusercontent.com/hchichi/esdeath/main/";
+const REPO_URL = "https://raw.githubusercontent.com/ilychi/esdeath/main/";
 const ROOT_DIR = path.join(__dirname, '../../..');
 const OUTPUT_DIR = path.join(ROOT_DIR, "public");
 
