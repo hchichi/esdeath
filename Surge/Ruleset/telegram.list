@@ -1,9 +1,6 @@
 # 规则名称: Telegram
 # 规则统计: 52
 
-DOMAIN,PROCESS-NAME,nekox.messenger
-DOMAIN,PROCESS-NAME,org.telegram.messenger
-DOMAIN,PROCESS-NAME,telegram-desktop
 DOMAIN,api.mixpanel.com
 DOMAIN,events-gateway.ncdev.site
 DOMAIN-SUFFIX,cdn-telegram.org
@@ -53,3 +50,6 @@ IP-ASN,44907,no-resolve
 IP-ASN,59930,no-resolve
 IP-ASN,62014,no-resolve
 IP-ASN,62041,no-resolve
+PROCESS-NAME,nekox.messenger
+PROCESS-NAME,org.telegram.messenger
+PROCESS-NAME,telegram-desktop
