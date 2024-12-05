@@ -121,6 +121,7 @@ async function mergeSgmodules() {
         const processedRules = processRules(sections.Rule);
         await writeFile('Chores/ruleset/reject.list', processedRules.rejectRules);
         await writeFile('Chores/ruleset/direct.list', processedRules.directRules);
+        await writeFile('Chores/ruleset/reject-tinygif.list', processedRules.rejectTinyGifRules);
 
         // Process MITM hostnames
         const uniqueHostnames = Array.from(new Set(sections.MITM));
@@ -156,16 +157,19 @@ async function mergeSgmodules() {
 interface ProcessedRules {
     rejectRules: string;
     directRules: string;
+    rejectTinyGifRules: string;
 }
 
 function processRules(rules: string[]): ProcessedRules {
     const ruleMap = new Map<string, { rule: string }>();
     const rejectRules: string[] = [];
     const directRules: string[] = [];
+    const rejectTinyGifRules: string[] = [];
     
     let currentModuleHeader: string | null = null;
     let hasNewRuleInCurrentModule = false;
     let isFirstModule = true;
+    let hasNewTinyGifRule = false;
 
     rules.forEach(ruleBlock => {
         const lines = ruleBlock.split('\n');
@@ -186,41 +190,74 @@ function processRules(rules: string[]): ProcessedRules {
 
             // 处理规则
             if (trimmedLine && !trimmedLine.startsWith('#')) {
-                const ruleWithoutPolicy = trimmedLine.replace(/,(REJECT|DIRECT)(-[A-Z]+)?$/, '');
-                const isRejectRule = trimmedLine.includes('REJECT');
-                const isDirectRule = trimmedLine.includes('DIRECT');
+                // 提取规则的基本部分和所有参数
+                const parts = trimmedLine.split(',');
+                if (parts.length < 2) return; // 跳过格式不正确的规则
+                
+                const rulePart = parts[0];
+                const policy = parts[1];
+                
+                // 保留 extended-matching 和 pre-matching 参数
+                const extraParams = parts.slice(2).filter(param => 
+                    param === 'extended-matching' || param === 'pre-matching'
+                );
+                
+                // 构建参数字符串
+                const paramString = extraParams.length ? ',' + extraParams.join(',') : '';
+                
+                // 检查策略类型
+                const isRejectTinyGif = policy === 'REJECT-TINYGIF';
+                const isReject = policy.startsWith('REJECT');
+                const isDirect = policy === 'DIRECT';
+                
+                const ruleWithoutPolicy = rulePart;
 
-                if (isRejectRule) {
+                // 处理 REJECT-TINYGIF 规则
+                if (isRejectTinyGif) {
+                    if (!ruleMap.has(ruleWithoutPolicy)) {
+                        ruleMap.set(ruleWithoutPolicy, { rule: ruleWithoutPolicy });
+                        const fullRule = `${rulePart}${paramString}`;
+                        
+                        if (!hasNewTinyGifRule && currentModuleHeader) {
+                            rejectTinyGifRules.push(currentModuleHeader);
+                            hasNewTinyGifRule = true;
+                        }
+                        rejectTinyGifRules.push(fullRule);
+                    }
+                }
+
+                // 处理其他 REJECT 规则
+                if (isReject) {
                     if (!ruleMap.has(ruleWithoutPolicy)) {
                         ruleMap.set(ruleWithoutPolicy, { rule: ruleWithoutPolicy });
                         hasNewRuleInCurrentModule = true;
                         
-                        // 只有当模块中有新规则时，才添加模块头
                         if (currentModuleHeader && !rejectRules.includes(currentModuleHeader)) {
-                            // 只在非第一个模块前添加空行
                             if (!isFirstModule) {
                                 rejectRules.push('');
                             }
                             rejectRules.push(currentModuleHeader);
                             isFirstModule = false;
                         }
-                        rejectRules.push(trimmedLine);
+                        
+                        const fullRule = `${rulePart}${paramString}`;
+                        rejectRules.push(fullRule);
                     }
                 }
 
-                if (isDirectRule) {
-                    if (!directRules.includes(trimmedLine)) {
+                // 处理 DIRECT 规则
+                if (isDirect) {
+                    const fullRule = `${rulePart}${paramString}`;
+                    if (!directRules.includes(fullRule)) {
                         hasNewRuleInCurrentModule = true;
                         
-                        // 只有当模块中有新规则时，才添加模块头
                         if (currentModuleHeader && !directRules.includes(currentModuleHeader)) {
-                            // 只在非第一个模块前添加空行
                             if (directRules.length > 0) {
                                 directRules.push('');
                             }
                             directRules.push(currentModuleHeader);
                         }
-                        directRules.push(trimmedLine);
+                        directRules.push(fullRule);
                     }
                 }
             }
@@ -229,7 +266,8 @@ function processRules(rules: string[]): ProcessedRules {
 
     return {
         rejectRules: rejectRules.join('\n'),
-        directRules: directRules.join('\n')
+        directRules: directRules.join('\n'),
+        rejectTinyGifRules: rejectTinyGifRules.join('\n')
     };
 }
 
