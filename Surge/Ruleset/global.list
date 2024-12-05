@@ -1,7 +1,7 @@
 #########################################
 # Sukka's Ruleset - General Global Services
-# Last Updated: 2024-12-05T09:50:46.516Z
-# Size: 676
+# Last Updated: 2024-12-05T13:54:01.113Z
+# Size: 677
 # License: AGPL 3.0
 # Homepage: https://ruleset.skk.moe
 # GitHub: https://github.com/SukkaW/Surge
@@ -661,6 +661,7 @@ DOMAIN-SUFFIX,discourse.group
 DOMAIN-SUFFIX,javhd.today
 DOMAIN-SUFFIX,archive.today
 DOMAIN-SUFFIX,ant.design
+DOMAIN-SUFFIX,bsky.social
 DOMAIN-SUFFIX,mastodon.social
 DOMAIN-SUFFIX,x.company
 DOMAIN-SUFFIX,c.mi.com
