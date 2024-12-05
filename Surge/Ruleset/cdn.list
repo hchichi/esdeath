@@ -1,12 +1,12 @@
 // Common Static CDNs
-// Last updated: 2024/12/5 20:04:03
-// DOMAIN: 1930
+// Last updated: 2024/12/5 20:56:09
+// DOMAIN: 1932
 // DOMAIN-SUFFIX: 824
 // DOMAIN-KEYWORD: 5
 // IP-CIDR: 3
 // URL-REGEX: 2
 // OTHER: 31
-// Total: 2795
+// Total: 2797
 // Made by Sukka, All rights reserved
 // Data sources:
 //  - https://ruleset.skk.moe/List/non_ip/cdn.conf
@@ -328,6 +328,7 @@ DOMAIN,cdn.adguard.com
 DOMAIN,cdn.adguard.info
 DOMAIN,cdn.amcharts.com
 DOMAIN,cdn.announcekit.app
+DOMAIN,cdn.answeroverflow.com
 DOMAIN,cdn.apkmonk.com
 DOMAIN,cdn.apponic.com
 DOMAIN,cdn.arcade.software
@@ -1549,6 +1550,7 @@ DOMAIN,static-cdn.123rf.com
 DOMAIN,static-cdn.jtvnw.net
 DOMAIN,static-cdn.osdn.net
 DOMAIN,static-cdn.spot.im
+DOMAIN,static-cdn.usertesting.com
 DOMAIN,static-clst.avgle.com
 DOMAIN,static-community.tp-link.com
 DOMAIN,static-dm.ubisoft.com
