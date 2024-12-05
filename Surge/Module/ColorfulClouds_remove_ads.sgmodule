@@ -11,9 +11,9 @@
 #!date=2024-11-28 00:00:00
 
 [Rule]
-DOMAIN,abyss.cyapi.cn,REJECT
-DOMAIN,ad.cyapi.cn,REJECT
-DOMAIN,gather.colorfulclouds.net,REJECT
+DOMAIN,abyss.cyapi.cn,REJECT,extended-matching,pre-matching
+DOMAIN,ad.cyapi.cn,REJECT,extended-matching,pre-matching
+DOMAIN,gather.colorfulclouds.net,REJECT,extended-matching,pre-matching
 
 [Map Local]
 ^https:\/\/biz\.cyapi\.cn\/(p\/v1\/entries|p\/v1\/trial_card\/info|v2\/product) data-type=text data="{}" status-code=200
@@ -21,7 +21,7 @@ DOMAIN,gather.colorfulclouds.net,REJECT
 ^https:\/\/starplucker\.cyapi\.cn\/v3\/(config\/cypage\/\w+\/conditions|notification\/message_center|operation\/homefeatures) data-type=text data="{}" status-code=200
 
 [Script]
-彩云天气去广告 = type=http-response, pattern=^https:\/\/(wrapper\.cyapi\.cn|api\.caiyunapp\.com|cdn-w\.caiyunapp\.com)\/v1\/activity\?, script-path=https://github.com/ilychi/esdeath/raw/main/Chores/js/ColorfulClouds_remove_ads.js, requires-body=true
+彩云天气去广告 = type=http-response, pattern=^https:\/\/(wrapper\.cyapi\.cn|api\.caiyunapp\.com|cdn-w\.caiyunapp\.com)\/v1\/activity\?, script-path=https://github.com/hchichi/esdeath/raw/main/Chores/js/ColorfulClouds_remove_ads.js, requires-body=true
 
 [MITM]
 hostname = %APPEND% biz.cyapi.cn, starplucker.cyapi.cn, api.caiyunapp.com, cdn-w.caiyunapp.com
