@@ -4,17 +4,21 @@
 	"description": "sync-rules",
 	"type": "module",
 	"scripts": {
-	  "sync": "NODE_NO_WARNINGS=1 NODE_OPTIONS=\"--experimental-specifier-resolution=node\" tsx Chores/engineering/sync/main.ts",
-	  "build": "NODE_OPTIONS=\"--experimental-specifier-resolution=node\" tsx Chores/engineering/web/build.ts",
-	  "dev": "npm run sync && npm run build",
-	  "merge": "NODE_OPTIONS=\"--experimental-specifier-resolution=node\" tsx Chores/engineering/merge.ts"
+		"sync": "NODE_NO_WARNINGS=1 NODE_OPTIONS=\"--experimental-specifier-resolution=node\" tsx Chores/engineering/sync/main.ts",
+		"build": "NODE_OPTIONS=\"--experimental-specifier-resolution=node\" tsx Chores/engineering/web/build.ts",
+		"dev": "npm run sync && npm run build",
+		"merge": "NODE_OPTIONS=\"--experimental-specifier-resolution=node\" tsx Chores/engineering/merge.ts"
 	},
 	"dependencies": {
-	  "@types/node": "^20.11.0",
-	  "typescript": "^5.6.3",
-	  "tsx": "^4.7.1"
+		"@types/js-yaml": "^4.0.9",
+		"@types/node": "^20.11.0",
+		"esbuild-wasm": "^0.19.11",
+		"js-yaml": "^4.1.0",
+		"node-fetch": "^3.3.2",
+		"tsx": "^4.7.1",
+		"typescript": "^5.6.3"
 	},
 	"engines": {
-	  "node": ">=20.0.0"
+		"node": ">=20.0.0"
 	}
 }
