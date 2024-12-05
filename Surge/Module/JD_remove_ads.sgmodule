@@ -11,16 +11,16 @@
 #!date=2024-11-28 00:00:00
 
 [Rule]
-DOMAIN,dns.jd.com,REJECT
-URL-REGEX,"^http:\/\/\w{32}\.jddebug\.com\/diagnose\?",REJECT
-IP-CIDR,101.124.19.122/32,REJECT,no-resolve
-IP-CIDR6,2402:db40:5100:1011::5/128,REJECT,no-resolve
+DOMAIN,dns.jd.com,REJECT,extended-matching,pre-matching
+URL-REGEX,"^http:\/\/\w{32}\.jddebug\.com\/diagnose\?",REJECT,extended-matching
+IP-CIDR,101.124.19.122/32,REJECT,no-resolve,pre-matching
+IP-CIDR6,2402:db40:5100:1011::5/128,REJECT,no-resolve,pre-matching
 
 [Map Local]
 ^https:\/\/api\.m\.jd\.com\/client\.action\?functionId=(searchBoxWord|stationPullService|uniformRecommend[06]) data-type=text data="{}" status-code=200
 
 [Script]
-移除京东广告 = type=http-response, pattern=^https:\/\/api\.m\.jd\.com\/client\.action\?functionId=(deliverLayer|getTabHomeInfo|myOrderInfo|orderTrackBusiness|personinfoBusiness|start|welcomeHome), script-path=https://github.com/ilychi/esdeath/raw/main/Chores/js/JD_remove_ads.js, requires-body=true
+移除京东广告 = type=http-response, pattern=^https:\/\/api\.m\.jd\.com\/client\.action\?functionId=(deliverLayer|getTabHomeInfo|myOrderInfo|orderTrackBusiness|personinfoBusiness|start|welcomeHome), script-path=https://github.com/hchichi/esdeath/raw/main/Chores/js/JD_remove_ads.js, requires-body=true
 
 [MITM]
 hostname = %APPEND% api.m.jd.com
