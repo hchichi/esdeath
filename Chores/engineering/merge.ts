@@ -121,7 +121,9 @@ async function mergeSgmodules() {
         const processedRules = processRules(sections.Rule);
         await writeFile('Chores/ruleset/reject.list', processedRules.rejectRules);
         await writeFile('Chores/ruleset/direct.list', processedRules.directRules);
-        await writeFile('Chores/ruleset/reject-tinygif.list', processedRules.rejectTinyGifRules);
+        await writeFile('Chores/ruleset/reject-drop.list', processedRules.rejectDropRules);
+        await writeFile('Chores/ruleset/reject-tiny.list', processedRules.rejectTinyRules);
+        await writeFile('Chores/ruleset/reject-no-drop.list', processedRules.rejectNoDropRules);
 
         // Process MITM hostnames
         const uniqueHostnames = Array.from(new Set(sections.MITM));
@@ -157,108 +159,80 @@ async function mergeSgmodules() {
 interface ProcessedRules {
     rejectRules: string;
     directRules: string;
-    rejectTinyGifRules: string;
+    rejectDropRules: string;
+    rejectTinyRules: string;
+    rejectNoDropRules: string;
 }
 
 function processRules(rules: string[]): ProcessedRules {
     const ruleMap = new Map<string, { rule: string }>();
     const rejectRules: string[] = [];
     const directRules: string[] = [];
-    const rejectTinyGifRules: string[] = [];
+    const rejectDropRules: string[] = [];
+    const rejectTinyRules: string[] = [];
+    const rejectNoDropRules: string[] = [];
     
     let currentModuleHeader: string | null = null;
-    let hasNewRuleInCurrentModule = false;
-    let isFirstModule = true;
-    let hasNewTinyGifRule = false;
+    let isFirstModule = {
+        reject: true,
+        direct: true,
+        rejectDrop: true,
+        rejectTiny: true,
+        rejectNoDrop: true
+    };
 
     rules.forEach(ruleBlock => {
         const lines = ruleBlock.split('\n');
-        
-        // 重置模块状态
         currentModuleHeader = null;
-        hasNewRuleInCurrentModule = false;
         
         lines.forEach(line => {
             const trimmedLine = line.trim();
             if (!trimmedLine) return;
 
-            // 处理模块头信息（以 # >> 开头）
             if (trimmedLine.startsWith('# >> ')) {
                 currentModuleHeader = trimmedLine;
                 return;
             }
 
-            // 处理规则
             if (trimmedLine && !trimmedLine.startsWith('#')) {
-                // 提取规则的基本部分和所有参数
-                const parts = trimmedLine.split(',');
-                if (parts.length < 2) return; // 跳过格式不正确的规则
-                
-                const rulePart = parts[0];
-                const policy = parts[1];
-                
-                // 保留 extended-matching 和 pre-matching 参数
-                const extraParams = parts.slice(2).filter(param => 
-                    param === 'extended-matching' || param === 'pre-matching'
+                // 移除策略组但保留参数
+                const ruleParts = trimmedLine.split(',');
+                const ruleType = ruleParts[0];
+                const ruleValue = ruleParts[1];
+                const originalPolicy = ruleParts[2];
+                const ruleParams = ruleParts.slice(2).filter(param => 
+                    ['no-resolve', 'extended-matching', 'pre-matching'].includes(param.toLowerCase())
                 );
                 
-                // 构建参数字符串
-                const paramString = extraParams.length ? ',' + extraParams.join(',') : '';
-                
-                // 检查策略类型
-                const isRejectTinyGif = policy === 'REJECT-TINYGIF';
-                const isReject = policy.startsWith('REJECT');
-                const isDirect = policy === 'DIRECT';
-                
-                const ruleWithoutPolicy = rulePart;
+                // 重组规则，不包含策略组
+                const newRule = [ruleType, ruleValue, ...ruleParams].join(',');
+                const ruleWithoutPolicy = newRule.replace(/,(REJECT|DIRECT)(-[A-Z]+)?$/, '');
 
-                // 处理 REJECT-TINYGIF 规则
-                if (isRejectTinyGif) {
+                // 根据不同策略组分类处理
+                if (trimmedLine.includes('REJECT-DROP')) {
                     if (!ruleMap.has(ruleWithoutPolicy)) {
-                        ruleMap.set(ruleWithoutPolicy, { rule: ruleWithoutPolicy });
-                        const fullRule = `${rulePart}${paramString}`;
-                        
-                        if (!hasNewTinyGifRule && currentModuleHeader) {
-                            rejectTinyGifRules.push(currentModuleHeader);
-                            hasNewTinyGifRule = true;
-                        }
-                        rejectTinyGifRules.push(fullRule);
+                        addRuleToList(rejectDropRules, currentModuleHeader, newRule, isFirstModule, 'rejectDrop');
+                    }
+                } else if (trimmedLine.includes('REJECT-TINY')) {
+                    if (!ruleMap.has(ruleWithoutPolicy)) {
+                        addRuleToList(rejectTinyRules, currentModuleHeader, newRule, isFirstModule, 'rejectTiny');
+                    }
+                } else if (trimmedLine.includes('REJECT-NO-DROP')) {
+                    if (!ruleMap.has(ruleWithoutPolicy)) {
+                        addRuleToList(rejectNoDropRules, currentModuleHeader, newRule, isFirstModule, 'rejectNoDrop');
+                    }
+                } else if (trimmedLine.includes('REJECT')) {
+                    if (!ruleMap.has(ruleWithoutPolicy)) {
+                        addRuleToList(rejectRules, currentModuleHeader, newRule, isFirstModule, 'reject');
+                    }
+                } else if (trimmedLine.includes('DIRECT')) {
+                    if (!directRules.includes(newRule)) {
+                        addRuleToList(directRules, currentModuleHeader, newRule, isFirstModule, 'direct');
                     }
                 }
 
-                // 处理其他 REJECT 规则
-                if (isReject) {
-                    if (!ruleMap.has(ruleWithoutPolicy)) {
-                        ruleMap.set(ruleWithoutPolicy, { rule: ruleWithoutPolicy });
-                        hasNewRuleInCurrentModule = true;
-                        
-                        if (currentModuleHeader && !rejectRules.includes(currentModuleHeader)) {
-                            if (!isFirstModule) {
-                                rejectRules.push('');
-                            }
-                            rejectRules.push(currentModuleHeader);
-                            isFirstModule = false;
-                        }
-                        
-                        const fullRule = `${rulePart}${paramString}`;
-                        rejectRules.push(fullRule);
-                    }
-                }
-
-                // 处理 DIRECT 规则
-                if (isDirect) {
-                    const fullRule = `${rulePart}${paramString}`;
-                    if (!directRules.includes(fullRule)) {
-                        hasNewRuleInCurrentModule = true;
-                        
-                        if (currentModuleHeader && !directRules.includes(currentModuleHeader)) {
-                            if (directRules.length > 0) {
-                                directRules.push('');
-                            }
-                            directRules.push(currentModuleHeader);
-                        }
-                        directRules.push(fullRule);
-                    }
+                if (!ruleMap.has(ruleWithoutPolicy)) {
+                    ruleMap.set(ruleWithoutPolicy, { rule: ruleWithoutPolicy });
                 }
             }
         });
@@ -267,8 +241,28 @@ function processRules(rules: string[]): ProcessedRules {
     return {
         rejectRules: rejectRules.join('\n'),
         directRules: directRules.join('\n'),
-        rejectTinyGifRules: rejectTinyGifRules.join('\n')
+        rejectDropRules: rejectDropRules.join('\n'),
+        rejectTinyRules: rejectTinyRules.join('\n'),
+        rejectNoDropRules: rejectNoDropRules.join('\n')
     };
+}
+
+// 辅助函数：添加规则到对应列表
+function addRuleToList(
+    ruleList: string[], 
+    header: string | null, 
+    rule: string, 
+    isFirstModule: {[key: string]: boolean}, 
+    type: string
+) {
+    if (header && !ruleList.includes(header)) {
+        if (!isFirstModule[type]) {
+            ruleList.push('');
+        }
+        ruleList.push(header);
+        isFirstModule[type] = false;
+    }
+    ruleList.push(rule);
 }
 
 // Execute the merge

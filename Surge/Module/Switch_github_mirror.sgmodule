@@ -11,12 +11,12 @@
 #!date=2024-11-28 00:00:00
 
 [Rule]
-DOMAIN,fastraw.ixnic.net,DIRECT
-DOMAIN,hub.incept.pw,DIRECT
-DOMAIN,raw.kkgithub.com,DIRECT
+DOMAIN,fastraw.ixnic.net,DIRECT,extended-matching
+DOMAIN,hub.incept.pw,DIRECT,extended-matching
+DOMAIN,raw.kkgithub.com,DIRECT,extended-matching
 
 [Script]
-GitHub加速 = type=http-request, pattern=^https:\/\/raw\.githubusercontent\.com\/, script-path=https://github.com/ilychi/esdeath/raw/main/Chores/js/Switch_github_mirror.js
+GitHub加速 = type=http-request, pattern=^https:\/\/raw\.githubusercontent\.com\/, script-path=https://github.com/hchichi/esdeath/raw/main/Chores/js/Switch_github_mirror.js
 
 [MITM]
 hostname = %APPEND% raw.githubusercontent.com
