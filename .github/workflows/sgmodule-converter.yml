@@ -51,25 +51,58 @@ jobs:
           # Add fmz200's blockAds plugin with custom name
           echo "https://raw.githubusercontent.com/fmz200/wool_scripts/main/Loon/plugin/blockAds.plugin?rename=Remove_ads_by_fmz" >> plugin_urls.txt
 
-      - name: Process and download sgmodule files
+      - name: Extract categories and process plugins
         run: |
           mkdir -p Chores/sgmodule
-          category="🚫 AD Block"
-          encoded_category=$(echo "$category" | jq -sRr @uri)
           
+          # 从 README.md 提取分类并建立映射关系
+          declare -A category_map
+          while IFS= read -r line; do
+            if [[ $line == "### 签到插件" ]]; then
+              current_category="✅ Checkin"
+            elif [[ $line == "### 功能插件" ]]; then
+              current_category="🔨 Tools"
+            elif [[ $line == "### 去广告插件" ]]; then
+              current_category="🚫 AD Block"
+            elif [[ $line =~ "https://" && -n "$current_category" ]]; then
+              plugin_url=$(echo "$line" | grep -oP 'https://[^)"\s]+')
+              category_map["$plugin_url"]="$current_category"
+            fi
+          done < README.md
+          
+          # 处理插件下载
           while read -r plugin_url; do
             # Extract custom name if specified
             if [[ "$plugin_url" == *"?rename="* ]]; then
               plugin_name=$(echo "$plugin_url" | grep -oP '(?<=\?rename=)[^&]+')
-              plugin_url=$(echo "$plugin_url" | cut -d'?' -f1)
+              base_url=$(echo "$plugin_url" | cut -d'?' -f1)
             else
               plugin_name=$(basename "$plugin_url" .plugin)
+              base_url="$plugin_url"
             fi
             
+            # 确定分类
+            if [[ -n "${category_map[$base_url]}" ]]; then
+              # 使用从 README.md 中提取的分类
+              category="${category_map[$base_url]}"
+            else
+              # 使用备用逻辑进行分类
+              if [[ "$plugin_url" == *"remove_ads"* || "$plugin_name" == *"remove_ads"* ]]; then
+                category="🚫 AD Block"
+              elif [[ "$plugin_url" == *"checkin"* || "$plugin_name" == *"checkin"* || \
+                      "$plugin_url" == *"DailyBonus"* || "$plugin_name" == *"DailyBonus"* || \
+                      "$plugin_url" == *"sign"* || "$plugin_name" == *"sign"* ]]; then
+                category="✅ Checkin"
+              else
+                category="🔨 Tools"
+              fi
+            fi
+            
+            encoded_category=$(echo "$category" | jq -sRr @uri)
             encoded_plugin_name=$(echo "$plugin_name" | jq -sRr @uri)
             download_url="http://localhost:9101/file/_start_/${plugin_url}/_end_/${encoded_plugin_name}.sgmodule?type=loon-plugin&target=surge-module&target=surge-module&sni=%20%2C%20&del=true&pm=REJECT&category=${encoded_category}"
             
-            echo "Downloading from $download_url"
+            echo "Processing $plugin_name with category: $category"
             curl -A "Surge Mac/2985" -L -o "Chores/sgmodule/${plugin_name}.sgmodule" "$download_url" || echo "Failed to download ${plugin_name}.sgmodule"
           done < plugin_urls.txt
 
