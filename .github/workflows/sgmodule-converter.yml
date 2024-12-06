@@ -57,16 +57,22 @@ jobs:
           
           # 从 README.md 提取分类并建立映射关系
           declare -A category_map
+          current_category=""
+          
           while IFS= read -r line; do
-            if [[ $line == "### 签到插件" ]]; then
+            if [[ $line == *"### 签到插件"* ]]; then
               current_category="✅ Checkin"
-            elif [[ $line == "### 功能插件" ]]; then
+            elif [[ $line == *"### 功能插件"* ]]; then
               current_category="🔨 Tools"
-            elif [[ $line == "### 去广告插件" ]]; then
+            elif [[ $line == *"### 去广告插件"* ]]; then
               current_category="🚫 AD Block"
             elif [[ $line =~ "https://" && -n "$current_category" ]]; then
+              # 提取URL和名称
               plugin_url=$(echo "$line" | grep -oP 'https://[^)"\s]+')
-              category_map["$plugin_url"]="$current_category"
+              if [[ -n "$plugin_url" ]]; then
+                category_map["$plugin_url"]="$current_category"
+                echo "Mapped $plugin_url to $current_category"
+              fi
             fi
           done < README.md
           
@@ -85,17 +91,22 @@ jobs:
             if [[ -n "${category_map[$base_url]}" ]]; then
               # 使用从 README.md 中提取的分类
               category="${category_map[$base_url]}"
+              echo "Using mapped category for $base_url: $category"
             else
               # 使用备用逻辑进行分类
-              if [[ "$plugin_url" == *"remove_ads"* || "$plugin_name" == *"remove_ads"* ]]; then
+              if [[ "$plugin_url" == *"remove_ads"* || "$plugin_name" == *"remove_ads"* || \
+                    "$plugin_url" == *"Advertisers"* || "$plugin_name" == *"Advertisers"* || \
+                    "$plugin_url" == *"去广告"* || "$plugin_name" == *"去广告"* ]]; then
                 category="🚫 AD Block"
               elif [[ "$plugin_url" == *"checkin"* || "$plugin_name" == *"checkin"* || \
                       "$plugin_url" == *"DailyBonus"* || "$plugin_name" == *"DailyBonus"* || \
-                      "$plugin_url" == *"sign"* || "$plugin_name" == *"sign"* ]]; then
+                      "$plugin_url" == *"sign"* || "$plugin_name" == *"sign"* || \
+                      "$plugin_url" == *"签到"* || "$plugin_name" == *"签到"* ]]; then
                 category="✅ Checkin"
               else
                 category="🔨 Tools"
               fi
+              echo "Using fallback category for $plugin_url: $category"
             fi
             
             encoded_category=$(echo "$category" | jq -sRr @uri)
