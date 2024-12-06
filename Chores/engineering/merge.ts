@@ -122,7 +122,7 @@ async function mergeSgmodules() {
         await writeFile('Chores/ruleset/reject.list', processedRules.rejectRules);
         await writeFile('Chores/ruleset/direct.list', processedRules.directRules);
         await writeFile('Chores/ruleset/reject-drop.list', processedRules.rejectDropRules);
-        await writeFile('Chores/ruleset/reject-tiny.list', processedRules.rejectTinyRules);
+        await writeFile('Chores/ruleset/reject-tinygif.list', processedRules.rejectTinyRules);
         await writeFile('Chores/ruleset/reject-no-drop.list', processedRules.rejectNoDropRules);
 
         // Process MITM hostnames
@@ -195,49 +195,53 @@ function processRules(rules: string[]): ProcessedRules {
             }
 
             if (trimmedLine && !trimmedLine.startsWith('#')) {
-                // 移除策略组但保留参数
+                // 处理逻辑规则 (AND, OR 等)
+                if (trimmedLine.startsWith('AND,') || trimmedLine.startsWith('OR,')) {
+                    // 清理规则中的参数和策略组
+                    const cleanedRule = trimmedLine
+                        .replace(/,extended-matching|,pre-matching/g, '')
+                        .replace(/,(REJECT|DIRECT)(-[A-Z]+)?$/g, '');
+                    
+                    if (!ruleMap.has(cleanedRule)) {
+                        // 根据原始规则内容判断类别
+                        if (trimmedLine.includes('DIRECT')) {
+                            addRuleToList(directRules, currentModuleHeader, cleanedRule, isFirstModule, 'direct');
+                        } else {
+                            // 默认归类到 REJECT
+                            addRuleToList(rejectRules, currentModuleHeader, cleanedRule, isFirstModule, 'reject');
+                        }
+                        ruleMap.set(cleanedRule, { rule: cleanedRule });
+                    }
+                    return;
+                }
+
+                // 处理普通规则
                 const ruleParts = trimmedLine.split(',');
                 const ruleType = ruleParts[0];
                 const ruleValue = ruleParts[1];
-                const originalPolicy = ruleParts[2];
-                /**
-                 * 保留no-resolve, extended-matching, pre-matching参数
-                 * const ruleParams = ruleParts.slice(2).filter(param => 
-                 *     ['no-resolve', 'extended-matching', 'pre-matching'].includes(param.toLowerCase())
-                 * );
-                 */
+                
+                // 只保留 no-resolve 参数
                 const ruleParams = ruleParts.slice(2).filter(param => 
-                    ['no-resolve'].includes(param.toLowerCase())
+                    param.toLowerCase() === 'no-resolve'
                 );
                 
-                // 重组规则，不包含策略组
                 const newRule = [ruleType, ruleValue, ...ruleParams].join(',');
                 const ruleWithoutPolicy = newRule.replace(/,(REJECT|DIRECT)(-[A-Z]+)?$/, '');
 
-                // 根据不同策略组分类处理
-                if (trimmedLine.includes('REJECT-DROP')) {
-                    if (!ruleMap.has(ruleWithoutPolicy)) {
+                if (!ruleMap.has(ruleWithoutPolicy)) {
+                    // 根据策略类型分类
+                    if (trimmedLine.includes('REJECT-DROP')) {
                         addRuleToList(rejectDropRules, currentModuleHeader, newRule, isFirstModule, 'rejectDrop');
-                    }
-                } else if (trimmedLine.includes('REJECT-TINY')) {
-                    if (!ruleMap.has(ruleWithoutPolicy)) {
+                    } else if (trimmedLine.includes('REJECT-TINY')) {
                         addRuleToList(rejectTinyRules, currentModuleHeader, newRule, isFirstModule, 'rejectTiny');
-                    }
-                } else if (trimmedLine.includes('REJECT-NO-DROP')) {
-                    if (!ruleMap.has(ruleWithoutPolicy)) {
+                    } else if (trimmedLine.includes('REJECT-NO-DROP')) {
                         addRuleToList(rejectNoDropRules, currentModuleHeader, newRule, isFirstModule, 'rejectNoDrop');
-                    }
-                } else if (trimmedLine.includes('REJECT')) {
-                    if (!ruleMap.has(ruleWithoutPolicy)) {
+                    } else if (trimmedLine.includes('REJECT')) {
                         addRuleToList(rejectRules, currentModuleHeader, newRule, isFirstModule, 'reject');
-                    }
-                } else if (trimmedLine.includes('DIRECT')) {
-                    if (!directRules.includes(newRule)) {
+                    } else if (trimmedLine.includes('DIRECT')) {
                         addRuleToList(directRules, currentModuleHeader, newRule, isFirstModule, 'direct');
                     }
-                }
-
-                if (!ruleMap.has(ruleWithoutPolicy)) {
+                    
                     ruleMap.set(ruleWithoutPolicy, { rule: ruleWithoutPolicy });
                 }
             }
