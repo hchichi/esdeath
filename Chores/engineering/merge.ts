@@ -200,8 +200,14 @@ function processRules(rules: string[]): ProcessedRules {
                 const ruleType = ruleParts[0];
                 const ruleValue = ruleParts[1];
                 const originalPolicy = ruleParts[2];
+                /**
+                 * 保留no-resolve, extended-matching, pre-matching参数
+                 * const ruleParams = ruleParts.slice(2).filter(param => 
+                 *     ['no-resolve', 'extended-matching', 'pre-matching'].includes(param.toLowerCase())
+                 * );
+                 */
                 const ruleParams = ruleParts.slice(2).filter(param => 
-                    ['no-resolve', 'extended-matching', 'pre-matching'].includes(param.toLowerCase())
+                    ['no-resolve'].includes(param.toLowerCase())
                 );
                 
                 // 重组规则，不包含策略组
