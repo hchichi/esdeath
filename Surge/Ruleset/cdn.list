@@ -1,12 +1,12 @@
 // Common Static CDNs
-// Last updated: 2024/12/7 17:38:13
-// DOMAIN: 1933
-// DOMAIN-SUFFIX: 824
+// Last updated: 2024/12/7 18:02:02
+// DOMAIN: 1934
+// DOMAIN-SUFFIX: 826
 // DOMAIN-KEYWORD: 5
 // IP-CIDR: 3
 // URL-REGEX: 2
 // OTHER: 31
-// Total: 2798
+// Total: 2801
 // Made by Sukka, All rights reserved
 // Data sources:
 //  - https://ruleset.skk.moe/List/non_ip/cdn.conf
@@ -1142,6 +1142,7 @@ DOMAIN,mangaz-static.j-comi.jp
 DOMAIN,mantisloader.mantis-awx.com
 DOMAIN,maps.geoapify.com
 DOMAIN,maps.gstatic.com
+DOMAIN,marketing.figma.com
 DOMAIN,marketplace-web-assets.vinted.com
 DOMAIN,mastodon-static.miao.dev
 DOMAIN,maven.google.com
@@ -2158,6 +2159,7 @@ DOMAIN-SUFFIX,easylist.to
 DOMAIN-SUFFIX,ebayimg.com
 DOMAIN-SUFFIX,ebaystatic.com
 DOMAIN-SUFFIX,edgestorewebcdn.azureedge.net
+DOMAIN-SUFFIX,eggjs.org
 DOMAIN-SUFFIX,ehgt.org
 DOMAIN-SUFFIX,els-cdn.com
 DOMAIN-SUFFIX,embedgram.com
@@ -2651,6 +2653,7 @@ DOMAIN-SUFFIX,stripeassets.com
 DOMAIN-SUFFIX,stripecdn.com
 DOMAIN-SUFFIX,stripst.com
 DOMAIN-SUFFIX,strpst.com
+DOMAIN-SUFFIX,stylexjs.com
 DOMAIN-SUFFIX,substackcdn.com
 DOMAIN-SUFFIX,surge.sh
 DOMAIN-SUFFIX,surrit.com
