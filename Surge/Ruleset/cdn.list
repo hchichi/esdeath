@@ -1,12 +1,12 @@
 // Common Static CDNs
-// Last updated: 2024/12/9 17:04:45
-// DOMAIN: 1940
-// DOMAIN-SUFFIX: 828
+// Last updated: 2024/12/9 17:15:59
+// DOMAIN: 1941
+// DOMAIN-SUFFIX: 829
 // DOMAIN-KEYWORD: 5
 // IP-CIDR: 3
 // URL-REGEX: 2
 // OTHER: 32
-// Total: 2810
+// Total: 2812
 // Made by Sukka, All rights reserved
 // Data sources:
 //  - https://ruleset.skk.moe/List/non_ip/cdn.conf
@@ -1825,6 +1825,7 @@ DOMAIN,tiles.windy.com
 DOMAIN,time.cloudflare.com
 DOMAIN,tn.vjav.com
 DOMAIN,ton.local.twitter.com
+DOMAIN,tools-static.wmflabs.org
 DOMAIN,topbar-static.piano.io
 DOMAIN,torrindex.net
 DOMAIN,tracker.cdnbye.com
@@ -2393,6 +2394,7 @@ DOMAIN-SUFFIX,kirafile.com
 DOMAIN-SUFFIX,klarnacdn.net
 DOMAIN-SUFFIX,kwcdn.com
 DOMAIN-SUFFIX,kym-cdn.com
+DOMAIN-SUFFIX,larksuitecdn.com
 DOMAIN-SUFFIX,lencr.org
 DOMAIN-SUFFIX,liangzipic.com
 DOMAIN-SUFFIX,licensebuttons.net
