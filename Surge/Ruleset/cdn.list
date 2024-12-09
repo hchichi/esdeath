@@ -1,12 +1,12 @@
 // Common Static CDNs
-// Last updated: 2024/12/9 15:15:35
-// DOMAIN: 1938
+// Last updated: 2024/12/9 15:40:16
+// DOMAIN: 1940
 // DOMAIN-SUFFIX: 828
 // DOMAIN-KEYWORD: 5
 // IP-CIDR: 3
 // URL-REGEX: 2
 // OTHER: 32
-// Total: 2808
+// Total: 2810
 // Made by Sukka, All rights reserved
 // Data sources:
 //  - https://ruleset.skk.moe/List/non_ip/cdn.conf
@@ -170,6 +170,7 @@ DOMAIN,assets.mozilla.social
 DOMAIN,assets.msn.com
 DOMAIN,assets.nationbuilder.com
 DOMAIN,assets.newrepublic.com
+DOMAIN,assets.nflxext.com
 DOMAIN,assets.nintendo.com
 DOMAIN,assets.onestore.ms
 DOMAIN,assets.ontrack.com
@@ -1681,6 +1682,7 @@ DOMAIN,static.mysph.sph.com.sg
 DOMAIN,static.mytonwallet.io
 DOMAIN,static.na1.visioncritical.com
 DOMAIN,static.namebeta.com
+DOMAIN,static.netify.ai
 DOMAIN,static.news.bitcoin.com
 DOMAIN,static.nhentai.net
 DOMAIN,static.nicehash.com
