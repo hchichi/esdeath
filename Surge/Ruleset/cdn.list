@@ -1,12 +1,12 @@
 // Common Static CDNs
-// Last updated: 2024/12/10 19:02:33
-// DOMAIN: 1944
-// DOMAIN-SUFFIX: 830
+// Last updated: 2024/12/10 19:15:34
+// DOMAIN: 1945
+// DOMAIN-SUFFIX: 833
 // DOMAIN-KEYWORD: 5
 // IP-CIDR: 3
 // URL-REGEX: 2
 // OTHER: 32
-// Total: 2816
+// Total: 2820
 // Made by Sukka, All rights reserved
 // Data sources:
 //  - https://ruleset.skk.moe/List/non_ip/cdn.conf
@@ -69,6 +69,7 @@ DOMAIN,app.moegirl.tw
 DOMAIN,app.roboflow.com
 DOMAIN,app.viral-loops.com
 DOMAIN,appassets.mvtdev.com
+DOMAIN,apple-relay.apple.com
 DOMAIN,apple-relay.cloudflare.com
 DOMAIN,apple-relay.fastly-edge.com
 DOMAIN,apps.profitihub.com
@@ -2000,6 +2001,7 @@ DOMAIN-SUFFIX,app.render.com
 DOMAIN-SUFFIX,applicationinsights.azure.cn
 DOMAIN-SUFFIX,applicationinsights.azure.com
 DOMAIN-SUFFIX,appmifile.com
+DOMAIN-SUFFIX,appsflyersdk.com
 DOMAIN-SUFFIX,aspnetcdn.com
 DOMAIN-SUFFIX,assets-servd.host
 DOMAIN-SUFFIX,assets-yammer.com
@@ -2051,6 +2053,7 @@ DOMAIN-SUFFIX,cdn-lfs-us-1.huggingface.co
 DOMAIN-SUFFIX,cdn-lfs.huggingface.co
 DOMAIN-SUFFIX,cdn-one.com
 DOMAIN-SUFFIX,cdn-spurit.com
+DOMAIN-SUFFIX,cdn-telegram.org
 DOMAIN-SUFFIX,cdn-uploads.huggingface.co
 DOMAIN-SUFFIX,cdn-website.com
 DOMAIN-SUFFIX,cdn-zlib.sk
@@ -2311,6 +2314,7 @@ DOMAIN-SUFFIX,imostatic.com
 DOMAIN-SUFFIX,in.appcenter.ms
 DOMAIN-SUFFIX,infura-ipfs.io
 DOMAIN-SUFFIX,ingest.sentry.io
+DOMAIN-SUFFIX,ingest.us.sentry.io
 DOMAIN-SUFFIX,instant.page
 DOMAIN-SUFFIX,intercomassets.com
 DOMAIN-SUFFIX,intercomcdn.com
