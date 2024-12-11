@@ -1,12 +1,12 @@
 // Common Static CDNs
-// Last updated: 2024/12/11 14:45:12
-// DOMAIN: 1945
-// DOMAIN-SUFFIX: 833
+// Last updated: 2024/12/11 15:02:10
+// DOMAIN: 1946
+// DOMAIN-SUFFIX: 834
 // DOMAIN-KEYWORD: 5
 // IP-CIDR: 3
 // URL-REGEX: 2
 // OTHER: 32
-// Total: 2820
+// Total: 2822
 // Made by Sukka, All rights reserved
 // Data sources:
 //  - https://ruleset.skk.moe/List/non_ip/cdn.conf
@@ -1473,6 +1473,7 @@ DOMAIN,safebrowsing.brave.com
 DOMAIN,safebrowsing.google.com
 DOMAIN,safebrowsing.googleapis.com
 DOMAIN,sandpack-cdn-staging.blazingly.io
+DOMAIN,sandpack-cdn-v2.codesandbox.io
 DOMAIN,sbl.onfastspring.com
 DOMAIN,scdn.clerk.com
 DOMAIN,scontent.whatsapp.net
@@ -2028,6 +2029,7 @@ DOMAIN-SUFFIX,bftuvip.com
 DOMAIN-SUFFIX,bfzypic.com
 DOMAIN-SUFFIX,bigcontent.io
 DOMAIN-SUFFIX,bitbucket.io
+DOMAIN-SUFFIX,bitgetimg.com
 DOMAIN-SUFFIX,blackbaudcdn.net
 DOMAIN-SUFFIX,bleepstatic.com
 DOMAIN-SUFFIX,blob.core.windows.net
