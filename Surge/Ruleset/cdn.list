@@ -1,12 +1,12 @@
 // Common Static CDNs
-// Last updated: 2024/12/12 23:41:16
-// DOMAIN: 1949
-// DOMAIN-SUFFIX: 836
+// Last updated: 2024/12/13 00:03:06
+// DOMAIN: 1947
+// DOMAIN-SUFFIX: 837
 // DOMAIN-KEYWORD: 5
 // IP-CIDR: 3
 // URL-REGEX: 2
 // OTHER: 32
-// Total: 2827
+// Total: 2826
 // Made by Sukka, All rights reserved
 // Data sources:
 //  - https://ruleset.skk.moe/List/non_ip/cdn.conf
@@ -295,7 +295,6 @@ DOMAIN,cdn-1.ggjav.com
 DOMAIN,cdn-a.sonyentertainmentnetwork.com
 DOMAIN,cdn-app.pathfactory.com
 DOMAIN,cdn-assets.circleci.com
-DOMAIN,cdn-assets.porntube.com
 DOMAIN,cdn-bundler.nice-team.net
 DOMAIN,cdn-c.leavemealone.com
 DOMAIN,cdn-client.medium.com
@@ -395,6 +394,7 @@ DOMAIN,cdn.dynamicyield.com
 DOMAIN,cdn.ecomm.ui.com
 DOMAIN,cdn.embed.ly
 DOMAIN,cdn.embedly.com
+DOMAIN,cdn.engagement.ai
 DOMAIN,cdn.equalweb.com
 DOMAIN,cdn.eu.contentful.com
 DOMAIN,cdn.european-alternatives.eu
@@ -610,7 +610,6 @@ DOMAIN,cdn3.unrealengine.com
 DOMAIN,cdn4.sysgears.com
 DOMAIN,cdn5.hextom.com
 DOMAIN,cdn6.aptoide.com
-DOMAIN,cdn7.pornmaster.fun
 DOMAIN,cdn77.boyfriendtv.com
 DOMAIN,cdna.artstation.com
 DOMAIN,cdnapisec.kaltura.com
@@ -659,7 +658,6 @@ DOMAIN,compass-ssl.xbox.com
 DOMAIN,components.clever-cloud.com
 DOMAIN,components.justanswer.com
 DOMAIN,config.extension.grammarly.com
-DOMAIN,confluence-v1.prod.atl-paas.net
 DOMAIN,connect.facebook.net
 DOMAIN,connectivitycheck.android.com
 DOMAIN,connectivitycheck.gstatic.com
@@ -861,6 +859,7 @@ DOMAIN,hp.foxnews.com
 DOMAIN,hub-assets.displaycal.net
 DOMAIN,hv-monsterdb-data.skk.moe
 DOMAIN,i.1password.com
+DOMAIN,i.bang.com
 DOMAIN,i.creativecommons.org
 DOMAIN,i.dailymail.co.uk
 DOMAIN,i.gawby.com
@@ -1005,6 +1004,7 @@ DOMAIN,img.api.video
 DOMAIN,img.applealmond.com
 DOMAIN,img.apponic.com
 DOMAIN,img.atlasobscura.com
+DOMAIN,img.atom.com
 DOMAIN,img.atwiki.jp
 DOMAIN,img.badgesize.io
 DOMAIN,img.biguz.net
@@ -1063,7 +1063,6 @@ DOMAIN,img1.ak.crunchyroll.com
 DOMAIN,img2.tnaflix.com
 DOMAIN,img2.xiangbinjun.com
 DOMAIN,img3.airdroid.com
-DOMAIN,img3.lltaohuaxiang.com
 DOMAIN,img4.airdroid.com
 DOMAIN,img6.airdroid.com
 DOMAIN,imgcdn.cna.com.tw
@@ -1208,7 +1207,6 @@ DOMAIN,media.user.com
 DOMAIN,media.webtoo.ls
 DOMAIN,media.wired.com
 DOMAIN,media.yukimochi.jp
-DOMAIN,media.zoom.us
 DOMAIN,media0.giphy.com
 DOMAIN,media1.giphy.com
 DOMAIN,media1.tenor.com
@@ -1238,6 +1236,7 @@ DOMAIN,mwf-service.akamaized.net
 DOMAIN,my-json-server.typicode.com
 DOMAIN,mycommerce.akamaized.net
 DOMAIN,na-library.klarnaservices.com
+DOMAIN,namedotcom-cdn.name.tools
 DOMAIN,navismithapis-cdn.com
 DOMAIN,nbcnewsdigital-static.nbcuni.com
 DOMAIN,net-fe-static-assets.network-controller.svc.ui.com
@@ -1664,7 +1663,6 @@ DOMAIN,static.infomaniak.ch
 DOMAIN,static.institution.grammarly.com
 DOMAIN,static.iris.informa.com
 DOMAIN,static.itch.io
-DOMAIN,static.izanmei.net
 DOMAIN,static.j51.net
 DOMAIN,static.javcdn.info
 DOMAIN,static.javhd.com
@@ -2461,6 +2459,7 @@ DOMAIN-SUFFIX,mycdn.me
 DOMAIN-SUFFIX,myfilebase.com
 DOMAIN-SUFFIX,mypinata.cloud
 DOMAIN-SUFFIX,myshopapps.com
+DOMAIN-SUFFIX,nc-img.com
 DOMAIN-SUFFIX,ndtvimg.com
 DOMAIN-SUFFIX,nel.cloudflare.com
 DOMAIN-SUFFIX,nel.goog
