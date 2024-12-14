@@ -1,12 +1,12 @@
 // Common Static CDNs
-// Last updated: 2024/12/14 22:40:03
-// DOMAIN: 1944
+// Last updated: 2024/12/14 23:02:59
+// DOMAIN: 1946
 // DOMAIN-SUFFIX: 837
 // DOMAIN-KEYWORD: 5
 // IP-CIDR: 3
 // URL-REGEX: 2
 // OTHER: 32
-// Total: 2823
+// Total: 2825
 // Made by Sukka, All rights reserved
 // Data sources:
 //  - https://ruleset.skk.moe/List/non_ip/cdn.conf
@@ -1144,6 +1144,7 @@ DOMAIN,ltn.hitomi.la
 DOMAIN,lumiere-a.akamaihd.net
 DOMAIN,m-cdn.phonearena.com
 DOMAIN,m.wsj.net
+DOMAIN,m3u8.girigirilove.com
 DOMAIN,mangaz-books.j-comi.jp
 DOMAIN,mangaz-static.j-comi.jp
 DOMAIN,mantisloader.mantis-awx.com
@@ -1327,6 +1328,7 @@ DOMAIN,platforms.makemytrip.com
 DOMAIN,play.izanmei.net
 DOMAIN,play.publicradio.org
 DOMAIN,play.vidyard.com
+DOMAIN,play.xfvod.pro
 DOMAIN,player-frontend.cnevids.com
 DOMAIN,player.cnevids.com
 DOMAIN,player.louisvuitton.com
