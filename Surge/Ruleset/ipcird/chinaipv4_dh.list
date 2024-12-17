@@ -1,7 +1,7 @@
 // IPv4 Information in China.
-// Last updated: 2024/12/17 11:13:04
-// IP-CIDR: 4688
-// Total: 4688
+// Last updated: 2024/12/17 11:40:28
+// IP-CIDR: 4686
+// Total: 4686
 // Made by DH-Teams, All rights reserved
 // Data sources:
 //  - https://raw.githubusercontent.com/DH-Teams/DH-Geo_AS_IP_CN/main/Geo_AS_IP_CN_V4_Surge.list
@@ -1105,7 +1105,6 @@ IP-CIDR,103.39.232.0/22,no-resolve
 IP-CIDR,103.40.12.0/22,no-resolve
 IP-CIDR,103.40.174.0/23,no-resolve
 IP-CIDR,103.40.192.0/22,no-resolve
-IP-CIDR,103.40.212.0/22,no-resolve
 IP-CIDR,103.40.232.0/22,no-resolve
 IP-CIDR,103.40.240.0/20,no-resolve
 IP-CIDR,103.41.0.0/22,no-resolve
@@ -2196,7 +2195,7 @@ IP-CIDR,116.130.0.0/15,no-resolve
 IP-CIDR,116.132.0.0/15,no-resolve
 IP-CIDR,116.135.0.0/16,no-resolve
 IP-CIDR,116.136.0.0/13,no-resolve
-IP-CIDR,116.144.0.0/14,no-resolve
+IP-CIDR,116.147.0.0/16,no-resolve
 IP-CIDR,116.148.0.0/15,no-resolve
 IP-CIDR,116.153.0.0/16,no-resolve
 IP-CIDR,116.154.0.0/15,no-resolve
@@ -3220,7 +3219,6 @@ IP-CIDR,156.232.13.0/24,no-resolve
 IP-CIDR,156.237.104.0/23,no-resolve
 IP-CIDR,156.239.0.0/20,no-resolve
 IP-CIDR,156.239.64.0/18,no-resolve
-IP-CIDR,156.239.224.0/19,no-resolve
 IP-CIDR,156.242.5.0/24,no-resolve
 IP-CIDR,156.242.6.0/24,no-resolve
 IP-CIDR,156.245.128.0/21,no-resolve
@@ -3348,7 +3346,7 @@ IP-CIDR,163.181.201.0/24,no-resolve
 IP-CIDR,163.181.202.0/23,no-resolve
 IP-CIDR,163.181.204.0/22,no-resolve
 IP-CIDR,163.181.208.0/22,no-resolve
-IP-CIDR,163.181.212.0/23,no-resolve
+IP-CIDR,163.181.213.0/24,no-resolve
 IP-CIDR,163.181.215.0/24,no-resolve
 IP-CIDR,163.181.216.0/22,no-resolve
 IP-CIDR,163.181.220.0/23,no-resolve
