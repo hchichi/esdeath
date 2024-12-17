@@ -1,12 +1,12 @@
 // Common Static CDNs
-// Last updated: 2024/12/18 00:18:11
-// DOMAIN: 1985
+// Last updated: 2024/12/18 00:44:06
+// DOMAIN: 1988
 // DOMAIN-SUFFIX: 842
 // DOMAIN-KEYWORD: 6
 // IP-CIDR: 3
 // URL-REGEX: 2
 // OTHER: 32
-// Total: 2870
+// Total: 2873
 // Made by Sukka, All rights reserved
 // Data sources:
 //  - https://ruleset.skk.moe/List/non_ip/cdn.conf
@@ -505,6 +505,7 @@ DOMAIN,cdn.rauno.me
 DOMAIN,cdn.readme.io
 DOMAIN,cdn.ready-market.com.tw
 DOMAIN,cdn.recovermycart.com
+DOMAIN,cdn.redhat.com
 DOMAIN,cdn.redoc.ly
 DOMAIN,cdn.registerdisney.go.com
 DOMAIN,cdn.reimu.net
@@ -1306,6 +1307,7 @@ DOMAIN,p.typekit.net
 DOMAIN,p.udn.com.tw
 DOMAIN,p2.bahamut.com.tw
 DOMAIN,pacdn.500px.org
+DOMAIN,package-assets.oomol.com
 DOMAIN,packages-cf.termux.dev
 DOMAIN,packages.argotunnel.com
 DOMAIN,packages.httpie.io
@@ -1416,6 +1418,7 @@ DOMAIN,registry.api.cnn.io
 DOMAIN,registry.bower.io
 DOMAIN,registry.npmjs.com
 DOMAIN,registry.npmjs.org
+DOMAIN,registry.oomol.com
 DOMAIN,regmedia.co.uk
 DOMAIN,release.runcloud.io
 DOMAIN,renderer-assets.typeform.com
