@@ -1,12 +1,12 @@
 // Common Static CDNs
-// Last updated: 2024/12/19 14:44:26
-// DOMAIN: 1990
+// Last updated: 2024/12/19 15:02:36
+// DOMAIN: 1991
 // DOMAIN-SUFFIX: 842
 // DOMAIN-KEYWORD: 6
 // IP-CIDR: 3
 // URL-REGEX: 2
 // OTHER: 32
-// Total: 2875
+// Total: 2876
 // Made by Sukka, All rights reserved
 // Data sources:
 //  - https://ruleset.skk.moe/List/non_ip/cdn.conf
@@ -1147,6 +1147,7 @@ DOMAIN,latency-test.lab.skk.moe
 DOMAIN,latency-test.skk.moe
 DOMAIN,launcher.spot.im
 DOMAIN,launchercontent.mojang.com
+DOMAIN,lc.nssurge.com
 DOMAIN,lcdn-locator.apple.com
 DOMAIN,learn.optimizely.com
 DOMAIN,lecontent.sololearn.com
