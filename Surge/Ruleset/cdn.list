@@ -1,12 +1,12 @@
 // Common Static CDNs
-// Last updated: 2024/12/20 21:08:32
-// DOMAIN: 1990
+// Last updated: 2024/12/20 21:21:18
+// DOMAIN: 1993
 // DOMAIN-SUFFIX: 862
 // DOMAIN-KEYWORD: 6
 // IP-CIDR: 3
 // URL-REGEX: 2
 // OTHER: 32
-// Total: 2895
+// Total: 2898
 // Made by Sukka, All rights reserved
 // Data sources:
 //  - https://ruleset.skk.moe/List/non_ip/cdn.conf
@@ -1646,6 +1646,7 @@ DOMAIN,static.bitfinex.com
 DOMAIN,static.buffer.com
 DOMAIN,static.bytepan.com
 DOMAIN,static.canva.com
+DOMAIN,static.captcha-delivery.com
 DOMAIN,static.chaika.moe
 DOMAIN,static.change.org
 DOMAIN,static.cloud.coveo.com
@@ -1906,6 +1907,7 @@ DOMAIN,uploads.linear.app
 DOMAIN,uploads.sitepoint.com
 DOMAIN,upos-sz-mirroralibstar1.bilivideo.com
 DOMAIN,upos-sz-mirrorcosbstar1.bilivideo.com
+DOMAIN,us-js.zonka.co
 DOMAIN,us.hamreus.com
 DOMAIN,us01ccistatic.zoom.us
 DOMAIN,use.fortawesome.com
@@ -1932,6 +1934,7 @@ DOMAIN,vice-prod.sdiapi.com
 DOMAIN,vice-web-statics-cdn.vice.com
 DOMAIN,video-images.vice.com
 DOMAIN,video-meta.humix.com
+DOMAIN,video.bsky.app
 DOMAIN,video.cdnbye.com
 DOMAIN,video1.7mmtv.sx
 DOMAIN,video2.7mmtv.sx
