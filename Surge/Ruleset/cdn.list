@@ -1,7 +1,7 @@
 // Common Static CDNs
-// Last updated: 2024/12/20 20:18:41
-// DOMAIN: 1991
-// DOMAIN-SUFFIX: 861
+// Last updated: 2024/12/20 20:50:36
+// DOMAIN: 1990
+// DOMAIN-SUFFIX: 862
 // DOMAIN-KEYWORD: 6
 // IP-CIDR: 3
 // URL-REGEX: 2
@@ -350,7 +350,6 @@ DOMAIN,cdn.bigcloud.click
 DOMAIN,cdn.birdie.so
 DOMAIN,cdn.branch.io
 DOMAIN,cdn.britannica.com
-DOMAIN,cdn.bsky.app
 DOMAIN,cdn.bsky.social
 DOMAIN,cdn.builder.io
 DOMAIN,cdn.c1.amplience.net
@@ -2107,6 +2106,7 @@ DOMAIN-SUFFIX,cdn-uploads.huggingface.co
 DOMAIN-SUFFIX,cdn-website.com
 DOMAIN-SUFFIX,cdn-zlib.sk
 DOMAIN-SUFFIX,cdn.applicationinsights.io
+DOMAIN-SUFFIX,cdn.bsky.app
 DOMAIN-SUFFIX,cdn.cookielaw.org
 DOMAIN-SUFFIX,cdn.cwinfo.net
 DOMAIN-SUFFIX,cdn.discordapp.com
