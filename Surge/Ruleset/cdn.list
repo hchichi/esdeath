@@ -1,12 +1,12 @@
 // Common Static CDNs
-// Last updated: 2024/12/20 23:39:19
+// Last updated: 2024/12/21 00:03:42
 // DOMAIN: 1996
-// DOMAIN-SUFFIX: 864
+// DOMAIN-SUFFIX: 865
 // DOMAIN-KEYWORD: 6
 // IP-CIDR: 3
 // URL-REGEX: 2
 // OTHER: 33
-// Total: 2904
+// Total: 2905
 // Made by Sukka, All rights reserved
 // Data sources:
 //  - https://ruleset.skk.moe/List/non_ip/cdn.conf
@@ -2527,6 +2527,7 @@ DOMAIN-SUFFIX,nc-img.com
 DOMAIN-SUFFIX,ndtvimg.com
 DOMAIN-SUFFIX,nel.cloudflare.com
 DOMAIN-SUFFIX,nel.goog
+DOMAIN-SUFFIX,nel.measure.office.net
 DOMAIN-SUFFIX,nelreports.net
 DOMAIN-SUFFIX,nest.land
 DOMAIN-SUFFIX,net.anydesk.com
