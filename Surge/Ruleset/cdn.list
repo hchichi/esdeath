@@ -1,12 +1,12 @@
 // Common Static CDNs
-// Last updated: 2024/12/20 22:40:58
+// Last updated: 2024/12/20 23:03:26
 // DOMAIN: 1996
 // DOMAIN-SUFFIX: 864
 // DOMAIN-KEYWORD: 6
 // IP-CIDR: 3
 // URL-REGEX: 2
-// OTHER: 32
-// Total: 2903
+// OTHER: 33
+// Total: 2904
 // Made by Sukka, All rights reserved
 // Data sources:
 //  - https://ruleset.skk.moe/List/non_ip/cdn.conf
@@ -2900,6 +2900,7 @@ DOMAIN-WILDCARD,ocsp.*.amazontrust.com
 DOMAIN-WILDCARD,proxy-*.dailymotion.com
 DOMAIN-WILDCARD,rr?---??.ouo.si
 DOMAIN-WILDCARD,s3.*.wasabisys.com
+DOMAIN-WILDCARD,sdk.*.braze.eu
 DOMAIN-WILDCARD,static*.tgstat.ru
 DOMAIN-WILDCARD,static-??-cdn.eporner.com
 DOMAIN-WILDCARD,t?.nhentai.net
